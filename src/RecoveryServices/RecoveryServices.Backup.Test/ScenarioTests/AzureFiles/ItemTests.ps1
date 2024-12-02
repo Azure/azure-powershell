@@ -495,7 +495,7 @@ function Test-AzureFSVaultRestore
 									-VaultId $vault.ID `
 									-Policy $snapshotPolicy `
 									-Item $item
-		} "Modifying existing policies to stop data transfer to the vault and retain backups only as snapshots is not supported. Please create a new policy to opt-out of the data transfer to the recovery services vault."
+		} "Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups."
 
 		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureStorage -WorkloadType AzureFiles
 		
