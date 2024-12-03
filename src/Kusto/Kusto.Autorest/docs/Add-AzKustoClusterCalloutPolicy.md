@@ -42,7 +42,7 @@ $sqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
     outboundAccess = "Deny"
     calloutUriRegex = "*"
 }
-Add-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub -Value -Value @($kustoCalloutPolicy, $sqlCalloutPolicy)
+Add-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub -Value @($kustoCalloutPolicy, $sqlCalloutPolicy)
 ```
 
 The above command adds the two defined callout policies to cluster1 in rg1.
