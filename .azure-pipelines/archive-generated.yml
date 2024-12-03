@@ -32,8 +32,8 @@ variables:
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
 trigger:
+  batch: true
   branches:
-    batch: true
     include:
       - future
 
