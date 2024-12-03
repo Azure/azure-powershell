@@ -22,7 +22,7 @@ Returns a list of databases that are owned by this cluster and were followed by 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Getting a list of
 ```powershell
 Get-AzKustoClusterFollowerDatabaseGet -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId subid
 ```
