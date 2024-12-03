@@ -48,6 +48,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         [Ps1Xml(Label = "SessionId", Target = ViewControl.Table, Position = 8)]
         public ulong SessionId { get; set; }
 
+        [Ps1Xml(Label = "ClientName", Target = ViewControl.Table, Position = 9)]
+        public string ClientName { get; set; }
+
         public PSFileHandle(ShareFileHandle handle)
         {
             if (!String.IsNullOrEmpty(handle.HandleId))
@@ -55,6 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
                 this.HandleId = Convert.ToUInt64(handle.HandleId);
             }
             this.Path = handle.Path;
+            this.ClientName = handle.ClientName;
             if (!String.IsNullOrEmpty(handle.ClientIp))
             {
                 string[] clientIPs = handle.ClientIp.Split(new char[] { ':'}, StringSplitOptions.RemoveEmptyEntries);
