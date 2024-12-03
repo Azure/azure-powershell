@@ -18,8 +18,8 @@ Starts to copy a source file.
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
  [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerInstance
@@ -27,7 +27,7 @@ Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestSh
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer> -DestShareName <String>
  -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFilePath
@@ -35,7 +35,7 @@ Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer>
 Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFileInstance
@@ -43,7 +43,7 @@ Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePa
 Start-AzStorageFileCopy -SrcBlob <CloudBlob> [-DestShareFileClient <ShareFileClient>]
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareName
@@ -52,7 +52,7 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareN
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
  [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareInstance
@@ -60,7 +60,7 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareN
 Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <ShareClient> -DestShareName <String>
  -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFilePath
@@ -68,7 +68,7 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <ShareClient> -DestShare
 Start-AzStorageFileCopy -SrcFile <ShareFileClient> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFileInstance
@@ -76,7 +76,7 @@ Start-AzStorageFileCopy -SrcFile <ShareFileClient> -DestShareName <String> -Dest
 Start-AzStorageFileCopy -SrcFile <ShareFileClient> [-DestShareFileClient <ShareFileClient>]
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriToFilePath
@@ -84,7 +84,7 @@ Start-AzStorageFileCopy -SrcFile <ShareFileClient> [-DestShareFileClient <ShareF
 Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriToFileInstance
@@ -92,7 +92,7 @@ Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFileP
 Start-AzStorageFileCopy -AbsoluteUri <String> [-DestShareFileClient <ShareFileClient>]
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -300,6 +300,21 @@ Forces the command to run without asking for user confirmation.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

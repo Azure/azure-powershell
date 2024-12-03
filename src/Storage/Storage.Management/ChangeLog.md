@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Upgraded Azure.Core to 1.44.1.
+* Added warning message for account migration cmdlet.
+    - `Start-AzStorageAccountMigration`
 
 ## Version 8.0.0
 * When downloading blob with parameter AbsoluteUri (alias Uri, BlobUri), not allow input parameter Context together.

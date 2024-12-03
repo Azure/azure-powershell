@@ -56,6 +56,10 @@ directive:
       verb: Start
       subject: AccountMigration
   - where:
+      verb: Start
+      subject: AccountMigration
+    hide: true
+  - where:
       variant: ^Customer$|^CustomerViaIdentity$
     remove: true
   - where:
