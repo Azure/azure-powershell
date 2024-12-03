@@ -33,6 +33,7 @@ variables:
 
 trigger:
   branches:
+    batch: true
     include:
       - future
 
