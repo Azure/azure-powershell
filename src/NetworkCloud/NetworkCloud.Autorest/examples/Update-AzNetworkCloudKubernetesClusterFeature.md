@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Kubernetes cluster's feature
 ```powershell
-{{ Add code here }}
+Update-AzNetworkCloudKubernetesClusterFeature -FeatureName featureName -KubernetesClusterName kubernetesClusterName -ResourceGroupName resourceGroup -SubscriptionId subscriptionId -Tag $tagUpdatedHash
 ```
 
 ```output
-{{ Add output here }}
+Location  Name           SystemDataCreatedAt SystemDataCreatedBy    SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+--------  ----          -------------------  -------------------    ----------------------- ------------------------  ------------
+uksouth   featureName   12/02/2024 17:44:02	 <identity>             User                     12/02/2024 17:46:45      <identity>
+``````
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command updates a Kubernetes cluster feature's properties.

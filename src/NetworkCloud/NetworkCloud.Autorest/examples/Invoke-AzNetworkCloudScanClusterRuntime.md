@@ -1,22 +1,6 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkCloudScanClusterRuntime -ResourceGroupName resourceGroupName -ClusterName clusterName -SubscriptionId subscriptionId --ScanActivity "Scan"  
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Trigger the execution of a runtime protection scan to detect and remediate detected issues, in accordance with the cluster configuration.
