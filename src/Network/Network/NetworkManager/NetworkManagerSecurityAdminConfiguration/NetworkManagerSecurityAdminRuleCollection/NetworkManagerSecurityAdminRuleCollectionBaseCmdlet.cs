@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetNetworkManagerSecurityAdminRuleCollection(resourceGroupName, networkManagerName, securityConfigName, name);
             }
-            catch (CommonErrorResponseException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound || exception.Response.StatusCode == HttpStatusCode.BadRequest)
                 {

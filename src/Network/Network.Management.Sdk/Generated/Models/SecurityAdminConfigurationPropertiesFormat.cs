@@ -30,22 +30,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="applyOnNetworkIntentPolicyBasedServices">Enum list of network intent policy based services.
         /// </param>
 
-        /// <param name="networkGroupAddressSpaceAggregationOption">Determine update behavior for changes to network groups referenced within
-        /// the rules in this configuration.
-        /// Possible values include: &#39;None&#39;, &#39;Manual&#39;</param>
-
         /// <param name="provisioningState">The provisioning state of the resource.
-        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
-        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public SecurityAdminConfigurationPropertiesFormat(string description = default(string), System.Collections.Generic.IList<string> applyOnNetworkIntentPolicyBasedServices = default(System.Collections.Generic.IList<string>), string networkGroupAddressSpaceAggregationOption = default(string), string provisioningState = default(string), string resourceGuid = default(string))
+        public SecurityAdminConfigurationPropertiesFormat(string description = default(string), System.Collections.Generic.IList<string> applyOnNetworkIntentPolicyBasedServices = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string resourceGuid = default(string))
 
         {
             this.Description = description;
             this.ApplyOnNetworkIntentPolicyBasedServices = applyOnNetworkIntentPolicyBasedServices;
-            this.NetworkGroupAddressSpaceAggregationOption = networkGroupAddressSpaceAggregationOption;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
             CustomInit();
@@ -70,14 +64,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<string> ApplyOnNetworkIntentPolicyBasedServices {get; set; }
 
         /// <summary>
-        /// Gets or sets determine update behavior for changes to network groups
-        /// referenced within the rules in this configuration. Possible values include: &#39;None&#39;, &#39;Manual&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "networkGroupAddressSpaceAggregationOption")]
-        public string NetworkGroupAddressSpaceAggregationOption {get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
+        /// Gets the provisioning state of the resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

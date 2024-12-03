@@ -195,13 +195,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayForDifferentCustomerBlockTrafficPreferences");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
-        public void TestVirtualNetworkExpressRouteGatewayCRUDwithResiliencyModel()
-        {
-            TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayCRUDwithResiliencyModel");
-        }
     }
 }

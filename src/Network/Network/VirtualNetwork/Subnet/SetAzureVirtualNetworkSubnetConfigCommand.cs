@@ -71,11 +71,6 @@ namespace Microsoft.Azure.Commands.Network
 
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
 
-            if (IpamPoolPrefixAllocation?.Length > 0)
-            {
-                subnet.IpamPoolPrefixAllocations = IpamPoolPrefixAllocation.ToList();
-            }
-
             if (this.IpAllocation != null)
             {
                 foreach (var allocation in this.IpAllocation)
