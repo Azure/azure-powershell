@@ -1392,7 +1392,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
+        ///   Looks up a localized string similar to RetentionDuration in {0} should be from {1} - {2}.
         /// </summary>
         public static string RetentionDurationCountInvalidException
         {
@@ -2755,7 +2755,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Modifying existing policies to stop data transfer to the vault and retain backups only as snapshots is not supported. Please create a new policy to opt-out of the data transfer to the recovery services vault.
+        ///   Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups.
         /// </summary>
         public static string AFSPolicyUpdateNotAllowed
         {

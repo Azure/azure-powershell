@@ -219,13 +219,63 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public new void Validate(ScheduleRunType ScheduleRunFrequency = 0)
         {
-            base.Validate(ScheduleRunFrequency);
-
             int MinDurationCountInDays = 1, MaxDurationCountInDays = PolicyConstants.AfsSnapshotRetentionDaysMax;
             
             if (SnapshotRetentionInDays < MinDurationCountInDays || SnapshotRetentionInDays > MaxDurationCountInDays) 
             {
                 throw new ArgumentException(Resources.SnapshotRetentionInDaysInvalidException);
+            }
+
+            if (IsDailyScheduleEnabled)
+            {
+                if (DailySchedule == null)
+                {
+                    throw new ArgumentException(Resources.DailyScheduleEnabledButScheduleIsNullException);
+                }
+                else
+                {
+                    DailySchedule.BackupManagementType = BackupManagementType;
+                    DailySchedule.Validate(ScheduleRunFrequency, PolicyConstants.AfsDailyRetentionDaysMin, PolicyConstants.AfsVaultDailyRetentionDaysMax);
+                }
+            }
+
+            if (IsWeeklyScheduleEnabled)
+            {
+                if (WeeklySchedule == null)
+                {
+                    throw new ArgumentException(Resources.WeeklyScheduleEnabledButScheduleIsNullException);
+                }
+                else
+                {
+                    WeeklySchedule.BackupManagementType = BackupManagementType;
+                    WeeklySchedule.Validate(ScheduleRunFrequency, PolicyConstants.AfsWeeklyRetentionMin, PolicyConstants.AfsVaultWeeklyRetentionMax);
+                }
+            }
+
+            if (IsMonthlyScheduleEnabled)
+            {
+                if (MonthlySchedule == null)
+                {
+                    throw new ArgumentException(Resources.MonthlyScheduleEnabledButScheduleIsNullException);
+                }
+                else
+                {
+                    MonthlySchedule.BackupManagementType = BackupManagementType;
+                    MonthlySchedule.Validate(ScheduleRunFrequency, PolicyConstants.AfsMonthlyRetentionMin, PolicyConstants.AfsVaultMonthlyRetentionMax);
+                }
+            }
+
+            if (IsYearlyScheduleEnabled)
+            {
+                if (YearlySchedule == null)
+                {
+                    throw new ArgumentException(Resources.YearlyScheduleEnabledButScheduleIsNullException);
+                }
+                else
+                {
+                    YearlySchedule.BackupManagementType = BackupManagementType;
+                    YearlySchedule.Validate(ScheduleRunFrequency, PolicyConstants.AfsYearlyRetentionMin, PolicyConstants.AfsVaultYearlyRetentionMax);
+                }
             }
         }
 
@@ -308,17 +358,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public int DurationCountInDays { get; set; }
 
         // no extra fields
-        public override void Validate(ScheduleRunType ScheduleRunFrequency = 0)
+        public void Validate(ScheduleRunType ScheduleRunFrequency = 0, int MinDuration = 0, int MaxDuration = 0)
         {
             int MinDurationCountInDays = 7, MaxDurationCountInDays = PolicyConstants.MaxAllowedRetentionDurationCount;
             if(BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
-                MinDurationCountInDays = PolicyConstants.AfsDailyRetentionDaysMin;
-                MaxDurationCountInDays = PolicyConstants.AfsVaultDailyRetentionDaysMax;                
+                if (MinDuration != 0 && MaxDuration != 0)
+                {
+                    MinDurationCountInDays = MinDuration;
+                    MaxDurationCountInDays = MaxDuration;
+                }
+                else
+                {
+                    MinDurationCountInDays = PolicyConstants.AfsDailyRetentionDaysMin;
+                    MaxDurationCountInDays = PolicyConstants.AfsDailyRetentionDaysMax;
+                }     
             }
+
             if (DurationCountInDays < MinDurationCountInDays || DurationCountInDays > MaxDurationCountInDays)
             {
-                throw new ArgumentException(Resources.RetentionDurationCountInDaysInvalidException);
+                throw new ArgumentException(string.Format(Resources.RetentionDurationCountInvalidException, "Days", MinDurationCountInDays, MaxDurationCountInDays));
             }
                         
             base.Validate(ScheduleRunFrequency);
@@ -345,17 +404,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public List<DayOfWeek> DaysOfTheWeek { get; set; }
 
-        public override void Validate(ScheduleRunType ScheduleRunFrequency = 0)
+        public void Validate(ScheduleRunType ScheduleRunFrequency = 0, int MinDuration = 0, int MaxDuration = 0)
         {
             int MinDurationCountInWeeks = 1, MaxDurationCountInWeeks = PolicyConstants.MaxAllowedRetentionDurationCountWeekly;
             if(BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
-                MinDurationCountInWeeks = PolicyConstants.AfsWeeklyRetentionMin;
-                MaxDurationCountInWeeks = PolicyConstants.AfsVaultWeeklyRetentionMax;
+                if (MinDuration != 0 && MaxDuration != 0)
+                {
+                    MinDurationCountInWeeks = MinDuration;
+                    MaxDurationCountInWeeks = MaxDuration;
+                }
+                else
+                {
+                    MinDurationCountInWeeks = PolicyConstants.AfsWeeklyRetentionMin;
+                    MaxDurationCountInWeeks = PolicyConstants.AfsWeeklyRetentionMax;
+                }
             }
+
             if (DurationCountInWeeks < MinDurationCountInWeeks || DurationCountInWeeks > MaxDurationCountInWeeks)
             {
-                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
+                throw new ArgumentException(string.Format(Resources.RetentionDurationCountInvalidException, "Weeks", MinDurationCountInWeeks, MaxDurationCountInWeeks));
             }
 
             if (DaysOfTheWeek == null || DaysOfTheWeek.Count == 0 || DaysOfTheWeek.Count != DaysOfTheWeek.Distinct().Count())
@@ -403,20 +471,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
         }
 
-        public override void Validate(ScheduleRunType ScheduleRunFrequency = 0)
+        public void Validate(ScheduleRunType ScheduleRunFrequency = 0, int MinDuration = 0, int MaxDuration = 0)
         {
             base.Validate(ScheduleRunFrequency);
 
             int MinDurationCountInMonths = 1, MaxDurationCountInMonths = PolicyConstants.MaxAllowedRetentionDurationCountMonthly;
             if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
-                MinDurationCountInMonths = PolicyConstants.AfsMonthlyRetentionMin;
-                MaxDurationCountInMonths = PolicyConstants.AfsVaultMonthlyRetentionMax;
+                if (MinDuration != 0 && MaxDuration != 0)
+                {
+                    MinDurationCountInMonths = MinDuration;
+                    MaxDurationCountInMonths = MaxDuration;
+                }
+                else
+                {
+                    MinDurationCountInMonths = PolicyConstants.AfsMonthlyRetentionMin;
+                    MaxDurationCountInMonths = PolicyConstants.AfsMonthlyRetentionMax;
+                }
             }
 
             if (DurationCountInMonths < MinDurationCountInMonths || DurationCountInMonths > MaxDurationCountInMonths)
             {
-                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
+                throw new ArgumentException(string.Format(Resources.RetentionDurationCountInvalidException, "Months", MinDurationCountInMonths, MaxDurationCountInMonths));
             }
 
             if (RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
@@ -487,19 +563,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         }
 
-        public override void Validate(ScheduleRunType ScheduleRunFrequency = 0)
+public void Validate(ScheduleRunType ScheduleRunFrequency = 0, int MinDuration = 0, int MaxDuration = 0)
         {
             base.Validate(ScheduleRunFrequency);
 
             int MinDurationCountInYears = 1, MaxDurationCountInYears = PolicyConstants.MaxAllowedRetentionDurationCountYearly;
             if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
-                MinDurationCountInYears = PolicyConstants.AfsYearlyRetentionMin;
-                MaxDurationCountInYears = PolicyConstants.AfsVaultYearlyRetentionMax;
+                if (MinDuration != 0 && MaxDuration != 0)
+                {
+                    MinDurationCountInYears = MinDuration;
+                    MaxDurationCountInYears = MaxDuration;
+                }
+                else
+                {
+                    MinDurationCountInYears = PolicyConstants.AfsYearlyRetentionMin;
+                    MaxDurationCountInYears = PolicyConstants.AfsYearlyRetentionMax;
+                }
             }
+
             if (DurationCountInYears < MinDurationCountInYears || DurationCountInYears > MaxDurationCountInYears)
             {
-                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
+                throw new ArgumentException(string.Format(Resources.RetentionDurationCountInvalidException, "Years", MinDurationCountInYears, MaxDurationCountInYears));
             }
 
             if (MonthsOfYear == null || MonthsOfYear.Count == 0 || MonthsOfYear.Count != MonthsOfYear.Distinct().Count())
