@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorRulesEngineAct
 }
 
 Describe 'New-AzFrontDoorRulesEngineActionObject' {
-    It '__AllParameterSets' -skip {
+    It 'ForwardingConfiguration' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
