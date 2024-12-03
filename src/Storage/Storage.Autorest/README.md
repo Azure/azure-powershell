@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Storage service.
 
 ---
-## Status
-[![Az.Storage](https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage "Az.Storage")](https://www.powershellgallery.com/packages/Az.Storage/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -58,6 +55,10 @@ directive:
     set:
       verb: Start
       subject: AccountMigration
+  - where:
+      verb: Start
+      subject: AccountMigration
+    hide: true
   - where:
       variant: ^Customer$|^CustomerViaIdentity$
     remove: true
