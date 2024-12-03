@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Upgraded Azure.Core to 1.44.1.
+* Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
+    - `New-AzStorageContext`
 
 ## Version 8.0.0
 * When downloading blob with parameter AbsoluteUri (alias Uri, BlobUri), not allow input parameter Context together.
