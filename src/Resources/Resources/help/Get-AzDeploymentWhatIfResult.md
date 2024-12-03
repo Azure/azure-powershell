@@ -16,7 +16,7 @@ Gets a template What-If result for a deployment at subscription scope.
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
@@ -24,7 +24,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
@@ -32,7 +32,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
@@ -40,7 +40,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsObject
@@ -48,7 +48,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateSpecId <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterFile
@@ -56,7 +56,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
@@ -64,7 +64,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
@@ -72,7 +72,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParams
@@ -80,14 +80,14 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateSpecId <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterUri
@@ -95,7 +95,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
@@ -103,7 +103,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
@@ -111,7 +111,7 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsUri
@@ -119,28 +119,28 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateSpecId <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateObjectWithNoParameters
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceId
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -257,21 +257,6 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

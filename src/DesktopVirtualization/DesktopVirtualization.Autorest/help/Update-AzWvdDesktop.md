@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdDesktop
 
 ## SYNOPSIS
-Update a desktop.
+update a desktop.
 
 ## SYNTAX
 
@@ -19,6 +19,19 @@ Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroup
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityApplicationGroup
+```
+Update-AzWvdDesktop -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
+ -Desktop <IDesktopPatch> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityApplicationGroupExpanded
+```
+Update-AzWvdDesktop -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
+ [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
@@ -26,8 +39,22 @@ Update-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-Description 
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Update a desktop.
+update a desktop.
 
 ## EXAMPLES
 
@@ -50,12 +77,27 @@ This command updates a Windows Virtual Desktop Desktop in an applicaton Group.
 
 ## PARAMETERS
 
+### -ApplicationGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: UpdateViaIdentityApplicationGroup, UpdateViaIdentityApplicationGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ApplicationGroupName
 The name of the application group
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -86,7 +128,7 @@ Description of Desktop.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -96,12 +138,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Desktop
+Desktop properties that can be patched.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatch
+Parameter Sets: UpdateViaIdentityApplicationGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -FriendlyName
 Friendly name of Desktop.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -113,7 +170,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -127,12 +183,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the desktop within the specified desktop group
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroup, UpdateViaIdentityApplicationGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: DesktopName
 
 Required: True
@@ -148,7 +234,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -160,10 +246,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -178,7 +265,7 @@ tags to be updated
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -224,11 +311,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatch
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktop
 
 ## NOTES
 

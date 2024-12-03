@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 .Description
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 .Example
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
 

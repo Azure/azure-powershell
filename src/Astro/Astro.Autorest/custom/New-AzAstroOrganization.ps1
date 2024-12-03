@@ -100,7 +100,7 @@ function New-AzAstroOrganization {
         # Last name of the user
         ${UserLastName},
 
-        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName = 'CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Decides if enable a system assigned identity for the resource.
@@ -282,7 +282,7 @@ function New-AzAstroOrganization {
     )
 
     process {
-        if($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity') ){
+        if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
             $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
             $supportsUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity") -and $UserAssignedIdentity.Length -gt 0
 
@@ -299,9 +299,20 @@ function New-AzAstroOrganization {
             else {
                 $PSBoundParameters.Add("IdentityType", "None")
             }
-            
+
+            # If user input UserAssignedIdentity
+            if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.UserAssignedIdentity]::New()
+                $PSBoundParameters.IdentityUserAssignedIdentity = @{}
+                foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+                    $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+                }
+      
+                $null = $PSBoundParameters.Remove('UserAssignedIdentity')
+            }
+      
             # remove EnableSystemAssignedIdentity
-            if($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+            if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
                 $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
             }
         }

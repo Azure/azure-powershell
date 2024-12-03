@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update an application.
+create an application.
 .Description
-Create or update an application.
+create an application.
 .Example
 New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -32,12 +32,12 @@ New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -ShowInPortal:$true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplication
 #>
 function New-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -61,33 +61,38 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting]
-    # Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
-    ${CommandLineSetting},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AppAlias', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("DoNotAllow", "Allow", "Require")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
+    ${CommandLineSetting},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AppAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # Description of Application.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AppAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # Friendly name of Application.
     ${FriendlyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AppAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether to show the RemoteApp program in the RD Web Access server.
@@ -100,9 +105,9 @@ param(
     ${AppAlias},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("InBuilt", "MsixApplication")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType]
+    [System.String]
     # Resource Type of Application.
     ${ApplicationType},
 
@@ -141,6 +146,18 @@ param(
     [System.String]
     # Specifies the package family name for MSIX applications
     ${MsixPackageFamilyName},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -218,9 +235,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdApplication_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdApplication_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdApplication_CreateViaJsonString';
             AppAlias = 'Az.DesktopVirtualization.custom\New-AzWvdApplication_AppAlias';
         }
-        if (('CreateExpanded', 'AppAlias') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'AppAlias') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
             }
             Cors = new PSSignalRCorsSettings(signalR.Cors);
             Version = signalR.Version;
-            NetworkAcls = new PSSignalRNetworkAcls(signalR.NetworkACLs);
+            NetworkAcls = new PSSignalRNetworkAcls(signalR.NetworkAcLs);
             Upstream = new PSServerlessUpstreamSettings(signalR.Upstream);
         }
     }

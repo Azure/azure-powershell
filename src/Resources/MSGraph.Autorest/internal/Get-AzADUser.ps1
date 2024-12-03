@@ -41,10 +41,11 @@ function Get-AzADUser {
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('UserId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of user
-    ${UserId},
+    ${Id},
 
     [Parameter()]
     [AllowEmptyCollection()]

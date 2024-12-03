@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-AzAccessToken
 
 ## SYNOPSIS
-Get raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+Get secure raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+> **_NOTE:_**  The current default output token type is going to be changed from plain text `String` to `SecureString` for security. Please use `-AsSecureString` to migrate to the secure behaviour before the breaking change takes effects.
 
 ## SYNTAX
 
@@ -31,21 +32,21 @@ Get access token
 
 ### Example 1 Get the access token for ARM endpoint
 ```powershell
-Get-AzAccessToken
+Get-AzAccessToken -AsSecureString
 ```
 
 Get access token of current account for ResourceManager endpoint
 
 ### Example 2 Get the access token for Microsoft Graph endpoint
 ```powershell
-Get-AzAccessToken -ResourceTypeName MSGraph
+Get-AzAccessToken -AsSecureString -ResourceTypeName MSGraph
 ```
 
 Get access token of Microsoft Graph endpoint for current account
 
 ### Example 3 Get the access token for Microsoft Graph endpoint
 ```powershell
-Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com/"
+Get-AzAccessToken -AsSecureString -ResourceUrl "https://graph.microsoft.com/"
 ```
 
 Get access token of Microsoft Graph endpoint for current account
@@ -54,6 +55,7 @@ Get access token of Microsoft Graph endpoint for current account
 
 ### -AsSecureString
 Specifiy to convert output token as a secure string.
+Please always use the parameter for security purpose and to avoid the upcoming breaking chang and refer to [Frequently asked questions about Azure PowerShell](https://learn.microsoft.com/en-us/powershell/azure/faq) for how to convert from `SecureString` to plain text.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -137,8 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAccessToken
+The output type is going to be deprecate.
 
 ### Microsoft.Azure.Commands.Profile.Models.PSSecureAccessToken
+Use `-AsSecureString` to get the token as `SecureString`.
 
 ## NOTES
 

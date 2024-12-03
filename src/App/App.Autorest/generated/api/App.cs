@@ -637,7 +637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Certificate to be created or updated</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Certificate to be created or updated</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -2414,7 +2414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Connected Environment.</param>
@@ -2466,7 +2466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Certificate to be created or updated</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2528,7 +2528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Certificate to be created or updated</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2588,7 +2588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Connected Environment.</param>
@@ -2639,7 +2639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Connected Environment.</param>
@@ -2688,7 +2688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Certificate.</summary>
+        /// <summary>update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Connected Environment.</param>
@@ -4660,7 +4660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update an connectedEnvironment.</summary>
+        /// <summary>update an connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connectedEnvironment.</param>
@@ -4709,7 +4709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update an connectedEnvironment.</summary>
+        /// <summary>update an connectedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the connectedEnvironment.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4768,7 +4768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update an connectedEnvironment.</summary>
+        /// <summary>update an connectedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the connectedEnvironment.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4825,7 +4825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update an connectedEnvironment.</summary>
+        /// <summary>update an connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connectedEnvironment.</param>
@@ -4873,7 +4873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update an connectedEnvironment.</summary>
+        /// <summary>update an connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connectedEnvironment.</param>
@@ -4919,7 +4919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update an connectedEnvironment.</summary>
+        /// <summary>update an connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connectedEnvironment.</param>
@@ -5291,7 +5291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a connected environment.</summary>
+        /// <summary>update a Dapr Component in a connected environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connected environment.</param>
@@ -5343,7 +5343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a connected environment.</summary>
+        /// <summary>update a Dapr Component in a connected environment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Dapr Component.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5405,7 +5405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a connected environment.</summary>
+        /// <summary>update a Dapr Component in a connected environment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Dapr Component.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5465,7 +5465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a connected environment.</summary>
+        /// <summary>update a Dapr Component in a connected environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connected environment.</param>
@@ -5516,7 +5516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a connected environment.</summary>
+        /// <summary>update a Dapr Component in a connected environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connected environment.</param>
@@ -5565,7 +5565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a connected environment.</summary>
+        /// <summary>update a Dapr Component in a connected environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connected environment.</param>
@@ -8171,7 +8171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a connectedEnvironment.</summary>
+        /// <summary>update storage for a connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Environment.</param>
@@ -8223,7 +8223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a connectedEnvironment.</summary>
+        /// <summary>update storage for a connectedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of storage.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8285,7 +8285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a connectedEnvironment.</summary>
+        /// <summary>update storage for a connectedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of storage.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8345,7 +8345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a connectedEnvironment.</summary>
+        /// <summary>update storage for a connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Environment.</param>
@@ -8396,7 +8396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a connectedEnvironment.</summary>
+        /// <summary>update storage for a connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Environment.</param>
@@ -8445,7 +8445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a connectedEnvironment.</summary>
+        /// <summary>update storage for a connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Environment.</param>
@@ -9817,7 +9817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the AuthConfig for a Container App.</summary>
+        /// <summary>update the AuthConfig for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -9869,7 +9869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the AuthConfig for a Container App.</summary>
+        /// <summary>update the AuthConfig for a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a Container App AuthConfig</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9931,7 +9931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the AuthConfig for a Container App.</summary>
+        /// <summary>update the AuthConfig for a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a Container App AuthConfig</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9991,7 +9991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the AuthConfig for a Container App.</summary>
+        /// <summary>update the AuthConfig for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -10042,7 +10042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the AuthConfig for a Container App.</summary>
+        /// <summary>update the AuthConfig for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -10091,7 +10091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the AuthConfig for a Container App.</summary>
+        /// <summary>update the AuthConfig for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -11139,7 +11139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container App.</summary>
+        /// <summary>update a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -11188,7 +11188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container App.</summary>
+        /// <summary>update a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a container app</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11247,7 +11247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container App.</summary>
+        /// <summary>update a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a container app</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11304,7 +11304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container App.</summary>
+        /// <summary>update a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -11352,7 +11352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container App.</summary>
+        /// <summary>update a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -11398,7 +11398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container App.</summary>
+        /// <summary>update a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -17580,7 +17580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the SourceControl for a Container App.</summary>
+        /// <summary>update the SourceControl for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -17632,7 +17632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the SourceControl for a Container App.</summary>
+        /// <summary>update the SourceControl for a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a Container App SourceControl</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17694,7 +17694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the SourceControl for a Container App.</summary>
+        /// <summary>update the SourceControl for a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a Container App SourceControl</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17754,7 +17754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the SourceControl for a Container App.</summary>
+        /// <summary>update the SourceControl for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -17805,7 +17805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the SourceControl for a Container App.</summary>
+        /// <summary>update the SourceControl for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -17854,7 +17854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update the SourceControl for a Container App.</summary>
+        /// <summary>update the SourceControl for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -20847,7 +20847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
+        /// <summary>update a Dapr Component in a Managed Environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -20899,7 +20899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
+        /// <summary>update a Dapr Component in a Managed Environment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Dapr Component.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20961,7 +20961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
+        /// <summary>update a Dapr Component in a Managed Environment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Dapr Component.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21021,7 +21021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
+        /// <summary>update a Dapr Component in a Managed Environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -21072,7 +21072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
+        /// <summary>update a Dapr Component in a Managed Environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -21121,7 +21121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
+        /// <summary>update a Dapr Component in a Managed Environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -22841,7 +22841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container Apps Job.</summary>
+        /// <summary>update a Container Apps Job.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="jobName">Job Name</param>
@@ -22890,7 +22890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container Apps Job.</summary>
+        /// <summary>update a Container Apps Job.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a container apps job</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -22949,7 +22949,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container Apps Job.</summary>
+        /// <summary>update a Container Apps Job.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a container apps job</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -23006,7 +23006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container Apps Job.</summary>
+        /// <summary>update a Container Apps Job.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="jobName">Job Name</param>
@@ -23054,7 +23054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container Apps Job.</summary>
+        /// <summary>update a Container Apps Job.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="jobName">Job Name</param>
@@ -23100,7 +23100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Container Apps Job.</summary>
+        /// <summary>update a Container Apps Job.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="jobName">Job Name</param>
@@ -27401,7 +27401,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Certificate.</summary>
+        /// <summary>update a Managed Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -27453,7 +27453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Certificate.</summary>
+        /// <summary>update a Managed Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Managed Certificate to be created or updated</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -27515,7 +27515,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Certificate.</summary>
+        /// <summary>update a Managed Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Managed Certificate to be created or updated</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27575,7 +27575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Certificate.</summary>
+        /// <summary>update a Managed Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -27626,7 +27626,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Certificate.</summary>
+        /// <summary>update a Managed Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -27675,7 +27675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Certificate.</summary>
+        /// <summary>update a Managed Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -30042,7 +30042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Environment used to host container apps.</summary>
+        /// <summary>update a Managed Environment used to host container apps.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -30091,7 +30091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Environment used to host container apps.</summary>
+        /// <summary>update a Managed Environment used to host container apps.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Environment.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -30150,7 +30150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Environment used to host container apps.</summary>
+        /// <summary>update a Managed Environment used to host container apps.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Environment.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -30207,7 +30207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Environment used to host container apps.</summary>
+        /// <summary>update a Managed Environment used to host container apps.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -30255,7 +30255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Environment used to host container apps.</summary>
+        /// <summary>update a Managed Environment used to host container apps.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -30301,7 +30301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update a Managed Environment used to host container apps.</summary>
+        /// <summary>update a Managed Environment used to host container apps.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -32878,7 +32878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a managedEnvironment.</summary>
+        /// <summary>update storage for a managedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -32930,7 +32930,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a managedEnvironment.</summary>
+        /// <summary>update storage for a managedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of storage.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -32992,7 +32992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a managedEnvironment.</summary>
+        /// <summary>update storage for a managedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of storage.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -33052,7 +33052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a managedEnvironment.</summary>
+        /// <summary>update storage for a managedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -33103,7 +33103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a managedEnvironment.</summary>
+        /// <summary>update storage for a managedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -33152,7 +33152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Update storage for a managedEnvironment.</summary>
+        /// <summary>update storage for a managedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>

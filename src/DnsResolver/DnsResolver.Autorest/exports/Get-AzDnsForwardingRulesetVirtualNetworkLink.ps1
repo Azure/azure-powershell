@@ -27,7 +27,7 @@ Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName pstestdns
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IVirtualNetworkLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,20 +35,24 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [DnsForwardingRulesetName <String>]: The name of the DNS forwarding ruleset.
+  [DnsResolverDomainListName <String>]: The name of the DNS resolver domain list.
   [DnsResolverName <String>]: The name of the DNS resolver.
+  [DnsResolverPolicyName <String>]: The name of the DNS resolver policy.
+  [DnsResolverPolicyVirtualNetworkLinkName <String>]: The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+  [DnsSecurityRuleName <String>]: The name of the DNS security rule.
   [ForwardingRuleName <String>]: The name of the forwarding rule.
   [Id <String>]: Resource identity path
   [InboundEndpointName <String>]: The name of the inbound endpoint for the DNS resolver.
   [OutboundEndpointName <String>]: The name of the outbound endpoint for the DNS resolver.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetvirtualnetworklink
 #>
 function Get-AzDnsForwardingRulesetVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -79,6 +83,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]

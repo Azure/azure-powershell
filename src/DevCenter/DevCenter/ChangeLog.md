@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Updated data plane to 2024-05-01-preview and removed deprecation warnings.
+
 ## Version 1.2.0
 * Fixed secrets exposure in example documentation.
 * Updated control plane to 2024-05-01-preview and added deprecation warnings

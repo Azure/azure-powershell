@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a Certificate.
+create a Certificate.
 .Description
-Create a Certificate.
+create a Certificate.
 .Example
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My

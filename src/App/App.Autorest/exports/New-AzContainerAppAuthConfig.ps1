@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create the AuthConfig for a Container App.
+create the AuthConfig for a Container App.
 .Description
-Create the AuthConfig for a Container App.
+create the AuthConfig for a Container App.
 .Example
 $identity = New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName redis-config
 
