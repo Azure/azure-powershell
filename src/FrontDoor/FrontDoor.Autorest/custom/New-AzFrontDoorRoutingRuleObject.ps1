@@ -136,7 +136,7 @@ function New-AzFrontDoorRoutingRuleObject {
 
         switch ($PSCmdlet.ParameterSetName) {
             "ForwardingConfiguration" {
-                $ForwardingConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontDoorForwardingConfiguration]::New()
+                $ForwardingConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ForwardingConfiguration]::New()
 
                 $BackendPoolId = "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/BackendPools/$BackendPoolName"
 
@@ -158,7 +158,7 @@ function New-AzFrontDoorRoutingRuleObject {
                 $Object.RouteConfiguration = $ForwardingConfiguration
             }
             "RedirectConfiguration" {
-                $RewriteConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontDoorRedirectConfiguration]::New()
+                $RewriteConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RedirectConfiguration]::New()
 
                 $RewriteConfiguration.CustomFragment = $CustomFragment
                 $RewriteConfiguration.CustomHost = $PSBoundParameters.ContainsKey('CustomHost')? $CustomHost : ''
