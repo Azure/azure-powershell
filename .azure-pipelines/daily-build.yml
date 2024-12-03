@@ -43,7 +43,11 @@ jobs:
                     Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
                     Exit"
         dotnet tool run pwsh -c $command
-
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x for build'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
   - task: DotNetCoreCLI@2
     displayName: 'Build for Bumping Version'
     inputs:
