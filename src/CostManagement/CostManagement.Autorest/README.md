@@ -201,7 +201,7 @@ directive:
             "$ref": "#/definitions/QueryComparisonExpression"
           },
           "tags": {
-            "description": "Has comparison expression for a tags",
+            "description": "Has comparison expression for a tag",
             "$ref": "#/definitions/QueryComparisonExpression"
           }
         }
