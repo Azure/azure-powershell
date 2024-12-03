@@ -35,10 +35,10 @@ function New-AzFrontDoorBackendPoolObject {
         $Backend,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
-        $HealthProbeSettingName,
+        $HealthProbeSettingsName,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
-        $LoadBalancingSettingName,
+        $LoadBalancingSettingsName,
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
@@ -62,11 +62,11 @@ function New-AzFrontDoorBackendPoolObject {
             $Object.Backend = $Backend
         }
         if ($PSBoundParameters.ContainsKey('HealthProbeSettingId')) {
-            $HealthProbeSettingId = "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/HealthProbeSettings/$HealthProbeSettingName"
+            $HealthProbeSettingId = "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/HealthProbeSettings/$HealthProbeSettingsName"
             $Object.HealthProbeSettingId = $HealthProbeSettingId
         }
         if ($PSBoundParameters.ContainsKey('LoadBalancingSettingId')) {
-            $LoadBalancingSettingId = "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/LoadBalancingSettings/$LoadBalancingSettingName"
+            $LoadBalancingSettingId = "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/LoadBalancingSettings/$LoadBalancingSettingsName"
             $Object.LoadBalancingSettingId = $LoadBalancingSettingId
         }
         if ($PSBoundParameters.ContainsKey('Name')) {

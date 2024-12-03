@@ -41,7 +41,7 @@ Create an in-memory object for Backend.
 ### [New-AzFrontDoorBackendPoolObject](New-AzFrontDoorBackendPoolObject.md)
 Create an in-memory object for BackendPool.
 
-### [New-AzFrontDoorBackendPoolsSettingsObject](New-AzFrontDoorBackendPoolsSettingsObject.md)
+### [New-AzFrontDoorBackendPoolsSettingObject](New-AzFrontDoorBackendPoolsSettingObject.md)
 Create an in-memory object for BackendPoolsSettings.
 
 ### [New-AzFrontDoorForwardingConfigurationObject](New-AzFrontDoorForwardingConfigurationObject.md)

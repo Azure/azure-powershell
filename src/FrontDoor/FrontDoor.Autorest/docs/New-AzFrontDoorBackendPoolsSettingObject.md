@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-a
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorBackendPoolsSettingsObject
+# New-AzFrontDoorBackendPoolsSettingObject
 
 ## SYNOPSIS
 Create an in-memory object for BackendPoolsSettings.
@@ -13,7 +13,7 @@ Create an in-memory object for BackendPoolsSettings.
 ## SYNTAX
 
 ```
-New-AzFrontDoorBackendPoolsSettingsObject [-EnforceCertificateNameCheck <String>]
+New-AzFrontDoorBackendPoolsSettingObject [-EnforceCertificateNameCheck <String>]
  [-SendRecvTimeoutSecond <Int32>] [<CommonParameters>]
 ```
 

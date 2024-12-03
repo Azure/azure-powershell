@@ -14,7 +14,7 @@ Create an in-memory object for BackendPool.
 
 ```
 New-AzFrontDoorBackendPoolObject [-Backend <IBackend[]>] [-FrontDoorName <String>]
- [-HealthProbeSettingName <String>] [-Id <String>] [-LoadBalancingSettingName <String>] [-Name <String>]
+ [-HealthProbeSettingsName <String>] [-Id <String>] [-LoadBalancingSettingsName <String>] [-Name <String>]
  [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HealthProbeSettingName
+### -HealthProbeSettingsName
 Resource ID.
 
 ```yaml
@@ -107,7 +107,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LoadBalancingSettingName
+### -LoadBalancingSettingsName
 Resource ID.
 
 ```yaml
