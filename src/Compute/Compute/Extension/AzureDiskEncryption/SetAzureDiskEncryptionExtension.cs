@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 }
                 return false;
             }
-            return false;
+            return true;
         }
 
         private AzureOperationResponse<VirtualMachine> ClearVmEncryptionSettingsForMigration()
