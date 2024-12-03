@@ -465,4 +465,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         SQLInstance,
         SQLAvailabilityGroup
     }
+
+    /// <summary>
+    /// Options to select the Backup Tier type
+    /// </summary>
+    public enum BackupTierType
+    {
+        Snapshot = 1,
+        VaultStandard
+    }
 }

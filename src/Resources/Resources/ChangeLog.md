@@ -19,7 +19,17 @@
 -->
 
 ## Upcoming Release
+* Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
+* Fixed bug unexpected type issue: [#26752]
+
+## Version 7.7.0
+* Updated Resources SDK to 2024-07-01.
+* Fixed overriding of Bicep parameters in Deployment Stack cmdlets to support SecureString parameters.
+* Updated verbose status log during stack deployments to show deployment status.
+
+## Version 7.6.0
 * Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
+* Added new cmdlets of DataBoundary
 
 ## Version 7.5.0
 * Added `ResourceSelector` and `Override` parameters to `New/Update-AzPolicyAssignment`.

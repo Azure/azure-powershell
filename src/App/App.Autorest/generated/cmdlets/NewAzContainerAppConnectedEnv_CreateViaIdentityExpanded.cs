@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an connectedEnvironment.</summary>
+    /// <summary>create an connectedEnvironment.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerAppConnectedEnv_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConnectedEnvironment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create an connectedEnvironment.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"create an connectedEnvironment.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}", ApiVersion = "2023-05-01")]
     public partial class NewAzContainerAppConnectedEnv_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

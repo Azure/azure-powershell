@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.13.0
+* Fixed output type of cmdlet
+
+## Version 0.12.0
+* Corrected function that only worked on Windows.
+* Prevented unexpected value changes where parameters that were never set are unchanged but replayed back as part of Set-AzConnectedKubernetes processing.
+
 ## Version 0.11.1
 * Fixed environment variable usage
 * Got rid of deprecated module and improved logging

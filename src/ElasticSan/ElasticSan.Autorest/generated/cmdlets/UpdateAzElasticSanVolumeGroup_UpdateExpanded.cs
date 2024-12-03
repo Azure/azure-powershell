@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update an VolumeGroup.</summary>
+    /// <summary>update an VolumeGroup.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzElasticSanVolumeGroup_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroup))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"Update an VolumeGroup.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"update an VolumeGroup.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}", ApiVersion = "2024-05-01")]
     public partial class UpdateAzElasticSanVolumeGroup_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
