@@ -62,11 +62,11 @@ function New-AzFrontDoorFrontendBackendPoolObject {
             $Object.Backend = $Backend
         }
         if ($PSBoundParameters.ContainsKey('HealthProbeSettingId')) {
-            $HealthProbeSettingId = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/frontDoors/{2}/LoadBalancingSettings/{3}" -f $subId, $ResourceGroupName, $FrontDoorName, $HealthProbeSettingName
+            $HealthProbeSettingId = "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/HealthProbeSettings/$HealthProbeSettingName"
             $Object.HealthProbeSettingId = $HealthProbeSettingId
         }
         if ($PSBoundParameters.ContainsKey('LoadBalancingSettingId')) {
-            $LoadBalancingSettingId = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/frontDoors/{2}/LoadBalancingSettings/{3}" -f $subId, $ResourceGroupName, $FrontDoorName, $LoadBalancingSettingsName
+            $LoadBalancingSettingId = "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/LoadBalancingSettings/$LoadBalancingSettingName"
             $Object.LoadBalancingSettingId = $LoadBalancingSettingId
         }
         if ($PSBoundParameters.ContainsKey('Name')) {

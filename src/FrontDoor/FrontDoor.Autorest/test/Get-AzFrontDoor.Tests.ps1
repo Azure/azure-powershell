@@ -19,8 +19,9 @@ Describe 'Get-AzFrontDoor' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $FrontDoor = Get-AzFrontDoor -Name $env.FrontDoorName -ResourceGroupName $env.ResourceGroupName
+        $FrontDoor.Name | Should -Be $env.FrontDoorCdnProfileName
     }
 
     It 'List1' -skip {

@@ -33,14 +33,14 @@ function New-AzFrontDoorRoutingRuleObject {
         [Parameter(HelpMessage="Protocol schemes to match for this rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Http", "Https")]
         [string[]]
-        $AcceptedProtocol,
+        $AcceptedProtocol = @('Http', 'Https'),
         [Parameter(HelpMessage="Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
-        $EnabledState,
+        $EnabledState = 'Enabled',
         [Parameter(HelpMessage="Frontend endpoints associated with this rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResource[]]
-        $FrontendEndpoint,
+        [string[]]
+        $FrontendEndpointName,
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
@@ -52,31 +52,130 @@ function New-AzFrontDoorRoutingRuleObject {
         $FrontDoorName,
         [Parameter(HelpMessage="The route patterns of the rule.")]
         [string[]]
-        $PatternsToMatch,
+        $PatternsToMatch = @('/*'),
         [Parameter()]
-        [string]
-        $RouteConfigurationOdataType,
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRouteConfiguration]
+        $RouteConfiguration,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
-        $RuleEngineId,
+        $RuleEngineName,
+        [Parameter(HelpMessage="Resource ID.")]
+        [string]
+        $BackendPoolName,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         $WebApplicationFirewallPolicyLinkId,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
-        $Id
+        $Id,
+
+        [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
+        [Parameter(HelpMessage="The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year.")]
+        [System.TimeSpan]
+        $CacheDuration,
+        [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
+        [Parameter(HelpMessage="Whether to use dynamic compression for cached content.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [string]
+        $DynamicCompression = 'Enabled',
+        [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
+        [Parameter(HelpMessage="query parameters to include or exclude (comma separated).")]
+        [string]
+        $QueryParameter,
+        [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
+        [Parameter(HelpMessage="Treatment of URL query terms when forming the cache key.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("StripNone", "StripAll", "StripOnly", "StripAllExcept")]
+        [string]
+        $QueryParameterStripDirective = 'StripAll',
+        [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
+        [Parameter(HelpMessage="A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.")]
+        [string]
+        $CustomForwardingPath,
+        [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
+        [Parameter(HelpMessage="Protocol this rule will use when forwarding traffic to backends.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
+        [string]
+        $ForwardingProtocol = 'MatchRequest',
+        [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
+        [bool]
+        $EnableCaching = $false,
+
+        [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
+        [Parameter(HelpMessage="Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.")]
+        [string]
+        $CustomFragment,
+        [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
+        [Parameter(HelpMessage="Host to redirect. Leave empty to use the incoming host as the destination host.")]
+        [string]
+        $CustomHost = '',
+        [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
+        [Parameter(HelpMessage="The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.")]
+        [string]
+        $CustomPath = '',
+        [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
+        [Parameter(HelpMessage="The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.")]
+        [string]
+        $CustomQueryString,
+        [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
+        [Parameter(HelpMessage="The protocol of the destination to where the traffic is redirected.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
+        [string]
+        $RedirectProtocol = 'MatchRequest',
+        [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
+        [Parameter(HelpMessage="The redirect type the rule will use when redirecting traffic.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Moved", "Found", "TemporaryRedirect", "PermanentRedirect")]
+        [string]
+        $RedirectType = 'Moved'
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RoutingRule]::New()
+        $subId = (Get-AzContext).Subscription.Id
+        $Object.RouteConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RouteConfiguration]::New()
 
+        switch ($PSCmdlet.ParameterSetName) {
+            "ForwardingConfiguration" {
+                $BackendPoolId = "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/BackendPools/$BackendPoolName"
+
+                $Object.RouteConfiguration.OdataType = "#Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontDoorForwardingConfiguration"
+                $Object.RouteConfiguration.BackendPoolId = $BackendPoolId
+                $Object.RouteConfiguration.CacheConfigurationCacheDuration = $CacheDuration
+                $Object.RouteConfiguration.CacheConfigurationDynamicCompression = $DynamicCompression
+                $Object.RouteConfiguration.CacheConfigurationQueryParameter = $QueryParameter
+                $Object.RouteConfiguration.CacheConfigurationQueryParameterStripDirective = $QueryParameterStripDirective
+                $Object.RouteConfiguration.CustomForwardingPath = $CustomForwardingPath
+                $Object.RouteConfiguration.ForwardingProtocol = $ForwardingProtocol
+                $Object.RouteConfiguration = $ForwardingConfiguration
+            }
+            "RedirectConfiguration" {
+
+                $Object.RouteConfiguration.OdataType = "#Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontDoorRedirectConfiguration"
+                $Object.RouteConfiguration.CustomFragment = $CustomFragment
+                $Object.RouteConfiguration.CustomHost = $CustomHost
+                $Object.RouteConfiguration.CustomPath = $CustomPath
+                $Object.RouteConfiguration.CustomQueryString = $CustomQueryString
+                $Object.RouteConfiguration.RedirectProtocol = $RedirectProtocol
+                $Object.RouteConfiguration.RedirectType = $RedirectType
+                $Object.RouteConfiguration = $RedirectConfiguration
+            }
+        }
+
+        if ($false -eq $EnableCaching) {
+            $Object.RouteConfiguration.CacheConfigurationCacheDuration = $null
+            $Object.RouteConfiguration.CacheConfigurationDynamicCompression = $null
+            $Object.RouteConfiguration.CacheConfigurationQueryParameter = $null
+            $Object.RouteConfiguration.CacheConfigurationQueryParameterStripDirective = $null
+        }
         if ($PSBoundParameters.ContainsKey('AcceptedProtocol')) {
             $Object.AcceptedProtocol = $AcceptedProtocol
         }
         if ($PSBoundParameters.ContainsKey('EnabledState')) {
             $Object.EnabledState = $EnabledState
         }
-        if ($PSBoundParameters.ContainsKey('FrontendEndpoint')) {
+        if ($PSBoundParameters.ContainsKey('FrontendEndpointName')) {
+            $FrontendEndpoint = $FrontendEndpointName | ForEach-Object {
+                 "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/FrontendEndpoints/$_"
+            }
             $Object.FrontendEndpoint = $FrontendEndpoint
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
@@ -85,11 +184,11 @@ function New-AzFrontDoorRoutingRuleObject {
         if ($PSBoundParameters.ContainsKey('PatternsToMatch')) {
             $Object.PatternsToMatch = $PatternsToMatch
         }
-        if ($PSBoundParameters.ContainsKey('RouteConfigurationOdataType')) {
-            $Object.RouteConfigurationOdataType = $RouteConfigurationOdataType
-        }
-        if ($PSBoundParameters.ContainsKey('RuleEngineId')) {
+        if ($PSBoundParameters.ContainsKey('RuleEngineName')) {
+            $RuleEngineId = "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/RulesEngines/$RuleEngineName"
             $Object.RuleEngineId = $RuleEngineId
+        } else {
+            $Object.RuleEngineId = ''
         }
         if ($PSBoundParameters.ContainsKey('WebApplicationFirewallPolicyLinkId')) {
             $Object.WebApplicationFirewallPolicyLinkId = $WebApplicationFirewallPolicyLinkId
