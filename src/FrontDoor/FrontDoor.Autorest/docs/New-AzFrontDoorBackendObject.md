@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-a
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorFrontendBackendObject
+# New-AzFrontDoorBackendObject
 
 ## SYNOPSIS
 Create an in-memory object for Backend.
@@ -13,7 +13,7 @@ Create an in-memory object for Backend.
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendBackendObject [-Address <String>] [-EnabledState <String>] [-HostHeader <String>]
+New-AzFrontDoorBackendObject [-Address <String>] [-EnabledState <String>] [-HostHeader <String>]
  [-HttpPort <Int32>] [-HttpsPort <Int32>] [-Priority <Int32>] [-PrivateLinkAlias <String>]
  [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
  [-Weight <Int32>] [<CommonParameters>]

@@ -35,17 +35,17 @@ Retrieve protection policy with specified name within a resource group.
 ### [New-AzFrontDoor](New-AzFrontDoor.md)
 create a new Front Door with a Front Door name under the specified subscription and resource group.
 
-### [New-AzFrontDoorForwardingConfigurationObject](New-AzFrontDoorForwardingConfigurationObject.md)
-Create an in-memory object for ForwardingConfiguration.
-
-### [New-AzFrontDoorFrontendBackendObject](New-AzFrontDoorFrontendBackendObject.md)
+### [New-AzFrontDoorBackendObject](New-AzFrontDoorBackendObject.md)
 Create an in-memory object for Backend.
 
-### [New-AzFrontDoorFrontendBackendPoolObject](New-AzFrontDoorFrontendBackendPoolObject.md)
+### [New-AzFrontDoorBackendPoolObject](New-AzFrontDoorBackendPoolObject.md)
 Create an in-memory object for BackendPool.
 
-### [New-AzFrontDoorFrontendBackendPoolsSettingsObject](New-AzFrontDoorFrontendBackendPoolsSettingsObject.md)
+### [New-AzFrontDoorBackendPoolsSettingsObject](New-AzFrontDoorBackendPoolsSettingsObject.md)
 Create an in-memory object for BackendPoolsSettings.
+
+### [New-AzFrontDoorForwardingConfigurationObject](New-AzFrontDoorForwardingConfigurationObject.md)
+Create an in-memory object for ForwardingConfiguration.
 
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
 Create an in-memory object for FrontendEndpoint.

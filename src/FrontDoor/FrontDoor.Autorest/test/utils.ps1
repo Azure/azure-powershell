@@ -41,7 +41,6 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     Write-Host -ForegroundColor Green "Start to import module."
     Import-Module -Name Az.Cdn
-    Import-Module -Name Az.KeyVault
 
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $subId = $env.SubscriptionId

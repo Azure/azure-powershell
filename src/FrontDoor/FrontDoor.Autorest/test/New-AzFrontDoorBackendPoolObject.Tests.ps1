@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorFrontendBackendPoolsSettingsObject'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorBackendPoolObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFrontDoorFrontendBackendPoolsSettingsObject.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFrontDoorBackendPoolObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorFrontendBacken
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorFrontendBackendPoolsSettingsObject' {
+Describe 'New-AzFrontDoorBackendPoolObject' {
     It '__AllParameterSets' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

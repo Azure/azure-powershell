@@ -25,7 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend
 .Link
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendobject
 #>
-function New-AzFrontDoorFrontendBackendObject {
+function New-AzFrontDoorBackendObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

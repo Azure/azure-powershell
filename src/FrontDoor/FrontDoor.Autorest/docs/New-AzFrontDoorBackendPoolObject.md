@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-a
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorFrontendBackendPoolObject
+# New-AzFrontDoorBackendPoolObject
 
 ## SYNOPSIS
 Create an in-memory object for BackendPool.
@@ -13,7 +13,7 @@ Create an in-memory object for BackendPool.
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendBackendPoolObject [-Backend <IBackend[]>] [-FrontDoorName <String>]
+New-AzFrontDoorBackendPoolObject [-Backend <IBackend[]>] [-FrontDoorName <String>]
  [-HealthProbeSettingName <String>] [-Id <String>] [-LoadBalancingSettingName <String>] [-Name <String>]
  [-ResourceGroupName <String>] [<CommonParameters>]
 ```
