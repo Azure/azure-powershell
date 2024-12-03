@@ -30,7 +30,7 @@ Delete the provided Kubernetes cluster feature.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete the provided Kubernetes cluster feature.
 ```powershell
 Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName featureName -KubernetesClusterName kubernetesClusterName -ResourceGroupName resourceGroup -Subscription subscriptionId 
 ```

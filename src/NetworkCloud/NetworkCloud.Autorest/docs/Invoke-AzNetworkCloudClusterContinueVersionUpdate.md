@@ -46,12 +46,12 @@ Trigger the continuation of an update for a cluster with a matching update strat
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resume an update for a cluster with a matching update strategy that has paused after completing a segment.
 ```powershell
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ResourceGroupName resourceGroupName -ClusterName clusterName -SubscriptionId subscriptionId -MachineGroupTargetingMode "AlphaByRack"  
 ```
 
-Resume an update for a cluster with a matching update strategy that has paused after completing a segment.
+This command resumes an update for a cluster with a matching update strategy that has paused after completing a segment.
 
 ## PARAMETERS
 
