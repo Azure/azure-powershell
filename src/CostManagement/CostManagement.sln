@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CostManagement", "CostManagement\CostManagement.csproj", "{1CDE589D-A03A-4E6D-8F95-F9EBBA97B8E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.CostManagement", "..\..\generated\CostManagement\CostManagement.Autorest\Az.CostManagement.csproj", "{A6FA06B3-DECC-47B6-A38A-6F9FB414A4F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.CostManagement", "..\..\generated\CostManagement\CostManagement.Autorest\Az.CostManagement.csproj", "{510F0F97-4ACC-44DD-9E7C-EE7EC395433E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{1CDE589D-A03A-4E6D-8F95-F9EBBA97B8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CDE589D-A03A-4E6D-8F95-F9EBBA97B8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CDE589D-A03A-4E6D-8F95-F9EBBA97B8E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6FA06B3-DECC-47B6-A38A-6F9FB414A4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6FA06B3-DECC-47B6-A38A-6F9FB414A4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6FA06B3-DECC-47B6-A38A-6F9FB414A4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6FA06B3-DECC-47B6-A38A-6F9FB414A4F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{510F0F97-4ACC-44DD-9E7C-EE7EC395433E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{510F0F97-4ACC-44DD-9E7C-EE7EC395433E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{510F0F97-4ACC-44DD-9E7C-EE7EC395433E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{510F0F97-4ACC-44DD-9E7C-EE7EC395433E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CDE043A1-8134-4F7D-8BFB-43C497884327} = {5861DA26-B115-4D03-82A3-39CFBE745777}
