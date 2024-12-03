@@ -25,9 +25,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> AddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public List<PSIpamPoolPrefixAllocation> IpamPoolPrefixAllocations { get; set; }
-
-        [JsonProperty(Order = 1)]
         public List<PSIPConfiguration> IpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -182,12 +179,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DefaultOutboundAccessText
         {
             get { return JsonConvert.SerializeObject(DefaultOutboundAccess, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string IpamPoolPrefixAllocationsText
-        {
-            get { return JsonConvert.SerializeObject(IpamPoolPrefixAllocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

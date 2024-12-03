@@ -1012,10 +1012,6 @@
                 <Label>AdminState</Label>
                 <PropertyName>AdminState</PropertyName>
               </ListItem>
-			  <ListItem>
-                <Label>ResiliencyModel</Label>
-                <PropertyName>ResiliencyModel</PropertyName>
-              </ListItem>		 
               <ListItem>
                 <Label>AllowRemoteVnetTraffic</Label>
                 <PropertyName>AllowRemoteVnetTraffic</PropertyName>

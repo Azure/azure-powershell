@@ -57,8 +57,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallIpPrefix LearnedIPPrefixes { get; set; }
 
-        public PSAzureFirewallAutoscaleConfiguration AutoscaleConfiguration { get; set; }
-
         public string[] PrivateRange
         {
             get

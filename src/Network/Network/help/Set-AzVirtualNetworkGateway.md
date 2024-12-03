@@ -29,8 +29,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
  [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>] 
- [-ResiliencyModel <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateResourceWithTags
@@ -50,7 +49,6 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
  [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] -Tag <Hashtable> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [-ResiliencyModel <String>]
 ```
 
 ## DESCRIPTION
@@ -914,22 +912,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResiliencyModel
-Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed/MultiHomed
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: SingleHomed, MultiHomed
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

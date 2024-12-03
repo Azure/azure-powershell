@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         public string RuleCollectionDescription { get; set; }
 
         public List<string> ApplyOnNetworkIntentPolicyBasedServices { get; set; }
-        public string NetworkGroupAddressSpaceAggregationOption { get; set; }
 
         public IList<PSNetworkManagerSecurityGroupItem> RuleCollectionAppliesToGroups { get; set; }
 
