@@ -62,9 +62,6 @@ Create an in-memory object for LoadBalancingSettingsModel.
 ### [New-AzFrontDoorRedirectConfigurationObject](New-AzFrontDoorRedirectConfigurationObject.md)
 Create an in-memory object for RedirectConfiguration.
 
-### [New-AzFrontDoorRouteConfigurationObject](New-AzFrontDoorRouteConfigurationObject.md)
-Create an in-memory object for RouteConfiguration.
-
 ### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
 Create an in-memory object for RoutingRule.
 

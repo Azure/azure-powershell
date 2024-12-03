@@ -61,14 +61,15 @@ function New-AzFrontDoorRoutingRuleObject {
         $RuleEngineName,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
-        $BackendPoolName,
-        [Parameter(HelpMessage="Resource ID.")]
-        [string]
         $WebApplicationFirewallPolicyLinkId,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         $Id,
 
+        [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
+        [Parameter(HelpMessage="Resource ID.")]
+        [string]
+        $BackendPoolName,
         [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
         [Parameter(HelpMessage="The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year.")]
         [System.TimeSpan]
@@ -77,7 +78,7 @@ function New-AzFrontDoorRoutingRuleObject {
         [Parameter(HelpMessage="Whether to use dynamic compression for cached content.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
-        $DynamicCompression = 'Enabled',
+        $DynamicCompression,
         [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
         [Parameter(HelpMessage="query parameters to include or exclude (comma separated).")]
         [string]
@@ -86,7 +87,7 @@ function New-AzFrontDoorRoutingRuleObject {
         [Parameter(HelpMessage="Treatment of URL query terms when forming the cache key.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("StripNone", "StripAll", "StripOnly", "StripAllExcept")]
         [string]
-        $QueryParameterStripDirective = 'StripAll',
+        $QueryParameterStripDirective,
         [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
         [Parameter(HelpMessage="A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.")]
         [string]
@@ -98,7 +99,7 @@ function New-AzFrontDoorRoutingRuleObject {
         $ForwardingProtocol = 'MatchRequest',
         [Parameter(ParameterSetName= 'ForwardingConfiguration', DontShow)]
         [bool]
-        $EnableCaching = $false,
+        $EnableCaching,
 
         [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
         [Parameter(HelpMessage="Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.")]
@@ -107,11 +108,11 @@ function New-AzFrontDoorRoutingRuleObject {
         [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
         [Parameter(HelpMessage="Host to redirect. Leave empty to use the incoming host as the destination host.")]
         [string]
-        $CustomHost = '',
+        $CustomHost,
         [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
         [Parameter(HelpMessage="The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.")]
         [string]
-        $CustomPath = '',
+        $CustomPath,
         [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
         [Parameter(HelpMessage="The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.")]
         [string]
@@ -120,52 +121,56 @@ function New-AzFrontDoorRoutingRuleObject {
         [Parameter(HelpMessage="The protocol of the destination to where the traffic is redirected.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
         [string]
-        $RedirectProtocol = 'MatchRequest',
+        $RedirectProtocol,
         [Parameter(ParameterSetName= 'FieldsWithRedirectParameterSet', DontShow)]
         [Parameter(HelpMessage="The redirect type the rule will use when redirecting traffic.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Moved", "Found", "TemporaryRedirect", "PermanentRedirect")]
         [string]
-        $RedirectType = 'Moved'
+        $RedirectType
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RoutingRule]::New()
         $subId = (Get-AzContext).Subscription.Id
-        $Object.RouteConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RouteConfiguration]::New()
+
 
         switch ($PSCmdlet.ParameterSetName) {
             "ForwardingConfiguration" {
+                $ForwardingConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontDoorForwardingConfiguration]::New()
+
                 $BackendPoolId = "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/BackendPools/$BackendPoolName"
 
-                $Object.RouteConfiguration.OdataType = "#Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontDoorForwardingConfiguration"
-                $Object.RouteConfiguration.BackendPoolId = $BackendPoolId
-                $Object.RouteConfiguration.CacheConfigurationCacheDuration = $CacheDuration
-                $Object.RouteConfiguration.CacheConfigurationDynamicCompression = $DynamicCompression
-                $Object.RouteConfiguration.CacheConfigurationQueryParameter = $QueryParameter
-                $Object.RouteConfiguration.CacheConfigurationQueryParameterStripDirective = $QueryParameterStripDirective
-                $Object.RouteConfiguration.CustomForwardingPath = $CustomForwardingPath
-                $Object.RouteConfiguration.ForwardingProtocol = $ForwardingProtocol
+                $ForwardingConfiguration.BackendPoolId = $BackendPoolId
+                $ForwardingConfiguration.CacheConfigurationCacheDuration = $CacheDuration
+                $ForwardingConfiguration.CacheConfigurationDynamicCompression = $PSBoundParameters.ContainsKey('DynamicCompression')? $DynamicCompression : 'Enabled'
+                $ForwardingConfiguration.CacheConfigurationQueryParameter = $QueryParameter
+                $ForwardingConfiguration.CacheConfigurationQueryParameterStripDirective = $PSBoundParameters.ContainsKey('QueryParameterStripDirective')? $QueryParameterStripDirective : 'StripAll'
+                $ForwardingConfiguration.CustomForwardingPath = $CustomForwardingPath
+                $ForwardingConfiguration.ForwardingProtocol = $PSBoundParameters.ContainsKey('ForwardingProtocol')? $ForwardingProtocol : 'MatchRequest'
+
+                if (!$PSBoundParameters.ContainsKey('EnableCaching') -or $false -eq $EnableCaching) {
+                    $ForwardingConfiguration.CacheConfigurationCacheDuration = $null
+                    $ForwardingConfiguration.CacheConfigurationDynamicCompression = $null
+                    $ForwardingConfiguration.CacheConfigurationQueryParameter = $null
+                    $ForwardingConfiguration.CacheConfigurationQueryParameterStripDirective = $null
+                }
+
                 $Object.RouteConfiguration = $ForwardingConfiguration
             }
             "RedirectConfiguration" {
+                $RewriteConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontDoorRedirectConfiguration]::New()
 
-                $Object.RouteConfiguration.OdataType = "#Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontDoorRedirectConfiguration"
-                $Object.RouteConfiguration.CustomFragment = $CustomFragment
-                $Object.RouteConfiguration.CustomHost = $CustomHost
-                $Object.RouteConfiguration.CustomPath = $CustomPath
-                $Object.RouteConfiguration.CustomQueryString = $CustomQueryString
-                $Object.RouteConfiguration.RedirectProtocol = $RedirectProtocol
-                $Object.RouteConfiguration.RedirectType = $RedirectType
-                $Object.RouteConfiguration = $RedirectConfiguration
+                $RewriteConfiguration.CustomFragment = $CustomFragment
+                $RewriteConfiguration.CustomHost = $PSBoundParameters.ContainsKey('CustomHost')? $CustomHost : ''
+                $RewriteConfiguration.CustomPath = $PSBoundParameters.ContainsKey('CustomPath')? $CustomPath : ''
+                $RewriteConfiguration.CustomQueryString = $CustomQueryString
+                $RewriteConfiguration.RedirectProtocol = $PSBoundParameters.ContainsKey('RedirectProtocol')? $RedirectProtocol : 'MatchRequest'
+                $RewriteConfiguration.RedirectType = $PSBoundParameters.ContainsKey('RedirectType')? $RedirectType : 'Moved'
+
+                $Object.RouteConfiguration = $RewriteConfiguration
             }
         }
 
-        if ($false -eq $EnableCaching) {
-            $Object.RouteConfiguration.CacheConfigurationCacheDuration = $null
-            $Object.RouteConfiguration.CacheConfigurationDynamicCompression = $null
-            $Object.RouteConfiguration.CacheConfigurationQueryParameter = $null
-            $Object.RouteConfiguration.CacheConfigurationQueryParameterStripDirective = $null
-        }
         if ($PSBoundParameters.ContainsKey('AcceptedProtocol')) {
             $Object.AcceptedProtocol = $AcceptedProtocol
         }
