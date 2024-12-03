@@ -179,7 +179,9 @@ function New-AzFrontDoorRoutingRuleObject {
         }
         if ($PSBoundParameters.ContainsKey('FrontendEndpointName')) {
             $FrontendEndpoint = $FrontendEndpointName | ForEach-Object {
-                 "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/FrontendEndpoints/$_"
+                [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.SubResource]@{
+                    Id = "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/FrontendEndpoints/$_"
+                }
             }
             $Object.FrontendEndpoint = $FrontendEndpoint
         }
