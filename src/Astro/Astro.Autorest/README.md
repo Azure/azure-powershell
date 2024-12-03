@@ -48,6 +48,7 @@ subject-prefix: $(service-name)
 # Disable transform IdentityType as GET+PUT can not replace patch
 # 1. Organizations_CreateOrUpdate can not update resources
 # 2. the input schemas of PUT and PATCH are different
+flatten-userassignedidentity: false
 disable-transform-identity-type: true
 
 directive:
@@ -74,4 +75,7 @@ directive:
   - where:
       verb: Update
     hide: true
+  - from: UserAssignedIdentities.dictionary.cs
+    where: $
+    transform: $ = $.replace('null != property.Key && null != property.Value', 'null != property.Key');
 ```

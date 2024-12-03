@@ -14,7 +14,7 @@ Skips an occurrence of an action.
 
 ### Skip (Default)
 ```
-Skip-AzDevCenterUserEnvironmentAction -Endpoint <String> -Name <String> -EnvironmentName <String>
+Skip-AzDevCenterUserEnvironmentAction -Endpoint <String> -EnvironmentName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ Skip-AzDevCenterUserEnvironmentAction -DevCenterName <String> -InputObject <IDev
 
 ### SkipByDevCenter
 ```
-Skip-AzDevCenterUserEnvironmentAction -DevCenterName <String> -Name <String> -EnvironmentName <String>
+Skip-AzDevCenterUserEnvironmentAction -DevCenterName <String> -EnvironmentName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnvironmentName
-The name of the environment.
+Environment name.
 
 ```yaml
 Type: System.String
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of an action that will take place on an Environment.
+Uniquely identifies the action.
 
 ```yaml
 Type: System.String
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The DevCenter Project upon which to execute operations.
+Name of the project.
 
 ```yaml
 Type: System.String

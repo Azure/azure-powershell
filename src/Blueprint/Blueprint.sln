@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Policy", "..\Resources\P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blueprint.Management.Sdk", "Blueprint.Management.Sdk\Blueprint.Management.Sdk.csproj", "{F31A4D84-8DC4-4885-B3AA-69842AA7C218}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataBoundary", "..\Resources\DataBoundary.Autorest\Az.DataBoundary.csproj", "{D5A354AF-0951-4407-B5B9-7C92BF6DA980}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{F31A4D84-8DC4-4885-B3AA-69842AA7C218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F31A4D84-8DC4-4885-B3AA-69842AA7C218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F31A4D84-8DC4-4885-B3AA-69842AA7C218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A354AF-0951-4407-B5B9-7C92BF6DA980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A354AF-0951-4407-B5B9-7C92BF6DA980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A354AF-0951-4407-B5B9-7C92BF6DA980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A354AF-0951-4407-B5B9-7C92BF6DA980}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +151,7 @@ Global
 		{6C83208C-9E59-4EBA-86AB-E850FC13BD68} = {77D2C987-7CEB-4CFA-AA47-5171BD5B7C0A}
 		{9A74916D-E00D-4CC5-ADA2-FA563F5F9505} = {77D2C987-7CEB-4CFA-AA47-5171BD5B7C0A}
 		{E980C1BE-CCDA-4D03-AC11-3B818F695BBC} = {77D2C987-7CEB-4CFA-AA47-5171BD5B7C0A}
+		{D5A354AF-0951-4407-B5B9-7C92BF6DA980} = {77D2C987-7CEB-4CFA-AA47-5171BD5B7C0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5CDB3790-4408-4927-A8AC-7C96CE1DBCAD}

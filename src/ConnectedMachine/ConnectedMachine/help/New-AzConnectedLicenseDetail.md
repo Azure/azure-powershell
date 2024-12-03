@@ -14,7 +14,7 @@ Create an in-memory object for LicenseDetails.
 
 ```
 New-AzConnectedLicenseDetail [-Edition <String>] [-Processor <Int32>] [-State <String>] [-Target <String>]
- [-Type <String>] [-VolumeLicenseDetail <IVolumeLicenseDetails[]>] [-ProgressAction <ActionPreference>]
+ [-Type <String>] [-VolumeLicenseDetail <IVolumeLicenseDetails[]>]
  [<CommonParameters>]
 ```
 
@@ -66,21 +66,6 @@ Describes the number of processors.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

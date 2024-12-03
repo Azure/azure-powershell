@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update the SourceControl for a Container App.
+update the SourceControl for a Container App.
 .Description
-Update the SourceControl for a Container App.
+update the SourceControl for a Container App.
 .Example
 $AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force

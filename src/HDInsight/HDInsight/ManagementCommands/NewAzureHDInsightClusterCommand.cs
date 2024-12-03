@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             ClusterCreateParametersExtended createParams = new ClusterCreateParametersExtended
             {
                 Location = Location,
-                //Tags = Tags,  //To Do add this Tags parameter
+                //Tags = Tags, //To Do add this Tags parameter
                 Zones = Zone,
                 Properties = new ClusterCreateProperties
                 {

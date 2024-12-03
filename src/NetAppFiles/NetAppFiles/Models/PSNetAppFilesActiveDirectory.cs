@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <summary>
         /// Gets or sets kdcID
         /// </summary>
-        /// <value>Kdc server IP addresses for the Active Directory machine. This optional
+        /// <value>Kdc server IP address for the Active Directory machine. This optional
         /// parameter is used only while creating kerberos volume.
         /// </value>
         public string KdcIP { get; set; }

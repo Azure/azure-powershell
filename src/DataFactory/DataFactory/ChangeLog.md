@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for additional MySQL connection properties.
+* Added support for Azure PostgreSQL v2, updated connection strings, and corrected Linked JSON configurations.
+
+## Version 1.18.9
 * Added pageSize support to Salesforce V2 Source.
 * Added pageSize support to ServiceNow V2 Source.
 * Added host property to Snowflake linked service.

@@ -2,15 +2,16 @@
 
 ## Az.Accounts
 
-### `Resolve-AzError`
-
-- The alias `Resolve-Error` will be removed. Please use `Resolve-AzError` instead.
-  - This change is expected to take effect from Az.Accounts version: 4.0.0 and Az version: 13.0.0
-
 ### `Get-AzAccessToken`
 
 - Cmdlet breaking-change will happen to all parameter sets
   - The Token property of the output type will be changed from String to SecureString. Add the [-AsSecureString] switch to avoid the impact of this upcoming breaking change.
+  - This change is expected to take effect from Az.Accounts version: 4.0.0 and Az version: 13.0.0
+
+### `Resolve-AzError`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The alias 'Resolve-Error' will be removed. Please use 'Resolve-AzError' instead.
   - This change is expected to take effect from Az.Accounts version: 4.0.0 and Az version: 13.0.0
 
 ## Az.App
@@ -21,13 +22,13 @@
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
     - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
   - `-IdentityUserAssignedIdentity`
     - The parameter : 'IdentityUserAssignedIdentity' is changing.
     The type of the parameter is changing from 'Hashtable' to 'string[]'.
     - Change description : IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
 
 ### `New-AzContainerAppJob`
@@ -36,13 +37,13 @@
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
     - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
   - `-IdentityUserAssignedIdentity`
     - The parameter : 'IdentityUserAssignedIdentity' is changing.
     The type of the parameter is changing from 'Hashtable' to 'string[]'.
     - Change description : IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
 
 ### `Update-AzContainerApp`
@@ -51,13 +52,13 @@
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
     - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
   - `-IdentityUserAssignedIdentity`
     - The parameter : 'IdentityUserAssignedIdentity' is changing.
     The type of the parameter is changing from 'Hashtable' to 'string[]'.
     - Change description : IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
 
 ### `Update-AzContainerAppJob`
@@ -66,14 +67,22 @@
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
     - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
   - `-IdentityUserAssignedIdentity`
     - The parameter : 'IdentityUserAssignedIdentity' is changing.
     The type of the parameter is changing from 'Hashtable' to 'string[]'.
     - Change description : IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
+
+## Az.Compute
+
+### `New-AzVM`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The default publicIpSku will be changed from Basic to Standard. This change is expected to take effect in the next version. If publicIpSku is not specified, default will be switched to Standard. For more information refer to https://aka.ms/ipbasictostandard.
+  - This change is expected to take effect from Az.Compute version: 9.0.0 and Az version: 13.0.0
 
 ## Az.DevCenter
 
@@ -83,7 +92,7 @@
   - The output type is changing from the existing type :'DevBox' to the new type :'DevBox'
   - The following properties in the output type are being deprecated : 'Detail' 'ProvisioningState' 'HardwareProfileSkuName'
   - The following properties are being added to the output type : 'Detail' 'ProvisioningState' 'HardwareProfileSkuName'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `Get-AzDevCenterUserDevBoxOperation`
@@ -92,7 +101,7 @@
   - The output type is changing from the existing type :'DevBoxOperation' to the new type :'DevBoxOperation'
   - The following properties in the output type are being deprecated : 'Detail' 'Status'
   - The following properties are being added to the output type : 'Detail' 'Status'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `Get-AzDevCenterUserEnvironment`
@@ -101,7 +110,7 @@
   - The output type is changing from the existing type :'Environment' to the new type :'Environment'
   - The following properties in the output type are being deprecated : 'Detail' 'ProvisioningState'
   - The following properties are being added to the output type : 'Detail' 'ProvisioningState'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `Get-AzDevCenterUserEnvironmentAction`
@@ -110,24 +119,24 @@
   - The output type is changing from the existing type :'EnvironmentAction' to the new type :'EnvironmentAction'
   - The following properties in the output type are being deprecated : 'NextScheduledTime'
   - The following properties are being added to the output type : 'NextScheduledTime'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `Get-AzDevCenterUserEnvironmentLog`
 
 - Cmdlet breaking-change will happen to all parameter sets
   - The output type is changing from the existing type :'boolean' to the new type :'string'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-OutFile`
     - The parameter : 'OutFile' is changing.
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
   - `-PassThru`
     - The parameter : 'PassThru' is changing.
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
 
 ### `Get-AzDevCenterUserEnvironmentOperation`
@@ -136,7 +145,7 @@
   - The output type is changing from the existing type :'EnvironmentOperation' to the new type :'EnvironmentOperation'
   - The following properties in the output type are being deprecated : 'Detail' 'EnvironmentParameter' 'Status'
   - The following properties are being added to the output type : 'Detail' 'EnvironmentParameter' 'Status'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `Get-AzDevCenterUserPool`
@@ -145,7 +154,7 @@
   - The output type is changing from the existing type :'Pool' to the new type :'Pool'
   - The following properties in the output type are being deprecated : 'HardwareProfileSkuName'
   - The following properties are being added to the output type : 'HardwareProfileSkuName'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `Invoke-AzDevCenterUserDelayDevBoxAction`
@@ -154,7 +163,7 @@
   - The output type is changing from the existing type :'DevBoxActionDelayResult' to the new type :'DevBoxActionDelayResult'
   - The following properties in the output type are being deprecated : 'Detail'
   - The following properties are being added to the output type : 'Detail'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `Invoke-AzDevCenterUserDelayEnvironmentAction`
@@ -163,7 +172,7 @@
   - The output type is changing from the existing type :'EnvironmentAction' to the new type :'EnvironmentAction'
   - The following properties in the output type are being deprecated : 'NextScheduledTime'
   - The following properties are being added to the output type : 'NextScheduledTime'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `New-AzDevCenterUserDevBox`
@@ -172,7 +181,7 @@
   - The output type is changing from the existing type :'DevBox' to the new type :'DevBox'
   - The following properties in the output type are being deprecated : 'Detail' 'ProvisioningState' 'HardwareProfileSkuName'
   - The following properties are being added to the output type : 'Detail' 'ProvisioningState' 'HardwareProfileSkuName'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ### `Update-AzDevCenterUserEnvironment`
@@ -181,7 +190,7 @@
   - The output type is changing from the existing type :'Environment' to the new type :'Environment'
   - The following properties in the output type are being deprecated : 'Detail' 'ProvisioningState'
   - The following properties are being added to the output type : 'Detail' 'ProvisioningState'
-  - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+  - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 ## Az.ElasticSan
@@ -192,7 +201,7 @@
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
     - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
 
 ### `Update-AzElasticSanVolumeGroup`
@@ -201,61 +210,7 @@
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
     - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-
-## Az.Monitor
-
-### `New-AzDataCollectionEndpoint`
-- Parameter breaking-change will happen to all parameter sets
-  - `-IdentityType`
-    - The parameter : 'IdentityType' is changing.
-    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-  - `-UserAssignedIdentity`
-    - The parameter : 'UserAssignedIdentity' is changing. The type of the parameter is changing from 'Hashtable' to 'string[]'.
-    - Change description : UserAssignedIdentity's type will be simplified as string array.
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
-    - The change is expected to take effect from version : '2.0.0'
- 
-### `New-AzDataCollectionRule`
-- Parameter breaking-change will happen to all parameter sets
-  - `-IdentityType`
-    - The parameter : 'IdentityType' is changing.
-    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-  - `-UserAssignedIdentity`
-    - The parameter : 'UserAssignedIdentity' is changing. The type of the parameter is changing from 'Hashtable' to 'string[]'.
-    - Change description : UserAssignedIdentity's type will be simplified as string array.
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzDataCollectionEndpoint`
-- Parameter breaking-change will happen to all parameter sets
-  - `-IdentityType`
-    - The parameter : 'IdentityType' is changing.
-    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-  - `-UserAssignedIdentity`
-    - The parameter : 'UserAssignedIdentity' is changing. The type of the parameter is changing from 'Hashtable' to 'string[]'.
-    - Change description : UserAssignedIdentity's type will be simplified as string array.
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzDataCollectionRule`
-- Parameter breaking-change will happen to all parameter sets
-  - `-IdentityType`
-    - The parameter : 'IdentityType' is changing.
-    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-  - `-UserAssignedIdentity`
-    - The parameter : 'UserAssignedIdentity' is changing. The type of the parameter is changing from 'Hashtable' to 'string[]'.
-    - Change description : UserAssignedIdentity's type will be simplified as string array.
-    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - This change will take effect on '19/11/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
 
 ## Az.NetAppFiles
@@ -395,6 +350,13 @@
     - This change is expected to take effect from Az.Storage version: 8.0.0 and Az version: 13.0.0
   - `-Share`
     - The parameter Share (alias CloudFileShare) will be deprecated, and ShareClient will be mandatory.
+    - This change is expected to take effect from Az.Storage version: 8.0.0 and Az version: 13.0.0
+
+### `Get-AzStorageBlobContent`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-AbsoluteUri`
+    - When download blob with parameter AbsoluteUri (alias Uri, BlobUri), parameter Context will not be allowed to input together.
     - This change is expected to take effect from Az.Storage version: 8.0.0 and Az version: 13.0.0
 
 ### `Get-AzStorageFile`
