@@ -200,8 +200,8 @@ directive:
             "description": "Has comparison expression for a dimension",
             "$ref": "#/definitions/QueryComparisonExpression"
           },
-          "tag": {
-            "description": "Has comparison expression for a tag",
+          "tags": {
+            "description": "Has comparison expression for a tags",
             "$ref": "#/definitions/QueryComparisonExpression"
           }
         }
