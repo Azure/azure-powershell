@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update Az.Databricks to use more intuitive parameter names for the ESC feature.
 
 ## Version 1.9.0
 * Fixed an issue that `Update-AzDatabricksWorkspace` doesn't work.[#25743]
