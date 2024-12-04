@@ -257,33 +257,36 @@ function Update-AzDatabricksWorkspace {
         ${EnableNoPublicIP},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
+        [Alias('EnhancedSecurityMonitoringValue')]        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]
         # Status of Enhanced Security Monitoring feature.
-        ${EnhancedSecurityMonitoringValue},
+        ${EnhancedSecurityMonitoring},
 
         [Parameter()]
+        [Alias('AutomaticClusterUpdateValue')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]
         # Status of automated cluster updates feature.
-        ${AutomaticClusterUpdateValue},
+        ${AutomaticClusterUpdate},
 
         [Parameter()]
+        [Alias('ComplianceSecurityProfileComplianceStandard')]
         [AllowEmptyCollection()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]]
         # Compliance standards associated with the workspace.
-        ${ComplianceSecurityProfileComplianceStandard},
+        ${ComplianceStandard},
 
         [Parameter()]
+        [Alias('ComplianceSecurityProfileValue')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]
         # Status of Compliance Security Profile feature.
-        ${ComplianceSecurityProfileValue},
+        ${EnhancedSecurityCompliance},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -406,10 +409,10 @@ function Update-AzDatabricksWorkspace {
             $hasAccessConnectorIdentityType = $PSBoundParameters.Remove('AccessConnectorIdentityType')
             $hasAccessConnectorUserAssignedIdentityId = $PSBoundParameters.Remove('AccessConnectorUserAssignedIdentityId')
             $hasDefaultStorageFirewall = $PSBoundParameters.Remove('DefaultStorageFirewall')
-            $hasEnhancedSecurityMonitoringValue = $PSBoundParameters.Remove('EnhancedSecurityMonitoringValue')
-            $hasAutomaticClusterUpdateValue = $PSBoundParameters.Remove('AutomaticClusterUpdateValue')
-            $hasComplianceSecurityProfileComplianceStandard = $PSBoundParameters.Remove('ComplianceSecurityProfileComplianceStandard')
-            $hasComplianceSecurityProfileValue = $PSBoundParameters.Remove('ComplianceSecurityProfileValue')
+            $hasEnhancedSecurityMonitoringValue = $PSBoundParameters.Remove('EnhancedSecurityMonitoring')
+            $hasAutomaticClusterUpdateValue = $PSBoundParameters.Remove('AutomaticClusterUpdate')
+            $hasComplianceSecurityProfileComplianceStandard = $PSBoundParameters.Remove('ComplianceStandard')
+            $hasComplianceSecurityProfileValue = $PSBoundParameters.Remove('EnhancedSecurityCompliance')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -508,19 +511,19 @@ function Update-AzDatabricksWorkspace {
             }
             if ($hasEnhancedSecurityMonitoringValue)
             {
-                $workspace.EnhancedSecurityMonitoringValue = $EnhancedSecurityMonitoringValue
+                $workspace.EnhancedSecurityMonitoringValue = $EnhancedSecurityMonitoring
             }
             if ($hasAutomaticClusterUpdateValue)
             {
-                $workspace.AutomaticClusterUpdateValue = $AutomaticClusterUpdateValue
+                $workspace.AutomaticClusterUpdateValue = $AutomaticClusterUpdate
             }
             if ($hasComplianceSecurityProfileComplianceStandard)
             {
-                $workspace.ComplianceSecurityProfileComplianceStandard = $ComplianceSecurityProfileComplianceStandard
+                $workspace.ComplianceSecurityProfileComplianceStandard = $ComplianceStandard
             }
             if ($hasComplianceSecurityProfileValue)
             {
-                $workspace.ComplianceSecurityProfileValue = $ComplianceSecurityProfileValue
+                $workspace.ComplianceSecurityProfileValue = $EnhancedSecurityCompliance
             }
             if ($hasDefaultStorageFirewall)
             {
