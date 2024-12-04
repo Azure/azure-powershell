@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="subnet">Reference of the subnet resource.
         /// </param>
 
-        /// <param name="publicIPAddress">Reference of the PublicIP resource.
+        /// <param name="publicIPAddress">Reference of the PublicIP resource. Null for private only bastion
         /// </param>
 
         /// <param name="privateIPAllocationMethod">Private IP allocation method.
@@ -103,7 +103,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource Subnet {get; set; }
 
         /// <summary>
-        /// Gets or sets reference of the PublicIP resource.
+        /// Gets or sets reference of the PublicIP resource. Null for private only
+        /// bastion
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddress")]
         public SubResource PublicIPAddress {get; set; }
