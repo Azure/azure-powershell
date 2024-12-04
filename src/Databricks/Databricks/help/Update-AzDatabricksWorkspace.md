@@ -25,13 +25,12 @@ Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-Subscr
  [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-UiDefinitionUri <String>] [-Tag <Hashtable>]
  [-RequiredNsgRule <RequiredNsgRules>] [-PublicNetworkAccess <PublicNetworkAccess>] [-EnableNoPublicIP]
- [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>]
- [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
- [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
- [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
+ [-EnhancedSecurityMonitoring <EnhancedSecurityMonitoringValue>]
+ [-AutomaticClusterUpdate <AutomaticClusterUpdateValue>] [-ComplianceStandard <ComplianceStandard[]>]
+ [-EnhancedSecurityCompliance <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
  [-AccessConnectorIdentityType <IdentityType>] [-AccessConnectorUserAssignedIdentityId <String>]
  [-DefaultStorageFirewall <DefaultStorageFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -47,13 +46,12 @@ Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-PrepareEncrypt
  [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-UiDefinitionUri <String>] [-Tag <Hashtable>]
  [-RequiredNsgRule <RequiredNsgRules>] [-PublicNetworkAccess <PublicNetworkAccess>] [-EnableNoPublicIP]
- [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>]
- [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
- [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
- [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
+ [-EnhancedSecurityMonitoring <EnhancedSecurityMonitoringValue>]
+ [-AutomaticClusterUpdate <AutomaticClusterUpdateValue>] [-ComplianceStandard <ComplianceStandard[]>]
+ [-EnhancedSecurityCompliance <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
  [-AccessConnectorIdentityType <IdentityType>] [-AccessConnectorUserAssignedIdentityId <String>]
  [-DefaultStorageFirewall <DefaultStorageFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,13 +217,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutomaticClusterUpdateValue
+### -AutomaticClusterUpdate
 Status of automated cluster updates feature.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue
 Parameter Sets: (All)
-Aliases:
+Aliases: AutomaticClusterUpdateValue
 
 Required: False
 Position: Named
@@ -234,28 +232,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComplianceSecurityProfileComplianceStandard
+### -ComplianceStandard
 Compliance standards associated with the workspace.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ComplianceSecurityProfileValue
-Status of Compliance Security Profile feature.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue
-Parameter Sets: (All)
-Aliases:
+Aliases: ComplianceSecurityProfileComplianceStandard
 
 Required: False
 Position: Named
@@ -386,13 +369,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnhancedSecurityMonitoringValue
+### -EnhancedSecurityCompliance
+Status of Compliance Security Profile feature.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue
+Parameter Sets: (All)
+Aliases: ComplianceSecurityProfileValue
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnhancedSecurityMonitoring
 Status of Enhanced Security Monitoring feature.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue
 Parameter Sets: (All)
-Aliases:
+Aliases: EnhancedSecurityMonitoringValue
 
 Required: False
 Position: Named
@@ -637,6 +635,21 @@ Enables the Managed Identity for managed storage account.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
