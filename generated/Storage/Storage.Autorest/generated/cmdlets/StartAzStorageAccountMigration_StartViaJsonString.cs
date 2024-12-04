@@ -11,22 +11,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     using System;
 
     /// <summary>
-    /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration customer
-    /// the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability
-    /// and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
+    /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration start the
+    /// non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and
+    /// availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
     /// zones in the primary region.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] CustomerInitiatedMigration=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration"
+    /// [OpenAPI] StartAccountMigration=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzStorageAccountMigration_CustomerViaJsonString", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzStorageAccountMigration_StartViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Account Migration request can be triggered for a storage account to change its redundancy level. The migration customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Account Migration request can be triggered for a storage account to change its redundancy level. The migration start the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration", ApiVersion = "2023-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.NotSuggestDefaultParameterSet]
-    public partial class StartAzStorageAccountMigration_CustomerViaJsonString : global::System.Management.Automation.PSCmdlet,
+    public partial class StartAzStorageAccountMigration_StartViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IContext
     {
@@ -120,12 +120,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         /// <summary>Backing field for <see cref="JsonString" /> property.</summary>
         private string _jsonString;
 
-        /// <summary>Json string supplied to the Customer operation</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Json string supplied to the Customer operation")]
+        /// <summary>Json string supplied to the Start operation</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Json string supplied to the Start operation")]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Json string supplied to the Customer operation",
+        Description = @"Json string supplied to the Start operation",
         SerializedName = @"JsonString",
         PossibleTypes = new [] { typeof(string) })]
         public string JsonString { get => this._jsonString; set => this._jsonString = value; }
@@ -250,10 +250,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of StartAzStorageAccountMigration_CustomerViaJsonString</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets.StartAzStorageAccountMigration_CustomerViaJsonString Clone()
+        /// <returns>a duplicate instance of StartAzStorageAccountMigration_StartViaJsonString</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets.StartAzStorageAccountMigration_StartViaJsonString Clone()
         {
-            var clone = new StartAzStorageAccountMigration_CustomerViaJsonString();
+            var clone = new StartAzStorageAccountMigration_StartViaJsonString();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'StorageAccountsCustomerInitiatedMigration' operation"))
+                if (ShouldProcess($"Call remote 'StartAccountMigration' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.StorageAccountsCustomerInitiatedMigrationViaJsonString(SubscriptionId, ResourceGroupName, AccountName, _jsonString, onOk, onDefault, this, Pipeline);
+                    await this.Client.StartAccountMigrationViaJsonString(SubscriptionId, ResourceGroupName, AccountName, _jsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.UndeclaredResponseException urexception)
@@ -504,9 +504,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StartAzStorageAccountMigration_CustomerViaJsonString" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="StartAzStorageAccountMigration_StartViaJsonString" /> cmdlet class.
         /// </summary>
-        public StartAzStorageAccountMigration_CustomerViaJsonString()
+        public StartAzStorageAccountMigration_StartViaJsonString()
         {
 
         }
