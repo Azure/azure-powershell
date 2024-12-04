@@ -20,6 +20,12 @@
 ## Upcoming Release
 * Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
     - `New-AzStorageContext`
+* Upgraded Azure.Storage.Blobs to 12.23.0
+* Upgraded Azure.Storage.Files.Shares to 12.21.0
+* Upgraded Azure.Storage.Files.DataLake to 12.21.0
+* Upgraded Azure.Storage.Queues to 12.21.0
+* Supported ClientName property when listing file handles 
+    - `Get-AzStorageFileHandle`
 * Upgraded Azure.Core to 1.44.1.
 
 ## Version 8.0.0

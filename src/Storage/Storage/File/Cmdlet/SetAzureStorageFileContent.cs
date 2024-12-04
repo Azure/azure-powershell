@@ -284,7 +284,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             }
 
                             // set file header and attributes to the file
-                            fileClient.SetHttpHeaders(httpHeaders: header, smbProperties: smbProperties);
+                            ShareFileSetHttpHeadersOptions httpHeadersOptions = new ShareFileSetHttpHeadersOptions
+                            {
+                                HttpHeaders = header,
+                                SmbProperties = smbProperties
+                            };
+                            fileClient.SetHttpHeaders(httpHeadersOptions);
                         }
 
                         if (this.PassThru)
