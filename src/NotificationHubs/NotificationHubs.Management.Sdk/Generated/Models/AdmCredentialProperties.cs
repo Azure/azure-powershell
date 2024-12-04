@@ -10,19 +10,18 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     /// <summary>
     /// Description of a NotificationHub AdmCredential.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AdmCredential
+    public partial class AdmCredentialProperties
     {
         /// <summary>
-        /// Initializes a new instance of the AdmCredential class.
+        /// Initializes a new instance of the AdmCredentialProperties class.
         /// </summary>
-        public AdmCredential()
+        public AdmCredentialProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AdmCredential class.
+        /// Initializes a new instance of the AdmCredentialProperties class.
         /// </summary>
 
         /// <param name="clientId">The client identifier.
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
         /// <param name="authTokenUrl">The URL of the authorization token.
         /// </param>
-        public AdmCredential(string clientId = default(string), string clientSecret = default(string), string authTokenUrl = default(string))
+        public AdmCredentialProperties(string clientId = default(string), string clientSecret = default(string), string authTokenUrl = default(string))
 
         {
             this.ClientId = clientId;
@@ -51,19 +50,19 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <summary>
         /// Gets or sets the client identifier.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientId")]
         public string ClientId {get; set; }
 
         /// <summary>
         /// Gets or sets the credential secret access key.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientSecret")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientSecret")]
         public string ClientSecret {get; set; }
 
         /// <summary>
         /// Gets or sets the URL of the authorization token.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.authTokenUrl")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "authTokenUrl")]
         public string AuthTokenUrl {get; set; }
     }
 }

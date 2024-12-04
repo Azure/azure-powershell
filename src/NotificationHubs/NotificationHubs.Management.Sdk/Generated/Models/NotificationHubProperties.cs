@@ -8,39 +8,29 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of a NotificationHub PNS Credentials.
+    /// NotificationHub properties.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PnsCredentialsResource : Resource
+    public partial class NotificationHubProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PnsCredentialsResource class.
+        /// Initializes a new instance of the NotificationHubProperties class.
         /// </summary>
-        public PnsCredentialsResource()
+        public NotificationHubProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PnsCredentialsResource class.
+        /// Initializes a new instance of the NotificationHubProperties class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="name">The NotificationHub name.
         /// </param>
 
-        /// <param name="name">Resource name
+        /// <param name="registrationTtl">The RegistrationTtl of the created NotificationHub
         /// </param>
 
-        /// <param name="type">Resource type
-        /// </param>
-
-        /// <param name="location">Resource location
-        /// </param>
-
-        /// <param name="tags">Resource tags
-        /// </param>
-
-        /// <param name="sku">The sku of the created namespace
+        /// <param name="authorizationRules">The AuthorizationRules of the created NotificationHub
         /// </param>
 
         /// <param name="apnsCredential">The ApnsCredential of the created NotificationHub
@@ -60,10 +50,12 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
         /// <param name="baiduCredential">The BaiduCredential of the created NotificationHub
         /// </param>
-        public PnsCredentialsResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), ApnsCredential apnsCredential = default(ApnsCredential), WnsCredential wnsCredential = default(WnsCredential), GcmCredential gcmCredential = default(GcmCredential), MpnsCredential mpnsCredential = default(MpnsCredential), AdmCredential admCredential = default(AdmCredential), BaiduCredential baiduCredential = default(BaiduCredential))
+        public NotificationHubProperties(string name = default(string), string registrationTtl = default(string), System.Collections.Generic.IList<SharedAccessAuthorizationRuleProperties> authorizationRules = default(System.Collections.Generic.IList<SharedAccessAuthorizationRuleProperties>), ApnsCredential apnsCredential = default(ApnsCredential), WnsCredential wnsCredential = default(WnsCredential), GcmCredential gcmCredential = default(GcmCredential), MpnsCredential mpnsCredential = default(MpnsCredential), AdmCredential admCredential = default(AdmCredential), BaiduCredential baiduCredential = default(BaiduCredential))
 
-        : base(location, id, name, type, tags, sku)
         {
+            this.Name = name;
+            this.RegistrationTtl = registrationTtl;
+            this.AuthorizationRules = authorizationRules;
             this.ApnsCredential = apnsCredential;
             this.WnsCredential = wnsCredential;
             this.GcmCredential = gcmCredential;
@@ -80,55 +72,57 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
 
         /// <summary>
+        /// Gets or sets the NotificationHub name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
+        public string Name {get; set; }
+
+        /// <summary>
+        /// Gets or sets the RegistrationTtl of the created NotificationHub
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "registrationTtl")]
+        public string RegistrationTtl {get; set; }
+
+        /// <summary>
+        /// Gets or sets the AuthorizationRules of the created NotificationHub
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "authorizationRules")]
+        public System.Collections.Generic.IList<SharedAccessAuthorizationRuleProperties> AuthorizationRules {get; set; }
+
+        /// <summary>
         /// Gets or sets the ApnsCredential of the created NotificationHub
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.apnsCredential")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "apnsCredential")]
         public ApnsCredential ApnsCredential {get; set; }
 
         /// <summary>
         /// Gets or sets the WnsCredential of the created NotificationHub
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.wnsCredential")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "wnsCredential")]
         public WnsCredential WnsCredential {get; set; }
 
         /// <summary>
         /// Gets or sets the GcmCredential of the created NotificationHub
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.gcmCredential")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gcmCredential")]
         public GcmCredential GcmCredential {get; set; }
 
         /// <summary>
         /// Gets or sets the MpnsCredential of the created NotificationHub
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.mpnsCredential")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mpnsCredential")]
         public MpnsCredential MpnsCredential {get; set; }
 
         /// <summary>
         /// Gets or sets the AdmCredential of the created NotificationHub
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.admCredential")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "admCredential")]
         public AdmCredential AdmCredential {get; set; }
 
         /// <summary>
         /// Gets or sets the BaiduCredential of the created NotificationHub
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.baiduCredential")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "baiduCredential")]
         public BaiduCredential BaiduCredential {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-
-
-
-
-
-
-        }
     }
 }

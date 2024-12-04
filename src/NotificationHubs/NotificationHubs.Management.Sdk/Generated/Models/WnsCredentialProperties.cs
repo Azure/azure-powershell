@@ -10,19 +10,18 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     /// <summary>
     /// Description of a NotificationHub WnsCredential.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class WnsCredential
+    public partial class WnsCredentialProperties
     {
         /// <summary>
-        /// Initializes a new instance of the WnsCredential class.
+        /// Initializes a new instance of the WnsCredentialProperties class.
         /// </summary>
-        public WnsCredential()
+        public WnsCredentialProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the WnsCredential class.
+        /// Initializes a new instance of the WnsCredentialProperties class.
         /// </summary>
 
         /// <param name="packageSid">The package ID for this credential.
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
         /// <param name="windowsLiveEndpoint">The Windows Live endpoint.
         /// </param>
-        public WnsCredential(string packageSid = default(string), string secretKey = default(string), string windowsLiveEndpoint = default(string))
+        public WnsCredentialProperties(string packageSid = default(string), string secretKey = default(string), string windowsLiveEndpoint = default(string))
 
         {
             this.PackageSid = packageSid;
@@ -51,19 +50,19 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <summary>
         /// Gets or sets the package ID for this credential.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.packageSid")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "packageSid")]
         public string PackageSid {get; set; }
 
         /// <summary>
         /// Gets or sets the secret key.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.secretKey")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "secretKey")]
         public string SecretKey {get; set; }
 
         /// <summary>
         /// Gets or sets the Windows Live endpoint.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.windowsLiveEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "windowsLiveEndpoint")]
         public string WindowsLiveEndpoint {get; set; }
     }
 }

@@ -10,19 +10,18 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     /// <summary>
     /// Description of a NotificationHub GcmCredential.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class GcmCredential
+    public partial class GcmCredentialProperties
     {
         /// <summary>
-        /// Initializes a new instance of the GcmCredential class.
+        /// Initializes a new instance of the GcmCredentialProperties class.
         /// </summary>
-        public GcmCredential()
+        public GcmCredentialProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GcmCredential class.
+        /// Initializes a new instance of the GcmCredentialProperties class.
         /// </summary>
 
         /// <param name="gcmEndpoint">The GCM endpoint.
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
         /// <param name="googleApiKey">The Google API key.
         /// </param>
-        public GcmCredential(string gcmEndpoint = default(string), string googleApiKey = default(string))
+        public GcmCredentialProperties(string gcmEndpoint = default(string), string googleApiKey = default(string))
 
         {
             this.GcmEndpoint = gcmEndpoint;
@@ -47,13 +46,13 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <summary>
         /// Gets or sets the GCM endpoint.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.gcmEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gcmEndpoint")]
         public string GcmEndpoint {get; set; }
 
         /// <summary>
         /// Gets or sets the Google API key.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.googleApiKey")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "googleApiKey")]
         public string GoogleApiKey {get; set; }
     }
 }

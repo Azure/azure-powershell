@@ -10,19 +10,18 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     /// <summary>
     /// Description of a NotificationHub ApnsCredential.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApnsCredential
+    public partial class ApnsCredentialProperties
     {
         /// <summary>
-        /// Initializes a new instance of the ApnsCredential class.
+        /// Initializes a new instance of the ApnsCredentialProperties class.
         /// </summary>
-        public ApnsCredential()
+        public ApnsCredentialProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ApnsCredential class.
+        /// Initializes a new instance of the ApnsCredentialProperties class.
         /// </summary>
 
         /// <param name="apnsCertificate">The APNS certificate.
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
         /// <param name="token">Provider Authentication Token, obtained through your developer account
         /// </param>
-        public ApnsCredential(string apnsCertificate = default(string), string certificateKey = default(string), string endpoint = default(string), string thumbprint = default(string), string keyId = default(string), string appName = default(string), string appId = default(string), string token = default(string))
+        public ApnsCredentialProperties(string apnsCertificate = default(string), string certificateKey = default(string), string endpoint = default(string), string thumbprint = default(string), string keyId = default(string), string appName = default(string), string appId = default(string), string token = default(string))
 
         {
             this.ApnsCertificate = apnsCertificate;
@@ -73,52 +72,52 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <summary>
         /// Gets or sets the APNS certificate.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.apnsCertificate")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "apnsCertificate")]
         public string ApnsCertificate {get; set; }
 
         /// <summary>
         /// Gets or sets the certificate key.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.certificateKey")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "certificateKey")]
         public string CertificateKey {get; set; }
 
         /// <summary>
         /// Gets or sets the endpoint of this credential.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "endpoint")]
         public string Endpoint {get; set; }
 
         /// <summary>
         /// Gets or sets the Apns certificate Thumbprint
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.thumbprint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "thumbprint")]
         public string Thumbprint {get; set; }
 
         /// <summary>
         /// Gets or sets a 10-character key identifier (kid) key, obtained from your
         /// developer account
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.keyId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "keyId")]
         public string KeyId {get; set; }
 
         /// <summary>
         /// Gets or sets the name of the application
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.appName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "appName")]
         public string AppName {get; set; }
 
         /// <summary>
         /// Gets or sets the issuer (iss) registered claim key, whose value is your
         /// 10-character Team ID, obtained from your developer account
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.appId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "appId")]
         public string AppId {get; set; }
 
         /// <summary>
         /// Gets or sets provider Authentication Token, obtained through your developer
         /// account
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.token")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "token")]
         public string Token {get; set; }
     }
 }

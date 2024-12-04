@@ -8,45 +8,23 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of a Namespace resource.
+    /// Namespace properties.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class NamespaceResource : Resource
+    public partial class NamespaceProperties
     {
         /// <summary>
-        /// Initializes a new instance of the NamespaceResource class.
+        /// Initializes a new instance of the NamespaceProperties class.
         /// </summary>
-        public NamespaceResource()
+        public NamespaceProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NamespaceResource class.
+        /// Initializes a new instance of the NamespaceProperties class.
         /// </summary>
 
-        /// <param name="id">Resource Id
-        /// </param>
-
-        /// <param name="name">Resource name
-        /// </param>
-
-        /// <param name="type">Resource type
-        /// </param>
-
-        /// <param name="location">Resource location
-        /// </param>
-
-        /// <param name="tags">Resource tags
-        /// </param>
-
-        /// <param name="sku">The sku of the created namespace
-        /// </param>
-
-        /// <param name="namespaceType">The namespace type.
-        /// Possible values include: &#39;Messaging&#39;, &#39;NotificationHub&#39;</param>
-
-        /// <param name="propertiesName">The name of the namespace.
+        /// <param name="name">The name of the namespace.
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of the Namespace.
@@ -80,12 +58,13 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
         /// <param name="critical">Whether or not the namespace is set as Critical.
         /// </param>
-        public NamespaceResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), NamespaceType? namespaceType = default(NamespaceType?), string propertiesName = default(string), string provisioningState = default(string), string region = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string subscriptionId = default(string), string scaleUnit = default(string), bool? enabled = default(bool?), bool? critical = default(bool?))
 
-        : base(location, id, name, type, tags, sku)
+        /// <param name="namespaceType">The namespace type.
+        /// Possible values include: &#39;Messaging&#39;, &#39;NotificationHub&#39;</param>
+        public NamespaceProperties(string name = default(string), string provisioningState = default(string), string region = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string subscriptionId = default(string), string scaleUnit = default(string), bool? enabled = default(bool?), bool? critical = default(bool?), NamespaceType? namespaceType = default(NamespaceType?))
+
         {
-            this.NamespaceType = namespaceType;
-            this.PropertiesName = propertiesName;
+            this.Name = name;
             this.ProvisioningState = provisioningState;
             this.Region = region;
             this.Status = status;
@@ -95,6 +74,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
             this.ScaleUnit = scaleUnit;
             this.Enabled = enabled;
             this.Critical = critical;
+            this.NamespaceType = namespaceType;
             CustomInit();
         }
 
@@ -105,21 +85,15 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
 
         /// <summary>
-        /// Gets or sets the namespace type. Possible values include: &#39;Messaging&#39;, &#39;NotificationHub&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.namespaceType")]
-        public NamespaceType? NamespaceType {get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the namespace.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.name")]
-        public string PropertiesName {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
+        public string Name {get; set; }
 
         /// <summary>
         /// Gets or sets provisioning state of the Namespace.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; set; }
 
         /// <summary>
@@ -129,69 +103,57 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// USEast AsiaSoutheast AsiaBrazil SouthJapan EastJapan WestNorth EuropeWest
         /// Europe
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.region")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "region")]
         public string Region {get; set; }
 
         /// <summary>
         /// Gets or sets status of the namespace. It can be any of these values:1 =
         /// Created/Active2 = Creating3 = Suspended4 = Deleting
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; set; }
 
         /// <summary>
         /// Gets or sets the time the namespace was created.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createdAt")]
         public System.DateTime? CreatedAt {get; set; }
 
         /// <summary>
         /// Gets or sets endpoint you can use to perform NotificationHub operations.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceBusEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceBusEndpoint")]
         public string ServiceBusEndpoint {get; set; }
 
         /// <summary>
         /// Gets or sets the Id of the Azure subscription associated with the
         /// namespace.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subscriptionId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "subscriptionId")]
         public string SubscriptionId {get; set; }
 
         /// <summary>
         /// Gets or sets scaleUnit where the namespace gets created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scaleUnit")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scaleUnit")]
         public string ScaleUnit {get; set; }
 
         /// <summary>
         /// Gets or sets whether or not the namespace is currently enabled.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enabled")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool? Enabled {get; set; }
 
         /// <summary>
         /// Gets or sets whether or not the namespace is set as Critical.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.critical")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "critical")]
         public bool? Critical {get; set; }
+
         /// <summary>
-        /// Validate the object.
+        /// Gets or sets the namespace type. Possible values include: &#39;Messaging&#39;, &#39;NotificationHub&#39;
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-
-
-
-
-
-
-
-
-        }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "namespaceType")]
+        public NamespaceType? NamespaceType {get; set; }
     }
 }

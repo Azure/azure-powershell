@@ -10,19 +10,18 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
     /// <summary>
     /// Description of a NotificationHub BaiduCredential.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BaiduCredential
+    public partial class BaiduCredentialProperties
     {
         /// <summary>
-        /// Initializes a new instance of the BaiduCredential class.
+        /// Initializes a new instance of the BaiduCredentialProperties class.
         /// </summary>
-        public BaiduCredential()
+        public BaiduCredentialProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BaiduCredential class.
+        /// Initializes a new instance of the BaiduCredentialProperties class.
         /// </summary>
 
         /// <param name="baiduApiKey">Baidu Api Key.
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
 
         /// <param name="baiduSecretKey">Baidu Secret Key
         /// </param>
-        public BaiduCredential(string baiduApiKey = default(string), string baiduEndPoint = default(string), string baiduSecretKey = default(string))
+        public BaiduCredentialProperties(string baiduApiKey = default(string), string baiduEndPoint = default(string), string baiduSecretKey = default(string))
 
         {
             this.BaiduApiKey = baiduApiKey;
@@ -51,19 +50,19 @@ namespace Microsoft.Azure.Management.NotificationHubs.Models
         /// <summary>
         /// Gets or sets baidu Api Key.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.baiduApiKey")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "baiduApiKey")]
         public string BaiduApiKey {get; set; }
 
         /// <summary>
         /// Gets or sets baidu Endpoint.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.baiduEndPoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "baiduEndPoint")]
         public string BaiduEndPoint {get; set; }
 
         /// <summary>
         /// Gets or sets baidu Secret Key
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.baiduSecretKey")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "baiduSecretKey")]
         public string BaiduSecretKey {get; set; }
     }
 }
