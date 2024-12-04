@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
+    - `New-AzStorageContext`
 * Upgraded Azure.Storage.Blobs to 12.23.0
 * Upgraded Azure.Storage.Files.Shares to 12.21.0
 * Upgraded Azure.Storage.Files.DataLake to 12.21.0
