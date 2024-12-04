@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Polly" Version="7.2.3.1" />
+    <PackageReference Include="Polly" Version="7.2.4" />
     <PackageReference Include="Azure.Developer.TrustedSigning.CryptoProvider" Version="0.1.38" />
     <PackageReference Include="Azure.CodeSigning.Sdk" Version="0.1.127" />
     <PackageReference Include="System.Formats.Asn1" Version="6.0.1" />
