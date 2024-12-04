@@ -433,3 +433,212 @@ function Test-TableInAccountRestoreOperationsCmdlets
       Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
   }
 }
+
+<#
+.SYNOPSIS
+Test Table Roles cmdlets using all parameter sets
+#>
+function Test-TableRoleCmdlets
+{
+  $AccountName = "rbactestps73"
+  $rgName = "rgtest9921232873"
+  $location = "East US"
+  $subscriptionId = $(getVariable "SubscriptionId")
+
+  $apiKind = "Table"
+  $consistencyLevel = "BoundedStaleness"
+  $maxStalenessInterval = 300
+  $maxStalenessPrefix = 100000
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+  
+  $DatabaseName = "dbName"
+
+  $RoleName = "roleDefinitionName"
+  $RoleName2 = "roleDefinitionName2"
+  $RoleName3 = "roleDefinitionName3"
+  $RoleName4 = "roleDefinitionName4"
+  $RoleName5 = "roleDefinitionName5"
+  $RoleName6 = "roleDefinitionName6"
+
+  $DataActionRead = "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/read"
+  $DataActionCreate = "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/create"
+  $DataActionReplace = "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/replace"
+  $DataActionInvalid = "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/invalid-action"
+
+  $PrincipalId = "d006e945-a621-4973-8113-b0a705061e33"
+  $PrincipalId2 = "5af9fd41-fffc-4c7a-9fd8-bed87ae38ac3"
+
+  $Scope = "/"
+  $FullyQualifiedScope = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName"
+  $Scope2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/dbs/dbName"
+
+  $RoleAssignmentId = "a2ccaf94-3c39-4728-b892-95edeef0e754"
+  $FullyQualifiedRoleAssignmentId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/tableRoleAssignments/a2ccaf94-3c39-4728-b892-95edeef0e754"
+  $RoleAssignmentId2 = "8f3f78c4-a8df-4088-9cbb-a3947e27076b"
+  $FullyQualifiedRoleAssignmentId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/tableRoleAssignments/8f3f78c4-a8df-4088-9cbb-a3947e27076b"
+  $RoleAssignmentId3 = "e7a0b8a5-b381-495d-a020-5467c534e619"
+  $FullyQualifiedRoleAssignmentId3 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/tableRoleAssignments/e7a0b8a5-b381-495d-a020-5467c534e619"
+
+  $RoleDefinitionId = "cf31c3a1-20f5-4ff1-bdd0-5e0782617e22"
+  $FullyQualifiedRoleDefinitionId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/tableRoleDefinitions/cf31c3a1-20f5-4ff1-bdd0-5e0782617e22"
+  $RoleDefinitionId2 = "a36e56a5-9afc-4819-aa78-3a8083a3ee74"
+  $FullyQualifiedRoleDefinitionId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/tableRoleDefinitions/a36e56a5-9afc-4819-aa78-3a8083a3ee74"
+  $RoleDefinitionId3 = "9ee200b5-73fd-4779-b36a-e2a31f9244f3"
+  $FullyQualifiedRoleDefinitionId3 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/tableRoleDefinitions/9ee200b5-73fd-4779-b36a-e2a31f9244f3"
+  $location = "East US"
+  $apiKind = "Table"
+  $consistencyLevel = "BoundedStaleness"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
+  Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $NewDatabase =  New-AzCosmosDBTableDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+      $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
+
+      # create a new role definition - using parent object and permission
+      $Permissions = New-AzCosmosDBPermission -DataAction $DataActionRead
+      $NewRoleDefinitionFromParentObject = New-AzCosmosDBTableRoleDefinition -Type "CustomRole" -RoleName $RoleName -Permission $Permissions -AssignableScope $Scope -Id $RoleDefinitionId -ParentObject $DatabaseAccount
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.RoleName $RoleName
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.Type "CustomRole"
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.Id $FullyQualifiedRoleDefinitionId
+      Assert-NotNull $NewRoleDefinitionFromParentObject.AssignableScopes
+      Assert-NotNull $NewRoleDefinitionFromParentObject.Permissions
+
+      # create a new role definition - using fields and data actions
+      $NewRoleDefinitionFromFields = New-AzCosmosDBTableRoleDefinition -Type "CustomRole" -RoleName $RoleName2 -DataAction $DataActionCreate -AssignableScope $Scope2 -Id $FullyQualifiedRoleDefinitionId2 -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $NewRoleDefinitionFromFields.RoleName $RoleName2
+      Assert-AreEqual $NewRoleDefinitionFromFields.Type "CustomRole"
+      Assert-AreEqual $NewRoleDefinitionFromFields.Id $FullyQualifiedRoleDefinitionId2
+      Assert-NotNull $NewRoleDefinitionFromFields.AssignableScopes
+      Assert-NotNull $NewRoleDefinitionFromFields.Permissions
+
+      # create a new role assignment from name
+      $NewRoleAssignmentFromName = New-AzCosmosDBTableRoleAssignment -RoleDefinitionName $RoleName -Scope $Scope2 -PrincipalId $PrincipalId -Id $RoleAssignmentId -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $NewRoleAssignmentFromName.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $NewRoleAssignmentFromName.Scope $Scope2
+      Assert-AreEqual $NewRoleAssignmentFromName.PrincipalId $PrincipalId
+      Assert-AreEqual $NewRoleAssignmentFromName.Id $FullyQualifiedRoleAssignmentId
+
+      # create a new role assignment from parent object
+      $NewRoleAssignmentFromParentObject = New-AzCosmosDBTableRoleAssignment -ParentObject $NewRoleDefinitionFromFields -Scope $Scope2 -PrincipalId $PrincipalId2 -Id $FullyQualifiedRoleAssignmentId2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.RoleDefinitionId $FullyQualifiedRoleDefinitionId2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.Scope $Scope2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.PrincipalId $PrincipalId2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.Id $FullyQualifiedRoleAssignmentId2
+
+      # create a new role assignment from Id
+      $NewRoleAssignmentFromId = New-AzCosmosDBTableRoleAssignment -RoleDefinitionId $RoleDefinitionId -Scope $Scope -PrincipalId $PrincipalId -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleAssignmentId3
+      Assert-AreEqual $NewRoleAssignmentFromId.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $NewRoleAssignmentFromId.Scope $FullyQualifiedScope
+      Assert-AreEqual $NewRoleAssignmentFromId.PrincipalId $PrincipalId
+      Assert-NotNull $NewRoleAssignmentFromId.Id
+
+      # update non-existing role definition, role assignment
+      Try {
+          $UpdatedRoleDefinition = Update-AzCosmosDBTableRoleDefinition -Type "CustomRole" -RoleName "RoleName3" -DataAction $DataActionCreate -AssignableScope $Scope2 -Id "00000000-0000-0000-0000-000000000000" -AccountName $AccountName -ResourceGroupName $rgName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Role Definition with Id [00000000-0000-0000-0000-000000000000] does not exist.")
+      }
+      Try {
+          $UpdatedRoleAssignment = Update-AzCosmosDBTableRoleAssignment -RoleDefinitionName "RoleName4" -Id "11111111-1111-1111-1111-111111111111" -AccountName $AccountName -ResourceGroupName $rgName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Role Assignment with Name [RoleName4] does not exist.")
+      }
+
+      # get a role definition
+      $RoleDefinition = Get-AzCosmosDBTableRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId
+      Assert-AreEqual $RoleDefinition.RoleName $RoleName
+      Assert-AreEqual $RoleDefinition.Type "CustomRole"
+      Assert-NotNull $RoleDefinition.AssignableScopes
+      Assert-NotNull $RoleDefinition.Permissions
+
+      # get a role assignment
+      $RoleAssignment = Get-AzCosmosDBTableRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleAssignmentId
+      Assert-AreEqual $RoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $RoleAssignment.Scope $Scope2
+      Assert-AreEqual $RoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $RoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role definition by parent object and data actions
+      $UpdatedRoleDefinition = Update-AzCosmosDBTableRoleDefinition -Type "CustomRole" -RoleName $RoleName3 -DataAction $DataActionReplace -AssignableScope $Scope2 -Id $RoleDefinitionId -ParentObject $DatabaseAccount
+      Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName3
+      Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
+      Assert-NotNull $UpdatedRoleDefinition.Permissions
+
+      #update role definition by input object
+      $UpdatedRoleDefinition.RoleName = $RoleName4
+      $UpdatedRoleDefinition = Update-AzCosmosDBTableRoleDefinition -InputObject $UpdatedRoleDefinition
+      Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName4
+      Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
+      Assert-NotNull $UpdatedRoleDefinition.Permissions
+
+      # update role definition by fields and permissions
+      $UpdatedRoleDefinition = Update-AzCosmosDBTableRoleDefinition -Type "CustomRole" -RoleName $RoleName5 -Permission $Permissions -AssignableScope $Scope -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName5
+      Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
+      Assert-NotNull $UpdatedRoleDefinition.Permissions
+
+      # update role assignment by role definition name
+      $UpdatedRoleAssignment = Update-AzCosmosDBTableRoleAssignment -RoleDefinitionName $RoleName2 -Id $RoleAssignmentId -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId2
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role assignmnent by parent object
+      $UpdatedRoleAssignment = Update-AzCosmosDBTableRoleAssignment -Id $RoleAssignmentId -ParentObject $UpdatedRoleDefinition
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role assignmnent by role definition id
+      $UpdatedRoleAssignment = Update-AzCosmosDBTableRoleAssignment -RoleDefinitionId $RoleDefinitionId -Id $FullyQualifiedRoleAssignmentId2 -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId2
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId2
+
+      # update role assignmnent by input object
+      $UpdatedRoleAssignment.RoleDefinitionId = $FullyQualifiedRoleDefinitionId2
+
+      $UpdatedRoleAssignment = Update-AzCosmosDBTableRoleAssignment -InputObject $UpdatedRoleAssignment
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId2
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId2
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId2
+
+      # list Role Definitions
+      $ListRoleDefinitions = Get-AzCosmosDBTableRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull $ListRoleDefinitions
+
+      # list Role Assignments
+      $ListRoleAssignments = Get-AzCosmosDBTableRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull $ListRoleAssignments
+
+      # check for correct error propagation
+      $PermissionsInvalid = New-AzCosmosDBPermission -DataAction $DataActionInvalid
+      $ScriptBlockRoleDef = { New-AzCosmosDBTableRoleDefinition -Type "CustomRole" -RoleName $RoleName6 -Permission $PermissionsInvalid -AssignableScope $Scope -Id $RoleDefinitionId3 -ParentObject $DatabaseAccount }
+      Assert-ThrowsContains $ScriptBlockRoleDef $DataActionInvalid
+  }
+  Finally
+  {
+      Remove-AzCosmosDBTableRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleAssignmentId
+      Remove-AzCosmosDBTableRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleAssignmentId2
+      $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
+      Remove-AzCosmosDBTableRoleAssignment -ParentObject $DatabaseAccount -Id $FullyQualifiedRoleAssignmentId3
+
+      Remove-AzCosmosDBTableRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleDefinitionId
+      Remove-AzCosmosDBTableRoleDefinition -ParentObject $DatabaseAccount -Id $RoleDefinitionId2
+      Remove-AzCosmosDBTableRoleDefinition -ParentObject $DatabaseAccount -Id $RoleDefinitionId3
+  }
+}
