@@ -56,18 +56,14 @@ function New-AzFrontDoorRulesEngineMatchConditionObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineMatchCondition]::New()
 
-        if ($PSBoundParameters.ContainsKey('NegateCondition')) {
-            $Object.NegateCondition = $NegateCondition
-        }
+        $Object.NegateCondition = $NegateCondition
         if ($PSBoundParameters.ContainsKey('RulesEngineMatchValue')) {
             $Object.RulesEngineMatchValue = $RulesEngineMatchValue
         }
         if ($PSBoundParameters.ContainsKey('RulesEngineMatchVariable')) {
             $Object.RulesEngineMatchVariable = $RulesEngineMatchVariable
         }
-        if ($PSBoundParameters.ContainsKey('RulesEngineOperator')) {
-            $Object.RulesEngineOperator = $RulesEngineOperator
-        }
+        $Object.RulesEngineOperator = $RulesEngineOperator
         if ($PSBoundParameters.ContainsKey('Selector')) {
             $Object.Selector = $Selector
         }

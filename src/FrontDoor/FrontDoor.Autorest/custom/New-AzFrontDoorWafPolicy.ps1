@@ -264,12 +264,12 @@ param(
 )
 
     process {
-        $duplicateCheck = Get-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name
-        if ($null -ne $duplicateCheck) {
-            throw "WAF policy with name $Name already exists in resource group $ResourceGroupName"
+        $duplicateCheck = Get-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName
+        foreach ($policy in $duplicateCheck) {
+            if ($policy.Name -eq $Name) {
+                throw "WAF policy with name $Name already exists in resource group $ResourceGroupName"
+            }
         }
-        else {
-            Az.FrontDoor.internal\New-AzFrontDoorWafPolicy @PSBoundParameters
-        }
+        Az.FrontDoor.internal\New-AzFrontDoorWafPolicy @PSBoundParameters
     }
 }

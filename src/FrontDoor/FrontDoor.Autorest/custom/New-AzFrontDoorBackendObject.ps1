@@ -73,21 +73,11 @@ function New-AzFrontDoorBackendObject {
         if ($PSBoundParameters.ContainsKey('Address')) {
             $Object.Address = $Address
         }
-        if ($PSBoundParameters.ContainsKey('HostHeader')) {
-            $Object.HostHeader = $HostHeader
-        }
-        if ($PSBoundParameters.ContainsKey('EnabledState')) {
-            $Object.EnabledState = $EnabledState
-        }
-        if ($PSBoundParameters.ContainsKey('HttpPort')) {
-            $Object.HttpPort = $HttpPort
-        }
-        if ($PSBoundParameters.ContainsKey('HttpsPort')) {
-            $Object.HttpsPort = $HttpsPort
-        } 
-        if ($PSBoundParameters.ContainsKey('Priority')) {
-            $Object.Priority = $Priority
-        } 
+        $Object.HostHeader = $HostHeader
+        $Object.EnabledState = $EnabledState
+        $Object.HttpPort = $HttpPort
+        $Object.HttpsPort = $HttpsPort
+        $Object.Priority = $Priority
         if ($PSBoundParameters.ContainsKey('PrivateLinkAlias')) {
             $Object.PrivateLinkAlias = $PrivateLinkAlias
         }
@@ -100,9 +90,7 @@ function New-AzFrontDoorBackendObject {
         if ($PSBoundParameters.ContainsKey('PrivateLinkResourceId')) {
             $Object.PrivateLinkResourceId = $PrivateLinkResourceId
         }
-        if ($PSBoundParameters.ContainsKey('Weight')) {
-            $Object.Weight = $Weight
-        }
+        $Object.Weight = $Weight
         return $Object
     }
 }

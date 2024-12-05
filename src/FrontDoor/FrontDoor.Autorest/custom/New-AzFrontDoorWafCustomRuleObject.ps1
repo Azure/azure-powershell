@@ -71,9 +71,7 @@ function New-AzFrontDoorWafCustomRuleObject {
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action
         }
-        if ($PSBoundParameters.ContainsKey('EnabledState')) {
-            $Object.EnabledState = $EnabledState
-        }
+        $Object.EnabledState = $EnabledState
         if ($PSBoundParameters.ContainsKey('GroupBy')) {
             $Object.GroupBy = $GroupBy
         }
@@ -83,9 +81,7 @@ function New-AzFrontDoorWafCustomRuleObject {
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
-        if ($PSBoundParameters.ContainsKey('Priority')) {
-            $Object.Priority = $Priority
-        }
+        $Object.Priority = $Priority
         if ($PSBoundParameters.ContainsKey('RateLimitDurationInMinute')) {
             $Object.RateLimitDurationInMinute = $RateLimitDurationInMinute
         }

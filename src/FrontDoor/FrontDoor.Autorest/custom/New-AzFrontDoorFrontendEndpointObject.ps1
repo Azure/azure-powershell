@@ -62,7 +62,7 @@ function New-AzFrontDoorFrontendEndpointObject {
         [Parameter(HelpMessage="Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
-        $SessionAffinityEnabledState = 'Endabled',
+        $SessionAffinityEnabledState = 'Enabled',
         [Parameter(HelpMessage="UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.")]
         [int]
         [Alias("SessionAffinityTtlInSeconds" )]
@@ -109,12 +109,8 @@ function New-AzFrontDoorFrontendEndpointObject {
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
-        if ($PSBoundParameters.ContainsKey('SessionAffinityEnabledState')) {
-            $Object.SessionAffinityEnabledState = $SessionAffinityEnabledState
-        }
-        if ($PSBoundParameters.ContainsKey('SessionAffinityTtlSecond')) {
-            $Object.SessionAffinityTtlSecond = $SessionAffinityTtlSecond
-        }
+        $Object.SessionAffinityEnabledState = $SessionAffinityEnabledState
+        $Object.SessionAffinityTtlSecond = $SessionAffinityTtlSecond
         if ($PSBoundParameters.ContainsKey('VaultId')) {
             $Object.VaultId = $VaultId
         }
@@ -124,9 +120,7 @@ function New-AzFrontDoorFrontendEndpointObject {
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id
         }
-        if ($PSBoundParameters.ContainsKey('CustomHttpsConfigurationProtocolType')) {
-            $Object.CustomHttpsConfigurationProtocolType = $CustomHttpsConfigurationProtocolType
-        }
+        # $Object.CustomHttpsConfigurationProtocolType = $CustomHttpsConfigurationProtocolType
         return $Object
     }
 }

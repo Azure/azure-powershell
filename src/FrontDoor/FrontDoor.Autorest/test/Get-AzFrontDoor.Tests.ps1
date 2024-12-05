@@ -21,7 +21,7 @@ Describe 'Get-AzFrontDoor' {
 
     It 'Get' {
         $FrontDoor = Get-AzFrontDoor -Name $env.FrontDoorName -ResourceGroupName $env.ResourceGroupName
-        $FrontDoor.Name | Should -Be $env.FrontDoorCdnProfileName
+        $FrontDoor.Name | Should -Be $env.FrontDoorName
     }
 
     It 'List1' -skip {

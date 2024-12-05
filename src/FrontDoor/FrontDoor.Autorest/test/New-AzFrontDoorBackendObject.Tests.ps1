@@ -15,7 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorBackendObject'
 }
 
 Describe 'New-AzFrontDoorBackendObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+        $backend1.Address | Should -Be "contoso1.azurewebsites.net"
+        $backend1.HostHeader | Should -Be "contoso1.azurewebsites.net"
+        $backend1.EnabledState | Should -Be "Enabled"
+        $backend1.HttpPort | Should -Be 80
+        $backend1.HttpsPort | Should -Be 443
+        $backend1.Priority | Should -Be 1
+        $backend1.PrivateLinkAlias | Should -Be $null
+        $backend1.PrivateLinkApprovalMessage | Should -Be $null
+        $backend1.PrivateLinkLocation | Should -Be $null
+        $backend1.PrivateLinkResourceId | Should -Be $null
+        $backend1.Weight | Should -Be 50
     }
 }

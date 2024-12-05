@@ -123,35 +123,50 @@ function New-AzFrontDoorRulesEngineActionObject {
                 $ForwardingConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ForwardingConfiguration]::New()
 
                 $BackendPoolId = "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/BackendPools/$BackendPoolName"
-
-                $ForwardingConfiguration.BackendPoolId = $BackendPoolId
-                $ForwardingConfiguration.CacheConfigurationCacheDuration = $CacheDuration
-                $ForwardingConfiguration.CacheConfigurationDynamicCompression = $PSBoundParameters.ContainsKey('DynamicCompression')? $DynamicCompression : 'Enabled'
-                $ForwardingConfiguration.CacheConfigurationQueryParameter = $QueryParameter
-                $ForwardingConfiguration.CacheConfigurationQueryParameterStripDirective = $PSBoundParameters.ContainsKey('QueryParameterStripDirective')? $QueryParameterStripDirective : 'StripAll'
-                $ForwardingConfiguration.CustomForwardingPath = $CustomForwardingPath
-                $ForwardingConfiguration.ForwardingProtocol = $PSBoundParameters.ContainsKey('ForwardingProtocol')? $ForwardingProtocol : 'MatchRequest'
-
-                if (!$PSBoundParameters.ContainsKey('EnableCaching') -or $false -eq $EnableCaching) {
-                    $ForwardingConfiguration.CacheConfigurationCacheDuration = $null
-                    $ForwardingConfiguration.CacheConfigurationDynamicCompression = $null
-                    $ForwardingConfiguration.CacheConfigurationQueryParameter = $null
-                    $ForwardingConfiguration.CacheConfigurationQueryParameterStripDirective = $null
+                if ($PSBoundParameters.ContainsKey('BackendPoolName')) {
+                    $BackendPoolId = "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/BackendPools/$BackendPoolName"
+                    $ForwardingConfiguration.BackendPoolId = $BackendPoolId
                 }
+
+                if ($PSBoundParameters.ContainsKey('EnableCaching') -and $true -eq $EnableCaching) {
+                    $CacheConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CacheConfiguration]::New()
+
+                    if ($PSBoundParameters.ContainsKey('CacheDuration')) {
+                        $CacheConfiguration.CacheDuration = $CacheDuration
+                    }
+                    $CacheConfiguration.DynamicCompression = $PSBoundParameters.ContainsKey('DynamicCompression')? $DynamicCompression : 'Enabled'
+                    if ($PSBoundParameters.ContainsKey('QueryParameter')) {
+                        $CacheConfiguration.QueryParameter = $QueryParameter
+                    }
+                    $CacheConfiguration.QueryParameterStripDirective = $PSBoundParameters.ContainsKey('QueryParameterStripDirective')? $QueryParameterStripDirective : 'StripAll'
+                    $ForwardingConfiguration.CacheConfiguration = $CacheConfiguration
+                }
+
+                if ($PSBoundParameters.ContainsKey('CustomForwardingPath')) {
+                    $ForwardingConfiguration.CustomForwardingPath = $CustomForwardingPath
+                }
+                $ForwardingConfiguration.ForwardingProtocol = $PSBoundParameters.ContainsKey('ForwardingProtocol')? $ForwardingProtocol : 'MatchRequest'
 
                 $Object.RouteConfigurationOverride = $ForwardingConfiguration
             }
             "RedirectConfiguration" {
                 $RedirectConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RedirectConfiguration]::New()
 
-                $RedirectConfiguration.CustomFragment = $CustomFragment
+                if ($PSBoundParameters.ContainsKey('CustomFragment')) {
+                    $RedirectConfiguration.CustomFragment = $CustomFragment
+                }
                 $RedirectConfiguration.CustomHost = $PSBoundParameters.ContainsKey('CustomHost')? $CustomHost : ''
                 $RedirectConfiguration.CustomPath = $PSBoundParameters.ContainsKey('CustomPath')? $CustomPath : ''
-                $RedirectConfiguration.CustomQueryString = $CustomQueryString
+                if ($PSBoundParameters.ContainsKey('CustomQueryString')) {
+                    $RedirectConfiguration.CustomQueryString = $CustomQueryString
+                }
                 $RedirectConfiguration.RedirectProtocol = $PSBoundParameters.ContainsKey('RedirectProtocol')? $RedirectProtocol : 'MatchRequest'
                 $RedirectConfiguration.RedirectType = $PSBoundParameters.ContainsKey('RedirectType')? $RedirectType : 'Moved'
 
                 $Object.RouteConfigurationOverride = $RedirectConfiguration
+            }
+            default {
+                $Object.RouteConfiguration = $null
             }
         }
 

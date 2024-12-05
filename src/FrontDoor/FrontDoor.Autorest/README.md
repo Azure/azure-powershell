@@ -68,6 +68,7 @@ directive:
     - BackendPoolsSettings
     - RouteConfiguration
     - PolicySettingsLogScrubbing
+    - CacheConfiguration
 
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
@@ -141,6 +142,8 @@ directive:
       cmdlet-name: New-AzFrontDoorForwardingConfigurationObject
     - model-name: RedirectConfiguration
       cmdlet-name: New-AzFrontDoorRedirectConfigurationObject
+    - model-name: CacheConfiguration
+      cmdlet-name: New-AzFrontDoorCacheConfigurationObject
     # - model-name: RouteConfiguration
     #   cmdlet-name: New-AzFrontDoorRouteConfigurationObject
 

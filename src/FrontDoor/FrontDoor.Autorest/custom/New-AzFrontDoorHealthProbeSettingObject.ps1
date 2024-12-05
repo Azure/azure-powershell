@@ -60,24 +60,14 @@ function New-AzFrontDoorHealthProbeSettingObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HealthProbeSettingsModel]::New()
 
-        if ($PSBoundParameters.ContainsKey('EnabledState')) {
-            $Object.EnabledState = $EnabledState
-        }
-        if ($PSBoundParameters.ContainsKey('HealthProbeMethod')) {
-            $Object.HealthProbeMethod = $HealthProbeMethod
-        }
-        if ($PSBoundParameters.ContainsKey('IntervalInSecond')) {
-            $Object.IntervalInSecond = $IntervalInSecond
-        }
+        $Object.EnabledState = $EnabledState
+        $Object.HealthProbeMethod = $HealthProbeMethod
+        $Object.IntervalInSecond = $IntervalInSecond
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
-        if ($PSBoundParameters.ContainsKey('Path')) {
-            $Object.Path = $Path
-        }
-        if ($PSBoundParameters.ContainsKey('Protocol')) {
-            $Object.Protocol = $Protocol
-        }
+        $Object.Path = $Path
+        $Object.Protocol = $Protocol
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id
         }

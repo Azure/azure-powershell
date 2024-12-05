@@ -262,15 +262,14 @@ param(
 )
 
     process {
-        $duplicateCheck = Get-AzFrontDoor -ResourceGroupName $ResourceGroupName -Name $Name
-        if ($null -ne $duplicateCheck) {
-            throw "Front Door with name $Name already exists in resource group $ResourceGroupName"
-        }
-        else {
-            if ($DisableCertificateNameCheck -and $null -ne $BackendPoolsSetting) {
-                $BackendPoolsSetting.EnforceCertificateNameCheck = 'Disabled'
+        $duplicateCheck = Get-AzFrontDoor -ResourceGroupName $ResourceGroupName
+
+        foreach ($fd in $duplicateCheck) {
+            if ($fd.Name -eq $Name) {
+                throw "Front Door with name $Name already exists in resource group $ResourceGroupName"
             }
-            Az.FrontDoor.internal\New-AzFrontDoor @PSBoundParameters
         }
+
+        Az.FrontDoor.internal\New-AzFrontDoor @PSBoundParameters
     }
 }

@@ -43,12 +43,9 @@ function New-AzFrontDoorBackendPoolsSettingObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings]::New()
 
-        if ($PSBoundParameters.ContainsKey('EnforceCertificateNameCheck')) {
-            $Object.EnforceCertificateNameCheck = $EnforceCertificateNameCheck
-        }
-        if ($PSBoundParameters.ContainsKey('SendRecvTimeoutSecond')) {
-            $Object.SendRecvTimeoutSecond = $SendRecvTimeoutSecond
-        }
+        $Object.EnforceCertificateNameCheck = $EnforceCertificateNameCheck
+        $Object.SendRecvTimeoutSecond = $SendRecvTimeoutSecond
+        
         return $Object
     }
 }

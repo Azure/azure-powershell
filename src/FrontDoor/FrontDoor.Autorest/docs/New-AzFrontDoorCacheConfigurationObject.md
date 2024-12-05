@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorrulesengineruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorcacheconfigurationobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorRulesEngineRuleObject
+# New-AzFrontDoorCacheConfigurationObject
 
 ## SYNOPSIS
-Create an in-memory object for RulesEngineRule.
+Create an in-memory object for CacheConfiguration.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorRulesEngineRuleObject -Name <String> -Priority <Int32> [-Action <IRulesEngineAction>]
- [-MatchCondition <IRulesEngineMatchCondition[]>] [-MatchProcessingBehavior <String>] [<CommonParameters>]
+New-AzFrontDoorCacheConfigurationObject [-CacheDuration <TimeSpan>] [-DynamicCompression <String>]
+ [-QueryParameter <String>] [-QueryParameterStripDirective <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for RulesEngineRule.
+Create an in-memory object for CacheConfiguration.
 
 ## EXAMPLES
 
@@ -46,11 +46,13 @@ Create an in-memory object for RulesEngineRule.
 
 ## PARAMETERS
 
-### -Action
-Actions to perform on the request and response if all of the match conditions are met.
+### -CacheDuration
+The duration for which the content needs to be cached.
+Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).
+HTTP requires the value to be no more than a year.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction
+Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
 
@@ -61,25 +63,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MatchCondition
-A list of match conditions that must meet in order for the actions of this rule to run.
-Having no match conditions means the actions will always run.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineMatchCondition[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MatchProcessingBehavior
-If this rule is a match should the rules engine continue running the remaining rules or stop.
-If not present, defaults to Continue.
+### -DynamicCompression
+Whether to use dynamic compression for cached content.
 
 ```yaml
 Type: System.String
@@ -93,31 +78,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-A name to refer to this specific rule.
+### -QueryParameter
+query parameters to include or exclude (comma separated).
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Priority
-A priority assigned to this rule.
-.
+### -QueryParameterStripDirective
+Treatment of URL query terms when forming the cache key.
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineRule
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CacheConfiguration
 
 ## NOTES
 

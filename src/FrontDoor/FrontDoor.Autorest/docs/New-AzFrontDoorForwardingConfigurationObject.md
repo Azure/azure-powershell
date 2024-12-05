@@ -14,9 +14,8 @@ Create an in-memory object for ForwardingConfiguration.
 
 ```
 New-AzFrontDoorForwardingConfigurationObject [-BackendPoolId <String>]
- [-CacheConfigurationCacheDuration <TimeSpan>] [-CacheConfigurationDynamicCompression <String>]
- [-CacheConfigurationQueryParameter <String>] [-CacheConfigurationQueryParameterStripDirective <String>]
- [-CustomForwardingPath <String>] [-ForwardingProtocol <String>] [<CommonParameters>]
+ [-CacheConfiguration <ICacheConfiguration>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,58 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CacheConfigurationCacheDuration
-The duration for which the content needs to be cached.
-Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).
-HTTP requires the value to be no more than a year.
+### -CacheConfiguration
+The caching configuration associated with this rule.
 
 ```yaml
-Type: System.TimeSpan
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CacheConfigurationDynamicCompression
-Whether to use dynamic compression for cached content.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CacheConfigurationQueryParameter
-query parameters to include or exclude (comma separated).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CacheConfigurationQueryParameterStripDirective
-Treatment of URL query terms when forming the cache key.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICacheConfiguration
 Parameter Sets: (All)
 Aliases:
 

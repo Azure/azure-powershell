@@ -51,18 +51,12 @@ function New-AzFrontDoorLoadBalancingSettingObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel]::New()
 
-        if ($PSBoundParameters.ContainsKey('AdditionalLatencyMillisecond')) {
-            $Object.AdditionalLatencyMillisecond = $AdditionalLatencyMillisecond
-        }
+        $Object.AdditionalLatencyMillisecond = $AdditionalLatencyMillisecond
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
-        if ($PSBoundParameters.ContainsKey('SampleSize')) {
-            $Object.SampleSize = $SampleSize
-        }
-        if ($PSBoundParameters.ContainsKey('SuccessfulSamplesRequired')) {
-            $Object.SuccessfulSamplesRequired = $SuccessfulSamplesRequired
-        }
+        $Object.SampleSize = $SampleSize
+        $Object.SuccessfulSamplesRequired = $SuccessfulSamplesRequired
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id
         }

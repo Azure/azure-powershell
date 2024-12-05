@@ -77,5 +77,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Write-Host -ForegroundColor Green "Clean resources created for testing."
+    Remove-AzResourceGroup -Name $env.ResourceGroupName
 }
 
