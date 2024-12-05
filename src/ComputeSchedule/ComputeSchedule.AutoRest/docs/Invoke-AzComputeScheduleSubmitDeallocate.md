@@ -13,9 +13,9 @@ virtualMachinesSubmitDeallocate: submitDeallocate for a virtual machine
 ## SYNTAX
 
 ```
-Invoke-AzComputeScheduleSubmitDeallocate -Location <String> -CorrelationId <String> -Deadline <DateTime>
- -DeadlineType <String> -ResourceId <String[]> -Timezone <String> [-SubscriptionId <String>]
- [-RetryCount <Int32>] [-RetryWindowInMinutes <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Invoke-AzComputeScheduleSubmitDeallocate -Location <String> -CorrelationId <String> -DeadlineType <String>
+ -ResourceId <String[]> [-SubscriptionId <String>] [-Deadline <DateTime>] [-RetryCount <Int32>]
+ [-RetryWindowInMinutes <Int32>] [-Timezone <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,7 +193,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

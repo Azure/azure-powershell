@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzComputeScheduleOperationsErrors'))
+if(($null -eq $TestName) -or ($TestName -contains 'AzComputeSchedule'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzComputeScheduleOperatio
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzComputeScheduleTests' {    
+Describe 'AzComputeSchedule' {    
     It 'InvokeSubmitDeallocate' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -30,13 +30,15 @@ Describe 'AzComputeScheduleTests' {
     It 'InvokeExecuteDeallocate' {
         {
             $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-0"
-            $location = $env.Location
-            $correlationId = "5e047015-76af-4b93-87a1-14714c670a9e"
+            $location = "eastus2euap"
+            $correlationId = "5e047015-76af-4b93-87a1-14714c670a9t"
             $subId = $env.SubscriptionId
             $retryCount = 3
             $retryWindowInMinutes = 50
 
-            $executeDeallocateReq = Invoke-AzComputeScheduleExecuteDeallocate -Locationparameter $location -Correlationid $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes
+            $executeDeallocateReq = Invoke-AzComputeScheduleExecuteDeallocate -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes
+            $executeDeallocateReq.Count | Should -BeGreaterOrEqual 1
+
         } | Should -Not -Throw
     }
     

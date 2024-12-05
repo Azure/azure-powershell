@@ -28,8 +28,8 @@ For information on how to develop for `Az.ComputeSchedule`, see [how-to.md](how-
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 0f8b47b1c07039272118cc7e576a548408ba6273
-tag: package-2024-08-15-preview
+commit: fc28a34ea141d75954c5fc5e9b668fa4e7ec4853
+tag: package-2024-10-01
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -71,6 +71,24 @@ directive:
       subject: ScheduledAction
       variant: ^(Get)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+
+#  rename camelCase properties
+  - from: computeschedule.json
+    where: "$.definitions.OperationErrorDetails.properties.timeStamp"
+    transform: >
+        $ = undefined
+  - from: computeschedule.json
+    where: "$.definitions.Schedule.properties.timeZone"
+    transform: >
+        $ = undefined
+  - from: computeschedule.json
+    where: "$.definitions.ResourceOperationDetails.properties.timeZone"
+    transform:  >
+        $ = undefined
+  - from: computeschedule.json
+    where: "$.definitions.Schedule.properties.deadLine"
+    transform:  >
+        $ = undefined
 
 # Rename cmdlets to expose endpoints
   - where:
@@ -151,11 +169,6 @@ directive:
       subject: ScheduledAction
     hide: true
 
-  # - where:
-  #     verb: Stop
-  #     subject: ScheduledAction
-  #   hide: true
-
   - where:
       verb: Get
       subject: ScheduledAction
@@ -217,6 +230,18 @@ directive:
       subject: ^(Submit|Execute)(.*)
       parameter-name: ExecutionParameterOptimizationPreference
     hide: true
+
+  # - where:
+  #     verb: Invoke
+  #     subject: ^(Submit|Execute)(.*)
+  #     parameter-name: ScheduleRequestDeadline
+  #   hide: true
+
+  # - where:
+  #     verb: Invoke
+  #     subject: ^(Submit|Execute)(.*)
+  #     parameter-name: ScheduleRequestTimezone
+  #   hide: true
 
   # Remove the set-* cmdlet
   - where:

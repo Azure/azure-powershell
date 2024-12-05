@@ -15,23 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzComputeScheduleExecu
 }
 
 Describe 'Invoke-AzComputeScheduleExecuteDeallocate' {
-    It 'Cancel' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CancelViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CancelViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CancelViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CancelViaIdentity' -skip {
+    It 'ExecuteExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
