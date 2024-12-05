@@ -16,13 +16,13 @@ Creates a blob query configuration object, which can be used in Get-AzStorageBlo
 ```
 New-AzStorageBlobQueryConfig [-AsCsv] [-RecordSeparator <String>] [-ColumnSeparator <String>]
  [-QuotationCharacter <Char>] [-EscapeCharacter <Char>] [-HasHeader] [-AsJob]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Json
 ```
 New-AzStorageBlobQueryConfig [-AsJson] [-RecordSeparator <String>] [-AsJob]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,6 +138,21 @@ Indicate it represent the data has headers.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Csv
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

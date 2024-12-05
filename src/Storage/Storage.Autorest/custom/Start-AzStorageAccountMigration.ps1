@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -69,8 +68,8 @@ function Start-AzStorageAccountMigration {
 [CmdletBinding(DefaultParameterSetName='CustomerExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CustomerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
     # The name of the storage account within the specified resource group.
@@ -78,8 +77,8 @@ param(
     ${AccountName},
 
     [Parameter(ParameterSetName='CustomerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
     # The name of the resource group within the user's subscription.
@@ -87,8 +86,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CustomerExpanded')]
-    [Parameter(ParameterSetName='CustomerViaJsonString')]
     [Parameter(ParameterSetName='CustomerViaJsonFilePath')]
+    [Parameter(ParameterSetName='CustomerViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -123,17 +122,17 @@ param(
     # SrpAccountMigrationType in ARM contract which is 'accountMigrations'
     ${Type},
 
-    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
-    [System.String]
-    # Json string supplied to the Customer operation
-    ${JsonString},
-
     [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # Path of Json file supplied to the Customer operation
     ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.String]
+    # Json string supplied to the Customer operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -202,92 +201,8 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Storage.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CustomerExpanded = 'Az.Storage.custom\Start-AzStorageAccountMigration';
-            CustomerViaJsonString = 'Az.Storage.custom\Start-AzStorageAccountMigration';
-            CustomerViaJsonFilePath = 'Az.Storage.custom\Start-AzStorageAccountMigration';
-            CustomerViaIdentityExpanded = 'Az.Storage.custom\Start-AzStorageAccountMigration';
-        }
-        if (('CustomerExpanded', 'CustomerViaJsonString', 'CustomerViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
+    process {
+        Write-Warning("After your request to convert the account’s redundancy configuration is validated, the conversion will typically complete in a few days, but can take a few weeks depending on current resource demands in the region, account size, and other factors. The conversion can’t be stopped after being initiated, and for accounts with geo redundancy a failover can’t be initiated while conversion is in progress. The data within the storage account will continue to be accessible with no loss of durability or availability.")
+        Az.Storage.internal\Start-AzStorageAccountMigration @PSBoundParameters
     }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Storage.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
 }
