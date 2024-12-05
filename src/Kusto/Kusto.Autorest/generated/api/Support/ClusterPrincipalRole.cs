@@ -12,6 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterPrincipalRole AllDatabasesAdmin = @"AllDatabasesAdmin";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterPrincipalRole AllDatabasesMonitor = @"AllDatabasesMonitor";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterPrincipalRole AllDatabasesViewer = @"AllDatabasesViewer";
 
         /// <summary>the value for an instance of the <see cref="ClusterPrincipalRole" /> Enum.</summary>
