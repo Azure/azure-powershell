@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorLoadBalancingS
 }
 
 Describe 'New-AzFrontDoorLoadBalancingSettingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
+        $loadBalancingSetting1.Name | Should -Be "loadbalancingsetting1"
+        $loadBalancingSetting1.SampleSize | Should -Be 4
+        $loadBalancingSetting1.SuccessfulSamplesRequired | Should -Be 2
+        $loadBalancingSetting1.AdditionalLatencyMillisecond | Should -Be 0
     }
 }

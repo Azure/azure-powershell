@@ -12,7 +12,7 @@ Create an in-memory object for RoutingRule.
 
 ## SYNTAX
 
-### ForwardingConfiguration (Default)
+### ForwardingParameterSet (Default)
 ```
 New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolName <String>]
  [-CacheDuration <TimeSpan>] [-CustomForwardingPath <String>] [-CustomFragment <String>]
@@ -24,7 +24,7 @@ New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolNam
  [-RuleEngineName <String>] [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
 ```
 
-### FieldsWithRedirectParameterSet
+### RedirectParameterSet
 ```
 New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolName <String>]
  [-CacheDuration <TimeSpan>] [-CustomForwardingPath <String>] [-CustomFragment <String>]

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorHeaderActionOb
 }
 
 Describe 'New-AzFrontDoorHeaderActionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets'  {
+        $headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
+        $headerActions.HeaderActionType | Should -Be "Append"
+        $headerActions.HeaderName | Should -Be "X-Content-Type-Options"
+        $headerActions.Value | Should -Be "nosniff"
     }
 }

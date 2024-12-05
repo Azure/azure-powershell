@@ -15,7 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorRulesEngineAct
 }
 
 Describe 'New-AzFrontDoorRulesEngineActionObject' {
-    It 'ForwardingConfiguration' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ForwardingParameterSet' {
+        $FDName = $env.FrontDoorName
+        $resourceGroupName = $env.ResourceGroupName
+        $subId = $env.SubscriptionId
+        $headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
+        $ruleEngineForwardAction = New-AzFrontDoorRulesEngineActionObject -ResponseHeaderAction $headerActions -ForwardingProtocol "HttpsOnly" -BackendPoolName "backendpool1" -ResourceGroupName $resourceGroupName -FrontDoorName $FDName -QueryParameterStripDirective "StripNone" -DynamicCompression "Disabled" -EnableCaching $true
+        $ruleEngineForwardAction.ForwardingProtocol | Should -Be "HttpsOnly"
+        $ruleEngineForwardAction.RouteConfigurationOverride.BackendPoolId | Should -Be "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/frontDoors/$FDName/backendPools/backendpool1"
+        $ruleEngineForwardAction.RouteConfigurationOverride.CacheConfiguration.GetType() | Should -Be "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CacheConfiguration"
+        $ruleEngineForwardAction.RouteConfigurationOverride.CacheConfiguration.DynamicCompression | Should -Be "Disabled"
+        $ruleEngineForwardAction.RouteConfigurationOverride.CacheConfiguration.QueryParameterStripDirective | Should -Be "StripNone"
+        $ruleEngineForwardAction.RouteConfigurationOverride.CacheConfiguration.QueryParameter | Should -Be $null
+        $ruleEngineForwardAction.RouteConfigurationOverride.CacheConfiguration.CacheDuration | Should -Be $null
+    }
+    It 'RedirectParameterSet' {
+        $ruleEngineRedirectAction = New-AzFrontDoorRulesEngineActionObject -RedirectProtocol "MatchRequest" -CustomHost "www.contoso.com" -RedirectType "Moved"
+        $ruleEngineRedirectAction.RouteConfigurationOverride.GetType() | Should -Be "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models"
+        $ruleEngineRedirectAction.RouteConfigurationOverride.RedirectProtocol | Should -Be "MatchRequest"
+        $ruleEngineRedirectAction.RouteConfigurationOverride.RedirectType | Should -Be "Moved"
+        $ruleEngineRedirectAction.RouteConfigurationOverride.CustomHost | Should -Be "www.contoso.com"
+        $ruleEngineRedirectAction.RouteConfigurationOverride.CustomPath | Should -Be ""
+        $ruleEngineRedirectAction.RouteConfigurationOverride.CustomFragment | Should -Be $null
     }
 }

@@ -16,6 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorRulesEngineMat
 
 Describe 'New-AzFrontDoorRulesEngineMatchConditionObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $redirectConditions = New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable "RequestHeader" -Operator "Equal" -MatchValue "redirect" -Transform "LowerCase" -Selector "Rules-Engine-Route-Forward" -NegateCondition $false
+        $redirectConditions.MatchVariable | Should -Be @("RequestHeader")
+        $redirectConditions.Operator | Should -Be "Equal"
+        $redirectConditions.MatchValue | Should -Be "redirect"
+        $redirectConditions.Transform | Should -Be @("LowerCase")
+        $redirectConditions.Selector | Should -Be "Rules-Engine-Route-Forward"
+        $redirectConditions.NegateCondition | Should -Be $false
     }
 }

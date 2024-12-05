@@ -15,7 +15,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorRoutingRuleObj
 }
 
 Describe 'New-AzFrontDoorRoutingRuleObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ForwardingParameterSet' {
+        $FDName = $env.FrontDoorName
+        $resourceGroupName = $env.ResourceGroupName
+        $subId = $env.SubscriptionId
+        $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $FDName -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+        $routingrule1.Name | Should -Be "routingrule1"
+        $routingrule1.FrontendEndpoint[0].id | Should -Be "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/frontDoors/$FDName/FrontendEndpoints/frontendEndpoint1"
+        $routingrule1.AcceptedProtocol | Should -Be @("Http", "Https")
+        $routingrule1.PatternsToMatch | Should -Be @("/*")
+        $routingrule1.RouteConfiguration.GetType() | Should -Be "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ForwardingConfiguration"
+        $routingrule1.RouteConfiguration.BackendPoolId | Should -Be "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/frontDoors/$FDName/BackendPools/backendPool1"
+        $routingrule1.RouteConfiguration.CustomForwardingPath | Should -Be $null
+        $routingrule1.RouteConfiguration.ForwardingProtocol | Should -Be "MatchRequest"
+    }
+
+    It 'RedirectParameterSet' {
+        $FDName = $env.FrontDoorName
+        $resourceGroupName = $env.ResourceGroupName
+        $subId = $env.SubscriptionId
+        $routingrule2 = New-AzFrontDoorRoutingRuleObject -Name "routingrule2" -FrontDoorName $FDName -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -CustomFragment "#fragment"
+        $routingrule2.Name | Should -Be "routingrule2"
+        $routingrule2.FrontendEndpoint[0].id | Should -Be "/subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/frontDoors/$FDName/FrontendEndpoints/frontendEndpoint1"
+        $routingrule2.AcceptedProtocol | Should -Be @("Http", "Https")
+        $routingrule2.PatternsToMatch | Should -Be @("/*")
+        $routingrule2.RouteConfiguration.GetType() | Should -Be "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RedirectConfiguration"
+        $routingrule2.RouteConfiguration.RedirectProtocol | Should -Be "MatchRequest"
+        $routingrule2.RouteConfiguration.RedirectType | Should -Be "Moved"
+        $routingrule2.RouteConfiguration.CustomFragment | Should -Be "#fragment"
+        $routingrule2.RouteConfiguration.CustomHost | Should -Be ""
+        $routingrule2.RouteConfiguration.CustomPath | Should -Be ""
     }
 }

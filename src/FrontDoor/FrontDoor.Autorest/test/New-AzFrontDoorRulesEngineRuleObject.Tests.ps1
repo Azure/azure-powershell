@@ -16,6 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorRulesEngineRul
 
 Describe 'New-AzFrontDoorRulesEngineRuleObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
+        $ruleEngineResponseHeaderAction = New-AzFrontDoorRulesEngineActionObject -ResponseHeaderAction $headerActions	
+        $ruleEngineResponseHeaderRule = New-AzFrontDoorRulesEngineRuleObject -Name rule101 -Priority 1 -Action $ruleEngineResponseHeaderAction -MatchCondition $conditions
+        $ruleEngineResponseHeaderRule.Name | Should -Be "rule101"
+        $ruleEngineResponseHeaderRule.Priority | Should -Be 1
+        $ruleEngineResponseHeaderRule.Action.GetType() | Should -Be "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction"
+        $ruleEngineResponseHeaderRule.Action.ActionRequestHeaderAction | Should -Be $null
+        $ruleEngineResponseHeaderRule.Action.ActionResponseHeaderAction | Should -Be $headerActions
+        $ruleEngineResponseHeaderRule.MatchCondition.GetType() | Should -Be "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineMatchCondition[]"
+        $ruleEngineResponseHeaderRule.MatchCondition | Should -Be $conditions
+        $ruleEngineResponseHeaderRule.MatchProcessingBehavior | Should -Be $null
     }
 }

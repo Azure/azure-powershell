@@ -12,7 +12,7 @@ Create an in-memory object for RulesEngineAction.
 
 ## SYNTAX
 
-### ForwardingConfiguration (Default)
+### ForwardingParameterSet (Default)
 ```
 New-AzFrontDoorRulesEngineActionObject [-BackendPoolName <String>] [-CacheDuration <TimeSpan>]
  [-CustomForwardingPath <String>] [-CustomFragment <String>] [-CustomHost <String>] [-CustomPath <String>]
@@ -23,7 +23,7 @@ New-AzFrontDoorRulesEngineActionObject [-BackendPoolName <String>] [-CacheDurati
  [-RouteConfigurationOverride <IRouteConfiguration>] [<CommonParameters>]
 ```
 
-### RedirectConfiguration
+### RedirectParameterSet
 ```
 New-AzFrontDoorRulesEngineActionObject [-BackendPoolName <String>] [-CacheDuration <TimeSpan>]
  [-CustomForwardingPath <String>] [-CustomFragment <String>] [-CustomHost <String>] [-CustomPath <String>]
