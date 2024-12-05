@@ -16,7 +16,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzComputeSchedule'))
 
 Describe 'AzComputeSchedule' {    
     It 'InvokeSubmitDeallocate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-1"
+            $location = $env.Location
+            $correlationId = [guid]::NewGuid().ToString()
+            $subId = $env.SubscriptionId
+            $retryCount = 3
+            $retryWindowInMinutes = 20
+            $timezone = "UTC"
+            $deadlineType = "InitiateAt"
+            $now = Get-Date
+            $deadline = $now.AddHours(6)
+
+            $submitDeallocateReq = Invoke-AzComputeScheduleSubmitDeallocate -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone
+            $submitDeallocateReq.Count | Should -BeGreaterOrEqual 1
+
+        } | Should -Not -Throw
     }
     
     It 'InvokeSubmitStart' -skip {
@@ -37,7 +52,11 @@ Describe 'AzComputeSchedule' {
             $retryWindowInMinutes = 50
 
             $executeDeallocateReq = Invoke-AzComputeScheduleExecuteDeallocate -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes
-            $executeDeallocateReq.Count | Should -BeGreaterOrEqual 1
+            $executeDeallocateReq.Results.Count | Should -BeGreaterOrEqual 1
+
+            foreach ($item in $executeDeallocateReq.Results) {
+                $item.ErrorCode | Should -NotBeNull 
+                }
 
         } | Should -Not -Throw
     }
