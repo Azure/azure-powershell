@@ -17,11 +17,11 @@
 <#
 .Synopsis
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration start the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 .Description
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration start the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 .Example
 Start-AzStorageAccountMigration -AccountName myaccount -ResourceGroupName myresourcegroup -TargetSku Standard_LRS -Name migration1 -AsJob
@@ -38,6 +38,8 @@ $properties = '{
 # Before executing the cmdlet, make sure you have a json file that contains {"properties": {"targetSkuName": <TargetSKU>}} 
 Start-AzStorageAccountMigration -ResourceGroupName myresourcegroup -AccountName myaccount -JsonFilePath properties.json -AsJob
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 .Outputs
@@ -61,78 +63,94 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
+
+PARAMETER <IStorageAccountMigration>: The parameters or status associated with an ongoing or enqueued storage account migration in order to update its current SKU or region.
+  DetailTargetSkuName <String>: Target sku name for the account
+  [Name <String>]: current value is 'default' for customer initiated migration
+  [Type <String>]: SrpAccountMigrationType in ARM contract which is 'accountMigrations'
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/start-azstorageaccountmigration
 #>
 function Start-AzStorageAccountMigration {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='CustomerExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='StartExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='CustomerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
     # The name of the storage account within the specified resource group.
     # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
     ${AccountName},
 
-    [Parameter(ParameterSetName='CustomerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
     # The name of the resource group within the user's subscription.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='CustomerExpanded')]
-    [Parameter(ParameterSetName='CustomerViaJsonFilePath')]
-    [Parameter(ParameterSetName='CustomerViaJsonString')]
+    [Parameter(ParameterSetName='Start')]
+    [Parameter(ParameterSetName='StartExpanded')]
+    [Parameter(ParameterSetName='StartViaJsonFilePath')]
+    [Parameter(ParameterSetName='StartViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CustomerViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='CustomerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Start', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration]
+    # The parameters or status associated with an ongoing or enqueued storage account migration in order to update its current SKU or region.
+    ${Parameter},
+
+    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # Target sku name for the account
     ${TargetSku},
 
-    [Parameter(ParameterSetName='CustomerExpanded')]
-    [Parameter(ParameterSetName='CustomerViaIdentityExpanded')]
+    [Parameter(ParameterSetName='StartExpanded')]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # current value is 'default' for customer initiated migration
     ${Name},
 
-    [Parameter(ParameterSetName='CustomerExpanded')]
-    [Parameter(ParameterSetName='CustomerViaIdentityExpanded')]
+    [Parameter(ParameterSetName='StartExpanded')]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # SrpAccountMigrationType in ARM contract which is 'accountMigrations'
     ${Type},
 
-    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
-    # Path of Json file supplied to the Customer operation
+    # Path of Json file supplied to the Start operation
     ${JsonFilePath},
 
-    [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
-    # Json string supplied to the Customer operation
+    # Json string supplied to the Start operation
     ${JsonString},
 
     [Parameter()]
@@ -211,12 +229,14 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            CustomerExpanded = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerExpanded';
-            CustomerViaIdentityExpanded = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerViaIdentityExpanded';
-            CustomerViaJsonFilePath = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerViaJsonFilePath';
-            CustomerViaJsonString = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerViaJsonString';
+            Start = 'Az.Storage.private\Start-AzStorageAccountMigration_Start';
+            StartExpanded = 'Az.Storage.private\Start-AzStorageAccountMigration_StartExpanded';
+            StartViaIdentity = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaIdentity';
+            StartViaIdentityExpanded = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaIdentityExpanded';
+            StartViaJsonFilePath = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaJsonFilePath';
+            StartViaJsonString = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaJsonString';
         }
-        if (('CustomerExpanded', 'CustomerViaJsonFilePath', 'CustomerViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Start', 'StartExpanded', 'StartViaJsonFilePath', 'StartViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
