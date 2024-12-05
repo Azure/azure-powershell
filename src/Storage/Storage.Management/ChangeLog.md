@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning message for account migration cmdlet.
+    - `Start-AzStorageAccountMigration`
 * Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
     - `New-AzStorageContext`
 * Upgraded Azure.Storage.Blobs to 12.23.0
