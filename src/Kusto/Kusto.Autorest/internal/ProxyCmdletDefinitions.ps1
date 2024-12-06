@@ -25,12 +25,12 @@ Lists available operations for the Microsoft.Kusto provider.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperation
 #>
 function Get-AzKustoOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -130,27 +130,27 @@ Checks that the data connection parameters are valid.
 .Description
 Checks that the data connection parameters are valid.
 .Example
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" 
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase"
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" 
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidation
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidation
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidationResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -181,7 +181,7 @@ PARAMETER <IDataConnectionValidation>: Class representing an data connection val
 https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidationResult])]
 [CmdletBinding(DefaultParameterSetName='DataExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Data', Mandatory)]
@@ -225,7 +225,7 @@ param(
     [Parameter(ParameterSetName='Data', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='DataViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidation]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidation]
     # Class representing an data connection validation.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -376,9 +376,9 @@ Creates or updates a database.
 New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -391,7 +391,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -431,7 +431,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase]
     # Class representing a Kusto database.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -568,16 +568,16 @@ Creates or updates a data connection.
 .Description
 Creates or updates a data connection.
 .Example
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "EventsMapping"
 .Example
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 .Example
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -590,7 +590,7 @@ PARAMETER <IDataConnection>: Class representing an data connection.
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -628,7 +628,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection]
     # Class representing an data connection.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -782,11 +782,11 @@ $2ds = New-TimeSpan -Days 2
 Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -816,7 +816,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -869,7 +869,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase]
     # Class representing a Kusto database.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -1010,27 +1010,27 @@ Updates a data connection.
 .Description
 Updates a data connection.
 .Example
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1060,7 +1060,7 @@ PARAMETER <IDataConnection>: Class representing an data connection.
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
 #>
 function Update-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -1112,7 +1112,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection]
     # Class representing an data connection.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
