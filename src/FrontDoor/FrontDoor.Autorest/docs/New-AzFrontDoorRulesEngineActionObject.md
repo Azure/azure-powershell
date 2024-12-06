@@ -16,11 +16,12 @@ Create an in-memory object for RulesEngineAction.
 ```
 New-AzFrontDoorRulesEngineActionObject [-BackendPoolName <String>] [-CacheDuration <TimeSpan>]
  [-CustomForwardingPath <String>] [-CustomFragment <String>] [-CustomHost <String>] [-CustomPath <String>]
- [-CustomQueryString <String>] [-DynamicCompression <String>] [-ForwardingProtocol <String>]
- [-FrontDoorName <String>] [-QueryParameter <String>] [-QueryParameterStripDirective <String>]
- [-RedirectProtocol <String>] [-RedirectType <String>] [-RequestHeaderAction <IHeaderAction[]>]
- [-ResourceGroupName <String>] [-ResponseHeaderAction <IHeaderAction[]>]
- [-RouteConfigurationOverride <IRouteConfiguration>] [<CommonParameters>]
+ [-CustomQueryString <String>] [-DynamicCompression <String>] [-EnableCaching <Boolean>]
+ [-ForwardingProtocol <String>] [-FrontDoorName <String>] [-QueryParameter <String>]
+ [-QueryParameterStripDirective <String>] [-RedirectProtocol <String>] [-RedirectType <String>]
+ [-RequestHeaderAction <IHeaderAction[]>] [-ResourceGroupName <String>]
+ [-ResponseHeaderAction <IHeaderAction[]>] [-RouteConfigurationOverride <IRouteConfiguration>]
+ [<CommonParameters>]
 ```
 
 ### RedirectParameterSet
@@ -185,6 +186,21 @@ Whether to use dynamic compression for cached content.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableCaching
+
+
+```yaml
+Type: System.Boolean
+Parameter Sets: ForwardingParameterSet
 Aliases:
 
 Required: False

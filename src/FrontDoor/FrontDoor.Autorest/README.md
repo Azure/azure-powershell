@@ -69,6 +69,7 @@ directive:
     - RouteConfiguration
     - PolicySettingsLogScrubbing
     - CacheConfiguration
+    - RulesEngineAction
 
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
@@ -102,10 +103,10 @@ directive:
     #   cmdlet-name: New-AzFrontDoorLoadBalancingSettingObject
     # - model-name: RoutingRule
     #   cmdlet-name: New-AzFrontDoorRoutingRuleObject
-    - model-name: RulesEngineAction
-      cmdlet-name: New-AzFrontDoorRulesEngineActionObject
-    - model-name: RulesEngineMatchCondition
-      cmdlet-name: New-AzFrontDoorRulesEngineMatchConditionObject
+    # - model-name: RulesEngineAction
+    #   cmdlet-name: New-AzFrontDoorRulesEngineActionObject
+    # - model-name: RulesEngineMatchCondition
+    #   cmdlet-name: New-AzFrontDoorRulesEngineMatchConditionObject
     # - model-name: RulesEngineRule
     #   cmdlet-name: New-AzFrontDoorRulesEngineRuleObject
     # - model-name: CustomRule
@@ -382,6 +383,22 @@ directive:
       model-name: MatchCondition
       property-name: Operator
     set:
-      property-name: OperatorProperty 
+      property-name: OperatorProperty
+
+  - where:
+      model-name: RulesEngineMatchCondition
+      property-name: RulesEngineMatchValue
+    set:
+      property-name: MatchValue
+  - where:
+      model-name: RulesEngineMatchCondition
+      property-name: RulesEngineMatchVariable
+    set:
+      property-name: MatchVariable
+  - where:
+      model-name: RulesEngineMatchCondition
+      property-name: RulesEngineOperator
+    set:
+      property-name: Operator
 
 ```

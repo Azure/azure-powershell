@@ -13,9 +13,9 @@ Create an in-memory object for RulesEngineMatchCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorRulesEngineMatchConditionObject -RulesEngineMatchValue <String[]>
- -RulesEngineMatchVariable <String> -RulesEngineOperator <String> [-NegateCondition <Boolean>]
- [-Selector <String>] [-Transform <String[]>] [<CommonParameters>]
+New-AzFrontDoorRulesEngineMatchConditionObject -MatchValue <String[]> -MatchVariable <String>
+ -Operator <String> [-NegateCondition <Boolean>] [-Selector <String>] [-Transform <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,22 +47,7 @@ Create an in-memory object for RulesEngineMatchCondition.
 
 ## PARAMETERS
 
-### -NegateCondition
-Describes if this is negate condition or not.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RulesEngineMatchValue
+### -MatchValue
 Match values to match against.
 The operator will apply to each value in here with OR semantics.
 If any of them match the variable with the given operator this match condition is considered a match.
@@ -79,7 +64,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RulesEngineMatchVariable
+### -MatchVariable
 Match Variable.
 
 ```yaml
@@ -94,7 +79,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RulesEngineOperator
+### -NegateCondition
+Describes if this is negate condition or not.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Operator
 Describes operator to apply to the match condition.
 
 ```yaml

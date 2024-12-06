@@ -35,15 +35,15 @@ function New-AzFrontDoorRulesEngineMatchConditionObject {
         $NegateCondition = $false,
         [Parameter(Mandatory, HelpMessage="Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.")]
         [string[]]
-        $RulesEngineMatchValue,
+        $MatchValue,
         [Parameter(Mandatory, HelpMessage="Match Variable.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("IsMobile", "RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestPath", "RequestFilename", "RequestFilenameExtension", "RequestHeader", "RequestBody", "RequestScheme")]
         [string]
-        $RulesEngineMatchVariable,
+        $MatchVariable,
         [Parameter(Mandatory, HelpMessage="Describes operator to apply to the match condition.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith")]
         [string]
-        $RulesEngineOperator = "Any",
+        $Operator = "Any",
         [Parameter(HelpMessage="Name of selector in RequestHeader or RequestBody to be matched.")]
         [string]
         $Selector,
@@ -57,13 +57,13 @@ function New-AzFrontDoorRulesEngineMatchConditionObject {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineMatchCondition]::New()
 
         $Object.NegateCondition = $NegateCondition
-        if ($PSBoundParameters.ContainsKey('RulesEngineMatchValue')) {
-            $Object.RulesEngineMatchValue = $RulesEngineMatchValue
+        if ($PSBoundParameters.ContainsKey('MatchValue')) {
+            $Object.MatchValue = $MatchValue
         }
-        if ($PSBoundParameters.ContainsKey('RulesEngineMatchVariable')) {
-            $Object.RulesEngineMatchVariable = $RulesEngineMatchVariable
+        if ($PSBoundParameters.ContainsKey('MatchVariable')) {
+            $Object.MatchVariable = $MatchVariable
         }
-        $Object.RulesEngineOperator = $RulesEngineOperator
+        $Object.Operator = $Operator
         if ($PSBoundParameters.ContainsKey('Selector')) {
             $Object.Selector = $Selector
         }

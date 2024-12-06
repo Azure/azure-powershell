@@ -30,7 +30,7 @@ function New-AzFrontDoorRulesEngineRuleObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Actions to perform on the request and response if all of the match conditions are met.")]
+        [Parameter(Mandatory, HelpMessage="Actions to perform on the request and response if all of the match conditions are met.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction]
         $Action,
         [Parameter(HelpMessage="A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.")]
@@ -53,8 +53,7 @@ function New-AzFrontDoorRulesEngineRuleObject {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineRule]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
-            $Object.ActionRequestHeaderAction = $Action.ActionRequestHeaderAction
-            $Object.ActionResponseHeaderAction = $Action.ActionResponseHeaderAction
+            $Object.Action = $Action
         }
         if ($PSBoundParameters.ContainsKey('MatchCondition')) {
             $Object.MatchCondition = $MatchCondition

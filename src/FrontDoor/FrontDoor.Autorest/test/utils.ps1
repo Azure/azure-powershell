@@ -52,24 +52,24 @@ function setupEnv() {
     $env.Add("ResourceGroupName", $resourceGroupName)
 
     Write-Host -ForegroundColor Green "Start to create test frontdoor."
-    $FDName = 'testps-fd-' + (RandomString -allChars $false -len 4)
+    $frontDoorName = 'testps-fd-' + (RandomString -allChars $false -len 4)
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $hostName = "$FDName.azurefd.net"
-    $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $FDName -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+    $hostName = "$frontDoorName.azurefd.net"
+    $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $frontDoorName -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
     $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
     $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
     $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
-    $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $FDName -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
+    $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $frontDoorName -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
     $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
-    New-AzFrontDoor -Name $FDName -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
-    $env.Add("FrontDoorName", $FDName)
+    New-AzFrontDoor -Name $frontDoorName -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+    $env.Add("FrontDoorName", $frontDoorName)
 
-    Write-Host -ForegroundColor Green "Successfully created frontdoor $($FDName)."
+    Write-Host -ForegroundColor Green "Successfully created frontdoor $($frontDoorName)."
 
     Write-Host -ForegroundColor Green "Start to create test rules engine."
 
-    $conditions = New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable "RequestHeader" -Operator "Equal" -MatchValue "forward" -Transform "LowerCase" -Selector "Rules-Engine-Route-Forward" -NegateCondition $false
+    $conditions = New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable "RequestHeader" -Operator "Equal" -MatchValue "forward" -Transform "Lowercase" -Selector "Rules-Engine-Route-Forward" -NegateCondition $false
 	$headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
 	$ruleEngineResponseHeaderAction = New-AzFrontDoorRulesEngineActionObject -ResponseHeaderAction $headerActions	
 	$ruleEngineResponseHeaderRule = New-AzFrontDoorRulesEngineRuleObject -Name "rule101" -Priority 1 -Action $ruleEngineResponseHeaderAction -MatchCondition $conditions
@@ -77,7 +77,7 @@ function setupEnv() {
 	$ruleEngineForwardAction = New-AzFrontDoorRulesEngineActionObject -ForwardingProtocol "HttpsOnly" -BackendPoolName "backendpool1" -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -QueryParameterStripDirective "StripNone" -DynamicCompression "Disabled" -EnableCaching $true
 	$ruleEngineForwardRule = New-AzFrontDoorRulesEngineRuleObject -Name rule102 -Priority 2 -Action $ruleEngineForwardAction -MatchCondition $conditions
 
-	$redirectConditions = New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable "RequestHeader" -Operator Equal -MatchValue "redirect" -Transform "LowerCase" -Selector "Rules-Engine-Route-Forward" -NegateCondition $false
+	$redirectConditions = New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable "RequestHeader" -Operator Equal -MatchValue "redirect" -Transform "Lowercase" -Selector "Rules-Engine-Route-Forward" -NegateCondition $false
 	$ruleEngineRedirectAction = New-AzFrontDoorRulesEngineActionObject -RedirectProtocol "MatchRequest" -CustomHost "www.contoso.com" -RedirectType "Moved"
 	$ruleEngineRedirectRule = New-AzFrontDoorRulesEngineRuleObject -Name "rule103" -Priority 3 -Action $ruleEngineRedirectAction -MatchCondition $redirectConditions
 

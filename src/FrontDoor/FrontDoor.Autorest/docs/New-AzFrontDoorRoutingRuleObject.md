@@ -17,7 +17,7 @@ Create an in-memory object for RoutingRule.
 New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolName <String>]
  [-CacheDuration <TimeSpan>] [-CustomForwardingPath <String>] [-CustomFragment <String>]
  [-CustomHost <String>] [-CustomPath <String>] [-CustomQueryString <String>] [-DynamicCompression <String>]
- [-EnabledState <String>] [-ForwardingProtocol <String>] [-FrontDoorName <String>]
+ [-EnableCaching <Boolean>] [-EnabledState <String>] [-ForwardingProtocol <String>] [-FrontDoorName <String>]
  [-FrontendEndpointName <String[]>] [-Id <String>] [-Name <String>] [-PatternsToMatch <String[]>]
  [-QueryParameter <String>] [-QueryParameterStripDirective <String>] [-RedirectProtocol <String>]
  [-RedirectType <String>] [-ResourceGroupName <String>] [-RouteConfiguration <IRouteConfiguration>]
@@ -202,6 +202,21 @@ Whether to use dynamic compression for cached content.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableCaching
+
+
+```yaml
+Type: System.Boolean
+Parameter Sets: ForwardingParameterSet
 Aliases:
 
 Required: False

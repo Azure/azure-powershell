@@ -27,9 +27,9 @@ https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorrulese
 #>
 function New-AzFrontDoorRulesEngineActionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction')]
+    [CmdletBinding(DefaultParameterSetName= 'ForwardingParameterSet')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
         [Parameter(HelpMessage="A list of header actions to apply from the request from AFD to the origin.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]]
         $RequestHeaderAction,
@@ -40,71 +40,71 @@ function New-AzFrontDoorRulesEngineActionObject {
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRouteConfiguration]
         $RouteConfigurationOverride,
 
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         $BackendPoolName,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="The name of the Front Door to which this routing rule belongs.")]
         [string]
         $FrontDoorName,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="The resource group name that the RoutingRule will be created in.")]
         [string]
         $ResourceGroupName,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year.")]
         [System.TimeSpan]
         $CacheDuration,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="Whether to use dynamic compression for cached content.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
         $DynamicCompression,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="query parameters to include or exclude (comma separated).")]
         [string]
         $QueryParameter,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="Treatment of URL query terms when forming the cache key.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("StripNone", "StripAll", "StripOnly", "StripAllExcept")]
         [string]
         $QueryParameterStripDirective,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.")]
         [string]
         $CustomForwardingPath,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [Parameter(HelpMessage="Protocol this rule will use when forwarding traffic to backends.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
         [string]
         $ForwardingProtocol,
-        [Parameter(ParameterSetName= 'ForwardingParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'ForwardingParameterSet')]
         [bool]
         $EnableCaching,
         
-        [Parameter(ParameterSetName= 'RedirectParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'RedirectParameterSet')]
         [Parameter(HelpMessage="Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.")]
         [string]
         $CustomFragment,
-        [Parameter(ParameterSetName= 'RedirectParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'RedirectParameterSet')]
         [Parameter(HelpMessage="Host to redirect. Leave empty to use the incoming host as the destination host.")]
         [string]
         $CustomHost,
-        [Parameter(ParameterSetName= 'RedirectParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'RedirectParameterSet')]
         [Parameter(HelpMessage="The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.")]
         [string]
         $CustomPath,
-        [Parameter(ParameterSetName= 'RedirectParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'RedirectParameterSet')]
         [Parameter(HelpMessage="The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.")]
         [string]
         $CustomQueryString,
-        [Parameter(ParameterSetName= 'RedirectParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'RedirectParameterSet')]
         [Parameter(HelpMessage="The protocol of the destination to where the traffic is redirected.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
         [string]
         $RedirectProtocol,
-        [Parameter(ParameterSetName= 'RedirectParameterSet', DontShow)]
+        [Parameter(ParameterSetName= 'RedirectParameterSet')]
         [Parameter(HelpMessage="The redirect type the rule will use when redirecting traffic.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Moved", "Found", "TemporaryRedirect", "PermanentRedirect")]
         [string]
@@ -114,6 +114,7 @@ function New-AzFrontDoorRulesEngineActionObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction]::New()
         $subId = (Get-AzContext).Subscription.Id
+        $nullOverride = $false
         
         if ($PSBoundParameters.ContainsKey('RequestHeaderAction')) {
             $Object.RequestHeaderAction = $RequestHeaderAction
@@ -124,6 +125,24 @@ function New-AzFrontDoorRulesEngineActionObject {
 
         switch ($PSCmdlet.ParameterSetName) {
             "ForwardingParameterSet" {
+                if (
+                        !$PSBoundParameters.ContainsKey("BackendPoolName") -and 
+                        !$PSBoundParameters.ContainsKey("FrontDoorName") -and 
+                        !$PSBoundParameters.ContainsKey("ResourceGroupName") -and 
+                        !$PSBoundParameters.ContainsKey("EnableCaching") -and 
+                        !$PSBoundParameters.ContainsKey("ForwardingProtocol") -and 
+                        !$PSBoundParameters.ContainsKey("QueryParameterStripDirective") -and 
+                        !$PSBoundParameters.ContainsKey("DynamicCompression") -and 
+                        !$PSBoundParameters.ContainsKey("QueryParameter") -and 
+                        !$PSBoundParameters.ContainsKey("CacheDuration") -and 
+                        !$PSBoundParameters.ContainsKey("CustomForwardingPath") -and 
+                        !$PSBoundParameters.ContainsKey("CacheDuration")
+                    )
+                {
+                    $nullOverride = $true
+                    break
+                }
+
                 $ForwardingConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ForwardingConfiguration]::New()
 
                 $BackendPoolId = "/subscriptions/$subid/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/frontDoors/$FrontDoorName/BackendPools/$BackendPoolName"
@@ -152,6 +171,7 @@ function New-AzFrontDoorRulesEngineActionObject {
                 $ForwardingConfiguration.ForwardingProtocol = $PSBoundParameters.ContainsKey('ForwardingProtocol')? $ForwardingProtocol : 'MatchRequest'
 
                 $Object.RouteConfigurationOverride = $ForwardingConfiguration
+                break
             }
             "RedirectParameterSet" {
                 $RedirectConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RedirectConfiguration]::New()
@@ -168,10 +188,12 @@ function New-AzFrontDoorRulesEngineActionObject {
                 $RedirectConfiguration.RedirectType = $PSBoundParameters.ContainsKey('RedirectType')? $RedirectType : 'Moved'
 
                 $Object.RouteConfigurationOverride = $RedirectConfiguration
+                break
             }
-            default {
-                $Object.RouteConfiguration = $null
-            }
+        }
+
+        if ( ($Object.RequestHeaderAction.Count -eq 0) -and ($Object.ResponseHeaderAction.Count -eq 0) -and ($true -eq $nullOverride) ) {
+            throw "Rules engine action must contain at least one of the following actions: RequestHeaderActions, ResponseHeaderActions, or RouteConfigurationOverride "
         }
 
         return $Object
