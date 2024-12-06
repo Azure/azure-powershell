@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorWafLogScrubbin
 }
 
 Describe 'New-AzFrontDoorWafLogScrubbingRuleObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
+        $LogScrubbingRule.MatchVariable | Should -Be "RequestHeaderNames"
+        $LogScrubbingRule.SelectorMatchOperator | Should -Be "EqualsAny"
+        $LogScrubbingRule.State | Should -Be "Enabled"
     }
 }

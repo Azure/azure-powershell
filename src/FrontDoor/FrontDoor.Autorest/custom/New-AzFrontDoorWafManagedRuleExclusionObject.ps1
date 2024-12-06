@@ -33,6 +33,7 @@ function New-AzFrontDoorWafManagedRuleExclusionObject {
         [Parameter(Mandatory, HelpMessage="The variable type to be excluded.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RequestHeaderNames", "RequestCookieNames", "QueryStringArgNames", "RequestBodyPostArgNames", "RequestBodyJsonArgNames")]
         [string]
+        [Alias("Variable")]
         $MatchVariable,
         [Parameter(Mandatory, HelpMessage="Selector value for which elements in the collection this exclusion applies to.")]
         [string]
@@ -40,6 +41,7 @@ function New-AzFrontDoorWafManagedRuleExclusionObject {
         [Parameter(Mandatory, HelpMessage="Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Equals", "Contains", "StartsWith", "EndsWith", "EqualsAny")]
         [string]
+        [Alias("Operator")]
         $SelectorMatchOperator
     )
 

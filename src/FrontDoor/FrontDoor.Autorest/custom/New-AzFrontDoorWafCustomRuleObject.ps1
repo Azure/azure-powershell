@@ -82,9 +82,7 @@ function New-AzFrontDoorWafCustomRuleObject {
             $Object.Name = $Name
         }
         $Object.Priority = $Priority
-        if ($PSBoundParameters.ContainsKey('RateLimitDurationInMinute')) {
-            $Object.RateLimitDurationInMinute = $RateLimitDurationInMinute
-        }
+        $Object.RateLimitDurationInMinute = $RateLimitDurationInMinute
         if ($PSBoundParameters.ContainsKey('RateLimitThreshold')) {
             $Object.RateLimitThreshold = $RateLimitThreshold
         }

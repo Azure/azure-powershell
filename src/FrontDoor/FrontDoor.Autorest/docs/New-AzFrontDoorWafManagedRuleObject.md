@@ -98,7 +98,7 @@ Defines the rule set type to use.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Type
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ Defines the version of the rule set to use.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Version
 
 Required: True
 Position: Named

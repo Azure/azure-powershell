@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Disable-AzFrontDoorFrontendEndpointHttps",
+      "name": "Disable-AzFrontDoorCustomDomainHttps",
       "description": "Disables a frontendEndpoint for HTTPS traffic",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/disable-azfrontdoorfrontendendpointhttps"
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/disable-azfrontdoorcustomdomainhttps"
         },
         "parameterSets": [
           {

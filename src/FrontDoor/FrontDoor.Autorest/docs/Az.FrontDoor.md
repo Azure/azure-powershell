@@ -11,10 +11,10 @@ Locale: en-US
 Microsoft Azure PowerShell: FrontDoor cmdlets
 
 ## Az.FrontDoor Cmdlets
-### [Disable-AzFrontDoorFrontendEndpointHttps](Disable-AzFrontDoorFrontendEndpointHttps.md)
+### [Disable-AzFrontDoorCustomDomainHttps](Disable-AzFrontDoorCustomDomainHttps.md)
 Disables a frontendEndpoint for HTTPS traffic
 
-### [Enable-AzFrontDoorFrontendEndpointHttps](Enable-AzFrontDoorFrontendEndpointHttps.md)
+### [Enable-AzFrontDoorCustomDomainHttps](Enable-AzFrontDoorCustomDomainHttps.md)
 Enables a frontendEndpoint for HTTPS traffic
 
 ### [Get-AzFrontDoor](Get-AzFrontDoor.md)

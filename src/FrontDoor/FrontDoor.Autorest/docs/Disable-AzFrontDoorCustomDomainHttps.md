@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/disable-azfrontdoorfrontendendpointhttps
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/disable-azfrontdoorcustomdomainhttps
 schema: 2.0.0
 ---
 
-# Disable-AzFrontDoorFrontendEndpointHttps
+# Disable-AzFrontDoorCustomDomainHttps
 
 ## SYNOPSIS
 Disables a frontendEndpoint for HTTPS traffic
@@ -14,22 +14,21 @@ Disables a frontendEndpoint for HTTPS traffic
 
 ### Disable (Default)
 ```
-Disable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpointName <String>
+Disable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DisableViaIdentity
 ```
-Disable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Disable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DisableViaIdentityFrontDoor
 ```
-Disable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentity>
- -FrontendEndpointName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Disable-AzFrontDoorCustomDomainHttps -FrontDoorInputObject <IFrontDoorIdentity> -FrontendEndpointName <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

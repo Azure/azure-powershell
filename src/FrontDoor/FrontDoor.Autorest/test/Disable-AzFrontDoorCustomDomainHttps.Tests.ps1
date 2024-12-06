@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzFrontDoorFrontendEndpointHttps'))
+if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzFrontDoorCustomDomainHttps'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Disable-AzFrontDoorFrontendEndpointHttps.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Disable-AzFrontDoorCustomDomainHttps.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,9 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzFrontDoorFrontendEn
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Disable-AzFrontDoorFrontendEndpointHttps' {
+Describe 'Disable-AzFrontDoorCustomDomainHttps' {
     It 'Disable' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $customFrontendEndpointName = "frontendendpoint2"
+            Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName -FrontendEndpointName $customFrontendEndpointName
+        } | Should -Not -Throw
     }
 
     It 'DisableViaIdentityFrontDoor' -skip {

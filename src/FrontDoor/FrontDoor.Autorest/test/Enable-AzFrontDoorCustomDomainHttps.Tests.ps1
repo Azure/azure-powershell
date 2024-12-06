@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzFrontDoorFrontendEndpointHttps'))
+if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzFrontDoorCustomDomainHttps'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Enable-AzFrontDoorFrontendEndpointHttps.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Enable-AzFrontDoorCustomDomainHttps.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,9 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzFrontDoorFrontendEnd
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Enable-AzFrontDoorFrontendEndpointHttps' {
+Describe 'Enable-AzFrontDoorCustomDomainHttps' {
     It 'EnableExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $customFrontendEndpointName = "frontendendpoint2"
+            Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2"
+        } | Should -Not -Throw
     }
 
     It 'EnableViaJsonString' -skip {

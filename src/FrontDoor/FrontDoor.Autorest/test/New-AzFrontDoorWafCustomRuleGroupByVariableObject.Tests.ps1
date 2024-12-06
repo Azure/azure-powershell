@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorWafCustomRuleG
 }
 
 Describe 'New-AzFrontDoorWafCustomRuleGroupByVariableObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $groupBy = New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName "SocketAddr"
+        $groupBy.VariableName | Should -Be "SocketAddr"
     }
 }

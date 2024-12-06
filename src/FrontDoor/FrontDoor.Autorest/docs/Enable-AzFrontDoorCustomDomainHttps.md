@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/enable-azfrontdoorfrontendendpointhttps
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/enable-azfrontdoorcustomdomainhttps
 schema: 2.0.0
 ---
 
-# Enable-AzFrontDoorFrontendEndpointHttps
+# Enable-AzFrontDoorCustomDomainHttps
 
 ## SYNOPSIS
 Enables a frontendEndpoint for HTTPS traffic
@@ -14,7 +14,7 @@ Enables a frontendEndpoint for HTTPS traffic
 
 ### EnableExpanded (Default)
 ```
-Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpointName <String>
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
  -ResourceGroupName <String> -CertificateSource <String> [-SubscriptionId <String>]
  [-CertificateType <String>] [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>]
  [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
@@ -23,21 +23,21 @@ Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpoin
 
 ### Enable
 ```
-Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpointName <String>
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
  -ResourceGroupName <String> -CustomHttpsConfiguration <ICustomHttpsConfiguration> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentity
 ```
-Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity>
+Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity>
  -CustomHttpsConfiguration <ICustomHttpsConfiguration> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityExpanded
 ```
-Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity> -CertificateSource <String>
+Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> -CertificateSource <String>
  [-CertificateType <String>] [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>]
  [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -45,29 +45,29 @@ Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity> -Certi
 
 ### EnableViaIdentityFrontDoor
 ```
-Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentity>
- -FrontendEndpointName <String> -CustomHttpsConfiguration <ICustomHttpsConfiguration>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorInputObject <IFrontDoorIdentity> -FrontendEndpointName <String>
+ -CustomHttpsConfiguration <ICustomHttpsConfiguration> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityFrontDoorExpanded
 ```
-Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentity>
- -FrontendEndpointName <String> -CertificateSource <String> [-CertificateType <String>]
- [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorInputObject <IFrontDoorIdentity> -FrontendEndpointName <String>
+ -CertificateSource <String> [-CertificateType <String>] [-MinimumTlsVersion <String>] [-SecretName <String>]
+ [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaJsonFilePath
 ```
-Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpointName <String>
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
  -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaJsonString
 ```
-Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpointName <String>
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```

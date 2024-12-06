@@ -68,7 +68,7 @@ If none specified, all rules in the group will be disabled.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverride[]
 Parameter Sets: (All)
-Aliases:
+Aliases: ManagedRuleOverride
 
 Required: False
 Position: Named

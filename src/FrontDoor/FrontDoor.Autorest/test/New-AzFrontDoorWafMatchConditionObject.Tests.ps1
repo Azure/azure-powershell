@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorWafMatchCondit
 }
 
 Describe 'New-AzFrontDoorWafMatchConditionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
+        $matchCondition1.MatchVariable | Should -Be "RequestHeader"
+        $matchCondition1.Operator | Should -Be "Contains"
+        $matchCondition1.Selector | Should -Be "UserAgent"
+        $matchCondition1.MatchValue | Should -Be "WINDOWS"
+        $matchCondition1.Transform | Should -Be "Uppercase"
     }
 }

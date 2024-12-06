@@ -15,8 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzFrontDoor'))
 }
 
 Describe 'Set-AzFrontDoor' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $FDName = 'testps-fd-' + (RandomString -allChars $false -len 4)
+        $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+        $hostName = "$FDName.azurefd.net"
+        $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $FDName -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+        $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+        $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
+        $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+        $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+        $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $FDName -ResourceGroupName $env.ResourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
+        $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
+        New-AzFrontDoor -Name $FDName -ResourceGroupName $env.ResourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+    
+        $newTags = @{"tag1" = "value3"; "tag2" = "value4"}
+        $healthProbeSetting1.HealthProbeMethod = "Get"
+        $healthProbeSetting1.EnabledState = "Enabled"
+        $backendPoolsSetting1.SendRecvTimeoutInSeconds = 20
+        $updatedFrontDoor = Set-AzFrontDoor -Name $FDName -ResourceGroupName $env.ResourceGroupName -Tag $newTags -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
+        $updatedFrontDoor.Tags | Should -Be $newTags
+        $updatedFrontDoor.HealthProbeSettings[0].HealthProbeMethod | Should -Be "Get"
+        $updatedFrontDoor.HealthProbeSettings[0].EnabledState | Should -Be "Enabled"
+        $updatedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutSecond | Should -Be 20
     }
 
     It 'UpdateViaJsonFilePath' -skip {

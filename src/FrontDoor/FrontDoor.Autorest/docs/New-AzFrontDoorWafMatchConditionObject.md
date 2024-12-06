@@ -97,7 +97,7 @@ Comparison type to use for matching with the variable value.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: OperatorProperty
 
 Required: True
 Position: Named

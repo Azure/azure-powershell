@@ -113,7 +113,8 @@ function New-AzFrontDoorRulesEngineActionObject {
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction]::New()
-
+        $subId = (Get-AzContext).Subscription.Id
+        
         if ($PSBoundParameters.ContainsKey('RequestHeaderAction')) {
             $Object.RequestHeaderAction = $RequestHeaderAction
         }

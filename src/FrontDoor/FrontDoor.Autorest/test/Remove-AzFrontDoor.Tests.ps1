@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoor'))
 }
 
 Describe 'Remove-AzFrontDoor' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete'  {
+        {
+            Remove-AzFrontDoor -Name $env.FrontDoorName -ResourceGroupName $env.ResourceGroupName -PassThru
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

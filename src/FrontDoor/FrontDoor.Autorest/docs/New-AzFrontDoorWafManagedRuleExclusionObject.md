@@ -52,7 +52,7 @@ The variable type to be excluded.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Variable
 
 Required: True
 Position: Named
@@ -82,7 +82,7 @@ Comparison operator to apply to the selector when specifying which elements in t
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Operator
 
 Required: True
 Position: Named

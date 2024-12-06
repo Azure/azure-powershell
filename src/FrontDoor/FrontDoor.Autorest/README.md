@@ -124,16 +124,16 @@ directive:
     #   cmdlet-name: New-AzFrontDoorWafCustomRuleObject
     # - model-name: ManagedRuleOverride
     #   cmdlet-name: New-AzFrontDoorWafManagedRuleOverrideObject
-    - model-name: MatchCondition
-      cmdlet-name: New-AzFrontDoorWafMatchConditionObject
-    - model-name: ManagedRuleGroupOverride
-      cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
+    # - model-name: MatchCondition
+    #   cmdlet-name: New-AzFrontDoorWafMatchConditionObject
+    # - model-name: ManagedRuleGroupOverride
+    #   cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
     - model-name: GroupByVariable
       cmdlet-name: New-AzFrontDoorWafCustomRuleGroupByVariableObject
     # - model-name: ManagedRuleExclusion
     #   cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
-    - model-name: ManagedRuleSet
-      cmdlet-name: New-AzFrontDoorWafManagedRuleObject
+    # - model-name: ManagedRuleSet
+    #   cmdlet-name: New-AzFrontDoorWafManagedRuleObject
     - model-name: PolicySettingsLogScrubbing
       cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject 
     - model-name: WebApplicationFirewallScrubbingRules
@@ -164,28 +164,31 @@ directive:
       verb: Update
     hide: true
 
-  # Enable-AzFrontDoorFrontendEndpointHttps
+  - where:
+      subject: FrontendEndpointHttps
+    set:
+      subject: CustomDomainHttps
   - where:
       verb: Enable
-      subject: FrontendEndpointHttps
+      subject: CustomDomainHttps
       parameter-name: KeyVaultCertificateSourceParameterSecretName
     set:
       parameter-name: SecretName
   - where:
       verb: Enable
-      subject: FrontendEndpointHttps
+      subject: CustomDomainHttps
       parameter-name: KeyVaultCertificateSourceParameterSecretVersion
     set:
       parameter-name: SecretVersion
   - where:
       verb: Enable
-      subject: FrontendEndpointHttps
+      subject: CustomDomainHttps
       parameter-name: FrontDoorCertificateSourceParameterCertificateType
     set:
       parameter-name: CertificateType
   - where:
       verb: Enable
-      subject: FrontendEndpointHttps
+      subject: CustomDomainHttps
       parameter-name: MinimumTlsVersion
     set:
       default:
