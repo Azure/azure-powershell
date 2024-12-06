@@ -8,31 +8,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization.Mo
     using System.Linq;
 
     /// <summary>
-    /// Role definition.
+    /// Role definition properties.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RoleDefinition
+    public partial class RoleDefinitionProperties
     {
         /// <summary>
-        /// Initializes a new instance of the RoleDefinition class.
+        /// Initializes a new instance of the RoleDefinitionProperties class.
         /// </summary>
-        public RoleDefinition()
+        public RoleDefinitionProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RoleDefinition class.
+        /// Initializes a new instance of the RoleDefinitionProperties class.
         /// </summary>
-
-        /// <param name="id">The role definition ID.
-        /// </param>
-
-        /// <param name="name">The role definition name.
-        /// </param>
-
-        /// <param name="type">The role definition type.
-        /// </param>
 
         /// <param name="roleName">The role name.
         /// </param>
@@ -48,12 +38,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization.Mo
 
         /// <param name="assignableScopes">Role definition assignable scopes.
         /// </param>
-        public RoleDefinition(string id = default(string), string name = default(string), string type = default(string), string roleName = default(string), string description = default(string), string roleType = default(string), System.Collections.Generic.IList<Permission> permissions = default(System.Collections.Generic.IList<Permission>), System.Collections.Generic.IList<string> assignableScopes = default(System.Collections.Generic.IList<string>))
+        public RoleDefinitionProperties(string roleName = default(string), string description = default(string), string roleType = default(string), System.Collections.Generic.IList<Permission> permissions = default(System.Collections.Generic.IList<Permission>), System.Collections.Generic.IList<string> assignableScopes = default(System.Collections.Generic.IList<string>))
 
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.RoleName = roleName;
             this.Description = description;
             this.RoleType = roleType;
@@ -69,51 +56,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization.Mo
 
 
         /// <summary>
-        /// Gets the role definition ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the role definition name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the role definition type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
         /// Gets or sets the role name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.roleName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "roleName")]
         public string RoleName {get; set; }
 
         /// <summary>
         /// Gets or sets the role definition description.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; set; }
 
         /// <summary>
         /// Gets or sets the role type.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.type")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string RoleType {get; set; }
 
         /// <summary>
         /// Gets or sets role definition permissions.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.permissions")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "permissions")]
         public System.Collections.Generic.IList<Permission> Permissions {get; set; }
 
         /// <summary>
         /// Gets or sets role definition assignable scopes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.assignableScopes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "assignableScopes")]
         public System.Collections.Generic.IList<string> AssignableScopes {get; set; }
     }
 }

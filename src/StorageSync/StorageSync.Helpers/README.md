@@ -4,14 +4,15 @@ This directory contains the service clients of other services for Azure PowerShe
 ## Run Generation
 In this directory, run AutoRest:
 ```
-autorest.cmd README.md --version=v2 --tag=authorization
+autorest --use:@autorest/powershell@4.x --tag=authorization
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
