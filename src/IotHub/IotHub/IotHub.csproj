@@ -13,8 +13,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Devices" Version="1.22.0" />
     <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.27.0" />
-    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="4.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IotHub.Management.Sdk\IotHub.Management.Sdk.csproj" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
