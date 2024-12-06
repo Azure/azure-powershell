@@ -30,7 +30,7 @@ Adds a list of callout policies for engine services.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: Adding two callout policies to a cluster
 ```powershell
 $kustoCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
     calloutType = "kusto"

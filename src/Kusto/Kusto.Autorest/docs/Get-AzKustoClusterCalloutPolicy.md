@@ -22,7 +22,7 @@ Returns the allowed callout policies for the specified service.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: List callout policies to a cluster
 ```powershell
 
 Get-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub

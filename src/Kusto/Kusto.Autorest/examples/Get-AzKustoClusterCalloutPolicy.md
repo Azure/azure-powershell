@@ -1,16 +1,19 @@
-### Example 1: Adding two callout policies to a cluster
+### Example 1: List callout policies to a cluster
 ```powershell
-$kustoCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
-    calloutType = "kusto"
-    outboundAccess = "Allow"
-    calloutUriRegex = "*"
-}
-$sqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
-    calloutType = "sql"
-    outboundAccess = "Deny"
-    calloutUriRegex = "*"
-}
-Add-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub -Value -Value @($kustoCalloutPolicy, $sqlCalloutPolicy)
+
+Get-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub
+
 ```
 
-The above command adds the two defined callout policies to cluster1 in rg1.
+```output
+CalloutId           CalloutType       CalloutUriRegex OutboundAccess
+---------           -----------       --------------- --------------
+*_cosmosdb          cosmosdb          *               Allow
+*_postgresql        postgresql        *               Deny
+*_sandbox_artifacts sandbox_artifacts *               Allow
+*_genevametrics     genevametrics     *               Deny
+*_kusto             kusto             *               Allow
+*_sql               sql               *               Deny
+```
+
+The above command returns a list of the callout policies of cluster1 in rg1.
