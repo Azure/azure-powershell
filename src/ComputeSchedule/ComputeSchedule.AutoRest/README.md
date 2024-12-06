@@ -153,7 +153,7 @@ directive:
   - where:
       verb: Stop
       subject: ScheduledAction
-      variant: CancelExpanded
+      variant: CancelViaIdentityExpanded
     set:
       verb: Stop
       subject: Operation
@@ -191,7 +191,7 @@ directive:
 
   - where:
       verb: Invoke|Get|Stop
-      subject: ^(Submit|Execute|Operation)(.*)
+      subject: ^(Submit|Execute|Operation|Scheduled)(.*)
       parameter-name: Locationparameter
     set:
       parameter-name: Location
@@ -230,18 +230,6 @@ directive:
       subject: ^(Submit|Execute)(.*)
       parameter-name: ExecutionParameterOptimizationPreference
     hide: true
-
-  # - where:
-  #     verb: Invoke
-  #     subject: ^(Submit|Execute)(.*)
-  #     parameter-name: ScheduleRequestDeadline
-  #   hide: true
-
-  # - where:
-  #     verb: Invoke
-  #     subject: ^(Submit|Execute)(.*)
-  #     parameter-name: ScheduleRequestTimezone
-  #   hide: true
 
   # Remove the set-* cmdlet
   - where:
