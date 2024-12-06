@@ -3,31 +3,31 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "kustoApiVersion": {
-      "value": "2023-08-15"
+      "value": "2024-04-13"
     },
     "userAssignedManagedIdentityName": {
-      "value": "uaMi3w8cj7"
+      "value": "uaMi2ekhd9"
     },
     "kustoSkuName": {
-      "value": "Dev(No SLA)_Standard_E2a_v4"
+      "value": "Standard_E2ads_v5"
     },
     "kustoFollowerSkuName": {
       "value": "Standard_E8as_v5+1TB_PS"
     },
     "kustoClusterTier": {
-      "value": "Basic"
+      "value": "Standard"
     },
     "kustoFollowerClusterTier": {
       "value": "Standard"
     },
     "kustoClusterName": {
-      "value": "pssdk3w8cj7"
+      "value": "pssdk2ekhd9"
     },
     "kustoFollowerClusterName": {
-      "value": "pssdkfollow3w8cj7"
+      "value": "pssdkfollow2ekhd9"
     },
     "kustoMigrationClusterName": {
-      "value": "pssdkmigr3w8cj7"
+      "value": "pssdkmigr2ekhd9"
     },
     "kustoDatabaseName": {
       "value": "TestDb"
@@ -42,19 +42,19 @@
       "value": "TestTable"
     },
     "principalAppId": {
-      "value": "713c3475-5021-4f3b-a650-eaa9a83f25a4"
+      "value": "3c5cd8d1-b5a2-41e9-b592-533bc0a146d0"
     },
     "eventHubNameSpaceName": {
-      "value": "EHNamespace3w8cj7"
+      "value": "EHNamespace2ekhd9"
     },
     "eventHubName": {
-      "value": "eh3w8cj7"
+      "value": "eh2ekhd9"
     },
     "iotHubName": {
-      "value": "iot3w8cj7"
+      "value": "iot2ekhd9"
     },
     "cosmosDbAccountName": {
-      "value": "cosmos3w8cj7"
+      "value": "cosmos2ekhd9"
     },
     "cosmosDbDatabaseName": {
       "value": "cosmostestdb"
@@ -63,22 +63,22 @@
       "value": "cosmostestcontainer"
     },
     "storageAccountName": {
-      "value": "sa3w8cj7"
+      "value": "sa2ekhd9"
     },
     "virtualNetworkName": {
-      "value": "vnet3w8cj7"
+      "value": "vnet2ekhd9"
     },
     "subnetName": {
-      "value": "subnet3w8cj7"
+      "value": "subnet2ekhd9"
     },
     "privateEndpointName": {
-      "value": "pe3w8cj7"
+      "value": "pe2ekhd9"
     },
     "keyVaultName": {
-      "value": "kvPwsh3w8cj7"
+      "value": "kvPwsh2ekhd9"
     },
     "keyName": {
-      "value": "byok3w8cj7"
+      "value": "byok2ekhd9"
     }
   }
 }
