@@ -36,7 +36,7 @@ Describe 'Set-AzFrontDoor' {
         $updatedFrontDoor.Tags | Should -Be $newTags
         $updatedFrontDoor.HealthProbeSettings[0].HealthProbeMethod | Should -Be "Get"
         $updatedFrontDoor.HealthProbeSettings[0].EnabledState | Should -Be "Enabled"
-        $updatedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutSecond | Should -Be 20
+        $updatedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutInSeconds | Should -Be 20
     }
 
     It 'UpdateViaJsonFilePath' -skip {

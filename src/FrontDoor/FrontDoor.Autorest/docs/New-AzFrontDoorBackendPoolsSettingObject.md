@@ -14,7 +14,7 @@ Create an in-memory object for BackendPoolsSettings.
 
 ```
 New-AzFrontDoorBackendPoolsSettingObject [-EnforceCertificateNameCheck <String>]
- [-SendRecvTimeoutSecond <Int32>] [<CommonParameters>]
+ [-SendRecvTimeoutInSeconds <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,14 +62,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SendRecvTimeoutSecond
+### -SendRecvTimeoutInSeconds
 Send and receive timeout on forwarding request to the backend.
 When timeout is reached, the request fails and returns.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases: SendRecvTimeoutInSeconds
+Aliases:
 
 Required: False
 Position: Named

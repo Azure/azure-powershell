@@ -20,7 +20,9 @@ Describe 'Get-AzFrontDoorRulesEngine' {
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            Get-AzFrontDoorRulesEngine -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName -Name $env.RulesEngineName
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentityFrontDoor' -skip {
@@ -31,3 +33,4 @@ Describe 'Get-AzFrontDoorRulesEngine' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
+

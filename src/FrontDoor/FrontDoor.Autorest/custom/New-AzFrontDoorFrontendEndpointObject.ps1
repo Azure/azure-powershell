@@ -33,29 +33,24 @@ function New-AzFrontDoorFrontendEndpointObject {
         [Parameter(HelpMessage="Defines the source of the SSL certificate.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("AzureKeyVault", "FrontDoor")]
         [string]
-        [Alias("CertificateSource")]
-        $CustomHttpsConfigurationCertificateSource,
+        $CertificateSource,
         [Parameter(HelpMessage="The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("1.0", "1.2")]
         [string]
-        [Alias("MinimumTlsVersion")]
-        $CustomHttpsConfigurationMinimumTlsVersion,
+        $MinimumTlsVersion,
         [Parameter(HelpMessage="Defines the type of the certificate used for secure connections to a frontendEndpoint.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Dedicated")]
         [string]
-        [Alias("CertificateType")]
-        $FrontDoorCertificateSourceParameterCertificateType,
+        $CertificateType,
         [Parameter(HelpMessage="The host name of the frontendEndpoint. Must be a domain name.")]
         [string]
         $HostName,
         [Parameter(HelpMessage="The name of the Key Vault secret representing the full certificate PFX.")]
         [string]
-        [Alias("SecretName")]
-        $KeyVaultCertificateSourceParameterSecretName,
+        $SecretName,
         [Parameter(HelpMessage="The version of the Key Vault secret representing the full certificate PFX.")]
         [string]
-        [Alias("SecretVersion")]
-        $KeyVaultCertificateSourceParameterSecretVersion,
+        $SecretVersion,
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
@@ -65,12 +60,10 @@ function New-AzFrontDoorFrontendEndpointObject {
         $SessionAffinityEnabledState = 'Enabled',
         [Parameter(HelpMessage="UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.")]
         [int]
-        [Alias("SessionAffinityTtlInSeconds" )]
-        $SessionAffinityTtlSecond = 0,
+        $SessionAffinityTtlInSeconds = 0,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
-        [Alias("Vault")]
-        $VaultId,
+        $Vault,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         [Alias("WebApplicationFirewallPolicyLink")]
@@ -81,38 +74,37 @@ function New-AzFrontDoorFrontendEndpointObject {
         # This was ignored by autorest because of only one enum
         [Parameter(HelpMessage="The TLS extension protocol that is used for secure delivery")]
         [string]
-        [Alias("ProtocolType ")]
-        $CustomHttpsConfigurationProtocolType = "ServerNameIndication"
+        $ProtocolType = "ServerNameIndication"
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpoint]::New()
 
-        if ($PSBoundParameters.ContainsKey('CustomHttpsConfigurationCertificateSource')) {
-            $Object.CustomHttpsConfigurationCertificateSource = $CustomHttpsConfigurationCertificateSource
+        if ($PSBoundParameters.ContainsKey('CertificateSource')) {
+            $Object.CertificateSource = $CertificateSource
         }
-        if ($PSBoundParameters.ContainsKey('CustomHttpsConfigurationMinimumTlsVersion')) {
-            $Object.CustomHttpsConfigurationMinimumTlsVersion = $CustomHttpsConfigurationMinimumTlsVersion
+        if ($PSBoundParameters.ContainsKey('MinimumTlsVersion')) {
+            $Object.MinimumTlsVersion = $MinimumTlsVersion
         }
-        if ($PSBoundParameters.ContainsKey('FrontDoorCertificateSourceParameterCertificateType')) {
-            $Object.FrontDoorCertificateSourceParameterCertificateType = $FrontDoorCertificateSourceParameterCertificateType
+        if ($PSBoundParameters.ContainsKey('CertificateType')) {
+            $Object.CertificateType = $CertificateType
         }
         if ($PSBoundParameters.ContainsKey('HostName')) {
             $Object.HostName = $HostName
         }
-        if ($PSBoundParameters.ContainsKey('KeyVaultCertificateSourceParameterSecretName')) {
-            $Object.KeyVaultCertificateSourceParameterSecretName = $KeyVaultCertificateSourceParameterSecretName
+        if ($PSBoundParameters.ContainsKey('SecretName')) {
+            $Object.SecretName = $SecretName
         }
-        if ($PSBoundParameters.ContainsKey('KeyVaultCertificateSourceParameterSecretVersion')) {
-            $Object.KeyVaultCertificateSourceParameterSecretVersion = $KeyVaultCertificateSourceParameterSecretVersion
+        if ($PSBoundParameters.ContainsKey('SecretVersion')) {
+            $Object.SecretVersion = $SecretVersion
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
         $Object.SessionAffinityEnabledState = $SessionAffinityEnabledState
-        $Object.SessionAffinityTtlSecond = $SessionAffinityTtlSecond
-        if ($PSBoundParameters.ContainsKey('VaultId')) {
-            $Object.VaultId = $VaultId
+        $Object.SessionAffinityTtlInSeconds = $SessionAffinityTtlInSeconds
+        if ($PSBoundParameters.ContainsKey('Vault')) {
+            $Object.Vault = $Vault
         }
         if ($PSBoundParameters.ContainsKey('WebApplicationFirewallPolicyLinkId')) {
             $Object.WebApplicationFirewallPolicyLinkId = $WebApplicationFirewallPolicyLinkId
@@ -120,7 +112,7 @@ function New-AzFrontDoorFrontendEndpointObject {
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id
         }
-        # $Object.CustomHttpsConfigurationProtocolType = $CustomHttpsConfigurationProtocolType
+        # $Object.ProtocolType = $ProtocolType
         return $Object
     }
 }

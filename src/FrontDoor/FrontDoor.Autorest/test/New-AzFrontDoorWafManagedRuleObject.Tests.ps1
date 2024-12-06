@@ -22,7 +22,7 @@ Describe 'New-AzFrontDoorWafManagedRuleObject' {
         $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action "Log" -Exclusion $exclusionRule
         $override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName "SQLI" -ManagedRuleOverride $ruleOverride -Exclusion $exclusionGroup
         $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type "DefaultRuleSet" -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
-        $managedRule1.RuleSetType | Should -Be "DefaultRuleSet"
-        $managedRule1.RuleSetVersion | Should -Be "1.0"
+        $managedRule1.Type | Should -Be "DefaultRuleSet"
+        $managedRule1.Version | Should -Be "1.0"
     }
 }

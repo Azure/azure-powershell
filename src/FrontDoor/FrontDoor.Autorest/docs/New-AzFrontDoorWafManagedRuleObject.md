@@ -13,9 +13,8 @@ Create an in-memory object for ManagedRuleSet.
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleObject -RuleSetType <String> -RuleSetVersion <String>
- [-Exclusion <IManagedRuleExclusion[]>] [-RuleGroupOverride <IManagedRuleGroupOverride[]>]
- [-RuleSetAction <String>] [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleObject -Type <String> -Version <String> [-Exclusion <IManagedRuleExclusion[]>]
+ [-RuleGroupOverride <IManagedRuleGroupOverride[]>] [-RuleSetAction <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,13 +91,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleSetType
+### -Type
 Defines the rule set type to use.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Type
+Aliases:
 
 Required: True
 Position: Named
@@ -107,13 +106,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleSetVersion
+### -Version
 Defines the version of the rule set to use.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Version
+Aliases:
 
 Required: True
 Position: Named

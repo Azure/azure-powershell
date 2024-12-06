@@ -32,8 +32,7 @@ function New-AzFrontDoorLoadBalancingSettingObject {
 
         [Parameter(HelpMessage="The additional latency in milliseconds for probes to fall into the lowest latency bucket.")]
         [int]
-        [Alias("AdditionalLatencyMilliseconds")]
-        $AdditionalLatencyMillisecond = 0,
+        $AdditionalLatencyInMilliseconds = 0,
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
@@ -51,7 +50,7 @@ function New-AzFrontDoorLoadBalancingSettingObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel]::New()
 
-        $Object.AdditionalLatencyMillisecond = $AdditionalLatencyMillisecond
+        $Object.AdditionalLatencyInMilliseconds = $AdditionalLatencyInMilliseconds
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }

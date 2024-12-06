@@ -40,8 +40,7 @@ function New-AzFrontDoorHealthProbeSettingObject {
         $HealthProbeMethod = 'HEAD',
         [Parameter(HelpMessage="The number of seconds between health probes.")]
         [int]
-        [Alias("IntervalInSeconds")]
-        $IntervalInSecond = 30,
+        $IntervalInSeconds = 30,
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
@@ -62,7 +61,7 @@ function New-AzFrontDoorHealthProbeSettingObject {
 
         $Object.EnabledState = $EnabledState
         $Object.HealthProbeMethod = $HealthProbeMethod
-        $Object.IntervalInSecond = $IntervalInSecond
+        $Object.IntervalInSeconds = $IntervalInSeconds
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }

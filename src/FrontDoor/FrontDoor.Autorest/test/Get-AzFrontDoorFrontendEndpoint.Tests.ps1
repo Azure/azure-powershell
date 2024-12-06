@@ -19,8 +19,12 @@ Describe 'Get-AzFrontDoorFrontendEndpoint' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $customFrontendEndpointName = "frontendendpoint2"
+            Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2"
+        } | Should -Not -Throw
+        Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName
     }
 
     It 'GetViaIdentityFrontDoor' -skip {

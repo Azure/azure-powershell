@@ -13,8 +13,9 @@ Create an in-memory object for MatchCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafMatchConditionObject -MatchValue <String[]> -MatchVariable <String> -Operator <String>
- [-NegateCondition <Boolean>] [-Selector <String>] [-Transform <String[]>] [<CommonParameters>]
+New-AzFrontDoorWafMatchConditionObject -MatchValue <String[]> -MatchVariable <String>
+ -OperatorProperty <String> [-NegateCondition <Boolean>] [-Selector <String>] [-Transform <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,13 +92,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operator
+### -OperatorProperty
 Comparison type to use for matching with the variable value.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: OperatorProperty
+Aliases:
 
 Required: True
 Position: Named

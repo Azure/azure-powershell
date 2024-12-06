@@ -14,7 +14,7 @@ Create an in-memory object for ManagedRuleGroupOverride.
 
 ```
 New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName <String> [-Exclusion <IManagedRuleExclusion[]>]
- [-Rule <IManagedRuleOverride[]>] [<CommonParameters>]
+ [-ManagedRuleOverride <IManagedRuleOverride[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,14 +61,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Rule
+### -ManagedRuleOverride
 List of rules that will be disabled.
 If none specified, all rules in the group will be disabled.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverride[]
 Parameter Sets: (All)
-Aliases: ManagedRuleOverride
+Aliases:
 
 Required: False
 Position: Named

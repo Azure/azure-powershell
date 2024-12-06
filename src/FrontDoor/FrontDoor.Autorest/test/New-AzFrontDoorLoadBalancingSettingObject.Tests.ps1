@@ -20,6 +20,6 @@ Describe 'New-AzFrontDoorLoadBalancingSettingObject' {
         $loadBalancingSetting1.Name | Should -Be "loadbalancingsetting1"
         $loadBalancingSetting1.SampleSize | Should -Be 4
         $loadBalancingSetting1.SuccessfulSamplesRequired | Should -Be 2
-        $loadBalancingSetting1.AdditionalLatencyMillisecond | Should -Be 0
+        $loadBalancingSetting1.AdditionalLatencyInMilliseconds | Should -Be 0
     }
 }

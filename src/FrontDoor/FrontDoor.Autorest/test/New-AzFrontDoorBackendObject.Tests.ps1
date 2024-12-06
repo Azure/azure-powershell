@@ -18,7 +18,7 @@ Describe 'New-AzFrontDoorBackendObject' {
     It '__AllParameterSets' {
         $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
         $backend1.Address | Should -Be "contoso1.azurewebsites.net"
-        $backend1.HostHeader | Should -Be "contoso1.azurewebsites.net"
+        $backend1.BackendHostHeader | Should -Be "contoso1.azurewebsites.net"
         $backend1.EnabledState | Should -Be "Enabled"
         $backend1.HttpPort | Should -Be 80
         $backend1.HttpsPort | Should -Be 443

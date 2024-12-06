@@ -13,8 +13,8 @@ Create an in-memory object for ManagedRuleExclusion.
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleExclusionObject -MatchVariable <String> -Selector <String>
- -SelectorMatchOperator <String> [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleExclusionObject -Operator <String> -Selector <String> -Variable <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,13 +46,13 @@ Create an in-memory object for ManagedRuleExclusion.
 
 ## PARAMETERS
 
-### -MatchVariable
-The variable type to be excluded.
+### -Operator
+Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Variable
+Aliases:
 
 Required: True
 Position: Named
@@ -76,13 +76,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SelectorMatchOperator
-Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
+### -Variable
+The variable type to be excluded.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Operator
+Aliases:
 
 Required: True
 Position: Named

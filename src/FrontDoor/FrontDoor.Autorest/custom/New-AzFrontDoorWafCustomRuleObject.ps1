@@ -54,8 +54,7 @@ function New-AzFrontDoorWafCustomRuleObject {
         $Priority = 0,
         [Parameter(HelpMessage="Time window for resetting the rate limit count. Default is 1 minute.")]
         [int]
-        [Alias("RateLimitDurationInMinutes")]
-        $RateLimitDurationInMinute = 1,
+        $RateLimitDurationInMinutes = 1,
         [Parameter(HelpMessage="Number of allowed requests per client within the time window.")]
         [int]
         $RateLimitThreshold,
@@ -82,7 +81,7 @@ function New-AzFrontDoorWafCustomRuleObject {
             $Object.Name = $Name
         }
         $Object.Priority = $Priority
-        $Object.RateLimitDurationInMinute = $RateLimitDurationInMinute
+        $Object.RateLimitDurationInMinutes = $RateLimitDurationInMinutes
         if ($PSBoundParameters.ContainsKey('RateLimitThreshold')) {
             $Object.RateLimitThreshold = $RateLimitThreshold
         }

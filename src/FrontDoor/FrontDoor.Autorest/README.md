@@ -87,31 +87,19 @@ directive:
   # For New object model cmdlet
   - model-cmdlet:
     # - model-name: Backend
-    #   cmdlet-name: New-AzFrontDoorFrontendBackendObject
+    #   cmdlet-name: New-AzFrontDoorBackendObject
     # - model-name: BackendPool
-    #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolObject
+    #   cmdlet-name: New-AzFrontDoorBackendPoolObject
     # - model-name: BackendPoolsSettings
-    #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolsSettingsObject
+    #   cmdlet-name: New-AzFrontDoorBackendPoolsSettingsObject
     # - model-name: FrontendEndpoint
     #   cmdlet-name: New-AzFrontDoorFrontendEndpointObject
     - model-name: HeaderAction
       cmdlet-name: New-AzFrontDoorHeaderActionObject
     # - model-name: HealthProbeSettingsModel
     #   cmdlet-name: New-AzFrontDoorHealthProbeSettingObject
-    #     # New-AzFrontDoorHealthProbeSettingObject
-    #   - where:
-    #       model-name: HealthProbeSettingsModel
-    #       property-name: IntervalInSecond
-    #     set:
-    #       property-name: IntervalInSeconds
     # - model-name: LoadBalancingSettingsModel
     #   cmdlet-name: New-AzFrontDoorLoadBalancingSettingObject
-    # # New-AzFrontDoorLoadBalancingSettingsObject
-    # - where:
-    #     model-name: LoadBalancingSettingsModel
-    #     property-name: AdditionalLatencyInMillisecond
-    #   set:
-    #     property-name: AdditionalLatencyInMilliseconds 
     # - model-name: RoutingRule
     #   cmdlet-name: New-AzFrontDoorRoutingRuleObject
     - model-name: RulesEngineAction
@@ -124,18 +112,18 @@ directive:
     #   cmdlet-name: New-AzFrontDoorWafCustomRuleObject
     # - model-name: ManagedRuleOverride
     #   cmdlet-name: New-AzFrontDoorWafManagedRuleOverrideObject
-    # - model-name: MatchCondition
-    #   cmdlet-name: New-AzFrontDoorWafMatchConditionObject
-    # - model-name: ManagedRuleGroupOverride
-    #   cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
+    - model-name: MatchCondition
+      cmdlet-name: New-AzFrontDoorWafMatchConditionObject
+    - model-name: ManagedRuleGroupOverride
+      cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
     - model-name: GroupByVariable
       cmdlet-name: New-AzFrontDoorWafCustomRuleGroupByVariableObject
-    # - model-name: ManagedRuleExclusion
-    #   cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
-    # - model-name: ManagedRuleSet
-    #   cmdlet-name: New-AzFrontDoorWafManagedRuleObject
+    - model-name: ManagedRuleExclusion
+      cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
+    - model-name: ManagedRuleSet
+      cmdlet-name: New-AzFrontDoorWafManagedRuleObject
     - model-name: PolicySettingsLogScrubbing
-      cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject 
+      cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject
     - model-name: WebApplicationFirewallScrubbingRules
       cmdlet-name: New-AzFrontDoorWafLogScrubbingRuleObject
     - model-name: ForwardingConfiguration
@@ -290,5 +278,110 @@ directive:
       property-name: Type
     set:
       property-name: HeaderActionType
+
+  - where:
+      model-name: Backend
+      property-name: HostHeader
+    set:
+      property-name: BackendHostHeader      
+
+  - where:
+      model-name: BackendPoolsSettings
+      property-name: SendRecvTimeoutSecond
+    set:
+      property-name: SendRecvTimeoutInSeconds
+      
+  - where:
+      model-name: FrontendEndpoint
+      property-name: CustomHttpsConfigurationCertificateSource
+    set:
+      property-name: CertificateSource
+  - where:
+      model-name: FrontendEndpoint
+      property-name: CustomHttpsConfigurationMinimumTlsVersion
+    set:
+      property-name: MinimumTlsVersion
+  - where:
+      model-name: FrontendEndpoint
+      property-name: FrontDoorCertificateSourceParameterCertificateType
+    set:
+      property-name: CertificateType
+  - where:
+      model-name: FrontendEndpoint
+      property-name: KeyVaultCertificateSourceParameterSecretName
+    set:
+      property-name: SecretName
+  - where:
+      model-name: FrontendEndpoint
+      property-name: KeyVaultCertificateSourceParameterSecretVersion
+    set:
+      property-name: SecretVersion
+  - where:
+      model-name: FrontendEndpoint
+      property-name: SessionAffinityTtlSecond
+    set:
+      property-name: SessionAffinityTtlInSeconds
+  - where:
+      model-name: FrontendEndpoint
+      property-name: VaultId
+    set:
+      property-name: Vault     
+  - where:
+      model-name: FrontendEndpoint
+      property-name: CustomHttpsConfigurationProtocolType
+    set:
+      property-name: ProtocolType          
+
+  - where:
+      model-name: HealthProbeSettingsModel
+      property-name: IntervalInSecond
+    set:
+      property-name: IntervalInSeconds
+
+  - where:
+      model-name: LoadBalancingSettingsModel
+      property-name: AdditionalLatencyMillisecond
+    set:
+      property-name: AdditionalLatencyInMilliseconds
+    
+  - where:
+      model-name: CustomRule
+      property-name: RateLimitDurationInMinute
+    set:
+      property-name: RateLimitDurationInMinutes 
+
+  - where:
+      model-name: ManagedRuleExclusion
+      property-name: MatchVariable
+    set:
+      property-name: Variable 
+  - where:
+      model-name: ManagedRuleExclusion
+      property-name: SelectorMatchOperator
+    set:
+      property-name: Operator 
+
+  - where:
+      model-name: ManagedRuleSet
+      property-name: RuleSetType
+    set:
+      property-name: Type 
+  - where:
+      model-name: ManagedRuleSet
+      property-name: RuleSetVersion
+    set:
+      property-name: Version 
+
+  - where:
+      model-name: ManagedRuleGroupOverride
+      property-name: Rule
+    set:
+      property-name: ManagedRuleOverride 
+
+  - where:
+      model-name: MatchCondition
+      property-name: Operator
+    set:
+      property-name: OperatorProperty 
 
 ```

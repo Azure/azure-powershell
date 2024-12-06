@@ -36,15 +36,14 @@ function New-AzFrontDoorBackendPoolsSettingObject {
         $EnforceCertificateNameCheck = 'Enabled',
         [Parameter(HelpMessage="Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.")]
         [int]
-        [Alias("SendRecvTimeoutInSeconds")]
-        $SendRecvTimeoutSecond = 30
+        $SendRecvTimeoutInSeconds = 30
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings]::New()
 
         $Object.EnforceCertificateNameCheck = $EnforceCertificateNameCheck
-        $Object.SendRecvTimeoutSecond = $SendRecvTimeoutSecond
+        $Object.SendRecvTimeoutInSeconds = $SendRecvTimeoutInSeconds
         
         return $Object
     }

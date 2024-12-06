@@ -23,6 +23,6 @@ Describe 'New-AzFrontDoorFrontendEndpointObject' {
         $frontendEndpoint1.Name | Should -Be "frontendendpoint1"
         $frontendEndpoint1.HostName | Should -Be $hostName
         $frontendEndpoint1.SessionAffinityEnabledState | Should -Be "Enabled"
-        $frontendEndpoint1.SessionAffinityTtlSecond | Should -Be 0
+        $frontendEndpoint1.SessionAffinityTtlInSeconds | Should -Be 0
     }
 }

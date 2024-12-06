@@ -20,7 +20,7 @@ Describe 'New-AzFrontDoorHealthProbeSettingObject' {
         $healthProbeSetting1.Name | Should -Be "healthProbeSetting1"
         $healthProbeSetting1.EnabledState | Should -Be "Enabled"
         $healthProbeSetting1.HealthProbeMethod | Should -Be "HEAD"
-        $healthProbeSetting1.IntervalInSecond | Should -Be 30
+        $healthProbeSetting1.IntervalInSeconds | Should -Be 30
         $healthProbeSetting1.Path | Should -Be "/"
         $healthProbeSetting1.Protocol | Should -Be "Http"
     }

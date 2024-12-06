@@ -15,7 +15,7 @@ Create an in-memory object for CustomRule.
 ```
 New-AzFrontDoorWafCustomRuleObject -Action <String> -MatchCondition <IMatchCondition[]> -Priority <Int32>
  -RuleType <String> [-EnabledState <String>] [-GroupBy <IGroupByVariable[]>] [-Name <String>]
- [-RateLimitDurationInMinute <Int32>] [-RateLimitThreshold <Int32>] [<CommonParameters>]
+ [-RateLimitDurationInMinutes <Int32>] [-RateLimitThreshold <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,14 +139,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RateLimitDurationInMinute
+### -RateLimitDurationInMinutes
 Time window for resetting the rate limit count.
 Default is 1 minute.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases: RateLimitDurationInMinutes
+Aliases:
 
 Required: False
 Position: Named

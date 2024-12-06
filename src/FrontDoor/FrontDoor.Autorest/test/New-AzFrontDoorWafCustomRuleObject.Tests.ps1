@@ -23,6 +23,6 @@ Describe 'New-AzFrontDoorWafCustomRuleObject' {
         $customRule1.Action | Should -Be "Block"
         $customRule1.Priority | Should -Be 2
         $customRule1.EnabledState | Should -Be "Enabled"
-        $customRule1.RateLimitDurationInMinute | Should -Be 1
+        $customRule1.RateLimitDurationInMinutes | Should -Be 1
     }
 }
