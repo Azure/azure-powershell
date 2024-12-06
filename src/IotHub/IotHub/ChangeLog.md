@@ -19,8 +19,6 @@
 -->
 ## Upcoming Release
 * Removed "Microsoft.Azure.Management.IotHub" Version "4.2.0" PackageReference
-* Removed "Microsoft.Azure.Management.EventHub" Version "5.0.0" PackageReference
-* Removed "Microsoft.Azure.Management.Storage" Version "25.0.0" PackageReference
 
 ## Version 2.7.7
 * Fixed secrets exposure in example documentation.
