@@ -15,8 +15,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorWafPolicy')
 }
 
 Describe 'Remove-AzFrontDoorWafPolicy' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            $wafName = 'testpsWaf' + (RandomString -allChars $false -len 4)
+            $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
+            $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType "MatchRule" -MatchCondition $matchCondition1 -Action Block -Priority 2
+        
+            # Create exclusion objects
+            $exclusionRule = New-AzFrontDoorWafManagedRuleExclusionObject -Variable "QueryStringArgNames" -Operator "Equals" -Selector "ExcludeInRule"
+            $exclusionGroup = New-AzFrontDoorWafManagedRuleExclusionObject -Variable "QueryStringArgNames" -Operator "Equals" -Selector "ExcludeInGroup"
+            $exclusionSet = New-AzFrontDoorWafManagedRuleExclusionObject -Variable "QueryStringArgNames" -Operator "Equals" -Selector "ExcludeInSet"
+        
+            $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action "Log" -Exclusion $exclusionRule
+            $override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName "SQLI" -ManagedRuleOverride $ruleOverride -Exclusion $exclusionGroup
+            $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type "DefaultRuleSet" -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
+            $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type "BotProtection" -Version "preview-0.1"
+        
+            $logScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
+            $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State "Enabled" -ScrubbingRule @($logScrubbingRule)
+        
+            New-AzFrontDoorWafPolicy -Name $wafName -ResourceGroupName $env.ResourceGroupName -Sku "Premium_AzureFrontDoor" -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState "Enabled" -Mode "Prevention" -RequestBodyCheck "Disabled" -LogScrubbingSetting $logscrubbingSetting -JavascriptChallengeExpirationInMinutes 30  
+        
+            Remove-AzFrontDoorWafPolicy -Name $wafName -ResourceGroupName $env.ResourceGroupName -PassThru
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

@@ -15,21 +15,16 @@ update policy with specified rule set name within a resource group.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-BlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
- [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinute <Int32>]
- [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
- [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CustomRule <ICustomRule[]>] [-Etag <String>] [-ManagedRuleSet <IManagedRuleSet[]>]
+ [-PolicySetting <IPolicySettings>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-BlockResponseBody <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>] [-EnabledState <String>]
- [-Etag <String>] [-JavascriptChallengeExpirationInMinute <Int32>]
- [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
- [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-CustomRule <ICustomRule[]>] [-Etag <String>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySetting <IPolicySettings>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -90,37 +85,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BlockResponseBody
-If the action type is block, customer can override the response body.
-The body must be specified in base64 encoding.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomBlockResponseStatusCode
-If the action type is block, customer can override the response status code.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomRule
 List of rules
 
@@ -144,22 +108,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnabledState
-Describes if the policy is in enabled or disabled state.
-Defaults to Enabled if not specified.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -198,23 +146,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JavascriptChallengeExpirationInMinute
-Defines the JavaScript challenge cookie validity lifetime in minutes.
-This setting is only applicable to Premium_AzureFrontDoor.
-Value must be an integer between 5 and 1440 with the default value being 30.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -JsonFilePath
 Path of Json file supplied to the Update operation
 
@@ -245,41 +176,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogScrubbing
-Defines rules that scrub sensitive fields in the Web Application Firewall logs.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ManagedRuleSet
 List of rule sets.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Mode
-Describes if it is in detection mode or prevention mode at policy level.
-
-```yaml
-Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -320,26 +221,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RedirectUrl
-If action type is redirect, this field represents redirect URL for the client.
+### -PolicySetting
+Describes settings for the policy.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestBodyCheck
-Describes if policy managed rules will inspect the request body content.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettings
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

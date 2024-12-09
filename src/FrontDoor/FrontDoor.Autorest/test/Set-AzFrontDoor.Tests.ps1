@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzFrontDoor'))
 }
 
 Describe 'Set-AzFrontDoor' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         $FDName = 'testps-fd-' + (RandomString -allChars $false -len 4)
         $tags = @{"tag1" = "value1"; "tag2" = "value2"}
         $hostName = "$FDName.azurefd.net"

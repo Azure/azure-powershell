@@ -80,187 +80,187 @@ function New-AzFrontDoorWafPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('PolicyName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-    [System.String]
-    # The name of the Web Application Firewall Policy.
-    ${Name},
+  [Parameter(Mandatory)]
+  [Alias('PolicyName')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+  [System.String]
+  # The name of the Web Application Firewall Policy.
+  ${Name},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-    [System.String]
-    # Name of the Resource group within the Azure subscription.
-    ${ResourceGroupName},
+  [Parameter(Mandatory)]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+  [System.String]
+  # Name of the Resource group within the Azure subscription.
+  ${ResourceGroupName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
-    ${SubscriptionId},
+  [Parameter()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+  [System.String]
+  # The subscription credentials which uniquely identify the Microsoft Azure subscription.
+  # The subscription ID forms part of the URI for every service call.
+  ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # If the action type is block, customer can override the response body.
-    # The body must be specified in base64 encoding.
-    ${BlockResponseBody},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # If the action type is block, customer can override the response body.
+  # The body must be specified in base64 encoding.
+  ${CustomBlockResponseBody},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.Int32]
-    # If the action type is block, customer can override the response status code.
-    ${CustomBlockResponseStatusCode},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.Int32]
+  # If the action type is block, customer can override the response status code.
+  ${CustomBlockResponseStatusCode},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule[]]
-    # List of rules
-    ${CustomRule},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [AllowEmptyCollection()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule[]]
+  # List of rules
+  ${CustomRule},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # Describes if the policy is in enabled or disabled state.
-    # Defaults to Enabled if not specified.
-    ${EnabledState},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # Describes if the policy is in enabled or disabled state.
+  # Defaults to Enabled if not specified.
+  ${EnabledState} = "Enabled",
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # Gets a unique read-only string that changes whenever the resource is updated.
-    ${Etag},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # Gets a unique read-only string that changes whenever the resource is updated.
+  ${Etag},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.Int32]
-    # Defines the JavaScript challenge cookie validity lifetime in minutes.
-    # This setting is only applicable to Premium_AzureFrontDoor.
-    # Value must be an integer between 5 and 1440 with the default value being 30.
-    ${JavascriptChallengeExpirationInMinute},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.Int32]
+  # Defines the JavaScript challenge cookie validity lifetime in minutes.
+  # This setting is only applicable to Premium_AzureFrontDoor.
+  # Value must be an integer between 5 and 1440 with the default value being 30.
+  ${JavascriptChallengeExpirationInMinutes},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing]
-    # Defines rules that scrub sensitive fields in the Web Application Firewall logs.
-    ${LogScrubbing},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing]
+  # Defines rules that scrub sensitive fields in the Web Application Firewall logs.
+  ${LogScrubbingSetting},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]]
-    # List of rule sets.
-    ${ManagedRuleSet},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [AllowEmptyCollection()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]]
+  # List of rule sets.
+  ${ManagedRuleSet},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Prevention", "Detection")]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # Describes if it is in detection mode or prevention mode at policy level.
-    ${Mode},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Prevention", "Detection")]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # Describes if it is in detection mode or prevention mode at policy level.
+  ${Mode} = "Prevention",
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # If action type is redirect, this field represents redirect URL for the client.
-    ${RedirectUrl},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # If action type is redirect, this field represents redirect URL for the client.
+  ${RedirectUrl},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # Describes if policy managed rules will inspect the request body content.
-    ${RequestBodyCheck},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # Describes if policy managed rules will inspect the request body content.
+  ${RequestBodyCheck} = "Enabled",
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Classic_AzureFrontDoor", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor")]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # Name of the pricing tier.
-    ${SkuName},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Classic_AzureFrontDoor", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor")]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # Name of the pricing tier.
+  ${SkuName},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceTags]))]
+  [System.Collections.Hashtable]
+  # Resource tags.
+  ${Tag},
 
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
+  [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # Path of Json file supplied to the Create operation
+  ${JsonFilePath},
 
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
+  [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.String]
+  # Json string supplied to the Create operation
+  ${JsonString},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
+  [Parameter()]
+  [Alias('AzureRMContext', 'AzureCredential')]
+  [ValidateNotNull()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+  [System.Management.Automation.PSObject]
+  # The DefaultProfile parameter is not functional.
+  # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+  ${DefaultProfile},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
+  [Parameter()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+  [System.Management.Automation.SwitchParameter]
+  # Run the command as a job
+  ${AsJob},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+  [Parameter(DontShow)]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+  [System.Management.Automation.SwitchParameter]
+  # Wait for .NET debugger to attach
+  ${Break},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+  [Parameter(DontShow)]
+  [ValidateNotNull()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+  # SendAsync Pipeline Steps to be appended to the front of the pipeline
+  ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+  [Parameter(DontShow)]
+  [ValidateNotNull()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+  # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+  ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
+  [Parameter()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+  [System.Management.Automation.SwitchParameter]
+  # Run the command asynchronously
+  ${NoWait},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+  [Parameter(DontShow)]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+  [System.Uri]
+  # The URI for the proxy server to use
+  ${Proxy},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+  [Parameter(DontShow)]
+  [ValidateNotNull()]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+  [System.Management.Automation.PSCredential]
+  # Credentials for a proxy server to use for the remote call
+  ${ProxyCredential},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+  [Parameter(DontShow)]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+  [System.Management.Automation.SwitchParameter]
+  # Use the default credentials for the proxy
+  ${ProxyUseDefaultCredentials}
 )
 
     process {
@@ -270,6 +270,38 @@ param(
                 throw "WAF policy with name $Name already exists in resource group $ResourceGroupName"
             }
         }
+
+        $PolicySettings = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettings]::New()
+        if ($PSBoundParameters.ContainsKey('CustomBlockResponseBody')) {
+            $null = $PSBoundParameters.Remove('CustomBlockResponseBody')
+            $CustomBlockResponseBody = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($CustomBlockResponseBody))
+            $PolicySettings.CustomBlockResponseBody = $CustomBlockResponseBody
+        }
+        if ($PSBoundParameters.ContainsKey('CustomBlockResponseStatusCode')) {
+            $null = $PSBoundParameters.Remove('CustomBlockResponseStatusCode')
+            $PolicySettings.CustomBlockResponseStatusCode = $CustomBlockResponseStatusCode
+        }
+        $null = $PSBoundParameters.Remove("EnabledState")
+        $PolicySettings.EnabledState = $EnabledState
+        if ($PSBoundParameters.ContainsKey('JavascriptChallengeExpirationInMinutes')) {
+            $null = $PSBoundParameters.Remove('JavascriptChallengeExpirationInMinutes')
+            $PolicySettings.JavascriptChallengeExpirationInMinutes = $JavascriptChallengeExpirationInMinutes
+        }
+        if ($PSBoundParameters.ContainsKey('LogScrubbingSetting')) {
+           $null = $PSBoundParameters.Remove('LogScrubbingSetting')
+            $PolicySettings.LogScrubbingSetting = $LogScrubbingSetting
+        }
+        $null = $PSBoundParameters.Remove("Mode")
+        $PolicySettings.Mode = $Mode
+        if ($PSBoundParameters.ContainsKey('RedirectUrl')) {
+            $null = $PSBoundParameters.Remove('RedirectUrl')
+            $PolicySettings.RedirectUrl = $RedirectUrl
+        }
+        $null = $PSBoundParameters.Remove("RequestBodyCheck")
+        $PolicySettings.RequestBodyCheck = $RequestBodyCheck
+
+        $PSBoundParameters.Add('PolicySetting', $PolicySettings)
+
         Az.FrontDoor.internal\New-AzFrontDoorWafPolicy @PSBoundParameters
     }
 }

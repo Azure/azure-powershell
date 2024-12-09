@@ -13,7 +13,7 @@ Create an in-memory object for RulesEngineRule.
 ## SYNTAX
 
 ```
-New-AzFrontDoorRulesEngineRuleObject -Name <String> -Priority <Int32> [-Action <IRulesEngineAction>]
+New-AzFrontDoorRulesEngineRuleObject -Action <IRulesEngineAction> -Name <String> -Priority <Int32>
  [-MatchCondition <IRulesEngineMatchCondition[]>] [-MatchProcessingBehavior <String>] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

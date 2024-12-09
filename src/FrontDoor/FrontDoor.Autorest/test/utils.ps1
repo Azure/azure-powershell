@@ -75,7 +75,7 @@ function setupEnv() {
 	$ruleEngineResponseHeaderRule = New-AzFrontDoorRulesEngineRuleObject -Name "rule101" -Priority 1 -Action $ruleEngineResponseHeaderAction -MatchCondition $conditions
 
 	$ruleEngineForwardAction = New-AzFrontDoorRulesEngineActionObject -ForwardingProtocol "HttpsOnly" -BackendPoolName "backendpool1" -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -QueryParameterStripDirective "StripNone" -DynamicCompression "Disabled" -EnableCaching $true
-	$ruleEngineForwardRule = New-AzFrontDoorRulesEngineRuleObject -Name rule102 -Priority 2 -Action $ruleEngineForwardAction -MatchCondition $conditions
+	$ruleEngineForwardRule = New-AzFrontDoorRulesEngineRuleObject -Name "rule102" -Priority 2 -Action $ruleEngineForwardAction -MatchCondition $conditions
 
 	$redirectConditions = New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable "RequestHeader" -Operator Equal -MatchValue "redirect" -Transform "Lowercase" -Selector "Rules-Engine-Route-Forward" -NegateCondition $false
 	$ruleEngineRedirectAction = New-AzFrontDoorRulesEngineActionObject -RedirectProtocol "MatchRequest" -CustomHost "www.contoso.com" -RedirectType "Moved"
@@ -85,6 +85,30 @@ function setupEnv() {
     $env.Add("RuleEngineName", "engine101")
 
     Write-Host -ForegroundColor Green "Successfully created rules engine engine101."
+
+    Write-Host -ForegroundColor Green "Start to create test waf policy."
+ 
+    $wafName = 'testpsWaf' + (RandomString -allChars $false -len 4)
+    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
+    $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType "MatchRule" -MatchCondition $matchCondition1 -Action Block -Priority 2
+
+    # Create exclusion objects
+    $exclusionRule = New-AzFrontDoorWafManagedRuleExclusionObject -Variable "QueryStringArgNames" -Operator "Equals" -Selector "ExcludeInRule"
+    $exclusionGroup = New-AzFrontDoorWafManagedRuleExclusionObject -Variable "QueryStringArgNames" -Operator "Equals" -Selector "ExcludeInGroup"
+    $exclusionSet = New-AzFrontDoorWafManagedRuleExclusionObject -Variable "QueryStringArgNames" -Operator "Equals" -Selector "ExcludeInSet"
+
+    $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action "Log" -Exclusion $exclusionRule
+    $override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName "SQLI" -ManagedRuleOverride $ruleOverride -Exclusion $exclusionGroup
+    $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type "DefaultRuleSet" -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
+    $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type "BotProtection" -Version "preview-0.1"
+
+    $logScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
+    $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State "Enabled" -ScrubbingRule @($logScrubbingRule)
+
+    New-AzFrontDoorWafPolicy -Name $wafName -ResourceGroupName $resourceGroupName -Sku "Premium_AzureFrontDoor" -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState "Enabled" -Mode "Prevention" -RequestBodyCheck "Disabled" -LogScrubbingSetting $logscrubbingSetting -JavascriptChallengeExpirationInMinutes 30  
+
+    $env.Add("WafPolicyName", $wafName)
+
 
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.

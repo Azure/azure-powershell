@@ -23,11 +23,11 @@ Gets a Front Door with the specified Front Door name under the specified subscri
 ### [Get-AzFrontDoorFrontendEndpoint](Get-AzFrontDoorFrontendEndpoint.md)
 Gets a Frontend endpoint with the specified name within the specified Front Door.
 
-### [Get-AzFrontDoorManagedRuleSet](Get-AzFrontDoorManagedRuleSet.md)
-Lists all available managed rule sets.
-
 ### [Get-AzFrontDoorRulesEngine](Get-AzFrontDoorRulesEngine.md)
 Gets a Rules Engine Configuration with the specified name within the specified Front Door.
+
+### [Get-AzFrontDoorWafManagedRuleSetDefinition](Get-AzFrontDoorWafManagedRuleSetDefinition.md)
+Lists all available managed rule sets.
 
 ### [Get-AzFrontDoorWafPolicy](Get-AzFrontDoorWafPolicy.md)
 Retrieve protection policy with specified name within a resource group.
@@ -61,6 +61,9 @@ Create an in-memory object for HealthProbeSettingsModel.
 
 ### [New-AzFrontDoorLoadBalancingSettingObject](New-AzFrontDoorLoadBalancingSettingObject.md)
 Create an in-memory object for LoadBalancingSettingsModel.
+
+### [New-AzFrontDoorPolicySettingsObject](New-AzFrontDoorPolicySettingsObject.md)
+Create an in-memory object for PolicySettings.
 
 ### [New-AzFrontDoorRedirectConfigurationObject](New-AzFrontDoorRedirectConfigurationObject.md)
 Create an in-memory object for RedirectConfiguration.

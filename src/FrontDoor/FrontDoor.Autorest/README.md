@@ -70,6 +70,7 @@ directive:
     - PolicySettingsLogScrubbing
     - CacheConfiguration
     - RulesEngineAction
+    - PolicySettings
 
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
@@ -135,12 +136,20 @@ directive:
       cmdlet-name: New-AzFrontDoorCacheConfigurationObject
     # - model-name: RouteConfiguration
     #   cmdlet-name: New-AzFrontDoorRouteConfigurationObject
+    - model-name: PolicySettings
+      cmdlet-name: New-AzFrontDoorPolicySettingsObject
 
   # Rename
   - where: 
       subject: Policy
     set:
       subject: WafPolicy
+  - where:
+      verb: Get
+      subject: ManagedRuleSet
+    set:
+      verb: Get
+      subject: WafManagedRuleSetDefinition
   # Hide unused
   - where:
       verb: New
@@ -215,46 +224,51 @@ directive:
     set:
       default:
         script: '"global"'
-  - where:
-      subject: WafPolicy
-      parameter-name: PolicySettingCustomBlockResponseBody
-    set: 
-      parameter-name: BlockResponseBody
-  - where:
-      subject: WafPolicy
-      parameter-name: PolicySettingCustomBlockResponseStatusCode
-    set: 
-      parameter-name: CustomBlockResponseStatusCode
-  - where:
-      subject: WafPolicy
-      parameter-name: PolicySettingEnabledState
-    set: 
-      parameter-name: EnabledState
-  - where:
-      subject: WafPolicy
-      parameter-name: PolicySettingJavascriptChallengeExpirationInMinute
-    set: 
-      parameter-name: JavascriptChallengeExpirationInMinute
-  - where:
-      subject: WafPolicy
-      parameter-name: PolicySettingLogScrubbing
-    set: 
-      parameter-name: LogScrubbing
-  - where:
-      subject: WafPolicy
-      parameter-name: PolicySettingMode
-    set: 
-      parameter-name: Mode
-  - where:
-      subject: WafPolicy
-      parameter-name: PolicySettingRedirectUrl
-    set: 
-      parameter-name: RedirectUrl
-  - where:
-      subject: WafPolicy
-      parameter-name: PolicySettingRequestBodyCheck
-    set: 
-      parameter-name: RequestBodyCheck
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: PolicySettingCustomBlockResponseBody
+  #   set: 
+  #     parameter-name: CustomBlockResponseBody
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: PolicySettingCustomBlockResponseStatusCode
+  #   set: 
+  #     parameter-name: CustomBlockResponseStatusCode
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: PolicySettingEnabledState
+  #   set: 
+  #     parameter-name: EnabledState
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: PolicySettingJavascriptChallengeExpirationInMinute
+  #   set: 
+  #     parameter-name: JavascriptChallengeExpirationInMinute
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: PolicySettingLogScrubbing
+  #   set: 
+  #     parameter-name: LogScrubbingSetting
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: JavascriptChallengeExpirationInMinute
+  #   set: 
+  #     parameter-name: JavascriptChallengeExpirationInMinutes
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: PolicySettingMode
+  #   set: 
+  #     parameter-name: Mode
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: PolicySettingRedirectUrl
+  #   set: 
+  #     parameter-name: RedirectUrl
+  # - where:
+  #     subject: WafPolicy
+  #     parameter-name: PolicySettingRequestBodyCheck
+  #   set: 
+  #     parameter-name: RequestBodyCheck
 
   # Clear-AzFrontDoorEndpointContent rename to Remove-AzFrontDoorContent
   - where:
@@ -400,5 +414,16 @@ directive:
       property-name: RulesEngineOperator
     set:
       property-name: Operator
+  - where:
+      model-name: PolicySettings
+      property-name: JavascriptChallengeExpirationInMinute
+    set:
+      property-name: JavascriptChallengeExpirationInMinutes
+  - where:
+      model-name: PolicySettings
+      property-name: LogScrubbing
+    set:
+      property-name: LogScrubbingSetting
+    
 
 ```

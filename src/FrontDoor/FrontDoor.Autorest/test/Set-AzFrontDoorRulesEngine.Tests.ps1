@@ -16,7 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzFrontDoorRulesEngine'))
 
 Describe 'Set-AzFrontDoorRulesEngine' {
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Overwrite" -HeaderName "Strict-Transport-Security" -Value "max-age=63072000; includeSubDomains; preload"
+        $ruleEngine = Get-AzFrontDoorRulesEngine -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName -Name $env.RuleEngineName
+        $engineAction = New-AzFrontDoorRulesEngineActionObject -ResponseHeaderAction $headerActions
+        $ruleEngine.Rule[0].Action= $engineAction
+        $ruleEngine | Set-AzFrontDoorRulesEngine
     }
 
     It 'UpdateViaJsonFilePath' -skip {

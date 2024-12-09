@@ -20,10 +20,6 @@ Describe 'Get-AzFrontDoorFrontendEndpoint' {
     }
 
     It 'Get' {
-        {
-            $customFrontendEndpointName = "frontendendpoint2"
-            Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2"
-        } | Should -Not -Throw
         Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName
     }
 

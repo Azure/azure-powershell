@@ -16,8 +16,8 @@ create policy with specified rule set name within a resource group.
 ```
 New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
- [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinute <Int32>]
- [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
+ [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
  [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -173,7 +173,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JavascriptChallengeExpirationInMinute
+### -JavascriptChallengeExpirationInMinutes
 Defines the JavaScript challenge cookie validity lifetime in minutes.
 This setting is only applicable to Premium_AzureFrontDoor.
 Value must be an integer between 5 and 1440 with the default value being 30.
@@ -220,7 +220,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogScrubbing
+### -LogScrubbingSetting
 Defines rules that scrub sensitive fields in the Web Application Firewall logs.
 
 ```yaml
