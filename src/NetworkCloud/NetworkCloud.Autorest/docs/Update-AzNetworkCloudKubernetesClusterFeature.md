@@ -42,8 +42,6 @@ Location  Name           SystemDataCreatedAt SystemDataCreatedBy    SystemDataCr
 uksouth   featureName   12/02/2024 17:44:02	 <identity>             User                     12/02/2024 17:46:45      <identity>
 ```
 
-```
-
 This command updates a Kubernetes cluster feature's properties.
 
 ## PARAMETERS
