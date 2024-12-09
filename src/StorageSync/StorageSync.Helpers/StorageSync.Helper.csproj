@@ -7,7 +7,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helpers</AssemblyName>
         <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helpers</RootNamespace>
-        <NoWarn>$(NoWarn);CS0108</NoWarn>
+        <NoWarn>$(NoWarn);CS0108;CS1573;CS0114</NoWarn>
     </PropertyGroup>
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 </Project>
