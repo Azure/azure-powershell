@@ -20,7 +20,6 @@ Regenerates an EventHub SAS key
 #>
 
 function New-AzEventHubKey{
-	[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.GenericBreakingChangeAttribute("The type of property 'primaryKey' in output object will be changed from 'String' to 'SecureString'.", "14.0.0", "6.0.0", "2025/05/30")]
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAccessKeys])]
     [CmdletBinding(DefaultParameterSetName = 'NewExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
