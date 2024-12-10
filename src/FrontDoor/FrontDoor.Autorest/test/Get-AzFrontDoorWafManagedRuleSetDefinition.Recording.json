@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "7bbaecb2-d5a6-4069-a8af-437996ef432a" ],
+        "x-ms-client-request-id": [ "b15eab2d-d376-40cf-adeb-29b71738c691" ],
         "CommandName": [ "Get-AzFrontDoorWafManagedRuleSetDefinition" ],
         "FullCommandName": [ "Get-AzFrontDoorWafManagedRuleSetDefinition_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,16 +23,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "86729a4b-21b2-4505-92e2-d98b0b140bf3" ],
-        "x-ms-client-request-id": [ "7bbaecb2-d5a6-4069-a8af-437996ef432a" ],
+        "x-ms-request-id": [ "a135b6b5-1c26-48a2-abdf-1d89018267d7" ],
+        "x-ms-client-request-id": [ "b15eab2d-d376-40cf-adeb-29b71738c691" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "36ddfb4d-7774-4245-969f-bee9ac779730" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20241209T084320Z:36ddfb4d-7774-4245-969f-bee9ac779730" ],
+        "x-ms-correlation-request-id": [ "e3ff23c1-6afc-4ff9-bf56-465aff1e73b8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20241210T035055Z:e3ff23c1-6afc-4ff9-bf56-465aff1e73b8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D47AF86A4C0643C2BCDB54F5904EB8FA Ref B: TYO201151002023 Ref C: 2024-12-09T08:43:19Z" ],
-        "Date": [ "Mon, 09 Dec 2024 08:43:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3704290329E14D418CA1F9872A30D3C7 Ref B: MAA201060514019 Ref C: 2024-12-10T03:50:53Z" ],
+        "Date": [ "Tue, 10 Dec 2024 03:50:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "130824" ],

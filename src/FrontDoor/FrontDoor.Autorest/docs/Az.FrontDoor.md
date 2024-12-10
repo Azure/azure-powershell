@@ -128,7 +128,7 @@ Deletes Policy
 ### [Set-AzFrontDoor](Set-AzFrontDoor.md)
 update a new Front Door with a Front Door name under the specified subscription and resource group.
 
-### [Set-AzFrontDoorRulesEngine](Set-AzFrontDoorRulesEngine.md)
+### [Update-AzFrontDoorRulesEngine](Update-AzFrontDoorRulesEngine.md)
 update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ### [Update-AzFrontDoorWafPolicy](Update-AzFrontDoorWafPolicy.md)

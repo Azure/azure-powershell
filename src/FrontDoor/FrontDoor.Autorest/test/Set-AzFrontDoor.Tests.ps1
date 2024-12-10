@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzFrontDoor'))
 }
 
 Describe 'Set-AzFrontDoor' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         $FDName = 'testps-fd-' + (RandomString -allChars $false -len 4)
         $tags = @{"tag1" = "value1"; "tag2" = "value2"}
         $hostName = "$FDName.azurefd.net"
@@ -33,10 +33,11 @@ Describe 'Set-AzFrontDoor' {
         $healthProbeSetting1.EnabledState = "Enabled"
         $backendPoolsSetting1.SendRecvTimeoutInSeconds = 20
         $updatedFrontDoor = Set-AzFrontDoor -Name $FDName -ResourceGroupName $env.ResourceGroupName -Tag $newTags -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
-        $updatedFrontDoor.Tags | Should -Be $newTags
-        $updatedFrontDoor.HealthProbeSettings[0].HealthProbeMethod | Should -Be "Get"
-        $updatedFrontDoor.HealthProbeSettings[0].EnabledState | Should -Be "Enabled"
-        $updatedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutInSeconds | Should -Be 20
+        $updatedFrontDoor.Tag["tag1"] | Should -Be "value3"
+        $updatedFrontDoor.Tag["tag2"] | Should -Be "value4"
+        $updatedFrontDoor.HealthProbeSetting[0].HealthProbeMethod | Should -Be "Get"
+        $updatedFrontDoor.HealthProbeSetting[0].EnabledState | Should -Be "Enabled"
+        $updatedFrontDoor.BackendPoolsSetting[0].SendRecvTimeoutInSeconds | Should -Be 20
     }
 
     It 'UpdateViaJsonFilePath' -skip {

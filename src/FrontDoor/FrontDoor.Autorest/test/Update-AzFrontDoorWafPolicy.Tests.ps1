@@ -15,8 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorWafPolicy')
 }
 
 Describe 'Update-AzFrontDoorWafPolicy' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
+        $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType "MatchRule" -MatchCondition $matchCondition1 -Action "Log" -Priority 2
+        $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $env.WafPolicyName -ResourceGroupName $env.ResourceGroupName -CustomRule $customRule2 -LogScrubbingSetting @{}
+        $updatedPolicy.CustomRuleRules[0].Name | Should -Be "Rule2"
+        $updatedPolicy.CustomRuleRules[0].RuleType | Should -Be "MatchRule"
+        $updatedPolicy.CustomRuleRules[0].MatchCondition[0].MatchVariable | Should -Be "RequestHeader"
+        $updatedPolicy.CustomRuleRules[0].MatchCondition[0].OperatorProperty | Should -Be "Contains"
+        $updatedPolicy.CustomRuleRules[0].MatchCondition[0].Selector | Should -Be "UserAgent"
+        $updatedPolicy.CustomRuleRules[0].MatchCondition[0].MatchValue | Should -Be "WINDOWS"
+        $updatedPolicy.CustomRuleRules[0].MatchCondition[0].Transform | Should -Be "Uppercase"
+        $updatedPolicy.CustomRuleRules[0].Action | Should -Be "Log"
+        $updatedPolicy.CustomRuleRules[0].Priority | Should -Be 2
     }
 
     It 'UpdateViaJsonString' -skip {

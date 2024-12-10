@@ -150,16 +150,22 @@ directive:
     set:
       verb: Get
       subject: WafManagedRuleSetDefinition
-  # Hide unused
+  # Hide Waf
   - where:
       verb: New
       subject: WafPolicy
     hide: true
   - where:
+      verb: Update
+      subject: WafPolicy
+    hide: true
+  - remove-operation: Policies_Update
+  # Hide unused
+  - where:
       verb: Test
     hide: true
   - where:
-      verb: Update
+      verb: Set
     hide: true
 
   - where:
@@ -213,7 +219,7 @@ directive:
       subject: FrontDoor
     hide: true
   - where:
-      verb: Set
+      verb: Update
       subject: FrontDoor
     hide: true
   # AzFrontDoorWafPolicy
@@ -224,51 +230,6 @@ directive:
     set:
       default:
         script: '"global"'
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: PolicySettingCustomBlockResponseBody
-  #   set: 
-  #     parameter-name: CustomBlockResponseBody
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: PolicySettingCustomBlockResponseStatusCode
-  #   set: 
-  #     parameter-name: CustomBlockResponseStatusCode
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: PolicySettingEnabledState
-  #   set: 
-  #     parameter-name: EnabledState
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: PolicySettingJavascriptChallengeExpirationInMinute
-  #   set: 
-  #     parameter-name: JavascriptChallengeExpirationInMinute
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: PolicySettingLogScrubbing
-  #   set: 
-  #     parameter-name: LogScrubbingSetting
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: JavascriptChallengeExpirationInMinute
-  #   set: 
-  #     parameter-name: JavascriptChallengeExpirationInMinutes
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: PolicySettingMode
-  #   set: 
-  #     parameter-name: Mode
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: PolicySettingRedirectUrl
-  #   set: 
-  #     parameter-name: RedirectUrl
-  # - where:
-  #     subject: WafPolicy
-  #     parameter-name: PolicySettingRequestBodyCheck
-  #   set: 
-  #     parameter-name: RequestBodyCheck
 
   # Clear-AzFrontDoorEndpointContent rename to Remove-AzFrontDoorContent
   - where:
@@ -278,13 +239,12 @@ directive:
       verb: Remove
       subject: Content
 
-  # Set-AzFrontDoorWafPolicy rename to Update-AzFrontDoorWafPolicy
+  # Update Rules Engine alias
   - where:
-      verb: Set
-      subject: WafPolicy
-    set:
       verb: Update
-      subject: WafPolicy
+      subject: RulesEngine
+    set:
+      alias: Set-AzFrontDoorRulesEngine
 
   # Breaking change avoid rename
   # New-AzFrontDoorHeaderActionObject
@@ -363,7 +323,13 @@ directive:
       model-name: CustomRule
       property-name: RateLimitDurationInMinute
     set:
-      property-name: RateLimitDurationInMinutes 
+      property-name: RateLimitDurationInMinutes
+
+  # - where:
+  #     model-name: WebApplicationFirewallPolicy
+  #     property-name: CustomRuleRules
+  #   set:
+  #     property-name: CustomRule
 
   - where:
       model-name: ManagedRuleExclusion

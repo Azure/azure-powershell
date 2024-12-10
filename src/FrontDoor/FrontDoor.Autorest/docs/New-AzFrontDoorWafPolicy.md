@@ -15,7 +15,7 @@ create policy with specified rule set name within a resource group.
 ### CreateExpanded (Default)
 ```
 New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-BlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
+ [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
  [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
  [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
@@ -80,7 +80,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BlockResponseBody
+### -CustomBlockResponseBody
 If the action type is block, customer can override the response body.
 The body must be specified in base64 encoding.
 

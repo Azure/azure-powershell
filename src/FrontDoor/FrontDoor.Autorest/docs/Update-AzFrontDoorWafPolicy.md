@@ -15,30 +15,25 @@ update policy with specified rule set name within a resource group.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomRule <ICustomRule[]>] [-Etag <String>] [-ManagedRuleSet <IManagedRuleSet[]>]
- [-PolicySetting <IPolicySettings>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CustomRule <ICustomRule[]>] [-Etag <String>] [-ManagedRuleSet <IManagedRuleSet[]>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded
+```
+Update-AzFrontDoorWafPolicy [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>]
+ [-CustomRule <ICustomRule[]>] [-EnabledState <String>] [-Etag <String>]
+ [-JavascriptChallengeExpirationInMinutes <Int32>] [-LogScrubbingSetting <IPolicySettingsLogScrubbing>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-CustomRule <ICustomRule[]>] [-Etag <String>]
- [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySetting <IPolicySettings>] [-SkuName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,12 +80,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CustomBlockResponseBody
+[Parameter()]
+[Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+[Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettings]
+# Describes settings for the policy.
+${PolicySetting},
+If the action type is block, customer can override the response body.
+The body must be specified in base64 encoding.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomBlockResponseStatusCode
+If the action type is block, customer can override the response status code.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomRule
 List of rules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -116,12 +147,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnabledState
+Describes if the policy is in enabled or disabled state.
+Defaults to Enabled if not specified.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Etag
 Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -146,30 +193,32 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
+### -JavascriptChallengeExpirationInMinutes
+Defines the JavaScript challenge cookie validity lifetime in minutes.
+This setting is only applicable to Premium_AzureFrontDoor.
+Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Type: System.Int32
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Update operation
+### -LogScrubbingSetting
+Defines rules that scrub sensitive fields in the Web Application Firewall logs.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,7 +230,22 @@ List of rule sets.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Mode
+Describes if it is in detection mode or prevention mode at policy level.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -196,7 +260,7 @@ The name of the Web Application Firewall Policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases: PolicyName
 
 Required: True
@@ -221,12 +285,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicySetting
-Describes settings for the policy.
+### -RedirectUrl
+If action type is redirect, this field represents redirect URL for the client.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettings
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestBodyCheck
+Describes if policy managed rules will inspect the request body content.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -241,7 +320,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -256,7 +335,7 @@ Name of the pricing tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -272,7 +351,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -287,7 +366,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -266,6 +266,6 @@ process {
         $BackendPoolsSetting.EnforceCertificateNameCheck = 'Disabled'
     }
 
-    Az.FrontDoor.internal\Set-AzFrontDoor @PSBoundParameters
+    Az.FrontDoor.internal\Update-AzFrontDoor @PSBoundParameters
 }
 }
