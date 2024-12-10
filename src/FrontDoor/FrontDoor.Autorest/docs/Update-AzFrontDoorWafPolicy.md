@@ -15,18 +15,11 @@ update policy with specified rule set name within a resource group.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomRule <ICustomRule[]>] [-Etag <String>] [-ManagedRuleSet <IManagedRuleSet[]>] [-SkuName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-Update-AzFrontDoorWafPolicy [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>]
- [-CustomRule <ICustomRule[]>] [-EnabledState <String>] [-Etag <String>]
- [-JavascriptChallengeExpirationInMinutes <Int32>] [-LogScrubbingSetting <IPolicySettingsLogScrubbing>]
- [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>]
- [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
+ [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
+ [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -91,7 +84,7 @@ The body must be specified in base64 encoding.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -106,7 +99,7 @@ If the action type is block, customer can override the response status code.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -153,7 +146,7 @@ Defaults to Enabled if not specified.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -200,7 +193,7 @@ Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -215,7 +208,7 @@ Defines rules that scrub sensitive fields in the Web Application Firewall logs.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -245,7 +238,7 @@ Describes if it is in detection mode or prevention mode at policy level.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -290,7 +283,7 @@ If action type is redirect, this field represents redirect URL for the client.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -305,7 +298,7 @@ Describes if policy managed rules will inspect the request body content.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False

@@ -152,20 +152,20 @@ param(
     # # Describes settings for the policy.
     # ${PolicySetting},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # If the action type is block, customer can override the response body.
     # The body must be specified in base64 encoding.
     ${CustomBlockResponseBody},
   
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.Int32]
     # If the action type is block, customer can override the response status code.
     ${CustomBlockResponseStatusCode},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
@@ -173,33 +173,33 @@ param(
     # Defaults to Enabled if not specified.
     ${EnabledState},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing]
     # Defines rules that scrub sensitive fields in the Web Application Firewall logs.
     ${LogScrubbingSetting},
   
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Prevention", "Detection")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Describes if it is in detection mode or prevention mode at policy level.
     ${Mode},
   
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # If action type is redirect, this field represents redirect URL for the client.
     ${RedirectUrl},
   
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Describes if policy managed rules will inspect the request body content.
     ${RequestBodyCheck},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.Int32]
     # Defines the JavaScript challenge cookie validity lifetime in minutes.
