@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 8.1.0
 * Upgraded Azure.Core to 1.44.1.
 * Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
     - `New-AzStorageContext`

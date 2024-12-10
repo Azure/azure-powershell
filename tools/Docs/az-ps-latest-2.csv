@@ -50,7 +50,7 @@ pac48,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac49,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.4.1.zip;sourceType=sa]Az.StackHCI,2.4.1
 pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCIVM.1.0.5.zip;sourceType=sa]Az.StackHCIVM,1.0.5
 pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StandbyPool.0.2.0.zip;sourceType=sa]Az.StandbyPool,0.2.0
-pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.8.0.0.zip;sourceType=sa]Az.Storage,8.0.0
+pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.8.1.0.zip;sourceType=sa]Az.Storage,8.1.0
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageAction.0.1.0.zip;sourceType=sa]Az.StorageAction,0.1.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.1.1.zip;sourceType=sa]Az.StorageCache,0.1.1
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.1.4.0.zip;sourceType=sa]Az.StorageMover,1.4.0
