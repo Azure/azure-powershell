@@ -26,6 +26,11 @@ using Xunit.Abstractions;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
+using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -62,27 +67,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
                 TemplateFile = templateFile
             };
             PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
-            List<PSResourceManagerError> expected = new List<PSResourceManagerError>()
+
+            List<ErrorDetail> expected = new List<ErrorDetail>()
             {
-                new PSResourceManagerError()
-                {
-                    Code = "202",
-                    Message = "bad input",
-                },
-                new PSResourceManagerError()
-                {
-                    Code = "203",
-                    Message = "bad input 2",
-                },
-                new PSResourceManagerError()
-                {
-                    Code = "203",
-                    Message = "bad input 3",
-                }
+                new ErrorDetail(code: "202", message: "bad input"),
+                new ErrorDetail(code: "203", message: "bad input 2"),
+                new ErrorDetail(code: "203", message: "bad input 3")
             };
+            TemplateValidationInfo expectedResults = new(errors: expected, diagnostics: new List<DeploymentDiagnosticsDefinition>(), requiredProviders: new List<Provider>());
+
+            var expectedErrors = expected.Select(e => e.ToPSResourceManagerError()).ToList();
+
             resourcesClientMock.Setup(f => f.ValidateDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
-                .Returns(expected)
+                .Returns(expectedResults)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
@@ -93,7 +91,54 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
             Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
             Assert.NotNull(actualParameters.TemplateParameterObject);
 
-            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidatesPSResourceGroupDeploymentWithUserTemplateWithDiagnostics()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateFile
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+
+            List<DeploymentDiagnosticsDefinition> diagnostics = new List<DeploymentDiagnosticsDefinition>()
+            {
+                new DeploymentDiagnosticsDefinition(code: "202", message: "bad input", target: "resource1", level: "Warning"),
+                new DeploymentDiagnosticsDefinition(code: "203", message: "bad input 2", target: "resource2", level: "Warning"),
+                new DeploymentDiagnosticsDefinition(code: "203", message: "bad input 3",  target: "resource3", level: "Error")
+            };
+            TemplateValidationInfo expectedResults = new(errors: new List<ErrorDetail>(), diagnostics: diagnostics, requiredProviders: new List<Provider>());
+
+            resourcesClientMock.Setup(f => f.ValidateDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expectedResults)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.TemplateFile = expectedParameters.TemplateFile;
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+
+            string expected = $@"
+
+Diagnostics (3): 
+{Color.DarkYellow}(resource1) bad input (202)
+{Color.Reset}{Color.DarkYellow}(resource2) bad input 2 (203)
+{Color.Reset}{Color.Red}(resource3) bad input 3 (203)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
+
+            JToken expectedToken = new JValue(expected);
+            PSObject expectedObject = new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: expectedToken));
+
+            commandRuntimeMock.Verify(f => f.WriteObject(expectedObject, true), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Never());
         }
     }
 }

@@ -18,14 +18,14 @@ Stops a copy operation to the specified destination file.
 Stop-AzStorageFileCopy [-ShareName] <String> [-FilePath] <String> [-CopyId <String>] [-Force]
  [-DisAllowTrailingDot] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### File
 ```
-Stop-AzStorageFileCopy [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-CopyId <String>] [-Force]
+Stop-AzStorageFileCopy [-ShareFileClient] <ShareFileClient> [-CopyId <String>] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -140,22 +140,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -File
-Specifies a **CloudFile** object.
-You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFile
-Parameter Sets: File
-Aliases: CloudFile
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -FilePath
 Specifies the path of a file.
 
@@ -178,6 +162,21 @@ Forces the command to run without asking for user confirmation.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -209,8 +208,8 @@ Type: Azure.Storage.Files.Shares.ShareFileClient
 Parameter Sets: File
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -267,7 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.File.CloudFile
+### Azure.Storage.Files.Shares.ShareFileClient
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

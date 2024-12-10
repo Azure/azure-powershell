@@ -17,15 +17,15 @@ Sets the storage capacity for a share.
 ```
 Set-AzStorageShareQuota [-ShareName] <String> [-Quota] <Int32> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Share
 ```
-Set-AzStorageShareQuota [-Share] <CloudFileShare> [-Quota] <Int32> [-Context <IStorageContext>]
+Set-AzStorageShareQuota [-ShareClient] <ShareClient> [-Quota] <Int32> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -110,6 +110,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Quota
 Specifies the quota value in gigabytes (GB).
 See the quota limitation in https://learn.microsoft.com/azure/azure-subscription-service-limits#azure-files-limits. 
@@ -141,14 +156,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Share
-Specifies a **CloudFileShare** object to represent the share for which this cmdlets sets a quota.
-To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
+### -ShareClient
+ShareClient object indicated the share whose quota to set.
 
 ```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileShare
+Type: Azure.Storage.Files.Shares.ShareClient
 Parameter Sets: Share
-Aliases: CloudFileShare
+Aliases:
 
 Required: True
 Position: 0
@@ -179,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Azure.Storage.Files.Shares.ShareClient
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

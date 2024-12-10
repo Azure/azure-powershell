@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a OrganizationResource</summary>
+    /// <summary>update a OrganizationResource</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Astronomer.Astro/organizations/{organizationName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAstroOrganization_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Description(@"Update a OrganizationResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Description(@"update a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Astronomer.Astro/organizations/{organizationName}", ApiVersion = "2023-08-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.NotSuggestDefaultParameterSet]

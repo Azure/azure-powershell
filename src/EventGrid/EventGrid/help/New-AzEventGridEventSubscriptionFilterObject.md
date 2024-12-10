@@ -16,7 +16,7 @@ Create an in-memory object for EventSubscriptionFilter.
 New-AzEventGridEventSubscriptionFilterObject [-AdvancedFilter <IAdvancedFilter[]>]
  [-EnableAdvancedFilteringOnArray <Boolean>] [-IncludedEventType <String[]>]
  [-IsSubjectCaseSensitive <Boolean>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,21 +94,6 @@ Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filter
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a OrganizationResource
+create a OrganizationResource
 .Description
-Create a OrganizationResource
+create a OrganizationResource
 .Example
 New-AzAstroOrganization -Name UT.7.test -ResourceGroupName astro-user -Location eastus -MarketplaceSubscriptionId 11111111-2222-3333-4444-123456789101 -OfferDetailOfferId astro -OfferDetailPlanId astro-paygo -OfferDetailPublisherId astronomer1 -OfferDetailPlanName 'Monthly Pay-As-You-Go' -OfferDetailTermId abcdefghijkl -OfferDetailTermUnit Monthly -UserEmailAddress example@microsoft.com -UserFirstName user -UserLastName test -UserUpn example@microsoft.com -PartnerOrganizationPropertyWorkspaceName aaa -PartnerOrganizationPropertyOrganizationName bbb -SingleSignOnPropertyAadDomain MicrosoftCustomerLed.onmicrosoft.com
 
@@ -108,6 +108,15 @@ param(
     ${IdentityType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("PendingFulfillmentStart", "Subscribed", "Suspended", "Unsubscribed")]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
     [System.String]
@@ -188,14 +197,6 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String[]]
-    # The array of user assigned identities associated with the resource.
-    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-    ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]

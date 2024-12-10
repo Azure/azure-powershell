@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 }
                 if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "update"))
                 {
-                    var result = Client.SignalR.Update(signalR, ResourceGroupName, Name);
+                    var result = Client.SignalR.Update(ResourceGroupName, Name, signalR);
                     WriteObject(new PSSignalRResource(result));
                 }
                 else

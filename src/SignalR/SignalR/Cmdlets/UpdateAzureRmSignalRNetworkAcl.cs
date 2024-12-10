@@ -126,7 +126,7 @@ IWithResourceId, IWithInputObject
                     PromptParameter(nameof(ResourceGroupName), ResourceGroupName);
                     PromptParameter(nameof(Name), Name);
                     var signalr = Client.SignalR.Get(ResourceGroupName, Name);
-                    var networkACLs = signalr.NetworkACLs;
+                    var networkACLs = signalr.NetworkAcLs;
                     var publicNetwork = networkACLs.PublicNetwork;
                     var privateEndpoints = networkACLs.PrivateEndpoints;
                     if (PublicNetwork)
@@ -145,8 +145,8 @@ IWithResourceId, IWithInputObject
                     }
                     networkACLs.DefaultAction = DefaultAction ?? networkACLs.DefaultAction;
                     PromptParameter(nameof(networkACLs), networkACLs == null ? null : JsonConvert.SerializeObject(networkACLs));
-                    signalr = Client.SignalR.Update(signalr, ResourceGroupName, Name);
-                    WriteObject(new PSSignalRNetworkAcls(signalr.NetworkACLs));
+                    signalr = Client.SignalR.Update(ResourceGroupName, Name, signalr);
+                    WriteObject(new PSSignalRNetworkAcls(signalr.NetworkAcLs));
                 }
             });
         }

@@ -79,11 +79,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_logoUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("logoUrl"), out var __jsonLogoUrl) ? (string)__jsonLogoUrl : (string)LogoUrl;}
-            {_marketingUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("marketingUrl"), out var __jsonMarketingUrl) ? (string)__jsonMarketingUrl : (string)MarketingUrl;}
-            {_privacyStatementUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("privacyStatementUrl"), out var __jsonPrivacyStatementUrl) ? (string)__jsonPrivacyStatementUrl : (string)PrivacyStatementUrl;}
-            {_supportUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("supportUrl"), out var __jsonSupportUrl) ? (string)__jsonSupportUrl : (string)SupportUrl;}
-            {_termsOfServiceUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("termsOfServiceUrl"), out var __jsonTermsOfServiceUrl) ? (string)__jsonTermsOfServiceUrl : (string)TermsOfServiceUrl;}
+            {_logoUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("logoUrl"), out var __jsonLogoUrl) ? (string)__jsonLogoUrl : (string)_logoUrl;}
+            {_marketingUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("marketingUrl"), out var __jsonMarketingUrl) ? (string)__jsonMarketingUrl : (string)_marketingUrl;}
+            {_privacyStatementUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("privacyStatementUrl"), out var __jsonPrivacyStatementUrl) ? (string)__jsonPrivacyStatementUrl : (string)_privacyStatementUrl;}
+            {_supportUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("supportUrl"), out var __jsonSupportUrl) ? (string)__jsonSupportUrl : (string)_supportUrl;}
+            {_termsOfServiceUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("termsOfServiceUrl"), out var __jsonTermsOfServiceUrl) ? (string)__jsonTermsOfServiceUrl : (string)_termsOfServiceUrl;}
             AfterFromJson(json);
         }
 

@@ -243,6 +243,100 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Performs requested failover type in this distributed availability group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        public static DistributedAvailabilityGroup Failover(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupsFailoverRequest parameters)
+        {
+                return ((IDistributedAvailabilityGroupsOperations)operations).FailoverAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Performs requested failover type in this distributed availability group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DistributedAvailabilityGroup> FailoverAsync(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupsFailoverRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.FailoverWithHttpMessagesAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Sets the role for managed instance in a distributed availability group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        public static DistributedAvailabilityGroup SetRole(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupSetRole parameters)
+        {
+                return ((IDistributedAvailabilityGroupsOperations)operations).SetRoleAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Sets the role for managed instance in a distributed availability group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DistributedAvailabilityGroup> SetRoleAsync(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupSetRole parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SetRoleWithHttpMessagesAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a distributed availability group between Sql On-Prem and Sql
         /// Managed Instance.
         /// </summary>
@@ -380,6 +474,100 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<DistributedAvailabilityGroup> BeginUpdateAsync(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Performs requested failover type in this distributed availability group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        public static DistributedAvailabilityGroup BeginFailover(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupsFailoverRequest parameters)
+        {
+                return ((IDistributedAvailabilityGroupsOperations)operations).BeginFailoverAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Performs requested failover type in this distributed availability group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DistributedAvailabilityGroup> BeginFailoverAsync(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupsFailoverRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Sets the role for managed instance in a distributed availability group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        public static DistributedAvailabilityGroup BeginSetRole(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupSetRole parameters)
+        {
+                return ((IDistributedAvailabilityGroupsOperations)operations).BeginSetRoleAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Sets the role for managed instance in a distributed availability group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DistributedAvailabilityGroup> BeginSetRoleAsync(this IDistributedAvailabilityGroupsOperations operations, string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupSetRole parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSetRoleWithHttpMessagesAsync(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Dapr Component in a Managed Environment.</summary>
+    /// <summary>create a Dapr Component in a Managed Environment.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerAppManagedEnvDapr_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprComponent))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create a Dapr Component in a Managed Environment.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"create a Dapr Component in a Managed Environment.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}", ApiVersion = "2023-05-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.NotSuggestDefaultParameterSet]

@@ -109,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOutboundNetworkDependenciesEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOutboundNetworkDependenciesEndpoint
 
 ## NOTES
 

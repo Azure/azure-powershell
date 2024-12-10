@@ -14,14 +14,14 @@ Delays the occurrence of an action.
 
 ### Delay (Default)
 ```
-Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -Name <String> -EnvironmentName <String>
+Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -EnvironmentName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName <String> -Name <String> -EnvironmentName <String>
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName <String> -EnvironmentName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnvironmentName
-The name of the environment.
+Environment name.
 
 ```yaml
 Type: System.String
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of an action that will take place on an Environment.
+Uniquely identifies the action.
 
 ```yaml
 Type: System.String
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The DevCenter Project upon which to execute operations.
+Name of the project.
 
 ```yaml
 Type: System.String
@@ -210,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction
 
 ## NOTES
 

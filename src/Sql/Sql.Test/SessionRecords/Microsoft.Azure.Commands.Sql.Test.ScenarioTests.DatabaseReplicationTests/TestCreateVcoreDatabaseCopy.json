@@ -619,7 +619,7 @@
       "RequestUri": "/subscriptions/1b132fbc-df61-4dd8-bba0-71d7d4277eda/resourceGroups/ps7857/providers/Microsoft.Sql/servers/ps5075?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWIxMzJmYmMtZGY2MS00ZGQ4LWJiYTAtNzFkN2Q0Mjc3ZWRhL3Jlc291cmNlR3JvdXBzL3BzNzg1Ny9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL3BzNTA3NT9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"t357ingP@s5w0rd!\"\r\n  },\r\n  \"location\": \"Southeast Asia\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"[Sanitized\"\r\n  },\r\n  \"location\": \"Southeast Asia\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"

@@ -22,7 +22,7 @@ New-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGr
  [-PartnerDestinationInfoResourceMoveChangeHistory <IResourceMoveChangeHistory[]>]
  [-PartnerTopicInfoAzureSubscriptionId <String>] [-PartnerTopicInfoName <String>]
  [-PartnerTopicInfoResourceGroupName <String>] [-PartnerTopicInfoSource <String>] [-ProvisioningState <String>]
- [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,14 +30,14 @@ New-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGr
 ```
 New-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPartnerNamespaceExpanded
@@ -50,7 +50,7 @@ New-AzEventGridChannel -Name <String> -PartnerNamespaceInputObject <IEventGridId
  [-PartnerDestinationInfoResourceMoveChangeHistory <IResourceMoveChangeHistory[]>]
  [-PartnerTopicInfoAzureSubscriptionId <String>] [-PartnerTopicInfoName <String>]
  [-PartnerTopicInfoResourceGroupName <String>] [-PartnerTopicInfoSource <String>] [-ProvisioningState <String>]
- [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ New-AzEventGridChannel -InputObject <IEventGridIdentity> [-ChannelType <String>]
  [-PartnerDestinationInfoResourceMoveChangeHistory <IResourceMoveChangeHistory[]>]
  [-PartnerTopicInfoAzureSubscriptionId <String>] [-PartnerTopicInfoName <String>]
  [-PartnerTopicInfoResourceGroupName <String>] [-PartnerTopicInfoSource <String>] [-ProvisioningState <String>]
- [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -419,21 +419,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

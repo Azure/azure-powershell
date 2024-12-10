@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Certificate.</summary>
+    /// <summary>create a Certificate.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerAppConnectedEnvCert_CreateViaIdentityConnectedEnvironmentExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create a Certificate.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"create a Certificate.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}", ApiVersion = "2023-05-01")]
     public partial class NewAzContainerAppConnectedEnvCert_CreateViaIdentityConnectedEnvironmentExpanded : global::System.Management.Automation.PSCmdlet,

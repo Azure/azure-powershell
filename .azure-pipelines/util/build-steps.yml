@@ -5,8 +5,7 @@ parameters:
 
 steps:
 - checkout: self
-  persistCredentials: true
-- template: get-github-token-steps.yml
+- template: get-pr-changed-files.yml
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
   displayName: Install Autorest
@@ -39,7 +38,6 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: PowerShell@2

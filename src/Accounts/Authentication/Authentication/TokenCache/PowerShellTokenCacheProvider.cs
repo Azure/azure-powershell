@@ -34,7 +34,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public abstract class PowerShellTokenCacheProvider
     {
         public const string PowerShellTokenCacheProviderKey = "PowerShellTokenCacheProviderKey";
-        private static readonly string CommonTenant = "organizations";
+        //Reanme CommonTenant to OrganizationTenant with reference to
+        //https://learn.microsoft.com/en-us/dotnet/api/microsoft.identity.client.abstractapplicationbuilder-1.withauthority?view=msal-dotnet-latest#microsoft-identity-client-abstractapplicationbuilder-1-withauthority(system-string-system-boolean
+        //From MSAL, we shall always use "organizations" for both work and school and MSA accounts
+        private const string organizationTenant = "organizations";
 
         protected byte[] _tokenCacheDataToFlush;
 
@@ -98,7 +101,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 Id = account.Username,
                 Type = AzureAccount.AccountType.User
             };
-            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, CommonTenant, null, null, promptAction);
+            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, organizationTenant, null, null, promptAction);
             IEnumerable<string> tenants = Enumerable.Empty<string>();
             using (SubscriptionClient subscriptionClient = GetSubscriptionClient(commonToken, environment))
             {
@@ -164,6 +167,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         protected abstract void RegisterCache(IPublicClientApplication client);
 
+        /// <summary>
+        /// Creates a public client app with tenantId.
+        /// This method is not meant for authentication purpose. Use APIs from Azure.Identity instead.
+        /// </summary>
+        public virtual IPublicClientApplication CreatePublicClient(string authority, string tenantId)
+        {
+            var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
+            if (AzConfigReader.IsWamEnabled(authority))
+            {
+                builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
+            }
+            if (!string.IsNullOrEmpty(authority))
+            {
+                builder.WithAuthority(authority, tenantId ?? organizationTenant);
+            }
+            var client = builder.Build();
+            RegisterCache(client);
+            return client;
+        }
         /// <summary>
         /// Creates a public client app.
         /// This method is not meant for authentication purpose. Use APIs from Azure.Identity instead.
