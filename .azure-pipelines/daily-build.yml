@@ -27,13 +27,16 @@ jobs:
         git config --global core.longpaths true
         # Wipe any changes from a previous branch
         git clean -xdf
-
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x for build'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
   - task: PowerShell@2
     displayName: Prepare Powershell $(PSVersion)
     inputs:
       filePath: 'tools/Test/SmokeTest/PrepareRequiredPowershell.ps1'
       arguments: '-RequiredPsVersion $(PSVersion)'
-
   - task: PowerShell@2
     displayName: 'Install platyPS'
     inputs:
@@ -43,11 +46,6 @@ jobs:
                     Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
                     Exit"
         dotnet tool run pwsh -c $command
-  - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x for build'
-    inputs:
-      packageType: sdk
-      version: 6.0.x
   - task: DotNetCoreCLI@2
     displayName: 'Build for Bumping Version'
     inputs:
