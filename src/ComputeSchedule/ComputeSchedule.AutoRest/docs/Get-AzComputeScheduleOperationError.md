@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzComputeScheduleOperationError
 
 ## SYNOPSIS
-virtualMachinesGetOperationErrors: getOperationErrors associated with an operation on a virtual machine
+VirtualMachinesGetOperationErrors: Get error details on operation errors (like transient errors encountered, additional logs) if they exist.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzComputeScheduleOperationError -Location <String> -OperationId <String[]> [
 ```
 
 ## DESCRIPTION
-virtualMachinesGetOperationErrors: getOperationErrors associated with an operation on a virtual machine
+VirtualMachinesGetOperationErrors: Get error details on operation errors (like transient errors encountered, additional logs) if they exist.
 
 ## EXAMPLES
 

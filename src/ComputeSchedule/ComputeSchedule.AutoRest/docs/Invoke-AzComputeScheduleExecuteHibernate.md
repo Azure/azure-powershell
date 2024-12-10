@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzComputeScheduleExecuteHibernate
 
 ## SYNOPSIS
-virtualMachinesExecuteHibernate: executeHibernate for a virtual machine
+VirtualMachinesExecuteHibernate: Execute hibernate operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Invoke-AzComputeScheduleExecuteHibernate -Location <String> -CorrelationId <Stri
 ```
 
 ## DESCRIPTION
-virtualMachinesExecuteHibernate: executeHibernate for a virtual machine
+VirtualMachinesExecuteHibernate: Execute hibernate operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ## EXAMPLES
 

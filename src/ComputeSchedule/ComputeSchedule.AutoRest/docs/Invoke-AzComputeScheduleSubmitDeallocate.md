@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzComputeScheduleSubmitDeallocate
 
 ## SYNOPSIS
-virtualMachinesSubmitDeallocate: submitDeallocate for a virtual machine
+VirtualMachinesSubmitDeallocate: Schedule deallocate operation for a batch of virtual machines at datetime in future.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Invoke-AzComputeScheduleSubmitDeallocate -Location <String> -CorrelationId <Stri
 ```
 
 ## DESCRIPTION
-virtualMachinesSubmitDeallocate: submitDeallocate for a virtual machine
+VirtualMachinesSubmitDeallocate: Schedule deallocate operation for a batch of virtual machines at datetime in future.
 
 ## EXAMPLES
 

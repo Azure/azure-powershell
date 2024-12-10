@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzComputeScheduleExecuteStart
 
 ## SYNOPSIS
-virtualMachinesExecuteStart: executeStart for a virtual machine
+VirtualMachinesExecuteStart: Execute start operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Invoke-AzComputeScheduleExecuteStart -Location <String> -CorrelationId <String> 
 ```
 
 ## DESCRIPTION
-virtualMachinesExecuteStart: executeStart for a virtual machine
+VirtualMachinesExecuteStart: Execute start operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ## EXAMPLES
 

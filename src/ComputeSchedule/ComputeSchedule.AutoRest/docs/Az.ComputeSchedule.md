@@ -12,29 +12,29 @@ Microsoft Azure PowerShell: ComputeSchedule cmdlets
 
 ## Az.ComputeSchedule Cmdlets
 ### [Get-AzComputeScheduleOperationError](Get-AzComputeScheduleOperationError.md)
-virtualMachinesGetOperationErrors: getOperationErrors associated with an operation on a virtual machine
+VirtualMachinesGetOperationErrors: Get error details on operation errors (like transient errors encountered, additional logs) if they exist.
 
 ### [Get-AzComputeScheduleOperationStatus](Get-AzComputeScheduleOperationStatus.md)
-virtualMachinesGetOperationStatus: getOperationStatus for a virtual machine
+VirtualMachinesGetOperationStatus: Polling endpoint to read status of operations performed on virtual machines
 
 ### [Invoke-AzComputeScheduleExecuteDeallocate](Invoke-AzComputeScheduleExecuteDeallocate.md)
-virtualMachinesExecuteDeallocate: executeDeallocate for a virtual machine
+VirtualMachinesExecuteDeallocate: Execute deallocate operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ### [Invoke-AzComputeScheduleExecuteHibernate](Invoke-AzComputeScheduleExecuteHibernate.md)
-virtualMachinesExecuteHibernate: executeHibernate for a virtual machine
+VirtualMachinesExecuteHibernate: Execute hibernate operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ### [Invoke-AzComputeScheduleExecuteStart](Invoke-AzComputeScheduleExecuteStart.md)
-virtualMachinesExecuteStart: executeStart for a virtual machine
+VirtualMachinesExecuteStart: Execute start operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ### [Invoke-AzComputeScheduleSubmitDeallocate](Invoke-AzComputeScheduleSubmitDeallocate.md)
-virtualMachinesSubmitDeallocate: submitDeallocate for a virtual machine
+VirtualMachinesSubmitDeallocate: Schedule deallocate operation for a batch of virtual machines at datetime in future.
 
 ### [Invoke-AzComputeScheduleSubmitHibernate](Invoke-AzComputeScheduleSubmitHibernate.md)
-virtualMachinesSubmitHibernate: submitHibernate for a virtual machine
+VirtualMachinesSubmitHibernate: Schedule hibernate operation for a batch of virtual machines at datetime in future.
 
 ### [Invoke-AzComputeScheduleSubmitStart](Invoke-AzComputeScheduleSubmitStart.md)
-virtualMachinesSubmitStart: submitStart for a virtual machine
+VirtualMachinesSubmitStart: Schedule start operation for a batch of virtual machines at datetime in future.
 
 ### [Stop-AzComputeScheduleScheduledAction](Stop-AzComputeScheduleScheduledAction.md)
-virtualMachinesCancelOperations: cancelOperations for a virtual machine
+VirtualMachinesCancelOperations: Cancel a previously submitted (start/deallocate/hibernate) request
 

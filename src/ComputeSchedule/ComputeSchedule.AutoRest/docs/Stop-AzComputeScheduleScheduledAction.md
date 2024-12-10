@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzComputeScheduleScheduledAction
 
 ## SYNOPSIS
-virtualMachinesCancelOperations: cancelOperations for a virtual machine
+VirtualMachinesCancelOperations: Cancel a previously submitted (start/deallocate/hibernate) request
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Stop-AzComputeScheduleScheduledAction -Location <String> -JsonString <String> [-
 ```
 
 ## DESCRIPTION
-virtualMachinesCancelOperations: cancelOperations for a virtual machine
+VirtualMachinesCancelOperations: Cancel a previously submitted (start/deallocate/hibernate) request
 
 ## EXAMPLES
 

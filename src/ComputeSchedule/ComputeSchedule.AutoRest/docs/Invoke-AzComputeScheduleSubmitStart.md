@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzComputeScheduleSubmitStart
 
 ## SYNOPSIS
-virtualMachinesSubmitStart: submitStart for a virtual machine
+VirtualMachinesSubmitStart: Schedule start operation for a batch of virtual machines at datetime in future.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Invoke-AzComputeScheduleSubmitStart -Location <String> -CorrelationId <String> -
 ```
 
 ## DESCRIPTION
-virtualMachinesSubmitStart: submitStart for a virtual machine
+VirtualMachinesSubmitStart: Schedule start operation for a batch of virtual machines at datetime in future.
 
 ## EXAMPLES
 

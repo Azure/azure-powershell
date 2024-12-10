@@ -28,7 +28,7 @@ For information on how to develop for `Az.ComputeSchedule`, see [how-to.md](how-
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: fc28a34ea141d75954c5fc5e9b668fa4e7ec4853
+commit: 01f6aff1d08e7e78b1b93ae4a04d47ff369a47fc
 tag: package-2024-10-01
 require:
 # readme.azure.noprofile.md is the common configuration file

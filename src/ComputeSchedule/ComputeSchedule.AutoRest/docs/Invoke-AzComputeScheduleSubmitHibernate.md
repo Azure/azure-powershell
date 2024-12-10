@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzComputeScheduleSubmitHibernate
 
 ## SYNOPSIS
-virtualMachinesSubmitHibernate: submitHibernate for a virtual machine
+VirtualMachinesSubmitHibernate: Schedule hibernate operation for a batch of virtual machines at datetime in future.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Invoke-AzComputeScheduleSubmitHibernate -Location <String> -CorrelationId <Strin
 ```
 
 ## DESCRIPTION
-virtualMachinesSubmitHibernate: submitHibernate for a virtual machine
+VirtualMachinesSubmitHibernate: Schedule hibernate operation for a batch of virtual machines at datetime in future.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzComputeScheduleExecuteDeallocate
 
 ## SYNOPSIS
-virtualMachinesExecuteDeallocate: executeDeallocate for a virtual machine
+VirtualMachinesExecuteDeallocate: Execute deallocate operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Invoke-AzComputeScheduleExecuteDeallocate -Location <String> -CorrelationId <Str
 ```
 
 ## DESCRIPTION
-virtualMachinesExecuteDeallocate: executeDeallocate for a virtual machine
+VirtualMachinesExecuteDeallocate: Execute deallocate operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzComputeScheduleOperationStatus
 
 ## SYNOPSIS
-virtualMachinesGetOperationStatus: getOperationStatus for a virtual machine
+VirtualMachinesGetOperationStatus: Polling endpoint to read status of operations performed on virtual machines
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzComputeScheduleOperationStatus -Location <String> -CorrelationId <String> 
 ```
 
 ## DESCRIPTION
-virtualMachinesGetOperationStatus: getOperationStatus for a virtual machine
+VirtualMachinesGetOperationStatus: Polling endpoint to read status of operations performed on virtual machines
 
 ## EXAMPLES
 
