@@ -21,6 +21,8 @@
 -->
 ## Upcoming Release
 * Upgraded Azure.Core to 1.44.1.
+* Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVMDiskEncryptionExtension`
+* Added new parameter `EncryptionIdentity` to cmdlet `New-AzVMConfig`
 
 ## Version 9.0.0
 * Made `-PublicIpSku` parameter Standard by default in `New-AzVM`
