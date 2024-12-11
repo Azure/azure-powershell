@@ -60,7 +60,7 @@ RequiredAssemblies = 'Azure.Analytics.Synapse.AccessControl.dll',
                'Azure.Analytics.Synapse.Artifacts.dll', 
                'Azure.Analytics.Synapse.ManagedPrivateEndpoints.dll', 
                'Azure.Analytics.Synapse.Spark.dll', 
-               'Microsoft.Azure.Management.Synapse.dll', 
+               'Microsoft.Azure.PowerShell.Synapse.Management.Sdk.dll', 
                'Microsoft.DataTransfer.Gateway.Encryption.dll', 
                'Synapse.Autorest/bin/Az.Synapse.private.dll'
 
