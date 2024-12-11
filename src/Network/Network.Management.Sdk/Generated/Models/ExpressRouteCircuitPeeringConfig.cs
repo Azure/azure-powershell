@@ -96,5 +96,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "routingRegistryName")]
         public string RoutingRegistryName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the properties required for prefix validation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "advertisedPublicPrefixInfo")]
+        public System.Collections.Generic.IList<AdvertisedPublicPrefixProperties> AdvertisedPublicPrefixInfo { get; set; }
     }
 }
