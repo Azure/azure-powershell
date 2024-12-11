@@ -23,18 +23,18 @@ Describe 'Get-AzFrontDoorWafPolicy' {
         $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $env.WafPolicyName -ResourceGroupName $env.ResourceGroupName
         $retrievedPolicy.Name | Should -Be $env.WafPolicyName
         
-        $retrievedPolicy.CustomRuleRules.Name | Should -Be "Rule1"
-        $retrievedPolicy.CustomRuleRules.Action | Should -Be "Block"
-        $retrievedPolicy.CustomRuleRules.EnabledState | Should -Be "Enabled"
-        $retrievedPolicy.CustomRuleRules.Priority | Should -Be 2
-        $retrievedPolicy.CustomRuleRules.RateLimitDurationInMinutes | Should -Be 1
-        $retrievedPolicy.CustomRuleRules.RuleType | Should -Be "MatchRule"
-        $retrievedPolicy.CustomRuleRules.MatchCondition[0].MatchValue | Should -Be @("WINDOWS")
-        $retrievedPolicy.CustomRuleRules.MatchCondition[0].MatchVariable | Should -Be "RequestHeader"
-        $retrievedPolicy.CustomRuleRules.MatchCondition[0].NegateCondition | Should -Be $false
-        $retrievedPolicy.CustomRuleRules.MatchCondition[0].OperatorProperty | Should -Be "Contains"
-        $retrievedPolicy.CustomRuleRules.MatchCondition[0].Selector | Should -Be "UserAgent"
-        $retrievedPolicy.CustomRuleRules.MatchCondition[0].Transform | Should -Be @("Uppercase")
+        $retrievedPolicy.CustomRule[0].Name | Should -Be "Rule1"
+        $retrievedPolicy.CustomRule[0].Action | Should -Be "Block"
+        $retrievedPolicy.CustomRule[0].EnabledState | Should -Be "Enabled"
+        $retrievedPolicy.CustomRule[0].Priority | Should -Be 2
+        $retrievedPolicy.CustomRule[0].RateLimitDurationInMinutes | Should -Be 1
+        $retrievedPolicy.CustomRule[0].RuleType | Should -Be "MatchRule"
+        $retrievedPolicy.CustomRule[0].MatchCondition[0].MatchValue | Should -Be @("WINDOWS")
+        $retrievedPolicy.CustomRule[0].MatchCondition[0].MatchVariable | Should -Be "RequestHeader"
+        $retrievedPolicy.CustomRule[0].MatchCondition[0].NegateCondition | Should -Be $false
+        $retrievedPolicy.CustomRule[0].MatchCondition[0].OperatorProperty | Should -Be "Contains"
+        $retrievedPolicy.CustomRule[0].MatchCondition[0].Selector | Should -Be "UserAgent"
+        $retrievedPolicy.CustomRule[0].MatchCondition[0].Transform | Should -Be @("Uppercase")
 
         $retrievedPolicy.ManagedRuleSet[0].Version | Should -Be "1.0"
         $retrievedPolicy.ManagedRuleSet[0].Type | Should -Be "DefaultRuleSet"

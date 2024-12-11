@@ -329,11 +329,16 @@ directive:
     set:
       property-name: RateLimitDurationInMinutes
 
-  # - where:
-  #     model-name: WebApplicationFirewallPolicy
-  #     property-name: CustomRuleRules
-  #   set:
-  #     property-name: CustomRule
+  - where:
+      model-name: WebApplicationFirewallPolicy
+      property-name: CustomRule
+    set:
+      property-name: CustomRuleList
+  - where:
+      model-name: WebApplicationFirewallPolicy
+      property-name: CustomRuleRules
+    set:
+      property-name: CustomRule
 
   - where:
       model-name: ManagedRuleExclusion
