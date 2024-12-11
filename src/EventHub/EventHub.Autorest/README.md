@@ -64,6 +64,15 @@ disable-transform-identity-type: true
 flatten-userassignedidentity : false
 
 directive:
+  - from: swagger-document
+    where: $.definitions.AccessKeys.properties
+    transform:  >-
+      $["primaryKeySecure"] = {
+        "readOnly": true,
+        "type": "string",
+        "format": "password", 
+        "description": "A base64-encoded 256-bit primary key for signing and validating the SAS token."
+      }
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaJsonFilePath$|^CreateViaJsonString$
     remove: true
