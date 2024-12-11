@@ -1,13 +1,13 @@
 {
-  "Get-AzFrontDoorFrontendEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-f3mj/providers/Microsoft.Network/frontDoors/testps-fd-x87z/frontendEndpoints?api-version=2021-06-01+1": {
+  "Get-AzFrontDoorFrontendEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-10xh/providers/Microsoft.Network/frontDoors/testps-fd-uzrs/frontendEndpoints?api-version=2021-06-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-f3mj/providers/Microsoft.Network/frontDoors/testps-fd-x87z/frontendEndpoints?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-10xh/providers/Microsoft.Network/frontDoors/testps-fd-uzrs/frontendEndpoints?api-version=2021-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "38" ],
-        "x-ms-client-request-id": [ "db87b11f-adb4-4d60-a7ff-78091f923bf7" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "7d83b9f0-7529-45bd-b440-9af5a721a18f" ],
         "CommandName": [ "Get-AzFrontDoorFrontendEndpoint" ],
         "FullCommandName": [ "Get-AzFrontDoorFrontendEndpoint_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,23 +23,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "2e6a5436-109d-4710-b2e6-a3b293111bf6" ],
-        "x-ms-client-request-id": [ "db87b11f-adb4-4d60-a7ff-78091f923bf7" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
-        "x-ms-correlation-request-id": [ "4478c81a-5e8b-4434-aea0-1a233555ea7d" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20241211T052235Z:4478c81a-5e8b-4434-aea0-1a233555ea7d" ],
+        "x-ms-request-id": [ "8935f1ea-5a2d-422b-ba2a-c0478eaa7fc5" ],
+        "x-ms-client-request-id": [ "7d83b9f0-7529-45bd-b440-9af5a721a18f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "475235cf-4c1c-486e-81dd-bdb4c32555b0" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20241211T065108Z:475235cf-4c1c-486e-81dd-bdb4c32555b0" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5F0FE14755EF433EA8AA1AFF2D7724A5 Ref B: TYO201151002042 Ref C: 2024-12-11T05:22:35Z" ],
-        "Date": [ "Wed, 11 Dec 2024 05:22:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D8966C725CEC4735BC9C4601A59B8F09 Ref B: TYO201100116049 Ref C: 2024-12-11T06:51:07Z" ],
+        "Date": [ "Wed, 11 Dec 2024 06:51:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "581" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-f3mj/providers/Microsoft.Network/frontdoors/testps-fd-x87z/frontendendpoints/frontendendpoint1\",\"type\":\"Microsoft.Network/frontdoors/frontendendpoints\",\"name\":\"frontendendpoint1\",\"properties\":{\"resourceState\":\"Enabled\",\"hostName\":\"testps-fd-x87z.azurefd.net\",\"sessionAffinityEnabledState\":\"Enabled\",\"sessionAffinityTtlSeconds\":0,\"webApplicationFirewallPolicyLink\":null,\"customHttpsProvisioningState\":\"Disabled\",\"customHttpsProvisioningSubstate\":\"None\",\"customHttpsConfiguration\":null}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-10xh/providers/Microsoft.Network/frontdoors/testps-fd-uzrs/frontendendpoints/frontendendpoint1\",\"type\":\"Microsoft.Network/frontdoors/frontendendpoints\",\"name\":\"frontendendpoint1\",\"properties\":{\"resourceState\":\"Enabled\",\"hostName\":\"testps-fd-uzrs.azurefd.net\",\"sessionAffinityEnabledState\":\"Enabled\",\"sessionAffinityTtlSeconds\":0,\"webApplicationFirewallPolicyLink\":null,\"customHttpsProvisioningState\":\"Disabled\",\"customHttpsProvisioningSubstate\":\"None\",\"customHttpsConfiguration\":null}}]}",
       "isContentBase64": false
     }
   }
