@@ -197,6 +197,10 @@ directive:
     set:
       default:
         script: '1.2'
+  - where:
+      verb: Enable
+      subject: CustomDomainHttps
+    hide: true
 
   # AzFrontDoor
   - where:

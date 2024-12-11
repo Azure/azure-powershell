@@ -43,7 +43,6 @@ function setupEnv() {
     Import-Module -Name Az.Cdn
 
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $subId = $env.SubscriptionId
     $env.Tenant = $res.Tenant.Id
     $env.location = 'westus'
     $resourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 4)

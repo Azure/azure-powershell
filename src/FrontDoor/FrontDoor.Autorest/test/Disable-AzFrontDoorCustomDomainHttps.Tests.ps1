@@ -16,10 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzFrontDoorCustomDoma
 
 Describe 'Disable-AzFrontDoorCustomDomainHttps' {
     It 'Disable' -skip {
-        {
-            $customFrontendEndpointName = "frontendendpoint2"
-            Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName $env.ResourceGroupName -FrontDoorName $env.FrontDoorName -FrontendEndpointName $customFrontendEndpointName
-        } | Should -Not -Throw
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'DisableViaIdentityFrontDoor' -skip {

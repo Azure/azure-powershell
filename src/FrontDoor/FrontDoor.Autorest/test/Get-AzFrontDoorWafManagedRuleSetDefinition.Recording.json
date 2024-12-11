@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "b15eab2d-d376-40cf-adeb-29b71738c691" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "28e423f8-edee-401d-8013-033a10c20a8d" ],
         "CommandName": [ "Get-AzFrontDoorWafManagedRuleSetDefinition" ],
         "FullCommandName": [ "Get-AzFrontDoorWafManagedRuleSetDefinition_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,16 +23,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a135b6b5-1c26-48a2-abdf-1d89018267d7" ],
-        "x-ms-client-request-id": [ "b15eab2d-d376-40cf-adeb-29b71738c691" ],
+        "x-ms-request-id": [ "21a08265-7894-495e-8252-6f905196f14b" ],
+        "x-ms-client-request-id": [ "28e423f8-edee-401d-8013-033a10c20a8d" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "e3ff23c1-6afc-4ff9-bf56-465aff1e73b8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20241210T035055Z:e3ff23c1-6afc-4ff9-bf56-465aff1e73b8" ],
+        "x-ms-correlation-request-id": [ "83f58b8b-c404-42ce-9cf5-c9ac10c93d33" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20241211T052237Z:83f58b8b-c404-42ce-9cf5-c9ac10c93d33" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3704290329E14D418CA1F9872A30D3C7 Ref B: MAA201060514019 Ref C: 2024-12-10T03:50:53Z" ],
-        "Date": [ "Tue, 10 Dec 2024 03:50:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0D80C02E941149AA9AC18FF7EB7479C5 Ref B: TYO201151002042 Ref C: 2024-12-11T05:22:36Z" ],
+        "Date": [ "Wed, 11 Dec 2024 05:22:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "130824" ],

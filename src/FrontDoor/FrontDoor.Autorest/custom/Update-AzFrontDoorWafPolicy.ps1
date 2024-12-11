@@ -286,30 +286,40 @@ process {
         $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $ResourceGroupName
         $UpdatePolicySetting = $retrievedPolicy.PolicySetting
         if ($PSBoundParameters.ContainsKey("CustomBlockResponseBody")) {
-            $UpdatePolicySetting.CustomBlockResponseBody = $CustomBlockResponseBody
+          $null = $PSBoundParameters.Remove("CustomBlockResponseBody")
+          $CustomBlockResponseBody = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($CustomBlockResponseBody))
+          $UpdatePolicySetting.CustomBlockResponseBody = $CustomBlockResponseBody
         }
         if ($PSBoundParameters.ContainsKey("CustomBlockResponseStatusCode")) {
-            $UpdatePolicySetting.CustomBlockResponseStatusCode = $CustomBlockResponseStatusCode
+          $null = $PSBoundParameters.Remove("CustomBlockResponseStatusCode")
+          $UpdatePolicySetting.CustomBlockResponseStatusCode = $CustomBlockResponseStatusCode
         }
         if ($PSBoundParameters.ContainsKey("EnabledState")) {
-            $UpdatePolicySetting.EnabledState = $EnabledState
+          $null = $PSBoundParameters.Remove("EnabledState")
+          $UpdatePolicySetting.EnabledState = $EnabledState
         }
         if ($PSBoundParameters.ContainsKey("LogScrubbingSetting")) {
-            $UpdatePolicySetting.LogScrubbingSetting = $LogScrubbingSetting
+          $null = $PSBoundParameters.Remove("LogScrubbingSetting")
+          $UpdatePolicySetting.LogScrubbingSetting = $LogScrubbingSetting
         }
         if ($PSBoundParameters.ContainsKey("Mode")) {
-            $UpdatePolicySetting.Mode = $Mode
+          $null = $PSBoundParameters.Remove("Mode")
+          $UpdatePolicySetting.Mode = $Mode
         }
         if ($PSBoundParameters.ContainsKey("RedirectUrl")) {
-            $UpdatePolicySetting.RedirectUrl = $RedirectUrl
+          $null = $PSBoundParameters.Remove("RedirectUrl")
+          $UpdatePolicySetting.RedirectUrl = $RedirectUrl
         }
         if ($PSBoundParameters.ContainsKey("RequestBodyCheck")) {
-            $UpdatePolicySetting.RequestBodyCheck = $RequestBodyCheck
+          $null = $PSBoundParameters.Remove("RequestBodyCheck")
+          $UpdatePolicySetting.RequestBodyCheck = $RequestBodyCheck
         }
         if ($PSBoundParameters.ContainsKey("JavascriptChallengeExpirationInMinutes")) {
-            $UpdatePolicySetting.JavascriptChallengeExpirationInMinutes = $JavascriptChallengeExpirationInMinutes
+          $null = $PSBoundParameters.Remove("JavascriptChallengeExpirationInMinutes")
+          $UpdatePolicySetting.JavascriptChallengeExpirationInMinutes = $JavascriptChallengeExpirationInMinutes
         }
         $PSBoundParameters.PolicySetting = $UpdatePolicySetting
+
         Az.FrontDoor.internal\Update-AzFrontDoorWafPolicy @PSBoundParameters
     }
 }

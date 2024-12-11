@@ -15,47 +15,42 @@ Enables a frontendEndpoint for HTTPS traffic
 ### EnableExpanded (Default)
 ```
 Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
- -ResourceGroupName <String> -CertificateSource <String> [-SubscriptionId <String>]
- [-CertificateType <String>] [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>]
- [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-MinimumTlsVersion <String>] [-SecretName <String>]
+ [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Enable
 ```
 Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
- -ResourceGroupName <String> -CustomHttpsConfiguration <ICustomHttpsConfiguration> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentity
 ```
-Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity>
- -CustomHttpsConfiguration <ICustomHttpsConfiguration> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityExpanded
 ```
-Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> -CertificateSource <String>
- [-CertificateType <String>] [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>]
- [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> [-MinimumTlsVersion <String>]
+ [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityFrontDoor
 ```
 Enable-AzFrontDoorCustomDomainHttps -FrontDoorInputObject <IFrontDoorIdentity> -FrontendEndpointName <String>
- -CustomHttpsConfiguration <ICustomHttpsConfiguration> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityFrontDoorExpanded
 ```
 Enable-AzFrontDoorCustomDomainHttps -FrontDoorInputObject <IFrontDoorIdentity> -FrontendEndpointName <String>
- -CertificateSource <String> [-CertificateType <String>] [-MinimumTlsVersion <String>] [-SecretName <String>]
- [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaJsonFilePath
@@ -113,51 +108,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CertificateSource
-Defines the source of the SSL certificate
-
-```yaml
-Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CertificateType
-Defines the type of the certificate used for secure connections to a frontendEndpoint
-
-```yaml
-Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomHttpsConfiguration
-Https settings for a domain
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomHttpsConfiguration
-Parameter Sets: Enable, EnableViaIdentity, EnableViaIdentityFrontDoor
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -423,8 +373,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomHttpsConfiguration
 
 ### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
 
