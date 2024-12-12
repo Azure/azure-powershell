@@ -6,14 +6,15 @@ In this directory, run AutoRest:
 ```
 autorest --reset
 autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2 --tag=package-sqlGen3-2020-04-01-preview
-autorest.cmd README.md --version=v2 --tag=package-composite-v2
+autorest --use:@autorest/powershell@4.x --tag=package-sqlGen3-2020-04-01-preview
+autorest --use:@autorest/powershell@4.x --tag=package-composite-v2
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
@@ -71,4 +72,39 @@ directive:
     reason: Does not apply to sqlPool and bigDataPool as they are nested tracked resources
   - suppress: TrackedResourceListBySubscription
     reason: Does not apply to sqlPool and bigDataPool as they are nested tracked resources
+  - where:
+      model-name: AzureADOnlyAuthentication
+      property-name: AzureAdOnlyAuthentication
+    set:
+      property-name: AzureADOnlyAuthentication
+  - where:
+      model-name: IpFirewallRuleInfo
+      property-name: EndIPAddress
+    set:
+      property-name: EndIpAddress
+  - where:
+      model-name: IpFirewallRuleInfo
+      property-name: StartIPAddress
+    set:
+      property-name: StartIpAddress
+  - where:
+      model-name: IntegrationRuntimeNodeIpAddress
+      property-name: IPAddress
+    set:
+      property-name: IpAddress
+  - where:
+      model-name: Key
+      property-name: IsActiveCmk
+    set:
+      property-name: IsActiveCMK
+  - where:
+      model-name: SelfHostedIntegrationRuntimeStatus
+      property-name: AutoUpdateEta
+    set:
+      property-name: AutoUpdateETA
+  - where:
+      model-name: Workspace
+      property-name: WorkspaceUid
+    set:
+      property-name: WorkspaceUID
 ```
