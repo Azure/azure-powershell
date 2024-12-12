@@ -29,7 +29,6 @@ For information on how to develop for `Az.HealthDataAIServices`, see [how-to.md]
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
 commit: cde61328a54d392000b36882fec169fce5a983c1
-tag: package-2024-02-28-preview
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

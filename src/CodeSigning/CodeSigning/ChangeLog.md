@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Upgraded Azure.Core to 1.44.1.
+* Upgraded to rebranded package Azure.Developer.TrustedSigning.CryptoProvider.
+* Upgraded to updated Azure.Codesigning.Sdk.
 
 ## Version 0.2.0
 * Added `Get-AzCodeSigningCertChain` cmdlet to retrieve the certificate chain for a certificate profile.

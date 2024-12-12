@@ -61,7 +61,7 @@ RequiredAssemblies = 'DotNetty.Buffers.dll', 'DotNetty.Codecs.dll',
                'DotNetty.Handlers.dll', 'DotNetty.Transport.dll', 
                'Microsoft.Azure.Amqp.dll', 'Microsoft.Azure.Devices.Client.dll', 
                'Microsoft.Azure.Devices.dll', 'Microsoft.Azure.Devices.Shared.dll', 
-               'Microsoft.Azure.Management.IotHub.dll', 
+               'Microsoft.Azure.PowerShell.IotHub.Management.Sdk.dll', 
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
                'Microsoft.Extensions.Logging.Abstractions.dll', 
                'Microsoft.Extensions.Logging.dll'

@@ -2487,33 +2487,37 @@ param(
     ${VnetAddressPrefix},
 
     [Parameter()]
+    [Alias('EnhancedSecurityMonitoringValue')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]
     # Status of Enhanced Security Monitoring feature.
-    ${EnhancedSecurityMonitoringValue},
+    ${EnhancedSecurityMonitoring},
 
     [Parameter()]
+    [Alias('AutomaticClusterUpdateValue')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue])]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]
     # Status of automated cluster updates feature.
-    ${AutomaticClusterUpdateValue},
+    ${AutomaticClusterUpdate},
 
     [Parameter()]
+    [Alias('ComplianceSecurityProfileComplianceStandard')]
     [AllowEmptyCollection()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard])]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]]
     # Compliance standards associated with the workspace.
-    ${ComplianceSecurityProfileComplianceStandard},
+    ${ComplianceStandard},
 
     [Parameter()]
+    [Alias('ComplianceSecurityProfileValue')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue])]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]
     # Status of Compliance Security Profile feature.
-    ${ComplianceSecurityProfileValue},
+    ${EnhancedSecurityCompliance},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -3324,33 +3328,37 @@ param(
     ${EnableNoPublicIP},
 
     [Parameter()]
+    [Alias('EnhancedSecurityMonitoringValue')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]
     # Status of Enhanced Security Monitoring feature.
-    ${EnhancedSecurityMonitoringValue},
+    ${EnhancedSecurityMonitoring},
 
     [Parameter()]
+    [Alias('AutomaticClusterUpdateValue')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue])]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]
     # Status of automated cluster updates feature.
-    ${AutomaticClusterUpdateValue},
+    ${AutomaticClusterUpdate},
 
     [Parameter()]
+    [Alias('ComplianceSecurityProfileComplianceStandard')]
     [AllowEmptyCollection()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard])]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]]
     # Compliance standards associated with the workspace.
-    ${ComplianceSecurityProfileComplianceStandard},
+    ${ComplianceStandard},
 
     [Parameter()]
+    [Alias('ComplianceSecurityProfileValue')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue])]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]
     # Status of Compliance Security Profile feature.
-    ${ComplianceSecurityProfileValue},
+    ${EnhancedSecurityCompliance},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]

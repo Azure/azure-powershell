@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlets
+    - `Add-AzKustoClusterCalloutPolicy`
+    - `Get-AzKustoClusterCalloutPolicy`
+    - `Remove-AzKustoClusterCalloutPolicy`
+    - `Get-AzKustoClusterFollowerDatabaseGet`
 
 ## Version 2.3.1
 * Introduced secrets detection feature to safeguard sensitive data.

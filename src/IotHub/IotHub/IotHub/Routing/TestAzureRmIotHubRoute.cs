@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     TestRouteInput testRouteInput = new TestRouteInput();
                     testRouteInput.Message = routingMessage;
                     testRouteInput.Route = iotHubDescription.Properties.Routing.Routes.FirstOrDefault(x => x.Name.Equals(this.RouteName, StringComparison.OrdinalIgnoreCase));
-                    PSTestRouteResult psTestRouteResult = IotHubUtils.ToPSTestRouteResult(this.IotHubClient.IotHubResource.TestRoute(testRouteInput, this.Name, this.ResourceGroupName));
+                    PSTestRouteResult psTestRouteResult = IotHubUtils.ToPSTestRouteResult(this.IotHubClient.IotHubResource.TestRoute(this.Name, this.ResourceGroupName, testRouteInput));
                     if (this.ShowError.IsPresent && psTestRouteResult.Details != null)
                     {
                         this.WriteObject(psTestRouteResult.Details.CompilationErrors, true);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     TestAllRoutesInput testAllRoutesInput = new TestAllRoutesInput();
                     testAllRoutesInput.RoutingSource = this.Source.ToString();
                     testAllRoutesInput.Message = routingMessage;
-                    this.WriteObject(IotHubUtils.ToPSRouteProperties(this.IotHubClient.IotHubResource.TestAllRoutes(testAllRoutesInput, this.Name, this.ResourceGroupName).Routes), true);
+                    this.WriteObject(IotHubUtils.ToPSRouteProperties(this.IotHubClient.IotHubResource.TestAllRoutes(this.Name, this.ResourceGroupName, testAllRoutesInput).Routes), true);
                     break;
             }
         }
