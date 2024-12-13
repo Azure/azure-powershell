@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
-           HelpMessage = "ResourceID of the managed identity with access to keyvault for ADE operations.")]
+           HelpMessage = "ResourceID of the managed identity with access to keyvault for Azure Disk Encryption operations.")]
         [ValidateNotNullOrEmpty]
         public string EncryptionIdentity { get; set; }
 
