@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Upgraded Azure.Core to 1.44.1.
+* Removed "Microsoft.Azure.Management.Synapse" Version "2.6.0-preview" package reference 
 
 ## Version 3.0.10
 * Fixed secrets exposure in example documentation.
