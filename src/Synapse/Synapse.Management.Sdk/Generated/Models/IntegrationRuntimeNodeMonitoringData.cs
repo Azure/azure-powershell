@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         {
             this.AdditionalProperties = additionalProperties;
             this.NodeName = nodeName;
-            this.AvailableMemoryInMb = availableMemoryInMb;
+            this.AvailableMemoryInMB = availableMemoryInMb;
             this.CpuUtilization = cpuUtilization;
             this.ConcurrentJobsLimit = concurrentJobsLimit;
             this.ConcurrentJobsRunning = concurrentJobsRunning;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// Gets available memory (MB) on the integration runtime node.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "availableMemoryInMB")]
-        public int? AvailableMemoryInMb {get; private set; }
+        public int? AvailableMemoryInMB {get; private set; }
 
         /// <summary>
         /// Gets cPU percentage on the integration runtime node.
