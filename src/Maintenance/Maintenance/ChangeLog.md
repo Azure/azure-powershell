@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-
 * Fixed incorrect parameter mapping in Get-AzApplyUpdate
 
 ## Version 1.4.3
