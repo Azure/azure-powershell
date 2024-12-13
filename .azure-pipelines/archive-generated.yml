@@ -128,7 +128,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: util/PipelineSteps/build-steps.ps1 -RepoRoot ${{ Build.SourcesDirectory }} -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -FilesChangedOutputPath $(FilesChangedOutputPath) -ForceRegenerate ${{ parameters.ForceRegenerate }} -BuildReason ${{ Build.Reason }} -Trigger $(Trigger)
+      script: util/PipelineSteps/build-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -FilesChangedOutputPath $(FilesChangedOutputPath) -ForceRegenerate ${{ parameters.ForceRegenerate }} -BuildReason $(Build.Reason) -Trigger $(Trigger)
   - task: PowerShell@2
     displayName: 'push archive branch after build'
     inputs:
@@ -199,7 +199,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: util/PipelineSteps/analyze-steps.ps1 -RepoRoot ${{ Build.SourcesDirectory }} -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }}
+      script: util/PipelineSteps/analyze-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }}
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: analyze-${{ variables.testFramework }}-$(System.JobAttempt)
@@ -235,6 +235,12 @@ jobs:
     inputs:
       packageType: sdk
       version: 6.0.x
+  - task: PowerShell@2
+    displayName: 'Test'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: util/PipelineSteps/test-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -TestFramework ${{ variables.testFramework }}
   - task: PublishTestResults@2
     inputs:
       testRunner: VSTest
