@@ -85,5 +85,12 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzApplyUpdateCancelConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzApplyUpdateWithParentResource()
+        {
+            TestRunner.RunTestScript("Test-GetAzApplyUpdateWithParentResource");
+        }
     }
 }

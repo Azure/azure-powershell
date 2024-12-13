@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                     string applyUpdateName = this.ApplyUpdateName;
 
                     var result = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
-                        ApplyUpdatesClient.GetParent(resourceGroupName, resourceParentType, resourceParentName, providerName, resourceType, resourceName, applyUpdateName) :
+                        ApplyUpdatesClient.GetParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName, applyUpdateName) :
                         ApplyUpdatesClient.Get(resourceGroupName, providerName, resourceType, resourceName, applyUpdateName);
 
                     var psObject = new PSApplyUpdate();

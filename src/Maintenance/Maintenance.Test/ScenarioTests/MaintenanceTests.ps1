@@ -609,7 +609,7 @@ function Test-AzMaintenanceUpdate
 
 <#
 .SYNOPSIS
-Test New-AzMaintenanceConfiguration, Get-AzApplyUpdate, Remove-AzMaintenanceConfiguration
+Test New-AzMaintenanceConfiguration, New-AzApplyUpdate, Remove-AzMaintenanceConfiguration
 #>
 function Test-AzApplyUpdateCancelConfiguration
 {
@@ -658,6 +658,97 @@ function Test-AzApplyUpdateCancelConfiguration
     finally
     {
         # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+    }
+ }
+
+ <#
+.SYNOPSIS
+Test New-AzMaintenanceConfiguration, New-AzConfigurationAssignment, Get-AzApplyUpdate
+#>
+function Test-GetAzApplyUpdateWithParentResource
+{
+    $actualStartTime = (Get-Date -AsUTC).AddMinutes(12)
+    $resourceGroupName = Get-RandomResourceGroupName
+    $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
+    $dedicatedHostGroupName = Get-RandomDedicatedHostGroupName
+    $dedicatedHostName = Get-RandomDedicatedHostName
+    $location = "eastus"
+    $maintenanceScope = "Host"
+    $duration = "02:00"
+    $actualStartDateTime = $actualStartTime.ToString("yyyy-MM-dd HH:mm")
+    $startDateTime = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("startDateTime", $actualStartDateTime)
+    $expirationDateTime = "9999-12-31 00:00"
+    $recurEvery = "Day"
+    $timezone = "UTC"
+    $providerName = "Microsoft.Compute"
+    $resourceType = "hosts"
+    $resourceParentType = "hostGroups"
+    $applyUpdateName = "default"
+    $sku = "Dsv3-Type3"
+
+    try 
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        $dedicatedHostGroup = New-AzHostGroup `
+           -Name $dedicatedHostGroupName `
+           -ResourceGroupName $resourceGroupName `
+           -Location $location `
+           -PlatformFaultDomain 1
+
+        $dedicatedHost = New-AzHost `
+           -HostGroupName $dedicatedHostGroup.Name `
+           -Location $location `
+           -Name $dedicatedHostName `
+           -ResourceGroupName $resourceGroupName `
+           -Sku $sku
+
+        ### Host maintenance config
+        $maintenanceConfiguration = New-AzMaintenanceConfiguration `
+            -ResourceGroupName $resourceGroupName `
+            -Name $maintenanceConfigurationName `
+            -MaintenanceScope $maintenanceScope `
+            -Location $location `
+            -Timezone $timezone `
+            -StartDateTime $startDateTime `
+            -ExpirationDateTime $expirationDateTime `
+            -Duration $duration `
+            -RecurEvery $recurEvery
+
+        Assert-AreEqual $maintenanceConfiguration.Name $maintenanceConfigurationName
+
+        ### Wait few minutes so that the resource is available for configuration assignment
+        Start-TestSleep -Seconds (4 * 60)
+
+        ### Create configuration assignment
+        $configurationAssignment = New-AzConfigurationAssignment `
+           -ResourceGroupName $resourceGroupName `
+           -Location $location `
+           -ResourceName $dedicatedHostName `
+           -ResourceType $resourceType `
+           -ResourceParentName $dedicatedHostGroupName `
+           -ResourceParentType $resourceParentType `
+           -ProviderName $providerName `
+           -ConfigurationAssignmentName $maintenanceConfigurationName `
+           -MaintenanceConfigurationId $maintenanceConfiguration.Id
+
+        Assert-AreEqual $configurationAssignment.Name $maintenanceConfigurationName
+
+        ### Make Get-AzApplyUpdate call
+        $applyUpdateResponse = Get-AzApplyUpdate `
+            -ResourceGroupName $resourceGroupName `
+            -ProviderName $providerName `
+            -ResourceType $resourceType `
+            -ResourceName $dedicatedHostName `
+            -ResourceParentType $resourceParentType `
+            -ResourceParentName $dedicatedHostGroupName `
+            -ApplyUpdateName $applyUpdateName
+
+        Assert-AreEqual $applyUpdateResponse.ResourceId $dedicatedHost.Id
+    }
+    finally
+    {
         Clean-ResourceGroup $resourceGroupName
     }
  }

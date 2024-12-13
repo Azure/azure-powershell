@@ -34,6 +34,15 @@ function Get-RandomVirtualMachineName
 .SYNOPSIS
 Gets dedicated host name
 #>
+function Get-RandomDedicatedHostGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets dedicated host name
+#>
 function Get-RandomDedicatedHostName
 {
     return getAssetName

@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 
+* Fixed incorrect parameter mapping in Get-AzApplyUpdate
+
 ## Version 1.4.3
 * Fixed bug where AzMaintenanceConfiguration returned a List object. [#25781]
 
