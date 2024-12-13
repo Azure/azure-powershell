@@ -129,18 +129,7 @@ function Set-AzDataProtectionMSIPermission {
               
               $vault = Az.DataProtection\Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $subscriptionIdInternal
               $vaultIdentity = Get-VaultIdentity -vault $vault -UserAssignedIdentityARMId $UserAssignedIdentityARMId
-
-              #Determine the vault MSI to be used
-              <#if ($UserAssignedIdentityARMId) {
-                  $vaultIdentity = $vault.Identity.UserAssignedIdentity[$UserAssignedIdentityARMId].PrincipalID
-              } else {
-                  $vaultIdentity = $vault.Identity.PrincipalId
-              }
-
-              if (-not $vaultIdentity) {
-                  throw "Vault identity could not be determined. Please check the UserAssignedIdentityARMId or the vault configuration."
-              }#>
-              
+                            
               if(-not $manifest.supportRestoreGrantPermission){
                   $err = "Set permissions for restore is currently not supported for given DataSourceType"
                   throw $err
@@ -301,17 +290,6 @@ function Set-AzDataProtectionMSIPermission {
 
               $vault = Az.DataProtection\Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $ResourceArray[2]
               $vaultIdentity = Get-VaultIdentity -vault $vault -UserAssignedIdentityARMId $UserAssignedIdentityARMId
-
-              # Determine the vault MSI to be used
-              <#if ($UserAssignedIdentityARMId) {
-                  $vaultIdentity = $vault.Identity.UserAssignedIdentity[$UserAssignedIdentityARMId].PrincipalID
-              } else {
-                  $vaultIdentity = $vault.Identity.PrincipalId
-              }
-
-              if (-not $vaultIdentity) {
-                  throw "Vault identity could not be determined. Please check the UserAssignedIdentityARMId or the vault configuration."
-              }#>
               
               $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vaultIdentity
 
