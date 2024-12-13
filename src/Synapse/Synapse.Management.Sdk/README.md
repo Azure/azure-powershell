@@ -107,4 +107,9 @@ directive:
       property-name: WorkspaceUid
     set:
       property-name: WorkspaceUID
+  - where:
+      model-name: IntegrationRuntimeNodeMonitoringData
+      property-name: AvailableMemoryInMb
+    set:
+      property-name: AvailableMemoryInMB
 ```
