@@ -245,6 +245,6 @@ jobs:
     inputs:
       testRunner: VSTest
       testResultsFiles: '**/*.trx'
-  - template: publish-artifacts-steps.yml
+  - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: test-${{ variables.testFramework }}-${{ variables.OSName }}-$(System.JobAttempt)
