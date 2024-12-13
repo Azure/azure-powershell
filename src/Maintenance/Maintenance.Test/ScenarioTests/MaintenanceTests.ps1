@@ -719,7 +719,7 @@ function Test-GetAzApplyUpdateWithParentResource
         Assert-AreEqual $maintenanceConfiguration.Name $maintenanceConfigurationName
 
         ### Wait few minutes so that the resource is available for configuration assignment
-        Start-TestSleep -Seconds (4 * 60)
+        Start-TestSleep -Seconds (15 * 60)
 
         ### Create configuration assignment
         $configurationAssignment = New-AzConfigurationAssignment `
