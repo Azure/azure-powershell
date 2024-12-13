@@ -17,8 +17,8 @@ function Create-RoleAssignments(
     [string]$objectId,
     [string]$saId) {
 
-    $storageBlobDataContributorRoleDefinitionId = "ba92f5b4-2d11-453d-a403-e96b0029c9fe"
-    $contributorRoleDefinitionId = "b24988ac-6180-42a0-ab88-20f7382dd24c"
+    $storageBlobDataContributorRoleDefinitionId = [System.Guid]::parse($RoleDefinitionIds.StorageBlobDataContributorId)
+    $contributorRoleDefinitionId = [System.Guid]::parse($RoleDefinitionIds.ContributorId)
     $existingRoleAssignments = Get-AzRoleAssignment -ObjectId $objectId -Scope $saId -ErrorVariable notPresent -ErrorAction SilentlyContinue
 
     if (-not $existingRoleAssignments) {
@@ -134,6 +134,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
         Import-Module Az.Resources
         Import-Module Az.Storage
         Import-Module Az.RecoveryServices
+        Import-Module $PSScriptRoot\Helper\AzStackHCICommonSettings.ps1
         
         # Validate user specified target region
         $TargetRegion = $TargetRegion.ToLower()
