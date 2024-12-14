@@ -165,6 +165,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInSetADECmdlet()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInSetADECmdlet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionWithIdentityNotSetInVirtualMachine()
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine");

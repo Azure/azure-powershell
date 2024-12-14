@@ -7744,9 +7744,9 @@ function Test-AddEncryptionIdentityInAzureVmConfig{
         $imagePublisher = "RedHat";
         $imageOffer = "RHEL";
         $imageSku = "92-gen2";
-        $stnd = "Standard";
+        #$stnd = "trustedlaunch";
         $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd -EncryptionIdentity $encIdentity -IdentityType UserAssigned -IdentityId $encIdentity;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -EncryptionIdentity $encIdentity -IdentityType UserAssigned -IdentityId $encIdentity;
         
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -7804,6 +7804,7 @@ function Test-AddEncryptionIdentityInAzureVmConfig{
         Assert-True { $vm.Identity.UserAssignedIdentities.ContainsKey($encIdentity) }
         Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].PrincipalId
         Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].ClientId
+        Write-Verbose $vm.SecurityProfile;
         Assert-NotNull $vm.SecurityProfile.EncryptionIdentity
         Assert-AreEqual $encIdentity $vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId
 
