@@ -44,15 +44,18 @@ Describe 'AzComputeSchedule' {
     
     It 'InvokeExecuteDeallocate' {
         {
-            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-0"
-            $location = "eastus2euap"
-            $correlationId = "5e047015-76af-4b93-87a1-14714c670a9t"
+            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-8"
+            $location = $env.Location
+            $correlationGuid = [guid]::NewGuid()
+            $correlationId = $correlationGuid.ToString()
             $subId = $env.SubscriptionId
             $retryCount = 3
             $retryWindowInMinutes = 50
 
             $executeDeallocateReq = Invoke-AzComputeScheduleExecuteDeallocate -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes
             $executeDeallocateReq.Results.Count | Should -BeGreaterOrEqual 1
+
+            Start-Sleep -Seconds 5
 
             foreach ($item in $executeDeallocateReq.Results) {
                 $item.ErrorCode | Should -NotBeNull 
@@ -76,7 +79,6 @@ Describe 'AzComputeSchedule' {
     It 'GetOperationsErrors' -skip {
         {
             $mockOperationId = "854dbe77-9169-44ca-8f06-f87701183903"
-            $mockCorrelationId = "5e047015-76af-4b93-87a1-14714c670a9e"
             $locationParameter = "eastus2euap"
             $request = Get-AzComputeScheduleOperationsErrors -Locationparameter $locationParameter -OperationIds $mockOperationId -SubscriptionId $env.SubscriptionId
          } | Should -Not -Throw
