@@ -24,7 +24,7 @@ using System;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
-namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
+namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
     /// <summary>
     /// Class SetCloudEndpointPermissionCommand.

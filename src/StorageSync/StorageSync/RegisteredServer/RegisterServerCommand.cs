@@ -27,7 +27,9 @@ using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
@@ -246,6 +248,39 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     throw new PSArgumentException("This server is not configured properly to use managed identities. Follow the steps in the Azure File Sync documentation (https://aka.ms/AFS/ManagedIdentities) to enable a system-assigned managed identity for this server.");
                 }
                 createParameters.ApplicationId = serverRegistrationData.ApplicationId.ToString();
+                RegisteredServer clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverRegistrationData.ClusterId.ToString());
+                var clusterNameResourceId = clusterNameServer.Id;
+
+                if (serverRegistrationData.ServerRole == InternalObjects.ServerRoleType.ClusterNode)
+                {
+                    var endpoints = new List<Tuple<ServerEndpoint, CloudEndpoint>>();
+                    StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, storageSyncServiceName).ForEach(syncGroup =>
+                    {
+                        IEnumerable<CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
+                        CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
+
+                        StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name).ForEach(serverEndpoint =>
+                        {
+                            if (string.Equals(serverEndpoint.ServerResourceId, clusterNameResourceId, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                endpoints.Add(new Tuple<ServerEndpoint, CloudEndpoint>(serverEndpoint, cloudEndpoint));
+                            }
+                        });
+                    });
+
+                    var serverIdentityGuid = serverRegistrationData.ApplicationId.Value;
+                    foreach (var endpoint in endpoints)
+                    {
+                        ServerEndpoint serverEndpoint = endpoint.Item1; 
+                        CloudEndpoint cloudEndpoint = endpoint.Item2;
+                        var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                        var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                        StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                           serverIdentityGuid,
+                           Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                           scope);
+                    }
+                }
             }
             else
             {
