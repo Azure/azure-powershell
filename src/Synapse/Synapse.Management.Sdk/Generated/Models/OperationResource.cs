@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="percentComplete">Completion percentage of the operation
         /// </param>
-        public OperationResource(string id = default(string), string name = default(string), string status = default(string), object properties = default(object), ErrorDetail error = default(ErrorDetail), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), double? percentComplete = default(double?))
+        public OperationResource(string id = default(string), string name = default(string), string status = default(string), object properties = default(object), ErrorResponse error = default(ErrorResponse), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), double? percentComplete = default(double?))
 
         {
             this.Id = id;
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// Gets or sets errors from the operation
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public ErrorDetail Error {get; set; }
+        public ErrorResponse Error {get; set; }
 
         /// <summary>
         /// Gets or sets operation start time

@@ -8,9 +8,9 @@ namespace Microsoft.Azure.Management.Synapse.Models
     using System.Linq;
 
     /// <summary>
-    /// Metadata pertaining to creation and last modification of the resource.
+    /// ARM System Data.
     /// </summary>
-    public partial class SystemData
+    public partial class SystemData : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
         /// Initializes a new instance of the SystemData class.
@@ -24,22 +24,24 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// Initializes a new instance of the SystemData class.
         /// </summary>
 
-        /// <param name="createdBy">The identity that created the resource.
+        /// <param name="createdBy">A string identifier for the identity that created the resource.
         /// </param>
 
-        /// <param name="createdByType">The type of identity that created the resource.
+        /// <param name="createdByType">The type of identity that created the resource:
+        /// &lt;User|Application|ManagedIdentity|Key&gt;
         /// Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;</param>
 
         /// <param name="createdAt">The timestamp of resource creation (UTC).
         /// </param>
 
-        /// <param name="lastModifiedBy">The identity that last modified the resource.
+        /// <param name="lastModifiedBy">A string identifier for the identity that last modified the resource.
         /// </param>
 
-        /// <param name="lastModifiedByType">The type of identity that last modified the resource.
+        /// <param name="lastModifiedByType">The type of identity that last modified the resource:
+        /// &lt;User|Application|ManagedIdentity|Key&gt;
         /// Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;</param>
 
-        /// <param name="lastModifiedAt">The timestamp of resource last modification (UTC)
+        /// <param name="lastModifiedAt">The timestamp of last modification (UTC).
         /// </param>
         public SystemData(string createdBy = default(string), string createdByType = default(string), System.DateTime? createdAt = default(System.DateTime?), string lastModifiedBy = default(string), string lastModifiedByType = default(string), System.DateTime? lastModifiedAt = default(System.DateTime?))
 
@@ -60,39 +62,41 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
 
         /// <summary>
-        /// Gets or sets the identity that created the resource.
+        /// Gets a string identifier for the identity that created the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createdBy")]
-        public string CreatedBy {get; set; }
+        public string CreatedBy {get; private set; }
 
         /// <summary>
-        /// Gets or sets the type of identity that created the resource. Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;
+        /// Gets the type of identity that created the resource:
+        /// &lt;User|Application|ManagedIdentity|Key&gt; Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createdByType")]
-        public string CreatedByType {get; set; }
+        public string CreatedByType {get; private set; }
 
         /// <summary>
-        /// Gets or sets the timestamp of resource creation (UTC).
+        /// Gets the timestamp of resource creation (UTC).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createdAt")]
-        public System.DateTime? CreatedAt {get; set; }
+        public System.DateTime? CreatedAt {get; private set; }
 
         /// <summary>
-        /// Gets or sets the identity that last modified the resource.
+        /// Gets a string identifier for the identity that last modified the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedBy")]
-        public string LastModifiedBy {get; set; }
+        public string LastModifiedBy {get; private set; }
 
         /// <summary>
-        /// Gets or sets the type of identity that last modified the resource. Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;
+        /// Gets the type of identity that last modified the resource:
+        /// &lt;User|Application|ManagedIdentity|Key&gt; Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedByType")]
-        public string LastModifiedByType {get; set; }
+        public string LastModifiedByType {get; private set; }
 
         /// <summary>
-        /// Gets or sets the timestamp of resource last modification (UTC)
+        /// Gets the timestamp of last modification (UTC).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedAt")]
-        public System.DateTime? LastModifiedAt {get; set; }
+        public System.DateTime? LastModifiedAt {get; private set; }
     }
 }
