@@ -13,27 +13,26 @@ autorest --use:@autorest/powershell@4.x
 ``` yaml
 isSdkGenerator: true
 powershell: true
+description: Azure Synapse Analytics Management Client
 openapi-type: arm
 azure-arm: true
-tag: package-composite-v2
-license-header: MICROSOFT_MIT_NO_VERSION
-description: Azure Synapse Analytics Management Client
 generate-empty-classes: true
 modelerfour:
   lenient-model-deduplication: true
-output-folder: Generated
+license-header: MICROSOFT_MIT_NO_VERSION
 namespace: Microsoft.Azure.Management.Synapse
+output-folder: Generated
 clear-output-folder: true
-reflect-api-versions: true
 batch:
- - tag: $(tag)
+ - tag: package-composite-v2
  - tag: package-sqlGen3-2020-04-01-preview
+reflect-api-versions: true
+commit: 74ca59fc8cb6563d5a9d66fb533b8622522143eb
 ```
 
 ### Tag: package-composite-v2
 
 ``` yaml $(tag) == 'package-composite-v2'
-commit: 74ca59fc8cb6563d5a9d66fb533b8622522143eb
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/azureADOnlyAuthentication.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/checkNameAvailability.json
@@ -50,16 +49,15 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/library.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/sparkConfiguration.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
+  # - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 ```
 
 ### Tag: package-sqlGen3-2020-04-01-preview
 ``` yaml $(tag) == 'package-sqlGen3-2020-04-01-preview'
-commit: 74ca59fc8cb6563d5a9d66fb533b8622522143eb
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2020-04-01-preview/operations.json
-- https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2020-04-01-preview/sqlPool.json
-- https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2020-04-01-preview/sqlDatabase.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2020-04-01-preview/operations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2020-04-01-preview/sqlPool.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2020-04-01-preview/sqlDatabase.json
 ```
 
 ``` yaml
