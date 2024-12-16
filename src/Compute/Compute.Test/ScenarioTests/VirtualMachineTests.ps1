@@ -7744,7 +7744,6 @@ function Test-AddEncryptionIdentityInAzureVmConfig{
         $imagePublisher = "RedHat";
         $imageOffer = "RHEL";
         $imageSku = "92-gen2";
-        #$stnd = "trustedlaunch";
         $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -EncryptionIdentity $encIdentity -IdentityType UserAssigned -IdentityId $encIdentity;
         
