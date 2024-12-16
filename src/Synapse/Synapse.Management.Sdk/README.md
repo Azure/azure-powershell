@@ -5,8 +5,7 @@ This directory contains management plane service clients of Az.Storage module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.x --tag=package-sqlGen3-2020-04-01-preview
-autorest --use:@autorest/powershell@4.x --tag=package-composite-v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
@@ -16,6 +15,7 @@ isSdkGenerator: true
 powershell: true
 openapi-type: arm
 azure-arm: true
+tag: package-composite-v2
 license-header: MICROSOFT_MIT_NO_VERSION
 description: Azure Synapse Analytics Management Client
 generate-empty-classes: true
@@ -23,8 +23,11 @@ modelerfour:
   lenient-model-deduplication: true
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Synapse
-clear-output-folder: false
+clear-output-folder: true
 reflect-api-versions: true
+batch:
+ - tag: $(tag)
+ - tag: package-sqlGen3-2020-04-01-preview
 ```
 
 ### Tag: package-composite-v2
