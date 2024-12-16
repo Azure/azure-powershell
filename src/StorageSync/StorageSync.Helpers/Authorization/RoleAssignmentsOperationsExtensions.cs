@@ -93,9 +93,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization
         /// <param name='roleAssignmentName'>
         /// The name of the role assignment. It can be any valid GUID.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters for the role assignment.
-        /// </param>
         public static RoleAssignment Create(this IRoleAssignmentsOperations operations, string scope, string roleAssignmentName, RoleAssignmentCreateParameters parameters)
         {
                 return ((IRoleAssignmentsOperations)operations).CreateAsync(scope, roleAssignmentName, parameters).GetAwaiter().GetResult();
@@ -116,9 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization
         /// </param>
         /// <param name='roleAssignmentName'>
         /// The name of the role assignment. It can be any valid GUID.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters for the role assignment.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
