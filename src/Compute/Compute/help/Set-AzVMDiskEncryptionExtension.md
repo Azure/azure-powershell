@@ -13,10 +13,10 @@ Enables encryption on a running IaaS virtual machine in Azure.
 
 ## SYNTAX
 
-### SinglePassParameterSet
+### SinglePassParameterSet (Default)
 ```
 Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
- [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String>
+ [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [-EncryptionIdentity <String>]
  [[-KeyEncryptionKeyUrl] <String>] [[-KeyEncryptionKeyVaultId] <String>] [[-KeyEncryptionAlgorithm] <String>]
  [[-VolumeType] <String>] [[-SequenceVersion] <String>] [[-TypeHandlerVersion] <String>] [[-Name] <String>]
  [[-Passphrase] <String>] [-Force] [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>]
