@@ -631,12 +631,4 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="InvalidMigrateAndMigrateRecoveryParameters" xml:space="preserve">
     <value>User input cannot contain both -Migrate and -MigrationRecovery parameters. Specify either -Migrate (or) -MigrationRecovery parameter.</value>
   </data>
-  <data name="EncryptionIdentityADEFailure" xml:space="preserve">
-    <value>Failed to update encryption identity {0} on VM {1}</value>
-    <comment>{0} = Identity passed, {1} = VM Name</comment>
-  </data>
-  <data name="EncryptionIdentityNotPartOfAssignedIdentities" xml:space="preserve">
-    <value>Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource</value>
-  </data>
-	
 </root>

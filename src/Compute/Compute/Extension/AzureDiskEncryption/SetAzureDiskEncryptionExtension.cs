@@ -520,8 +520,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             if (vmParameters.Identity == null || vmParameters.Identity.UserAssignedIdentities == null || 
                 !vmParameters.Identity.UserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
                 ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
-                                                             Resources.EncryptionIdentityNotPartOfAssignedIdentities)),
-                                                            "InvalidResult",ErrorCategory.InvalidResult,null));
+                                                    "Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource")),
+                                                    "InvalidResult",
+                                                    ErrorCategory.InvalidResult,null));
 
 
             if (vmParameters.SecurityProfile == null)
@@ -553,12 +554,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 if (!updateEncryptionIdentity.Response.IsSuccessStatusCode)
                 {
                     ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
-                                                                                   Resources.EncryptionIdentityADEFailure,
-                                                                                    this.EncryptionIdentity, this.VMName,
-                                                                                    updateEncryptionIdentity.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult())),
-                                                                                   "InvalidResult",
-                                                                                    ErrorCategory.InvalidResult,
-                                                                                    null));
+                                                        "Failed to update encryption identity on VM",
+                                                        updateEncryptionIdentity.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult())),
+                                                        "InvalidResult",
+                                                        ErrorCategory.InvalidResult,
+                                                        null));
                 }
                 else
                 {

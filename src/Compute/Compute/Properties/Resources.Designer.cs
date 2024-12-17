@@ -586,24 +586,6 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to update encryption identity {0} on VM {1}.
-        /// </summary>
-        internal static string EncryptionIdentityADEFailure {
-            get {
-                return ResourceManager.GetString("EncryptionIdentityADEFailure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource.
-        /// </summary>
-        internal static string EncryptionIdentityNotPartOfAssignedIdentities {
-            get {
-                return ResourceManager.GetString("EncryptionIdentityNotPartOfAssignedIdentities", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
         /// </summary>
         internal static string ErrorDuringChoosingStandardStorageAccount {
