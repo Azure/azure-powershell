@@ -203,6 +203,21 @@ Get-AzRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83
 
 Gets role assignments at the 'site1' website scope.
 
+### Example 5
+```powershell
+$ApplicationObject = Get-AzADServicePrincipal -DisplayName 'ApplicationDisplayName'
+Get-AzRoleAssignment -ServicePrincipalName $ApplicationObject.AppId
+```
+
+Gets role assignments for the specified Service Principal using Get-AzAdServicePrincipal.
+
+### Example 6
+```powershell
+Get-AzRoleAssignment -ServicePrincipalName 'e456d065-ed9e-4b16-a43d-ef4aea724f52'
+```
+
+Gets role assignments for the specified Service Principal using the application id.
+
 ## PARAMETERS
 
 ### -DefaultProfile
