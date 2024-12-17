@@ -570,9 +570,10 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid -MigrationRecovery parameter. VM does not meet the prerequisites for migration recovery.
         /// </summary>
-        internal static string EnableDiskEncryptionInvalidMigrateRecoveryParameter 
+        internal static string EnableDiskEncryptionInvalidMigrateRecoveryParameter
         {
-            get {
+            get
+            {
                 return ResourceManager.GetString("EnableDiskEncryptionInvalidMigrateRecoveryParameter", resourceCulture);
             }
         }
