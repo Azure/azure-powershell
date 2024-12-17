@@ -517,6 +517,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));
 
+            if (vmParameters.Identity == null || vmParameters.Identity.UserAssignedIdentities == null || 
+                !vmParameters.Identity.UserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
+                                                             Resources.EncryptionIdentityNotPartOfAssignedIdentities)),
+                                                            "InvalidResult",ErrorCategory.InvalidResult,null));
+
+
             if (vmParameters.SecurityProfile == null)
             {
                 vmParameters.SecurityProfile = new SecurityProfile();

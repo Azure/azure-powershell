@@ -259,24 +259,20 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.IsParameterBound(c => c.EncryptionIdentity))
             {
-                if (vm.Identity != null && vm.Identity.UserAssignedIdentities != null && 
-                    vm.Identity.UserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
+                if (vm.SecurityProfile == null)
                 {
-                    if (vm.SecurityProfile == null)
-                    {
-                        vm.SecurityProfile = new SecurityProfile();
-                    }
+                    vm.SecurityProfile = new SecurityProfile();
+                }
 
-                    if (vm.SecurityProfile.EncryptionIdentity == null)
-                    {
-                        vm.SecurityProfile.EncryptionIdentity = new EncryptionIdentity();
-                    }
+                if (vm.SecurityProfile.EncryptionIdentity == null)
+                {
+                    vm.SecurityProfile.EncryptionIdentity = new EncryptionIdentity();
+                }
 
-                    if (String.IsNullOrEmpty(vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId) ||
-                        !vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId.Equals(this.EncryptionIdentity, StringComparison.OrdinalIgnoreCase))
-                    {
-                        vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
-                    }
+                if (String.IsNullOrEmpty(vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId) ||
+                    !vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId.Equals(this.EncryptionIdentity, StringComparison.OrdinalIgnoreCase))
+                {
+                    vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
                 }
             }
 

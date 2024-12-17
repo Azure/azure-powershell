@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -122,17 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("AzureVMDscArchiveAlreadyExists", resourceCulture);
             }
         }
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to update encryption identity {0} on VM {1}.
-        /// </summary>
-        internal static string EncryptionIdentityADEFailure
-        {
-            get
-            {
-                return ResourceManager.GetString("EncryptionIdentityADEFailure", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Cannot find configuration data file: {0}.
         /// </summary>
@@ -540,7 +530,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("EnableAzureDiskEncryptionConfirmation", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Enable disk encryption.
         /// </summary>
@@ -549,7 +539,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("EnableDiskEncryptionAction", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to -Migrate parameter cannot be used when Azure Disk Encryption is disabled in the VM..
         /// </summary>
@@ -558,7 +548,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("EnableDiskEncryptionInvalidMigrateParameterForDisable", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Migration is only supported for VMs using Azure Disk Encryption (with AAD). -Migrate parameter is unsupported for this VM as it is running Azure Disk Encryption (without AAD)..
         /// </summary>
@@ -567,7 +557,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("EnableDiskEncryptionInvalidMigrateParameterForSinglePass", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid parameters for migration. Migration only supports -ResourceGroupName, -VMName and -Migrate parameters..
         /// </summary>
@@ -576,38 +566,43 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("EnableDiskEncryptionInvalidMigrateParameterSet", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Invalid -MigrationRecovery parameter. VM does not meet the prerequisites for migration recovery.
+        ///   Looks up a localized string similar to Invalid -MigrationRecovery parameter. VM does not meet the prerequisites for migration recovery..
         /// </summary>
-        internal static string EnableDiskEncryptionInvalidMigrateRecoveryParameter
-        {
-            get
-            {
+        internal static string EnableDiskEncryptionInvalidMigrateRecoveryParameter {
+            get {
                 return ResourceManager.GetString("EnableDiskEncryptionInvalidMigrateRecoveryParameter", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to User input cannot contain both -Migrate and -MigrationRecovery parameters. Specify either -Migrate (or) -MigrationRecovery parameter.
-        /// </summary>
-        internal static string InvalidMigrateAndMigrateRecoveryParameters
-        {
-            get
-            {
-                return ResourceManager.GetString("InvalidMigrateAndMigrateRecoveryParameters", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to -skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://learn.microsoft.com/azure/security/azure-security-disk-encryption-linux. .
+        ///   Looks up a localized string similar to -skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux. .
         /// </summary>
         internal static string EnableDiskEncryptionMissingSkipVmBackup {
             get {
                 return ResourceManager.GetString("EnableDiskEncryptionMissingSkipVmBackup", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to update encryption identity {0} on VM {1}.
+        /// </summary>
+        internal static string EncryptionIdentityADEFailure {
+            get {
+                return ResourceManager.GetString("EncryptionIdentityADEFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource.
+        /// </summary>
+        internal static string EncryptionIdentityNotPartOfAssignedIdentities {
+            get {
+                return ResourceManager.GetString("EncryptionIdentityNotPartOfAssignedIdentities", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
         /// </summary>
@@ -616,7 +611,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("ErrorDuringChoosingStandardStorageAccount", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Error occurred when creating storage account for boot diagnostics.  Keep creating a VM with disabling boot diagnostics.  : {0}.
         /// </summary>
@@ -645,6 +640,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User input cannot contain both -Migrate and -MigrationRecovery parameters. Specify either -Migrate (or) -MigrationRecovery parameter..
+        /// </summary>
+        internal static string InvalidMigrateAndMigrateRecoveryParameters {
+            get {
+                return ResourceManager.GetString("InvalidMigrateAndMigrateRecoveryParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Linux configuration is already specified.  This cmdlet requires a Windows configuration..
         /// </summary>
         internal static string LinuxConfigurationSpecified {
@@ -661,7 +665,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("MigrateAzureDiskEncryptionCaption", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet updates Azure Disk Encryption version to single pass (Azure Disk Encryption without AAD). This may reboot the machine and takes 10-15 minutes to finish. Are you sure you want to continue?.
         /// </summary>
@@ -670,7 +674,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("MigrateAzureDiskEncryptionConfirmation", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
         /// </summary>
