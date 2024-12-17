@@ -1,5 +1,5 @@
 # Overall
-This directory contains management plane service clients of Az.Storage module.
+This directory contains management plane service clients of Az.Synapse module.
 
 ## Run Generation
 In this directory, run AutoRest:
