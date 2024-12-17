@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionrestoreconfigurationclientobject
 schema: 2.0.0
 ---
@@ -19,7 +19,7 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-ConflictPolicy <String>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
  [-PersistentVolumeRestoreMode <String>] [-RestoreHookReference <NamespacedNameResource[]>]
  [-ResourceModifierReference <NamespacedNameResource>] [-StagingResourceGroupId <String>]
- [-StagingStorageAccountId <String>] [<CommonParameters>]
+ [-StagingStorageAccountId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -192,6 +192,21 @@ Default value is RestoreWithVolumeData
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

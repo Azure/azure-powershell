@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for UAMI in Backup Instance
 
 ## Version 2.5.0
 * Added support for vault tier backup and restore for AzureKubernetesService

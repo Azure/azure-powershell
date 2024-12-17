@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionpolicytriggerscheduleclientobject
 schema: 2.0.0
 ---
@@ -14,7 +14,7 @@ Creates new Schedule object
 
 ```
 New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays <DateTime[]>
- -IntervalType <BackupFrequency> -IntervalCount <Int32>
+ -IntervalType <BackupFrequency> -IntervalCount <Int32> [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -74,6 +74,21 @@ Aliases:
 Accepted values: Daily, Weekly, Hourly
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

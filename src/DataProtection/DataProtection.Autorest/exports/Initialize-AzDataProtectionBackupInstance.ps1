@@ -110,7 +110,20 @@ param(
     # Backup configuration for backup.
     # Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
     # To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
-    ${BackupConfiguration}
+    ${BackupConfiguration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Use system assigned identity
+    ${UseSystemAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AssignUserIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # User assigned identity ARM Id
+    ${UserAssignedIdentityArmId}
 )
 
 begin {
