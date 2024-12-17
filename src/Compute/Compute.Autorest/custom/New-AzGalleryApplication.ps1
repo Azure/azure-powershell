@@ -141,6 +141,7 @@ function New-AzGalleryApplication {
     )
 
     process {
+        # this is a test for pr validation pipelines
         Az.Compute.internal\New-AzGalleryApplication @PSBoundParameters
     }
 }
