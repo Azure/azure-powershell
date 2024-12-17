@@ -27,7 +27,9 @@ param (
 # filter changed files
 Write-Host -ForegroundColor Green "-------------------- Start filtering changed files ... --------------------"
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
-$Env:PowerShellPlatform = $PowerShellPlatform
+if ($PowerShellPlatform) {
+    $Env:PowerShellPlatform = $PowerShellPlatform
+}
 dotnet msbuild $buildProjPath /t:FilterBuild "/p:FilesChangedOutputPath=$FilesChangedOutputPath;SubTasksFilePath=$SubTasksFilePath;IsSecurityCheck=$IsSecurityCheck"
 Write-Host -ForegroundColor DarkGreen "-------------------- End filtering changed files ... --------------------`n`n`n`n`n"
 

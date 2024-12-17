@@ -25,6 +25,17 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
+        if ("Manual" -eq "$(Build.Reason)") {
+          #TODO: change value of $trigger to the account who trigger this run
+          $trigger = 'Manual'
+        } elseif ("Schedule" -eq "$(Build.Reason)") { 
+          #TODO: change value of $trigger to datetime this run was scheduled
+          $trigger = 'Schedule'
+        } else {
+          $trigger = "$(System.PullRequest.PullRequestNumber)"
+        }
+        Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
+
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
         Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
         New-Item -Type File -Path $filesChangedOutputPath -Force
@@ -41,6 +52,32 @@ jobs:
       configuration: Debug
       filesChangedOutputPath: $(FilesChangedOutputPath)
       isSecurityCheck: true
+
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+  - task: NodeTool@0
+    displayName: Install Autorest
+    inputs:
+      versionSpec: '14.17.1'
+      command: custom
+      verbose: false
+      customCommand: install autorest@latest
+  - task: PowerShell@2
+    displayName: Setup environment for Autorest
+    inputs:
+      targetType: inline
+      script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Build'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: util/PipelineSteps/build-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -FilesChangedOutputPath $(FilesChangedOutputPath) -IsSecurityCheck $true -BuildReason $(Build.Reason) -Trigger $(Trigger)
+
   - task: PowerShell@2
     displayName: Install platyPS
     inputs:

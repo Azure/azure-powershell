@@ -31,7 +31,9 @@ Write-Host -ForegroundColor DarkGreen "-------------------- End installing lates
 
 # Generate help
 Write-Host -ForegroundColor Green "-------------------- Start generating help ... --------------------"
-$Env:PowerShellPlatform = $PowerShellPlatform
+if ($PowerShellPlatform) {
+    $Env:PowerShellPlatform = $PowerShellPlatform
+}
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
 dotnet msbuild $buildProjPath /t:GenerateHelp "/p:Configuration=$Configuration"
 Write-Host -ForegroundColor DarkGreen "-------------------- End generating help ... --------------------"

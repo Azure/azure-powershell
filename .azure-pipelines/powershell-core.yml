@@ -44,6 +44,14 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
+        if ("Manual" -eq "$(Build.Reason)") {
+          #TODO: change value of $trigger to the account who trigger this run
+          $trigger = 'Manual'
+        } else {
+          $trigger = "$(System.PullRequest.PullRequestNumber)"
+        }
+        Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
+
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
         Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
         New-Item -Type File -Path $filesChangedOutputPath -Force
@@ -52,14 +60,35 @@ jobs:
 
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
-        Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
-  - template: util/build-steps.yml
-    parameters:
-      configuration: ${{ variables.Configuration }}
-      testFramework: ${{ variables.TestFramework }}
-      powerShellPlatform: ${{ variables.PowerShellPlatform }}
-      filesChangedOutputPath: $(FilesChangedOutputPath)
-      subTasksFilePath: $(SubTasksFilePath)
+        if ("PullRequest" -eq "$(Build.Reason)") {
+          Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
+        } else {
+          Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+        }
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+  - task: NodeTool@0
+    displayName: Install Autorest
+    inputs:
+      versionSpec: '14.17.1'
+      command: custom
+      verbose: false
+      customCommand: install autorest@latest
+  - task: PowerShell@2
+    displayName: Setup environment for Autorest
+    inputs:
+      targetType: inline
+      script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Build'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: util/PipelineSteps/build-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -FilesChangedOutputPath $(FilesChangedOutputPath) -SubTasksFilePath $(SubTasksFilePath) -BuildReason $(Build.Reason) -Trigger $(Trigger)
 
 - job: Analyze
   displayName: Analyze
@@ -67,14 +96,37 @@ jobs:
   condition: succeeded()
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: pool-windows-2019
-
   steps:
-  - template: util/analyze-steps.yml
+  - template: util/download-build-steps.yml
     parameters:
-      configuration: ${{ variables.Configuration }}
-      testFramework: ${{ variables.TestFramework }}
-      powerShellPlatform: ${{ variables.PowerShellPlatform }}
-      IsGenerateBased: ${{ variables.IsGenerateBased }}
+      artifactName: build-${{ variables.TestFramework }}
+  - task: NodeTool@0
+    displayName: Install autorest
+    inputs:
+      versionSpec: '14.17.1'
+      command: custom
+      verbose: false
+      customCommand: install autorest@latest
+  - task: PowerShell@2
+    displayName: Setup environment for autorest
+    inputs:
+      targetType: inline
+      script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+      pwsh: true
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+  - task: PowerShell@2
+    displayName: 'Analyze'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: util/PipelineSteps/analyze-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }}
+  - template: util/publish-artifacts-steps.yml
+    parameters:
+      artifactName: analyze-${{ variables.testFramework }}-$(System.JobAttempt)
 
 - job: Test
   displayName: Test
@@ -98,12 +150,25 @@ jobs:
   pool:
     name: $(agentPoolName)
     vmImage: $(agentPoolVMImage)
-
   steps:
-  - template: util/test-steps.yml
+  - template: util/download-build-steps.yml
     parameters:
-      osName: $(OSName)
-      testFramework: ${{ variables.TestFramework }}
-      testTarget: ${{ variables.TestTarget }}
-      configuration: ${{ variables.Configuration }}
-      powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      artifactName: build-${{ variables.TestFramework }}
+  - task: UseDotNet@2
+    displayName: 'Use .NET SDK 6 for tests'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+  - task: PowerShell@2
+    displayName: 'Test'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: util/PipelineSteps/test-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -TestFramework ${{ variables.testFramework }}
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
+  - template: util/publish-artifacts-steps.yml
+    parameters:
+      artifactName: test-${{ variables.testFramework }}-${{ variables.OSName }}-$(System.JobAttempt)

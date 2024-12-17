@@ -25,7 +25,9 @@ Write-Host -ForegroundColor DarkGreen "-------------------- End removing pre-ins
 
 # Test
 Write-Host -ForegroundColor Green "-------------------- Start testing ... --------------------"
-$Env:PowerShellPlatform = $PowerShellPlatform
+if ($PowerShellPlatform) {
+    $Env:PowerShellPlatform = $PowerShellPlatform
+}
 $preference = $ErrorActionPreference
 $ErrorActionPreference = 'Continue'
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
