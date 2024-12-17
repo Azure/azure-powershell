@@ -123,12 +123,51 @@ jobs:
       targetType: inline
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
+  
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
       targetType: inline
       pwsh: true
-      script: util/PipelineSteps/build-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -FilesChangedOutputPath $(FilesChangedOutputPath) -ForceRegenerate ${{ parameters.ForceRegenerate }} -BuildReason $(Build.Reason) -Trigger $(Trigger)
+      workingDirectory: "$(Build.SourcesDirectory)"
+      script: |
+      if ("Manual" -eq "$(Build.Reason)") {
+          #TODO: change value of $trigger to the account who trigger this run
+          $trigger = 'Manual'
+        } elseif ("Schedule" -eq "$(Build.Reason)") { 
+          #TODO: change value of $trigger to datetime this run was scheduled
+          $trigger = 'Schedule'
+        } else {
+          $trigger = "$(Build.SourceVersion)"
+        }
+
+        $forceRegenerate = $false
+        if ('true' -eq '${{ parameters.ForceRegenerate }}') {
+          $forceRegenerate = $true
+        }
+
+        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+        New-Item -Type File -Path $filesChangedOutputPath -Force
+        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+        Import-Module $filesChangedScriptPath
+        $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+        #Yabo: cannot use join-path because in ci-config we use slash, backslash cannot match
+        $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
+
+        #TODO: calculate actual files changed in CI
+
+        
+
+
+
+
+
+
+
+
+      $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
+      . $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)"" -Configuration "${{ variables.Configuration }}"" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"" -FilesChangedOutputPath $filesChangedOutputPath -ForceRegenerate $forceRegenerate -BuildReason $(Build.Reason) -Trigger $trigger
+  
   - task: PowerShell@2
     displayName: 'push archive branch after build'
     inputs:
@@ -199,7 +238,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: util/PipelineSteps/analyze-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }}
+      script: PipelineSteps/analyze-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }}
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: analyze-${{ variables.testFramework }}-$(System.JobAttempt)
@@ -240,7 +279,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: util/PipelineSteps/test-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -TestFramework ${{ variables.testFramework }}
+      script: PipelineSteps/test-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -TestFramework ${{ variables.testFramework }}
   - task: PublishTestResults@2
     inputs:
       testRunner: VSTest
