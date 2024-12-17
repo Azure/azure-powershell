@@ -38,7 +38,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"webSocketUri\":\"wss://sbz65hajgyoenwz.eastus.atlas.cloudapp.azure.com:19390/logstream/sessionId/9395d1a9-57a8-4970-abb1-d43a0cc81138?api-version=1.0\",\"password\":\"[Sanitized]\"}",
+      "Content": "{\"webSocketUri\":\"wss://sbz65hajgyoenwz.eastus.atlas.cloudapp.azure.com:19390/logstream/sessionId/9395d1a9-57a8-4970-abb1-d43a0cc81138?api-version=1.0\",\"password\":\"s_+]Y-{qV;lqYbr]gF1-\u0026\u0026nvo[[EOM]]\"}",
       "isContentBase64": false
     }
   }
