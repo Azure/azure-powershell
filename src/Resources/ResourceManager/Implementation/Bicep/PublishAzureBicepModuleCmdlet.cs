@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
 
             if (this.PassThru.IsPresent)
             {
+                // this is a test for pr validation pipelines
                 this.WriteObject(true);
             }
         }
