@@ -182,7 +182,7 @@
     "extendedLocation": "/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-2681822-cluster-1-HostedResources-51755DE4/providers/Microsoft.ExtendedLocation/customLocations/simdev-2681822-cluster-1-cstm-loc",
     "tags": "tag1",
     "cordonEvacuate": "False",
-    "bmcCredsPassword": "Y0dGemMzZHZjbVFL",
+    "bmcCredsPassword": "****************",
     "bmcCredsUsername": "ZFhObGNtNWhiV1VL",
     "bmcMacAddress": "AA:BB:CC:DD:EE:AA",
     "bootMacAddress": "52:54:00:9b:27:01",
