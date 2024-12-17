@@ -36,16 +36,32 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
 
         static RecorderUtilities()
         {
+            JsonPathSanitizers.Add("$..Password");
             JsonPathSanitizers.Add("$..password");
+            JsonPathSanitizers.Add("$..adminPassword");
+            JsonPathSanitizers.Add("$..passwords[*].value");
+            JsonPathSanitizers.Add("$..secret");
+            JsonPathSanitizers.Add("$..secretText");
+            JsonPathSanitizers.Add("$..accessSAS");
+            JsonPathSanitizers.Add("$..storageAccountKey");
             JsonPathSanitizers.Add("$..primaryKey");
             JsonPathSanitizers.Add("$..primaryMasterKey");
             JsonPathSanitizers.Add("$..primaryReadonlyMasterKey");
             JsonPathSanitizers.Add("$..secondaryKey");
             JsonPathSanitizers.Add("$..secondaryMasterKey");
             JsonPathSanitizers.Add("$..secondaryReadonlyMasterKey");
+            JsonPathSanitizers.Add("$..keys[*].value");
+            JsonPathSanitizers.Add("$..connectionString");
             JsonPathSanitizers.Add("$..primaryConnectionString");
             JsonPathSanitizers.Add("$..secondaryConnectionString");
-            JsonPathSanitizers.Add("$..connectionString");
+            JsonPathSanitizers.Add("$..aliasPrimaryConnectionString");
+            JsonPathSanitizers.Add("$..aliasSecondaryConnectionString");
+            JsonPathSanitizers.Add("$..administratorLoginPassword");
+            JsonPathSanitizers.Add("$..hubDatabasePassword");
+            JsonPathSanitizers.Add("$.properties.siteConfig.machineKey.decryptionKey");
+            JsonPathSanitizers.Add("$.properties.WEBSITE_AUTH_ENCRYPTION_KEY");
+            JsonPathSanitizers.Add("$.properties.DOCKER_REGISTRY_SERVER_PASSWORD");
+            JsonPathSanitizers.Add("$.properties.protectedSettings.storageAccountKey");
         }
 
         public static bool IsHttpContentBinary(HttpContent content)
