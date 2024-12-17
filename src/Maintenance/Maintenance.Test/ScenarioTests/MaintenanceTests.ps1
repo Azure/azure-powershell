@@ -660,9 +660,9 @@ function Test-AzApplyUpdateCancelConfiguration
         # Cleanup
         Clean-ResourceGroup $resourceGroupName
     }
- }
+}
 
- <#
+<#
 .SYNOPSIS
 Test New-AzMaintenanceConfiguration, New-AzConfigurationAssignment, Get-AzApplyUpdate
 #>
@@ -685,24 +685,12 @@ function Test-GetAzApplyUpdateWithParentResource
     $resourceType = "hosts"
     $resourceParentType = "hostGroups"
     $applyUpdateName = "default"
-    $sku = "Dsv3-Type3"
 
     try 
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-        $dedicatedHostGroup = New-AzHostGroup `
-           -Name $dedicatedHostGroupName `
-           -ResourceGroupName $resourceGroupName `
-           -Location $location `
-           -PlatformFaultDomain 1
-
-        $dedicatedHost = New-AzHost `
-           -HostGroupName $dedicatedHostGroup.Name `
-           -Location $location `
-           -Name $dedicatedHostName `
-           -ResourceGroupName $resourceGroupName `
-           -Sku $sku
+        $dedicatedHostId = New-DedicatedHost $dedicatedHostName $dedicatedHostGroupName $resourceGroupName $location
 
         ### Host maintenance config
         $maintenanceConfiguration = New-AzMaintenanceConfiguration `
@@ -745,13 +733,102 @@ function Test-GetAzApplyUpdateWithParentResource
             -ResourceParentName $dedicatedHostGroupName `
             -ApplyUpdateName $applyUpdateName
 
-        Assert-AreEqual $applyUpdateResponse.ResourceId $dedicatedHost.Id
+        Assert-AreEqual $applyUpdateResponse.ResourceId $dedicatedHostId
     }
     finally
     {
         Clean-ResourceGroup $resourceGroupName
     }
- }
+}
+
+<#
+.SYNOPSIS
+Test New-AzMaintenanceConfiguration, New-AzConfigurationAssignment, Get-AzApplyUpdate
+#>
+function Test-GetAzApplyUpdateWithoutParentResource
+{
+    $actualStartTime = (Get-Date -AsUTC).AddMinutes(12)
+    $resourceGroupName = Get-RandomResourceGroupName
+    $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
+    $virtualMachineName = Get-RandomVirtualMachineName
+    $location = "westus"
+    $maintenanceScope = "InGuestPatch"
+    $duration = "02:00"
+    $actualStartDateTime = $actualStartTime.ToString("yyyy-MM-dd HH:mm")
+    $startDateTime = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("startDateTime", $actualStartDateTime)
+    $expirationDateTime = "9999-12-31 00:00"
+    $recurEvery = "Day"
+    $timezone = "UTC"
+    $extensionProperty = @{"inGuestPatchMode"="User"}
+    $rebootOption = "IfRequired";
+    $windowsParameterClassificationToInclude = "FeaturePack","ServicePack";
+    $windowsParameterKbNumberToInclude = "KB123456","KB123466";
+    $windowsParameterKbNumberToExclude = "KB123456","KB123466";
+    $linuxParameterClassificationToInclude = "Other";
+    $linuxParameterPackageNameMaskToInclude = "apt","httpd";
+    $linuxParameterPackageNameMaskToExclude = "ppt","userpk";
+    $providerName = "Microsoft.Compute"
+    $resourceType = "virtualmachines"
+    $applyUpdateName = "default"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        $virtualMachineId = New-VirtualMachine $virtualMachineName $resourceGroupName $location
+
+        ### InGuestPatch maintenance config
+        $maintenanceConfiguration = New-AzMaintenanceConfiguration `
+            -ResourceGroupName $resourceGroupName `
+            -Name $maintenanceConfigurationName `
+            -MaintenanceScope $maintenanceScope `
+            -Location $location `
+            -Timezone $timezone `
+            -StartDateTime $startDateTime `
+            -ExpirationDateTime $expirationDateTime `
+            -Duration $duration `
+            -RecurEvery $recurEvery `
+            -ExtensionProperty $extensionProperty `
+            -InstallPatchRebootSetting $rebootOption `
+            -WindowParameterClassificationToInclude $windowsParameterClassificationToInclude `
+            -WindowParameterKbNumberToInclude $windowsParameterKbNumberToInclude `
+            -WindowParameterKbNumberToExclude $windowsParameterKbNumberToExclude `
+            -LinuxParameterPackageNameMaskToInclude $linuxParameterPackageNameMaskToInclude `
+            -LinuxParameterClassificationToInclude $linuxParameterClassificationToInclude `
+            -LinuxParameterPackageNameMaskToExclude $linuxParameterPackageNameMaskToExclude
+
+        Assert-AreEqual $maintenanceConfiguration.Name $maintenanceConfigurationName
+
+        ### Wait few minutes so that the resource is available for configuration assignment
+        Start-TestSleep -Seconds (15 * 60)
+
+        ### Create configuration assignment
+        $configurationAssignment = New-AzConfigurationAssignment `
+           -ResourceGroupName $resourceGroupName `
+           -Location $location `
+           -ResourceName $virtualMachineName `
+           -ResourceType $resourceType `
+           -ProviderName $providerName `
+           -ConfigurationAssignmentName $maintenanceConfigurationName `
+           -MaintenanceConfigurationId $maintenanceConfiguration.Id
+
+        Assert-AreEqual $configurationAssignment.Name $maintenanceConfigurationName
+
+        ### Make Get-AzApplyUpdate call
+        $applyUpdateResponse = Get-AzApplyUpdate `
+            -ResourceGroupName $resourceGroupName `
+            -ProviderName $providerName `
+            -ResourceType $resourceType `
+            -ResourceName $virtualMachineName `
+            -ApplyUpdateName $applyUpdateName
+
+        Assert-AreEqual $applyUpdateResponse.ResourceId $virtualMachineId
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
 
 <#
 .SYNOPSIS

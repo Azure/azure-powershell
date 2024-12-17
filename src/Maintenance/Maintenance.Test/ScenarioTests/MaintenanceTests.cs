@@ -92,5 +92,12 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetAzApplyUpdateWithParentResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzApplyUpdateWithoutParentResource()
+        {
+            TestRunner.RunTestScript("Test-GetAzApplyUpdateWithoutParentResource");
+        }
     }
 }
