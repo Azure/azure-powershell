@@ -16,7 +16,7 @@ Create a new virtual machine console or update the properties of the existing vi
 New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
  [-SubscriptionId <String>] -Enabled <ConsoleEnabled> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String> [-Expiration <DateTime>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Create a new virtual machine console or update the properties of the existing vi
 
 ### Example 1: Create virtual machine's console
 ```powershell
-New-AzNetworkCloudConsole -ResourceGroupName resourceGroupName -Location location -ExtendedLocationName "/subscriptions/subscriptionId/resourcegroups/clusterManagerHostedResourceGroup/providers/microsoft.extendedlocation/customlocations/clusterManagerExtendedLocation" -ExtendedLocationType "CustomLocation" -SubscriptionId subscriptionId -Tag @{tags="tag1"} -Enabled ConsoleEnabled.True -VirtualMachineName virtualMachineName -SshPublicKeyData "ssh-rsa StNw+/C+g0tOZLT9OKK6YTovOn= fakekey@vm" -Expiration "2023-07-01T01:27:03.008Z"
+New-AzNetworkCloudConsole -ResourceGroupName resourceGroupName -Location location -ExtendedLocationName "/subscriptions/subscriptionId/resourcegroups/clusterManagerHostedResourceGroup/providers/microsoft.extendedlocation/customlocations/clusterManagerExtendedLocation" -ExtendedLocationType "CustomLocation" -SubscriptionId subscriptionId -Tag @{tags="tag1"} -Enabled ConsoleEnabled.True -VirtualMachineName virtualMachineName -SshPublicKeyData "ssh-rsa StNw+/C+g0tOZLT9OKK6YTovOn= fakekey@vm" -Expiration "2024-07-01T01:27:03.008Z"
 ```
 
 ```output
@@ -178,6 +178,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -293,7 +308,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IConsole
 
 ## NOTES
 

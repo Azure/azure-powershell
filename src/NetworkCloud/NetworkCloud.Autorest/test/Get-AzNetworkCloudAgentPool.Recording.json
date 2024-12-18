@@ -1,58 +1,17 @@
 {
-  "Get-AzNetworkCloudAgentPool+[NoContext]+ListByParent+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools?api-version=2023-07-01+1": {
+  "Get-AzNetworkCloudAgentPool+[NoContext]+ListByParent+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools?api-version=2023-07-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "9f00238a-79bf-4a4c-96a2-32b1ec50b4b6" ],
-        "CommandName": [ "Get-AzNetworkCloudAgentPool" ],
-        "FullCommandName": [ "Get-AzNetworkCloudAgentPool_ListByParent" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "03f30109-906d-4179-929c-3187855d21ac", "5c2c1c79-bc5c-4501-ac68-2c7a49fced72", "ff8943b5-6ca1-420d-bb37-ffd893fbdfc6", "de4b12eb-2df5-4f3c-92bc-60d8ac0d3eb9" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-request-id": [ "f22b8a19-31c2-4608-99f1-7f12e637ef1c" ],
-        "x-ms-correlation-request-id": [ "f22b8a19-31c2-4608-99f1-7f12e637ef1c" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230718T182948Z:f22b8a19-31c2-4608-99f1-7f12e637ef1c" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 18 Jul 2023 18:29:48 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "2868" ]
-      },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool1\",\"name\":\"agentpool1\",\"type\":\"microsoft.networkcloud/kubernetesclusters/agentpools\",\"location\":\"westus3\",\"tags\":{\"tags\":\"newTag\"},\"systemData\":{\"createdBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-17T18:14:59.3391027Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-18T17:06:24.1714004Z\"},\"properties\":{\"administratorConfiguration\":{},\"agentOptions\":{\"hugepagesCount\":0,\"hugepagesSize\":\"2M\"},\"attachedNetworkConfiguration\":{},\"count\":1,\"mode\":\"System\",\"vmSkuName\":\"NC_G2_v1\",\"availabilityZones\":[],\"labels\":[],\"taints\":[],\"kubernetesVersion\":\"v1.25.4-2\",\"upgradeSettings\":{\"maxSurge\":\"1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10\",\"name\":\"agentpool10\",\"type\":\"microsoft.networkcloud/kubernetesclusters/agentpools\",\"location\":\"westus3\",\"extendedLocation\":{\"name\":\"subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev03-ee67b3ece8ad-HostedResources-5D8E906A/providers/Microsoft.ExtendedLocation/customLocations/dev03-ee67b3ece8ad-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-18T18:25:45.5713552Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-18T18:29:27.2697253Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"administratorConfiguration\":{\"adminUsername\":\"azureuser\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDL6v2jjsr9GrDkQn5selwh83Kn9LDoSn2XuAokqE63qLlArEo9U56an2WvR3a6ztsU45pIkVQkwaR5NrwT9uStNw+/C+g0tOZLT9OKK6YTovOnhfemuvorJ2i9djW+gfRnUfOa9aClBd/uBvG6jHB9c2sW9ugD5nS8A6/ymfK8X25DsYK6RbTxjbT5xGvKVND2NjSBIk79ll7f4/pulAvJTIngcLFadkGRem7KTkmyTyIMZBu4nYZN/yRws6AjyXWqwOgx2AH3Ts40McFYMt0uvPKcYqZeCGXfxcFaTChQqlzjMe6YyGPOEmii7UFUwLZ4W6DFipmKfql3yBylKDmN3XiY4eSxUPP7NvTgv6EU0CiE5Z1TEsHTzu88F7bLuZVWubXFm8CHdOeCDGxPIDu64z3wBH2N0qxbtla9hXaGjIV62Q4Vax61YwZJp8hc4qIdCuIJSlzr8WTj2sXqQV9mR3UR85mXstW0F1+6TQbJHs7MdCbTatm3Wr3FQirP+yk= azureuser@vm\"}]},\"agentOptions\":{\"hugepagesCount\":12,\"hugepagesSize\":\"2M\"},\"attachedNetworkConfiguration\":{\"l3Networks\":[]},\"upgradeSettings\":{\"maxSurge\":\"1\"},\"availabilityZones\":[\"1\"],\"count\":1,\"labels\":[{\"key\":\"fakelabel\",\"value\":\"true\"}],\"mode\":\"System\",\"taints\":[{\"key\":\"kubernetes.taint\",\"value\":\"true:NoSchedule\"}],\"vmSkuName\":\"NC_M16_v1\",\"kubernetesVersion\":\"v1.25.4-2\"}}]}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzNetworkCloudAgentPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10?api-version=2023-07-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "9ac9eb68-b28a-4497-a394-010ced424cc9" ],
+        "x-ms-client-request-id": [ "10b9e65d-848f-400e-9c49-ff779ce2084c" ],
         "CommandName": [ "Get-AzNetworkCloudAgentPool" ],
-        "FullCommandName": [ "Get-AzNetworkCloudAgentPool_Get" ],
+        "FullCommandName": [ "Get-AzNetworkCloudAgentPool_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -63,22 +22,69 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"13017f2b-0000-4d00-0000-64b6da070000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "7cca911b-d725-43cf-9da0-0bf60dbf36a4" ],
-        "x-ms-correlation-request-id": [ "b3cdaed0-b922-48ab-a13c-5f68f94fa9b4" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230718T182948Z:b3cdaed0-b922-48ab-a13c-5f68f94fa9b4" ],
+        "x-ms-request-id": [ "d1593b46-264e-4a73-9538-8df4645c83b3" ],
+        "x-ms-correlation-request-id": [ "713ee0ee-1631-4e6e-85b4-c60a471e6adf" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20241024T192326Z:713ee0ee-1631-4e6e-85b4-c60a471e6adf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 18 Jul 2023 18:29:48 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 25708444A77A4E3FABAB96F49E363B92 Ref B: AMS231032609023 Ref C: 2024-10-24T19:23:25Z" ],
+        "Date": [ "Thu, 24 Oct 2024 19:23:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1905" ],
+        "Content-Length": [ "7448" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10\",\"name\":\"agentpool10\",\"type\":\"microsoft.networkcloud/kubernetesclusters/agentpools\",\"location\":\"westus3\",\"extendedLocation\":{\"name\":\"subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev03-ee67b3ece8ad-HostedResources-5D8E906A/providers/Microsoft.ExtendedLocation/customLocations/dev03-ee67b3ece8ad-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-18T18:25:45.5713552Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-18T18:29:27.2697253Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"administratorConfiguration\":{\"adminUsername\":\"azureuser\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDL6v2jjsr9GrDkQn5selwh83Kn9LDoSn2XuAokqE63qLlArEo9U56an2WvR3a6ztsU45pIkVQkwaR5NrwT9uStNw+/C+g0tOZLT9OKK6YTovOnhfemuvorJ2i9djW+gfRnUfOa9aClBd/uBvG6jHB9c2sW9ugD5nS8A6/ymfK8X25DsYK6RbTxjbT5xGvKVND2NjSBIk79ll7f4/pulAvJTIngcLFadkGRem7KTkmyTyIMZBu4nYZN/yRws6AjyXWqwOgx2AH3Ts40McFYMt0uvPKcYqZeCGXfxcFaTChQqlzjMe6YyGPOEmii7UFUwLZ4W6DFipmKfql3yBylKDmN3XiY4eSxUPP7NvTgv6EU0CiE5Z1TEsHTzu88F7bLuZVWubXFm8CHdOeCDGxPIDu64z3wBH2N0qxbtla9hXaGjIV62Q4Vax61YwZJp8hc4qIdCuIJSlzr8WTj2sXqQV9mR3UR85mXstW0F1+6TQbJHs7MdCbTatm3Wr3FQirP+yk= azureuser@vm\"}]},\"agentOptions\":{\"hugepagesCount\":12,\"hugepagesSize\":\"2M\"},\"attachedNetworkConfiguration\":{\"l3Networks\":[]},\"upgradeSettings\":{\"maxSurge\":\"1\"},\"availabilityZones\":[\"1\"],\"count\":1,\"labels\":[{\"key\":\"fakelabel\",\"value\":\"true\"}],\"mode\":\"System\",\"taints\":[{\"key\":\"kubernetes.taint\",\"value\":\"true:NoSchedule\"}],\"vmSkuName\":\"NC_M16_v1\",\"kubernetesVersion\":\"v1.25.4-2\"}}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools/agentpool1\",\"name\":\"agentpool1\",\"type\":\"microsoft.networkcloud/kubernetesclusters/agentpools\",\"location\":\"uksouth\",\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"createdByType\":\"Application\",\"createdAt\":\"2024-10-24T02:49:18.2429986Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-24T13:09:39.9242381Z\"},\"properties\":{\"administratorConfiguration\":{\"adminUsername\":\"admin\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa REDACTED\"}]},\"agentOptions\":{\"hugepagesCount\":0,\"hugepagesSize\":\"2M\"},\"attachedNetworkConfiguration\":{},\"count\":1,\"mode\":\"System\",\"vmSkuName\":\"NC_G2_8_v1\",\"availabilityZones\":[],\"labels\":[],\"taints\":[],\"kubernetesVersion\":\"v1.28.0-6\",\"upgradeSettings\":{\"maxSurge\":\"1\",\"maxUnavailable\":\"0\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools/agentpool4\",\"name\":\"agentpool4\",\"type\":\"microsoft.networkcloud/kubernetesclusters/agentpools\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-24T16:12:57.4746737Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-24T16:24:11.2691296Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"administratorConfiguration\":{\"adminUsername\":\"azureuser\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa REDACTED\"}]},\"agentOptions\":{\"hugepagesCount\":0,\"hugepagesSize\":\"2M\"},\"attachedNetworkConfiguration\":{\"l3Networks\":[{\"ipamEnabled\":\"False\",\"networkId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/shared-dev-dev07-cluster-1/providers/Microsoft.NetworkCloud/l3Networks/l3network-736\",\"pluginType\":\"SRIOV\"}]},\"availabilityZones\":[\"1\"],\"count\":3,\"labels\":[{\"key\":\"kubernetes.label\",\"value\":\"true\"}],\"mode\":\"System\",\"upgradeSettings\":{\"maxSurge\":\"1\",\"maxUnavailable\":\"0\"},\"vmSkuName\":\"NC_G2_8_v1\",\"taints\":[],\"kubernetesVersion\":\"v1.28.0-6\"}},{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools/agentpooldpdk\",\"name\":\"agentpooldpdk\",\"type\":\"microsoft.networkcloud/kubernetesclusters/agentpools\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-170a7a87d9a7-HostedResources-52364569/providers/Microsoft.ExtendedLocation/customLocations/dev07-170a7a87d9a7-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-24T16:23:36.4909213Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-24T16:27:40.3995552Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"administratorConfiguration\":{\"adminUsername\":\"azureuser\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa REDACTED\"}]},\"agentOptions\":{\"hugepagesCount\":0,\"hugepagesSize\":\"2M\"},\"attachedNetworkConfiguration\":{\"l3Networks\":[{\"ipamEnabled\":\"True\",\"networkId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/shared-dev-dev07-cluster-1/providers/Microsoft.NetworkCloud/l3Networks/l3network-736\",\"pluginType\":\"DPDK\"}]},\"upgradeSettings\":{\"maxSurge\":\"1\",\"maxUnavailable\":\"0\"},\"availabilityZones\":[\"1\"],\"count\":1,\"labels\":[{\"key\":\"kubernetes.label\",\"value\":\"\"}],\"mode\":\"System\",\"taints\":[{\"key\":\"kubernetes.taint\",\"value\":\"true:NoSchedule\"}],\"vmSkuName\":\"NC_G2_8_v1\",\"kubernetesVersion\":\"v1.28.0-6\"}},{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools/agentpool2\",\"name\":\"agentpool2\",\"type\":\"microsoft.networkcloud/kubernetesclusters/agentpools\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-170a7a87d9a7-HostedResources-52364569/providers/Microsoft.ExtendedLocation/customLocations/dev07-170a7a87d9a7-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-24T19:18:53.3074165Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-24T19:23:08.1001774Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"administratorConfiguration\":{\"adminUsername\":\"azureuser\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa REDACTED\"}]},\"agentOptions\":{\"hugepagesCount\":0,\"hugepagesSize\":\"2M\"},\"upgradeSettings\":{\"maxSurge\":\"1\",\"maxUnavailable\":\"0\"},\"availabilityZones\":[\"1\"],\"count\":1,\"labels\":[{\"key\":\"kubernetes.label\",\"value\":\"True\"}],\"mode\":\"System\",\"taints\":[{\"key\":\"kubernetes.taint\",\"value\":\"true:NoSchedule\"}],\"vmSkuName\":\"NC_G2_8_v1\",\"attachedNetworkConfiguration\":{},\"kubernetesVersion\":\"v1.28.0-6\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkCloudAgentPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools/agentpool2?api-version=2024-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools/agentpool2?api-version=2024-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "c26f1a09-f45b-4732-bea3-32096f7485be" ],
+        "CommandName": [ "Get-AzNetworkCloudAgentPool" ],
+        "FullCommandName": [ "Get-AzNetworkCloudAgentPool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3c0056ed-0000-1100-0000-671a9e9c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a35c7155-ebca-4544-be58-8730111c6460" ],
+        "x-ms-correlation-request-id": [ "1ed03417-258b-4364-abfa-d854184843ac" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20241024T192326Z:1ed03417-258b-4364-abfa-d854184843ac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E93BFBC3E9F1469CB20F224DA54BA2C6 Ref B: AMS231032609023 Ref C: 2024-10-24T19:23:26Z" ],
+        "Date": [ "Thu, 24 Oct 2024 19:23:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1912" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools/agentpool2\",\"name\":\"agentpool2\",\"type\":\"microsoft.networkcloud/kubernetesclusters/agentpools\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-170a7a87d9a7-HostedResources-52364569/providers/Microsoft.ExtendedLocation/customLocations/dev07-170a7a87d9a7-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-24T19:18:53.3074165Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-24T19:23:08.1001774Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"administratorConfiguration\":{\"adminUsername\":\"azureuser\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa REDACTED\"}]},\"agentOptions\":{\"hugepagesCount\":0,\"hugepagesSize\":\"2M\"},\"upgradeSettings\":{\"maxSurge\":\"1\",\"maxUnavailable\":\"0\"},\"availabilityZones\":[\"1\"],\"count\":1,\"labels\":[{\"key\":\"kubernetes.label\",\"value\":\"True\"}],\"mode\":\"System\",\"taints\":[{\"key\":\"kubernetes.taint\",\"value\":\"true:NoSchedule\"}],\"vmSkuName\":\"NC_G2_8_v1\",\"attachedNetworkConfiguration\":{},\"kubernetesVersion\":\"v1.28.0-6\"}}",
       "isContentBase64": false
     }
   }
