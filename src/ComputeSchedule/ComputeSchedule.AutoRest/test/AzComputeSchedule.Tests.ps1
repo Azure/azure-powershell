@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzComputeSchedule'))
 Describe 'AzComputeSchedule' {    
     It 'InvokeSubmitDeallocate' {
         {
-            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b22abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-1"
+            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall43850"
             $location = "eastus2euap"
             $correlationId = [guid]::NewGuid().ToString()
             $subId = $env.SubscriptionId
@@ -25,8 +25,7 @@ Describe 'AzComputeSchedule' {
             $retryWindowInMinutes = 20
             $timezone = "UTC"
             $deadlineType = "InitiateAt"
-            $now = Get-Date
-            $deadline = $now.AddHours(10)
+            $deadline = "2024-12-25T23:00:00"
 
             Invoke-AzComputeScheduleSubmitDeallocate -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone
 
@@ -35,7 +34,7 @@ Describe 'AzComputeSchedule' {
     
     It 'InvokeSubmitStart' {
         {
-            $vmId = "/subscriptions/d4d56520-334b-4f88-b067-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-2"
+            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall52070"
             $location = "eastus2euap"
             $correlationId = [guid]::NewGuid().ToString()
             $subId = $env.SubscriptionId
@@ -43,8 +42,7 @@ Describe 'AzComputeSchedule' {
             $retryWindowInMinutes = 20
             $timezone = "UTC"
             $deadlineType = "InitiateAt"
-            $now = Get-Date
-            $deadline = $now.AddHours(10)
+            $deadline = "2024-12-25T23:00:00"
 
             Invoke-AzComputeScheduleSubmitStart -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone
 
@@ -53,7 +51,7 @@ Describe 'AzComputeSchedule' {
     
     It 'InvokeSubmitHibernate' {
         {
-            $vmId = "/subscriptions/d4d56520-234b-4f99-b067-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-3"
+            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall51590"
             $location = "eastus2euap"
             $correlationId = [guid]::NewGuid().ToString()
             $subId = $env.SubscriptionId
@@ -61,8 +59,7 @@ Describe 'AzComputeSchedule' {
             $retryWindowInMinutes = 20
             $timezone = "UTC"
             $deadlineType = "InitiateAt"
-            $now = Get-Date
-            $deadline = $now.AddHours(10)
+            $deadline = "2024-12-25T23:00:00"
 
             Invoke-AzComputeScheduleSubmitHibernate -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone
 
@@ -71,7 +68,7 @@ Describe 'AzComputeSchedule' {
     
     It 'InvokeExecuteDeallocate' {
         {
-            $vmId = "/subscriptions/d4d56520-234b-4f88-b032-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-4"
+            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib30610"
             $location = "eastus2euap"
             $correlationGuid = [guid]::NewGuid()
             $correlationId = $correlationGuid.ToString()
@@ -86,7 +83,7 @@ Describe 'AzComputeSchedule' {
     
     It 'InvokeExecuteHibernate' {
         {
-            $vmId = "/subscriptions/d4d56520-234b-4f88-b090-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-5"
+            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib30440"
             $location = "eastus2euap"
             $correlationGuid = [guid]::NewGuid()
             $correlationId = $correlationGuid.ToString()
@@ -101,7 +98,7 @@ Describe 'AzComputeSchedule' {
     
     It 'InvokeExecuteStart' {
         {
-            $vmId = "/subscriptions/d4d56520-234b-4f12-b067-b64abe09a843/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-6"
+            $vmId = "/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall66250"
             $location = "eastus2euap"
             $correlationGuid = [guid]::NewGuid()
             $correlationId = $correlationGuid.ToString()
@@ -116,7 +113,7 @@ Describe 'AzComputeSchedule' {
     
     It 'GetOperationStatus' {
         {
-            $operationIdList = "45609245-dfdf-4a18-88d8-283628aeab9a","e3e7b03f-03bf-4d5e-a3f3-7dca1d072a3c"
+            $operationIdList = "1d3b8290-431b-42d4-bfb3-40845020c98b","7737b23a-8fad-4d06-bfc4-09ea995af642"
             $locationParameter = "eastus2euap"
             $correlationId = [guid]::NewGuid().ToString()
             $subId = $env.SubscriptionId
@@ -127,7 +124,7 @@ Describe 'AzComputeSchedule' {
     
     It 'GetOperationErrors' {
         {
-            $operationIdList = "854dbe77-9169-99ca-8f06-f87744483903"
+            $operationIdList = "1d3b8290-431b-42d4-bfb3-40845020c98b","7737b23a-8fad-4d06-bfc4-09ea995af642"
             $locationParameter = "eastus2euap"
             $subId = $env.SubscriptionId
 
@@ -137,7 +134,7 @@ Describe 'AzComputeSchedule' {
     
     It 'StopOperation' {
         {
-            $operationIdList = "30b999d3-51e5-44ad-ba7c-5f36291a1926","28118282-df29-4a72-bffe-32a0805a198c"
+            $operationIdList = "9d048d1c-1a63-4d11-b460-73a7099957c4"
             $locationParameter = "eastus2euap"
             $correlationId = [guid]::NewGuid().ToString()
             $subId = $env.SubscriptionId
