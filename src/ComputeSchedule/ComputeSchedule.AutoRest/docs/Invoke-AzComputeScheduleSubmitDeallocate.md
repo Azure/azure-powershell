@@ -30,7 +30,7 @@ Invoke-AzComputeScheduleSubmitDeallocate
 -Location "eastus2euap" 
 -CorrelationId [guid]::NewGuid().ToString() 
 -DeadlineType "InitiateAt"
--ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-4", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-5"
+-ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-12", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-15"
 -SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4"
 -Deadline 2025-01-10T23:00:00
 -RetryCount 4
@@ -39,7 +39,57 @@ Invoke-AzComputeScheduleSubmitDeallocate
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{
+  Description: "Deallocate Resource request",
+  Type: "VirtualMachines",
+  Location: "eastus2euap",
+  Results: [
+    {
+      ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-12",
+      ErrorCode: null,
+      ErrorDetails: null,
+      Operation: {
+        OperationId: "37346960-9d1d-4b61-87be-898054870a31",
+        ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-12",
+        OpType: "Deallocate",
+        SubscriptionId: "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
+        Deadline: "2025-01-10T23:00:00+00:00",
+        DeadlineType: "InitiateAt",
+        State": "Succeeded",
+        TimeZone: "UTC",
+        ResourceOperationError: null,
+        CompletedAt": null,
+        RetryWindowInMinutes: null,
+        RetryPolicy: {
+          RetryCount: 4,
+          RetryWindowInMinutes: 65
+        }
+      }
+    },
+    {
+      ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-15",
+      ErrorCode: null,
+      ErrorDetails: null,
+      Operation: {
+        OperationId: "45346960-9d1d-4b61-87be-898054870a31",
+        ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-15",
+        OpType: "Deallocate",
+        SubscriptionId: "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
+        Deadline: "2025-01-10T23:00:00+00:00",
+        DeadlineType: "InitiateAt",
+        State: "Succeeded",
+        TimeZone: "UTC",
+        ResourceOperationError: null,
+        CompletedAt: null,
+        RetryWindowInMinutes: null,
+        RetryPolicy: {
+          RetryCount: 4,
+          RetryWindowInMinutes: 65
+        }
+      }
+    }
+  ]
+}
 ```
 
 The above command is scheduling a deallocate operation on a batch of virtual machines by the given deadline.
