@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.ResourceManager.Compute" Version="1.6.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Maintenance.Management.Sdk\Maintenance.Management.Sdk.csproj" />
   </ItemGroup>
 

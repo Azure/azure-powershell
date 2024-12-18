@@ -104,7 +104,7 @@ Creates a new virtual machine
 function New-VirtualMachine(
     [string] $virtualMachineName,
     [string] $resourceGroupName,
-	[string] $location)
+    [string] $location)
 {
     $vmLocalAdminUser = "LocalAdminUser"
     $vmLocalAdminSecurePassword = ConvertTo-SecureString -String ([guid]::NewGuid()) -AsPlainText -Force
