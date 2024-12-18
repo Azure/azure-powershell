@@ -20,6 +20,7 @@ Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun [-Name <String>] -N
 ```
 
 ### ByList
+```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
