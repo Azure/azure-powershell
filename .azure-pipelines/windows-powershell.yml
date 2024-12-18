@@ -56,7 +56,6 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      workingDirectory: $(Build.SourcesDirectory)
       script: |
         if ("Manual" -eq "$(Build.Reason)") {
           #TODO: change value of $trigger to the account who trigger this run
