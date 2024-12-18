@@ -16,15 +16,17 @@ Properties and tag updates can be done independently.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
+ [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity>
- [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
+ [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,22 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ControlPlaneNodeConfigurationAdminPublicKey
+SshPublicKey represents the public key used to authenticate with a resource through SSH.
+To construct, see NOTES section for CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,8 +135,6 @@ Accept wildcard characters: False
 
 ### -KubernetesVersion
 The Kubernetes version for this cluster.
-Accepts n.n, n.n.n, and n.n.n-n format.
-The interpreted version used will be resolved into this field after creation or update.
 
 ```yaml
 Type: System.String
@@ -172,6 +188,22 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshPublicKey
+SshPublicKey represents the public key used to authenticate with a resource through SSH.
+To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,39 +281,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesCluster
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INetworkCloudIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the Kubernetes cluster agent pool.
-  - `[BareMetalMachineKeySetName <String>]`: The name of the bare metal machine key set.
-  - `[BareMetalMachineName <String>]`: The name of the bare metal machine.
-  - `[BmcKeySetName <String>]`: The name of the baseboard management controller key set.
-  - `[CloudServicesNetworkName <String>]`: The name of the cloud services network.
-  - `[ClusterManagerName <String>]`: The name of the cluster manager.
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[ConsoleName <String>]`: The name of the virtual machine console.
-  - `[Id <String>]`: Resource identity path
-  - `[KubernetesClusterName <String>]`: The name of the Kubernetes cluster.
-  - `[L2NetworkName <String>]`: The name of the L2 network.
-  - `[L3NetworkName <String>]`: The name of the L3 network.
-  - `[MetricsConfigurationName <String>]`: The name of the metrics configuration for the cluster.
-  - `[RackName <String>]`: The name of the rack.
-  - `[RackSkuName <String>]`: The name of the rack SKU.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageApplianceName <String>]`: The name of the storage appliance.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[TrunkedNetworkName <String>]`: The name of the trunked network.
-  - `[VirtualMachineName <String>]`: The name of the virtual machine.
-  - `[VolumeName <String>]`: The name of the volume.
 
 ## RELATED LINKS
 
