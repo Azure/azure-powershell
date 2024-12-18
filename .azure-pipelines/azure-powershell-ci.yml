@@ -71,7 +71,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      workingDirectory: "$(Build.SourcesDirectory)"
+      workingDirectory: $(Build.SourcesDirectory)
       script: |
         $forceRegenerate = $false
         if ('true' -eq '${{ parameters.ForceRegenerate }}') {
