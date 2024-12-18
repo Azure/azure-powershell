@@ -47,64 +47,6 @@ jobs:
   steps:
   - checkout: self
   - template: util/get-github-pat-steps.yml
-  - task: PowerShell@2
-    name: 'Initialize'
-    displayName: 'Initialize Build'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        if ("Manual" -eq "$(Build.Reason)") {
-          #TODO: change value of $trigger to the account who trigger this run
-          $trigger = 'Manual'
-        } elseif ("Schedule" -eq "$(Build.Reason)") { 
-          #TODO: change value of $trigger to datetime this run was scheduled
-          $trigger = 'Schedule'
-        } else {
-          $trigger = "$(Build.SourceVersion)"
-        }
-        Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
-
-        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-        Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
-        New-Item -Type File -Path $filesChangedOutputPath -Force
-
-        $forceRegenerate = $false
-        if ('true' -eq '${{ parameters.ForceRegenerate }}') {
-          $forceRegenerate = $true
-        }
-
-        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
-        Import-Module $filesChangedScriptPath
-        $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
-        if (($null -eq $filesChanged) -or (0 -eq $filesChanged.Length)) {
-          <# 
-            Yabo: have to fail build job to terminate this run because: 
-              1. the $  {{ if() }} conditional evaluation is a template expression syntax which was evaluated when compile this YAML, which means cannot use runtime variables in this condition
-              2. this job have build template involved and template does not accept condition, and condition does not accept runtime variables either
-          #>
-          Write-Host "##vso[task.logissue type=warning]no modules found need to be archived, terminate current run."
-          exit 1
-        }
-        #Yabo: cannot use join-path because in ci-config we use slash, backslash cannot match
-        $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
-  - task: PowerShell@2
-    displayName: 'Create branch for generated assets'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $baseBranchName = "origin/$(Build.SourceBranchName)"
-        $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
-        if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
-          $tmpBranchName += "/$(Build.SourceVersion)"
-        }
-        Write-Host "##vso[task.setvariable variable=TmpBranchName]$tmpBranchName"
-        Write-Host "##vso[task.setvariable variable=BaseBranchName]$baseBranchName"
-        Write-Host "##[section]Switch from $baseBranchName to $tmpBranchName"
-        git fetch origin $(Build.SourceBranchName)
-        git checkout -b $tmpBranchName $baseBranchName
-
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
@@ -131,79 +73,69 @@ jobs:
       pwsh: true
       workingDirectory: "$(Build.SourcesDirectory)"
       script: |
-      if ("Manual" -eq "$(Build.Reason)") {
+      $forceRegenerate = $false
+      if ('true' -eq '${{ parameters.ForceRegenerate }}') {
+        $forceRegenerate = $true
+      }
+
+      Write-Host "##[section]Filter changed files"
+      $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+      New-Item -Type File -Path $filesChangedOutputPath -Force
+      $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+      Import-Module $filesChangedScriptPath
+      $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+      #Yabo: cannot use join-path because in ci-config we use slash, backslash cannot match
+      $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
+
+      #TODO: calculate actual files changed in CI
+      
+      $baseBranchName = "origin/$(Build.SourceBranchName)"
+      $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
+      if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
+        $trigger = "$(Build.SourceVersion)"
+        $tmpBranchName += "/$(Build.SourceVersion)"
+        $prTitle = "[skip ci] Archive $(Build.SourceVersion)"
+      } else {
+        #TODO: replace $(Build.reason) with account when manual and datetime when schedule
+        $prTitle = "[skip ci] Archive $(Build.reason)"
+        if ("Manual" -eq "$(Build.Reason)") {
           #TODO: change value of $trigger to the account who trigger this run
           $trigger = 'Manual'
-        } elseif ("Schedule" -eq "$(Build.Reason)") { 
+        } elseif ("Schedule" -eq "$(Build.Reason)") {
           #TODO: change value of $trigger to datetime this run was scheduled
           $trigger = 'Schedule'
-        } else {
-          $trigger = "$(Build.SourceVersion)"
         }
+      }
+      Write-Host "##[section]Switch from $baseBranchName to $tmpBranchName"
+      git fetch origin $(Build.SourceBranchName)
+      git checkout -b $tmpBranchName $baseBranchName
 
-        $forceRegenerate = $false
-        if ('true' -eq '${{ parameters.ForceRegenerate }}') {
-          $forceRegenerate = $true
-        }
-
-        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-        New-Item -Type File -Path $filesChangedOutputPath -Force
-        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
-        Import-Module $filesChangedScriptPath
-        $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
-        #Yabo: cannot use join-path because in ci-config we use slash, backslash cannot match
-        $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
-
-        #TODO: calculate actual files changed in CI
-
-        
-
-
-
-
-
-
-
-
+      Write-Host "##[section]build steps"
       $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
       . $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)"" -Configuration "${{ variables.Configuration }}"" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"" -FilesChangedOutputPath $filesChangedOutputPath -ForceRegenerate $forceRegenerate -BuildReason $(Build.Reason) -Trigger $trigger
-  
-  - task: PowerShell@2
-    displayName: 'push archive branch after build'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
-          $prTitle = "[skip ci] Archive $(Build.SourceVersion)"
-        } else {
-          #TODO: replace $(Build.reason) with account when manual and datetime when schedule
-          $prTitle = "[skip ci] Archive $(Build.reason)"
-        }
-        $tmpBranchName = "$(TmpBranchName)"
-        $baseBranchName = "$(BaseBranchName)"
-        $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
-        $diff = ( git status --short --untracked-files $generatedPath)
-        if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
-          return
-        }
-        #TODO: add better PR description
-        $prDescription = ""
-        $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
 
-        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
-        git config user.name "azure-powershell-bot";
-        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
-        git add $generatedPath
-        git commit -m $prTitle
-        git push origin $tmpBranchName --force
-        
-        . $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken $(GithubToken) -Description $prDescription
+      $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
+      $diff = ( git status --short --untracked-files $generatedPath)
+      if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
+        return
+      }
+      #TODO: add better PR description
+      $prDescription = ""
+      $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
 
-        <#
-          this commidId will be useful when we push directly to target branch in the future
-          $commitId = (git rev-parse HEAD)
-        #>
+      git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+      git config user.name "azure-powershell-bot";
+      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
+      git add $generatedPath
+      git commit -m $prTitle
+      git push origin $tmpBranchName --force
+      
+      . $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken $(GithubToken) -Description $prDescription
+
+      <#
+        this commidId will be useful when we push directly to target branch in the future
+        $commitId = (git rev-parse HEAD)
+      #>
 
 - job: Analyze
   displayName: Analyze
@@ -238,7 +170,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: PipelineSteps/analyze-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }}
+      script: PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: analyze-${{ variables.testFramework }}-$(System.JobAttempt)
@@ -279,7 +211,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: PipelineSteps/test-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -TestFramework ${{ variables.testFramework }}
+      script: PipelineSteps/test-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -TestFramework "${{ variables.testFramework }}"
   - task: PublishTestResults@2
     inputs:
       testRunner: VSTest

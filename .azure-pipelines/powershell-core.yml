@@ -35,36 +35,8 @@ jobs:
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool: pool-windows-2019
-
   steps:
   - checkout: self
-  - task: PowerShell@2
-    displayName: 'Initialize Build'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        if ("Manual" -eq "$(Build.Reason)") {
-          #TODO: change value of $trigger to the account who trigger this run
-          $trigger = 'Manual'
-        } else {
-          $trigger = "$(System.PullRequest.PullRequestNumber)"
-        }
-        Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
-
-        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-        Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
-        New-Item -Type File -Path $filesChangedOutputPath -Force
-        $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
-        Write-Host "##vso[task.setvariable variable=SubTasksFilePath]$subTasksFilePath"
-
-        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
-        Import-Module $filesChangedScriptPath
-        if ("PullRequest" -eq "$(Build.Reason)") {
-          Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
-        } else {
-          Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
-        }
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
@@ -88,7 +60,29 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: util/PipelineSteps/build-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -FilesChangedOutputPath $(FilesChangedOutputPath) -SubTasksFilePath $(SubTasksFilePath) -BuildReason $(Build.Reason) -Trigger $(Trigger)
+      script: |
+      if ("Manual" -eq "$(Build.Reason)") {
+        #TODO: change value of $trigger to the account who trigger this run
+        $trigger = 'Manual'
+      } else {
+        $trigger = "$(System.PullRequest.PullRequestNumber)"
+      }
+
+      $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+      New-Item -Type File -Path $filesChangedOutputPath -Force
+      $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
+
+      Write-Host "##[section]Filter changed files"
+      $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+      Import-Module $filesChangedScriptPath
+      if ("PullRequest" -eq "$(Build.Reason)") {
+        Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
+      } else {
+        Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+
+      Write-Host "##[section]build steps"
+      $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
+      . $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -SubTasksFilePath $subTasksFilePath -BuildReason $(Build.Reason) -Trigger $trigger
 
 - job: Analyze
   displayName: Analyze
@@ -123,7 +117,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: PipelineSteps/analyze-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }}
+      script: PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: analyze-${{ variables.testFramework }}-$(System.JobAttempt)
@@ -164,7 +158,7 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: PipelineSteps/test-steps.ps1 -RepoRoot $(Build.SourcesDirectory) -Configuration ${{ variables.Configuration }} -PowerShellPlatform ${{ variables.PowerShellPlatform }} -TestFramework ${{ variables.testFramework }}
+      script: PipelineSteps/test-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -TestFramework "${{ variables.testFramework }}"
   - task: PublishTestResults@2
     inputs:
       testRunner: VSTest
