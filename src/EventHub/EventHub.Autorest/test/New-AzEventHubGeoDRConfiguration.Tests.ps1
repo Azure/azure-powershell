@@ -44,7 +44,7 @@ Describe 'New-AzEventHubGeoDRConfiguration' {
 
         $drKeys = Get-AzEventHubKey -Name RootManageSharedAccessKey -AliasName $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
         $namespaceKeys = Get-AzEventHubKey -Name RootManageSharedAccessKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-        $drKeys.PrimaryKey | Should -Be $namespaceKeys.PrimaryKey
+        ($drKeys.PrimaryKey | ConvertFrom-SecureString -AsPlainText) | Should -Be ($namespaceKeys.PrimaryKey | ConvertFrom-SecureString -AsPlainText)
         $drKeys.SecondaryKey | Should -Be $namespaceKeys.SecondaryKey
     }
 }
