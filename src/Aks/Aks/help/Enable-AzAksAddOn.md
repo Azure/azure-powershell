@@ -5,6 +5,8 @@ online version: https://learn.microsoft.com/powershell/module/az.aks/enable-azak
 schema: 2.0.0
 ---
 
+Add a test line.
+
 # Enable-AzAksAddOn
 
 ## SYNOPSIS
