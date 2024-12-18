@@ -27,7 +27,7 @@ Describe 'AzComputeSchedule' {
             $deadlineType = "InitiateAt"
             $deadline = "2024-12-25T23:00:00"
 
-            Invoke-AzComputeScheduleSubmitDeallocate -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone
+            Invoke-AzComputeScheduleSubmitDeallocate -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone | Format-List
 
         } | Should -Not -Throw
     }
@@ -44,7 +44,7 @@ Describe 'AzComputeSchedule' {
             $deadlineType = "InitiateAt"
             $deadline = "2024-12-25T23:00:00"
 
-            Invoke-AzComputeScheduleSubmitStart -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone
+            Invoke-AzComputeScheduleSubmitStart -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone | Format-List
 
         } | Should -Not -Throw
     }
@@ -61,7 +61,7 @@ Describe 'AzComputeSchedule' {
             $deadlineType = "InitiateAt"
             $deadline = "2024-12-25T23:00:00"
 
-            Invoke-AzComputeScheduleSubmitHibernate -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone
+            Invoke-AzComputeScheduleSubmitHibernate -Location $location -CorrelationId $correlationId -DeadlineType $deadlineType -ResourceId $vmId -SubscriptionId $subId -Deadline $deadline -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes -Timezone $timezone | Format-List
 
         } | Should -Not -Throw
     }
@@ -76,7 +76,7 @@ Describe 'AzComputeSchedule' {
             $retryCount = 3
             $retryWindowInMinutes = 50
 
-            Invoke-AzComputeScheduleExecuteDeallocate -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes
+            Invoke-AzComputeScheduleExecuteDeallocate -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes | Format-List
 
         } | Should -Not -Throw
     }
@@ -91,7 +91,7 @@ Describe 'AzComputeSchedule' {
             $retryCount = 3
             $retryWindowInMinutes = 50
 
-            Invoke-AzComputeScheduleExecuteHibernate -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes
+            Invoke-AzComputeScheduleExecuteHibernate -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes | Format-List
             
         } | Should -Not -Throw
     }
@@ -106,7 +106,7 @@ Describe 'AzComputeSchedule' {
             $retryCount = 3
             $retryWindowInMinutes = 50
 
-            Invoke-AzComputeScheduleExecuteStart -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes
+            Invoke-AzComputeScheduleExecuteStart -Location $location -CorrelationId $correlationId -ResourceId $vmId -SubscriptionId $subId -RetryCount $retryCount -RetryWindowInMinutes $retryWindowInMinutes | Format-List
         
         } | Should -Not -Throw
     }
@@ -118,7 +118,7 @@ Describe 'AzComputeSchedule' {
             $correlationId = [guid]::NewGuid().ToString()
             $subId = $env.SubscriptionId
 
-            Get-AzComputeScheduleOperationStatus -Location $locationParameter -Correlationid $correlationId -OperationId $operationIdList -SubscriptionId $subId
+            Get-AzComputeScheduleOperationStatus -Location $locationParameter -Correlationid $correlationId -OperationId $operationIdList -SubscriptionId $subId | Format-List
          } | Should -Not -Throw
     }
     
@@ -128,7 +128,7 @@ Describe 'AzComputeSchedule' {
             $locationParameter = "eastus2euap"
             $subId = $env.SubscriptionId
 
-            Get-AzComputeScheduleOperationError -Location $locationParameter -OperationId $operationIdList -SubscriptionId $subId
+            Get-AzComputeScheduleOperationError -Location $locationParameter -OperationId $operationIdList -SubscriptionId $subId | Format-List
          } | Should -Not -Throw
     }
     
@@ -139,7 +139,7 @@ Describe 'AzComputeSchedule' {
             $correlationId = [guid]::NewGuid().ToString()
             $subId = $env.SubscriptionId
 
-            Stop-AzComputeScheduleScheduledAction -Location $locationParameter -OperationId $operationIdList  -Correlationid $correlationId -SubscriptionId $subId
+            Stop-AzComputeScheduleScheduledAction -Location $locationParameter -OperationId $operationIdList  -Correlationid $correlationId -SubscriptionId $subId | Format-List
          } | Should -Not -Throw
     }
 }

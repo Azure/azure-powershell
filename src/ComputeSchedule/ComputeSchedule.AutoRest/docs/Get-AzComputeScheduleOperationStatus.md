@@ -26,59 +26,45 @@ VirtualMachinesGetOperationStatus: Polling endpoint to read status of operations
 ```powershell
 Get-AzComputeScheduleOperationStatus
 -Location "eastus2euap"
--Correlationid [guid]::NewGuid().ToString() 
+-Correlationid "bbb34b32-0ca1-473f-b53d-d06148d0d1fa"
 -OperationId "d099fda7-4fdb-4db0-98e5-53fab1821267","333f8f97-32d0-4a88-9bf0-75e65da2052c"
--SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4"
+-SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4" | Format-List
 ```
 
 ```output
-{
-    Results: [
-    {
-      ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/testResourceGroup/providers/Microsoft.Compute/virtualMachines/testVirtualMachine",
-      ErrorCode: null,
-      ErrorDetails: null,
-      Operation: {
-        OperationId: "d099fda7-4fdb-4db0-98e5-53fab1821267",
-        ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/testResourceGroup/providers/Microsoft.Compute/virtualMachines/testVirtualMachine",
-        OpType: "Start",
-        SubscriptionId: "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
-        Deadline: "2024-12-17T22:25:02.0426307+00:00",
-        DeadlineType: "InitiateAt",
-        State: "Succeeded",
-        TimeZone: "",
-        ResourceOperationError: null,
-        CompletedAt: null,
-        RetryWindowInMinutes: null,
-        RetryPolicy: {
-          RetryCount: 7,
-          RetryWindowInMinutes: 45
-        }
-      }
-    },
-    {
-      ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/testResourceGroup/providers/Microsoft.Compute/virtualMachines/testVirtualMachine-1",
-      ErrorCode: null,
-      ErrorDetails: null,
-      Operation: {
-        OperationId: "333f8f97-32d0-4a88-9bf0-75e65da2052c",
-        ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/testResourceGroup/providers/Microsoft.Compute/virtualMachines/testVirtualMachine-1",
-        OpType: "Start",
-        SubscriptionId: "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
-        Deadline: "2024-12-17T22:25:02.0426307+00:00",
-        DeadlineType: "InitiateAt",
-        State: "Succeeded",
-        TimeZone: "",
-        ResourceOperationError: null,
-        CompletedAt: null,
-        RetryWindowInMinutes: null,
-        RetryPolicy: {
-          RetryCount: 7,
-          RetryWindowInMinutes: 45
-        }
-      }
-    },
-  ]}
+ErrorCode                      :
+ErrorDetail                    :
+OperationCompletedAt           : 12/18/2024 5:09:20 AM
+OperationDeadline              : 12/18/2024 5:08:36 AM
+OperationDeadlineType          : InitiateAt
+OperationId                    : d099fda7-4fdb-4db0-98e5-53fab1821267
+OperationOpType                : Start
+OperationResourceId            : /subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-resource-group/providers/Microsoft.Compute/virtualMachines/exesta83600
+OperationState                 : Succeeded
+OperationSubscriptionId        : ed5d2ee7-ede1-44bd-97a2-369489bbefe4
+OperationTimezone              :
+ResourceId                     : /subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-resource-group/providers/Microsoft.Compute/virtualMachines/exesta83600
+ResourceOperationErrorCode     :
+ResourceOperationErrorDetail   :
+RetryPolicyRetryCount          : 3
+RetryPolicyRetryWindowInMinute : 30
+
+ErrorCode                      :
+ErrorDetail                    :
+OperationCompletedAt           : 12/18/2024 5:04:18 AM
+OperationDeadline              : 12/18/2024 5:03:15 AM
+OperationDeadlineType          : InitiateAt
+OperationId                    : 333f8f97-32d0-4a88-9bf0-75e65da2052c
+OperationOpType                : Hibernate
+OperationResourceId            : /subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-resource-group/providers/Microsoft.Compute/virtualMachines/exeHib80440
+OperationState                 : Succeeded
+OperationSubscriptionId        : ed5d2ee7-ede1-44bd-97a2-369489bbefe4
+OperationTimezone              :
+ResourceId                     : /subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-resource-group/providers/Microsoft.Compute/virtualMachines/exeHib80440
+ResourceOperationErrorCode     :
+ResourceOperationErrorDetail   :
+RetryPolicyRetryCount          : 3
+RetryPolicyRetryWindowInMinute : 30
 ```
 
 The above command cancels scheduled operations (Start/Deallocate/Hibernate) on virtual machines using the operationids gotten from previous Execute/Submit type API calls

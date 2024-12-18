@@ -28,68 +28,56 @@ VirtualMachinesSubmitDeallocate: Schedule deallocate operation for a batch of vi
 ```powershell
 Invoke-AzComputeScheduleSubmitDeallocate 
 -Location "eastus2euap" 
--CorrelationId [guid]::NewGuid().ToString() 
+-CorrelationId "abb9b6a2-013a-4ad7-af2c-efd2449e6600"
 -DeadlineType "InitiateAt"
--ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-12", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-15"
+-ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85543", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85762"
 -SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4"
 -Deadline 2025-01-10T23:00:00
--RetryCount 4
--RetryWindowInMinutes 65
--Timezone "UTC"
+-RetryCount 2
+-RetryWindowInMinutes 30
+-Timezone "UTC" | Format-List
 ```
 
 ```output
-{
-  Description: "Deallocate Resource request",
-  Type: "VirtualMachines",
-  Location: "eastus2euap",
-  Results: [
-    {
-      ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-12",
-      ErrorCode: null,
-      ErrorDetails: null,
-      Operation: {
-        OperationId: "37346960-9d1d-4b61-87be-898054870a31",
-        ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-12",
-        OpType: "Deallocate",
-        SubscriptionId: "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
-        Deadline: "2025-01-10T23:00:00+00:00",
-        DeadlineType: "InitiateAt",
-        State": "Succeeded",
-        TimeZone: "UTC",
-        ResourceOperationError: null,
-        CompletedAt": null,
-        RetryWindowInMinutes: null,
-        RetryPolicy: {
-          RetryCount: 4,
-          RetryWindowInMinutes: 65
-        }
-      }
-    },
-    {
-      ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-15",
-      ErrorCode: null,
-      ErrorDetails: null,
-      Operation: {
-        OperationId: "45346960-9d1d-4b61-87be-898054870a31",
-        ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-15",
-        OpType: "Deallocate",
-        SubscriptionId: "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
-        Deadline: "2025-01-10T23:00:00+00:00",
-        DeadlineType: "InitiateAt",
-        State: "Succeeded",
-        TimeZone: "UTC",
-        ResourceOperationError: null,
-        CompletedAt: null,
-        RetryWindowInMinutes: null,
-        RetryPolicy: {
-          RetryCount: 4,
-          RetryWindowInMinutes: 65
-        }
-      }
-    }
-  ]
-}
+Description : Deallocate Resource request
+Location    : eastus2euap
+Result      : {{
+                "operation": {
+                  "retryPolicy": {
+                    "retryCount": 2,
+                    "retryWindowInMinutes": 30
+                  },
+                  "operationId": "7eebe846-f687-463d-aa68-3c7485ce28a3",
+                  "resourceId": "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85762",
+                  "opType": "Deallocate",
+                  "subscriptionId": "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
+                  "deadline": "2024-12-25T23:00:00.0000000Z",
+                  "deadlineType": "InitiateAt",
+                  "state": "Succeeded"
+                },
+                "resourceId": "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85762"
+              }}
+Type        : VirtualMachines
+
+Description : Deallocate Resource request
+Location    : eastus2euap
+Result      : {{
+                "operation": {
+                  "retryPolicy": {
+                    "retryCount": 2,
+                    "retryWindowInMinutes": 30
+                  },
+                  "operationId": "7eebe846-f687-463d-aa68-3c7485ce28a3",
+                  "resourceId": "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85543",
+                  "opType": "Deallocate",
+                  "subscriptionId": "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
+                  "deadline": "2024-12-25T23:00:00.0000000Z",
+                  "deadlineType": "InitiateAt",
+                  "state": "Succeeded"
+                },
+                "resourceId": "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85543"
+              }}
+Type        : VirtualMachines
 ```
 
 The above command is scheduling a deallocate operation on a batch of virtual machines by the given deadline.

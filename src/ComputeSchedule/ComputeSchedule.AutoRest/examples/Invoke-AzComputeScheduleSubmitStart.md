@@ -2,68 +2,56 @@
 ```powershell
 Invoke-AzComputeScheduleSubmitStart 
 -Location "eastus2euap" 
--CorrelationId [guid]::NewGuid().ToString() 
+-CorrelationId "33483c00-dfab-4ac5-bf3a-d1cb9386863c" 
 -DeadlineType "InitiateAt"
--ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-4", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-5"
+-ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85223", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85129"
 -SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4"
 -Deadline 2025-01-10T23:00:00
--RetryCount 4
--RetryWindowInMinutes 65
--Timezone "UTC"
+-RetryCount 2
+-RetryWindowInMinutes 30
+-Timezone "UTC" | Format-List
 ```
 
 ```output
-{
-  Description: "Start Resource request",
-  Type: "VirtualMachines",
-  Location: "eastus2euap",
-  Results: [
-    {
-      ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-4",
-      ErrorCode: null,
-      ErrorDetails: null,
-      Operation: {
-        OperationId: "37346960-9d1d-4b61-87be-898054870a31",
-        ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-4",
-        OpType: "Start",
-        SubscriptionId: "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
-        Deadline: "2025-01-10T23:00:00+00:00",
-        DeadlineType: "InitiateAt",
-        State": "Succeeded",
-        TimeZone: "UTC",
-        ResourceOperationError: null,
-        CompletedAt": null,
-        RetryWindowInMinutes: null,
-        RetryPolicy: {
-          RetryCount: 4,
-          RetryWindowInMinutes: 65
-        }
-      }
-    },
-    {
-      ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-5",
-      ErrorCode: null,
-      ErrorDetails: null,
-      Operation: {
-        OperationId: "45346960-9d1d-4b61-87be-898054870a31",
-        ResourceId: "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm-5",
-        OpType: "Start",
-        SubscriptionId: "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
-        Deadline: "2025-01-10T23:00:00+00:00",
-        DeadlineType: "InitiateAt",
-        State: "Succeeded",
-        TimeZone: "UTC",
-        ResourceOperationError: null,
-        CompletedAt: null,
-        RetryWindowInMinutes: null,
-        RetryPolicy: {
-          RetryCount: 4,
-          RetryWindowInMinutes: 65
-        }
-      }
-    }
-  ]
-}
+Description : Start Resource request
+Location    : eastus2euap
+Result      : {{
+                "operation": {
+                  "retryPolicy": {
+                    "retryCount": 2,
+                    "retryWindowInMinutes": 30
+                  },
+                  "operationId": "7eebe846-f687-463d-aa68-3c7485ce28a3",
+                  "resourceId": "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85223",
+                  "opType": "Start",
+                  "subscriptionId": "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
+                  "deadline": "2024-12-25T23:00:00.0000000Z",
+                  "deadlineType": "InitiateAt",
+                  "state": "Succeeded"
+                },
+                "resourceId": "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85223"
+              }}
+Type        : VirtualMachines
+
+Description : Start Resource request
+Location    : eastus2euap
+Result      : {{
+                "operation": {
+                  "retryPolicy": {
+                    "retryCount": 2,
+                    "retryWindowInMinutes": 30
+                  },
+                  "operationId": "7eebe846-f687-463d-aa68-3c7485ce28a3",
+                  "resourceId": "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85129",
+                  "opType": "Start",
+                  "subscriptionId": "ed5d2ee7-ede1-44bd-97a2-369489bbefe4",
+                  "deadline": "2024-12-25T23:00:00.0000000Z",
+                  "deadlineType": "InitiateAt",
+                  "state": "Succeeded"
+                },
+                "resourceId": "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85129"
+              }}
+Type        : VirtualMachines
 ```
 
 The above command is scheduling a start operation on a batch of virtual machines by the given deadline. The list below describes guidance on Deadline and Timezone:
