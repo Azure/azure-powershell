@@ -19,35 +19,6 @@ jobs:
   steps:
   - checkout: self
     fetchTags: false
-  - task: PowerShell@2
-    displayName: 'Initialize Build'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        if ("Manual" -eq "$(Build.Reason)") {
-          #TODO: change value of $trigger to the account who trigger this run
-          $trigger = 'Manual'
-        } elseif ("Schedule" -eq "$(Build.Reason)") { 
-          #TODO: change value of $trigger to datetime this run was scheduled
-          $trigger = 'Schedule'
-        } else {
-          $trigger = "$(System.PullRequest.PullRequestNumber)"
-        }
-        Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
-
-        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-        Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
-        New-Item -Type File -Path $filesChangedOutputPath -Force
-
-        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
-        Import-Module $filesChangedScriptPath
-        if ("PullRequest" -eq "$(Build.Reason)") {
-          Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
-        } else {
-          Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
-        }
-
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
