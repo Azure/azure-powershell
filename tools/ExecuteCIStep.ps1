@@ -190,7 +190,7 @@ If ($Build)
                 "Detail" = $Detail
             }
         }
-
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 1 |||||||||||||||||||||||||||||||||||||||||||"
         #Region produce result.json for GitHub bot to comsume
         $Platform = Get-PlatformInfo
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
@@ -239,6 +239,7 @@ If ($Build)
                 }
             }
         }
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 2 |||||||||||||||||||||||||||||||||||||||||||"
         $BuildDetail = @{
             Platform = $Platform;
             Modules = $ModuleBuildInfoList;
@@ -246,7 +247,7 @@ If ($Build)
         $Template.Build.Details += $BuildDetail
 
         $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
-        
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 3 |||||||||||||||||||||||||||||||||||||||||||"
         # In generated based branch, the Accounts is cloned from latest main branch but the environment will be cleaned after build job.
         # Also the analysis check and test is not necessary for Az.Accounts in these branches.
         If ($Env:IsGenerateBased -eq "true")
@@ -257,7 +258,7 @@ If ($Build)
             }
             ConvertTo-Json -Depth 10 -InputObject $CIPlan | Out-File -FilePath $CIPlanPath
         }
-
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 4 |||||||||||||||||||||||||||||||||||||||||||"
         ForEach ($DependencyStep In $DependencyStepList)
         {
             $ModuleInfoList = @()
@@ -275,7 +276,6 @@ If ($Build)
             }
             $Template.$DependencyStep.Details += $Detail
         }
-        Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here |||||||||||||||||||||||||||||||||||||||||||"
         If ($PSBoundParameters.ContainsKey("TriggerType") && $PSBoundParameters.ContainsKey("Trigger")) {
             $Template | Add-Member -NotePropertyName "$TriggerType triggered" -NotePropertyValue $Trigger
         }
