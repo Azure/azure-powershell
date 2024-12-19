@@ -160,7 +160,6 @@ $ErrorActionPreference = 'Stop'
 
 If ($Build)
 {
-    Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here |||||||||||||||||||||||||||||||||||||||||||"
     If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
         $LogFile = Join-Path $RepoArtifacts Build.log
@@ -276,6 +275,7 @@ If ($Build)
             }
             $Template.$DependencyStep.Details += $Detail
         }
+        Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here |||||||||||||||||||||||||||||||||||||||||||"
         If ($PSBoundParameters.ContainsKey("TriggerType") && $PSBoundParameters.ContainsKey("Trigger")) {
             $Template | Add-Member -NotePropertyName "$TriggerType triggered" -NotePropertyValue $Trigger
         }
