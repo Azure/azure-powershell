@@ -196,11 +196,14 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 1 ||||||||||
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
         $ModuleBuildInfoList = @()
         $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 2 |||||||||||||||||||||||||||||||||||||||||||"
         ForEach ($ModuleName In $CIPlan.build)
         {
             $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 3 |||||||||||||||||||||||||||||||||||||||||||"
             If ($BuildResultOfModule.Length -Eq 0)
             {
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 4 |||||||||||||||||||||||||||||||||||||||||||"
                 $ModuleBuildInfoList += @{
                     Module = "Az.$ModuleName";
                     Status = "Succeeded";
@@ -209,6 +212,7 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 1 ||||||||||
             }
             Else
             {
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 5 |||||||||||||||||||||||||||||||||||||||||||"
                 $Content = "|Type|Code|Position|Detail|`n|---|---|---|---|`n"
                 $ErrorCount = 0
                 ForEach ($BuildResult In $BuildResultOfModule)
@@ -224,6 +228,7 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 1 ||||||||||
                     }
                     $Content += "|$ErrorTypeEmoji|$($BuildResult.Code)|$($BuildResult.Position)|$($BuildResult.Detail)|`n"
                 }
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 6 |||||||||||||||||||||||||||||||||||||||||||"
                 If ($ErrorCount -Eq 0)
                 {
                     $Status = "Warning"
@@ -239,7 +244,6 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 1 ||||||||||
                 }
             }
         }
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 2 |||||||||||||||||||||||||||||||||||||||||||"
         $BuildDetail = @{
             Platform = $Platform;
             Modules = $ModuleBuildInfoList;
@@ -247,7 +251,6 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 2 ||||||||||
         $Template.Build.Details += $BuildDetail
 
         $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 3 |||||||||||||||||||||||||||||||||||||||||||"
         # In generated based branch, the Accounts is cloned from latest main branch but the environment will be cleaned after build job.
         # Also the analysis check and test is not necessary for Az.Accounts in these branches.
         If ($Env:IsGenerateBased -eq "true")
@@ -258,7 +261,6 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 3 ||||||||||
             }
             ConvertTo-Json -Depth 10 -InputObject $CIPlan | Out-File -FilePath $CIPlanPath
         }
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 4 |||||||||||||||||||||||||||||||||||||||||||"
         ForEach ($DependencyStep In $DependencyStepList)
         {
             $ModuleInfoList = @()
