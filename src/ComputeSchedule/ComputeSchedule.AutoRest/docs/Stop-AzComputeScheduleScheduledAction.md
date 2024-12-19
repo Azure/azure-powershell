@@ -50,12 +50,7 @@ VirtualMachinesCancelOperations: Cancel a previously submitted (start/deallocate
 
 ### Example 1: Cancel a batch of operations scheduled on virtual machines using the operation id from a previous Start/Deallocate/Hibernate operation
 ```powershell
-Stop-AzComputeScheduleScheduledAction 
--Location "eastus2euap"
--Correlationid "9992a233-8f42-4e7c-8b5a-71eea1a0ead2"
--OperationId "d099fda7-4fdb-4db0-98e5-53fab1821267","333f8f97-32d0-4a88-9bf0-75e65da2052c"
--SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4"
-| Format-List
+Stop-AzComputeScheduleScheduledAction -Location "eastus2euap" -Correlationid "9992a233-8f42-4e7c-8b5a-71eea1a0ead2" -OperationId "d099fda7-4fdb-4db0-98e5-53fab1821267","333f8f97-32d0-4a88-9bf0-75e65da2052c" -SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4" | Format-List
 ```
 
 ```output

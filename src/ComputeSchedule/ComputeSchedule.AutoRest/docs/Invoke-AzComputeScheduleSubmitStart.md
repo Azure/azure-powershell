@@ -26,16 +26,7 @@ VirtualMachinesSubmitStart: Schedule start operation for a batch of virtual mach
 
 ### Example 1: Start a batch of virtual machines at the given deadline
 ```powershell
-Invoke-AzComputeScheduleSubmitStart 
--Location "eastus2euap" 
--CorrelationId "33483c00-dfab-4ac5-bf3a-d1cb9386863c" 
--DeadlineType "InitiateAt"
--ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85223", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85129"
--SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4"
--Deadline 2025-01-10T23:00:00
--RetryCount 2
--RetryWindowInMinutes 30
--Timezone "UTC" | Format-List
+Invoke-AzComputeScheduleSubmitStart -Location "eastus2euap" -CorrelationId "33483c00-dfab-4ac5-bf3a-d1cb9386863c" -DeadlineType "InitiateAt" -ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85223", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85129" -SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4" -Deadline 2025-01-10T23:00:00 -RetryCount 2 -RetryWindowInMinutes 30 -Timezone "UTC" | Format-List
 ```
 
 ```output

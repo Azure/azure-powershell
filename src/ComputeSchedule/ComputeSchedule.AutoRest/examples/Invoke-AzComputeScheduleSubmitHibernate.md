@@ -1,15 +1,6 @@
 ### Example 1: Hibernate a batch of virtual machines at the given deadline
 ```powershell
-Invoke-AzComputeScheduleSubmitHibernate 
--Location "eastus2euap" 
--CorrelationId "baa8dd07-e59e-4f97-be6a-76ad8d4584ae"
--DeadlineType "InitiateAt"
--ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85150", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85151"
--SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4"
--Deadline 2025-01-10T23:00:00
--RetryCount 2
--RetryWindowInMinutes 30
--Timezone "UTC" | Format-List
+Invoke-AzComputeScheduleSubmitHibernate -Location "eastus2euap" -CorrelationId "baa8dd07-e59e-4f97-be6a-76ad8d4584ae" -DeadlineType "InitiateAt" -ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85150", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85151" -SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4" -Deadline 2025-01-10T23:00:00 -RetryCount 2 -RetryWindowInMinutes 30 -Timezone "UTC" | Format-List
 ```
 
 ```output

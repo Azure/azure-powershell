@@ -1,10 +1,6 @@
 ### Example 1: Poll the status of operations performed on a batch of virtual machines using the operation id from a previous Start/Deallocate/Hibernate operation
 ```powershell
-Get-AzComputeScheduleOperationStatus
--Location "eastus2euap"
--Correlationid "bbb34b32-0ca1-473f-b53d-d06148d0d1fa"
--OperationId "d099fda7-4fdb-4db0-98e5-53fab1821267","333f8f97-32d0-4a88-9bf0-75e65da2052c"
--SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4" | Format-List
+Get-AzComputeScheduleOperationStatus -Location "eastus2euap" -Correlationid "bbb34b32-0ca1-473f-b53d-d06148d0d1fa" -OperationId "d099fda7-4fdb-4db0-98e5-53fab1821267","333f8f97-32d0-4a88-9bf0-75e65da2052c" -SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4" | Format-List
 ```
 
 ```output

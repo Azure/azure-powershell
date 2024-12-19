@@ -1,15 +1,6 @@
 ### Example 1: Deallocate a batch of virtual machines at the given deadline
 ```powershell
-Invoke-AzComputeScheduleSubmitDeallocate 
--Location "eastus2euap" 
--CorrelationId "abb9b6a2-013a-4ad7-af2c-efd2449e6600"
--DeadlineType "InitiateAt"
--ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85543", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85762"
--SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4"
--Deadline 2025-01-10T23:00:00
--RetryCount 2
--RetryWindowInMinutes 30
--Timezone "UTC" | Format-List
+Invoke-AzComputeScheduleSubmitDeallocate -Location "eastus2euap" -CorrelationId "abb9b6a2-013a-4ad7-af2c-efd2449e6600" -DeadlineType "InitiateAt" -ResourceId "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85543", "/subscriptions/ed5d2ee7-ede1-44bd-97a2-369489bbefe4/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/pwshtest85762" -SubscriptionId "ed5d2ee7-ede1-44bd-97a2-369489bbefe4" -Deadline 2025-01-10T23:00:00 -RetryCount 2 -RetryWindowInMinutes 30 -Timezone "UTC" | Format-List
 ```
 
 ```output
