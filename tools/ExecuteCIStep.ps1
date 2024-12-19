@@ -87,7 +87,7 @@ Param(
     $TargetModule
 )
 
-$CIPlanPath = Join-Path $RepoArtifacts "PipelineResult" "CIPlan.json"
+$CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
 $PipelineResultPath = "$RepoArtifacts/PipelineResult/PipelineResult.json"
 
 $testResults = @{
@@ -190,16 +190,15 @@ If ($Build)
                 "Detail" = $Detail
             }
         }
+
         #Region produce result.json for GitHub bot to comsume
         $Platform = Get-PlatformInfo
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
         $ModuleBuildInfoList = @()
-        $CIPlanContent = Get-Content $CIPlanPath
-        $CIPlan = $CIPlanContent | ConvertFrom-Json
+        $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
         ForEach ($ModuleName In $CIPlan.build)
         {
             $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
-
             If ($BuildResultOfModule.Length -Eq 0)
             {
                 $ModuleBuildInfoList += @{
@@ -247,6 +246,7 @@ If ($Build)
         $Template.Build.Details += $BuildDetail
 
         $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
+        
         # In generated based branch, the Accounts is cloned from latest main branch but the environment will be cleaned after build job.
         # Also the analysis check and test is not necessary for Az.Accounts in these branches.
         If ($Env:IsGenerateBased -eq "true")
@@ -257,6 +257,7 @@ If ($Build)
             }
             ConvertTo-Json -Depth 10 -InputObject $CIPlan | Out-File -FilePath $CIPlanPath
         }
+
         ForEach ($DependencyStep In $DependencyStepList)
         {
             $ModuleInfoList = @()
