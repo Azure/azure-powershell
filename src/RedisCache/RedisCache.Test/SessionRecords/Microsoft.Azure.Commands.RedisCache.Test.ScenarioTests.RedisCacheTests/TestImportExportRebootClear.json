@@ -2541,7 +2541,7 @@
           "235"
         ]
       },
-      "RequestBody": "{\r\n  \"prefix\": \"sunny\",\r\n  \"container\": \"https://ps634.blob.core.windows.net/exportimport?sv=2025-01-05&st=2024-12-18T04%3A29%3A00Z&se=2024-12-18T06%3A49%3A00Z&sr=c&sp=rwdl&sig=LF6qe6tIzYVwM0Hq5%2BxKKivaQR%2Fgd%2Bop3NUiofS%2BGaw%3D\"\r\n}",
+      "RequestBody": "{\r\n  \"prefix\": \"sunny\",\r\n  \"container\": \"https://ps634.blob.core.windows.net/exportimport?sv=2025-01-05&st=2024-12-18T04%3A29%3A00Z&se=2024-12-18T06%3A49%3A00Z&sr=c&sp=rwdl&sig=sanitized\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -2619,7 +2619,7 @@
           "295"
         ]
       },
-      "RequestBody": "{\r\n  \"prefix\": \"sunny\",\r\n  \"container\": \"https://ps634.blob.core.windows.net/exportimport?sv=2025-01-05&st=2024-12-18T04%3A29%3A00Z&se=2024-12-18T06%3A49%3A00Z&sr=c&sp=rwdl&sig=LF6qe6tIzYVwM0Hq5%2BxKKivaQR%2Fgd%2Bop3NUiofS%2BGaw%3D\",\r\n  \"preferred-data-archive-auth-method\": \"ManagedIdentity\"\r\n}",
+      "RequestBody": "{\r\n  \"prefix\": \"sunny\",\r\n  \"container\": \"https://ps634.blob.core.windows.net/exportimport?sv=2025-01-05&st=2024-12-18T04%3A29%3A00Z&se=2024-12-18T06%3A49%3A00Z&sr=c&sp=rwdl&sig=sanitized\",\r\n  \"preferred-data-archive-auth-method\": \"ManagedIdentity\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -2979,7 +2979,7 @@
           "221"
         ]
       },
-      "RequestBody": "{\r\n  \"files\": [\r\n    \"https://ps634.blob.core.windows.net/exportimport/sunny?sv=2025-01-05&st=2024-12-18T04%3A30%3A39Z&se=2024-12-18T06%3A50%3A39Z&sr=b&sp=rwdl&sig=f0HNyJ7x2CLAHNWgex9tfVRiG0%2Byu7VgqkSrF1U9ll0%3D\"\r\n  ]\r\n}",
+      "RequestBody": "{\r\n  \"files\": [\r\n    \"https://ps634.blob.core.windows.net/exportimport/sunny?sv=2025-01-05&st=2024-12-18T04%3A30%3A39Z&se=2024-12-18T06%3A50%3A39Z&sr=b&sp=rwdl&sig=sanitized\"\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -3057,7 +3057,7 @@
           "281"
         ]
       },
-      "RequestBody": "{\r\n  \"files\": [\r\n    \"https://ps634.blob.core.windows.net/exportimport/sunny?sv=2025-01-05&st=2024-12-18T04%3A30%3A39Z&se=2024-12-18T06%3A50%3A39Z&sr=b&sp=rwdl&sig=f0HNyJ7x2CLAHNWgex9tfVRiG0%2Byu7VgqkSrF1U9ll0%3D\"\r\n  ],\r\n  \"preferred-data-archive-auth-method\": \"ManagedIdentity\"\r\n}",
+      "RequestBody": "{\r\n  \"files\": [\r\n    \"https://ps634.blob.core.windows.net/exportimport/sunny?sv=2025-01-05&st=2024-12-18T04%3A30%3A39Z&se=2024-12-18T06%3A50%3A39Z&sr=b&sp=rwdl&sig=sanitized\"\r\n  ],\r\n  \"preferred-data-archive-auth-method\": \"ManagedIdentity\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
