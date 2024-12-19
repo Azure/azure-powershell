@@ -15,7 +15,7 @@ Create an in-memory object for NetworkAttachment.
 ```
 New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId <String>
  -IPAllocationMethod <VirtualMachineIPAllocationMethod> [-DefaultGateway <DefaultGateway>]
- [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>]
+ [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -150,6 +150,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -157,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkAttachment
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkAttachment
 
 ## NOTES
 

@@ -14,7 +14,7 @@ Create an in-memory object for KeySetUser.
 
 ```
 New-AzNetworkCloudKeySetUserObject -AzureUserName <String> -SshPublicKeyData <String> [-Description <String>]
- [<CommonParameters>]
+ [-UserPrincipalName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,6 +82,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserPrincipalName
+The user principal name (email format) used to validate this user's group membership.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -89,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KeySetUser
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUser
 
 ## NOTES
 
