@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         
         [JsonProperty(Order = 1)]
-        public string PeerCompleteVnets { get; set; }
+        public bool? PeerCompleteVnets { get; set; }
         
         [JsonProperty(Order = 1)]
-        public string EnableOnlyIPv6Peering { get; set; }
+        public bool? EnableOnlyIPv6Peering { get; set; }
         
         [JsonIgnore]
         public string LocalSubnetNamesText
