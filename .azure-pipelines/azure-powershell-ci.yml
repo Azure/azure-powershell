@@ -135,7 +135,7 @@ jobs:
           this commidId will be useful when we push directly to target branch in the future
           $commitId = (git rev-parse HEAD)
         #>
-  - template: publish-artifacts-steps.yml
+  - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: build-${{ variables.TestFramework }}
 
