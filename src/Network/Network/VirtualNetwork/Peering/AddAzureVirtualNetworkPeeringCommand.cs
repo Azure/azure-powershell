@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to determine whether this IPv6 only peering")]
+            HelpMessage = "Flag to determine whether this is a IPv6 only peering")]
         public SwitchParameter EnableOnlyIPv6Peering  { get; set; }
 
         [Parameter(
