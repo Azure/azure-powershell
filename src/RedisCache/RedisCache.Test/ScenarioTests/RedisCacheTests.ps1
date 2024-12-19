@@ -1143,9 +1143,9 @@ function Test-UpdateChannel
 {
     # Setup
     $id = (New-Guid).ToString().Substring(0,8)
-    $resourceGroupName = "PowerShellTest-05968abc"
-    $cacheName = "redisteam011-05968abc"
-    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
+    $resourceGroupName = "PowerShellTest-05965def"
+    $cacheName = "redisteam011-05965def"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
