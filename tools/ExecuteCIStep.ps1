@@ -160,6 +160,7 @@ $ErrorActionPreference = 'Stop'
 
 If ($Build)
 {
+    Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here |||||||||||||||||||||||||||||||||||||||||||"
     If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
         $LogFile = Join-Path $RepoArtifacts Build.log

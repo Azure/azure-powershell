@@ -101,8 +101,6 @@ Write-Host -ForegroundColor Green "-------------------- Start writing pipeline r
 $pipelineScript = Join-Path $RepoRoot 'tools' 'ExecuteCIStep.ps1'
 $repoArtifact = Join-Path $RepoRoot 'artifacts'
 
-Write-Warning "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX BuildReason is $BuildReason XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-Write-Warning "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Trigger is $Trigger XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 . $pipelineScript -Build -TriggerType $BuildReason -Trigger $Trigger -RepoArtifacts $repoArtifact -Configuration $Configuration
 Write-Host -ForegroundColor DarkGreen "-------------------- End writing pipeline result ... --------------------`n`n`n`n`n"
 
