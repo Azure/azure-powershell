@@ -194,8 +194,8 @@ If ($Build)
         $Platform = Get-PlatformInfo
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
         $ModuleBuildInfoList = @()
-        $CIPlan = Get-Content $CIPlanPath
-        $CIPlan = $CIPlan | ConvertFrom-Json
+        $CIPlanContent = Get-Content $CIPlanPath
+        $CIPlan = $CIPlanContent | ConvertFrom-Json
         ForEach ($ModuleName In $CIPlan.build)
         {
             $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
