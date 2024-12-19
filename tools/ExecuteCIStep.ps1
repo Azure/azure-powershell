@@ -199,12 +199,15 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here y ||||||||||
 Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here z |||||||||||||||||||||||||||||||||||||||||||"
         $ModuleBuildInfoList = @()
 Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here a |||||||||||||||||||||||||||||||||||||||||||"
+        $content = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json"
+        Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 2 |||||||||||||||||||||||||||||||||||||||||||"
+        $j = $content | ConvertFrom-Json
+        Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 3 |||||||||||||||||||||||||||||||||||||||||||"
         $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 2 |||||||||||||||||||||||||||||||||||||||||||"
         ForEach ($ModuleName In $CIPlan.build)
         {
             $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 3 |||||||||||||||||||||||||||||||||||||||||||"
+
             If ($BuildResultOfModule.Length -Eq 0)
             {
 Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 4 |||||||||||||||||||||||||||||||||||||||||||"
