@@ -1524,11 +1524,11 @@
               </ListItem>
               <ListItem>
                 <Label>LocalSubnetNames</Label>
-                <PropertyName>LocalSubnetNames</PropertyName>
+                <PropertyName>LocalSubnetNamesText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RemoteSubnetNames</Label>
-                <PropertyName>RemoteSubnetNames</PropertyName>
+                <PropertyName>RemoteSubnetNamesText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>EnableOnlyIPv6Peering</Label>
