@@ -81,7 +81,7 @@ jobs:
         . $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -SubTasksFilePath $subTasksFilePath -BuildReason $(Build.Reason) -Trigger $trigger
   - template: publish-artifacts-steps.yml
     parameters:
-      artifactName: build-${{ parameters.testFramework }}
+      artifactName: build-${{ variables.TestFramework }}
 
 - job: Analyze
   displayName: Analyze

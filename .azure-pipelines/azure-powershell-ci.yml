@@ -137,8 +137,8 @@ jobs:
         #>
   - template: publish-artifacts-steps.yml
     parameters:
-      artifactName: build-${{ parameters.testFramework }}
-      
+      artifactName: build-${{ variables.TestFramework }}
+
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
