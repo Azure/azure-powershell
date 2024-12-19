@@ -114,6 +114,7 @@ Function Get-PlatformInfo
     {
         $OS = "Others"
     }
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here x |||||||||||||||||||||||||||||||||||||||||||"
     return "$($Env:PowerShellPlatform) - $OS"
 }
 
@@ -193,6 +194,7 @@ If ($Build)
 Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 1 |||||||||||||||||||||||||||||||||||||||||||"
         #Region produce result.json for GitHub bot to comsume
         $Platform = Get-PlatformInfo
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here y |||||||||||||||||||||||||||||||||||||||||||"
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
         $ModuleBuildInfoList = @()
         $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
