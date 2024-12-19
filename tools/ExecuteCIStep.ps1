@@ -87,7 +87,7 @@ Param(
     $TargetModule
 )
 
-$CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
+$CIPlanPath = Join-Path $RepoArtifacts "PipelineResult" "CIPlan.json"
 $PipelineResultPath = "$RepoArtifacts/PipelineResult/PipelineResult.json"
 
 $testResults = @{
@@ -114,7 +114,6 @@ Function Get-PlatformInfo
     {
         $OS = "Others"
     }
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here x |||||||||||||||||||||||||||||||||||||||||||"
     return "$($Env:PowerShellPlatform) - $OS"
 }
 
@@ -191,26 +190,17 @@ If ($Build)
                 "Detail" = $Detail
             }
         }
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 1 |||||||||||||||||||||||||||||||||||||||||||"
         #Region produce result.json for GitHub bot to comsume
         $Platform = Get-PlatformInfo
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here y |||||||||||||||||||||||||||||||||||||||||||"
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here z |||||||||||||||||||||||||||||||||||||||||||"
         $ModuleBuildInfoList = @()
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here a |||||||||||||||||||||||||||||||||||||||||||"
-        $content = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json"
-        Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 2 |||||||||||||||||||||||||||||||||||||||||||"
-        $j = $content | ConvertFrom-Json
-        Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 3 |||||||||||||||||||||||||||||||||||||||||||"
-        $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
+        $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
         ForEach ($ModuleName In $CIPlan.build)
         {
             $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
 
             If ($BuildResultOfModule.Length -Eq 0)
             {
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 4 |||||||||||||||||||||||||||||||||||||||||||"
                 $ModuleBuildInfoList += @{
                     Module = "Az.$ModuleName";
                     Status = "Succeeded";
@@ -219,7 +209,6 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 4 ||||||||||
             }
             Else
             {
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 5 |||||||||||||||||||||||||||||||||||||||||||"
                 $Content = "|Type|Code|Position|Detail|`n|---|---|---|---|`n"
                 $ErrorCount = 0
                 ForEach ($BuildResult In $BuildResultOfModule)
@@ -235,7 +224,6 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 5 ||||||||||
                     }
                     $Content += "|$ErrorTypeEmoji|$($BuildResult.Code)|$($BuildResult.Position)|$($BuildResult.Detail)|`n"
                 }
-Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 6 |||||||||||||||||||||||||||||||||||||||||||"
                 If ($ErrorCount -Eq 0)
                 {
                     $Status = "Warning"
