@@ -83,6 +83,9 @@ jobs:
         Write-Host "##[section]build steps"
         $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
         . $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -SubTasksFilePath $subTasksFilePath -BuildReason $(Build.Reason) -Trigger $trigger
+  - template: publish-artifacts-steps.yml
+    parameters:
+      artifactName: build-${{ parameters.testFramework }}
 
 - job: Analyze
   displayName: Analyze

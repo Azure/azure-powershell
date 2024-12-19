@@ -100,7 +100,10 @@ Write-Host -ForegroundColor DarkGreen "-------------------- End building modules
 Write-Host -ForegroundColor Green "-------------------- Start writing pipeline result ... --------------------"
 $pipelineScript = Join-Path $RepoRoot 'tools' 'ExecuteCIStep.ps1'
 $repoArtifact = Join-Path $RepoRoot 'artifacts'
-#. $pipelineScript -Build -TriggerType $BuildReason -Trigger $Trigger -RepoArtifacts $repoArtifact -Configuration $Configuration
+
+Write-Warning "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX BuildReason is $BuildReason XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+Write-Warning "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Trigger is $Trigger XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+. $pipelineScript -Build -TriggerType $BuildReason -Trigger $Trigger -RepoArtifacts $repoArtifact -Configuration $Configuration
 Write-Host -ForegroundColor DarkGreen "-------------------- End writing pipeline result ... --------------------`n`n`n`n`n"
 
 # Build Az.Tools.Predictor
