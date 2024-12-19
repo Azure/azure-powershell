@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -28,24 +27,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
     public class AddAzureCognitiveServicesAccountNetworkRuleCommand : CognitiveServicesAccountBaseCmdlet
     {
-        /// <summary>
-        /// NetWorkRule in String parameter set name
-        /// </summary>
         private const string NetWorkRuleStringParameterSet = "NetWorkRuleString";
-
-        /// <summary>
-        /// IpRule in String paremeter set name
-        /// </summary>
         private const string IpRuleStringParameterSet = "IpRuleString";
-
-        /// <summary>
-        /// NetWorkRule Objects pipeline parameter set
-        /// </summary>
         private const string NetworkRuleObjectParameterSet = "NetworkRuleObject";
-
-        /// <summary>
-        /// IpRule Objects pipeline parameter set
-        /// </summary>
         private const string IpRuleObjectParameterSet = "IpRuleObject";
 
         [Parameter(
@@ -105,8 +89,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (accountACL == null)
                 {
                     accountACL = new NetworkRuleSet();
-                    // Deny is the default action value from server side, 
-                    // Specifically make default action Deny in client side as server side might want this value to be always provided in future.
                     accountACL.DefaultAction = NetworkRuleAction.Deny;
                 }
 
@@ -117,28 +99,94 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         {
                             accountACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         }
-                        accountACL.VirtualNetworkRules = MergeVirtualNetworkRules(accountACL.VirtualNetworkRules, VirtualNetworkResourceId);
+                        foreach (string s in VirtualNetworkResourceId)
+                        {
+                            bool ruleExist = false;
+                            foreach (VirtualNetworkRule originRule in accountACL.VirtualNetworkRules)
+                            {
+                                if (originRule.Id.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug($"Skip add VirtualNetworkRule as it already exists: {s}");
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                VirtualNetworkRule rule = new VirtualNetworkRule(s, null, true);
+                                accountACL.VirtualNetworkRules.Add(rule);
+                            }
+                        }
                         break;
                     case IpRuleStringParameterSet:
                         if (accountACL.IPRules == null)
                         {
                             accountACL.IPRules = new List<IpRule>();
                         }
-                        accountACL.IPRules = MergeIpRules(accountACL.IPRules, IpAddressOrRange);
+                        foreach (string s in IpAddressOrRange)
+                        {
+                            bool ruleExist = false;
+                            foreach (IpRule originRule in accountACL.IPRules)
+                            {
+                                if (originRule.Value.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug($"Skip add IpRule as it already exists: {s}");
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                IpRule rule = new IpRule(s);
+                                accountACL.IPRules.Add(rule);
+                            }
+                        }
                         break;
                     case NetworkRuleObjectParameterSet:
                         if (accountACL.VirtualNetworkRules == null)
                         {
                             accountACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         }
-                        accountACL.VirtualNetworkRules = MergeVirtualNetworkRules(accountACL.VirtualNetworkRules, VirtualNetworkRule);
+                        foreach (PSVirtualNetworkRule rule in VirtualNetworkRule)
+                        {
+                            bool ruleExist = false;
+                            foreach (VirtualNetworkRule originRule in accountACL.VirtualNetworkRules)
+                            {
+                                if (originRule.Id.Equals(rule.Id, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug($"Skip add VirtualNetworkRule as it already exists: {rule.Id}");
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                accountACL.VirtualNetworkRules.Add(rule.ToVirtualNetworkRule());
+                            }
+                        }
                         break;
                     case IpRuleObjectParameterSet:
                         if (accountACL.IPRules == null)
                         {
                             accountACL.IPRules = new List<IpRule>();
                         }
-                        accountACL.IPRules = MergeIpRules(accountACL.IPRules, IpRule);
+                        foreach (PSIpRule rule in IpRule)
+                        {
+                            bool ruleExist = false;
+                            foreach (IpRule originRule in accountACL.IPRules)
+                            {
+                                if (originRule.Value.Equals(rule.Value, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug($"Skip add IpRule as it already exists: {rule.Value}");
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                accountACL.IPRules.Add(rule.ToIpRule());
+                            }
+                        }
                         break;
                 }
 
@@ -150,8 +198,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     new Account()
                     {
                         Properties = properties
-                    }
-                    );
+                    });
 
                 account = this.CognitiveServicesClient.Accounts.Get(this.ResourceGroupName, this.Name);
 
@@ -167,58 +214,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         break;
                 }
             }
-        }
-
-        private List<VirtualNetworkRule> MergeVirtualNetworkRules(IList<VirtualNetworkRule> existingRules, string[] newRuleIds)
-        {
-            var updatedRules = new List<VirtualNetworkRule>(existingRules);
-            foreach (var id in newRuleIds)
-            {
-                if (!updatedRules.Exists(r => string.Equals(r.Id, id, StringComparison.OrdinalIgnoreCase)))
-                {
-                    updatedRules.Add(new VirtualNetworkRule(id, null, true));
-                }
-            }
-            return updatedRules;
-        }
-
-        private List<VirtualNetworkRule> MergeVirtualNetworkRules(IList<VirtualNetworkRule> existingRules, PSVirtualNetworkRule[] newRules)
-        {
-            var updatedRules = new List<VirtualNetworkRule>(existingRules);
-            foreach (var rule in newRules)
-            {
-                if (!updatedRules.Exists(r => string.Equals(r.Id, rule.VirtualNetworkResourceId, StringComparison.OrdinalIgnoreCase)))
-                {
-                    updatedRules.Add(rule.ToVirtualNetworkRule());
-                }
-            }
-            return updatedRules;
-        }
-
-        private List<IpRule> MergeIpRules(IList<IpRule> existingRules, string[] newRules)
-        {
-            var updatedRules = new List<IpRule>(existingRules);
-            foreach (var rule in newRules)
-            {
-                if (!updatedRules.Exists(r => string.Equals(r.Value, rule, StringComparison.OrdinalIgnoreCase)))
-                {
-                    updatedRules.Add(new IpRule(rule));
-                }
-            }
-            return updatedRules;
-        }
-
-        private List<IpRule> MergeIpRules(IList<IpRule> existingRules, PSIpRule[] newRules)
-        {
-            var updatedRules = new List<IpRule>(existingRules);
-            foreach (var rule in newRules)
-            {
-                if (!updatedRules.Exists(r => string.Equals(r.Value, rule.IpAddressOrRange, StringComparison.OrdinalIgnoreCase)))
-                {
-                    updatedRules.Add(rule.ToIpRule());
-                }
-            }
-            return updatedRules;
         }
     }
 }
