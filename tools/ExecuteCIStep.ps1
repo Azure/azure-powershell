@@ -196,7 +196,9 @@ Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 1 ||||||||||
         $Platform = Get-PlatformInfo
 Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here y |||||||||||||||||||||||||||||||||||||||||||"
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here z |||||||||||||||||||||||||||||||||||||||||||"
         $ModuleBuildInfoList = @()
+Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here a |||||||||||||||||||||||||||||||||||||||||||"
         $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
 Write-Warning "||||||||||||||||||||||||||||||||||||||||||| I'm here 2 |||||||||||||||||||||||||||||||||||||||||||"
         ForEach ($ModuleName In $CIPlan.build)
