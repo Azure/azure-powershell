@@ -457,3 +457,22 @@ directive:
   - model-cmdlet:
     - model-name: KeyVaultProperties
       cmdlet-name: New-AzEventHubKeyVaultPropertiesObject
+
+  - from: AccessKeys.cs
+    where: $
+    transform: >
+      $ = $.replace('/// <summary>A base64-encoded 256-bit primary key for signing and validating the SAS token.</summary>\n' +
+      '        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(\n' +
+      '        Required = false,\n' +
+      '        ReadOnly = true,\n' +
+      '        Read = true,\n' +
+      '        Create = false,\n' +
+      '        Update = false,\n' +
+      '        Description = @"A base64-encoded 256-bit primary key for signing and validating the SAS token.",\n' +
+      '        SerializedName = @"primaryKey",\n' +
+      '        PossibleTypes = new [] { typeof(string) })]\n' +
+      '        string PrimaryKey { get;  }', '');
+  - from: AccessKeys.cs
+    where: $
+    transform: $ = $.replace('public string PrimaryKey { get => this._primaryKey; }', 'string PrimaryKey { get => this._primaryKey; }');
+```
