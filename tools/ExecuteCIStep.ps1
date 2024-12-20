@@ -193,9 +193,9 @@ If ($Build)
 
         #Region produce result.json for GitHub bot to comsume
         $Platform = Get-PlatformInfo
-        $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
+        $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" -Raw | ConvertFrom-Json
         $ModuleBuildInfoList = @()
-        $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
+        $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" -Raw | ConvertFrom-Json
         ForEach ($ModuleName In $CIPlan.build)
         {
             $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
