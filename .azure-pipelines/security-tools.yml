@@ -67,7 +67,7 @@ jobs:
         
         Write-Host "##[section]build steps"
         $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
-        & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -FilesChangedOutputPath $filesChangedOutputPath -IsSecurityCheck $true -BuildReason $(Build.Reason) -Trigger $trigger
+        & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "Debug" -FilesChangedOutputPath $filesChangedOutputPath -IsSecurityCheck $true -BuildReason $(Build.Reason) -Trigger $trigger
 
   - task: PowerShell@2
     displayName: Install platyPS
