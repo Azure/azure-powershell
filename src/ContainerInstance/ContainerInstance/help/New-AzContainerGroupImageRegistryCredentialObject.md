@@ -14,7 +14,7 @@ Create a in-memory object for ImageRegistryCredential
 
 ```
 New-AzContainerGroupImageRegistryCredentialObject -Server <String> [-Password <SecureString>]
- [-Username <String>] [-AcrIdentity <String>] [<CommonParameters>]
+ [-Username <String>] [-AcrIdentity <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +60,21 @@ The password for the private registry.
 Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

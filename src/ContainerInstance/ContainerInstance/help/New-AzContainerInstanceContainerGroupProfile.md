@@ -25,7 +25,7 @@ New-AzContainerInstanceContainerGroupProfile -Name <String> -ResourceGroupName <
  [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
  [-LogAnalyticWorkspaceResourceId <String>] [-Priority <ContainerGroupPriority>]
  [-RestartPolicy <ContainerGroupRestartPolicy>] [-Sku <ContainerGroupSku>] [-Tag <Hashtable>]
- [-Volume <IVolume[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
+ [-Volume <IVolume[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -462,6 +462,21 @@ The priority of the container group.
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupPriority
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

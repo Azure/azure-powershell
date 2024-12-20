@@ -27,6 +27,15 @@ function Update-AzDataProtectionBackupInstance
         [System.String]
         ${PolicyId},
 
+        [Parameter(Mandatory=$false, HelpMessage='Use system assigned identity')]
+        [System.Nullable[System.Boolean]]
+        ${UseSystemAssignedIdentity},
+
+        [Parameter(Mandatory=$false, HelpMessage='User assigned identity ARM Id')]
+        [Alias('AssignUserIdentity')]
+        [System.String]
+        ${UserAssignedIdentityArmId},
+
         [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob.')]
         [System.String[]]
         ${VaultedBackupContainer},
@@ -98,6 +107,8 @@ function Update-AzDataProtectionBackupInstance
     {
         $hasPolicyId = $PSBoundParameters.Remove("PolicyId")
         $hasVaultedBackupContainer = $PSBoundParameters.Remove("VaultedBackupContainer")
+        $hasUseSystemAssignedIdentity = $PSBoundParameters.Remove("UseSystemAssignedIdentity")
+        $hasUserAssignedIdentityArmId = $PSBoundParameters.Remove("UserAssignedIdentityArmId")        
 
         $instance = Az.DataProtection\Get-AzDataProtectionBackupInstance @PSBoundParameters
         
@@ -107,6 +118,20 @@ function Update-AzDataProtectionBackupInstance
 
         $DatasourceType =  GetClientDatasourceType -ServiceDatasourceType $instance.Property.DataSourceInfo.Type 
         # $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
+
+        if ($hasUseSystemAssignedIdentity -or $hasUserAssignedIdentityArmId) {
+            
+            if ($hasUserAssignedIdentityArmId -and (!$hasUseSystemAssignedIdentity -or $UseSystemAssignedIdentity)) {
+                throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
+            }
+            
+            $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IdentityDetails]::new()
+            $instance.Property.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
+
+            if ($hasUserAssignedIdentityArmId) {
+                $instance.Property.IdentityDetail.UserAssignedIdentityArmUrl = $UserAssignedIdentityArmId
+            }
+        }
         
         if($hasVaultedBackupContainer){
 

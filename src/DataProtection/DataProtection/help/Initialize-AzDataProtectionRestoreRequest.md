@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 schema: 2.0.0
 ---
@@ -18,7 +18,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-PointInTime <DateTime>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [<CommonParameters>]
+ [-SecretStoreType <SecretStoreTypes>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
@@ -26,7 +26,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-RestoreConfiguration <PSObject>] [-ItemLevelRecovery] [-ContainersList <String[]>]
- [-PrefixMatch <Hashtable>] [<CommonParameters>]
+ [-PrefixMatch <Hashtable>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
@@ -35,7 +35,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
  [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### OriginalLocationILR
@@ -45,7 +45,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
  [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-ItemLevelRecovery]
  [-ContainersList <String[]>] -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>]
- [-ToPrefixPattern <String[]>] [<CommonParameters>]
+ [-ToPrefixPattern <String[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
@@ -54,7 +54,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] -TargetContainerURI <String>
- [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>]
+ [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -333,6 +333,21 @@ Input for this parameter is a hashtable where each key is a container name and e
 Type: System.Collections.Hashtable
 Parameter Sets: AlternateLocationILR
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

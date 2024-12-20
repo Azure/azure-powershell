@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for choosing Zonal Allocation Policy
 
 ## Version 1.10.0
 * Added support for Disabling Access Keys Authentication

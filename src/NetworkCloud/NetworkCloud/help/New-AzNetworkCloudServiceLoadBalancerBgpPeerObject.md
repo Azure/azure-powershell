@@ -15,7 +15,7 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 ```
 New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name <String> -PeerAddress <String> -PeerAsn <Int64>
  [-BfdEnabled <BfdEnabled>] [-BgpMultiHop <BgpMultiHop>] [-HoldTime <String>] [-KeepAliveTime <String>]
- [-MyAsn <Int64>] [-Password <String>] [-PeerPort <Int64>]
+ [-MyAsn <Int64>] [-Password <String>] [-PeerPort <Int64>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -70,6 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -HoldTime
+Field Deprecated.
+The field was previously optional, now it will have no defined behavior and will be ignored.
 The requested BGP hold time value.
 This field uses ISO 8601 duration format, for example P1H.
 
@@ -86,6 +88,8 @@ Accept wildcard characters: False
 ```
 
 ### -KeepAliveTime
+Field Deprecated.
+The field was previously optional, now it will have no defined behavior and will be ignored.
 The requested BGP keepalive time value.
 This field uses ISO 8601 duration format, for example P1H.
 
@@ -191,6 +195,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -198,7 +217,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServiceLoadBalancerBgpPeer
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer
 
 ## NOTES
 
