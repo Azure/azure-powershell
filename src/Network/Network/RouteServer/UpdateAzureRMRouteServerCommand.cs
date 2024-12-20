@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Commands.Network
             IgnoreCase = true)]
         public string HubRoutingPreference { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Autoscale configuration for route server.")]
+        public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -94,28 +99,33 @@ namespace Microsoft.Azure.Commands.Network
                 this.RouteServerName = resourceInfo.ResourceName;
             }
 
-            var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
+            var routeServer = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
+            PSVirtualHub routeServerToUpdate = this.ToPsVirtualHub(routeServer); //?? throw new PSArgumentException(Properties.Resources.RouteServerToUpdateNotFound);
 
             if (this.AllowBranchToBranchTraffic.HasValue)
             {
-                virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.Value;
+                routeServerToUpdate.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.Value;
             }
 
             if (!string.IsNullOrWhiteSpace(this.HubRoutingPreference))
             {
-                virtualHub.HubRoutingPreference = this.HubRoutingPreference;
+                routeServerToUpdate.HubRoutingPreference = this.HubRoutingPreference;
             }
 
-            this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, virtualHub);
+            if (this.VirtualRouterAutoScaleConfiguration != null)
+            {
+                routeServerToUpdate.VirtualRouterAutoScaleConfiguration = this.VirtualRouterAutoScaleConfiguration;
+            }
 
-            var psVirtualHub = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualHub>(virtualHub);
-            psVirtualHub.ResourceGroupName = this.ResourceGroupName;
-            psVirtualHub.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
-            AddBgpConnectionsToPSVirtualHub(psVirtualHub, ResourceGroupName, RouteServerName);
-            AddIpConfigurtaionToPSVirtualHub(psVirtualHub, this.ResourceGroupName, RouteServerName);
+            this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, routeServer);
 
-            var routeServerModel = new PSRouteServer(psVirtualHub);
-            routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
+            routeServerToUpdate.ResourceGroupName = this.ResourceGroupName;
+            routeServerToUpdate.Tag = TagsConversionHelper.CreateTagHashtable(routeServer.Tags);
+            AddBgpConnectionsToPSVirtualHub(routeServerToUpdate, ResourceGroupName, RouteServerName);
+            AddIpConfigurtaionToPSVirtualHub(routeServerToUpdate, this.ResourceGroupName, RouteServerName);
+
+            var routeServerModel = new PSRouteServer(routeServerToUpdate);
+            routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(routeServer.Tags);
             WriteObject(routeServerModel, true);
         }
     }
