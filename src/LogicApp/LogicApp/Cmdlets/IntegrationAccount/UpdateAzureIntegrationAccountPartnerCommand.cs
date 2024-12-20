@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (this.BusinessIdentities != null)
             {
-                integrationAccountPartner.Content.B2b.BusinessIdentities =
+                integrationAccountPartner.Content.B2B.BusinessIdentities =
                     CmdletHelper.ConvertToBusinessIdentityList(this.BusinessIdentities);
             }
 
