@@ -438,6 +438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         Description = @"The operating system type required by the containers in the container group.",
         SerializedName = @"osType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.ParameterBreakingChange("OSType", "14.0.0", "5.0.0", "2025/05/21", ChangeDescription="Removing the default value of OSType parameter.")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes))]
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes OSType { get => _containerGroupBody.OSType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes)""); set => _containerGroupBody.OSType = value; }
 

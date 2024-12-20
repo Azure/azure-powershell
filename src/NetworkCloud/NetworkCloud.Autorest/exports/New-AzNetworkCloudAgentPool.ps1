@@ -38,7 +38,7 @@ Create a new Kubernetes cluster agent pool or update the properties of the exist
     New-AzNetworkCloudAgentPool -KubernetesClusterName clusterName -Name agentPoolName -ResourceGroupName resourceGroup -Count count -Location location -Mode agentPoolMode -VMSkuName vmSkuName -SubscriptionId subscriptionId -AdministratorConfigurationAdminUsername adminUsername -AdministratorConfigurationSshPublicKey $sshPublicKey -AgentOptionHugepagesCount hugepagesCount -AgentOptionHugepagesSize hugepagesSize -AttachedNetworkConfigurationL3Network $networkAttachment -AvailabilityZone availabilityZones -ExtendedLocationName clusterExtendedLocation -ExtendedLocationType "CustomLocation " -Tag @{tags = "tag"} -Label $labels -Taint $taints -UpgradeSettingMaxSurge maxSurge
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -71,7 +71,7 @@ TAINT <IKubernetesLabel[]>: The taints applied to the nodes in this agent pool.
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudagentpool
 #>
 function New-AzNetworkCloudAgentPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -139,7 +139,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
     # The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
     # In some cases, specification of public keys may be required to produce a working environment.
     # To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
@@ -161,7 +161,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IL2NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2NetworkAttachmentConfiguration[]]
     # The list of Layer 2 Networks and related configuration for attachment.
     # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL2NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL2Network},
@@ -169,7 +169,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IL3NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL3NetworkAttachmentConfiguration[]]
     # The list of Layer 3 Networks and related configuration for attachment.
     # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL3NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL3Network},
@@ -177,7 +177,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ITrunkedNetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetworkAttachmentConfiguration[]]
     # The list of Trunked Networks and related configuration for attachment.
     # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationTrunkedNetwork},
@@ -205,14 +205,14 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesLabel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesLabel[]]
     # The labels applied to the nodes in this agent pool.
     # To construct, see NOTES section for LABEL properties and create a hash table.
     ${Label},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -220,10 +220,17 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesLabel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesLabel[]]
     # The taints applied to the nodes in this agent pool.
     # To construct, see NOTES section for TAINT properties and create a hash table.
     ${Taint},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.Int64]
+    # The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool.
+    # If not specified during creation, a value of 1800 seconds is used.
+    ${UpgradeSettingDrainTimeout},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
@@ -234,8 +241,22 @@ param(
     # '50%').
     # If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade.
     # For percentages, fractional nodes are rounded up.
-    # If not specified, the default is 1.
+    # If not specified during creation, a value of 1 is used.
+    # One of MaxSurge and MaxUnavailable must be greater than 0.
     ${UpgradeSettingMaxSurge},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The maximum number or percentage of nodes that can be unavailable during upgrade.
+    # This can either be set to an integer (e.g.
+    # '5') or a percentage (e.g.
+    # '50%').
+    # If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade.
+    # For percentages, fractional nodes are rounded up.
+    # If not specified during creation, a value of 0 is used.
+    # One of MaxSurge and MaxUnavailable must be greater than 0.
+    ${UpgradeSettingMaxUnavailable},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

@@ -59,6 +59,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes])]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.ParameterBreakingChangeAttribute("OSType", "14.0.0", "5.0.0", "2025/05/21")]
     # The operating system type required by the containers in the container group.
     ${OSType},
 

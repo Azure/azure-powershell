@@ -29,7 +29,7 @@ Get-AzNetworkCloudTrunkedNetwork -ResourceGroupName resourceGroupName -Subscript
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ITrunkedNetwork
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetwork
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,6 +44,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [ClusterManagerName <String>]: The name of the cluster manager.
   [ClusterName <String>]: The name of the cluster.
   [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
   [Id <String>]: Resource identity path
   [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
   [L2NetworkName <String>]: The name of the L2 network.
@@ -61,7 +62,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.networkcloud/get-aznetworkcloudtrunkednetwork
 #>
 function Get-AzNetworkCloudTrunkedNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ITrunkedNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetwork])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

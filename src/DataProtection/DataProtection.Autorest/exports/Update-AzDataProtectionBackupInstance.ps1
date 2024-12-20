@@ -26,6 +26,10 @@ $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDataso
 $updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -SubscriptionId $subscriptionId -PolicyId $updatePolicy.Id -VaultedBackupContainer $backedUpContainers[0,2,4]
 $updateBI.Property.PolicyInfo.PolicyId
 $updateBI.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
+.Example
+$bi = Get-AzDataProtectionBackupInstance -ResourceGroupName "myResourceGroup" -VaultName "myBackupVault" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+$updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName "myResourceGroup" -VaultName "myBackupVault" -BackupInstanceName $bi.Name -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -UserAssignedIdentityArmId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUami" -UseSystemAssignedIdentity $false
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
@@ -65,6 +69,19 @@ param(
     [System.String]
     # Id of the Policy to be associated with the backup instance
     ${PolicyId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Use system assigned identity
+    ${UseSystemAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AssignUserIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # User assigned identity ARM Id
+    ${UserAssignedIdentityArmId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]

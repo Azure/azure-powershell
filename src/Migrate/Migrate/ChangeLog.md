@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added SBM support.
 
 ## Version 2.5.0
 * Validated user login with Microsoft Managed System Identity (MSI) in `Initialize-AzMigrateHCIReplicationInfrastructure`

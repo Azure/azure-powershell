@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
 schema: 2.0.0
 ---
@@ -15,16 +15,16 @@ Grants required permissions to the backup vault and other resources for configur
 ### SetPermissionsForBackup (Default)
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
- -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>] [-UserAssignedIdentityARMId <String>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetPermissionsForRestore
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
- -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>] [-DatasourceType <DatasourceTypes>]
- [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentityARMId <String>] -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
+ [-DatasourceType <DatasourceTypes>] [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,6 +99,22 @@ Waiting for 60 seconds for roles to propagate
 
 The above command is used to assign permissions to the backup vault "VaultName" under resource group "resourceGroupName" at the "ResourceGroup" scope.
 
+### Example 5: Grant Permissions using Vault UAMI for Configure Backup
+```powershell
+$backupinstance = Get-AzDataProtectionBackupInstance -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -SubscriptionId "SubscriptionId"
+
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "ResourceGroupName" -VaultName "VaultName" -PermissionsScope "ResourceGroup" -BackupInstance $backupinstance[0] -UserAssignedIdentityARMId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RGName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedIdentityName"
+```
+
+```output
+Using Vault UAMI with ARMId: /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedIdentityName with Principal ID: PrincipalId 
+Assigned Disk Snapshot Contributor permission to the backup vault over snapshot resource group with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName 
+Assigned Disk Backup Reader permission to the backup vault over DataSource with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.Compute/disks/DiskName
+Waiting for 60 seconds for roles to propagate
+```
+
+The above command is used to assign permissions to the backup vault "VaultName" under resource group "ResourceGroupName" at the "ResourceGroup" scope using a User Assigned Managed Identity (UAMI).
+
 ## PARAMETERS
 
 ### -BackupInstance
@@ -163,6 +179,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RestoreRequest
 Restore request object which will be used for restore
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
@@ -217,6 +248,21 @@ Subscription Id of the backup vault
 Type: System.String
 Parameter Sets: SetPermissionsForRestore
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityARMId
+User Assigned Identity ARM ID of the backup vault to be used for assigning permissions
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AssignUserIdentity
 
 Required: False
 Position: Named

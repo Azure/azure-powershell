@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/backup-azdataprotectionbackupinstanceadhoc
 schema: 2.0.0
 ---
@@ -17,14 +17,14 @@ Trigger adhoc backup
 Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -VaultName <String> -BackupRuleOptionRuleName <String>
  [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupViaIdentityExpanded
 ```
 Backup-AzDataProtectionBackupInstanceAdhoc -InputObject <IDataProtectionIdentity>
  -BackupRuleOptionRuleName <String> [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,6 +144,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -88,6 +88,17 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// Default value is false.
         /// </param>
 
+        /// <param name="zonalAllocationPolicy">Optional: Specifies how availability zones are allocated to the Redis
+        /// cache. &#39;Automatic&#39; enables zone redundancy and Azure will automatically
+        /// select zones based on regional availability and capacity. &#39;UserDefined&#39;
+        /// will select availability zones passed in by you using the &#39;zones&#39;
+        /// parameter. &#39;NoZones&#39; will produce a non-zonal cache. If
+        /// &#39;zonalAllocationPolicy&#39; is not passed, it will be set to &#39;UserDefined&#39; when
+        /// zones are passed in, otherwise, it will be set to &#39;Automatic&#39; in regions
+        /// where zones are supported and &#39;NoZones&#39; in regions where zones are not
+        /// supported.
+        /// Possible values include: &#39;Automatic&#39;, &#39;UserDefined&#39;, &#39;NoZones&#39;</param>
+
         /// <param name="subnetId">The full resource ID of a subnet in a virtual network to deploy the Redis
         /// cache in. Example format:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
@@ -96,7 +107,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="staticIP">Static IP address. Optionally, may be specified when deploying a Redis
         /// cache inside an existing Azure Virtual Network; auto assigned by default.
         /// </param>
-        public RedisCreateParameters(string location, Sku sku, System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string updateChannel = default(string), RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), System.Collections.Generic.IDictionary<string, string> tenantSettings = default(System.Collections.Generic.IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), bool? disableAccessKeyAuthentication = default(bool?), string subnetId = default(string), string staticIP = default(string))
+        public RedisCreateParameters(string location, Sku sku, System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string updateChannel = default(string), RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), System.Collections.Generic.IDictionary<string, string> tenantSettings = default(System.Collections.Generic.IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), bool? disableAccessKeyAuthentication = default(bool?), string zonalAllocationPolicy = default(string), string subnetId = default(string), string staticIP = default(string))
 
         {
             this.Zones = zones;
@@ -115,6 +126,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             this.MinimumTlsVersion = minimumTlsVersion;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.DisableAccessKeyAuthentication = disableAccessKeyAuthentication;
+            this.ZonalAllocationPolicy = zonalAllocationPolicy;
             this.SubnetId = subnetId;
             this.StaticIP = staticIP;
             CustomInit();
@@ -239,6 +251,20 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         public bool? DisableAccessKeyAuthentication {get; set; }
 
         /// <summary>
+        /// Gets or sets optional: Specifies how availability zones are allocated to
+        /// the Redis cache. &#39;Automatic&#39; enables zone redundancy and Azure will
+        /// automatically select zones based on regional availability and capacity.
+        /// &#39;UserDefined&#39; will select availability zones passed in by you using the
+        /// &#39;zones&#39; parameter. &#39;NoZones&#39; will produce a non-zonal cache. If
+        /// &#39;zonalAllocationPolicy&#39; is not passed, it will be set to &#39;UserDefined&#39; when
+        /// zones are passed in, otherwise, it will be set to &#39;Automatic&#39; in regions
+        /// where zones are supported and &#39;NoZones&#39; in regions where zones are not
+        /// supported. Possible values include: &#39;Automatic&#39;, &#39;UserDefined&#39;, &#39;NoZones&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zonalAllocationPolicy")]
+        public string ZonalAllocationPolicy {get; set; }
+
+        /// <summary>
         /// Gets or sets the full resource ID of a subnet in a virtual network to
         /// deploy the Redis cache in. Example format:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
@@ -281,6 +307,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             {
                 this.Sku.Validate();
             }
+
 
 
 

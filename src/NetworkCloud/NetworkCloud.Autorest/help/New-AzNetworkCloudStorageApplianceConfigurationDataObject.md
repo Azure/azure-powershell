@@ -25,7 +25,7 @@ Create an in-memory object for StorageApplianceConfigurationData.
 
 ### Example 1: Create an in-memory object for StorageApplianceConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString -String $password -AsPlainText -Force
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
 
 New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber serialNumber -StorageApplianceName storageApplianceName
 ```
@@ -122,7 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceConfigurationData
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceConfigurationData
 
 ## NOTES
 

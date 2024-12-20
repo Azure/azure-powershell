@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytagclientobject
 schema: 2.0.0
 ---
@@ -15,13 +15,13 @@ Adds or removes schedule tag in an existing backup policy.
 ### RemoveTag (Default)
 ```
 Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName> [-RemoveRule]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### updateTag
 ```
 Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName>
- -Criteria <IScheduleBasedBackupCriteria[]> [<CommonParameters>]
+ -Criteria <IScheduleBasedBackupCriteria[]> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +100,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -69,6 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -HoldTime
+Field Deprecated.
+The field was previously optional, now it will have no defined behavior and will be ignored.
 The requested BGP hold time value.
 This field uses ISO 8601 duration format, for example P1H.
 
@@ -85,6 +87,8 @@ Accept wildcard characters: False
 ```
 
 ### -KeepAliveTime
+Field Deprecated.
+The field was previously optional, now it will have no defined behavior and will be ignored.
 The requested BGP keepalive time value.
 This field uses ISO 8601 duration format, for example P1H.
 
@@ -197,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServiceLoadBalancerBgpPeer
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer
 
 ## NOTES
 

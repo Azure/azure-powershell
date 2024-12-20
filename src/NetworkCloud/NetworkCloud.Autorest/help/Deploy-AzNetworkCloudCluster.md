@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deploy-AzNetworkCloudCluster
 
 ## SYNOPSIS
-Deploy the cluster to the provided rack.
+Deploy the cluster using the rack configuration provided during creation.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Deploy-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-SkipValidati
 ```
 
 ## DESCRIPTION
-Deploy the cluster to the provided rack.
+Deploy the cluster using the rack configuration provided during creation.
 
 ## EXAMPLES
 
