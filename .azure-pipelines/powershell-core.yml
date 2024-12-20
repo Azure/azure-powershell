@@ -170,4 +170,4 @@ jobs:
       testResultsFiles: '**/*.trx'
   - template: util/publish-artifacts-steps.yml
     parameters:
-      artifactName: test-${{ variables.testFramework }}-${{ variables.OSName }}-$(System.JobAttempt)
+      artifactName: test-${{ variables.testFramework }}-$(OSName)-$(System.JobAttempt)
