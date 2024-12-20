@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Add list of allowed classifications in description for Maintenance Configuration
 
 ## Version 1.4.3
 * Fixed bug where AzMaintenanceConfiguration returned a List object. [#25781]
