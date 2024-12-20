@@ -83,16 +83,16 @@ Write-Host -ForegroundColor DarkGreen "-------------------- End Analyzing change
 # Check ignored files
 Write-Host -ForegroundColor Green "-------------------- Start checking ignored files ... --------------------"
 $checkIgnoreFilesScriptPath = Join-Path $RepoRoot 'tools' 'CheckIgnoredFile.ps1'
-. $checkIgnoreFilesScriptPath
+& $checkIgnoreFilesScriptPath
 Write-Host -ForegroundColor DarkGreen "-------------------- End checking ignored files ... --------------------`n`n`n`n`n"
 
 # Build
 Write-Host -ForegroundColor Green "-------------------- Start building modules ... --------------------"
 $buildScriptPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'BuildModules.ps1'
 if ('Manual' -eq $BuildReason -and $ForceRegenerate) {
-. $buildScriptPath -CIPlan -RepoRoot $RepoRoot -Configuration $Configuration -ForceRegenerate -InvokedByPipeline
+& $buildScriptPath -CIPlan -RepoRoot $RepoRoot -Configuration $Configuration -ForceRegenerate -InvokedByPipeline
 } else {
-. $buildScriptPath -CIPlan -RepoRoot $RepoRoot -Configuration $Configuration -InvokedByPipeline
+& $buildScriptPath -CIPlan -RepoRoot $RepoRoot -Configuration $Configuration -InvokedByPipeline
 }
 Write-Host -ForegroundColor DarkGreen "-------------------- End building modules ... --------------------`n`n`n`n`n"
 
@@ -100,7 +100,7 @@ Write-Host -ForegroundColor DarkGreen "-------------------- End building modules
 Write-Host -ForegroundColor Green "-------------------- Start writing pipeline result ... --------------------"
 $pipelineScript = Join-Path $RepoRoot 'tools' 'ExecuteCIStep.ps1'
 $repoArtifact = Join-Path $RepoRoot 'artifacts'
-. $pipelineScript -Build -TriggerType $BuildReason -Trigger $Trigger -RepoArtifacts $repoArtifact -Configuration $Configuration
+& $pipelineScript -Build -TriggerType $BuildReason -Trigger $Trigger -RepoArtifacts $repoArtifact -Configuration $Configuration
 Write-Host -ForegroundColor DarkGreen "-------------------- End writing pipeline result ... --------------------`n`n`n`n`n"
 
 # Build Az.Tools.Predictor

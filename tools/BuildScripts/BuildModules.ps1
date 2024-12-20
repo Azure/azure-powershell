@@ -130,7 +130,7 @@ if ($InvokedByPipeline) {
 }
 foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
-    . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
+    & $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
 }
 
 $buildCsprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -RepoRoot $RepoRoot -Configuration $Configuration
@@ -182,7 +182,7 @@ $versionControllerCsprojPath = Join-Path $toolDirectory 'VersionController' 'Ver
 dotnet build $versionControllerCsprojPath -c $Configuration
 
 $removeScriptPath = Join-Path $toolDirectory 'BuildScripts' 'RemoveUnwantedFiles.ps1'
-. $removeScriptPath -RootPath (Join-Path $RepoArtifacts $Configuration) -CodeSign $CodeSign
+& $removeScriptPath -RootPath (Join-Path $RepoArtifacts $Configuration) -CodeSign $CodeSign
 
 $updateModuleScriptPath = Join-Path $toolDirectory 'UpdateModules.ps1'
 pwsh $updateModuleScriptPath -BuildConfig $Configuration -Scope $Scope
