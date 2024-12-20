@@ -35,7 +35,9 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("Az.Maintenance.psd1")
+                    helper.GetRMModulePath("Az.Maintenance.psd1"),
+                    helper.GetRMModulePath("Az.Compute.psd1"),
+                    helper.GetRMModulePath("Az.Network.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
