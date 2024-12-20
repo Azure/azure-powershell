@@ -200,9 +200,10 @@ If ($Build)
         Write-Warning "******************************* I'm here 2 *******************************"
         Get-Content $CIPlanPath -Raw | Write-Warning
         Write-Warning "******************************* I'm here 3 *******************************"
-        $CIPlan = Get-Content $CIPlanPath -Raw
+        $j = Get-Content $CIPlanPath -Raw
         Write-Warning "******************************* I'm here 4 *******************************"
-        $CIPlan = $CIPlan | ConvertFrom-Json
+        $j = $j | ConvertFrom-Json
+        Write-Warning "******************************* I'm here 5 *******************************"
         ForEach ($ModuleName In $CIPlan.build)
         {
             $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
