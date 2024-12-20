@@ -42,7 +42,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>
-        public GalleryImageVersionUpdate(GalleryImageVersionStorageProfile storageProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ReplicationStatus replicationStatus = default(ReplicationStatus), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile))
+        /// <param name="restore">Indicates if this is a soft-delete resource
+        /// restoration request.</param>
+        public GalleryImageVersionUpdate(GalleryImageVersionStorageProfile storageProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ReplicationStatus replicationStatus = default(ReplicationStatus), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile), bool? restore = default(bool?), ValidationsProfile validationsProfile = default(ValidationsProfile))
             : base(id, name, type, tags)
         {
             PublishingProfile = publishingProfile;
@@ -51,6 +53,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             SafetyProfile = safetyProfile;
             ReplicationStatus = replicationStatus;
             SecurityProfile = securityProfile;
+            Restore = restore;
+            ValidationsProfile = validationsProfile;
             CustomInit();
         }
 
@@ -90,6 +94,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.securityProfile")]
         public ImageVersionSecurityProfile SecurityProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates if this is a soft-delete resource
+        /// restoration request.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.restore")]
+        public bool? Restore { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.validationsProfile")]
+        public ValidationsProfile ValidationsProfile { get; private set; }
 
         /// <summary>
         /// Validate the object.
