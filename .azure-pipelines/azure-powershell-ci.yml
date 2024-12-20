@@ -172,7 +172,8 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      script: PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
+      workingDirectory: $(Build.SourcesDirectory)
+      script: .azure-pipelines/PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: analyze-${{ variables.testFramework }}-$(System.JobAttempt)
@@ -212,8 +213,9 @@ jobs:
     displayName: 'Test'
     inputs:
       targetType: inline
+      workingDirectory: $(Build.SourcesDirectory)
       pwsh: true
-      script: PipelineSteps/test-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -TestFramework "${{ variables.testFramework }}"
+      script: .azure-pipelines/PipelineSteps/test-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -TestFramework "${{ variables.testFramework }}"
   - task: PublishTestResults@2
     inputs:
       testRunner: VSTest
