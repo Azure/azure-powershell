@@ -204,6 +204,181 @@ end {
 
 <#
 .Synopsis
+Retrieves information about the view of a license profile.
+.Description
+Retrieves information about the view of a license profile.
+.Example
+Get-AzConnectedLicenseProfile -MachineName WIN-IAH3TLSP7A8 -ResourceGroupName PayGo_cmdlet
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile
+.Link
+https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedlicenseprofile
+#>
+function Get-AzConnectedLicenseProfile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the hybrid machine.
+    ${MachineName},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.ConnectedMachine.private\Get-AzConnectedLicenseProfile_Get';
+            List = 'Az.ConnectedMachine.private\Get-AzConnectedLicenseProfile_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Retrieves information about the view of a license.
 .Description
 Retrieves information about the view of a license.
@@ -577,9 +752,7 @@ The operation to get a run command.
 .Description
 The operation to get a run command.
 .Example
-Get-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -MachineName "testmachine"
-.Example
-Get-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand2" -MachineName "testmachine"
+Get-AzConnectedMachineRunCommand -ResourceGroupName "ytongtest" -MachineName "testmachine" -RunCommandName "myRunCommand2"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand
@@ -611,6 +784,7 @@ param(
     ${RunCommandName},
 
     [Parameter()]
+    [Alias('Subscription')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -1319,6 +1493,8 @@ Install-AzConnectedMachinePatch -ResourceGroupName az-sdk-test -Name testMachine
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParameters
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesResult
 .Notes
@@ -1347,12 +1523,23 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Version <String>]: The version of the Extension being received.
+
+INSTALLPATCHESINPUT <IMachineInstallPatchesParameters>: Input for InstallPatches as directly received by the API
+  MaximumDuration <String>: Specifies the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
+  RebootSetting <String>: Defines when it is acceptable to reboot a VM during a software update operation.
+  [LinuxParameterClassificationsToInclude <List<String>>]: The update classifications to select when installing patches for Linux.
+  [LinuxParameterPackageNameMasksToExclude <List<String>>]: packages to exclude in the patch operation. Format: packageName_packageVersion
+  [LinuxParameterPackageNameMasksToInclude <List<String>>]: packages to include in the patch operation. Format: packageName_packageVersion
+  [WindowParameterClassificationsToInclude <List<String>>]: The update classifications to select when installing patches for Windows.
+  [WindowParameterExcludeKbsRequiringReboot <Boolean?>]: Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' when this is set to true.
+  [WindowParameterKbNumbersToExclude <List<String>>]: Kbs to exclude in the patch operation
+  [WindowParameterKbNumbersToInclude <List<String>>]: Kbs to include in the patch operation
+  [WindowParameterMaxPatchPublishDate <DateTime?>]: This is used to install patches that were published on or before this given max published date.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/install-azconnectedmachinepatch
 #>
@@ -1360,47 +1547,67 @@ function Install-AzConnectedMachinePatch {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesResult])]
 [CmdletBinding(DefaultParameterSetName='InstallExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='Install', Mandatory)]
     [Parameter(ParameterSetName='InstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the hybrid machine.
     ${Name},
 
+    [Parameter(ParameterSetName='Install', Mandatory)]
     [Parameter(ParameterSetName='InstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaJsonString', Mandatory)]
     [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='Install')]
     [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaJsonFilePath')]
+    [Parameter(ParameterSetName='InstallViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='InstallViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='InstallViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Install', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InstallViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParameters]
+    # Input for InstallPatches as directly received by the API
+    ${InstallPatchesInput},
+
+    [Parameter(ParameterSetName='InstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the maximum amount of time that the operation will run.
     # It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
     ${MaximumDuration},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("IfRequired", "Never", "Always")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Defines when it is acceptable to reboot a VM during a software update operation.
     ${RebootSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Critical", "Security", "Other")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
@@ -1408,7 +1615,8 @@ param(
     # The update classifications to select when installing patches for Linux.
     ${LinuxParameterClassificationsToInclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String[]]
@@ -1416,7 +1624,8 @@ param(
     # Format: packageName_packageVersion
     ${LinuxParameterPackageNameMasksToExclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String[]]
@@ -1424,7 +1633,8 @@ param(
     # Format: packageName_packageVersion
     ${LinuxParameterPackageNameMasksToInclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Critical", "Security", "UpdateRollUp", "FeaturePack", "ServicePack", "Definition", "Tools", "Updates")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
@@ -1432,31 +1642,47 @@ param(
     # The update classifications to select when installing patches for Windows.
     ${WindowParameterClassificationsToInclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' when this is set to true.
     ${WindowParameterExcludeKbsRequiringReboot},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String[]]
     # Kbs to exclude in the patch operation
     ${WindowParameterKbNumbersToExclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String[]]
     # Kbs to include in the patch operation
     ${WindowParameterKbNumbersToInclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.DateTime]
     # This is used to install patches that were published on or before this given max published date.
     ${WindowParameterMaxPatchPublishDate},
+
+    [Parameter(ParameterSetName='InstallViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Install operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='InstallViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Install operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1545,10 +1771,14 @@ begin {
         }
 
         $mapping = @{
+            Install = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_Install';
             InstallExpanded = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallExpanded';
+            InstallViaIdentity = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaIdentity';
             InstallViaIdentityExpanded = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaIdentityExpanded';
+            InstallViaJsonFilePath = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaJsonFilePath';
+            InstallViaJsonString = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaJsonString';
         }
-        if (('InstallExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Install', 'InstallExpanded', 'InstallViaJsonFilePath', 'InstallViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -1645,7 +1875,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -1835,9 +2064,609 @@ end {
 
 <#
 .Synopsis
-The operation to create or update a license.
+Forces the network security perimeter configuration to refresh for a private link scope.
 .Description
-The operation to create or update a license.
+Forces the network security perimeter configuration to refresh for a private link scope.
+.Example
+Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupNameNSP -ScopeName $env.PrivateLinkScopeNameNSP
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationReconcileResult
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  [BaseProvider <String>]: The name of the base Resource Provider.
+  [BaseResourceName <String>]: The name of the base resource.
+  [BaseResourceType <String>]: The name of the base Resource Type.
+  [ExtensionName <String>]: The name of the machine extension.
+  [ExtensionType <String>]: The extensionType of the Extension being received.
+  [GatewayName <String>]: The name of the Gateway.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [LicenseName <String>]: The name of the license.
+  [LicenseProfileName <String>]: The name of the license profile.
+  [Location <String>]: The location of the Extension being received.
+  [MachineName <String>]: The name of the hybrid machine.
+  [MetadataName <String>]: Name of the HybridIdentityMetadata.
+  [Name <String>]: The name of the hybrid machine.
+  [OSType <String>]: Defines the os type.
+  [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  [Publisher <String>]: The publisher of the Extension being received.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunCommandName <String>]: The name of the run command.
+  [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
+  [SettingsResourceName <String>]: The name of the settings resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: The version of the Extension being received.
+
+PRIVATELINKSCOPEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  [BaseProvider <String>]: The name of the base Resource Provider.
+  [BaseResourceName <String>]: The name of the base resource.
+  [BaseResourceType <String>]: The name of the base Resource Type.
+  [ExtensionName <String>]: The name of the machine extension.
+  [ExtensionType <String>]: The extensionType of the Extension being received.
+  [GatewayName <String>]: The name of the Gateway.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [LicenseName <String>]: The name of the license.
+  [LicenseProfileName <String>]: The name of the license profile.
+  [Location <String>]: The location of the Extension being received.
+  [MachineName <String>]: The name of the hybrid machine.
+  [MetadataName <String>]: Name of the HybridIdentityMetadata.
+  [Name <String>]: The name of the hybrid machine.
+  [OSType <String>]: Defines the os type.
+  [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  [Publisher <String>]: The publisher of the Extension being received.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunCommandName <String>]: The name of the run command.
+  [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
+  [SettingsResourceName <String>]: The name of the settings resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: The version of the Extension being received.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectedmachine/invoke-azconnectedreconcilenetworksecurityperimeterconfiguration
+#>
+function Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationReconcileResult])]
+[CmdletBinding(DefaultParameterSetName='Reconcile', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Parameter(ParameterSetName='ReconcileViaIdentityPrivateLinkScope', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+    ${PerimeterName},
+
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the Azure Arc PrivateLinkScope resource.
+    ${ScopeName},
+
+    [Parameter(ParameterSetName='Reconcile')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ReconcileViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ReconcileViaIdentityPrivateLinkScope', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
+    # Identity Parameter
+    ${PrivateLinkScopeInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Reconcile = 'Az.ConnectedMachine.private\Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration_Reconcile';
+            ReconcileViaIdentity = 'Az.ConnectedMachine.private\Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration_ReconcileViaIdentity';
+            ReconcileViaIdentityPrivateLinkScope = 'Az.ConnectedMachine.private\Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration_ReconcileViaIdentityPrivateLinkScope';
+        }
+        if (('Reconcile') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+The operation to create a license profile.
+.Description
+The operation to create a license profile.
+.Example
+$productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+
+New-AzConnectedLicenseProfile -MachineName "WIN-IAH3TLSP7A8" -ResourceGroupName "PayGo_cmdlet" -Location "eastus" -ProductProfileProductType "WindowsServer" -ProductProfileSubscriptionStatus "Enabled" -ProductProfileProductFeature $productfeature
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  [BaseProvider <String>]: The name of the base Resource Provider.
+  [BaseResourceName <String>]: The name of the base resource.
+  [BaseResourceType <String>]: The name of the base Resource Type.
+  [ExtensionName <String>]: The name of the machine extension.
+  [ExtensionType <String>]: The extensionType of the Extension being received.
+  [GatewayName <String>]: The name of the Gateway.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [LicenseName <String>]: The name of the license.
+  [LicenseProfileName <String>]: The name of the license profile.
+  [Location <String>]: The location of the Extension being received.
+  [MachineName <String>]: The name of the hybrid machine.
+  [MetadataName <String>]: Name of the HybridIdentityMetadata.
+  [Name <String>]: The name of the hybrid machine.
+  [OSType <String>]: Defines the os type.
+  [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  [Publisher <String>]: The publisher of the Extension being received.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunCommandName <String>]: The name of the run command.
+  [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
+  [SettingsResourceName <String>]: The name of the settings resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: The version of the Extension being received.
+
+PARAMETER <ILicenseProfile>: Describes a license profile in a hybrid machine.
+  Location <String>: The geo-location where the resource lives
+  [Tags <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [EsuProfileAssignedLicense <String>]: The resource id of the license.
+  [ProductProfileProductFeature <List<IProductFeature>>]: The list of product features.
+    [Name <String>]: Product feature name.
+    [SubscriptionStatus <String>]: Indicates the current status of the product features.
+  [ProductProfileProductType <String>]: Indicates the product type of the license.
+  [ProductProfileSubscriptionStatus <String>]: Indicates the subscription status of the product.
+  [SoftwareAssuranceCustomer <Boolean?>]: Specifies if this machine is licensed as part of a Software Assurance agreement.
+
+PRODUCTPROFILEPRODUCTFEATURE <IProductFeature[]>: The list of product features.
+  [Name <String>]: Product feature name.
+  [SubscriptionStatus <String>]: Indicates the current status of the product features.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedlicenseprofile
+#>
+function New-AzConnectedLicenseProfile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the hybrid machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Create')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile]
+    # Describes a license profile in a hybrid machine.
+    ${Parameter},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [ArgumentCompleter({Get-AzLocation | Where-Object Providers -Contains "Microsoft.HybridCompute" | Select-Object -ExpandProperty Location})]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The resource id of the license.
+    ${EsuProfileAssignedLicense},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature[]]
+    # The list of product features.
+    ${ProductProfileProductFeature},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("WindowsServer", "WindowsIoTEnterprise")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Indicates the product type of the license.
+    ${ProductProfileProductType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "Enabling", "Enabled", "Disabled", "Disabling", "Failed")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Indicates the subscription status of the product.
+    ${ProductProfileSubscriptionStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies if this machine is licensed as part of a Software Assurance agreement.
+    ${SoftwareAssuranceCustomer},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Create = 'Az.ConnectedMachine.private\New-AzConnectedLicenseProfile_Create';
+            CreateExpanded = 'Az.ConnectedMachine.private\New-AzConnectedLicenseProfile_CreateExpanded';
+            CreateViaIdentity = 'Az.ConnectedMachine.private\New-AzConnectedLicenseProfile_CreateViaIdentity';
+            CreateViaIdentityExpanded = 'Az.ConnectedMachine.private\New-AzConnectedLicenseProfile_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.ConnectedMachine.private\New-AzConnectedLicenseProfile_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ConnectedMachine.private\New-AzConnectedLicenseProfile_CreateViaJsonString';
+        }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+The operation to create a license.
+.Description
+The operation to create a license.
 .Example
 New-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId ********-****-****-****-**********
 
@@ -1873,7 +2702,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -2196,9 +3024,9 @@ end {
 
 <#
 .Synopsis
-The operation to create or update the extension.
+The operation to create the extension.
 .Description
-The operation to create or update the extension.
+The operation to create the extension.
 .Example
 $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 New-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
@@ -2270,7 +3098,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -2298,7 +3125,6 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -2695,11 +3521,11 @@ end {
 
 <#
 .Synopsis
-The operation to create or update a run command.
+The operation to create a run command.
 .Description
-The operation to create or update a run command.
+The operation to create a run command.
 .Example
-New-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -Location "eastus2euap" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId ********-****-****-****-**********
+New-AzConnectedMachineRunCommand -ResourceGroupName "ytongtest" -Location "eastus" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand2" -MachineName "testmachine" -Subscription "********-****-****-****-**********"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -2733,7 +3559,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -2761,7 +3586,6 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -2810,7 +3634,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the hybrid machine.
@@ -2820,7 +3643,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
@@ -2834,7 +3656,6 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the run command.
@@ -2844,7 +3665,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaJsonFilePath')]
     [Parameter(ParameterSetName='CreateViaJsonString')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
+    [Alias('Subscription')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -2876,7 +3697,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [ArgumentCompleter({Get-AzLocation | Where-Object Providers -Contains "Microsoft.HybridCompute" | Select-Object -ExpandProperty Location})]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
@@ -2886,7 +3706,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Optional.
@@ -2896,7 +3715,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
@@ -2906,7 +3724,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
@@ -2916,7 +3733,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the Azure storage blob where script error stream will be uploaded.
@@ -2927,7 +3743,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
@@ -2937,7 +3752,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
@@ -2947,7 +3761,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the Azure storage blob where script output stream will be uploaded.
@@ -2958,7 +3771,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]]
@@ -2968,7 +3780,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]]
@@ -2978,7 +3789,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the user account password on the machine when executing the run command.
@@ -2987,7 +3797,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the user account on the machine when executing the run command.
@@ -2996,7 +3805,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
@@ -3006,7 +3814,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
@@ -3016,7 +3823,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the commandId of predefined built-in script.
@@ -3025,7 +3831,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the script content to be executed on the machine.
@@ -3034,7 +3839,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the script download location.
@@ -3044,7 +3848,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
@@ -3054,7 +3857,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
-    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.Int32]
     # The timeout in seconds to execute the run command.
@@ -3071,11 +3873,6 @@ param(
     [System.String]
     # Json string supplied to the Create operation
     ${JsonString},
-
-    [Parameter(ParameterSetName='ScriptLocalPath')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    ${ScriptLocalPath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3172,9 +3969,8 @@ begin {
             CreateViaIdentityMachineExpanded = 'Az.ConnectedMachine.private\New-AzConnectedMachineRunCommand_CreateViaIdentityMachineExpanded';
             CreateViaJsonFilePath = 'Az.ConnectedMachine.private\New-AzConnectedMachineRunCommand_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.ConnectedMachine.private\New-AzConnectedMachineRunCommand_CreateViaJsonString';
-            ScriptLocalPath = 'Az.ConnectedMachine.custom\New-AzConnectedMachineRunCommand_ScriptLocalPath';
         }
-        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -3235,10 +4031,10 @@ end {
 
 <#
 .Synopsis
-Create (or updates) a Azure Arc PrivateLinkScope.
+create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Description
-Create (or updates) a Azure Arc PrivateLinkScope.
+create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
 New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Enabled" -Location $location
@@ -3275,7 +4071,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -3517,6 +4312,238 @@ end {
 
 <#
 .Synopsis
+The operation to delete a license profile.
+.Description
+The operation to delete a license profile.
+.Example
+Remove-AzConnectedLicenseProfile -MachineName WIN-89LGOPE94T3 -ResourceGroupName edyoung
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  [BaseProvider <String>]: The name of the base Resource Provider.
+  [BaseResourceName <String>]: The name of the base resource.
+  [BaseResourceType <String>]: The name of the base Resource Type.
+  [ExtensionName <String>]: The name of the machine extension.
+  [ExtensionType <String>]: The extensionType of the Extension being received.
+  [GatewayName <String>]: The name of the Gateway.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [LicenseName <String>]: The name of the license.
+  [LicenseProfileName <String>]: The name of the license profile.
+  [Location <String>]: The location of the Extension being received.
+  [MachineName <String>]: The name of the hybrid machine.
+  [MetadataName <String>]: Name of the HybridIdentityMetadata.
+  [Name <String>]: The name of the hybrid machine.
+  [OSType <String>]: Defines the os type.
+  [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  [Publisher <String>]: The publisher of the Extension being received.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunCommandName <String>]: The name of the run command.
+  [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
+  [SettingsResourceName <String>]: The name of the settings resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: The version of the Extension being received.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedlicenseprofile
+#>
+function Remove-AzConnectedLicenseProfile {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the hybrid machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.ConnectedMachine.private\Remove-AzConnectedLicenseProfile_Delete';
+            DeleteViaIdentity = 'Az.ConnectedMachine.private\Remove-AzConnectedLicenseProfile_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 The operation to delete a license.
 .Description
 The operation to delete a license.
@@ -3553,7 +4580,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -3789,7 +4815,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -3817,7 +4842,6 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -4032,7 +5056,7 @@ The operation to delete a run command.
 .Description
 The operation to delete a run command.
 .Example
-Remove-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine"
+Remove-AzConnectedMachineRunCommand -ResourceGroupName "ytongtest" -RunCommandName "myRunCommand" -MachineName "testmachine"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -4064,7 +5088,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -4092,7 +5115,6 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -4127,6 +5149,7 @@ param(
     ${RunCommandName},
 
     [Parameter(ParameterSetName='Delete')]
+    [Alias('Subscription')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -4341,7 +5364,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -4563,7 +5585,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -4760,9 +5781,9 @@ end {
 
 <#
 .Synopsis
-The operation to create or update a license.
+The operation to update a license.
 .Description
-The operation to create or update a license.
+The operation to update a license.
 .Example
 Set-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Deactivated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId ********-****-****-****-**********
 
@@ -5062,9 +6083,9 @@ end {
 
 <#
 .Synopsis
-The operation to create or update the extension.
+The operation to update the extension.
 .Description
-The operation to create or update the extension.
+The operation to update the extension.
 .Example
 $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
@@ -5424,10 +6445,10 @@ end {
 
 <#
 .Synopsis
-Update (or updates) a Azure Arc PrivateLinkScope.
+update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Description
-Update (or updates) a Azure Arc PrivateLinkScope.
+update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
 Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
@@ -5697,7 +6718,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -5930,9 +6950,333 @@ end {
 
 <#
 .Synopsis
-The operation to create or update the extension.
+The operation to update a license profile.
 .Description
-The operation to create or update the extension.
+The operation to update a license profile.
+.Example
+$productfeature = Update-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+
+Update-AzConnectedLicenseProfile -MachineName "WIN-IAH3TLSP7A8" -ResourceGroupName "PayGo_cmdlet" -ProductProfileProductType "WindowsServer" -ProductProfileSubscriptionStatus "Enabled" -ProductProfileProductFeature $productfeature
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileUpdate
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  [BaseProvider <String>]: The name of the base Resource Provider.
+  [BaseResourceName <String>]: The name of the base resource.
+  [BaseResourceType <String>]: The name of the base Resource Type.
+  [ExtensionName <String>]: The name of the machine extension.
+  [ExtensionType <String>]: The extensionType of the Extension being received.
+  [GatewayName <String>]: The name of the Gateway.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [LicenseName <String>]: The name of the license.
+  [LicenseProfileName <String>]: The name of the license profile.
+  [Location <String>]: The location of the Extension being received.
+  [MachineName <String>]: The name of the hybrid machine.
+  [MetadataName <String>]: Name of the HybridIdentityMetadata.
+  [Name <String>]: The name of the hybrid machine.
+  [OSType <String>]: Defines the os type.
+  [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  [Publisher <String>]: The publisher of the Extension being received.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunCommandName <String>]: The name of the run command.
+  [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
+  [SettingsResourceName <String>]: The name of the settings resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: The version of the Extension being received.
+
+PARAMETER <ILicenseProfileUpdate>: Describes a License Profile Update.
+  [Tags <IResourceUpdateTags>]: Resource tags
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [EsuProfileAssignedLicense <String>]: The resource id of the license.
+  [ProductProfileProductFeature <List<IProductFeatureUpdate>>]: The list of product feature updates.
+    [Name <String>]: Product feature name.
+    [SubscriptionStatus <String>]: Indicates the new status of the product feature.
+  [ProductProfileProductType <String>]: Indicates the product type of the license.
+  [ProductProfileSubscriptionStatus <String>]: Indicates the subscription status of the product.
+  [SoftwareAssuranceCustomer <Boolean?>]: Specifies if this machine is licensed as part of a Software Assurance agreement.
+
+PRODUCTPROFILEPRODUCTFEATURE <IProductFeatureUpdate[]>: The list of product feature updates.
+  [Name <String>]: Product feature name.
+  [SubscriptionStatus <String>]: Indicates the new status of the product feature.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedlicenseprofile
+#>
+function Update-AzConnectedLicenseProfile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the hybrid machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileUpdate]
+    # Describes a License Profile Update.
+    ${Parameter},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The resource id of the license.
+    ${EsuProfileAssignedLicense},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureUpdate[]]
+    # The list of product feature updates.
+    ${ProductProfileProductFeature},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("WindowsServer", "WindowsIoTEnterprise")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Indicates the product type of the license.
+    ${ProductProfileProductType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enable", "Disable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Indicates the subscription status of the product.
+    ${ProductProfileSubscriptionStatus},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies if this machine is licensed as part of a Software Assurance agreement.
+    ${SoftwareAssuranceCustomer},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Update = 'Az.ConnectedMachine.private\Update-AzConnectedLicenseProfile_Update';
+            UpdateExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedLicenseProfile_UpdateExpanded';
+            UpdateViaIdentity = 'Az.ConnectedMachine.private\Update-AzConnectedLicenseProfile_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedLicenseProfile_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.ConnectedMachine.private\Update-AzConnectedLicenseProfile_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ConnectedMachine.private\Update-AzConnectedLicenseProfile_UpdateViaJsonString';
+        }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+The operation to update the extension.
+.Description
+The operation to update the extension.
 .Example
 $splat = @{
     ResourceGroupName = "connectedMachines"
@@ -6010,7 +7354,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -6038,7 +7381,6 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -6361,12 +7703,12 @@ end {
 
 <#
 .Synopsis
-The operation to create or update a run command.
+The operation to update a run command.
 .Description
-The operation to create or update a run command.
+The operation to update a run command.
 .Example
-Update-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId ********-****-****-****-********** -Tag @{Tag1="tag1"; Tag2="tag2"}
-
+$tags = @{Tag1="tag1"; Tag2="tag2"}
+Update-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId -Tag $tags
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -6400,7 +7742,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -6428,7 +7769,6 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -6500,6 +7840,7 @@ param(
 
     [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Alias('Subscription')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -6842,402 +8183,11 @@ end {
 
 <#
 .Synopsis
-The operation to update a hybrid machine.
+update an existing PrivateLinkScope's tags.
+To update other fields use the CreateOrupdate method.
 .Description
-The operation to update a hybrid machine.
-.Example
-Update-AzConnectedMachine -Name surface -ResourceGroupName rg -PrivateLinkScopeResourceId privateLinkScopeId -WindowsConfigurationPatchSettingsAssessmentMode AutomaticByOS -Tag @{"key"="value"}
-.Example
-Update-AzConnectedMachine -Name surface -ResourceGroupName rg -PrivateLinkScopeResourceId $null
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
-  [BaseProvider <String>]: The name of the base Resource Provider.
-  [BaseResourceName <String>]: The name of the base resource.
-  [BaseResourceType <String>]: The name of the base Resource Type.
-  [ExtensionName <String>]: The name of the machine extension.
-  [ExtensionType <String>]: The extensionType of the Extension being received.
-  [GatewayName <String>]: The name of the Gateway.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [LicenseName <String>]: The name of the license.
-  [LicenseProfileName <String>]: The name of the license profile.
-  [Location <String>]: The location of the Extension being received.
-  [MachineName <String>]: The name of the hybrid machine.
-  [MetadataName <String>]: Name of the HybridIdentityMetadata.
-  [Name <String>]: The name of the hybrid machine.
-  [OSType <String>]: Defines the os type.
-  [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  [Publisher <String>]: The publisher of the Extension being received.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
-  [RunCommandName <String>]: The name of the run command.
-  [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
-  [SettingsResourceName <String>]: The name of the settings resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [Version <String>]: The version of the Extension being received.
-
-PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
-  [Tags <IResourceUpdateTags>]: Resource tags
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [AgentUpgradeCorrelationId <String>]: The correlation ID passed in from RSM per upgrade.
-  [AgentUpgradeDesiredVersion <String>]: Specifies the version info w.r.t AgentUpgrade for the machine.
-  [AgentUpgradeEnableAutomaticUpgrade <Boolean?>]: Specifies if RSM should try to upgrade this machine
-  [IdentityType <String>]: The identity type.
-  [Kind <String>]: Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-  [LinuxConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
-  [LinuxConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
-  [LocationDataCity <String>]: The city or locality where the resource is located.
-  [LocationDataCountryOrRegion <String>]: The country or region where the resource is located
-  [LocationDataDistrict <String>]: The district, state, or province where the resource is located.
-  [LocationDataName <String>]: A canonical name for the geographic or physical location.
-  [ParentClusterResourceId <String>]: The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
-  [PrivateLinkScopeResourceId <String>]: The resource id of the private link scope this machine is assigned to, if any.
-  [WindowsConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
-  [WindowsConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
-.Link
-https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachine
-#>
-function Update-AzConnectedMachine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Alias('MachineName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
-    [System.String]
-    # The name of the hybrid machine.
-    ${Name},
-
-    [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Update')]
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpdateViaJsonString')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate]
-    # Describes a hybrid machine Update.
-    ${Parameter},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The correlation ID passed in from RSM per upgrade.
-    ${AgentUpgradeCorrelationId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the version info w.r.t AgentUpgrade for the machine.
-    ${AgentUpgradeDesiredVersion},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Specifies if RSM should try to upgrade this machine
-    ${AgentUpgradeEnableAutomatic},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("SystemAssigned")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-    ${Kind},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the assessment mode.
-    ${LinuxConfigurationPatchSettingsAssessmentMode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the patch mode.
-    ${LinuxConfigurationPatchSettingsPatchMode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The city or locality where the resource is located.
-    ${LocationDataCity},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The country or region where the resource is located
-    ${LocationDataCountryOrRegion},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The district, state, or province where the resource is located.
-    ${LocationDataDistrict},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # A canonical name for the geographic or physical location.
-    ${LocationDataName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
-    ${ParentClusterResourceId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The resource id of the private link scope this machine is assigned to, if any.
-    ${PrivateLinkScopeResourceId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags
-    ${Tag},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the assessment mode.
-    ${WindowsConfigurationPatchSettingsAssessmentMode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the patch mode.
-    ${WindowsConfigurationPatchSettingsPatchMode},
-
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Update = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_Update';
-            UpdateExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateExpanded';
-            UpdateViaIdentity = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateViaIdentityExpanded';
-            UpdateViaJsonFilePath = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateViaJsonString';
-        }
-        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
-.Description
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+update an existing PrivateLinkScope's tags.
+To update other fields use the CreateOrupdate method.
 .Example
 $tag = @{ "Tag1" = "Value1" }
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName "az-sdk-test" -ScopeName "scope-test" -Tag $tag
@@ -7274,7 +8224,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -7784,6 +8733,607 @@ begin {
 
         $mapping = @{
             __AllParameterSets = 'Az.ConnectedMachine.custom\New-AzConnectedLicenseDetail';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ProductFeature.
+.Description
+Create an in-memory object for ProductFeature.
+.Example
+$productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+$productfeature | Should -Not -BeNullOrEmpty
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeature
+.Link
+https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicenseprofilefeature
+#>
+function New-AzConnectedLicenseProfileFeature {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeature])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Product feature name.
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "Enabling", "Enabled", "Disabled", "Disabling", "Failed")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Indicates the current status of the product features.
+    ${SubscriptionStatus}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.ConnectedMachine.custom\New-AzConnectedLicenseProfileFeature';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ProductFeatureUpdate.
+.Description
+Create an in-memory object for ProductFeatureUpdate.
+.Example
+$productfeature = Update-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+$productfeature | Should -Not -BeNullOrEmpty
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureUpdate
+.Link
+https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/update-azconnectedlicenseprofilefeature
+#>
+function Update-AzConnectedLicenseProfileFeature {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureUpdate])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Product feature name.
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enable", "Disable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Indicates the new status of the product feature.
+    ${SubscriptionStatus}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.ConnectedMachine.custom\Update-AzConnectedLicenseProfileFeature';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+The operation to update a hybrid machine.
+.Description
+The operation to update a hybrid machine.
+.Example
+Update-AzConnectedMachine -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName -PrivateLinkScopeResourceId $env.PrivateLinkScopeUri
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  [BaseProvider <String>]: The name of the base Resource Provider.
+  [BaseResourceName <String>]: The name of the base resource.
+  [BaseResourceType <String>]: The name of the base Resource Type.
+  [ExtensionName <String>]: The name of the machine extension.
+  [ExtensionType <String>]: The extensionType of the Extension being received.
+  [GatewayName <String>]: The name of the Gateway.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [LicenseName <String>]: The name of the license.
+  [LicenseProfileName <String>]: The name of the license profile.
+  [Location <String>]: The location of the Extension being received.
+  [MachineName <String>]: The name of the hybrid machine.
+  [MetadataName <String>]: Name of the HybridIdentityMetadata.
+  [Name <String>]: The name of the hybrid machine.
+  [OSType <String>]: Defines the os type.
+  [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  [Publisher <String>]: The publisher of the Extension being received.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunCommandName <String>]: The name of the run command.
+  [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
+  [SettingsResourceName <String>]: The name of the settings resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: The version of the Extension being received.
+
+OSPROFILE <IOSProfile>: Specifies the operating system settings for the hybrid machine.
+  [LinuxConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
+  [LinuxConfigurationPatchSettingsEnableHotpatching <Boolean?>]: Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+  [LinuxConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
+  [WindowsConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
+  [WindowsConfigurationPatchSettingsEnableHotpatching <Boolean?>]: Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+  [WindowsConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
+
+PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
+  [Tags <IResourceUpdateTags>]: Resource tags
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [AgentUpgradeCorrelationId <String>]: The correlation ID associated with an agent upgrade operation.
+  [AgentUpgradeDesiredVersion <String>]: Specifies the version info w.r.t AgentUpgrade for the machine.
+  [AgentUpgradeEnableAutomaticUpgrade <Boolean?>]: Specifies if the machine's agent should be upgraded
+  [IdentityType <String>]: The identity type.
+  [Kind <String>]: Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+  [LocationDataCity <String>]: The city or locality where the resource is located.
+  [LocationDataCountryOrRegion <String>]: The country or region where the resource is located
+  [LocationDataDistrict <String>]: The district, state, or province where the resource is located.
+  [LocationDataName <String>]: A canonical name for the geographic or physical location.
+  [OSProfile <IOSProfile>]: Specifies the operating system settings for the hybrid machine.
+    [LinuxConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
+    [LinuxConfigurationPatchSettingsEnableHotpatching <Boolean?>]: Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+    [LinuxConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
+    [WindowsConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
+    [WindowsConfigurationPatchSettingsEnableHotpatching <Boolean?>]: Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+    [WindowsConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
+  [ParentClusterResourceId <String>]: The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+  [PrivateLinkScopeResourceId <String>]: The resource id of the private link scope this machine is assigned to, if any.
+.Link
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachine
+#>
+function Update-AzConnectedMachine {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Alias('MachineName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the hybrid machine.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='Update')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The correlation ID passed in from RSM per upgrade.
+    ${AgentUpgradeCorrelationId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Specifies the version info w.r.t AgentUpgrade for the machine.
+    ${AgentUpgradeDesiredVersion},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies if RSM should try to upgrade this machine
+    ${AgentUpgradeEnableAutomatic},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("SystemAssigned")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The identity type.
+    ${IdentityType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+    ${Kind},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The city or locality where the resource is located.
+    ${LocationDataCity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The country or region where the resource is located
+    ${LocationDataCountryOrRegion},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The district, state, or province where the resource is located.
+    ${LocationDataDistrict},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # A canonical name for the geographic or physical location.
+    ${LocationDataName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile]
+    # Specifies the operating system settings for the hybrid machine.
+    ${OSProfile},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+    ${ParentClusterResourceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # The resource id of the private link scope this machine is assigned to, if any.
+    ${PrivateLinkScopeResourceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate]
+    # Describes a hybrid machine Update.
+    ${Parameter},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            UpdateViaJsonString = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            UpdateViaJsonFilePath = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            Update = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            UpdateViaIdentityExpanded = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            UpdateViaIdentity = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonString', 'UpdateViaJsonFilePath', 'Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

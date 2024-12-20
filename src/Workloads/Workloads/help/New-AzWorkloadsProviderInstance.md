@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Type of manage identity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Defines the provider specific properties.
 To construct, see NOTES section for PROVIDERSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IProviderSpecificProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderSpecificProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IProviderInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderInstance
 
 ## NOTES
 

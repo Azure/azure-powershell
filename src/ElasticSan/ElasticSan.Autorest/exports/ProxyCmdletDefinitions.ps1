@@ -1128,9 +1128,9 @@ end {
 
 <#
 .Synopsis
-Create a Volume Snapshot.
+create a Volume Snapshot.
 .Description
-Create a Volume Snapshot.
+create a Volume Snapshot.
 .Example
  $volume = New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGiB 1
  New-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -CreationDataSourceId $volume.Id -Name mysnapshot
@@ -1394,9 +1394,9 @@ end {
 
 <#
 .Synopsis
-Create a Volume.
+create a Volume.
 .Description
-Create a Volume.
+create a Volume.
 .Example
 New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup/snapshots/mysnapshot'
 
@@ -1673,9 +1673,9 @@ end {
 
 <#
 .Synopsis
-Create ElasticSan.
+create ElasticSan.
 .Description
-Create ElasticSan.
+create ElasticSan.
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 
@@ -2935,9 +2935,9 @@ end {
 
 <#
 .Synopsis
-Update an Volume.
+update an Volume.
 .Description
-Update an Volume.
+update an Volume.
 .Example
 $volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGib 120
 
@@ -3199,9 +3199,9 @@ end {
 
 <#
 .Synopsis
-Update a Elastic San.
+update a Elastic San.
 .Description
-Update a Elastic San.
+update a Elastic San.
 .Example
 $elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 64 -ExtendedCapacitySizeTib 128 -Tag @{"tag3" = "value3"}
 
@@ -3788,6 +3788,8 @@ New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName m
 $useridentity = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -Name myuai
 
 New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity.Id -Encryption EncryptionAtRestWithCustomerManagedKey -KeyName mykey -KeyVaultUri "https://mykeyvault.vault.azure.net:443" -EncryptionUserAssignedIdentity $useridentity.Id -ProtocolType Iscsi
+.Example
+New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -3876,6 +3878,12 @@ param(
     [System.String]
     # Type of encryption
     ${Encryption},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Boolean]
+    # A boolean indicating whether or not Data Integrity Check is enabled
+    ${EnforceDataIntegrityCheckForIscsi},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
@@ -4337,6 +4345,8 @@ Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanNam
 $useridentity2 = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -Name myuai2
 
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity2.Id -EncryptionUserAssignedIdentity $useridentity2.Id
+.Example
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -4418,6 +4428,12 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Boolean]
+    # A boolean indicating whether or not Data Integrity Check is enabled
+    ${EnforceDataIntegrityCheckForIscsi},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerManagedKey")]

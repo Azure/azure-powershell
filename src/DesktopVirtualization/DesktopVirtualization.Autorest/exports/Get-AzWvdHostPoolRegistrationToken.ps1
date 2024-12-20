@@ -16,49 +16,54 @@
 
 <#
 .Synopsis
-Registration token of the host pool.
+Operation to list the RegistrationTokens associated with the HostPool
 .Description
-Registration token of the host pool.
+Operation to list the RegistrationTokens associated with the HostPool
 .Example
 Get-AzWvdHostPoolRegistrationToken -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 #>
 function Get-AzWvdHostPoolRegistrationToken {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo])]
-[CmdletBinding(DefaultParameterSetName='Retrieve', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Parameter(ParameterSetName='Retrieve', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the host pool within the specified resource group
     ${HostPoolName},
 
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Parameter(ParameterSetName='Retrieve', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -66,18 +71,19 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='Retrieve')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RetrieveViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -155,10 +161,11 @@ begin {
         }
 
         $mapping = @{
+            List = 'Az.DesktopVirtualization.private\Get-AzWvdHostPoolRegistrationToken_List';
             Retrieve = 'Az.DesktopVirtualization.private\Get-AzWvdHostPoolRegistrationToken_Retrieve';
             RetrieveViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdHostPoolRegistrationToken_RetrieveViaIdentity';
         }
-        if (('Retrieve') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List', 'Retrieve') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

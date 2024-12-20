@@ -15,7 +15,8 @@ Unlocks the critical operation which is protected by the resource guard
 ```
 Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName <String> -VaultName <String>
  [-DefaultProfile <PSObject>] [-ResourceGuardOperationRequest <String[]>] [-ResourceToBeDeleted <String>]
- [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,6 +159,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id of the backup vault
 
@@ -175,7 +192,7 @@ Accept wildcard characters: False
 
 ### -Token
 Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
 
 ```yaml
 Type: System.String

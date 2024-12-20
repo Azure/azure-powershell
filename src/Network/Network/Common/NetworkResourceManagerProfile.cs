@@ -2305,6 +2305,16 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityAdminRuleCollection, MNM.AdminRuleCollection>();
                 cfg.CreateMap<ANM.PSNetworkManagerScopeConnection, MNM.ScopeConnection>();
                 cfg.CreateMap<ANM.PSNetworkManagerConnection, MNM.NetworkManagerConnection>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingRule, MNM.RoutingRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingRuleCollection, MNM.RoutingRuleCollection>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingConfiguration, MNM.NetworkManagerRoutingConfiguration>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingGroupItem, MNM.NetworkManagerRoutingGroupItem>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingRuleDestination, MNM.RoutingRuleRouteDestination>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingRuleNextHop, MNM.RoutingRuleNextHop>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRule, MNM.SecurityUserRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRuleCollection, MNM.SecurityUserRuleCollection>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserConfiguration, MNM.SecurityUserConfiguration>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserGroupItem, MNM.SecurityUserGroupItem>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
@@ -2344,6 +2354,16 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AdminRuleCollection, ANM.PSNetworkManagerSecurityAdminRuleCollection>();
                 cfg.CreateMap<MNM.ScopeConnection, ANM.PSNetworkManagerScopeConnection>();
                 cfg.CreateMap<MNM.NetworkManagerConnection, ANM.PSNetworkManagerConnection>();
+                cfg.CreateMap<MNM.RoutingRule, ANM.PSNetworkManagerRoutingRule>();
+                cfg.CreateMap<MNM.RoutingRuleCollection, ANM.PSNetworkManagerRoutingRuleCollection>();
+                cfg.CreateMap<MNM.NetworkManagerRoutingConfiguration, ANM.PSNetworkManagerRoutingConfiguration>();
+                cfg.CreateMap<MNM.RoutingRuleRouteDestination, ANM.PSNetworkManagerRoutingRuleDestination>();
+                cfg.CreateMap<MNM.RoutingRuleNextHop, ANM.PSNetworkManagerRoutingRuleNextHop>();
+                cfg.CreateMap<MNM.NetworkManagerRoutingGroupItem, ANM.PSNetworkManagerRoutingGroupItem>();
+                cfg.CreateMap<MNM.SecurityUserRule, ANM.PSNetworkManagerSecurityUserRule>();
+                cfg.CreateMap<MNM.SecurityUserRuleCollection, ANM.PSNetworkManagerSecurityUserRuleCollection>();
+                cfg.CreateMap<MNM.SecurityUserConfiguration, ANM.PSNetworkManagerSecurityUserConfiguration>();
+                cfg.CreateMap<MNM.SecurityUserGroupItem, ANM.PSNetworkManagerSecurityUserGroupItem>();
 
             });
             _mapper = config.CreateMapper();

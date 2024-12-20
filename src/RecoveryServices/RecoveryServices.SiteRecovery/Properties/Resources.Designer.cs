@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -274,6 +274,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string IncorrectFabricType {
             get {
                 return ResourceManager.GetString("IncorrectFabricType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only one of the input parameters are expected not both either RecoveryAzureStorageAccountId or UseManagedDisksForReplication .
+        /// </summary>
+        internal static string IncorrectParameters {
+            get {
+                return ResourceManager.GetString("IncorrectParameters", resourceCulture);
             }
         }
         

@@ -28,7 +28,7 @@ Get-AzWorkloadsSapDatabaseInstance -Name <String> -ResourceGroupName <String> -S
 
 ### GetViaIdentity
 ```
-Get-AzWorkloadsSapDatabaseInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
+Get-AzWorkloadsSapDatabaseInstance -InputObject <ISapVirtualInstanceIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -163,12 +163,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapDatabaseInstance
 
 ## NOTES
+
+ALIASES
+
+Get-AzVISDatabaseInstance
 
 ## RELATED LINKS

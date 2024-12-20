@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Management.NetApp
         /// The Azure Resource URI for a delegated subnet. Must have the delegation
         /// Microsoft.NetApp/volumes
         /// </param>
+        /// <param name='availabilityZone'>
+        /// The Azure Resource logical availability zone which is used within zone
+        /// mapping lookup for the subscription and region. The lookup will retrieve
+        /// the physical zone where volume is placed.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -73,7 +78,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckAvailabilityResponse>> CheckFilePathAvailabilityWithHttpMessagesAsync(string location, string name, string subnetId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckAvailabilityResponse>> CheckFilePathAvailabilityWithHttpMessagesAsync(string location, string name, string subnetId, string availabilityZone = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Check if a quota is available.

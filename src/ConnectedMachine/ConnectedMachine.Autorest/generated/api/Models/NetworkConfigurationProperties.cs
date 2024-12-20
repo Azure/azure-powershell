@@ -202,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string NetworkConfigurationScopeId { get; set; }
         /// <summary>Associated Network Configuration Scope Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

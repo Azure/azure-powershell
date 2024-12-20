@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="deploymentType">Configuration Deployment Type.
-        /// Possible values include: &#39;SecurityAdmin&#39;, &#39;Connectivity&#39;</param>
+        /// Possible values include: &#39;SecurityAdmin&#39;, &#39;Connectivity&#39;, &#39;SecurityUser&#39;,
+        /// &#39;Routing&#39;</param>
 
         /// <param name="errorMessage">Error Message.
         /// </param>
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<string> ConfigurationIds {get; set; }
 
         /// <summary>
-        /// Gets or sets configuration Deployment Type. Possible values include: &#39;SecurityAdmin&#39;, &#39;Connectivity&#39;
+        /// Gets or sets configuration Deployment Type. Possible values include: &#39;SecurityAdmin&#39;, &#39;Connectivity&#39;, &#39;SecurityUser&#39;, &#39;Routing&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "deploymentType")]
         public string DeploymentType {get; set; }

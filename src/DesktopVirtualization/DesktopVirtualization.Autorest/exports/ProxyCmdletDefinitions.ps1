@@ -31,19 +31,54 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SESSIONHOSTINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -60,6 +95,8 @@ param(
     ${HostPoolName},
 
     [Parameter(ParameterSetName='Disconnect', Mandatory)]
+    [Parameter(ParameterSetName='DisconnectViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='DisconnectViaIdentitySessionHost', Mandatory)]
     [Alias('UserSessionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -74,6 +111,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Disconnect', Mandatory)]
+    [Parameter(ParameterSetName='DisconnectViaIdentityHostPool', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the session host within the specified host pool
@@ -84,14 +122,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DisconnectViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DisconnectViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
+
+    [Parameter(ParameterSetName='DisconnectViaIdentitySessionHost', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${SessionHostInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -176,8 +226,10 @@ begin {
         $mapping = @{
             Disconnect = 'Az.DesktopVirtualization.private\Disconnect-AzWvdUserSession_Disconnect';
             DisconnectViaIdentity = 'Az.DesktopVirtualization.private\Disconnect-AzWvdUserSession_DisconnectViaIdentity';
+            DisconnectViaIdentityHostPool = 'Az.DesktopVirtualization.private\Disconnect-AzWvdUserSession_DisconnectViaIdentityHostPool';
+            DisconnectViaIdentitySessionHost = 'Az.DesktopVirtualization.private\Disconnect-AzWvdUserSession_DisconnectViaIdentitySessionHost';
         }
-        if (('Disconnect') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Disconnect') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -248,29 +300,30 @@ Expand-AzWvdMsixImage -HostPoolName HostPoolName `
           -Uri ImagePathURI
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixImageUri
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixImageUri
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IExpandMsixImage
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IExpandMsixImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 
@@ -280,11 +333,13 @@ MSIXIMAGEURI <IMsixImageUri>: Represents URI referring to MSIX Image
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
 #>
 function Expand-AzWvdMsixImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IExpandMsixImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IExpandMsixImage])]
 [CmdletBinding(DefaultParameterSetName='ExpandExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Expand', Mandatory)]
     [Parameter(ParameterSetName='ExpandExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ExpandViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ExpandViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the host pool within the specified resource group
@@ -292,6 +347,8 @@ param(
 
     [Parameter(ParameterSetName='Expand', Mandatory)]
     [Parameter(ParameterSetName='ExpandExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ExpandViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ExpandViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -300,10 +357,13 @@ param(
 
     [Parameter(ParameterSetName='Expand')]
     [Parameter(ParameterSetName='ExpandExpanded')]
+    [Parameter(ParameterSetName='ExpandViaJsonFilePath')]
+    [Parameter(ParameterSetName='ExpandViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='ExpandViaIdentity', Mandatory, ValueFromPipeline)]
@@ -311,15 +371,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Expand', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ExpandViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixImageUri]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixImageUri]
     # Represents URI referring to MSIX Image
-    # To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
     ${MsixImageUri},
 
     [Parameter(ParameterSetName='ExpandExpanded')]
@@ -328,6 +386,18 @@ param(
     [System.String]
     # URI to Image
     ${Uri},
+
+    [Parameter(ParameterSetName='ExpandViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Expand operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ExpandViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Expand operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -408,8 +478,230 @@ begin {
             ExpandExpanded = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandExpanded';
             ExpandViaIdentity = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandViaIdentity';
             ExpandViaIdentityExpanded = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandViaIdentityExpanded';
+            ExpandViaJsonFilePath = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandViaJsonFilePath';
+            ExpandViaJsonString = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandViaJsonString';
         }
-        if (('Expand', 'ExpandExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Expand', 'ExpandExpanded', 'ExpandViaJsonFilePath', 'ExpandViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get an app attach package.
+.Description
+Get an app attach package.
+.Example
+Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId -ResourceGroupName resourceGroupName -Name packageName1
+.Example
+Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId -ResourceGroupName resourceGroupName
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+.Link
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdappattachpackage
+#>
+function Get-AzWvdAppAttachPackage {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage])]
+[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('AppAttachPackageName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the App Attach package
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
+    [System.String]
+    # OData filter expression.
+    # Valid properties for filtering are package name and host pool.
+    ${Filter},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DesktopVirtualization.private\Get-AzWvdAppAttachPackage_Get';
+            GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdAppAttachPackage_GetViaIdentity';
+            List = 'Az.DesktopVirtualization.private\Get-AzWvdAppAttachPackage_List';
+            List1 = 'Az.DesktopVirtualization.private\Get-AzWvdAppAttachPackage_List1';
+        }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -481,32 +773,33 @@ Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdapplicationgroup
 #>
 function Get-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroup])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -531,13 +824,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -646,7 +939,7 @@ begin {
             List = 'Az.DesktopVirtualization.private\Get-AzWvdApplicationGroup_List';
             List1 = 'Az.DesktopVirtualization.private\Get-AzWvdApplicationGroup_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -718,32 +1011,50 @@ Get-AzWvdApplication -ResourceGroupName ResourceGroupName -ApplicationGroupName 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+APPLICATIONGROUPINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdapplication
 #>
 function Get-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -755,6 +1066,7 @@ param(
     ${GroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityApplicationGroup', Mandatory)]
     [Alias('ApplicationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -775,14 +1087,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityApplicationGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ApplicationGroupInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -879,9 +1197,10 @@ begin {
         $mapping = @{
             Get = 'Az.DesktopVirtualization.private\Get-AzWvdApplication_Get';
             GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdApplication_GetViaIdentity';
+            GetViaIdentityApplicationGroup = 'Az.DesktopVirtualization.private\Get-AzWvdApplication_GetViaIdentityApplicationGroup';
             List = 'Az.DesktopVirtualization.private\Get-AzWvdApplication_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -953,32 +1272,50 @@ Get-AzWvdDesktop -ResourceGroupName ResourceGroupName -ApplicationGroupName Appl
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktop
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+APPLICATIONGROUPINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvddesktop
 #>
 function Get-AzWvdDesktop {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktop])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -989,6 +1326,7 @@ param(
     ${ApplicationGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityApplicationGroup', Mandatory)]
     [Alias('DesktopName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -1009,14 +1347,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityApplicationGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ApplicationGroupInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -1113,9 +1457,10 @@ begin {
         $mapping = @{
             Get = 'Az.DesktopVirtualization.private\Get-AzWvdDesktop_Get';
             GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdDesktop_GetViaIdentity';
+            GetViaIdentityApplicationGroup = 'Az.DesktopVirtualization.private\Get-AzWvdDesktop_GetViaIdentityApplicationGroup';
             List = 'Az.DesktopVirtualization.private\Get-AzWvdDesktop_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -1176,49 +1521,54 @@ end {
 
 <#
 .Synopsis
-Registration token of the host pool.
+Operation to list the RegistrationTokens associated with the HostPool
 .Description
-Registration token of the host pool.
+Operation to list the RegistrationTokens associated with the HostPool
 .Example
 Get-AzWvdHostPoolRegistrationToken -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 #>
 function Get-AzWvdHostPoolRegistrationToken {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo])]
-[CmdletBinding(DefaultParameterSetName='Retrieve', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Parameter(ParameterSetName='Retrieve', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the host pool within the specified resource group
     ${HostPoolName},
 
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Parameter(ParameterSetName='Retrieve', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -1226,18 +1576,19 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='Retrieve')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RetrieveViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1315,10 +1666,11 @@ begin {
         }
 
         $mapping = @{
+            List = 'Az.DesktopVirtualization.private\Get-AzWvdHostPoolRegistrationToken_List';
             Retrieve = 'Az.DesktopVirtualization.private\Get-AzWvdHostPoolRegistrationToken_Retrieve';
             RetrieveViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdHostPoolRegistrationToken_RetrieveViaIdentity';
         }
-        if (('Retrieve') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List', 'Retrieve') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -1390,32 +1742,33 @@ Get-AzWvdHostPool -ResourceGroupName ResourceGroupName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpool
 #>
 function Get-AzWvdHostPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPool])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1440,13 +1793,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -1550,7 +1903,7 @@ begin {
             List = 'Az.DesktopVirtualization.private\Get-AzWvdHostPool_List';
             List1 = 'Az.DesktopVirtualization.private\Get-AzWvdHostPool_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -1622,35 +1975,54 @@ Get-AzWvdMsixPackage -HostPoolName HostPoolName -ResourceGroupName ResourceGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdmsixpackage
 #>
 function Get-AzWvdMsixPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory)]
     [Alias('MsixPackageFullName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -1678,14 +2050,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -1782,9 +2160,10 @@ begin {
         $mapping = @{
             Get = 'Az.DesktopVirtualization.private\Get-AzWvdMsixPackage_Get';
             GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdMsixPackage_GetViaIdentity';
+            GetViaIdentityHostPool = 'Az.DesktopVirtualization.private\Get-AzWvdMsixPackage_GetViaIdentityHostPool';
             List = 'Az.DesktopVirtualization.private\Get-AzWvdMsixPackage_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -1860,40 +2239,77 @@ Get-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -HostPoo
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateEndpointConnectionWithSystemData
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPrivateEndpointConnectionWithSystemData
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+WORKSPACEINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivateendpointconnection
 #>
 function Get-AzWvdPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateEndpointConnectionWithSystemData])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPrivateEndpointConnectionWithSystemData])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
     [Alias('PrivateEndpointConnectionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
-    # The name of the private endpoint connection associated with the Azure resource
+    # The name of the private endpoint connection associated with the Azure resource.
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1914,6 +2330,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1935,8 +2352,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
 
     [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -2035,10 +2463,12 @@ begin {
             Get1 = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateEndpointConnection_Get1';
             GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateEndpointConnection_GetViaIdentity';
             GetViaIdentity1 = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateEndpointConnection_GetViaIdentity1';
+            GetViaIdentityHostPool = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateEndpointConnection_GetViaIdentityHostPool';
+            GetViaIdentityWorkspace = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateEndpointConnection_GetViaIdentityWorkspace';
             List = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateEndpointConnection_List';
             List1 = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateEndpointConnection_List1';
         }
-        if (('Get', 'Get1', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'Get1', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -2108,12 +2538,12 @@ Get-AzWvdPrivateLinkResource -ResourceGroupName ResourceGroupName -WorkspaceName
 Get-AzWvdPrivateLinkResource -ResourceGroupName ResourceGroupName -HostPoolName hostpoolName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateLinkResource
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPrivateLinkResource
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivatelinkresource
 #>
 function Get-AzWvdPrivateLinkResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateLinkResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPrivateLinkResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2128,6 +2558,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -2238,7 +2669,7 @@ begin {
             List = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateLinkResource_List';
             List1 = 'Az.DesktopVirtualization.private\Get-AzWvdPrivateLinkResource_List1';
         }
-        if (('List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -2308,32 +2739,50 @@ Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName sc
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SCALINGPLANINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplanpersonalschedule
 #>
 function Get-AzWvdScalingPlanPersonalSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2352,6 +2801,7 @@ param(
     ${ScalingPlanName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityScalingPlan', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the ScalingPlanSchedule
@@ -2363,14 +2813,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ScalingPlanInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -2467,9 +2923,10 @@ begin {
         $mapping = @{
             Get = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlanPersonalSchedule_Get';
             GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlanPersonalSchedule_GetViaIdentity';
+            GetViaIdentityScalingPlan = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlanPersonalSchedule_GetViaIdentityScalingPlan';
             List = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlanPersonalSchedule_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -2539,32 +2996,50 @@ Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName sc
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SCALINGPLANINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplanpooledschedule
 #>
 function Get-AzWvdScalingPlanPooledSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2583,6 +3058,7 @@ param(
     ${ScalingPlanName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityScalingPlan', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the ScalingPlanSchedule
@@ -2594,14 +3070,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ScalingPlanInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -2698,9 +3180,10 @@ begin {
         $mapping = @{
             Get = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlanPooledSchedule_Get';
             GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlanPooledSchedule_GetViaIdentity';
+            GetViaIdentityScalingPlan = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlanPooledSchedule_GetViaIdentityScalingPlan';
             List = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlanPooledSchedule_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -2772,32 +3255,33 @@ Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
 #>
 function Get-AzWvdScalingPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlan])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2824,13 +3308,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List2', Mandatory)]
@@ -2944,7 +3428,7 @@ begin {
             List1 = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlan_List1';
             List2 = 'Az.DesktopVirtualization.private\Get-AzWvdScalingPlan_List2';
         }
-        if (('Get', 'List', 'List1', 'List2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List', 'List1', 'List2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -3016,32 +3500,50 @@ Get-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHost
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhost
 #>
 function Get-AzWvdSessionHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHost])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3052,6 +3554,7 @@ param(
     ${HostPoolName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory)]
     [Alias('SessionHostName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -3072,14 +3575,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -3176,9 +3685,10 @@ begin {
         $mapping = @{
             Get = 'Az.DesktopVirtualization.private\Get-AzWvdSessionHost_Get';
             GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdSessionHost_GetViaIdentity';
+            GetViaIdentityHostPool = 'Az.DesktopVirtualization.private\Get-AzWvdSessionHost_GetViaIdentityHostPool';
             List = 'Az.DesktopVirtualization.private\Get-AzWvdSessionHost_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -3246,12 +3756,12 @@ List start menu items in the given application group.
 Get-AzWvdStartMenuItem -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IStartMenuItem
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IStartMenuItem
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdstartmenuitem
 #>
 function Get-AzWvdStartMenuItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IStartMenuItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IStartMenuItem])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3272,6 +3782,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -3369,7 +3880,7 @@ begin {
         $mapping = @{
             List = 'Az.DesktopVirtualization.private\Get-AzWvdStartMenuItem_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -3443,32 +3954,67 @@ Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IUserSession
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserSession
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SESSIONHOSTINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdusersession
 #>
 function Get-AzWvdUserSession {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IUserSession])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserSession])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3480,6 +4026,8 @@ param(
     ${HostPoolName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySessionHost', Mandatory)]
     [Alias('UserSessionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -3496,6 +4044,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory)]
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -3509,14 +4058,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySessionHost', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${SessionHostInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -3623,10 +4184,12 @@ begin {
         $mapping = @{
             Get = 'Az.DesktopVirtualization.private\Get-AzWvdUserSession_Get';
             GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdUserSession_GetViaIdentity';
+            GetViaIdentityHostPool = 'Az.DesktopVirtualization.private\Get-AzWvdUserSession_GetViaIdentityHostPool';
+            GetViaIdentitySessionHost = 'Az.DesktopVirtualization.private\Get-AzWvdUserSession_GetViaIdentitySessionHost';
             List = 'Az.DesktopVirtualization.private\Get-AzWvdUserSession_List';
             List1 = 'Az.DesktopVirtualization.private\Get-AzWvdUserSession_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -3698,32 +4261,33 @@ Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdworkspace
 #>
 function Get-AzWvdWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3748,13 +4312,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -3855,7 +4419,7 @@ begin {
             List = 'Az.DesktopVirtualization.private\Get-AzWvdWorkspace_List';
             List1 = 'Az.DesktopVirtualization.private\Get-AzWvdWorkspace_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -3916,9 +4480,704 @@ end {
 
 <#
 .Synopsis
-Create or update an applicationGroup.
+Gets information from a package given the path to the package.
 .Description
-Create or update an applicationGroup.
+Gets information from a package given the path to the package.
+.Example
+Import-AzWvdAppAttachPackageInfo -HostPoolName HostPoolName `
+          -ResourceGroupName resourceGroupName `
+          -SubscriptionId SubscriptionId `
+          -Path ImagePathURI
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IImportPackageInfoRequest
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+IMPORTPACKAGEINFOREQUEST <IImportPackageInfoRequest>: Information to import app attach package
+  [PackageArchitecture <String>]: Possible device architectures that an app attach package can be configured for
+  [Path <String>]: URI to Image
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+.Link
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/import-azwvdappattachpackageinfo
+#>
+function Import-AzWvdAppAttachPackageInfo {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage])]
+[CmdletBinding(DefaultParameterSetName='ImportExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Import', Mandatory)]
+    [Parameter(ParameterSetName='ImportExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ImportViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ImportViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the host pool within the specified resource group
+    ${HostPoolName},
+
+    [Parameter(ParameterSetName='Import', Mandatory)]
+    [Parameter(ParameterSetName='ImportExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ImportViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ImportViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Import')]
+    [Parameter(ParameterSetName='ImportExpanded')]
+    [Parameter(ParameterSetName='ImportViaJsonFilePath')]
+    [Parameter(ParameterSetName='ImportViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ImportViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ImportViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Import', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ImportViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IImportPackageInfoRequest]
+    # Information to import app attach package
+    ${ImportPackageInfoRequest},
+
+    [Parameter(ParameterSetName='ImportExpanded')]
+    [Parameter(ParameterSetName='ImportViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("ARM", "ARM64", "x86", "x64", "Neutral", "x86a64", "ALL")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Possible device architectures that an app attach package can be configured for
+    ${PackageArchitecture},
+
+    [Parameter(ParameterSetName='ImportExpanded')]
+    [Parameter(ParameterSetName='ImportViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # URI to Image
+    ${Path},
+
+    [Parameter(ParameterSetName='ImportViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Import operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ImportViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Import operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Import = 'Az.DesktopVirtualization.private\Import-AzWvdAppAttachPackageInfo_Import';
+            ImportExpanded = 'Az.DesktopVirtualization.private\Import-AzWvdAppAttachPackageInfo_ImportExpanded';
+            ImportViaIdentity = 'Az.DesktopVirtualization.private\Import-AzWvdAppAttachPackageInfo_ImportViaIdentity';
+            ImportViaIdentityExpanded = 'Az.DesktopVirtualization.private\Import-AzWvdAppAttachPackageInfo_ImportViaIdentityExpanded';
+            ImportViaJsonFilePath = 'Az.DesktopVirtualization.private\Import-AzWvdAppAttachPackageInfo_ImportViaJsonFilePath';
+            ImportViaJsonString = 'Az.DesktopVirtualization.private\Import-AzWvdAppAttachPackageInfo_ImportViaJsonString';
+        }
+        if (('Import', 'ImportExpanded', 'ImportViaJsonFilePath', 'ImportViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+create an App Attach package.
+.Description
+create an App Attach package.
+.Example
+$apps = "<PackagedApplication>"
+$deps = "<PackageDependencies>"
+New-AzWvdAppAttachPackage -Name PackageArmObjectName `
+                         -ResourceGroupName ResourceGroupName `
+                         -SubscriptionId SubscriptionId `
+                         -Location location `
+                         -ImageDisplayName displayname `
+                         -ImagePath imageURI `
+                         -ImageIsActive:$false `
+                         -ImageIsRegularRegistration:$false `
+                         -ImageLastUpdated datelastupdated `
+                         -ImagePackageApplication $apps `
+                         -ImagePackageDependency $deps `
+                         -ImagePackageFamilyName packagefamilyname `
+                         -ImagePackageName packagename `
+                         -ImagePackageFullName packagefullname `
+                         -ImagePackageRelativePath packagerelativepath `
+                         -ImageVersion packageversion `
+                         -ImageCertificateExpiry certificateExpiry `
+                         -ImageCertificateName certificateName `
+                         -KeyVaultUrl keyvaultUrl `
+                         -FailHealthCheckOnStagingFailure 'Unhealthy'
+.Example
+New-AzWvdAppAttachPackage -Name PackageArmObjectName `
+                         -ResourceGroupName ResourceGroupName `
+                         -SubscriptionId SubscriptionId `
+                         -Location location `
+                         -DisplayName displayname `
+                         -AppAttachPackage imageObject `
+                         -IsActive:$false `
+                         -IsLogonBlocking:$false `
+                         -KeyVaultUrl keyvaultUrl `
+                         -FailHealthCheckOnStagingFailure 'Unhealthy' `
+                         -HostpoolReference hostpoolReference `
+                         -PassThru
+
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackage
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+APPATTACHPACKAGE <AppAttachPackage>: 
+  Location <String>: The geo-location where the resource lives
+  [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
+  [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
+  [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
+  [ImageCertificateName <String>]: Certificate name found in the appxmanifest.xml. 
+  [ImageDisplayName <String>]: User friendly Name to be displayed in the portal. 
+  [ImageIsActive <Boolean?>]: Make this version of the package the active one across the hostpool. 
+  [ImageIsPackageTimestamped <String>]: Is package timestamped so it can ignore the certificate expiry date
+  [ImageIsRegularRegistration <Boolean?>]: Specifies how to register Package in feed.
+  [ImageLastUpdated <DateTime?>]: Date Package was last updated, found in the appxmanifest.xml. 
+  [ImagePackageAlias <String>]: Alias of App Attach Package. Assigned at import time
+  [ImagePackageApplication <List<IMsixPackageApplications>>]: List of package applications. 
+    [AppId <String>]: Package Application Id, found in appxmanifest.xml.
+    [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+    [Description <String>]: Description of Package Application.
+    [FriendlyName <String>]: User friendly name.
+    [IconImageName <String>]: User friendly name.
+    [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
+    [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
+  [ImagePackageDependency <List<IMsixPackageDependencies>>]: List of package dependencies. 
+    [DependencyName <String>]: Name of package dependency.
+    [MinVersion <String>]: Dependency version required.
+    [Publisher <String>]: Name of dependency publisher.
+  [ImagePackageFamilyName <String>]: Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
+  [ImagePackageFullName <String>]: Package Full Name from appxmanifest.xml. 
+  [ImagePackageName <String>]: Package Name from appxmanifest.xml. 
+  [ImagePackageRelativePath <String>]: Relative Path to the package inside the image. 
+  [ImagePath <String>]: VHD/CIM image path on Network Share.
+  [ImageVersion <String>]: Package version found in the appxmanifest.xml. 
+  [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications. 
+  [AppId <String>]: Package Application Id, found in appxmanifest.xml.
+  [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+  [Description <String>]: Description of Package Application.
+  [FriendlyName <String>]: User friendly name.
+  [IconImageName <String>]: User friendly name.
+  [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
+  [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
+
+IMAGEPACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
+  [DependencyName <String>]: Name of package dependency.
+  [MinVersion <String>]: Dependency version required.
+  [Publisher <String>]: Name of dependency publisher.
+.Link
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdappattachpackage
+#>
+function New-AzWvdAppAttachPackage {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('AppAttachPackageName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the App Attach package
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ImageObject', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Unhealthy", "NeedsAssistance", "DoNotFail")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Parameter indicating how the health check should behave if this package fails staging
+    ${FailHealthCheckOnStagingFailure},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String[]]
+    # List of Hostpool resource Ids.
+    ${HostPoolReference},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.DateTime]
+    # Date certificate expires, found in the appxmanifest.xml.
+    ${ImageCertificateExpiry},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Certificate name found in the appxmanifest.xml.
+    ${ImageCertificateName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Alias('DisplayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # User friendly Name to be displayed in the portal.
+    ${ImageDisplayName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Alias('IsActive')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Make this version of the package the active one across the hostpool.
+    ${ImageIsActive},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Timestamped", "NotTimestamped")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Is package timestamped so it can ignore the certificate expiry date
+    ${ImageIsPackageTimestamped},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Alias('IsRegularRegistration', 'IsLogonBlocking')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies how to register Package in feed.
+    ${ImageIsRegularRegistration},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.DateTime]
+    # Date Package was last updated, found in the appxmanifest.xml.
+    ${ImageLastUpdated},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Alias of App Attach Package.
+    # Assigned at import time
+    ${ImagePackageAlias},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications[]]
+    # List of package applications.
+    ${ImagePackageApplication},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies[]]
+    # List of package dependencies.
+    ${ImagePackageDependency},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Package Family Name from appxmanifest.xml.
+    # Contains Package Name and Publisher name.
+    ${ImagePackageFamilyName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Package Full Name from appxmanifest.xml.
+    ${ImagePackageFullName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Package Name from appxmanifest.xml.
+    ${ImagePackageName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Relative Path to the package inside the image.
+    ${ImagePackageRelativePath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # VHD/CIM image path on Network Share.
+    ${ImagePath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Package version found in the appxmanifest.xml.
+    ${ImageVersion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='ImageObject', DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # URL path to certificate name located in keyVault
+    ${KeyVaultUrl},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='ImageObject', Position=0, Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackage]
+    # 
+    ${AppAttachPackage},
+
+    [Parameter(ParameterSetName='ImageObject')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    ${PassThru},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdAppAttachPackage_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdAppAttachPackage_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdAppAttachPackage_CreateViaJsonString';
+            ImageObject = 'Az.DesktopVirtualization.custom\New-AzWvdAppAttachPackage_ImageObject';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'ImageObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+create an applicationGroup.
+.Description
+create an applicationGroup.
 .Example
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Name ApplicationGroupName `
@@ -3939,12 +5198,12 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -ShowInFeed
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroup
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplicationgroup
 #>
 function New-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3966,55 +5225,57 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("RemoteApp", "Desktop")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType]
+    [System.String]
     # Resource Type of ApplicationGroup.
     ${ApplicationGroupType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # HostPool arm path of ApplicationGroup.
     ${HostPoolArmPath},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Description of ApplicationGroup.
-    ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Friendly name of ApplicationGroup.
-    ${FriendlyName},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
-    # ApiApps are a kind of Microsoft.Web/sites type.
-    # If supported, the resource provider must validate and persist this value.
-    ${Kind},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Description of ApplicationGroup.
+    ${Description},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Friendly name of ApplicationGroup.
+    ${FriendlyName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SystemAssigned")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # The identity type.
+    ${IdentityType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+    # E.g.
+    # ApiApps are a kind of Microsoft.Web/sites type.
+    # If supported, the resource provider must validate and persist this value.
+    ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The fully qualified resource ID of the resource that manages this resource.
@@ -4022,13 +5283,13 @@ param(
     # If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
     ${ManagedBy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # A user defined name of the 3rd Party Artifact that is being procured.
     ${PlanName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The 3rd Party artifact that is being procured.
@@ -4037,13 +5298,13 @@ param(
     # Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
     ${PlanProduct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
     ${PlanPromotionCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The publisher of the 3rd Party Artifact that is being bought.
@@ -4051,59 +5312,72 @@ param(
     # NewRelic
     ${PlanPublisher},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The version of the desired product/artifact.
     ${PlanVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Boolean representing whether the applicationGroup is show in the feed.
     ${ShowInFeed},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # If the SKU supports scale out/in then the capacity integer should be included.
     # If scale out/in is not possible for the resource this may be omitted.
     ${SkuCapacity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # If the service has different generations of hardware, for the same SKU, then that can be captured here.
     ${SkuFamily},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Ex - P3.
+    # E.g.
+    # P3.
     # It is typically a letter+number code
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The SKU size.
     # When the name field is the combination of tier and some other value, this would be the standalone code.
     ${SkuSize},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceModelWithAllowedPropertySetTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4181,8 +5455,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdApplicationGroup_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdApplicationGroup_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdApplicationGroup_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -4243,9 +5519,9 @@ end {
 
 <#
 .Synopsis
-Create or update an application.
+create an application.
 .Description
-Create or update an application.
+create an application.
 .Example
 New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -4259,12 +5535,12 @@ New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -ShowInPortal:$true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplication
 #>
 function New-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4288,33 +5564,38 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting]
-    # Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
-    ${CommandLineSetting},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AppAlias', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("DoNotAllow", "Allow", "Require")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
+    ${CommandLineSetting},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AppAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # Description of Application.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AppAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # Friendly name of Application.
     ${FriendlyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AppAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether to show the RemoteApp program in the RD Web Access server.
@@ -4327,9 +5608,9 @@ param(
     ${AppAlias},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("InBuilt", "MsixApplication")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType]
+    [System.String]
     # Resource Type of Application.
     ${ApplicationType},
 
@@ -4368,6 +5649,18 @@ param(
     [System.String]
     # Specifies the package family name for MSIX applications
     ${MsixPackageFamilyName},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4445,9 +5738,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdApplication_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdApplication_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdApplication_CreateViaJsonString';
             AppAlias = 'Az.DesktopVirtualization.custom\New-AzWvdApplication_AppAlias';
         }
-        if (('CreateExpanded', 'AppAlias') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'AppAlias') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -4508,9 +5803,9 @@ end {
 
 <#
 .Synopsis
-Create or update a host pool.
+create a host pool.
 .Description
-Create or update a host pool.
+create a host pool.
 .Example
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -4551,20 +5846,20 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -ValidationEnvironment:$false
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AGENTUPDATEMAINTENANCEWINDOW <IMaintenanceWindowProperties[]>: List of maintenance windows. Maintenance windows are 2 hours long.
-  [DayOfWeek <DayOfWeek?>]: Day of the week.
+  [DayOfWeek <String>]: Day of the week.
   [Hour <Int32?>]: The update start hour of the day. (0 - 23)
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
 #>
 function New-AzWvdHostPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4581,47 +5876,52 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType]
-    # HostPool type for desktop.
-    ${HostPoolType},
-
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType]
-    # The type of the load balancer.
-    ${LoadBalancerType},
-
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType]
-    # The type of preferred application group type, default to Desktop Application Group
-    ${PreferredAppGroupType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='FullSenerioCreate')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FullScenarioCreate', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Personal", "Pooled", "BYODesktop")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # HostPool type for desktop.
+    ${HostPoolType},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FullScenarioCreate', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst", "Persistent")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The type of the load balancer.
+    ${LoadBalancerType},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FullScenarioCreate', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FullScenarioCreate', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Desktop", "RailApplications")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The type of preferred application group type, default to Desktop Application Group
+    ${PreferredAppGroupType},
+
+    [Parameter(ParameterSetName='FullScenarioCreate')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # Desktop App Group Name
     ${DesktopAppGroupName},
 
-    [Parameter(ParameterSetName='FullSenerioCreate')]
+    [Parameter(ParameterSetName='FullScenarioCreate')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # Workspace Name
@@ -4630,10 +5930,9 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMaintenanceWindowProperties[]]
     # List of maintenance windows.
     # Maintenance windows are 2 hours long.
-    # To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
     ${AgentUpdateMaintenanceWindow},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4644,9 +5943,9 @@ param(
     ${AgentUpdateMaintenanceWindowTimeZone},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostComponentUpdateType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Scheduled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostComponentUpdateType]
+    [System.String]
     # The type of maintenance for session host components.
     ${AgentUpdateType},
 
@@ -4681,16 +5980,17 @@ param(
     ${FriendlyName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SystemAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType]
+    [System.String]
     # The identity type.
     ${IdentityType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
+    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+    # E.g.
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
@@ -4710,9 +6010,9 @@ param(
     ${MaxSessionLimit},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Automatic", "Direct")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType]
+    [System.String]
     # PersonalDesktopAssignment type for HostPool.
     ${PersonalDesktopAssignmentType},
 
@@ -4752,9 +6052,9 @@ param(
     ${PlanVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostpoolPublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enabled", "Disabled", "EnabledForSessionHostsOnly", "EnabledForClientsOnly")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostpoolPublicNetworkAccess]
+    [System.String]
     # Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
     ${PublicNetworkAccess},
 
@@ -4765,9 +6065,9 @@ param(
     ${RegistrationInfoToken},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Delete", "None", "Update")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation]
+    [System.String]
     # The type of resetting the token.
     ${RegistrationTokenOperation},
 
@@ -4794,7 +6094,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Ex - P3.
+    # E.g.
+    # P3.
     # It is typically a letter+number code
     ${SkuName},
 
@@ -4806,9 +6107,9 @@ param(
     ${SkuSize},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
 
@@ -4825,9 +6126,9 @@ param(
     ${SsoClientSecretKeyVaultPath},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SharedKey", "Certificate", "SharedKeyInKeyVault", "CertificateInKeyVault")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType]
+    [System.String]
     # The type of single sign on Secret Type.
     ${SsoSecretType},
 
@@ -4845,7 +6146,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceModelWithAllowedPropertySetTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -4861,6 +6162,18 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Is validation environment.
     ${ValidationEnvironment},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4938,9 +6251,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdHostPool_CreateExpanded';
-            FullSenerioCreate = 'Az.DesktopVirtualization.custom\New-AzWvdHostPool_FullSenerioCreate';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdHostPool_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdHostPool_CreateViaJsonString';
+            FullScenarioCreate = 'Az.DesktopVirtualization.custom\New-AzWvdHostPool_FullScenarioCreate';
         }
-        if (('CreateExpanded', 'FullSenerioCreate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'FullScenarioCreate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -5001,9 +6316,9 @@ end {
 
 <#
 .Synopsis
-Create or update a MSIX package.
+create a MSIX package.
 .Description
-Create or update a MSIX package.
+create a MSIX package.
 .Example
 New-AzWvdMsixPackage -HostPoolName HostPoolName `
                      -ResourceGroupName resourceGroupName `
@@ -5030,7 +6345,7 @@ New-AzWvdMsixPackage -FullName PackageFullName `
                      -Version packageversion
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5053,7 +6368,7 @@ PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies.
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
 #>
 function New-AzWvdMsixPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5070,6 +6385,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('MsixPackageFullName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -5081,27 +6398,32 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='PackageAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # User friendly Name to be displayed in the portal.
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='PackageAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # VHD/CIM image path on Network Share.
     ${ImagePath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='PackageAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.Management.Automation.SwitchParameter]
     # Make this version of the package the active one across the hostpool.
     ${IsActive},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='PackageAlias')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.Management.Automation.SwitchParameter]
     # Specifies how to register Package in feed.
@@ -5122,19 +6444,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications[]]
     # List of package applications.
-    # 
-    # To construct, see NOTES section for PACKAGEAPPLICATION properties and create a hash table.
     ${PackageApplication},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies[]]
     # List of package dependencies.
-    # 
-    # To construct, see NOTES section for PACKAGEDEPENDENCY properties and create a hash table.
     ${PackageDependency},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -5159,8 +6477,20 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Package Version found in the appxmanifest.xml.
+    # Package version found in the appxmanifest.xml.
     ${Version},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5238,9 +6568,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdMsixPackage_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdMsixPackage_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdMsixPackage_CreateViaJsonString';
             PackageAlias = 'Az.DesktopVirtualization.custom\New-AzWvdMsixPackage_PackageAlias';
         }
-        if (('CreateExpanded', 'PackageAlias') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'PackageAlias') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -5301,9 +6633,9 @@ end {
 
 <#
 .Synopsis
-Create or update a ScalingPlanPersonalSchedule.
+create a ScalingPlanPersonalSchedule.
 .Description
-Create or update a ScalingPlanPersonalSchedule.
+create a ScalingPlanPersonalSchedule.
 .Example
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -5339,12 +6671,12 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -OffPeakMinutesToWaitOnLogoff 10
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplanpersonalschedule
 #>
 function New-AzWvdScalingPlanPersonalSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5371,203 +6703,216 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]]
+    [System.String[]]
     # Set of days of the week on which this schedule is active.
     ${DaysOfWeek},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the off-peak period.
     ${OffPeakActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the off-peak period.
     ${OffPeakActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period.
     ${OffPeakMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
     ${OffPeakMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${OffPeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${OffPeakStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
     ${OffPeakStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the peak period.
     ${PeakActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the peak period.
     ${PeakActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period.
     ${PeakMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
     ${PeakMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${PeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${PeakStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the peak phase.
     ${PeakStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the ramp down period.
     ${RampDownActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the ramp down period.
     ${RampDownActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period.
     ${RampDownMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
     ${RampDownMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampDownStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampDownStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
     ${RampDownStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the ramp up period.
     ${RampUpActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the ramp up period.
     ${RampUpActionOnLogoff},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "WithAssignedUser", "All")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior]
+    [System.String]
     # The desired startup behavior during the ramp up period for personal vms in the hostpool.
     ${RampUpAutoStartHost},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
     ${RampUpMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
     ${RampUpMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampUpStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampUpStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
     # If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
     ${RampUpStartVMOnConnect},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5645,8 +6990,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPersonalSchedule_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPersonalSchedule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPersonalSchedule_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -5707,9 +7054,9 @@ end {
 
 <#
 .Synopsis
-Create or update a ScalingPlanPooledSchedule.
+create a ScalingPlanPooledSchedule.
 .Description
-Create or update a ScalingPlanPooledSchedule.
+create a ScalingPlanPooledSchedule.
 .Example
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -5737,12 +7084,12 @@ New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -OffPeakLoadBalancingAlgorithm DepthFirst
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedule
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplanpooledschedule
 #>
 function New-AzWvdScalingPlanPooledSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5769,140 +7116,153 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]]
+    [System.String[]]
     # Set of days of the week on which this schedule is active.
     ${DaysOfWeek},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]
+    [System.String]
     # Load balancing algorithm for off-peak period.
     ${OffPeakLoadBalancingAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${OffPeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${OffPeakStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]
+    [System.String]
     # Load balancing algorithm for peak period.
     ${PeakLoadBalancingAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${PeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${PeakStartTimeMinute},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Capacity threshold for ramp down period.
     ${RampDownCapacityThresholdPct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Should users be logged off forcefully from hosts.
     ${RampDownForceLogoffUser},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]
+    [System.String]
     # Load balancing algorithm for ramp down period.
     ${RampDownLoadBalancingAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Minimum host percentage for ramp down period.
     ${RampDownMinimumHostsPct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Notification message for users during ramp down period.
     ${RampDownNotificationMessage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampDownStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampDownStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StopHostsWhen])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("ZeroSessions", "ZeroActiveSessions")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StopHostsWhen]
+    [System.String]
     # Specifies when to stop hosts during ramp down period.
     ${RampDownStopHostsWhen},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Number of minutes to wait to stop hosts during ramp down period.
     ${RampDownWaitTimeMinute},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Capacity threshold for ramp up period.
     ${RampUpCapacityThresholdPct},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]
+    [System.String]
     # Load balancing algorithm for ramp up period.
     ${RampUpLoadBalancingAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Minimum host percentage for ramp up period.
     ${RampUpMinimumHostsPct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampUpStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampUpStartTimeMinute},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5980,8 +7340,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPooledSchedule_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPooledSchedule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPooledSchedule_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -6042,9 +7404,9 @@ end {
 
 <#
 .Synopsis
-Create or update a scaling plan.
+create a scaling plan.
 .Description
-Create or update a scaling plan.
+create a scaling plan.
 .Example
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -6115,7 +7477,7 @@ New-AzWvdScalingPlan `
             )
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6126,25 +7488,25 @@ HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReferenc
   [ScalingPlanEnabled <Boolean?>]: Is the scaling plan enabled for this hostpool.
 
 SCHEDULE <IScalingSchedule[]>: List of ScalingPlanPooledSchedule definitions.
-  [DaysOfWeek <String[]>]: Set of days of the week on which this schedule is active.
+  [DaysOfWeek <List<String>>]: Set of days of the week on which this schedule is active.
   [Name <String>]: Name of the ScalingPlanPooledSchedule.
-  [OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for off-peak period.
+  [OffPeakLoadBalancingAlgorithm <String>]: Load balancing algorithm for off-peak period.
   [OffPeakStartTimeHour <Int32?>]: The hour.
   [OffPeakStartTimeMinute <Int32?>]: The minute.
-  [PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for peak period.
+  [PeakLoadBalancingAlgorithm <String>]: Load balancing algorithm for peak period.
   [PeakStartTimeHour <Int32?>]: The hour.
   [PeakStartTimeMinute <Int32?>]: The minute.
   [RampDownCapacityThresholdPct <Int32?>]: Capacity threshold for ramp down period.
   [RampDownForceLogoffUser <Boolean?>]: Should users be logged off forcefully from hosts.
-  [RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for ramp down period.
+  [RampDownLoadBalancingAlgorithm <String>]: Load balancing algorithm for ramp down period.
   [RampDownMinimumHostsPct <Int32?>]: Minimum host percentage for ramp down period.
   [RampDownNotificationMessage <String>]: Notification message for users during ramp down period.
   [RampDownStartTimeHour <Int32?>]: The hour.
   [RampDownStartTimeMinute <Int32?>]: The minute.
-  [RampDownStopHostsWhen <StopHostsWhen?>]: Specifies when to stop hosts during ramp down period.
+  [RampDownStopHostsWhen <String>]: Specifies when to stop hosts during ramp down period.
   [RampDownWaitTimeMinute <Int32?>]: Number of minutes to wait to stop hosts during ramp down period.
   [RampUpCapacityThresholdPct <Int32?>]: Capacity threshold for ramp up period.
-  [RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for ramp up period.
+  [RampUpLoadBalancingAlgorithm <String>]: Load balancing algorithm for ramp up period.
   [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
   [RampUpStartTimeHour <Int32?>]: The hour.
   [RampUpStartTimeMinute <Int32?>]: The minute.
@@ -6152,7 +7514,7 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingPlanPooledSchedule definitions.
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplan
 #>
 function New-AzWvdScalingPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6174,69 +7536,70 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Timezone of the scaling plan.
-    ${TimeZone},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Description of scaling plan.
-    ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Exclusion tag for scaling plan.
-    ${ExclusionTag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # User friendly name of scaling plan.
-    ${FriendlyName},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]]
-    # List of ScalingHostPoolReference definitions.
-    # To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
-    ${HostPoolReference},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType]
-    # HostPool type for desktop.
-    ${HostPoolType},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
-    # ApiApps are a kind of Microsoft.Web/sites type.
-    # If supported, the resource provider must validate and persist this value.
-    ${Kind},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Timezone of the scaling plan.
+    ${TimeZone},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Description of scaling plan.
+    ${Description},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Exclusion tag for scaling plan.
+    ${ExclusionTag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # User friendly name of scaling plan.
+    ${FriendlyName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingHostPoolReference[]]
+    # List of ScalingHostPoolReference definitions.
+    ${HostPoolReference},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Pooled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # HostPool type for desktop.
+    ${HostPoolType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SystemAssigned")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # The identity type.
+    ${IdentityType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+    # E.g.
+    # ApiApps are a kind of Microsoft.Web/sites type.
+    # If supported, the resource provider must validate and persist this value.
+    ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The fully qualified resource ID of the resource that manages this resource.
@@ -6244,13 +7607,13 @@ param(
     # If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
     ${ManagedBy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # A user defined name of the 3rd Party Artifact that is being procured.
     ${PlanName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The 3rd Party artifact that is being procured.
@@ -6259,13 +7622,13 @@ param(
     # Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
     ${PlanProduct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
     ${PlanPromotionCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The publisher of the 3rd Party Artifact that is being bought.
@@ -6273,61 +7636,73 @@ param(
     # NewRelic
     ${PlanPublisher},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The version of the desired product/artifact.
     ${PlanVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule[]]
     # List of ScalingPlanPooledSchedule definitions.
-    # To construct, see NOTES section for SCHEDULE properties and create a hash table.
     ${Schedule},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # If the SKU supports scale out/in then the capacity integer should be included.
     # If scale out/in is not possible for the resource this may be omitted.
     ${SkuCapacity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # If the service has different generations of hardware, for the same SKU, then that can be captured here.
     ${SkuFamily},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Ex - P3.
+    # E.g.
+    # P3.
     # It is typically a letter+number code
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The SKU size.
     # When the name field is the combination of tier and some other value, this would be the standalone code.
     ${SkuSize},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceModelWithAllowedPropertySetTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6405,8 +7780,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlan_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlan_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlan_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -6467,9 +7844,9 @@ end {
 
 <#
 .Synopsis
-Create or update a workspace.
+create a workspace.
 .Description
-Create or update a workspace.
+create a workspace.
 .Example
 New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -6486,12 +7863,12 @@ New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Description 'Description'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdworkspace
 #>
 function New-AzWvdWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6513,49 +7890,51 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String[]]
     # List of applicationGroup resource Ids.
     ${ApplicationGroupReference},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Description of Workspace.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Friendly name of Workspace.
     ${FriendlyName},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SystemAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType]
+    [System.String]
     # The identity type.
     ${IdentityType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
+    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+    # E.g.
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The fully qualified resource ID of the resource that manages this resource.
@@ -6563,13 +7942,13 @@ param(
     # If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
     ${ManagedBy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # A user defined name of the 3rd Party Artifact that is being procured.
     ${PlanName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The 3rd Party artifact that is being procured.
@@ -6578,13 +7957,13 @@ param(
     # Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
     ${PlanProduct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
     ${PlanPromotionCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The publisher of the 3rd Party Artifact that is being bought.
@@ -6592,60 +7971,73 @@ param(
     # NewRelic
     ${PlanPublisher},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The version of the desired product/artifact.
     ${PlanVersion},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PublicNetworkAccess])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PublicNetworkAccess]
+    [System.String]
     # Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # If the SKU supports scale out/in then the capacity integer should be included.
     # If scale out/in is not possible for the resource this may be omitted.
     ${SkuCapacity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # If the service has different generations of hardware, for the same SKU, then that can be captured here.
     ${SkuFamily},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Ex - P3.
+    # E.g.
+    # P3.
     # It is typically a letter+number code
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The SKU size.
     # When the name field is the combination of tier and some other value, this would be the standalone code.
     ${SkuSize},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceModelWithAllowedPropertySetTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6723,8 +8115,221 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdWorkspace_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdWorkspace_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdWorkspace_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Remove an App Attach Package.
+.Description
+Remove an App Attach Package.
+.Example
+Remove-AzWvdAppAttachPackage -ResourceGroupName ResourceGroupName -Name HostPoolName
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+.Link
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdappattachpackage
+#>
+function Remove-AzWvdAppAttachPackage {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Alias('AppAttachPackageName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the App Attach package
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdAppAttachPackage_Delete';
+            DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdAppAttachPackage_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -6801,18 +8406,19 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -6841,13 +8447,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -6934,7 +8540,7 @@ begin {
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdApplicationGroup_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdApplicationGroup_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -7010,19 +8616,37 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+APPLICATIONGROUPINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -7040,6 +8664,7 @@ param(
     ${GroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityApplicationGroup', Mandatory)]
     [Alias('ApplicationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -7058,14 +8683,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityApplicationGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ApplicationGroupInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -7150,8 +8781,9 @@ begin {
         $mapping = @{
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdApplication_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdApplication_DeleteViaIdentity';
+            DeleteViaIdentityApplicationGroup = 'Az.DesktopVirtualization.private\Remove-AzWvdApplication_DeleteViaIdentityApplicationGroup';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -7228,18 +8860,19 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -7268,13 +8901,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -7367,7 +9000,7 @@ begin {
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdHostPool_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdHostPool_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -7443,19 +9076,37 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -7466,6 +9117,7 @@ function Remove-AzWvdMsixPackage {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory)]
     [Alias('MsixPackageFullName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -7490,14 +9142,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -7582,8 +9240,9 @@ begin {
         $mapping = @{
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdMsixPackage_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdMsixPackage_DeleteViaIdentity';
+            DeleteViaIdentityHostPool = 'Az.DesktopVirtualization.private\Remove-AzWvdMsixPackage_DeleteViaIdentityHostPool';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -7661,19 +9320,54 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+WORKSPACEINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -7685,10 +9379,12 @@ function Remove-AzWvdPrivateEndpointConnection {
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Parameter(ParameterSetName='Delete1', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityWorkspace', Mandatory)]
     [Alias('PrivateEndpointConnectionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
-    # The name of the private endpoint connection associated with the Azure resource
+    # The name of the private endpoint connection associated with the Azure resource.
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -7705,6 +9401,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -7724,8 +9421,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -7812,8 +9520,10 @@ begin {
             Delete1 = 'Az.DesktopVirtualization.private\Remove-AzWvdPrivateEndpointConnection_Delete1';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdPrivateEndpointConnection_DeleteViaIdentity';
             DeleteViaIdentity1 = 'Az.DesktopVirtualization.private\Remove-AzWvdPrivateEndpointConnection_DeleteViaIdentity1';
+            DeleteViaIdentityHostPool = 'Az.DesktopVirtualization.private\Remove-AzWvdPrivateEndpointConnection_DeleteViaIdentityHostPool';
+            DeleteViaIdentityWorkspace = 'Az.DesktopVirtualization.private\Remove-AzWvdPrivateEndpointConnection_DeleteViaIdentityWorkspace';
         }
-        if (('Delete', 'Delete1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete', 'Delete1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -7890,18 +9600,36 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SCALINGPLANINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -7925,6 +9653,7 @@ param(
     ${ScalingPlanName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityScalingPlan', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the ScalingPlanSchedule
@@ -7935,14 +9664,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ScalingPlanInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -8027,8 +9762,9 @@ begin {
         $mapping = @{
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdScalingPlanPersonalSchedule_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdScalingPlanPersonalSchedule_DeleteViaIdentity';
+            DeleteViaIdentityScalingPlan = 'Az.DesktopVirtualization.private\Remove-AzWvdScalingPlanPersonalSchedule_DeleteViaIdentityScalingPlan';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -8105,18 +9841,36 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SCALINGPLANINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -8140,6 +9894,7 @@ param(
     ${ScalingPlanName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityScalingPlan', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the ScalingPlanSchedule
@@ -8150,14 +9905,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ScalingPlanInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -8242,8 +10003,9 @@ begin {
         $mapping = @{
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdScalingPlanPooledSchedule_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdScalingPlanPooledSchedule_DeleteViaIdentity';
+            DeleteViaIdentityScalingPlan = 'Az.DesktopVirtualization.private\Remove-AzWvdScalingPlanPooledSchedule_DeleteViaIdentityScalingPlan';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -8320,18 +10082,19 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -8360,13 +10123,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -8453,7 +10216,7 @@ begin {
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdScalingPlan_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdScalingPlan_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -8529,19 +10292,37 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -8558,6 +10339,7 @@ param(
     ${HostPoolName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory)]
     [Alias('SessionHostName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -8576,14 +10358,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -8674,8 +10462,9 @@ begin {
         $mapping = @{
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdSessionHost_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdSessionHost_DeleteViaIdentity';
+            DeleteViaIdentityHostPool = 'Az.DesktopVirtualization.private\Remove-AzWvdSessionHost_DeleteViaIdentityHostPool';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -8751,19 +10540,54 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SESSIONHOSTINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -8780,6 +10604,8 @@ param(
     ${HostPoolName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentitySessionHost', Mandatory)]
     [Alias('UserSessionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -8794,6 +10620,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the session host within the specified host pool
@@ -8804,14 +10631,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentitySessionHost', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${SessionHostInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -8902,8 +10741,10 @@ begin {
         $mapping = @{
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdUserSession_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdUserSession_DeleteViaIdentity';
+            DeleteViaIdentityHostPool = 'Az.DesktopVirtualization.private\Remove-AzWvdUserSession_DeleteViaIdentityHostPool';
+            DeleteViaIdentitySessionHost = 'Az.DesktopVirtualization.private\Remove-AzWvdUserSession_DeleteViaIdentitySessionHost';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -8980,18 +10821,19 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -9020,13 +10862,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -9113,7 +10955,7 @@ begin {
             Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdWorkspace_Delete';
             DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdWorkspace_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -9187,6 +11029,8 @@ Send-AzWvdUserSessionMessage -ResourceGroupName ResourceGroupName `
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISendMessage
 .Outputs
 System.Boolean
 .Notes
@@ -9194,19 +11038,58 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SENDMESSAGE <ISendMessage>: Represents message sent to a UserSession.
+  [MessageBody <String>]: Body of message.
+  [MessageTitle <String>]: Title of message.
+
+SESSIONHOSTINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -9217,12 +11100,16 @@ function Send-AzWvdUserSessionMessage {
 [CmdletBinding(DefaultParameterSetName='SendExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the host pool within the specified resource group
     ${HostPoolName},
 
     [Parameter(ParameterSetName='SendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -9230,19 +11117,32 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='SendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the session host within the specified host pool
     ${SessionHostName},
 
     [Parameter(ParameterSetName='SendExpanded')]
+    [Parameter(ParameterSetName='SendViaJsonFilePath')]
+    [Parameter(ParameterSetName='SendViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='SendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHost', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the user session within the specified session host
@@ -9252,20 +11152,58 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SendViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
+
+    [Parameter(ParameterSetName='SendViaIdentitySessionHost', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHostExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${SessionHostInputObject},
+
+    [Parameter(ParameterSetName='SendExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentityExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHostExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Body of message.
     ${MessageBody},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SendExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentityExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHostExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Title of message.
     ${MessageTitle},
+
+    [Parameter(ParameterSetName='SendViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHost', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISendMessage]
+    # Represents message sent to a UserSession.
+    ${SendMessage},
+
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Send operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Send operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9350,8 +11288,14 @@ begin {
         $mapping = @{
             SendExpanded = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendExpanded';
             SendViaIdentityExpanded = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentityExpanded';
+            SendViaIdentityHostPool = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentityHostPool';
+            SendViaIdentityHostPoolExpanded = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentityHostPoolExpanded';
+            SendViaIdentitySessionHost = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentitySessionHost';
+            SendViaIdentitySessionHostExpanded = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentitySessionHostExpanded';
+            SendViaJsonFilePath = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaJsonFilePath';
+            SendViaJsonString = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaJsonString';
         }
-        if (('SendExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('SendExpanded', 'SendViaJsonFilePath', 'SendViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -9412,9 +11356,480 @@ end {
 
 <#
 .Synopsis
-Update an applicationGroup.
+update an App Attach Package
 .Description
-Update an applicationGroup.
+update an App Attach Package
+.Example
+$apps = "<PackagedApplication>"
+$deps = "<PackageDependencies>"
+Update-AzWvdAppAttachPackage -Name PackageArmObjectName `
+                         -ResourceGroupName ResourceGroupName `
+                         -SubscriptionId SubscriptionId `
+                         -ImageDisplayName displayname `
+                         -ImagePath imageURI `
+                         -ImageIsActive:$false `
+                         -ImageIsRegularRegistration:$false `
+                         -ImageLastUpdated datelastupdated `
+                         -ImagePackageApplication $apps `
+                         -ImagePackageDependency $deps `
+                         -ImagePackageFamilyName packagefamilyname `
+                         -ImagePackageName packagename `
+                         -ImagePackageFullName packagefullname `
+                         -ImagePackageRelativePath packagerelativepath `
+                         -ImageVersion packageversion `
+                         -ImageCertificateExpiry certificateExpiry `
+                         -ImageCertificateName certificateName `
+                         -KeyVaultUrl keyvaultUrl `
+                         -FailHealthCheckOnStagingFailure 'Unhealthy'
+.Example
+Update-AzWvdAppAttachPackage -Name PackageArmObjectName `
+                         -ResourceGroupName ResourceGroupName `
+                         -SubscriptionId SubscriptionId `
+                         -DisplayName displayname `
+                         -AppAttachPackage imageObject `
+                         -IsActive:$false `
+                         -IsLogonBlocking:$false `
+                         -KeyVaultUrl keyvaultUrl `
+                         -FailHealthCheckOnStagingFailure 'Unhealthy' `
+                         -HostpoolReference hostpoolReference `
+                         -PassThru
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackage
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+APPATTACHPACKAGE <AppAttachPackage>: 
+  Location <String>: The geo-location where the resource lives
+  [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
+  [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
+  [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
+  [ImageCertificateName <String>]: Certificate name found in the appxmanifest.xml. 
+  [ImageDisplayName <String>]: User friendly Name to be displayed in the portal. 
+  [ImageIsActive <Boolean?>]: Make this version of the package the active one across the hostpool. 
+  [ImageIsPackageTimestamped <String>]: Is package timestamped so it can ignore the certificate expiry date
+  [ImageIsRegularRegistration <Boolean?>]: Specifies how to register Package in feed.
+  [ImageLastUpdated <DateTime?>]: Date Package was last updated, found in the appxmanifest.xml. 
+  [ImagePackageAlias <String>]: Alias of App Attach Package. Assigned at import time
+  [ImagePackageApplication <List<IMsixPackageApplications>>]: List of package applications. 
+    [AppId <String>]: Package Application Id, found in appxmanifest.xml.
+    [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+    [Description <String>]: Description of Package Application.
+    [FriendlyName <String>]: User friendly name.
+    [IconImageName <String>]: User friendly name.
+    [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
+    [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
+  [ImagePackageDependency <List<IMsixPackageDependencies>>]: List of package dependencies. 
+    [DependencyName <String>]: Name of package dependency.
+    [MinVersion <String>]: Dependency version required.
+    [Publisher <String>]: Name of dependency publisher.
+  [ImagePackageFamilyName <String>]: Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
+  [ImagePackageFullName <String>]: Package Full Name from appxmanifest.xml. 
+  [ImagePackageName <String>]: Package Name from appxmanifest.xml. 
+  [ImagePackageRelativePath <String>]: Relative Path to the package inside the image. 
+  [ImagePath <String>]: VHD/CIM image path on Network Share.
+  [ImageVersion <String>]: Package version found in the appxmanifest.xml. 
+  [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications. 
+  [AppId <String>]: Package Application Id, found in appxmanifest.xml.
+  [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+  [Description <String>]: Description of Package Application.
+  [FriendlyName <String>]: User friendly name.
+  [IconImageName <String>]: User friendly name.
+  [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
+  [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
+
+IMAGEPACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
+  [DependencyName <String>]: Name of package dependency.
+  [MinVersion <String>]: Dependency version required.
+  [Publisher <String>]: Name of dependency publisher.
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+.Link
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdappattachpackage
+#>
+function Update-AzWvdAppAttachPackage {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='ImageObject', Mandatory)]
+    [Alias('AppAttachPackageName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the App Attach package
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='ImageObject', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Unhealthy", "NeedsAssistance", "DoNotFail")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Parameter indicating how the health check should behave if this package fails staging
+    ${FailHealthCheckOnStagingFailure},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String[]]
+    # List of Hostpool resource Ids.
+    ${HostPoolReference},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.DateTime]
+    # Date certificate expires, found in the appxmanifest.xml.
+    ${ImageCertificateExpiry},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Certificate name found in the appxmanifest.xml.
+    ${ImageCertificateName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Alias('DisplayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # User friendly Name to be displayed in the portal.
+    ${ImageDisplayName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Alias('IsActive')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Make this version of the package the active one across the hostpool.
+    ${ImageIsActive},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Timestamped", "NotTimestamped")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Is package timestamped so it can ignore the certificate expiry date
+    ${ImageIsPackageTimestamped},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='ImageObject')]
+    [Alias('IsRegularRegistration', 'IsLogonBlocking')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies how to register Package in feed.
+    ${ImageIsRegularRegistration},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.DateTime]
+    # Date Package was last updated, found in the appxmanifest.xml.
+    ${ImageLastUpdated},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Alias of App Attach Package.
+    # Assigned at import time
+    ${ImagePackageAlias},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications[]]
+    # List of package applications.
+    ${ImagePackageApplication},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies[]]
+    # List of package dependencies.
+    ${ImagePackageDependency},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Package Family Name from appxmanifest.xml.
+    # Contains Package Name and Publisher name.
+    ${ImagePackageFamilyName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Package Full Name from appxmanifest.xml.
+    ${ImagePackageFullName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Package Name from appxmanifest.xml.
+    ${ImagePackageName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Relative Path to the package inside the image.
+    ${ImagePackageRelativePath},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # VHD/CIM image path on Network Share.
+    ${ImagePath},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Package version found in the appxmanifest.xml.
+    ${ImageVersion},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='ImageObject', DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # URL path to certificate name located in keyVault
+    ${KeyVaultUrl},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='ImageObject', Position=0, Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackage]
+    # 
+    ${AppAttachPackage},
+
+    [Parameter(ParameterSetName='ImageObject')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    ${PassThru},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdAppAttachPackage_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdAppAttachPackage_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdAppAttachPackage_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdAppAttachPackage_UpdateViaJsonString';
+            ImageObject = 'Az.DesktopVirtualization.custom\Update-AzWvdAppAttachPackage_ImageObject';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'ImageObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update an applicationGroup.
+.Description
+update an applicationGroup.
 .Example
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `
@@ -9425,35 +11840,38 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplicationgroup
 #>
 function Update-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroup])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ApplicationGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -9461,6 +11879,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -9468,43 +11888,61 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Description of ApplicationGroup.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Friendly name of ApplicationGroup.
     ${FriendlyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Boolean representing whether the applicationGroup is show in the feed.
     ${ShowInFeed},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroupPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9583,8 +12021,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdApplicationGroup_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdApplicationGroup_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdApplicationGroup_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdApplicationGroup_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -9645,9 +12085,9 @@ end {
 
 <#
 .Synopsis
-Update an application.
+update an application.
 .Description
-Update an application.
+update an application.
 .Example
 Update-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -9661,37 +12101,74 @@ Update-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -ShowInPortal:$true
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatch
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+APPLICATION <IApplicationPatch>: Application properties that can be patched.
+  [ApplicationType <String>]: Resource Type of Application.
+  [CommandLineArgument <String>]: Command Line Arguments for Application.
+  [CommandLineSetting <String>]: Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
+  [Description <String>]: Description of Application.
+  [FilePath <String>]: Specifies a path for the executable file for the application.
+  [FriendlyName <String>]: Friendly name of Application.
+  [IconIndex <Int32?>]: Index of the icon.
+  [IconPath <String>]: Path to icon.
+  [MsixPackageApplicationId <String>]: Specifies the package application Id for MSIX applications
+  [MsixPackageFamilyName <String>]: Specifies the package family name for MSIX applications
+  [ShowInPortal <Boolean?>]: Specifies whether to show the RemoteApp program in the RD Web Access server.
+  [Tag <IApplicationPatchTags>]: tags to be updated
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+APPLICATIONGROUPINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplication
 #>
 function Update-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ApplicationGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -9699,6 +12176,10 @@ param(
     ${GroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroup', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ApplicationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -9706,6 +12187,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -9713,93 +12196,144 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroup', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ApplicationGroupInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("InBuilt", "MsixApplication")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType]
+    [System.String]
     # Resource Type of Application.
     ${ApplicationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Command Line Arguments for Application.
     ${CommandLineArgument},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("DoNotAllow", "Allow", "Require")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting]
+    [System.String]
     # Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
     ${CommandLineSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Description of Application.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Specifies a path for the executable file for the application.
     ${FilePath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Friendly name of Application.
     ${FriendlyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Index of the icon.
     ${IconIndex},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Path to icon.
     ${IconPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Specifies the package application Id for MSIX applications
     ${MsixPackageApplicationId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Specifies the package family name for MSIX applications
     ${MsixPackageFamilyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether to show the RemoteApp program in the RD Web Access server.
     ${ShowInPortal},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatch]
+    # Application properties that can be patched.
+    ${Application},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9877,9 +12411,13 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdApplication_UpdateExpanded';
+            UpdateViaIdentityApplicationGroup = 'Az.DesktopVirtualization.private\Update-AzWvdApplication_UpdateViaIdentityApplicationGroup';
+            UpdateViaIdentityApplicationGroupExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdApplication_UpdateViaIdentityApplicationGroupExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdApplication_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdApplication_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdApplication_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -9940,9 +12478,9 @@ end {
 
 <#
 .Synopsis
-Update a desktop.
+update a desktop.
 .Description
-Update a desktop.
+update a desktop.
 .Example
 Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
                     -ApplicationGroupName ApplicationGroupName `
@@ -9951,43 +12489,75 @@ Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
                     -Description 'Description'
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatch
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktop
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+APPLICATIONGROUPINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+DESKTOP <IDesktopPatch>: Desktop properties that can be patched.
+  [Description <String>]: Description of Desktop.
+  [FriendlyName <String>]: Friendly name of Desktop.
+  [Tag <IDesktopPatchTags>]: tags to be updated
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvddesktop
 #>
 function Update-AzWvdDesktop {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktop])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the application group
     ${ApplicationGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroup', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('DesktopName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -9995,6 +12565,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -10002,37 +12574,70 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroup', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ApplicationGroupInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Description of Desktop.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Friendly name of Desktop.
     ${FriendlyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktopPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatch]
+    # Desktop properties that can be patched.
+    ${Desktop},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -10110,9 +12715,13 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdDesktop_UpdateExpanded';
+            UpdateViaIdentityApplicationGroup = 'Az.DesktopVirtualization.private\Update-AzWvdDesktop_UpdateViaIdentityApplicationGroup';
+            UpdateViaIdentityApplicationGroupExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdDesktop_UpdateViaIdentityApplicationGroupExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdDesktop_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdDesktop_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdDesktop_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -10173,9 +12782,9 @@ end {
 
 <#
 .Synopsis
-Update a host pool.
+update a host pool.
 .Description
-Update a host pool.
+update a host pool.
 .Example
 Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -10190,39 +12799,42 @@ Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AGENTUPDATEMAINTENANCEWINDOW <IMaintenanceWindowPatchProperties[]>: List of maintenance windows. Maintenance windows are 2 hours long.
-  [DayOfWeek <DayOfWeek?>]: Day of the week.
+  [DayOfWeek <String>]: Day of the week.
   [Hour <Int32?>]: The update start hour of the day. (0 - 23)
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdhostpool
 #>
 function Update-AzWvdHostPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPool])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('HostPoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -10230,6 +12842,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -10237,168 +12851,204 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMaintenanceWindowPatchProperties[]]
     # List of maintenance windows.
     # Maintenance windows are 2 hours long.
-    # To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
     ${AgentUpdateMaintenanceWindow},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
     # Must be set if useLocalTime is true.
     ${AgentUpdateMaintenanceWindowTimeZone},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostComponentUpdateType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Scheduled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostComponentUpdateType]
+    [System.String]
     # The type of maintenance for session host components.
     ${AgentUpdateType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether to use localTime of the virtual machine.
     ${AgentUpdateUseSessionHostLocalTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Custom rdp property of HostPool.
     ${CustomRdpProperty},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Description of HostPool.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Friendly name of HostPool.
     ${FriendlyName},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst", "Persistent")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType]
+    [System.String]
     # The type of the load balancer.
     ${LoadBalancerType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The max session limit of HostPool.
     ${MaxSessionLimit},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Automatic", "Direct")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType]
+    [System.String]
     # PersonalDesktopAssignment type for HostPool.
     ${PersonalDesktopAssignmentType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Desktop", "RailApplications")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType]
+    [System.String]
     # The type of preferred application group type, default to Desktop Application Group
     ${PreferredAppGroupType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostpoolPublicNetworkAccess])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enabled", "Disabled", "EnabledForSessionHostsOnly", "EnabledForClientsOnly")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostpoolPublicNetworkAccess]
+    [System.String]
     # Enabled to allow this resource to be access from the public network
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.DateTime]
     # Expiration time of registration token.
     ${RegistrationInfoExpirationTime},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Delete", "None", "Update")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation]
+    [System.String]
     # The type of resetting the token.
     ${RegistrationInfoRegistrationTokenOperation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The ring number of HostPool.
     ${Ring},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # ClientId for the registered Relying Party used to issue WVD SSO certificates.
     ${SsoClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Path to Azure KeyVault storing the secret used for communication to ADFS.
     ${SsoClientSecretKeyVaultPath},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SharedKey", "Certificate", "SharedKeyInKeyVault", "CertificateInKeyVault")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType]
+    [System.String]
     # The type of single sign on Secret Type.
     ${SsoSecretType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # URL to customer ADFS server for signing WVD SSO certificates.
     ${SsoadfsAuthority},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # The flag to turn on/off StartVMOnConnect feature.
     ${StartVMOnConnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPoolPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # VM template for sessionhosts configuration within hostpool.
     ${VMTemplate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Is validation environment.
     ${ValidationEnvironment},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -10477,8 +13127,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdHostPool_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdHostPool_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdHostPool_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdHostPool_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -10539,9 +13191,9 @@ end {
 
 <#
 .Synopsis
-Update an  MSIX Package.
+update an  MSIX Package.
 .Description
-Update an  MSIX Package.
+update an  MSIX Package.
 .Example
 Update-AzWvdMsixPackage -HostPoolName HostPoolName `
         -ResourceGroupName ResourceGroupName `
@@ -10552,36 +13204,65 @@ Update-AzWvdMsixPackage -HostPoolName HostPoolName `
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackagePatch
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+MSIXPACKAGE <IMsixPackagePatch>: MSIX Package properties that can be patched.
+  [DisplayName <String>]: Display name for MSIX Package.
+  [IsActive <Boolean?>]: Set a version of the package to be active across hostpool. 
+  [IsRegularRegistration <Boolean?>]: Set Registration mode. Regular or Delayed.
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdmsixpackage
 #>
 function Update-AzWvdMsixPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('MsixPackageFullName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -10589,12 +13270,16 @@ param(
     ${FullName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the host pool within the specified resource group
     ${HostPoolName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -10602,37 +13287,70 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Display name for MSIX Package.
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Set a version of the package to be active across hostpool.
     ${IsActive},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Set Registration mode.
     # Regular or Delayed.
     ${IsRegularRegistration},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackagePatch]
+    # MSIX Package properties that can be patched.
+    ${MsixPackage},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -10711,8 +13429,12 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdMsixPackage_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdMsixPackage_UpdateViaIdentityExpanded';
+            UpdateViaIdentityHostPool = 'Az.DesktopVirtualization.private\Update-AzWvdMsixPackage_UpdateViaIdentityHostPool';
+            UpdateViaIdentityHostPoolExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdMsixPackage_UpdateViaIdentityHostPoolExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdMsixPackage_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdMsixPackage_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -10773,9 +13495,9 @@ end {
 
 <#
 .Synopsis
-Update a ScalingPlanPersonalSchedule.
+update a ScalingPlanPersonalSchedule.
 .Description
-Update a ScalingPlanPersonalSchedule.
+update a ScalingPlanPersonalSchedule.
 .Example
 Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -10812,36 +13534,90 @@ Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatch
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
+
+SCALINGPLANINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SCALINGPLANSCHEDULE <IScalingPlanPersonalSchedulePatch>: ScalingPlanPersonalSchedule properties that can be patched.
+  [DaysOfWeek <List<String>>]: Set of days of the week on which this schedule is active.
+  [OffPeakActionOnDisconnect <String>]: Action to be taken after a user disconnect during the off-peak period.
+  [OffPeakActionOnLogoff <String>]: Action to be taken after a logoff during the off-peak period.
+  [OffPeakMinutesToWaitOnDisconnect <Int32?>]: The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period.
+  [OffPeakMinutesToWaitOnLogoff <Int32?>]: The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
+  [OffPeakStartTimeHour <Int32?>]: The hour.
+  [OffPeakStartTimeMinute <Int32?>]: The minute.
+  [OffPeakStartVMOnConnect <String>]: The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
+  [PeakActionOnDisconnect <String>]: Action to be taken after a user disconnect during the peak period.
+  [PeakActionOnLogoff <String>]: Action to be taken after a logoff during the peak period.
+  [PeakMinutesToWaitOnDisconnect <Int32?>]: The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period.
+  [PeakMinutesToWaitOnLogoff <Int32?>]: The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
+  [PeakStartTimeHour <Int32?>]: The hour.
+  [PeakStartTimeMinute <Int32?>]: The minute.
+  [PeakStartVMOnConnect <String>]: The desired configuration of Start VM On Connect for the hostpool during the peak phase.
+  [RampDownActionOnDisconnect <String>]: Action to be taken after a user disconnect during the ramp down period.
+  [RampDownActionOnLogoff <String>]: Action to be taken after a logoff during the ramp down period.
+  [RampDownMinutesToWaitOnDisconnect <Int32?>]: The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period.
+  [RampDownMinutesToWaitOnLogoff <Int32?>]: The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
+  [RampDownStartTimeHour <Int32?>]: The hour.
+  [RampDownStartTimeMinute <Int32?>]: The minute.
+  [RampDownStartVMOnConnect <String>]: The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
+  [RampUpActionOnDisconnect <String>]: Action to be taken after a user disconnect during the ramp up period.
+  [RampUpActionOnLogoff <String>]: Action to be taken after a logoff during the ramp up period.
+  [RampUpAutoStartHost <String>]: The desired startup behavior during the ramp up period for personal vms in the hostpool.
+  [RampUpMinutesToWaitOnDisconnect <Int32?>]: The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
+  [RampUpMinutesToWaitOnLogoff <Int32?>]: The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
+  [RampUpStartTimeHour <Int32?>]: The hour.
+  [RampUpStartTimeMinute <Int32?>]: The minute.
+  [RampUpStartVMOnConnect <String>]: The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplanpersonalschedule
 #>
 function Update-AzWvdScalingPlanPersonalSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -10849,226 +13625,319 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the scaling plan.
     ${ScalingPlanName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlan', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the ScalingPlanSchedule
     ${ScalingPlanScheduleName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ScalingPlanInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]]
+    [System.String[]]
     # Set of days of the week on which this schedule is active.
     ${DaysOfWeek},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the off-peak period.
     ${OffPeakActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the off-peak period.
     ${OffPeakActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period.
     ${OffPeakMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
     ${OffPeakMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${OffPeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${OffPeakStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
     ${OffPeakStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the peak period.
     ${PeakActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the peak period.
     ${PeakActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period.
     ${PeakMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
     ${PeakMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${PeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${PeakStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the peak phase.
     ${PeakStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the ramp down period.
     ${RampDownActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the ramp down period.
     ${RampDownActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period.
     ${RampDownMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
     ${RampDownMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampDownStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampDownStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
     ${RampDownStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the ramp up period.
     ${RampUpActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the ramp up period.
     ${RampUpActionOnLogoff},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "WithAssignedUser", "All")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior]
+    [System.String]
     # The desired startup behavior during the ramp up period for personal vms in the hostpool.
     ${RampUpAutoStartHost},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
     ${RampUpMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
     ${RampUpMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampUpStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampUpStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
     # If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
     ${RampUpStartVMOnConnect},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatch]
+    # ScalingPlanPersonalSchedule properties that can be patched.
+    ${ScalingPlanSchedule},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -11147,8 +14016,12 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPersonalSchedule_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPersonalSchedule_UpdateViaIdentityExpanded';
+            UpdateViaIdentityScalingPlan = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPersonalSchedule_UpdateViaIdentityScalingPlan';
+            UpdateViaIdentityScalingPlanExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPersonalSchedule_UpdateViaIdentityScalingPlanExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPersonalSchedule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPersonalSchedule_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -11209,9 +14082,9 @@ end {
 
 <#
 .Synopsis
-Update a ScalingPlanPooledSchedule.
+update a ScalingPlanPooledSchedule.
 .Description
-Update a ScalingPlanPooledSchedule.
+update a ScalingPlanPooledSchedule.
 .Example
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -11240,36 +14113,81 @@ Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatch
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
+
+SCALINGPLANINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SCALINGPLANSCHEDULE <IScalingPlanPooledSchedulePatch>: ScalingPlanPooledSchedule properties that can be patched.
+  [DaysOfWeek <List<String>>]: Set of days of the week on which this schedule is active.
+  [OffPeakLoadBalancingAlgorithm <String>]: Load balancing algorithm for off-peak period.
+  [OffPeakStartTimeHour <Int32?>]: The hour.
+  [OffPeakStartTimeMinute <Int32?>]: The minute.
+  [PeakLoadBalancingAlgorithm <String>]: Load balancing algorithm for peak period.
+  [PeakStartTimeHour <Int32?>]: The hour.
+  [PeakStartTimeMinute <Int32?>]: The minute.
+  [RampDownCapacityThresholdPct <Int32?>]: Capacity threshold for ramp down period.
+  [RampDownForceLogoffUser <Boolean?>]: Should users be logged off forcefully from hosts.
+  [RampDownLoadBalancingAlgorithm <String>]: Load balancing algorithm for ramp down period.
+  [RampDownMinimumHostsPct <Int32?>]: Minimum host percentage for ramp down period.
+  [RampDownNotificationMessage <String>]: Notification message for users during ramp down period.
+  [RampDownStartTimeHour <Int32?>]: The hour.
+  [RampDownStartTimeMinute <Int32?>]: The minute.
+  [RampDownStopHostsWhen <String>]: Specifies when to stop hosts during ramp down period.
+  [RampDownWaitTimeMinute <Int32?>]: Number of minutes to wait to stop hosts during ramp down period.
+  [RampUpCapacityThresholdPct <Int32?>]: Capacity threshold for ramp up period.
+  [RampUpLoadBalancingAlgorithm <String>]: Load balancing algorithm for ramp up period.
+  [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
+  [RampUpStartTimeHour <Int32?>]: The hour.
+  [RampUpStartTimeMinute <Int32?>]: The minute.
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplanpooledschedule
 #>
 function Update-AzWvdScalingPlanPooledSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -11277,163 +14195,238 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the scaling plan.
     ${ScalingPlanName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlan', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the ScalingPlanSchedule
     ${ScalingPlanScheduleName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${ScalingPlanInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]]
+    [System.String[]]
     # Set of days of the week on which this schedule is active.
     ${DaysOfWeek},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]
+    [System.String]
     # Load balancing algorithm for off-peak period.
     ${OffPeakLoadBalancingAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${OffPeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${OffPeakStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]
+    [System.String]
     # Load balancing algorithm for peak period.
     ${PeakLoadBalancingAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${PeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${PeakStartTimeMinute},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Capacity threshold for ramp down period.
     ${RampDownCapacityThresholdPct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Should users be logged off forcefully from hosts.
     ${RampDownForceLogoffUser},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]
+    [System.String]
     # Load balancing algorithm for ramp down period.
     ${RampDownLoadBalancingAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Minimum host percentage for ramp down period.
     ${RampDownMinimumHostsPct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Notification message for users during ramp down period.
     ${RampDownNotificationMessage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampDownStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampDownStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StopHostsWhen])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("ZeroSessions", "ZeroActiveSessions")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StopHostsWhen]
+    [System.String]
     # Specifies when to stop hosts during ramp down period.
     ${RampDownStopHostsWhen},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Number of minutes to wait to stop hosts during ramp down period.
     ${RampDownWaitTimeMinute},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Capacity threshold for ramp up period.
     ${RampUpCapacityThresholdPct},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]
+    [System.String]
     # Load balancing algorithm for ramp up period.
     ${RampUpLoadBalancingAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # Minimum host percentage for ramp up period.
     ${RampUpMinimumHostsPct},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampUpStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampUpStartTimeMinute},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatch]
+    # ScalingPlanPooledSchedule properties that can be patched.
+    ${ScalingPlanSchedule},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -11512,8 +14505,12 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPooledSchedule_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPooledSchedule_UpdateViaIdentityExpanded';
+            UpdateViaIdentityScalingPlan = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPooledSchedule_UpdateViaIdentityScalingPlan';
+            UpdateViaIdentityScalingPlanExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPooledSchedule_UpdateViaIdentityScalingPlanExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPooledSchedule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlanPooledSchedule_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -11574,9 +14571,9 @@ end {
 
 <#
 .Synopsis
-Update a scaling plan.
+update a scaling plan.
 .Description
-Update a scaling plan.
+update a scaling plan.
 .Example
 Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -11636,7 +14633,7 @@ Update-AzWvdScalingPlan `
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11647,41 +14644,42 @@ HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReferenc
   [ScalingPlanEnabled <Boolean?>]: Is the scaling plan enabled for this hostpool.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 
 SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
-  [DaysOfWeek <String[]>]: Set of days of the week on which this schedule is active.
+  [DaysOfWeek <List<String>>]: Set of days of the week on which this schedule is active.
   [Name <String>]: Name of the ScalingPlanPooledSchedule.
-  [OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for off-peak period.
+  [OffPeakLoadBalancingAlgorithm <String>]: Load balancing algorithm for off-peak period.
   [OffPeakStartTimeHour <Int32?>]: The hour.
   [OffPeakStartTimeMinute <Int32?>]: The minute.
-  [PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for peak period.
+  [PeakLoadBalancingAlgorithm <String>]: Load balancing algorithm for peak period.
   [PeakStartTimeHour <Int32?>]: The hour.
   [PeakStartTimeMinute <Int32?>]: The minute.
   [RampDownCapacityThresholdPct <Int32?>]: Capacity threshold for ramp down period.
   [RampDownForceLogoffUser <Boolean?>]: Should users be logged off forcefully from hosts.
-  [RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for ramp down period.
+  [RampDownLoadBalancingAlgorithm <String>]: Load balancing algorithm for ramp down period.
   [RampDownMinimumHostsPct <Int32?>]: Minimum host percentage for ramp down period.
   [RampDownNotificationMessage <String>]: Notification message for users during ramp down period.
   [RampDownStartTimeHour <Int32?>]: The hour.
   [RampDownStartTimeMinute <Int32?>]: The minute.
-  [RampDownStopHostsWhen <StopHostsWhen?>]: Specifies when to stop hosts during ramp down period.
+  [RampDownStopHostsWhen <String>]: Specifies when to stop hosts during ramp down period.
   [RampDownWaitTimeMinute <Int32?>]: Number of minutes to wait to stop hosts during ramp down period.
   [RampUpCapacityThresholdPct <Int32?>]: Capacity threshold for ramp up period.
-  [RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for ramp up period.
+  [RampUpLoadBalancingAlgorithm <String>]: Load balancing algorithm for ramp up period.
   [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
   [RampUpStartTimeHour <Int32?>]: The hour.
   [RampUpStartTimeMinute <Int32?>]: The minute.
@@ -11689,10 +14687,12 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
 #>
 function Update-AzWvdScalingPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlan])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ScalingPlanName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -11700,6 +14700,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -11707,65 +14709,84 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Description of scaling plan.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Exclusion tag for scaling plan.
     ${ExclusionTag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # User friendly name of scaling plan.
     ${FriendlyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingHostPoolReference[]]
     # List of ScalingHostPoolReference definitions.
-    # To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
     ${HostPoolReference},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule[]]
     # List of ScalingSchedule definitions.
-    # To construct, see NOTES section for SCHEDULE properties and create a hash table.
     ${Schedule},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Timezone of the scaling plan.
     ${TimeZone},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -11844,8 +14865,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlan_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlan_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlan_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdScalingPlan_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -11906,9 +14929,9 @@ end {
 
 <#
 .Synopsis
-Update a session host.
+update a session host.
 .Description
-Update a session host.
+update a session host.
 .Example
 Update-AzWvdSessionHost -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
@@ -11917,42 +14940,73 @@ Update-AzWvdSessionHost -ResourceGroupName ResourceGroupName `
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPatch
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHost
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SESSIONHOST <ISessionHostPatch>: SessionHost properties that can be patched.
+  [AllowNewSession <Boolean?>]: Allow a new session.
+  [AssignedUser <String>]: User assigned to SessionHost.
+  [FriendlyName <String>]: Friendly name of SessionHost
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdsessionhost
 #>
 function Update-AzWvdSessionHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHost])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the host pool within the specified resource group
     ${HostPoolName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('SessionHostName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -11960,6 +15014,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -11967,18 +15023,27 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
@@ -11986,23 +15051,47 @@ param(
     # Force flag to update assign, unassign or reassign personal desktop.
     ${Force},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Allow a new session.
     ${AllowNewSession},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # User assigned to SessionHost.
     ${AssignedUser},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPoolExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Friendly name of SessionHost
     ${FriendlyName},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPatch]
+    # SessionHost properties that can be patched.
+    ${SessionHost},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -12081,8 +15170,12 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdSessionHost_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdSessionHost_UpdateViaIdentityExpanded';
+            UpdateViaIdentityHostPool = 'Az.DesktopVirtualization.private\Update-AzWvdSessionHost_UpdateViaIdentityHostPool';
+            UpdateViaIdentityHostPoolExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdSessionHost_UpdateViaIdentityHostPoolExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdSessionHost_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdSessionHost_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -12143,9 +15236,9 @@ end {
 
 <#
 .Synopsis
-Update a workspace.
+update a workspace.
 .Description
-Update a workspace.
+update a workspace.
 .Example
 Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -12156,35 +15249,38 @@ Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdworkspace
 #>
 function Update-AzWvdWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('WorkspaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
@@ -12192,6 +15288,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -12199,51 +15297,70 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String[]]
     # List of applicationGroup links.
     ${ApplicationGroupReference},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Description of Workspace.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Friendly name of Workspace.
     ${FriendlyName},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PublicNetworkAccess])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PublicNetworkAccess]
+    [System.String]
     # Enabled to allow this resource to be access from the public network
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspacePatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspacePatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -12322,8 +15439,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdWorkspace_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdWorkspace_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DesktopVirtualization.private\Update-AzWvdWorkspace_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DesktopVirtualization.private\Update-AzWvdWorkspace_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -12393,12 +15512,12 @@ Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName
 Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolname hpName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.RegistrationInfo
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.RegistrationInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
 #>
 function Get-AzWvdRegistrationInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.RegistrationInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.RegistrationInfo])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -12496,7 +15615,7 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.DesktopVirtualization.custom\Get-AzWvdRegistrationInfo';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -12564,12 +15683,12 @@ Create Windows virtual desktop registration info.
 New-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName -ExpirationTime "2050-02-14 12:00"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo
 #>
 function New-AzWvdRegistrationInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -12673,7 +15792,7 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.DesktopVirtualization.custom\New-AzWvdRegistrationInfo';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -12743,12 +15862,12 @@ Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -ApplicationGroupPath '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/register-azwvdapplicationgroup
 #>
 function Register-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -12852,7 +15971,7 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.DesktopVirtualization.custom\Register-AzWvdApplicationGroup';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -12941,7 +16060,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # help foo 1
+    # Subscription ID
     ${SubscriptionId},
 
     [Parameter()]
@@ -13020,7 +16139,7 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.DesktopVirtualization.custom\Remove-AzWvdRegistrationInfo';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -13090,12 +16209,12 @@ Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -ApplicationGroupPath '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/unregister-azwvdapplicationgroup
 #>
 function Unregister-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -13113,7 +16232,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
-    # ResourceGroupName Path
+    # AppGroup Path
     ${ApplicationGroupPath},
 
     [Parameter()]
@@ -13199,7 +16318,7 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.DesktopVirtualization.custom\Unregister-AzWvdApplicationGroup';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

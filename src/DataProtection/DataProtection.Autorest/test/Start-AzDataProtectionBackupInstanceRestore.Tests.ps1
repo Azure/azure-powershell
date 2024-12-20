@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Start-AzDataProtectionBackupInstanceRestore.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
+while (-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
 }
@@ -22,7 +22,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
-        $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $backupInstanceName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $backupInstanceName }
 
         ($instance -ne $null) | Should be $true
 
@@ -33,8 +33,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $jobid = $backupJob.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -53,14 +52,13 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $operationRequests = $proxy.ResourceGuardOperationDetail.DefaultResourceRequest
         $resourceGuardOperationRequest = $operationRequests | Where-Object { $_ -match "dppTriggerRestoreRequests" }
 
-        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreReqFiles -ResourceGuardOperationRequest $resourceGuardOperationRequest
+        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreReqFiles -ResourceGuardOperationRequest $resourceGuardOperationRequest
 
         $jobid = $restoreFilesJob.JobId.Split("/")[-1]
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -78,7 +76,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
-        $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $backupInstanceName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $backupInstanceName }
 
         ($instance -ne $null) | Should be $true
 
@@ -89,8 +87,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $jobid = $backupJob.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -104,14 +101,13 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $mySQLRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForMySQL -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI
 
-        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $mySQLRestoreReqFiles
+        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $mySQLRestoreReqFiles
 
         $jobid = $restoreFilesJob.JobId.Split("/")[-1]
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -120,7 +116,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
     }
 
     It 'CrossRegionRestoreAsDatabase' -skip {
-        $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
+        $resourceGroupName = $env.TestCrossRegionRestoreScenario.ResourceGroupName
         $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
         $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
         $targetResourceId = $env.TestCrossRegionRestoreScenario.TargetResourceId
@@ -128,7 +124,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $resourceGroupName -Subscription $subscriptionId -Vault $vaultName -UseSecondaryRegion
 
-        $instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup  $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+        $instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId -ResourceGroup $resourceGroupName -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
 
         $recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance[0].Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion
 
@@ -145,8 +141,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
 
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -UseSecondaryRegion
@@ -160,7 +155,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
     It 'CrossRegionRestoreAsFiles' -skip {
         $recordDate = $env.RecordDate
-        $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
+        $resourceGroupName = $env.TestCrossRegionRestoreScenario.ResourceGroupName
         $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
         $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
         $targetContainerURI = $env.TestCrossRegionRestoreScenario.TargetContainerURI
@@ -168,7 +163,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $resourceGroupName -Subscription $subscriptionId -Vault $vaultName -UseSecondaryRegion
 
-        $instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup  $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+        $instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId -ResourceGroup $resourceGroupName -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
 
         $recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance[0].Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion
 
@@ -185,8 +180,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
-        {
+        while ($jobstatus -ne "Completed") {
             Start-TestSleep -Seconds 10
 
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -UseSecondaryRegion
@@ -199,7 +193,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
     It 'CrossSubscriptionRestore' {
         $recordDate = $env.RecordDate
-        $resourceGroupName  = $env.TestCrossSubscriptionRestoreScenario.ResourceGroupName
+        $resourceGroupName = $env.TestCrossSubscriptionRestoreScenario.ResourceGroupName
         $vaultName = $env.TestCrossSubscriptionRestoreScenario.VaultName
         $subscriptionId = $env.TestCrossSubscriptionRestoreScenario.SubscriptionId
         $targetContainerArmId = $env.TestCrossSubscriptionRestoreScenario.TargetContainerArmId
@@ -223,8 +217,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -247,21 +240,20 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $targetContainerURI = $env.TestOssBackupScenario.TargetContainerURI
         $fileNamePrefix = $env.TestOssBackupScenario.FileNamePrefix + "-" + $recordDate
 
-        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName  -VaultName  $vaultName
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
 
-        $instance  = Get-AzDataProtectionBackupInstance -Subscription $sub -ResourceGroup $rgName -Vault $vaultName | Where-Object {($_.Property.DataSourceInfo.Type -eq "Microsoft.DBforPostgreSQL/servers/databases") -and ($_.Property.DataSourceInfo.ResourceId -match $serverName)}
+        $instance = Get-AzDataProtectionBackupInstance -Subscription $sub -ResourceGroup $rgName -Vault $vaultName | Where-Object { ($_.Property.DataSourceInfo.Type -eq "Microsoft.DBforPostgreSQL/servers/databases") -and ($_.Property.DataSourceInfo.ResourceId -match $serverName) }
 
         ($instance -ne $null) | Should be $true
 
         # Trigger Backup
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object { $_.Name -eq $policyName }
 
         $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName -BackupRuleOptionRuleName $policy.Property.PolicyRule[0].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[0].Trigger.TaggingCriterion[0].TagInfoTagName
 
         $jobid = $backupJob.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -283,8 +275,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -296,7 +287,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         # RestoreAsFiles
         $rps = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.Name -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName
 
-        $OssRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId  -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix
+        $OssRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix
 
         $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.Name -ResourceGroupName $rgName -VaultName $vaultName -SubscriptionId $sub -Parameter $OssRestoreReqFiles
 
@@ -304,8 +295,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -eq "InProgress")
-        {
+        while ($jobstatus -eq "InProgress") {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status

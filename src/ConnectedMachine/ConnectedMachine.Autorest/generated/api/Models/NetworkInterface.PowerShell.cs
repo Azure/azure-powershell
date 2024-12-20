@@ -109,6 +109,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("MacAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).MacAddress = (string) content.GetValueForProperty("MacAddress",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).MacAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).Name, global::System.Convert.ToString);
+            }
             if (content.Contains("IPAddress"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).IPAddress = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress>) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).IPAddress, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPAddressTypeConverter.ConvertFrom));
@@ -130,6 +142,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("MacAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).MacAddress = (string) content.GetValueForProperty("MacAddress",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).MacAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).Name, global::System.Convert.ToString);
+            }
             if (content.Contains("IPAddress"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).IPAddress = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress>) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal)this).IPAddress, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPAddressTypeConverter.ConvertFrom));

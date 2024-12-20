@@ -114,22 +114,22 @@ Get a SourceControl of a Container App.
 Create a Container App.
 
 ### [New-AzContainerAppAuthConfig](New-AzContainerAppAuthConfig.md)
-Create the AuthConfig for a Container App.
+create the AuthConfig for a Container App.
 
 ### [New-AzContainerAppConfigurationObject](New-AzContainerAppConfigurationObject.md)
 Create an in-memory object for Configuration.
 
 ### [New-AzContainerAppConnectedEnv](New-AzContainerAppConnectedEnv.md)
-Create an connectedEnvironment.
+create an connectedEnvironment.
 
 ### [New-AzContainerAppConnectedEnvCert](New-AzContainerAppConnectedEnvCert.md)
-Create a Certificate.
+create a Certificate.
 
 ### [New-AzContainerAppConnectedEnvDapr](New-AzContainerAppConnectedEnvDapr.md)
-Create a Dapr Component in a connected environment.
+create a Dapr Component in a connected environment.
 
 ### [New-AzContainerAppConnectedEnvStorage](New-AzContainerAppConnectedEnvStorage.md)
-Create storage for a connectedEnvironment.
+create storage for a connectedEnvironment.
 
 ### [New-AzContainerAppCustomDomainObject](New-AzContainerAppCustomDomainObject.md)
 Create an in-memory object for CustomDomain.
@@ -159,19 +159,19 @@ Create an in-memory object for JobExecutionContainer.
 Create an in-memory object for JobScaleRule.
 
 ### [New-AzContainerAppManagedCert](New-AzContainerAppManagedCert.md)
-Create a Managed Certificate.
+create a Managed Certificate.
 
 ### [New-AzContainerAppManagedEnv](New-AzContainerAppManagedEnv.md)
-Create a Managed Environment used to host container apps.
+create a Managed Environment used to host container apps.
 
 ### [New-AzContainerAppManagedEnvCert](New-AzContainerAppManagedEnvCert.md)
-Create a Certificate.
+create a Certificate.
 
 ### [New-AzContainerAppManagedEnvDapr](New-AzContainerAppManagedEnvDapr.md)
-Create a Dapr Component in a Managed Environment.
+create a Dapr Component in a Managed Environment.
 
 ### [New-AzContainerAppManagedEnvStorage](New-AzContainerAppManagedEnvStorage.md)
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ### [New-AzContainerAppProbeHeaderObject](New-AzContainerAppProbeHeaderObject.md)
 Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
@@ -198,7 +198,7 @@ Create an in-memory object for SecretVolumeItem.
 Create an in-memory object for ServiceBind.
 
 ### [New-AzContainerAppSourceControl](New-AzContainerAppSourceControl.md)
-Create the SourceControl for a Container App.
+create the SourceControl for a Container App.
 
 ### [New-AzContainerAppTemplateObject](New-AzContainerAppTemplateObject.md)
 Create an in-memory object for Container.
@@ -276,17 +276,17 @@ Checks if resource name is available.
 Patches a Container App using JSON Merge Patch
 
 ### [Update-AzContainerAppAuthConfig](Update-AzContainerAppAuthConfig.md)
-Create the AuthConfig for a Container App.
+update the AuthConfig for a Container App.
 
 ### [Update-AzContainerAppConnectedEnvCert](Update-AzContainerAppConnectedEnvCert.md)
 Patches a certificate.
 Currently only patching of tags is supported
 
 ### [Update-AzContainerAppConnectedEnvDapr](Update-AzContainerAppConnectedEnvDapr.md)
-Create a Dapr Component in a connected environment.
+update a Dapr Component in a connected environment.
 
 ### [Update-AzContainerAppConnectedEnvStorage](Update-AzContainerAppConnectedEnvStorage.md)
-Create storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 
 ### [Update-AzContainerAppJob](Update-AzContainerAppJob.md)
 Patches a Container Apps Job using JSON Merge Patch
@@ -303,11 +303,11 @@ Patches a certificate.
 Currently only patching of tags is supported
 
 ### [Update-AzContainerAppManagedEnvDapr](Update-AzContainerAppManagedEnvDapr.md)
-Create a Dapr Component in a Managed Environment.
+update a Dapr Component in a Managed Environment.
 
 ### [Update-AzContainerAppManagedEnvStorage](Update-AzContainerAppManagedEnvStorage.md)
-Create storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ### [Update-AzContainerAppSourceControl](Update-AzContainerAppSourceControl.md)
-Create the SourceControl for a Container App.
+update the SourceControl for a Container App.
 

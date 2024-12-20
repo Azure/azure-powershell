@@ -12,6 +12,41 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzurePERestore
+{
+	$location = "eastus2euap"
+	$resourceGroupName = "arpja"
+	$vaultName = "arpja-pe-e2e-validation-vault"
+	$vmName = "peval-ecy-win44"
+	$subId = "f2edfd5d-5496-4683-b94f-b3588c579009"
+	$subName = "sriramsa-IaaSVmBackup Canary Subscription"
+	$saName = "arpjapevalrestoresa"
+	$targetVMName = "ps-diskaccess"
+	$targetVNetName = "arpjavnet238"
+	$targetVNetRG = "arpja"
+	$targetSubnetName = "default"
+	$recoveryPointId = "252905611419763" # latest recovery point
+	$targetDiskAccessId = "/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579009/resourceGroups/arpja/providers/Microsoft.Compute/diskAccesses/arpja-peval-restore-da"
+
+	try
+	{	
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
+			-VaultId $vault.ID | Where-Object { $_.Name -match $vmName }
+
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID -RecoveryPointId $recoveryPointId
+		
+		$diskAccessRestoreJob = Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -VaultId $vault.Id -DiskAccessOption EnablePrivateAccessForAllDisks -TargetDiskAccessId $targetDiskAccessId | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $diskAccessRestoreJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		Delete-VM $resourceGroupName $targetVMName
+	}
+}
+
 function Test-AzureVaultSoftDelete
 {	
 	$resourceGroupName = "hiagarg"

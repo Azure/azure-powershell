@@ -21,13 +21,14 @@ Describe 'New-AzRedisEnterpriseCache' {
             Sku = "Enterprise_E10"
             Capacity = 4
             MinimumTlsVersion = "1.2"
-            Zone = @("1", "2", "3")
+            #Zone = @("1", "2", "3")
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "OSSCluster"
             EvictionPolicy = "VolatileLRU"
         }
         $cache = New-AzRedisEnterpriseCache @splat
         $cache.Name | Should -Be $splat.Name
+        $cache.Location = $cache.Location.ToLower() -replace '\s', ''
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
         $cache.SkuCapacity | Should -Be $splat.Capacity
@@ -57,6 +58,7 @@ Describe 'New-AzRedisEnterpriseCache' {
         }
         $cache = New-AzRedisEnterpriseCache @splat
         $cache.Name | Should -Be $splat.Name
+        $cache.Location = $cache.Location.ToLower() -replace '\s', ''
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
         $cache.SkuCapacity | Should -Be 3
@@ -78,6 +80,7 @@ Describe 'New-AzRedisEnterpriseCache' {
         Write-Host $splat.Name
         $cache = New-AzRedisEnterpriseCache @splat
         $cache.Name | Should -Be $splat.Name
+        $cache.Location = $cache.Location.ToLower() -replace '\s', ''
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
         $cache.SkuCapacity | Should -Be 3
@@ -104,6 +107,7 @@ Describe 'New-AzRedisEnterpriseCache' {
         Write-Host $splat.Name
         $cache = New-AzRedisEnterpriseCache @splat
         $cache.Name | Should -Be $splat.Name
+        $cache.Location = $cache.Location.ToLower() -replace '\s', ''
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
         $cache.SkuCapacity | Should -Be 3

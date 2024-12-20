@@ -15,7 +15,7 @@ Create an in-memory object for HealthProbeParameters.
 ```
 New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject [-ProbeIntervalInSecond <Int32>] [-ProbePath <String>]
  [-ProbeProtocol <ProbeProtocol>] [-ProbeRequestType <HealthProbeRequestType>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,21 +90,6 @@ The type of health probe request that is made.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

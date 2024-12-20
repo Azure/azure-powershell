@@ -507,7 +507,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             bool restoreToEdgeZone = (bool)ProviderData[RestoreVMBackupItemParams.RestoreToEdgeZone];
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
-
+            ServiceClientModel.TargetDiskNetworkAccessOption? diskAccessOption = ProviderData.ContainsKey(RestoreVMBackupItemParams.DiskAccessOption) ? (ServiceClientModel.TargetDiskNetworkAccessOption?)ProviderData[RestoreVMBackupItemParams.DiskAccessOption] : null;
+            string targetDiskAccessId = ProviderData.ContainsKey(RestoreVMBackupItemParams.TargetDiskAccessId) ? (string)ProviderData[RestoreVMBackupItemParams.TargetDiskAccessId] : null;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -627,6 +628,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 restoreRequest.ExtendedLocation = rp.ExtendedLocation;
+            }
+
+            if (diskAccessOption != null)
+            {
+                restoreRequest.TargetDiskNetworkAccessSettings = new TargetDiskNetworkAccessSettings();
+                restoreRequest.TargetDiskNetworkAccessSettings.TargetDiskNetworkAccessOption = diskAccessOption;
+
+                if(!string.IsNullOrEmpty(targetDiskAccessId))
+                {
+                    restoreRequest.TargetDiskNetworkAccessSettings.TargetDiskAccessId = targetDiskAccessId;
+                }                
             }
 
             if (restoreType == "OriginalLocation") // replace existing

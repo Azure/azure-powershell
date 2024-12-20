@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridDomainTopicEventSubscription
 
 ## SYNOPSIS
-Update an existing event subscription for a domain topic.
+update an existing event subscription for a domain topic.
 
 ## SYNTAX
 
@@ -88,7 +88,7 @@ Update-AzEventGridDomainTopicEventSubscription -InputObject <IEventGridIdentity>
 ```
 
 ## DESCRIPTION
-Update an existing event subscription for a domain topic.
+update an existing event subscription for a domain topic.
 
 ## EXAMPLES
 

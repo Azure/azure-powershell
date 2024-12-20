@@ -21,7 +21,8 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
  [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
  [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
- [-UserAssignedIdentityId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-UserAssignedIdentityId <String>] [-DiskAccessOption <TargetDiskNetworkAccessOption>]
+ [-TargetDiskAccessId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-RehydrateDuration <String>] [-Token <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -54,9 +55,9 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
  [-UserAssignedIdentityId <String>] [-TargetVMName <String>] [-TargetVNetName <String>]
  [-TargetVNetResourceGroup <String>] [-TargetSubnetName <String>] [-TargetSubscriptionId <String>]
- [-RestoreToEdgeZone] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RehydrateDuration <String>] [-Token <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RestoreToEdgeZone] [-DiskAccessOption <TargetDiskNetworkAccessOption>] [-TargetDiskAccessId <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-Token <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMUnManagedDiskParameterSet
@@ -146,7 +147,7 @@ $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -
 $StartDate = (Get-Date).AddDays(-7)
 $EndDate = Get-Date
 $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
-$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location 
+$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "Target_VNet_RG" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location 
 $OriginalLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location
 ```
 
@@ -329,6 +330,23 @@ $restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLoca
 
 In this example, we use RestoreToEdgeZone parameter to trigger a restore to new edge zone vm in alternate location. For Original location restore (OLR), restore will implicitly be an edge zone restore if the source VM is an edge zone VM.
 
+### Example 12: Restore a Managed AzureVM using DiskAccessOption
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $item
+$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "Target_VNet_RG" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location -DiskAccessOption EnablePrivateAccessForAllDisks -TargetDiskAccessId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName/providers/Microsoft.Compute/diskAccesses/target-diskaccess"
+```
+
+```output
+WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    V2VM            Restore         InProgress      26-Jul-24 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+In this example, we use DiskAccessOption parameter to trigger a restore to new VM with private access enabled for all disks. DiskAccessOption parameter can be used to specify the disk access option for target disks. The acceptable values for this parameter are: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks. TargetDiskAccessId parameter is used to specify the disk access id for the target disks. This parameter is required when DiskAccessOption is set to EnablePrivateAccessForAllDisks.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -339,6 +357,22 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskAccessOption
+Specifies the disk access option for target disks
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Management.RecoveryServices.Backup.Models.TargetDiskNetworkAccessOption]
+Parameter Sets: AzureManagedVMReplaceExistingParameterSet, AzureManagedVMCreateNewParameterSet
+Aliases:
+Accepted values: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks
 
 Required: False
 Position: Named
@@ -606,6 +640,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetDiskAccessId
+Specifies the target disk access ID when DiskAccessOption set to EnablePrivateAccessForAllDisks
+
+```yaml
+Type: System.String
+Parameter Sets: AzureManagedVMReplaceExistingParameterSet, AzureManagedVMCreateNewParameterSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

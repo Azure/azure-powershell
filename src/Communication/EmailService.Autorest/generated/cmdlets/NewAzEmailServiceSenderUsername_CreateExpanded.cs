@@ -11,14 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     using System;
 
     /// <summary>
-    /// Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+    /// Add a new SenderUsername resource under the parent Domains resource or create an existing SenderUsername resource.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEmailServiceSenderUsername_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISenderUsernameResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new SenderUsername resource under the parent Domains resource or create an existing SenderUsername resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}", ApiVersion = "2023-06-01-preview")]
     public partial class NewAzEmailServiceSenderUsername_CreateExpanded : global::System.Management.Automation.PSCmdlet,

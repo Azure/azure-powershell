@@ -16,29 +16,56 @@
 
 <#
 .Synopsis
-Lists all environment types configured for a project.
+Get an environment type configured for a project.
 .Description
-Lists all environment types configured for a project.
+Get an environment type configured for a project.
 .Example
 Get-AzDevCenterUserEnvironmentType -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 .Example
 Get-AzDevCenterUserEnvironmentType -DevCenterName Contoso -ProjectName DevProject
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentType
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttype
 #>
 function Get-AzDevCenterUserEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter-specific URI to operate on.
     ${Endpoint},
 
+    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
     [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
     [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
@@ -46,11 +73,30 @@ param(
     # The DevCenter upon which to execute operations.
     ${DevCenterName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The DevCenter Project upon which to execute operations.
+    # Name of the project.
     ${ProjectName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+    [Alias('EnvironmentTypeName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the environment type.
+    ${Name},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -128,6 +174,10 @@ begin {
 
         $mapping = @{
             List = 'Az.DevCenterdata.custom\Get-AzDevCenterUserEnvironmentType';
+            GetViaIdentity = 'Az.DevCenterdata.custom\Get-AzDevCenterUserEnvironmentType';
+            Get = 'Az.DevCenterdata.custom\Get-AzDevCenterUserEnvironmentType';
+            GetViaIdentityByDevCenter = 'Az.DevCenterdata.custom\Get-AzDevCenterUserEnvironmentType';
+            GetByDevCenter = 'Az.DevCenterdata.custom\Get-AzDevCenterUserEnvironmentType';
             ListByDevCenter = 'Az.DevCenterdata.custom\Get-AzDevCenterUserEnvironmentType';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

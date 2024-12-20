@@ -20,6 +20,7 @@ using System.Linq;
 using System.Management.Automation;
 using Azure.Core.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.Track2Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;

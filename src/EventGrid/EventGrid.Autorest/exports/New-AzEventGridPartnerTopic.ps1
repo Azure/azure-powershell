@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously create a new partner topic with the specified parameters.
 .Description
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously create a new partner topic with the specified parameters.
 .Example
 $partnerRegistration = Get-AzEventGridPartnerRegistration -ResourceGroupName azps_test_group_eventgrid -Name azps-registration
 New-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid -Location eastus -partnerRegistrationImmutableId $partnerRegistration.ImmutableId -Source "ContosoCorp.Accounts.User1" -ExpirationTimeIfNotActivatedUtc "2023-11-17T11:06:13.109Z" -PartnerTopicFriendlyDescription "Example description" -MessageForActivation "Example message for activation"

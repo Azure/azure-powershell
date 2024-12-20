@@ -13,17 +13,19 @@ Create or update container groups with specified configurations.
 ## SYNTAX
 
 ```
-New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <IContainer[]> -Location <String>
- [-SubscriptionId <String>] [-DnsConfigNameServer <String[]>] [-DnsConfigOption <String>]
- [-DnsConfigSearchDomain <String>] [-EncryptionPropertyKeyName <String>]
- [-EncryptionPropertyKeyVersion <String>] [-EncryptionPropertyVaultBaseUrl <String>]
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ImageRegistryCredential <IImageRegistryCredential[]>] [-InitContainer <IInitContainerDefinition[]>]
- [-IPAddressDnsNameLabel <String>] [-IPAddressIP <String>] [-IPAddressPort <IPort[]>]
- [-IPAddressType <ContainerGroupIPAddressType>] [-LogAnalyticLogType <LogAnalyticsLogType>]
- [-LogAnalyticMetadata <Hashtable>] [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
+New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-Container <IContainer[]>] [-ContainerGroupProfileId <String>] [-ContainerGroupProfileRevision <Int32>]
+ [-DnsConfigNameServer <String[]>] [-DnsConfigOption <String>] [-DnsConfigSearchDomain <String>]
+ [-EncryptionPropertyKeyName <String>] [-EncryptionPropertyKeyVersion <String>]
+ [-EncryptionPropertyVaultBaseUrl <String>] [-IdentityType <ResourceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ImageRegistryCredential <IImageRegistryCredential[]>]
+ [-InitContainer <IInitContainerDefinition[]>] [-IPAddressDnsNameLabel <String>] [-IPAddressIP <String>]
+ [-IPAddressPort <IPort[]>] [-IPAddressType <ContainerGroupIPAddressType>]
+ [-LogAnalyticLogType <LogAnalyticsLogType>] [-LogAnalyticMetadata <Hashtable>]
+ [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
  [-LogAnalyticWorkspaceResourceId <String>] [-OSType <OperatingSystemTypes>] [-Priority <String>]
  [-RestartPolicy <ContainerGroupRestartPolicy>] [-Sku <ContainerGroupSku>]
+ [-StandbyPoolProfileFailContainerGroupCreateOnReuseFailure] [-StandbyPoolProfileId <String>]
  [-SubnetId <IContainerGroupSubnetId[]>] [-Tag <Hashtable>] [-Volume <IVolume[]>] [-Zone <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -51,8 +53,9 @@ This commands creates a container group with a container instance, whose image i
 
 ### Example 2: Create container group and runs a custom script inside the container.
 ```powershell
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $env1 = New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
-$env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "value2" -AsPlainText -Force)
+$env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue $pwd
 $container = New-AzContainerInstanceObject -Name test-container -Image alpine -Command "/bin/sh -c myscript.sh" -EnvironmentVariable @($env1, $env2)
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux
 ```
@@ -81,8 +84,9 @@ This commands creates a container group which prints out 'hello' and stops.
 
 ### Example 4: Create a container group with a container instance using image nginx in Azure Container Registry
 ```powershell
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $container = New-AzContainerInstanceObject -Name test-container -Image myacr.azurecr.io/nginx:latest
-$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myacr.azurecr.io" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
+$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myacr.azurecr.io" -Username "username" -Password $pwd
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
 ```
 
@@ -96,8 +100,9 @@ This commands creates a container group with a container instance, whose image i
 
 ### Example 5: Create a container group with a container instance using image nginx in custom container image Registry
 ```powershell
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $container = New-AzContainerInstanceObject -Name test-container -Image myserver.com/nginx:latest
-$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
+$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password $pwd
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
 ```
 
@@ -111,7 +116,8 @@ This commands creates a container group with a container instance, whose image i
 
 ### Example 6: Create a container group that mounts Azure File volume
 ```powershell
-$volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey $pwd
 $mount = New-AzContainerInstanceVolumeMountObject -MountPath "/aci/logs" -Name "myvolume"
 $container = New-AzContainerInstanceObject -Name test-container -Image alpine -VolumeMount $mount
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -Volume $volume
@@ -161,11 +167,41 @@ The containers within the container group.
 To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainer[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerGroupProfileId
+The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerGroupProfileRevision
+The container group profile reference revision.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -315,7 +351,7 @@ The image registry credentials by which the container group is created from.
 To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IImageRegistryCredential[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IImageRegistryCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -331,7 +367,7 @@ The init containers for a container group.
 To construct, see NOTES section for INITCONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IInitContainerDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -377,7 +413,7 @@ The list of ports exposed on the container group.
 To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -533,7 +569,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: "Linux"
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -599,12 +635,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StandbyPoolProfileFailContainerGroupCreateOnReuseFailure
+The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StandbyPoolProfileId
+The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubnetId
 The subnet resource IDs for a container group.
 To construct, see NOTES section for SUBNETID properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupSubnetId[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupSubnetId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -651,7 +717,7 @@ The list of volumes that can be mounted by containers in this container group.
 To construct, see NOTES section for VOLUME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolume[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolume[]
 Parameter Sets: (All)
 Aliases:
 
@@ -715,7 +781,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroup
 
 ## NOTES
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `NAPTR` record type support in cmdlets.
 
 ## Version 1.2.1
 * Introduced secrets detection feature to safeguard sensitive data.

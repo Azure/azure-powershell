@@ -15,21 +15,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         /// <summary>Backing field for <see cref="ActionName" /> property.</summary>
         private string _actionName;
 
-        /// <summary>The name of an action that will take place on a Dev Box.</summary>
+        /// <summary>The name of the action.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string ActionName { get => this._actionName; set => this._actionName = value; }
 
         /// <summary>Backing field for <see cref="CatalogName" /> property.</summary>
         private string _catalogName;
 
-        /// <summary>The name of the catalog</summary>
+        /// <summary>Name of the catalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string CatalogName { get => this._catalogName; set => this._catalogName = value; }
 
         /// <summary>Backing field for <see cref="CustomizationGroupName" /> property.</summary>
         private string _customizationGroupName;
 
-        /// <summary>A customization group name.</summary>
+        /// <summary>Name of the customization group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string CustomizationGroupName { get => this._customizationGroupName; set => this._customizationGroupName = value; }
 
@@ -43,23 +43,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         /// <summary>Backing field for <see cref="DefinitionName" /> property.</summary>
         private string _definitionName;
 
-        /// <summary>The name of the environment definition</summary>
+        /// <summary>Name of the environment definition.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string DefinitionName { get => this._definitionName; set => this._definitionName = value; }
 
         /// <summary>Backing field for <see cref="DevBoxName" /> property.</summary>
         private string _devBoxName;
 
-        /// <summary>The name of a Dev Box.</summary>
+        /// <summary>Display name for the Dev Box.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string DevBoxName { get => this._devBoxName; set => this._devBoxName = value; }
 
         /// <summary>Backing field for <see cref="EnvironmentName" /> property.</summary>
         private string _environmentName;
 
-        /// <summary>The name of the environment.</summary>
+        /// <summary>Environment name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string EnvironmentName { get => this._environmentName; set => this._environmentName = value; }
+
+        /// <summary>Backing field for <see cref="EnvironmentTypeName" /> property.</summary>
+        private string _environmentTypeName;
+
+        /// <summary>Name of the environment type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
+        public string EnvironmentTypeName { get => this._environmentTypeName; set => this._environmentTypeName = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -71,35 +78,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
         private string _operationId;
 
-        /// <summary>The id of the operation on a Dev Box.</summary>
+        /// <summary>Unique identifier for the Dev Box operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string OperationId { get => this._operationId; set => this._operationId = value; }
 
         /// <summary>Backing field for <see cref="PoolName" /> property.</summary>
         private string _poolName;
 
-        /// <summary>The name of a pool of Dev Boxes.</summary>
+        /// <summary>Pool name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string PoolName { get => this._poolName; set => this._poolName = value; }
 
         /// <summary>Backing field for <see cref="ProjectName" /> property.</summary>
         private string _projectName;
 
-        /// <summary>The DevCenter Project upon which to execute operations.</summary>
+        /// <summary>Name of the project.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string ProjectName { get => this._projectName; set => this._projectName = value; }
 
         /// <summary>Backing field for <see cref="ScheduleName" /> property.</summary>
         private string _scheduleName;
 
-        /// <summary>The name of a schedule.</summary>
+        /// <summary>Display name for the Schedule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string ScheduleName { get => this._scheduleName; set => this._scheduleName = value; }
 
         /// <summary>Backing field for <see cref="TaskName" /> property.</summary>
         private string _taskName;
 
-        /// <summary>A customization task name.</summary>
+        /// <summary>Full name of the task: {catalogName}/{taskName}.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string TaskName { get => this._taskName; set => this._taskName = value; }
 
@@ -121,27 +128,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
     public partial interface IDevCenterdataIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IJsonSerializable
     {
-        /// <summary>The name of an action that will take place on a Dev Box.</summary>
+        /// <summary>The name of the action.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of an action that will take place on a Dev Box.",
+        Description = @"The name of the action.",
         SerializedName = @"actionName",
         PossibleTypes = new [] { typeof(string) })]
         string ActionName { get; set; }
-        /// <summary>The name of the catalog</summary>
+        /// <summary>Name of the catalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the catalog",
+        Description = @"Name of the catalog.",
         SerializedName = @"catalogName",
         PossibleTypes = new [] { typeof(string) })]
         string CatalogName { get; set; }
-        /// <summary>A customization group name.</summary>
+        /// <summary>Name of the customization group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"A customization group name.",
+        Description = @"Name of the customization group.",
         SerializedName = @"customizationGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string CustomizationGroupName { get; set; }
@@ -153,30 +160,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         SerializedName = @"customizationTaskId",
         PossibleTypes = new [] { typeof(string) })]
         string CustomizationTaskId { get; set; }
-        /// <summary>The name of the environment definition</summary>
+        /// <summary>Name of the environment definition.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the environment definition",
+        Description = @"Name of the environment definition.",
         SerializedName = @"definitionName",
         PossibleTypes = new [] { typeof(string) })]
         string DefinitionName { get; set; }
-        /// <summary>The name of a Dev Box.</summary>
+        /// <summary>Display name for the Dev Box.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of a Dev Box.",
+        Description = @"Display name for the Dev Box.",
         SerializedName = @"devBoxName",
         PossibleTypes = new [] { typeof(string) })]
         string DevBoxName { get; set; }
-        /// <summary>The name of the environment.</summary>
+        /// <summary>Environment name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the environment.",
+        Description = @"Environment name.",
         SerializedName = @"environmentName",
         PossibleTypes = new [] { typeof(string) })]
         string EnvironmentName { get; set; }
+        /// <summary>Name of the environment type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the environment type.",
+        SerializedName = @"environmentTypeName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EnvironmentTypeName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
@@ -185,43 +200,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The id of the operation on a Dev Box.</summary>
+        /// <summary>Unique identifier for the Dev Box operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The id of the operation on a Dev Box.",
+        Description = @"Unique identifier for the Dev Box operation.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         string OperationId { get; set; }
-        /// <summary>The name of a pool of Dev Boxes.</summary>
+        /// <summary>Pool name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of a pool of Dev Boxes.",
+        Description = @"Pool name.",
         SerializedName = @"poolName",
         PossibleTypes = new [] { typeof(string) })]
         string PoolName { get; set; }
-        /// <summary>The DevCenter Project upon which to execute operations.</summary>
+        /// <summary>Name of the project.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The DevCenter Project upon which to execute operations.",
+        Description = @"Name of the project.",
         SerializedName = @"projectName",
         PossibleTypes = new [] { typeof(string) })]
         string ProjectName { get; set; }
-        /// <summary>The name of a schedule.</summary>
+        /// <summary>Display name for the Schedule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of a schedule.",
+        Description = @"Display name for the Schedule.",
         SerializedName = @"scheduleName",
         PossibleTypes = new [] { typeof(string) })]
         string ScheduleName { get; set; }
-        /// <summary>A customization task name.</summary>
+        /// <summary>Full name of the task: {catalogName}/{taskName}.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"A customization task name.",
+        Description = @"Full name of the task: {catalogName}/{taskName}.",
         SerializedName = @"taskName",
         PossibleTypes = new [] { typeof(string) })]
         string TaskName { get; set; }
@@ -240,31 +255,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
     internal partial interface IDevCenterdataIdentityInternal
 
     {
-        /// <summary>The name of an action that will take place on a Dev Box.</summary>
+        /// <summary>The name of the action.</summary>
         string ActionName { get; set; }
-        /// <summary>The name of the catalog</summary>
+        /// <summary>Name of the catalog.</summary>
         string CatalogName { get; set; }
-        /// <summary>A customization group name.</summary>
+        /// <summary>Name of the customization group.</summary>
         string CustomizationGroupName { get; set; }
         /// <summary>A customization task ID.</summary>
         string CustomizationTaskId { get; set; }
-        /// <summary>The name of the environment definition</summary>
+        /// <summary>Name of the environment definition.</summary>
         string DefinitionName { get; set; }
-        /// <summary>The name of a Dev Box.</summary>
+        /// <summary>Display name for the Dev Box.</summary>
         string DevBoxName { get; set; }
-        /// <summary>The name of the environment.</summary>
+        /// <summary>Environment name.</summary>
         string EnvironmentName { get; set; }
+        /// <summary>Name of the environment type.</summary>
+        string EnvironmentTypeName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The id of the operation on a Dev Box.</summary>
+        /// <summary>Unique identifier for the Dev Box operation.</summary>
         string OperationId { get; set; }
-        /// <summary>The name of a pool of Dev Boxes.</summary>
+        /// <summary>Pool name.</summary>
         string PoolName { get; set; }
-        /// <summary>The DevCenter Project upon which to execute operations.</summary>
+        /// <summary>Name of the project.</summary>
         string ProjectName { get; set; }
-        /// <summary>The name of a schedule.</summary>
+        /// <summary>Display name for the Schedule.</summary>
         string ScheduleName { get; set; }
-        /// <summary>A customization task name.</summary>
+        /// <summary>Full name of the task: {catalogName}/{taskName}.</summary>
         string TaskName { get; set; }
         /// <summary>
         /// The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create the provisioned cluster instance
+create the provisioned cluster instance
 .Description
-Create the provisioned cluster instance
+create the provisioned cluster instance
 .Example
 New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -ControlPlaneCount 3
 .Example

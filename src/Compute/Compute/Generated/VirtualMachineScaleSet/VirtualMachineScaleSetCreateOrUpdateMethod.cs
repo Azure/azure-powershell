@@ -122,8 +122,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                                 flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
-                            }
-                            
+                            }                                                       
+
                             if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                             {
                                 if (parameters.VirtualMachineProfile?.SecurityProfile?.UefiSettings != null)
@@ -420,4 +420,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string IfNoneMatch { get; set; }
     }
 }
-

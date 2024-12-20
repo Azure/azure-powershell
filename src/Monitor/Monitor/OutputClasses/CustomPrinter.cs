@@ -71,7 +71,14 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 sb.Append(currentIndent);
                 sb.Append(name);
                 sb.Append(" : ");
-                sb.AppendLine(obj.ToString());
+                if (obj is DateTime dateTime)
+                {
+                    sb.AppendLine(dateTime.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                }
+                else
+                {
+                    sb.AppendLine(obj.ToString());
+                }
                 return;
             }
 

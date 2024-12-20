@@ -40,7 +40,6 @@ Create an in-memory object for JobScaleRule.
 
 ### -Auth
 Authentication secrets for the scale rule.
-To construct, see NOTES section for AUTH properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]

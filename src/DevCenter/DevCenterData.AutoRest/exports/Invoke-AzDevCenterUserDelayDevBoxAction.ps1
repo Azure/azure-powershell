@@ -31,14 +31,14 @@ Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDev
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxActionDelayResult
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelaydevboxaction
 #>
 function Invoke-AzDevCenterUserDelayDevBoxAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxActionDelayResult])]
 [CmdletBinding(DefaultParameterSetName='Delay1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delay1', Mandatory)]
@@ -59,13 +59,13 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The name of a Dev Box.
+    # Display name for the Dev Box.
     ${DevBoxName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The DevCenter Project upon which to execute operations.
+    # Name of the project.
     ${ProjectName},
 
     [Parameter()]
@@ -81,7 +81,7 @@ param(
     [Alias('ActionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The name of an action that will take place on a Dev Box.
+    # The name of the action.
     ${Name},
 
     [Parameter(Mandatory)]

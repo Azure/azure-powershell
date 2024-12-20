@@ -39,9 +39,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-    
+
         private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet",
-                             DefaultParameterSetName = "DefaultParameterSet";
+                             DefaultParameterSetName = "DefaultParameterSet", 
+                             VmSizeMix = "Mix";
         [Parameter(
             Mandatory = false,
             Position = 0,
@@ -274,13 +275,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies the orchestration mode for the virtual machine scale set.")]
         [PSArgumentCompleter("Uniform", "Flexible")]
         public string OrchestrationMode { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
@@ -316,7 +317,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
@@ -346,6 +347,39 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest")]
+        public string SecurityPostureId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "List of virtual machine extensions to exclude when applying the security posture.")]
+        public string[] SecurityPostureExcludeExtension { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] SkuProfileVmSize { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
+        public string SkuProfileAllocationStrategy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.")]
+        public SwitchParameter EnableResilientVMCreate { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.")]
+        public SwitchParameter EnableResilientVMDelete { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -390,6 +424,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // PriorityMix
             PriorityMixPolicy vPriorityMixPolicy = null;
 
+            // SkuProfile
+            SkuProfile vSkuProfile = null;
+
+            //ResiliencyPolicy
+            ResiliencyPolicy vResiliencyPolicy = null;
+
             if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
@@ -397,6 +437,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vSku = new Sku();
                 }
                 vSku.Name = this.SkuName;
+            }
+
+            if (this.IsParameterBound(c => c.EnableResilientVMCreate))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                vResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate.ToBool());
+            }
+
+            if (this.IsParameterBound(c => c.EnableResilientVMDelete))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                vResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete.ToBool());
             }
 
             if (this.IsParameterBound(c => c.SkuTier))
@@ -470,7 +528,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vUpgradePolicy.RollingUpgradePolicy = this.RollingUpgradePolicy;
             }
-            
+
             if (this.EnableAutomaticOSUpgrade.IsPresent)
             {
                 if (vUpgradePolicy == null)
@@ -506,7 +564,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
             }
 
-            if (this.IsParameterBound(c=> c.CapacityReservationGroupId))
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId))
             {
                 if (vVirtualMachineProfile == null)
                 {
@@ -800,7 +858,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 vExtendedLocation = new CM.PSExtendedLocation(this.EdgeZone);
             }
-            
+
             if (this.IsParameterBound(c => c.UserData))
             {
                 if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
@@ -841,6 +899,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vPriorityMixPolicy = new PriorityMixPolicy();
                 }
                 vPriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.SkuProfileVmSize))
+            {
+                if (vSkuProfile == null)
+                {
+                    vSkuProfile = new SkuProfile();
+                    vSkuProfile.VmSizes = new List<SkuProfileVMSize>();
+                }
+                foreach (string vmSize in this.SkuProfileVmSize)
+                {
+                    vSkuProfile.VmSizes.Add(new SkuProfileVMSize()
+                    {
+                        Name = vmSize,
+                    });
+                }
+
+                if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
+                {
+                    vSkuProfile.AllocationStrategy = this.SkuProfileAllocationStrategy;
+                }
+                else
+                {
+                    vSkuProfile.AllocationStrategy = "LowestPrice";
+                }
+
+                if (!this.IsParameterBound(c => c.SkuName))
+                {
+                    if (vSku == null)
+                    {
+                        vSku = new Sku();
+                    }
+                    vSku.Name = VmSizeMix;
+                }
             }
 
             if (this.IsParameterBound(c => c.ImageReferenceId))
@@ -915,6 +1007,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
+            if (this.IsParameterBound(c => c.SecurityPostureId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityPostureReference == null)
+                {
+                    vVirtualMachineProfile.SecurityPostureReference = new SecurityPostureReference();
+                }
+                vVirtualMachineProfile.SecurityPostureReference.Id = this.SecurityPostureId;
+            }
+
+            if (this.IsParameterBound(c => c.SecurityPostureExcludeExtension))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityPostureReference == null)
+                {
+                    vVirtualMachineProfile.SecurityPostureReference = new SecurityPostureReference();
+                }
+                vVirtualMachineProfile.SecurityPostureReference.ExcludeExtensions = this.SecurityPostureExcludeExtension;
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -937,11 +1055,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
-                PriorityMixPolicy = vPriorityMixPolicy
+                PriorityMixPolicy = vPriorityMixPolicy,
+                SkuProfile = vSkuProfile,
+                ResiliencyPolicy = vResiliencyPolicy
             };
 
             WriteObject(vVirtualMachineScaleSet);
         }
     }
 }
-

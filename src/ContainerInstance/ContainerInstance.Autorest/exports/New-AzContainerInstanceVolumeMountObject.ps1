@@ -23,12 +23,12 @@ Create a in-memory object for VolumeMount
 New-AzContainerInstanceVolumeMountObject -Name "mnt" -MountPath "/mnt/azfile" -ReadOnly $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.VolumeMount
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.VolumeMount
 .Link
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceVolumeMountObject
 #>
 function New-AzContainerInstanceVolumeMountObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.VolumeMount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.VolumeMount])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

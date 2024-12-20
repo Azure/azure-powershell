@@ -37,6 +37,8 @@ New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName m
 $useridentity = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -Name myuai
 
 New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity.Id -Encryption EncryptionAtRestWithCustomerManagedKey -KeyName mykey -KeyVaultUri "https://mykeyvault.vault.azure.net:443" -EncryptionUserAssignedIdentity $useridentity.Id -ProtocolType Iscsi
+.Example
+New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -125,6 +127,12 @@ param(
     [System.String]
     # Type of encryption
     ${Encryption},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Boolean]
+    # A boolean indicating whether or not Data Integrity Check is enabled
+    ${EnforceDataIntegrityCheckForIscsi},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]

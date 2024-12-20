@@ -26,7 +26,8 @@ Create an in-memory object for Volume.
 
 ### Example 1: Create a Azure File volume
 ```powershell
-New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "******" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey $pwd
 ```
 
 ```output
@@ -126,7 +127,7 @@ The empty directory volume.
 To construct, see NOTES section for EMPTYDIR properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolumeEmptyDir
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeEmptyDir
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +206,7 @@ The secret volume.
 To construct, see NOTES section for SECRET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ISecretVolume
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ISecretVolume
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Volume
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Volume
 
 ## NOTES
 

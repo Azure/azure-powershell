@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update an existing event subscription for a topic.</summary>
+    /// <summary>update an existing event subscription for a topic.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEventGridDomainEventSubscription_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Update an existing event subscription for a topic.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"update an existing event subscription for a topic.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}", ApiVersion = "2023-06-01-preview")]
     public partial class UpdateAzEventGridDomainEventSubscription_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

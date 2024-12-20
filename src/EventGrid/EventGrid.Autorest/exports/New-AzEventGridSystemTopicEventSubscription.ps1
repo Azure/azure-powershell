@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Asynchronously creates or updates an event subscription with the specified parameters.
+Asynchronously create an event subscription with the specified parameters.
 Existing event subscriptions will be updated with this API.
 .Description
-Asynchronously creates or updates an event subscription with the specified parameters.
+Asynchronously create an event subscription with the specified parameters.
 Existing event subscriptions will be updated with this API.
 .Example
 $obj = New-AzEventGridWebHookEventSubscriptionDestinationObject -EndpointUrl "https://azpsweb.azurewebsites.net"

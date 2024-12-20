@@ -43,7 +43,7 @@
     },
     "vmImageSku": {
       "type": "string",
-      "defaultValue": "2022-Datacenter",
+      "defaultValue": "2022-datacenter-azure-edition",
       "metadata": {
         "description": "VM image SKU"
       }
@@ -151,7 +151,7 @@
     },
     "vmNodeType0Size": {
       "type": "string",
-      "defaultValue": "Standard_D2_V2"
+      "defaultValue": "Standard_D2s_v3"
     }
   },
   "variables": {
@@ -171,12 +171,12 @@
     "maxPercentUpgradeDomainDeltaUnhealthyNodes": "100",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "overProvision": "false",
-    "vmssApiVersion": "2017-03-30",
-    "sfrpApiVersion": "2017-07-01-preview",
-    "lbApiVersion": "2015-06-15",
-    "vNetApiVersion": "2015-06-15",
-    "storageApiVersion": "2016-01-01",
-    "publicIPApiVersion": "2015-06-15",
+    "vmssApiVersion": "2023-09-01",
+    "sfrpApiVersion": "2023-11-01-preview",
+    "lbApiVersion": "2023-09-01",
+    "vNetApiVersion": "2023-09-01",
+    "storageApiVersion": "2023-01-01",
+    "publicIPApiVersion": "2023-09-01",
     "nt0applicationStartPort": "20000",
     "nt0applicationEndPort": "30000",
     "nt0ephemeralStartPort": "49152",
@@ -606,11 +606,24 @@
       "properties": {
         "overprovision": "[variables('overProvision')]",
         "upgradePolicy": {
-          "mode": "Automatic"
+          "mode": "Automatic",
+          "automaticOSUpgradePolicy": {
+            "enableAutomaticOSUpgrade": true
+          }
         },
         "virtualMachineProfile": {
           "extensionProfile": {
             "extensions": [
+              {
+                "name": "Microsoft.Azure.Geneva.GenevaMonitoring",
+                "properties": {
+                  "publisher": "Microsoft.Azure.Geneva",
+                  "type": "GenevaMonitoring",
+                  "typeHandlerVersion": "2.0",
+                  "enableAutomaticUpgrade": true,
+                  "autoUpgradeMinorVersion": true
+                }
+              },
               {
                 "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
                 "properties": {
@@ -625,7 +638,7 @@
                     "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
                     "nodeTypeRef": "[variables('vmNodeType0Name')]",
                     "dataPath": "D:\\SvcFab",
-                    "durabilityLevel": "Bronze",
+                    "durabilityLevel": "Silver",
                     "enableParallelJobs": true,
                     "nicPrefixOverride": "[variables('subnet0Prefix')]",
                     "certificate": {
@@ -633,7 +646,7 @@
                       "x509StoreName": "[parameters('certificateStoreValue')]"
                     }
                   },
-                  "typeHandlerVersion": "1.0"
+                  "typeHandlerVersion": "1.1"
                 }
               },
               {
@@ -810,7 +823,7 @@
               "startPort": "[variables('nt0applicationStartPort')]"
             },
             "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-            "durabilityLevel": "Bronze",
+            "durabilityLevel": "Silver",
             "ephemeralPorts": {
               "endPort": "[variables('nt0ephemeralEndPort')]",
               "startPort": "[variables('nt0ephemeralStartPort')]"

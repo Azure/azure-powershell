@@ -167,8 +167,14 @@ Adds a VPN client root certificate.
 ### [Approve-AzPrivateEndpointConnection](Approve-AzPrivateEndpointConnection.md)
 Approves a private endpoint connection.
 
+### [Convert-AzNetworkWatcherClassicConnectionMonitor](Convert-AzNetworkWatcherClassicConnectionMonitor.md)
+Convert a classic connection monitor into connection monitor v2 with specified name. 
+
 ### [Deny-AzPrivateEndpointConnection](Deny-AzPrivateEndpointConnection.md)
 denies a private endpoint connection.
+
+### [Deploy-AzFirewallPolicy](Deploy-AzFirewallPolicy.md)
+Deploys the Azure Firewall Policy draft and all Rule Collection Group drafts associated with this Azure Firewall Policy.
 
 ### [Deploy-AzNetworkManagerCommit](Deploy-AzNetworkManagerCommit.md)
 Deploys a network manager commit.
@@ -311,6 +317,9 @@ Get available service delegations in the region.
 ### [Get-AzBastion](Get-AzBastion.md)
 Gets a Bastion resource or Bastion resources.
 
+### [Get-AzBastionShareableLink](Get-AzBastionShareableLink.md)
+The Bastion Shareable Link feature lets users connect to a target resource (virtual machine or virtual machine scale set) using Azure Bastion without accessing the Azure portal.
+
 ### [Get-AzBgpServiceCommunity](Get-AzBgpServiceCommunity.md)
 Provides a list of all services / regions, BGP communities, and associated prefixes.
 
@@ -404,8 +413,14 @@ Gets firewall auto learned ip prefixes.
 ### [Get-AzFirewallPolicy](Get-AzFirewallPolicy.md)
 Gets a Azure Firewall Policy
 
+### [Get-AzFirewallPolicyDraft](Get-AzFirewallPolicyDraft.md)
+Gets an Azure Firewall Policy Draft.
+
 ### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
 Gets a Azure Firewall Policy Rule Collection Group
+
+### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
+Gets an Azure Firewall Policy Rule Collection Group Draft.
 
 ### [Get-AzIpAllocation](Get-AzIpAllocation.md)
 Gets a Azure IpAllocation.
@@ -485,6 +500,15 @@ Gets network group(s) in a network manager.
 ### [Get-AzNetworkManagerManagementGroupConnection](Get-AzNetworkManagerManagementGroupConnection.md)
 Gets a network manager management group connection.
 
+### [Get-AzNetworkManagerRoutingConfiguration](Get-AzNetworkManagerRoutingConfiguration.md)
+Gets a routing configuration in a network manager.
+
+### [Get-AzNetworkManagerRoutingRule](Get-AzNetworkManagerRoutingRule.md)
+Gets a routing rule in a network manager.
+
+### [Get-AzNetworkManagerRoutingRuleCollection](Get-AzNetworkManagerRoutingRuleCollection.md)
+Gets a routing rule collection in a network manager.
+
 ### [Get-AzNetworkManagerScopeConnection](Get-AzNetworkManagerScopeConnection.md)
 Gets a scope connection in a network manager.
 
@@ -496,6 +520,15 @@ Gets a security admin rule in a network manager.
 
 ### [Get-AzNetworkManagerSecurityAdminRuleCollection](Get-AzNetworkManagerSecurityAdminRuleCollection.md)
 Gets a security admin rule collection in a network manager.
+
+### [Get-AzNetworkManagerSecurityUserConfiguration](Get-AzNetworkManagerSecurityUserConfiguration.md)
+Gets a network security user configuration in a network manager.
+
+### [Get-AzNetworkManagerSecurityUserRule](Get-AzNetworkManagerSecurityUserRule.md)
+Gets a security user rule in a network manager.
+
+### [Get-AzNetworkManagerSecurityUserRuleCollection](Get-AzNetworkManagerSecurityUserRuleCollection.md)
+Gets a security user rule collection in a network manager.
 
 ### [Get-AzNetworkManagerStaticMember](Get-AzNetworkManagerStaticMember.md)
 Gets network manager static members.
@@ -520,6 +553,9 @@ Lists network usages for a subscription
 
 ### [Get-AzNetworkVirtualAppliance](Get-AzNetworkVirtualAppliance.md)
 Get or List Network Virtual Appliances.
+
+### [Get-AzNetworkVirtualApplianceConnection](Get-AzNetworkVirtualApplianceConnection.md)
+Get or List Network Virtual Appliances connections connected to a Network Virtual Appliance.
 
 ### [Get-AzNetworkVirtualApplianceSku](Get-AzNetworkVirtualApplianceSku.md)
 Get or List available Network Virtual Appliance Skus in the inventory.
@@ -779,6 +815,9 @@ This is an RM representation of customer branches that are uploaded to Azure for
 ### [Get-AzVpnSiteLinkConnectionIkeSa](Get-AzVpnSiteLinkConnectionIkeSa.md)
 Get IKE Security Associations of VPN Site Link Connections
 
+### [Invoke-AzFirewallPacketCapture](Invoke-AzFirewallPacketCapture.md)
+Invoke Packet Capture on Azure Firewall
+
 ### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
 Invoke network configuration diagnostic session for specified network profiles on target resource.
 
@@ -875,6 +914,9 @@ Creates a front-end IP configuration for an application gateway.
 ### [New-AzApplicationGatewayFrontendPort](New-AzApplicationGatewayFrontendPort.md)
 Creates a front-end port for an application gateway.
 
+### [New-AzApplicationGatewayHeaderValueMatcher](New-AzApplicationGatewayHeaderValueMatcher.md)
+Creates a **HeaderValueMatcher** object configuration to use in **ApplicationGatewayRewriteRuleHeaderConfiguration** for an application gateway.
+
 ### [New-AzApplicationGatewayHttpListener](New-AzApplicationGatewayHttpListener.md)
 Creates an HTTP listener for an application gateway.
 
@@ -959,6 +1001,9 @@ Creates an application security group.
 ### [New-AzBastion](New-AzBastion.md)
 Creates a bastion resource.
 
+### [New-AzBastionShareableLink](New-AzBastionShareableLink.md)
+The Bastion Shareable Link feature lets users connect to a target resource (virtual machine or virtual machine scale set) using Azure Bastion without accessing the Azure portal.
+
 ### [New-AzContainerNicConfig](New-AzContainerNicConfig.md)
 Creates a new container network interface configuration object.
 
@@ -1026,13 +1071,10 @@ Creates a Firewall Network Rule.
 Creates a Azure Firewall Network Collection of Network rules.
 
 ### [New-AzFirewallPacketCaptureParameter](New-AzFirewallPacketCaptureParameter.md)
-Creates a Azure Firewall Packet Capture Parameter.
+Create a Packet Capture Parameter for Azure Firewall
 
 ### [New-AzFirewallPacketCaptureRule](New-AzFirewallPacketCaptureRule.md)
-Creates a Azure Firewall Packet Capture Rule.
-
-### [Invoke-AzFirewallPacketCapture](Invoke-AzFirewallPacketCapture.md)
-Invoke a Packet Capture request on Azure Firewall.
+Creates a Packet Capture Rule for Azure Firewall
 
 ### [New-AzFirewallPolicy](New-AzFirewallPolicy.md)
 Creates a new Azure Firewall Policy
@@ -1045,6 +1087,9 @@ Create a new Azure Firewall Policy Application Rule Custon HTTP Header
 
 ### [New-AzFirewallPolicyDnsSetting](New-AzFirewallPolicyDnsSetting.md)
 Creates a new DNS Setting for Azure Firewall Policy
+
+### [New-AzFirewallPolicyDraft](New-AzFirewallPolicyDraft.md)
+Creates a new Azure Firewall Policy draft.
 
 ### [New-AzFirewallPolicyExplicitProxy](New-AzFirewallPolicyExplicitProxy.md)
 Creates a new Explicit Proxy 
@@ -1072,6 +1117,9 @@ Create a new Azure Firewall Policy Network Rule
 
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
+
+### [New-AzFirewallPolicyRuleCollectionGroupDraft](New-AzFirewallPolicyRuleCollectionGroupDraft.md)
+Create a new Azure Firewall Policy Rule Collection Group draft.
 
 ### [New-AzFirewallPolicySnat](New-AzFirewallPolicySnat.md)
 Creates SNAT configuration of PrivateRange and AutoLearnPrivateRanges for the firewall policy
@@ -1172,6 +1220,24 @@ Creates a network manager hub.
 ### [New-AzNetworkManagerManagementGroupConnection](New-AzNetworkManagerManagementGroupConnection.md)
 Creates a network manager management group connection.
 
+### [New-AzNetworkManagerRoutingConfiguration](New-AzNetworkManagerRoutingConfiguration.md)
+Creates a routing configuration.
+
+### [New-AzNetworkManagerRoutingGroupItem](New-AzNetworkManagerRoutingGroupItem.md)
+Creates a routing group item.
+
+### [New-AzNetworkManagerRoutingRule](New-AzNetworkManagerRoutingRule.md)
+Creates a routing rule.
+
+### [New-AzNetworkManagerRoutingRuleCollection](New-AzNetworkManagerRoutingRuleCollection.md)
+Creates a routing rule collection.
+
+### [New-AzNetworkManagerRoutingRuleDestination](New-AzNetworkManagerRoutingRuleDestination.md)
+Creates a network manager routing rule destination.
+
+### [New-AzNetworkManagerRoutingRuleNextHop](New-AzNetworkManagerRoutingRuleNextHop.md)
+Creates a network manager routing rule next hop.
+
 ### [New-AzNetworkManagerScope](New-AzNetworkManagerScope.md)
 Creates a network manager scope.
 
@@ -1189,6 +1255,18 @@ Creates a security admin rule collection.
 
 ### [New-AzNetworkManagerSecurityGroupItem](New-AzNetworkManagerSecurityGroupItem.md)
 Creates a security group item.
+
+### [New-AzNetworkManagerSecurityUserConfiguration](New-AzNetworkManagerSecurityUserConfiguration.md)
+Creates a security user configuration.
+
+### [New-AzNetworkManagerSecurityUserGroupItem](New-AzNetworkManagerSecurityUserGroupItem.md)
+Creates a security group item.
+
+### [New-AzNetworkManagerSecurityUserRule](New-AzNetworkManagerSecurityUserRule.md)
+Creates a security user rule.
+
+### [New-AzNetworkManagerSecurityUserRuleCollection](New-AzNetworkManagerSecurityUserRuleCollection.md)
+Creates a security user rule collection.
 
 ### [New-AzNetworkManagerStaticMember](New-AzNetworkManagerStaticMember.md)
 Creates a network manager static member.
@@ -1338,6 +1416,9 @@ Creates a routing intent resource associated with a VirtualHub.
 ### [New-AzRoutingPolicy](New-AzRoutingPolicy.md)
 Returns an in-memory routing policy object. 
 
+### [New-AzSaaSNetworkVirtualAppliance](New-AzSaaSNetworkVirtualAppliance.md)
+Create a SaaS Network Virtual Appliance resource.
+
 ### [New-AzSecurityPartnerProvider](New-AzSecurityPartnerProvider.md)
 Creates an Azure SecurityPartnerProvider.
 
@@ -1358,6 +1439,21 @@ Creates a hub route table resource associated with a VirtualHub.
 
 ### [New-AzVirtualApplianceAdditionalNicProperty](New-AzVirtualApplianceAdditionalNicProperty.md)
 Define a Network Virtual Appliance Additional Nic Property for the resource.
+
+### [New-AzVirtualApplianceInboundSecurityRulesProperty](New-AzVirtualApplianceInboundSecurityRulesProperty.md)
+Define Inbound Security Rules Property
+
+### [New-AzVirtualApplianceInternetIngressIpsProperty](New-AzVirtualApplianceInternetIngressIpsProperty.md)
+Define a Network Virtual Appliance Internet Ingress IPs Property for the resource.
+
+### [New-AzVirtualApplianceIpConfiguration](New-AzVirtualApplianceIpConfiguration.md)
+Defines an IP configuration for an interface of virtual appliance.
+
+### [New-AzVirtualApplianceNetworkInterfaceConfiguration](New-AzVirtualApplianceNetworkInterfaceConfiguration.md)
+Defines a Interface Configuration for Network Profile of Virtual Appliance.
+
+### [New-AzVirtualApplianceNetworkProfile](New-AzVirtualApplianceNetworkProfile.md)
+Define a Network Profile for virtual appliance.
 
 ### [New-AzVirtualApplianceSite](New-AzVirtualApplianceSite.md)
 Create a site connected to a Network Virtual Appliance.
@@ -1486,6 +1582,9 @@ Removes the connection draining configuration of a back-end HTTP settings object
 ### [Remove-AzApplicationGatewayCustomError](Remove-AzApplicationGatewayCustomError.md)
 Removes a custom error from an application gateway.
 
+### [Remove-AzApplicationGatewayFirewallCustomRule](Remove-AzApplicationGatewayFirewallCustomRule.md)
+Removes an application gateway firewall custom rule.
+
 ### [Remove-AzApplicationGatewayFirewallPolicy](Remove-AzApplicationGatewayFirewallPolicy.md)
 Removes an application gateway firewall policy.
 
@@ -1555,6 +1654,9 @@ Removes an application security group.
 ### [Remove-AzBastion](Remove-AzBastion.md)
 Removes a bastion resource.
 
+### [Remove-AzBastionShareableLink](Remove-AzBastionShareableLink.md)
+The Bastion Shareable Link feature lets users connect to a target resource (virtual machine or virtual machine scale set) using Azure Bastion without accessing the Azure portal.
+
 ### [Remove-AzCustomIpPrefix](Remove-AzCustomIpPrefix.md)
 Removes a CustomIpPrefix
 
@@ -1600,8 +1702,14 @@ Remove a Firewall.
 ### [Remove-AzFirewallPolicy](Remove-AzFirewallPolicy.md)
 Removes an Azure Firewall Policy
 
+### [Remove-AzFirewallPolicyDraft](Remove-AzFirewallPolicyDraft.md)
+Removes an Azure Firewall Policy
+
 ### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
 Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
+
+### [Remove-AzFirewallPolicyRuleCollectionGroupDraft](Remove-AzFirewallPolicyRuleCollectionGroupDraft.md)
+Removes an Azure Firewall Policy Rule Collection Group draft in an Azure firewall policy.
 
 ### [Remove-AzIpAllocation](Remove-AzIpAllocation.md)
 Deletes an Azure IpAllocation.
@@ -1663,6 +1771,15 @@ Removes a network Group.
 ### [Remove-AzNetworkManagerManagementGroupConnection](Remove-AzNetworkManagerManagementGroupConnection.md)
 Removes a network manager management group connection.
 
+### [Remove-AzNetworkManagerRoutingConfiguration](Remove-AzNetworkManagerRoutingConfiguration.md)
+Removes a routing configuration.
+
+### [Remove-AzNetworkManagerRoutingRule](Remove-AzNetworkManagerRoutingRule.md)
+Removes a routing rule.
+
+### [Remove-AzNetworkManagerRoutingRuleCollection](Remove-AzNetworkManagerRoutingRuleCollection.md)
+Removes a routing rule collection.
+
 ### [Remove-AzNetworkManagerScopeConnection](Remove-AzNetworkManagerScopeConnection.md)
 Removes a network manager scope connection.
 
@@ -1674,6 +1791,15 @@ Removes a security admin rule.
 
 ### [Remove-AzNetworkManagerSecurityAdminRuleCollection](Remove-AzNetworkManagerSecurityAdminRuleCollection.md)
 Removes a security admin rule collection.
+
+### [Remove-AzNetworkManagerSecurityUserConfiguration](Remove-AzNetworkManagerSecurityUserConfiguration.md)
+Removes a security user configuration.
+
+### [Remove-AzNetworkManagerSecurityUserRule](Remove-AzNetworkManagerSecurityUserRule.md)
+Removes a security user rule.
+
+### [Remove-AzNetworkManagerSecurityUserRuleCollection](Remove-AzNetworkManagerSecurityUserRuleCollection.md)
+Removes a security user rule collection.
 
 ### [Remove-AzNetworkManagerStaticMember](Remove-AzNetworkManagerStaticMember.md)
 Removes a network manager static member.
@@ -1999,8 +2125,14 @@ Saves a modified Firewall.
 ### [Set-AzFirewallPolicy](Set-AzFirewallPolicy.md)
 Saves a modified azure firewall policy
 
+### [Set-AzFirewallPolicyDraft](Set-AzFirewallPolicyDraft.md)
+Saves a modified azure firewall policy draft
+
 ### [Set-AzFirewallPolicyRuleCollectionGroup](Set-AzFirewallPolicyRuleCollectionGroup.md)
 saves a modified azure firewall policy rule collection group
+
+### [Set-AzFirewallPolicyRuleCollectionGroupDraft](Set-AzFirewallPolicyRuleCollectionGroupDraft.md)
+Sets a modified Azure Firewall Policy Rule Collection Group draft.
 
 ### [Set-AzIpAllocation](Set-AzIpAllocation.md)
 Saves a modified IpAllocation.
@@ -2059,6 +2191,15 @@ Updates a network manager group.
 ### [Set-AzNetworkManagerManagementGroupConnection](Set-AzNetworkManagerManagementGroupConnection.md)
 Update a network manger management group connection
 
+### [Set-AzNetworkManagerRoutingConfiguration](Set-AzNetworkManagerRoutingConfiguration.md)
+Updates a network manager routing configuration.
+
+### [Set-AzNetworkManagerRoutingRule](Set-AzNetworkManagerRoutingRule.md)
+Updates a network manager routing rule.
+
+### [Set-AzNetworkManagerRoutingRuleCollection](Set-AzNetworkManagerRoutingRuleCollection.md)
+Updates a network manager routing rule collection.
+
 ### [Set-AzNetworkManagerScopeConnection](Set-AzNetworkManagerScopeConnection.md)
 Update a network manager scope connection.
 
@@ -2070,6 +2211,15 @@ Updates a network manager security admin rule.
 
 ### [Set-AzNetworkManagerSecurityAdminRuleCollection](Set-AzNetworkManagerSecurityAdminRuleCollection.md)
 Updates a network manager security admin rule collection.
+
+### [Set-AzNetworkManagerSecurityUserConfiguration](Set-AzNetworkManagerSecurityUserConfiguration.md)
+Updates a network manager security user configuration.
+
+### [Set-AzNetworkManagerSecurityUserRule](Set-AzNetworkManagerSecurityUserRule.md)
+Updates a network manager security user rule.
+
+### [Set-AzNetworkManagerSecurityUserRuleCollection](Set-AzNetworkManagerSecurityUserRuleCollection.md)
+Updates a network manager security user rule collection.
 
 ### [Set-AzNetworkManagerSubscriptionConnection](Set-AzNetworkManagerSubscriptionConnection.md)
 Update a network manager subscription connection.
@@ -2233,6 +2383,9 @@ Updates a CustomIpPrefix
 ### [Update-AzNetworkVirtualAppliance](Update-AzNetworkVirtualAppliance.md)
 Update or Change a Network Virtual Appliance resource.
 
+### [Update-AzNetworkVirtualApplianceConnection](Update-AzNetworkVirtualApplianceConnection.md)
+Update or Change a Network Virtual Appliance Connection resource.
+
 ### [Update-AzP2sVpnGateway](Update-AzP2sVpnGateway.md)
 Update an existing P2SVpnGateway under VirtualHub for point to site connectivity.
 
@@ -2247,6 +2400,9 @@ Update a Peer in an Azure RouteServer
 
 ### [Update-AzVHubRouteTable](Update-AzVHubRouteTable.md)
 Delete a hub route table resource associated with a VirtualHub.
+
+### [Update-AzVirtualApplianceInboundSecurityRule](Update-AzVirtualApplianceInboundSecurityRule.md)
+Update the Inbound Security Rule of a Network Virtual Appliance Resource
 
 ### [Update-AzVirtualApplianceSite](Update-AzVirtualApplianceSite.md)
 Change or Modify a Virtual Appliance site connected to a Network Virtual Appliance resource.

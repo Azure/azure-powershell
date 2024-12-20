@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridNamespace
 
 ## SYNOPSIS
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously create a new namespace with the specified parameters.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ New-AzEventGridNamespace -InputObject <IEventGridIdentity> -Location <String>
 ```
 
 ## DESCRIPTION
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously create a new namespace with the specified parameters.
 
 ## EXAMPLES
 

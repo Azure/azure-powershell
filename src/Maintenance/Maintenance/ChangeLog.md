@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.4.3
 * Fixed bug where AzMaintenanceConfiguration returned a List object. [#25781]
 
 ## Version 1.4.2

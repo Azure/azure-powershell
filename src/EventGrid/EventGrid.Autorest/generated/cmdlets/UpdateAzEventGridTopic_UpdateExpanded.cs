@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Asynchronously creates a new topic with the specified parameters.</summary>
+    /// <summary>Asynchronously update a new topic with the specified parameters.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEventGridTopic_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ITopic))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Asynchronously creates a new topic with the specified parameters.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Asynchronously update a new topic with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Generated]
     public partial class UpdateAzEventGridTopic_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.IEventListener,

@@ -5630,6 +5630,46 @@ function Test-VMNoPublicIPAddress
 
 <#
 .SYNOPSIS
+Test Virtual Machine creation process with a Public IP Address when it is
+provided as a parameter.
+When PublicIpSku is not specified, it should be Standard Sku by default 
+(Since Az 13.0.0 and Az.Compute 9.0.0).
+#>
+function Test-VMWithPublicIPAddressStandardSku
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $pipName = "test-pip-standard";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+
+        # Creating a VM using simple parameter set
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PublicIPAddressName $pipName;
+
+        # Check that no PublicIPAddress resource was created.
+        $publicIPAddress = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $pipName;
+        Assert-AreEqual $publicIPAddress.Sku.Name "Standard";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Force Delete
 #>
 function Test-ForceDelete
@@ -7644,6 +7684,42 @@ function Test-VMSetAzOSCredentialNullRef
 
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         Assert-NotNull $vm;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+function Test-VMwithSSHKeyEd25519
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+
+        # create credential
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation
+        $vmname = '1' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $sshKeyName = "s" + $rgname
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS85Gen2 -DomainNameLabel $domainNameLabel -SshKeyname $sshKeyName -generateSshkey -SshKeyType 'Ed25519'
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
+        $sshKey = Get-AzSshKey -ResourceGroupName $rgname -Name $sshKeyName
+
+        #assert compare
+        Assert-AreEqual $vm.OSProfile.LinuxConfiguration.Ssh.PublicKeys[0].KeyData $sshKey.publickey
+
     }
     finally
     {

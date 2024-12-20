@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateProperties _property;
 
-        /// <summary>The updatable properties of the StandbyContainerGroupPoolResource.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolResourceUpdateProperties()); set => this._property = value; }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <summary>Specifies refill policy of the pool.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PSArgumentCompleterAttribute("always")]
         string ElasticityProfileRefillPolicy { get; set; }
-        /// <summary>The updatable properties of the StandbyContainerGroupPoolResource.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateProperties Property { get; set; }
         /// <summary>Resource tags.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateTags Tag { get; set; }

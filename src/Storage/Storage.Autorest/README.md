@@ -44,6 +44,7 @@ nested-object-to-string: true
 identity-correction-for-post: true
 
 directive:
+  - remove-operation: StorageAccounts_Update
   - where:
       subject: ^StorageAccountCustomerInitiatedMigration$
     set:

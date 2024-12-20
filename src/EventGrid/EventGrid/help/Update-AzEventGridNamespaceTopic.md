@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridNamespaceTopic
 
 ## SYNOPSIS
-Asynchronously updates a namespace topic with the specified parameters.
+Asynchronously update a namespace topic with the specified parameters.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ Update-AzEventGridNamespaceTopic -InputObject <IEventGridIdentity> [-EventRetent
 ```
 
 ## DESCRIPTION
-Asynchronously updates a namespace topic with the specified parameters.
+Asynchronously update a namespace topic with the specified parameters.
 
 ## EXAMPLES
 

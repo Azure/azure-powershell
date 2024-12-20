@@ -124,21 +124,8 @@ Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Man
 ```
 
 ```output
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
+[Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ```
 
 This command removes an instance link from the managed instance "ManagedInstance01" and outputs the deleted instance link object.
@@ -191,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Name of Azure SQL Managed Instance.
+Name of the managed instance.
 
 ```yaml
 Type: System.String
@@ -221,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the instance link.
+Managed Instance link name.
 
 ```yaml
 Type: System.String
@@ -335,3 +322,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzSqlInstanceLink](./New-AzSqlInstanceLink.md)
 
 [Update-AzSqlInstanceLink](./Update-AzSqlInstanceLink.md)
+
+[Start-AzSqlInstanceLinkFailover](./Start-AzSqlInstanceLinkFailover.md)

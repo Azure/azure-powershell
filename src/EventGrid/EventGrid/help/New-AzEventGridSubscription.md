@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridSubscription
 
 ## SYNOPSIS
-Asynchronously creates a new event subscription or updates an existing event subscription based on the specified scope.
+Asynchronously create a new event subscription or create an existing event subscription based on the specified scope.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ New-AzEventGridSubscription -InputObject <IEventGridIdentity> [-DeadLetterWithRe
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new event subscription or updates an existing event subscription based on the specified scope.
+Asynchronously create a new event subscription or create an existing event subscription based on the specified scope.
 
 ## EXAMPLES
 

@@ -475,6 +475,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMWithPublicIPAddressStandardSku()
+        {
+            TestRunner.RunTestScript("Test-VMWithPublicIPAddressStandardSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMForceDelete()
         {
             TestRunner.RunTestScript("Test-ForceDelete");

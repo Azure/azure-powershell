@@ -223,8 +223,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the ID of the Azure storage account to replicate to.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
@@ -841,6 +841,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.UseManagedDisk));
             }
 
+            if(!string.IsNullOrEmpty(this.RecoveryAzureStorageAccountId)
+                && !string.IsNullOrEmpty(this.UseManagedDisksForReplication))
+            {
+                throw new PSArgumentException(
+                    string.Format(Resources.IncorrectParameters));
+            }
+
             if (!string.IsNullOrEmpty(this.RecoveryAzureNetworkId))
             {
                 providerSettings.TargetAzureNetworkId = this.RecoveryAzureNetworkId;
@@ -906,15 +913,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
+            string deploymentType = string.Empty;
             if (this.RecoveryAzureStorageAccountId != null)
             {
                 providerSettings.TargetStorageAccountId =
                     this.RecoveryAzureStorageAccountId;
+                deploymentType = Utilities.GetValueFromArmId(
+                    this.RecoveryAzureStorageAccountId,
+                    ARMResourceTypeConstants.Providers);
             }
-
-            var deploymentType = Utilities.GetValueFromArmId(
-                this.RecoveryAzureStorageAccountId,
-                ARMResourceTypeConstants.Providers);
+            else
+            {
+                if(this.LogStorageAccountId != null)
+                {
+                    deploymentType = Utilities.GetValueFromArmId(
+                    this.LogStorageAccountId,
+                    ARMResourceTypeConstants.Providers);
+                }
+            }
+            
             if (deploymentType.ToLower()
                 .Contains(Constants.Classic.ToLower()))
             {

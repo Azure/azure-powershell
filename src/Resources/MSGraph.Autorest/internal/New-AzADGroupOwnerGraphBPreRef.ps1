@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create new navigation property ref to owners for groups
+create new navigation property ref to owners for groups
 .Description
-Create new navigation property ref to owners for groups
+create new navigation property ref to owners for groups
 .Example
 {{ Add code here }}
 .Example
@@ -56,7 +56,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

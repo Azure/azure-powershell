@@ -13,12 +13,12 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzConnectedExtensionMetadata' {
     It 'List' {
-        $all = @(Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Publisher 'Microsoft.Compute' -Location 'centraluseuap')
+        $all = @(Get-AzConnectedExtensionMetadata -ExtensionType 'NetworkWatcherAgentWindows' -Publisher 'Microsoft.Azure.NetworkWatcher' -Location 'centraluseuap')
         $all | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
-        $all = @(Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Publisher 'Microsoft.Compute' -Location $env.Location -Version '1.10.10')
+        $all = @(Get-AzConnectedExtensionMetadata -ExtensionType 'NetworkWatcherAgentWindows' -Publisher 'Microsoft.Azure.NetworkWatcher' -Location $env.Location -Version '1.4.2798.3')
         $all | Should -Not -BeNullOrEmpty
     }
 }

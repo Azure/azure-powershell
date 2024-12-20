@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="whatIfSettings">Optional What-If operation settings.
         /// </param>
-        public DeploymentWhatIfProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), object parameters = default(object), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment), ExpressionEvaluationOptions expressionEvaluationOptions = default(ExpressionEvaluationOptions), DeploymentWhatIfSettings whatIfSettings = default(DeploymentWhatIfSettings))
+        public DeploymentWhatIfProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), System.Collections.Generic.IDictionary<string, DeploymentParameter> parameters = default(System.Collections.Generic.IDictionary<string, DeploymentParameter>), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment), ExpressionEvaluationOptions expressionEvaluationOptions = default(ExpressionEvaluationOptions), DeploymentWhatIfSettings whatIfSettings = default(DeploymentWhatIfSettings))
 
         : base(mode, template, templateLink, parameters, parametersLink, debugSetting, onErrorDeployment, expressionEvaluationOptions)
         {

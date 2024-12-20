@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedMachineRunCommand
 
 ## SYNOPSIS
-The operation to create or update a run command.
+The operation to update a run command.
 
 ## SYNTAX
 
@@ -74,13 +74,14 @@ Update-AzConnectedMachineRunCommand -InputObject <IConnectedMachineIdentity>
 ```
 
 ## DESCRIPTION
-The operation to create or update a run command.
+The operation to update a run command.
 
 ## EXAMPLES
 
-### Example 1: Update a run-command for a machine
+### Example 1: Update a run command with tags
 ```powershell
-Update-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId ********-****-****-****-********** -Tag @{Tag1="tag1"; Tag2="tag2"}
+$tags = @{Tag1="tag1"; Tag2="tag2"}
+Update-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId -Tag $tags
 ```
 
 ```output
@@ -88,25 +89,26 @@ AsyncExecution                    : False
 ErrorBlobManagedIdentityClientId  :
 ErrorBlobManagedIdentityObjectId  :
 ErrorBlobUri                      :
-Id                                : /subscriptions/********-****-****-****-**********/resourceGroups/az-sdk-test/prov
-                                    iders/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3
-InstanceViewEndTime               : 12/5/2023 7:45:54 PM
+Id                                : /subscriptions/********-****-****-****-**********/resourceGroups/ytong
+                                    test/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/
+                                    myRunCommand
+InstanceViewEndTime               : 11/8/2024 7:50:54 PM
 InstanceViewError                 :
 InstanceViewExecutionMessage      : RunCommand script execution completed
 InstanceViewExecutionState        : Succeeded
 InstanceViewExitCode              : 0
 InstanceViewOutput                : Hello World!
-InstanceViewStartTime             : 12/5/2023 7:45:53 PM
+InstanceViewStartTime             : 11/8/2024 7:50:54 PM
 InstanceViewStatuses              :
-Location                          : eastus2euap
-Name                              : myRunCommand3
+Location                          : eastus
+Name                              : myRunCommand
 OutputBlobManagedIdentityClientId :
 OutputBlobManagedIdentityObjectId :
 OutputBlobUri                     :
 Parameter                         :
 ProtectedParameter                :
 ProvisioningState                 : Succeeded
-ResourceGroupName                 : az-sdk-test
+ResourceGroupName                 : ytongtest
 RunAsPassword                     :
 RunAsUser                         :
 ScriptUriManagedIdentityClientId  :
@@ -120,15 +122,15 @@ SystemDataCreatedByType           :
 SystemDataLastModifiedAt          :
 SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
-Tag                               : {
-                                      "Tag2": "tag2",
-                                      "Tag1": "tag1"
+Tags                              : {
+                                      "Tag1": "tag1",
+                                      "Tag2": "tag2"
                                     }
 TimeoutInSecond                   : 0
 Type                              : Microsoft.HybridCompute/machines/runcommands
 ```
 
-Update a run-command for a machine
+Update a run command with tags
 
 ## PARAMETERS
 
@@ -527,7 +529,7 @@ The ID of the target subscription.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, Update
-Aliases:
+Aliases: Subscription
 
 Required: False
 Position: Named

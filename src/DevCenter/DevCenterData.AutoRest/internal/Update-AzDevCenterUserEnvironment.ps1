@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Partially updates an environment
+Partially updates an environment.
 .Description
-Partially updates an environment
+Partially updates an environment.
 .Example
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
@@ -45,39 +45,42 @@ $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" =
 Update-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentPatchProperties
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IEnvironmentPatchProperties>: Properties of an environment. These properties can be updated via PATCH after the resource has been created.
-  [ExpirationDate <DateTime?>]: The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+BODY <IEnvironmentUpdate>: Properties of an environment.
+  [ExpirationDate <DateTime?>]: The time the expiration date will be triggered (UTC), after which the         environment and associated resources will be deleted.
+  [Parameter <IEnvironmentUpdateParameters>]: Parameters object for the environment.
+    [(Any) <Object>]: This indicates any property can be added to this object.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [ActionName <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [CustomizationGroupName <String>]: A customization group name.
+  [ActionName <String>]: The name of the action.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
-  [OperationId <String>]: The id of the operation on a Dev Box.
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
-  [TaskName <String>]: A customization task name.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenterdata/update-azdevcenteruserenvironment
 #>
 function Update-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -121,9 +124,8 @@ param(
     [Parameter(ParameterSetName='Patch', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentPatchProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdate]
     # Properties of an environment.
-    # These properties can be updated via PATCH after the resource has been created.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -131,8 +133,16 @@ param(
     [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
     [System.DateTime]
-    # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+    # The time the expiration date will be triggered (UTC), after which theenvironment and associated resources will be deleted.
     ${ExpirationDate},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdateParameters]))]
+    [System.Collections.Hashtable]
+    # Parameters object for the environment.
+    ${Parameter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

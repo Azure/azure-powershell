@@ -14,8 +14,8 @@ Gets an Azure Firewall Policy Draft.
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
@@ -25,7 +25,8 @@ Get-AzFirewallPolicyDraft -ResourceId <String> [-DefaultProfile <IAzureContextCo
 
 ### GetByParentInputObjectParameterSet
 ```
-Get-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +43,21 @@ This example gets a firewall policy draft associated with a policy named "firewa
 
 ## PARAMETERS
 
+### -AzureFirewallPolicyName
+The firewall policy name.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -57,19 +73,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureFirewallPolicyName
-The firewall policy name.
+### -FirewallPolicyObject
+Firewall Policy.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases: ResourceName
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+Parameter Sets: GetByParentInputObjectParameterSet
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -100,21 +116,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -AzureFirewallPolicy
-The Firewall Policy associated with the draft.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: GetByParentInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
 ```
 
 ### CommonParameters

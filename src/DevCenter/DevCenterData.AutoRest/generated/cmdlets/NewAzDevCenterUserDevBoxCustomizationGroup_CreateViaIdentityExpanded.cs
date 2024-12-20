@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDevCenterUserDevBoxCustomizationGroup_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Description(@"Applies customizations to the Dev Box.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.HttpPath(Path = "/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups/{customizationGroupName}", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.HttpPath(Path = "/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups/{customizationGroupName}", ApiVersion = "2024-05-01-preview")]
     public partial class NewAzDevCenterUserDevBoxCustomizationGroup_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener
     {
@@ -30,8 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
-        /// <summary>Represents a list of tasks to apply to a Dev Box</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup _body = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationGroup();
+        /// <summary>Represents a list of tasks to apply to a Dev Box.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup _body = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.CustomizationGroup();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -123,43 +123,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
         /// <summary>
-        /// Tasks to apply. Note by default tasks are excluded from the response when listing customization groups. To include them,
-        /// use the `include=tasks` query parameter.
+        /// Tasks to apply. Note by default tasks are excluded from the response whenlisting customization groups. To include them,
+        /// use the `include=tasks` queryparameter.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Tasks to apply. Note by default tasks are excluded from the response when listing customization groups. To include them, use the `include=tasks` query parameter.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Tasks to apply. Note by default tasks are excluded from the response whenlisting customization groups. To include them, use the `include=tasks` queryparameter.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Tasks to apply. Note by default tasks are excluded from the response when listing customization groups. To include them, use the `include=tasks` query parameter.",
+        Description = @"Tasks to apply. Note by default tasks are excluded from the response whenlisting customization groups. To include them, use the `include=tasks` queryparameter.",
         SerializedName = @"tasks",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTask) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTask[] Task { get => _body.Task ?? null /* arrayOf */; set => _body.Task = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[] Task { get => _body.Task ?? null /* arrayOf */; set => _body.Task = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -392,12 +392,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -432,12 +432,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup> response)
         {
             using( NoSynchronizationContext )
             {
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup
                 WriteObject((await response));
             }
         }

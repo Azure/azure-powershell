@@ -12,7 +12,7 @@ Gets a schedule.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzDevCenterUserSchedule -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -42,7 +42,7 @@ Get-AzDevCenterUserSchedule -DevCenterName <String> -InputObject <IDevCenterdata
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -50,14 +50,14 @@ Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <
 
 ### List1ByDevCenter
 ```
-Get-AzDevCenterUserSchedule -DevCenterName <String> -PoolName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserSchedule -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserSchedule -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserSchedule -DevCenterName <String> -PoolName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,11 +188,11 @@ Accept wildcard characters: False
 ```
 
 ### -PoolName
-The name of a pool of Dev Boxes.
+Pool name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter, List1, List1ByDevCenter
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The DevCenter Project upon which to execute operations.
+Name of the project.
 
 ```yaml
 Type: System.String
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleName
-The name of a schedule.
+Display name for the Schedule.
 
 ```yaml
 Type: System.String
@@ -241,7 +241,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ISchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ISchedule
 
 ## NOTES
 

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update an existing event subscription of a namespace topic.</summary>
+    /// <summary>update an existing event subscription of a namespace topic.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEventGridNamespaceTopicEventSubscription_UpdateViaIdentityTopicExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISubscription))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Update an existing event subscription of a namespace topic.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"update an existing event subscription of a namespace topic.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}", ApiVersion = "2023-06-01-preview")]
     public partial class UpdateAzEventGridNamespaceTopicEventSubscription_UpdateViaIdentityTopicExpanded : global::System.Management.Automation.PSCmdlet,

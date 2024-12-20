@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
         public string ContainerGroupName { get => this._containerGroupName; set => this._containerGroupName = value; }
 
+        /// <summary>Backing field for <see cref="ContainerGroupProfileName" /> property.</summary>
+        private string _containerGroupProfileName;
+
+        /// <summary>The name of the container group profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
+        public string ContainerGroupProfileName { get => this._containerGroupProfileName; set => this._containerGroupProfileName = value; }
+
         /// <summary>Backing field for <see cref="ContainerName" /> property.</summary>
         private string _containerName;
 
@@ -36,16 +43,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The identifier for the physical azure location.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="RevisionNumber" /> property.</summary>
+        private string _revisionNumber;
+
+        /// <summary>The revision number of the container group profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
+        public string RevisionNumber { get => this._revisionNumber; set => this._revisionNumber = value; }
 
         /// <summary>Backing field for <see cref="SubnetName" /> property.</summary>
         private string _subnetName;
@@ -57,10 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -88,6 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         SerializedName = @"containerGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ContainerGroupName { get; set; }
+        /// <summary>The name of the container group profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the container group profile.",
+        SerializedName = @"containerGroupProfileName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ContainerGroupProfileName { get; set; }
         /// <summary>The name of the container instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
@@ -104,22 +123,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The identifier for the physical azure location.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The identifier for the physical azure location.",
+        Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the resource group.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The revision number of the container group profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The revision number of the container group profile.",
+        SerializedName = @"revisionNumber",
+        PossibleTypes = new [] { typeof(string) })]
+        string RevisionNumber { get; set; }
         /// <summary>The name of the subnet.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
@@ -128,14 +155,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         SerializedName = @"subnetName",
         PossibleTypes = new [] { typeof(string) })]
         string SubnetName { get; set; }
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -154,20 +178,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
     {
         /// <summary>The name of the container group.</summary>
         string ContainerGroupName { get; set; }
+        /// <summary>The name of the container group profile.</summary>
+        string ContainerGroupProfileName { get; set; }
         /// <summary>The name of the container instance.</summary>
         string ContainerName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The identifier for the physical azure location.</summary>
+        /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The revision number of the container group profile.</summary>
+        string RevisionNumber { get; set; }
         /// <summary>The name of the subnet.</summary>
         string SubnetName { get; set; }
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the virtual network.</summary>
         string VirtualNetworkName { get; set; }

@@ -16,7 +16,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Backing field for <see cref="ResourceId" /> property.</summary>
         private string _resourceId;
 
-        /// <summary>Resource ID of the resource managing the volume.</summary>
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public string ResourceId { get => this._resourceId; set => this._resourceId = value; }
 
@@ -30,14 +32,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     public partial interface IManagedByInfo :
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable
     {
-        /// <summary>Resource ID of the resource managing the volume.</summary>
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Resource ID of the resource managing the volume.",
+        Description = @"Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.",
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceId { get; set; }
@@ -47,7 +51,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     internal partial interface IManagedByInfoInternal
 
     {
-        /// <summary>Resource ID of the resource managing the volume.</summary>
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
         string ResourceId { get; set; }
 
     }

@@ -315,5 +315,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureVaultSoftDelete"
             );
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzurePERestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
+                "Test-AzurePERestore"
+            );
+        }
     }
 }

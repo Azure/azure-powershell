@@ -25,6 +25,7 @@
 | App Configuration              | `Az.AppConfiguration`           | [![AppConfiguration]][AppConfigurationGallery]                     | [Changelog][AppConfigurationChangeLog]           |
 | Application Insights           | `Az.ApplicationInsights`        | [![ApplicationInsights]][ApplicationInsightsGallery]               | [Changelog][ApplicationInsightsChangeLog]        |
 | Arc Resource Bridge            | `Az.ArcResourceBridge`          | [![ArcResourceBridge]][ArcResourceBridgeGallery]                   | [Changelog][ArcResourceBridgeChangeLog]          |
+| ArcGateway                     | `Az.ArcGateway`                 | [![ArcGateway]][ArcGatewayGallery]                                 | [Changelog][ArcGatewayChangeLog]                 |
 | Attestation                    | `Az.Attestation`                | [![Attestation]][AttestationGallery]                               | [Changelog][AttestationChangeLog]                |
 | Automanage                     | `Az.Automanage`                 | [![Automanage]][AutomanageGallery]                                 | [Changelog][AutomanageChangeLog]                 |
 | Automation                     | `Az.Automation`                 | [![Automation]][AutomationGallery]                                 | [Changelog][AutomationChangeLog]                 |
@@ -80,6 +81,7 @@
 | ElasticSan on Azure            | `Az.ElasticSan`                 | [![ElasticSan]][ElasticSanGallery]                                 | [Changelog][ElasticSanChangeLog]                 |
 | Event Grid                     | `Az.EventGrid`                  | [![EventGrid]][EventGridGallery]                                   | [Changelog][EventGridChangeLog]                  |
 | Event Hubs                     | `Az.EventHub`                   | [![EventHub]][EventHubGallery]                                     | [Changelog][EventHubChangeLog]                   |
+| Fabric                         | `Fabric`                        | [![Fabric]][FabricGallery]                                         | [Changelog][FabricChangeLog]                     |
 | FirmwareAnalysis               | `FirmwareAnalysis`              | [![FirmwareAnalysis]][FirmwareAnalysisGallery]                     | [Changelog][FirmwareAnalysisChangeLog]           |
 | Fleet                          | `Az.Fleet`                      | [![Fleet]][FleetGallery]                                           | [Changelog][FleetChangeLog]                      |
 | Fluid Relay                    | `Az.FluidRelay`                 | [![FluidRelay]][FluidRelayGallery]                                 | [Changelog][FluidRelayChangeLog]                 |
@@ -91,6 +93,7 @@
 | HDInsight                      | `Az.HDInsight`                  | [![HDInsight]][HDInsightGallery]                                   | [Changelog][HDInsightChangeLog]                  |
 | HdInsightOnAks                 | `Az.HdInsightOnAks`             | [![HdInsightOnAks]][HdInsightOnAksGallery]                         | [Changelog][HdInsightOnAksChangeLog]             |
 | HealthBot                      | `Az.HealthBot`                  | [![HealthBot]][HealthBotGallery]                                   | [Changelog][HealthBotChangeLog]                  |
+| HealthDataAIServices           | `Az.HealthDataAIServices`       | [![HealthDataAIServices]][HealthDataAIServicesGallery]             | [Changelog][HealthDataAIServicesChangeLog]       |
 | API for FHIR                   | `Az.HealthcareApis`             | [![HealthcareApis]][HealthcareApisGallery]                         | [Changelog][HealthcareApisChangeLog]             |
 | HPC Cache                      | `Az.HPCCache`                   | [![HPCCache]][HPCCacheGallery]                                     | [Changelog][HPCCacheChangeLog]                   |
 | Image Builder                  | `Az.ImageBuilder`               | [![ImageBuilder]][ImageBuilderGallery]                             | [Changelog][ImageBuilderChangeLog]               |
@@ -99,6 +102,7 @@
 | IoT Hub                        | `Az.IotHub`                     | [![IotHub]][IotHubGallery]                                         | [Changelog][IotHubChangeLog]                     |
 | Key Vault                      | `Az.KeyVault`                   | [![KeyVault]][KeyVaultGallery]                                     | [Changelog][KeyVaultChangeLog]                   |
 | Kubernetes Configuration       | `Az.KubernetesConfiguration`    | [![KubernetesConfiguration]][KubernetesConfigurationGallery]       | [Changelog][KubernetesConfigurationChangeLog]    |
+| Kubernetes Runtime             | `Az.KubernetesRuntime`          | [![KubernetesRuntime]][KubernetesRuntimeGallery]                   | [Changelog][KubernetesRuntimeChangeLog]          |
 | Kusto                          | `Az.Kusto`                      | [![Kusto]][KustoGallery]                                           | [Changelog][KustoChangeLog]                      |
 | Lab Services                   | `Az.LabServices`                | [![LabServices]][LabServicesGallery]                               | [Changelog][LabServicesChangeLog]                |
 | Load Testing                   | `Az.LoadTesting`                | [![LoadTesting]][LoadTestingGallery]                               | [Changelog][LoadTestingChangeLog]                |
@@ -176,6 +180,7 @@
 | Synapse Analytics              | `Az.Synapse`                    | [![Synapse]][SynapseGallery]                                       | [Changelog][SynapseChangeLog]                    |
 | Time Series Insights           | `Az.TimeSeriesInsights`         | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]                 | [Changelog][TimeSeriesInsightsChangeLog]         |
 | Traffic Manager                | `Az.TrafficManager`             | [![TrafficManager]][TrafficManagerGallery]                         | [Changelog][TrafficManagerChangeLog]             |
+| Terraform                      | `Az.Terraform`                  | [![Terraform]][TerraformGallery]                                   | [Changelog][TerraformChangeLog]                  |
 | Azure VMware Solution          | `Az.VMware`                     | [![VMware]][VMwareGallery]                                         | [Changelog][VMwareChangeLog]                     |
 | Voice Services                 | `Az.VoiceServices`              | [![VoiceServices]][VMwareGallery]                                  | [Changelog][VoiceServicesChangeLog]              |
 | Web App Service                | `Az.Websites`                   | [![Websites]][WebsitesGallery]                                     | [Changelog][WebsitesChangeLog]                   |
@@ -203,6 +208,7 @@
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [ArcResourceBridge]:          https://img.shields.io/powershellgallery/v/Az.ArcResourceBridge.svg?style=flat-square&label=Az.ArcResourceBridge
+[ArcGateway]:                 https://img.shields.io/powershellgallery/v/Az.ArcGateway.svg?style=flat-square&label=Az.ArcGateway
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
 [Automanage]:                 https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
@@ -258,6 +264,7 @@
 [ElasticSan]:                 https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
 [EventHub]:                   https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub
+[Fabric]:                     https://img.shields.io/powershellgallery/v/Az.Fabric.svg?style=flat-square&label=Az.Fabric
 [FirmwareAnalysis]:           https://img.shields.io/powershellgallery/v/Az.FirmwareAnalysis.svg?style=flat-square&label=Az.FirmwareAnalysis
 [Fleet]:                      https://img.shields.io/powershellgallery/v/Az.Fleet.svg?style=flat-square&label=Az.Fleet
 [FluidRelay]:                 https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay
@@ -270,6 +277,7 @@
 [HdInsightOnAks]:             https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks
 [HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
+[HealthDataAIServices]:       https://img.shields.io/powershellgallery/v/Az.HealthDataAIServices.svg?style=flat-square&label=Az.HealthDataAIServices
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
 [ImageBuilder]:               https://img.shields.io/powershellgallery/v/Az.ImageBuilder.svg?style=flat-square&label=Az.ImageBuilder
 [ImportExport]:               https://img.shields.io/powershellgallery/v/Az.ImportExport.svg?style=flat-square&label=Az.ImportExport
@@ -277,6 +285,7 @@
 [IotHub]:                     https://img.shields.io/powershellgallery/v/Az.IotHub.svg?style=flat-square&label=Az.IotHub
 [KeyVault]:                   https://img.shields.io/powershellgallery/v/Az.KeyVault.svg?style=flat-square&label=Az.KeyVault
 [KubernetesConfiguration]:    https://img.shields.io/powershellgallery/v/Az.KubernetesConfiguration.svg?style=flat-square&label=Az.KubernetesConfiguration
+[KubernetesRuntime]:          https://img.shields.io/powershellgallery/v/Az.KubernetesRuntime.svg?style=flat-square&label=Az.KubernetesRuntime
 [Kusto]:                      https://img.shields.io/powershellgallery/v/Az.Kusto.svg?style=flat-square&label=Az.Kusto
 [LabServices]:                https://img.shields.io/powershellgallery/v/Az.LabServices.svg?style=flat-square&label=Az.LabServices
 [LoadTesting]:                https://img.shields.io/powershellgallery/v/Az.LoadTesting.svg?style=flat-square&label=Az.LoadTesting
@@ -354,6 +363,7 @@
 [Synapse]:                    https://img.shields.io/powershellgallery/v/Az.Synapse.svg?style=flat-square&label=Az.Synapse
 [TimeSeriesInsights]:         https://img.shields.io/powershellgallery/v/Az.TimeSeriesInsights.svg?style=flat-square&label=Az.TimeSeriesInsights
 [TrafficManager]:             https://img.shields.io/powershellgallery/v/Az.TrafficManager.svg?style=flat-square&label=Az.TrafficManager
+[Terraform]:                  https://img.shields.io/powershellgallery/v/Az.Terraform.svg?style=flat-square&label=Az.Terraform
 [VMware]:                     https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware
 [VoiceServices]:              https://img.shields.io/powershellgallery/v/Az.VoiceServices.svg?style=flat-square&label=Az.VoiceServices
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
@@ -376,6 +386,7 @@
 [AppComplianceAutomationGallery]:    https://www.powershellgallery.com/packages/Az.AppComplianceAutomation/
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
+[ArcGatewayGallery]:                 https://www.powershellgallery.com/packages/Az.ArcGateway/
 [ArcResourceBridgeGallery]:          https://www.powershellgallery.com/packages/Az.ArcResourceBridge/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
 [AutomanageGallery]:                 https://www.powershellgallery.com/packages/Az.Automanage/
@@ -432,6 +443,7 @@
 [ElasticSanGallery]:                 https://www.powershellgallery.com/packages/Az.ElasticSan/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
 [EventHubGallery]:                   https://www.powershellgallery.com/packages/Az.EventHub/
+[FabricGallery]:                     https://www.powershellgallery.com/packages/Az.Fabric/
 [FirmwareAnalysisGallery]:           https://www.powershellgallery.com/packages/Az.FirmwareAnalysis/
 [FleetGallery]:                      https://www.powershellgallery.com/packages/Az.Fleet/
 [FluidRelayGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
@@ -444,6 +456,7 @@
 [HdInsightOnAksGallery]:             https://www.powershellgallery.com/packages/Az.HdInsightOnAks/
 [HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
+[HealthDataAIServicesGallery]:       https://www.powershellgallery.com/packages/Az.HealthDataAIServices/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
 [ImageBuilderGallery]:               https://www.powershellgallery.com/packages/Az.ImageBuilder/
 [ImportExportGallery]:               https://www.powershellgallery.com/packages/Az.ImportExport/
@@ -451,6 +464,7 @@
 [IotHubGallery]:                     https://www.powershellgallery.com/packages/Az.IotHub/
 [KeyVaultGallery]:                   https://www.powershellgallery.com/packages/Az.KeyVault/
 [KubernetesConfigurationGallery]:    https://www.powershellgallery.com/packages/Az.KubernetesConfiguration/
+[KubernetesRuntimeGallery]:          https://www.powershellgallery.com/packages/Az.KubernetesRuntime/
 [KustoGallery]:                      https://www.powershellgallery.com/packages/Az.Kusto/
 [LabServicesGallery]:                https://www.powershellgallery.com/packages/Az.LabServices/
 [LoadTestingGallery]:                https://www.powershellgallery.com/packages/Az.LoadTesting/
@@ -528,6 +542,7 @@
 [SynapseGallery]:                    https://www.powershellgallery.com/packages/Az.Synapse/
 [TimeSeriesInsightsGallery]:         https://www.powershellgallery.com/packages/Az.TimeSeriesInsights/
 [TrafficManagerGallery]:             https://www.powershellgallery.com/packages/Az.TrafficManager/
+[TerraformGallery]:                  https://www.powershellgallery.com/packages/Az.Terraform/
 [VMwareGallery]:                     https://www.powershellgallery.com/packages/Az.VMware/
 [VoiceServicesGallery]:              https://www.powershellgallery.com/packages/Az.VoiceServices/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
@@ -548,6 +563,7 @@
 [AppComplianceAutomationChangelog]:    ../src/AppComplianceAutomation/AppComplianceAutomation/ChangeLog.md
 [AppConfigurationChangeLog]:           ../src/AppConfiguration/AppConfiguration/ChangeLog.md
 [ApplicationInsightsChangeLog]:        ../src/ApplicationInsights/ApplicationInsights/ChangeLog.md
+[ArcGatewayChangeLog]:                 ../src/ArcGateway/ArcGateway/ChangeLog.md
 [ArcResourceBridgeChangeLog]:          ../src/ArcResourceBridge/ArcResourceBridge/ChangeLog.md
 [AttestationChangeLog]:                ../src/Attestation/Attestation/ChangeLog.md
 [AutomanageChangeLog]:                 ../src/Automanage/Automanage/ChangeLog.md
@@ -604,6 +620,7 @@
 [ElasticSanChangeLog]:                 ../src/ElasticSan/ElasticSan/ChangeLog.md
 [EventGridChangeLog]:                  ../src/EventGrid/EventGrid/ChangeLog.md
 [EventHubChangeLog]:                   ../src/EventHub/EventHub/ChangeLog.md
+[FabricChangeLog]:                     ../src/Fabric/Fabric/ChangeLog.md
 [FirmwareAnalysisChangeLog]:           ../src/FirmwareAnalysis/FirmwareAnalysis/ChangeLog.md
 [FleetChangeLog]:                      ../src/Fleet/Fleet/ChangeLog.md
 [FluidRelayChangeLog]:                 ../src/FluidRelay/FluidRelay/ChangeLog.md
@@ -616,6 +633,7 @@
 [HdInsightOnAksChangeLog]:             ../src/HdInsightOnAks/HdInsightOnAks/ChangeLog.md
 [HealthBotChangeLog]:                  ../src/HealthBot/HealthBot/ChangeLog.md
 [HealthcareApisChangeLog]:             ../src/HealthcareApis/HealthcareApis/ChangeLog.md
+[HealthDataAIServicesChangeLog]:       ../src/HealthDataAIServices/HealthDataAIServices/ChangeLog.md
 [HPCCacheChangeLog]:                   ../src/HPCCache/HPCCache/ChangeLog.md
 [ImageBuilderChangeLog]:               ../src/ImageBuilder/ImageBuilder/ChangeLog.md
 [ImportExportChangeLog]:               ../src/ImportExport/ImportExport/ChangeLog.md
@@ -623,6 +641,7 @@
 [IotHubChangeLog]:                     ../src/IotHub/IotHub/ChangeLog.md
 [KeyVaultChangeLog]:                   ../src/KeyVault/KeyVault/ChangeLog.md
 [KubernetesConfigurationChangeLog]:    ../src/KubernetesConfiguration/KubernetesConfiguration/ChangeLog.md
+[KubernetesRuntimeChangeLog]:          ../src/KubernetesRuntime/KubernetesRuntime/ChangeLog.md
 [KustoChangeLog]:                      ../src/Kusto/Kusto/ChangeLog.md
 [LabServicesChangeLog]:                ../src/LabServices/LabServices/ChangeLog.md
 [LoadTestingChangeLog]:                ../src/LoadTesting/LoadTesting/ChangeLog.md
@@ -700,6 +719,7 @@
 [SynapseChangeLog]:                    ../src/Synapse/Synapse/ChangeLog.md
 [TimeSeriesInsightsChangeLog]:         ../src/TimeSeriesInsights/TimeSeriesInsights/ChangeLog.md
 [TrafficManagerChangeLog]:             ../src/TrafficManager/TrafficManager/ChangeLog.md
+[TerraformChangeLog]:                  ../src/Terraform/Terraform/ChangeLog.md
 [VMwareChangeLog]:                     ../src/VMware/VMware/ChangeLog.md
 [VoiceServicesChangeLog]:              ../src/VoiceServices/VoiceServices/ChangeLog.md
 [WebsitesChangeLog]:                   ../src/Websites/Websites/ChangeLog.md

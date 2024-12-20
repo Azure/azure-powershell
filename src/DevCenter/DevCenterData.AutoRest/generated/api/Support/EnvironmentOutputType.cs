@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
 {
 
-    /// <summary>Type of the output value</summary>
+    /// <summary>Type of the output value.</summary>
     public partial struct EnvironmentOutputType :
         System.IEquatable<EnvironmentOutputType>
     {

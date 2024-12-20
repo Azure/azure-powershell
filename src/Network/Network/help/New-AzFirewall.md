@@ -16,6 +16,7 @@ Creates a new Firewall in a resource group.
 ### Default (Default)
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
+ [-PublicIpAddress <PSPublicIpAddress[]>]
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
@@ -29,7 +30,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
 ### OldIpConfigurationParameterValues
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetworkName <String>
- [-PublicIpName <String>] [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
+ [-PublicIpName <String>] [-PublicIpAddress <PSPublicIpAddress[]>]
+ [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
@@ -528,7 +530,7 @@ One or more Public IP Addresses. The Public IP addresses must use Standard SKU a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress[]
-Parameter Sets: IpConfigurationParameterValues
+Parameter Sets: (All)
 Aliases:
 
 Required: False

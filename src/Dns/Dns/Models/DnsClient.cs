@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Dns
             {RecordType.CAA, typeof (CaaRecord)},
             {RecordType.DS, typeof (DsRecord)},
             {RecordType.Tlsa, typeof (TlsaRecord)},
+            {RecordType.Naptr, typeof (NaptrRecord)}
         };
 
         public DnsClient(IAzureContext context)
@@ -270,6 +271,9 @@ namespace Microsoft.Azure.Commands.Dns
                 case RecordType.Tlsa:
                     properties.TlsaRecords = resourceRecords.Select(x => (Sdk.TlsaRecord)(x as TlsaRecord).ToMamlRecord()).ToList();
                     break;
+                case RecordType.Naptr:
+                    properties.NaptrRecords = resourceRecords.Select(x => (Sdk.NaptrRecord)(x as NaptrRecord).ToMamlRecord()).ToList();
+                    break;
             }
         }
 
@@ -287,6 +291,7 @@ namespace Microsoft.Azure.Commands.Dns
             properties.CaaRecords = recordType == RecordType.CAA ? new List<Management.Dns.Models.CaaRecord>() : null;
             properties.DsRecords = recordType == RecordType.DS ? new List<Management.Dns.Models.DsRecord>() : null;
             properties.TlsaRecords = recordType == RecordType.Tlsa ? new List<Management.Dns.Models.TlsaRecord>() : null;
+            properties.NaptrRecords = recordType == RecordType.Naptr ? new List<Management.Dns.Models.NaptrRecord>() : null;
         }
 
         public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
@@ -348,7 +353,12 @@ namespace Microsoft.Azure.Commands.Dns
                     TlsaRecords =
                         recordSet.RecordType == RecordType.Tlsa
                             ? GetMamlRecords<TlsaRecord, Management.Dns.Models.TlsaRecord>(recordSet.Records)
+                            : null,
+                    NaptrRecords =
+                        recordSet.RecordType == RecordType.Naptr
+                            ? GetMamlRecords<NaptrRecord, Management.Dns.Models.NaptrRecord>(recordSet.Records)
                             : null
+
                 },
                 ifMatch: overwrite ? "*" : recordSet.Etag,
                 ifNoneMatch: null);
@@ -477,6 +487,7 @@ namespace Microsoft.Azure.Commands.Dns
             result.AddRange(GetPowerShellRecords(recordSet.CaaRecords));
             result.AddRange(GetPowerShellRecords(recordSet.DsRecords));
             result.AddRange(GetPowerShellRecords(recordSet.TlsaRecords));
+            result.AddRange(GetPowerShellRecords(recordSet.NaptrRecords));
             if (recordSet.CnameRecord != null)
             {
                 result.Add(DnsRecordBase.FromMamlRecord(recordSet.CnameRecord));

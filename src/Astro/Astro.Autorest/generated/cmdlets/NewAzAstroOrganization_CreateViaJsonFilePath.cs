@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a OrganizationResource</summary>
+    /// <summary>create a OrganizationResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Astronomer.Astro/organizations/{organizationName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAstroOrganization_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Description(@"Create a OrganizationResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Description(@"create a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Astronomer.Astro/organizations/{organizationName}", ApiVersion = "2023-08-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.NotSuggestDefaultParameterSet]

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new partner registration with the specified parameters.</summary>
+    /// <summary>create a new partner registration with the specified parameters.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventGridPartnerRegistration_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerRegistration))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Create a new partner registration with the specified parameters.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"create a new partner registration with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}", ApiVersion = "2023-06-01-preview")]
     public partial class NewAzEventGridPartnerRegistration_CreateExpanded : global::System.Management.Automation.PSCmdlet,

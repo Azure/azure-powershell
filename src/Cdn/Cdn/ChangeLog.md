@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.2.2
 * Added support to enable ManagedIdentity when no BYOC in the classic front door during migration
 
 ## Version 3.2.1

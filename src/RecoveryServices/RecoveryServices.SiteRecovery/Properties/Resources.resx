@@ -546,4 +546,7 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="UnsupportedReplicationProviderOperation" xml:space="preserve">
     <value>Unsupported replication provider {0} for this {1} operation</value>
   </data>
+  <data name="IncorrectParameters" xml:space="preserve">
+    <value>Only one of the input parameters are expected not both either RecoveryAzureStorageAccountId or UseManagedDisksForReplication </value>
+  </data>
 </root>

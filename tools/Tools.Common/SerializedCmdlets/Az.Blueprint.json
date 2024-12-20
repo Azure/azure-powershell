@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Blueprint",
-  "ModuleVersion": "0.4.3",
+  "ModuleVersion": "0.4.4",
   "Cmdlets": [
     {
       "VerbName": "Export",
@@ -29,7 +29,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -71,7 +71,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -80,7 +80,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -115,7 +115,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -175,7 +175,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -190,7 +190,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -236,7 +236,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -289,7 +289,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -344,7 +344,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSPublishedBlueprint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSPublishedBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSPublishedBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -439,7 +439,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -702,7 +702,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -778,7 +778,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1030,7 +1030,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Locks": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings",
               "ProvisioningState": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState",
@@ -1097,7 +1097,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -1171,7 +1171,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -1285,7 +1285,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Locks": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings",
               "ProvisioningState": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState",
@@ -1697,7 +1697,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1706,7 +1706,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1715,7 +1715,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1810,7 +1810,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1825,7 +1825,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1840,7 +1840,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1886,7 +1886,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1939,7 +1939,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -2249,7 +2249,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Blueprint.Models",
             "Name": "Microsoft.Azure.Management.Blueprint.Models.Artifact",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Blueprint.Models.Artifact, Microsoft.Azure.Management.Blueprint, Version=0.20.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Blueprint.Models.Artifact, Microsoft.Azure.PowerShell.Blueprint.Management.Sdk, Version=0.20.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Type": "System.String",
@@ -2322,7 +2322,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -2331,7 +2331,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -2490,7 +2490,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -2581,7 +2581,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2596,7 +2596,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -2750,7 +2750,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2765,7 +2765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -2920,7 +2920,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2935,7 +2935,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -3112,7 +3112,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Locks": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings",
               "ProvisioningState": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState",
@@ -3179,7 +3179,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -3212,7 +3212,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3230,7 +3230,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode"
             ]
@@ -3338,7 +3338,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -3460,7 +3460,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -3505,7 +3505,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3535,7 +3535,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode"
                   ]
@@ -3698,7 +3698,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSPublishedBlueprint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSPublishedBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSPublishedBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -3775,7 +3775,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -3856,7 +3856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -3956,7 +3956,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Locks": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings",
               "ProvisioningState": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState",
@@ -4041,7 +4041,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Locks": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings",
               "ProvisioningState": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState",
@@ -4066,7 +4066,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4131,7 +4131,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4207,7 +4207,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4253,7 +4253,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Locks": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings",
                     "ProvisioningState": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState",
@@ -4284,7 +4284,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4330,7 +4330,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4383,7 +4383,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprint, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -4693,7 +4693,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Blueprint.Models",
             "Name": "Microsoft.Azure.Management.Blueprint.Models.Artifact",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Blueprint.Models.Artifact, Microsoft.Azure.Management.Blueprint, Version=0.20.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Blueprint.Models.Artifact, Microsoft.Azure.PowerShell.Blueprint.Management.Sdk, Version=0.20.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Type": "System.String",
@@ -4766,7 +4766,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -4775,7 +4775,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -4934,7 +4934,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -5025,7 +5025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -5040,7 +5040,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -5194,7 +5194,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -5209,7 +5209,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -5364,7 +5364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -5379,7 +5379,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -5556,7 +5556,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintAssignment, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Locks": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings",
               "ProvisioningState": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState",
@@ -5623,7 +5623,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
             "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
               "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -5656,7 +5656,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5674,7 +5674,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode"
             ]
@@ -5782,7 +5782,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -5904,7 +5904,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
                   "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
                     "TargetScope": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
@@ -5949,7 +5949,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5979,7 +5979,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode"
                   ]
@@ -6175,7 +6175,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintStatus, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "TimeCreated": "System.Nullable`1[System.DateTime]",
         "LastModified": "System.Nullable`1[System.DateTime]"
@@ -6231,7 +6231,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintTargetScope, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -6323,7 +6323,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition"
@@ -6332,7 +6332,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AllowedValues": "System.Collections.Generic.IList`1[System.Object]",
         "DefaultValue": "System.Object",
@@ -6387,7 +6387,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition"
@@ -6396,7 +6396,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupDefinition, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DependsOn": "System.Collections.Generic.IList`1[System.String]",
         "Name": "System.String",
@@ -6582,7 +6582,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentLockSettings, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Mode": "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode"
       },
@@ -6619,7 +6619,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSLockMode, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -6706,7 +6706,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -6793,7 +6793,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentStatus": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentStatus, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSAssignmentStatus, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "TimeCreated": "System.Nullable`1[System.DateTime]",
         "LastModified": "System.Nullable`1[System.DateTime]"
@@ -6831,7 +6831,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSManagedServiceIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSManagedServiceIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSManagedServiceIdentity, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSManagedServiceIdentity, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "UserAssignedIdentities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity]",
         "Type": "System.String",
@@ -6871,7 +6871,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity"
@@ -6880,7 +6880,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "ClientId": "System.String"
@@ -6918,7 +6918,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue"
@@ -6927,7 +6927,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Reference": "Microsoft.Azure.Commands.Blueprint.Models.PSSecretValueReference",
         "Value": "System.Object"
@@ -6965,7 +6965,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSSecretValueReference": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSSecretValueReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSSecretValueReference, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSSecretValueReference, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyVault": "Microsoft.Azure.Commands.Blueprint.Models.PSKeyVaultReference",
         "SecretName": "System.String",
@@ -7004,7 +7004,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSKeyVaultReference": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSKeyVaultReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSKeyVaultReference, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSKeyVaultReference, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       },
@@ -7041,7 +7041,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue"
@@ -7050,7 +7050,7 @@
     "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue": {
       "Namespace": "Microsoft.Azure.Commands.Blueprint.Models",
       "Name": "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Blueprint.Models.PSResourceGroupValue, Microsoft.Azure.PowerShell.Cmdlets.Blueprint, Version=0.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Location": "System.String"

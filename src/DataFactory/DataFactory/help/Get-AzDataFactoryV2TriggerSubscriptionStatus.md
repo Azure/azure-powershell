@@ -54,9 +54,9 @@ This command will get the status of the subscribtion for BlobEnetTrigger1 trigge
 The data factory name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 The trigger object.
 
 ```yaml
-Type: PSTrigger
+Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The trigger name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
 Aliases: TriggerName
 
@@ -114,9 +114,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -129,9 +129,9 @@ Accept wildcard characters: False
 The Azure resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -155,4 +155,3 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 ## NOTES
 
 ## RELATED LINKS
-

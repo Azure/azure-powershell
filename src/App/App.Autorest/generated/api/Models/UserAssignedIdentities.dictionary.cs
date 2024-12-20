@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             {
                 foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() {  } ) )
                 {
-                    if ((null != property.Key && null != property.Value))
+                    if ((null != property.Key))
                     {
                         this.__additionalProperties.Add(property.Key.ToString(), global::System.Management.Automation.LanguagePrimitives.ConvertTo<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentity>( property.Value));
                     }

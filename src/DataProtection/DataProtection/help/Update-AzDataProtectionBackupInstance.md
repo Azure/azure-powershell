@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.DataProtection
+Module Name: Az.Dataprotection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
@@ -15,7 +15,8 @@ Updates a given backup instance
 ```
 Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String>
  -BackupInstanceName <String> [-SubscriptionId <String>] [-PolicyId <String>]
- [-VaultedBackupContainer <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-VaultedBackupContainer <String[]>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
+ [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -136,8 +137,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGuardOperationRequest
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppModifyPolicy/default.
+Use this parameter when the operation is MUA protected.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id of the vault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
 
 ```yaml
 Type: System.String

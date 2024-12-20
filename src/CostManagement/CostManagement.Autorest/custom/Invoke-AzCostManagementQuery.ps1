@@ -265,7 +265,11 @@ function Invoke-AzCostManagementUsageQueryInternal {
     foreach ($Row in $ResponseContent.Properties.Rows) {
       $QueryRow = New-Object System.Collections.Generic.List[string]
       foreach ($Item in $Row) {
-        $QueryRow.Add($Item.ToString())
+        if ($null -eq $Item) {
+          $QueryRow.Add($Item)
+        } else {
+          $QueryRow.Add($Item.ToString())
+        }
       }
       $RowList.Add($QueryRow)
     }

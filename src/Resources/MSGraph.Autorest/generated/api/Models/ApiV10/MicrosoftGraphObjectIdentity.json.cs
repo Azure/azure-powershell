@@ -79,9 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_issuer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("issuer"), out var __jsonIssuer) ? (string)__jsonIssuer : (string)Issuer;}
-            {_issuerAssignedId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("issuerAssignedId"), out var __jsonIssuerAssignedId) ? (string)__jsonIssuerAssignedId : (string)IssuerAssignedId;}
-            {_signInType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("signInType"), out var __jsonSignInType) ? (string)__jsonSignInType : (string)SignInType;}
+            {_issuer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("issuer"), out var __jsonIssuer) ? (string)__jsonIssuer : (string)_issuer;}
+            {_issuerAssignedId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("issuerAssignedId"), out var __jsonIssuerAssignedId) ? (string)__jsonIssuerAssignedId : (string)_issuerAssignedId;}
+            {_signInType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("signInType"), out var __jsonSignInType) ? (string)__jsonSignInType : (string)_signInType;}
             AfterFromJson(json);
         }
 

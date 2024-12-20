@@ -7,6 +7,7 @@
     using System.Linq;
     using Commands.Common.Authentication.Abstractions;
     using Management.Resources.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
@@ -129,7 +130,7 @@
                     ? PSJsonSerializer.Serialize(parametersDictionary)
                     : null;
                 properties.Parameters = !string.IsNullOrEmpty(parametersContent)
-                    ? JObject.Parse(parametersContent)
+                    ? parametersContent.FromJson<Dictionary<string, DeploymentParameter>>()
                     : null;
             }
 

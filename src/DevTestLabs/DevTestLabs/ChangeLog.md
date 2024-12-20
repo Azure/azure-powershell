@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.DevTestLabs" Version "1.0.0" PackageReference
 
 ## Version 1.0.3
 * Removed the outdated deps.json file.

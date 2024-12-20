@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create the virtual network resource
+create the virtual network resource
 .Description
-Create the virtual network resource
+create the virtual network resource
 .Example
 New-AzAksArcVirtualNetwork -Name "test-vnet-static" -ResourceGroupName "test-arcappliance-resgrp" -CustomLocationName "testcustomlocation" -MocVnetName "test-vnet"
 

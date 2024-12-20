@@ -27,12 +27,12 @@ Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -Environment
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelayenvironmentaction
 #>
 function Invoke-AzDevCenterUserDelayEnvironmentAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction])]
 [CmdletBinding(DefaultParameterSetName='Delay', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delay', Mandatory)]
@@ -49,22 +49,22 @@ param(
     ${DevCenterName},
 
     [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Environment name.
+    ${EnvironmentName},
+
+    [Parameter(Mandatory)]
     [Alias('ActionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The name of an action that will take place on an Environment.
+    # Uniquely identifies the action.
     ${Name},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The name of the environment.
-    ${EnvironmentName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [System.String]
-    # The DevCenter Project upon which to execute operations.
+    # Name of the project.
     ${ProjectName},
 
     [Parameter()]

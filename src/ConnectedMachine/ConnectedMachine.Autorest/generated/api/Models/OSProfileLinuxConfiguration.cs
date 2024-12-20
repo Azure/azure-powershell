@@ -13,8 +13,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal
     {
 
+        /// <summary>The error additional info.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo; }
+
+        /// <summary>The error code.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Code; }
+
+        /// <summary>The error details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Detail; }
+
+        /// <summary>The error message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Message; }
+
+        /// <summary>Internal Acessors for AdditionalInfo</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo = value; }
+
+        /// <summary>Internal Acessors for Code</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Code = value; }
+
+        /// <summary>Internal Acessors for Detail</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Detail = value; }
+
+        /// <summary>Internal Acessors for Message</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Message = value; }
+
         /// <summary>Internal Acessors for PatchSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal.PatchSetting { get => (this._patchSetting = this._patchSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettings()); set { {_patchSetting = value;} } }
+
+        /// <summary>Internal Acessors for PatchSettingStatus</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal.PatchSettingStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Status = value; }
+
+        /// <summary>Internal Acessors for StatusError</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusError = value; }
+
+        /// <summary>Internal Acessors for Target</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfigurationInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Target = value; }
 
         /// <summary>Backing field for <see cref="PatchSetting" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings _patchSetting;
@@ -27,9 +64,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public string PatchSettingAssessmentMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AssessmentMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AssessmentMode = value ?? null; }
 
+        /// <summary>
+        /// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines
+        /// without requiring a reboot.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public bool? PatchSettingEnableHotpatching { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).EnableHotpatching; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).EnableHotpatching = value ?? default(bool); }
+
         /// <summary>Specifies the patch mode.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public string PatchSettingPatchMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).PatchMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).PatchMode = value ?? null; }
+
+        /// <summary>Indicates the current status of the hotpatch being enabled or disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public string StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus = value ?? null; }
+
+        /// <summary>The error target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public string Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Target; }
 
         /// <summary>Creates an new <see cref="OSProfileLinuxConfiguration" /> instance.</summary>
         public OSProfileLinuxConfiguration()
@@ -41,6 +93,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     public partial interface IOSProfileLinuxConfiguration :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
+        /// <summary>The error additional info.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error additional info.",
+        SerializedName = @"additionalInfo",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> AdditionalInfo { get;  }
+        /// <summary>The error code.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error code.",
+        SerializedName = @"code",
+        PossibleTypes = new [] { typeof(string) })]
+        string Code { get;  }
+        /// <summary>The error details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error details.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Detail { get;  }
+        /// <summary>The error message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error message.",
+        SerializedName = @"message",
+        PossibleTypes = new [] { typeof(string) })]
+        string Message { get;  }
         /// <summary>Specifies the assessment mode.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -53,6 +149,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
         string PatchSettingAssessmentMode { get; set; }
+        /// <summary>
+        /// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines
+        /// without requiring a reboot.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.",
+        SerializedName = @"enableHotpatching",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? PatchSettingEnableHotpatching { get; set; }
         /// <summary>Specifies the patch mode.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -65,20 +175,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
         string PatchSettingPatchMode { get; set; }
+        /// <summary>Indicates the current status of the hotpatch being enabled or disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Indicates the current status of the hotpatch being enabled or disabled.",
+        SerializedName = @"hotpatchEnablementStatus",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "PendingEvaluation", "Disabled", "ActionRequired", "Enabled")]
+        string StatusHotpatchEnablementStatus { get;  }
+        /// <summary>The error target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error target.",
+        SerializedName = @"target",
+        PossibleTypes = new [] { typeof(string) })]
+        string Target { get;  }
 
     }
     /// Specifies the linux configuration for update management.
     internal partial interface IOSProfileLinuxConfigurationInternal
 
     {
+        /// <summary>The error additional info.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> AdditionalInfo { get; set; }
+        /// <summary>The error code.</summary>
+        string Code { get; set; }
+        /// <summary>The error details.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Detail { get; set; }
+        /// <summary>The error message.</summary>
+        string Message { get; set; }
         /// <summary>Specifies the patch settings.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings PatchSetting { get; set; }
         /// <summary>Specifies the assessment mode.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
         string PatchSettingAssessmentMode { get; set; }
+        /// <summary>
+        /// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines
+        /// without requiring a reboot.
+        /// </summary>
+        bool? PatchSettingEnableHotpatching { get; set; }
         /// <summary>Specifies the patch mode.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
         string PatchSettingPatchMode { get; set; }
+        /// <summary>Status of the hotpatch capability enrollment or disenrollment.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus PatchSettingStatus { get; set; }
+        /// <summary>
+        /// The errors that were encountered during the hotpatch capability enrollment or disenrollment.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail StatusError { get; set; }
+        /// <summary>Indicates the current status of the hotpatch being enabled or disabled.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "PendingEvaluation", "Disabled", "ActionRequired", "Enabled")]
+        string StatusHotpatchEnablementStatus { get; set; }
+        /// <summary>The error target.</summary>
+        string Target { get; set; }
 
     }
 }

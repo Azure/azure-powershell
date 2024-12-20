@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Managed Certificate.</summary>
+    /// <summary>create a Managed Certificate.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerAppManagedCert_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create a Managed Certificate.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"create a Managed Certificate.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}", ApiVersion = "2023-05-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.NotSuggestDefaultParameterSet]
@@ -146,13 +146,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
-        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
-
-        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline Pipeline { get; set; }
@@ -205,16 +198,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
-
-        /// <summary>
-        /// <c>overrideOnBadRequest</c> will be called before the regular onBadRequest has been processed, allowing customization
-        /// of what happens on that response. Implement this method in a partial class to enable this behavior
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="returnNow">/// Determines if the rest of the onBadRequest method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
-
-        partial void overrideOnBadRequest(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -286,7 +269,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ManagedCertificatesCreateOrUpdateViaJsonString(SubscriptionId, ResourceGroupName, EnvName, Name, _jsonString, onOk, onBadRequest, onDefault, this, Pipeline);
+                    await this.Client.ManagedCertificatesCreateOrUpdateViaJsonString(SubscriptionId, ResourceGroupName, EnvName, Name, _jsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException urexception)
@@ -506,28 +506,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             base.StopProcessing();
         }
 
-        /// <summary>a delegate that is called when the remote service returns 400 (BadRequest).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onBadRequest(global::System.Net.Http.HttpResponseMessage responseMessage)
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
         {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnBadRequest(responseMessage, ref _returnNow);
-                // if overrideOnBadRequest has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onBadRequest - response for 400 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
-                {
-                    WriteObject(true);
-                }
-            }
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

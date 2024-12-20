@@ -16,15 +16,15 @@ This operation will stop backup for a backup instance and retains the backup dat
 ```
 Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String> -ResourceGroupName <String>
  -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
- [-ResourceGuardOperationRequest <String[]>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>] [-SubscriptionId <String>]
+ [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SuspendViaIdentity
 ```
 Suspend-AzDataProtectionBackupInstanceBackup -InputObject <IDataProtectionIdentity> [-AsJob]
  [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>]
- [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,6 +163,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id of the backup vault
 
@@ -180,7 +196,7 @@ Accept wildcard characters: False
 
 ### -Token
 Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
 
 ```yaml
 Type: System.String

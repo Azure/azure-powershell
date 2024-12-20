@@ -109,10 +109,11 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [ValidateSet('Default', 'DoNotValidate')]
@@ -121,6 +122,12 @@ param(
     [System.String]
     # The option whether validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
+
+    [Parameter()]
+    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -221,7 +228,7 @@ process {
     if ($InputObject) {
         foreach ($parameterName in $InputObject.Keys) {
             $value = $InputObject.($parameterName)
-            if ($value -or ($value -is [array])) {
+            if ($value -or ($value -is [array]) -or ($value -is [switch])) {
                 $calledParameters.($parameterName) = $value
             }
         }
@@ -230,7 +237,7 @@ process {
     # skip $null and empty values to avoid validation failures on pipeline input
     foreach ($parameterName in $PSBoundParameters.Keys) {
         $value = $PSBoundParameters.($parameterName)
-        if ($value -or ($value -is [array])) {
+        if ($value -or ($value -is [array]) -or ($value -is [switch])) {
             $calledParameters.($parameterName) = $value
         }
     }

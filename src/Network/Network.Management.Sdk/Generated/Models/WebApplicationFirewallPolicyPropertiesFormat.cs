@@ -48,7 +48,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="pathBasedRules">A collection of references to application gateway path rules.
         /// </param>
-        public WebApplicationFirewallPolicyPropertiesFormat(ManagedRulesDefinition managedRules, PolicySettings policySettings = default(PolicySettings), System.Collections.Generic.IList<WebApplicationFirewallCustomRule> customRules = default(System.Collections.Generic.IList<WebApplicationFirewallCustomRule>), System.Collections.Generic.IList<ApplicationGateway> applicationGateways = default(System.Collections.Generic.IList<ApplicationGateway>), string provisioningState = default(string), string resourceState = default(string), System.Collections.Generic.IList<SubResource> httpListeners = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> pathBasedRules = default(System.Collections.Generic.IList<SubResource>))
+
+        /// <param name="applicationGatewayForContainers">A collection of references to application gateway for containers.
+        /// </param>
+        public WebApplicationFirewallPolicyPropertiesFormat(ManagedRulesDefinition managedRules, PolicySettings policySettings = default(PolicySettings), System.Collections.Generic.IList<WebApplicationFirewallCustomRule> customRules = default(System.Collections.Generic.IList<WebApplicationFirewallCustomRule>), System.Collections.Generic.IList<ApplicationGateway> applicationGateways = default(System.Collections.Generic.IList<ApplicationGateway>), string provisioningState = default(string), string resourceState = default(string), System.Collections.Generic.IList<SubResource> httpListeners = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> pathBasedRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition> applicationGatewayForContainers = default(System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition>))
 
         {
             this.PolicySettings = policySettings;
@@ -59,6 +62,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ManagedRules = managedRules;
             this.HttpListeners = httpListeners;
             this.PathBasedRules = pathBasedRules;
+            this.ApplicationGatewayForContainers = applicationGatewayForContainers;
             CustomInit();
         }
 
@@ -116,6 +120,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "pathBasedRules")]
         public System.Collections.Generic.IList<SubResource> PathBasedRules {get; private set; }
+
+        /// <summary>
+        /// Gets a collection of references to application gateway for containers.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "applicationGatewayForContainers")]
+        public System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition> ApplicationGatewayForContainers {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -160,6 +170,16 @@ namespace Microsoft.Azure.Management.Network.Models
             }
 
 
+            if (this.ApplicationGatewayForContainers != null)
+            {
+                foreach (var element in this.ApplicationGatewayForContainers)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

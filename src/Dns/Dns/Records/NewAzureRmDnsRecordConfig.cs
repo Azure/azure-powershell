@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Dns
         private const string ParameterSetTxt = "Txt";
         private const string ParameterSetSrv = "Srv";
         private const string ParameterSetPtr = "Ptr";
+        private const string ParameterSetNaptr = "Naptr";
         private const string ParameterSetNs = "Ns";
         private const string ParameterSetMx = "Mx";
         private const string ParameterSetCaa = "Caa";
@@ -54,6 +55,7 @@ namespace Microsoft.Azure.Commands.Dns
         public string Exchange { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The preference value for the MX record to add.", ParameterSetName = ParameterSetMx)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The preference value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
         [ValidateNotNullOrEmpty]
         public ushort Preference { get; set; }
 
@@ -131,6 +133,27 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string CertificateAssociationData { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The order value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNullOrEmpty]
+        public ushort Order { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flags value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNullOrEmpty]
+        public string Flags { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The service value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNullOrEmpty]
+        public string Services { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The regular expression value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNull]
+        [AllowEmptyString]
+        public string Regexp { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The replacement value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNullOrEmpty]
+        public string Replacement { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DnsRecordBase result = null;
@@ -192,6 +215,11 @@ namespace Microsoft.Azure.Commands.Dns
                 case ParameterSetTlsa:
                     {
                         result = new TlsaRecord { Usage = this.Usage, Selector = this.Selector, MatchingType = this.MatchingType, CertificateAssociationData = this.CertificateAssociationData };
+                        break;
+                    }
+                case ParameterSetNaptr:
+                    {
+                        result = new NaptrRecord { Order = this.Order, Preference = this.Preference, Flags = this.Flags, Services = this.Services, Regexp = this.Regexp, Replacement = this.Replacement };
                         break;
                     }
                 default:

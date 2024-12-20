@@ -1,6 +1,6 @@
-### Example 1: Create a run-command for a machine
+### Example 1: Create a run command
 ```powershell
-New-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -Location "eastus2euap" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId ********-****-****-****-**********
+New-AzConnectedMachineRunCommand -ResourceGroupName "ytongtest" -Location "eastus" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand2" -MachineName "testmachine" -Subscription "********-****-****-****-**********"
 ```
 
 ```output
@@ -8,25 +8,26 @@ AsyncExecution                    : False
 ErrorBlobManagedIdentityClientId  :
 ErrorBlobManagedIdentityObjectId  :
 ErrorBlobUri                      :
-Id                                : /subscriptions/********-****-****-****-**********/resourceGroups/az-sdk-test/prov
-                                    iders/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3
-InstanceViewEndTime               : 12/5/2023 7:27:26 PM
+Id                                : /subscriptions/********-****-****-****-**********/resourceGroups/ytong
+                                    test/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/
+                                    myRunCommand
+InstanceViewEndTime               : 11/8/2024 7:43:31 PM
 InstanceViewError                 :
 InstanceViewExecutionMessage      : RunCommand script execution completed
 InstanceViewExecutionState        : Succeeded
 InstanceViewExitCode              : 0
 InstanceViewOutput                : Hello World!
-InstanceViewStartTime             : 12/5/2023 7:27:24 PM
+InstanceViewStartTime             : 11/8/2024 7:43:31 PM
 InstanceViewStatuses              :
-Location                          : eastus2euap
-Name                              : myRunCommand3
+Location                          : eastus
+Name                              : myRunCommand
 OutputBlobManagedIdentityClientId :
 OutputBlobManagedIdentityObjectId :
 OutputBlobUri                     :
 Parameter                         :
 ProtectedParameter                :
 ProvisioningState                 : Succeeded
-ResourceGroupName                 : az-sdk-test
+ResourceGroupName                 : ytongtest
 RunAsPassword                     :
 RunAsUser                         :
 ScriptUriManagedIdentityClientId  :
@@ -40,10 +41,10 @@ SystemDataCreatedByType           :
 SystemDataLastModifiedAt          :
 SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
-Tag                               : {
+Tags                              : {
                                     }
 TimeoutInSecond                   : 0
 Type                              : Microsoft.HybridCompute/machines/runcommands
 ```
 
-Create a run-command for a machine
+Create a run command

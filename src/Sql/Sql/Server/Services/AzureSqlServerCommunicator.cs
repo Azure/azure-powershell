@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database SErver
+        /// Gets the Azure Sql Database Server
         /// </summary>
-        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string expand = null)
+        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string expand = null, string subscriptionId = null)
         {
-            return GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName, expand);
+            return GetCurrentSqlClient(subscriptionId).Servers.Get(resourceGroupName, serverName, expand);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         }
 
         /// <summary>
-        /// Creates or updates a Azure Sql Database SErver
+        /// Creates or updates a Azure Sql Database Server
         /// </summary>
         public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, Management.Sql.Models.Server parameters)
         {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         }
 
         /// <summary>
-        /// Deletes a Azure Sql Database SErver
+        /// Deletes a Azure Sql Database Server
         /// </summary>
         public void Remove(string resourceGroupName, string serverName)
         {
@@ -99,12 +99,19 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient()
+        private SqlManagementClient GetCurrentSqlClient(string subscriptionId = null)
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            }
+
+            if (subscriptionId != null)
+            {
+                var crossSubClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                crossSubClient.SubscriptionId = subscriptionId;
+                return crossSubClient;
             }
             return SqlClient;
         }

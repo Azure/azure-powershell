@@ -13,7 +13,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="8.0.0-preview" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiManagement.Management.Sdk\ApiManagement.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

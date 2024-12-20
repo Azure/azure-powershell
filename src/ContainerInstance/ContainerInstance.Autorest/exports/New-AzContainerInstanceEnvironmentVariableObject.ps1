@@ -22,15 +22,16 @@ Create a in-memory object for EnvironmentVariable
 .Example
 New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
 .Example
-New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "******" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue $pwd
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.EnvironmentVariable
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.EnvironmentVariable
 .Link
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
 #>
 function New-AzContainerInstanceEnvironmentVariableObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.EnvironmentVariable])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.EnvironmentVariable])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

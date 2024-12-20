@@ -20,6 +20,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress> IPAddress { get => this._iPAddress; set => this._iPAddress = value; }
 
+        /// <summary>Backing field for <see cref="Id" /> property.</summary>
+        private string _id;
+
+        /// <summary>Represents the ID of the network interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="MacAddress" /> property.</summary>
+        private string _macAddress;
+
+        /// <summary>Represents MAC address of the network interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string MacAddress { get => this._macAddress; set => this._macAddress = value; }
+
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>Represents the name of the network interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string Name { get => this._name; set => this._name = value; }
+
         /// <summary>Creates an new <see cref="NetworkInterface" /> instance.</summary>
         public NetworkInterface()
         {
@@ -41,6 +62,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"ipAddresses",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress> IPAddress { get; set; }
+        /// <summary>Represents the ID of the network interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Represents the ID of the network interface.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string Id { get; set; }
+        /// <summary>Represents MAC address of the network interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Represents MAC address of the network interface.",
+        SerializedName = @"macAddress",
+        PossibleTypes = new [] { typeof(string) })]
+        string MacAddress { get; set; }
+        /// <summary>Represents the name of the network interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Represents the name of the network interface.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string Name { get; set; }
 
     }
     /// Describes a network interface.
@@ -49,6 +103,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     {
         /// <summary>The list of IP addresses in this interface.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress> IPAddress { get; set; }
+        /// <summary>Represents the ID of the network interface.</summary>
+        string Id { get; set; }
+        /// <summary>Represents MAC address of the network interface.</summary>
+        string MacAddress { get; set; }
+        /// <summary>Represents the name of the network interface.</summary>
+        string Name { get; set; }
 
     }
 }

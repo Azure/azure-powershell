@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPartnerDestination
 
 ## SYNOPSIS
-Asynchronously updates a partner destination with the specified parameters.
+Asynchronously update a partner destination with the specified parameters.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzEventGridPartnerDestination -Name <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Asynchronously updates a partner destination with the specified parameters.
+Asynchronously update a partner destination with the specified parameters.
 
 ## EXAMPLES
 

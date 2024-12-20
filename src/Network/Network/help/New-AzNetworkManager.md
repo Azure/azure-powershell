@@ -227,7 +227,7 @@ Network Manager Scope Access.
 Type: Microsoft.Azure.Commands.Network.NewAzNetworkManagerCommand+NetworkManagerScopeAccessType[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: SecurityAdmin, Connectivity
+Accepted values: SecurityAdmin, Connectivity, Routing, SecurityUser
 
 Required: True
 Position: Named

@@ -16,8 +16,9 @@ This commands creates a container group with a container instance, whose image i
 
 ### Example 2: Create container group and runs a custom script inside the container.
 ```powershell
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $env1 = New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
-$env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "value2" -AsPlainText -Force)
+$env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue $pwd
 $container = New-AzContainerInstanceObject -Name test-container -Image alpine -Command "/bin/sh -c myscript.sh" -EnvironmentVariable @($env1, $env2)
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux
 ```
@@ -46,8 +47,9 @@ This commands creates a container group which prints out 'hello' and stops.
 
 ### Example 4: Create a container group with a container instance using image nginx in Azure Container Registry
 ```powershell
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $container = New-AzContainerInstanceObject -Name test-container -Image myacr.azurecr.io/nginx:latest
-$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myacr.azurecr.io" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
+$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myacr.azurecr.io" -Username "username" -Password $pwd
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
 ```
 
@@ -61,8 +63,9 @@ This commands creates a container group with a container instance, whose image i
 
 ### Example 5: Create a container group with a container instance using image nginx in custom container image Registry
 ```powershell
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $container = New-AzContainerInstanceObject -Name test-container -Image myserver.com/nginx:latest
-$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
+$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password $pwd
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
 ```
 
@@ -76,7 +79,8 @@ This commands creates a container group with a container instance, whose image i
 
 ### Example 6: Create a container group that mounts Azure File volume
 ```powershell
-$volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey $pwd
 $mount = New-AzContainerInstanceVolumeMountObject -MountPath "/aci/logs" -Name "myvolume"
 $container = New-AzContainerInstanceObject -Name test-container -Image alpine -VolumeMount $mount
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -Volume $volume

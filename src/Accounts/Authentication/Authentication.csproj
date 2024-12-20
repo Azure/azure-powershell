@@ -16,7 +16,8 @@
     <PackageReference Include="Azure.Identity.Broker" Version="1.1.0" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.61.3" />
     <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.61.3" />
-    <PackageReference Include="Microsoft.Identity.Client.Broker" Version="4.61.3"/>
+    <PackageReference Include="Microsoft.Identity.Client.Broker" Version="4.61.3" />
+    <PackageReference Include="Microsoft.Security.Utilities.Core" Version="1.8.0" />
   </ItemGroup>
 
   <ItemGroup>

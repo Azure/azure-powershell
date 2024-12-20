@@ -130,6 +130,11 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.Delegations = null;
             }
 
+            if (this.DefaultOutboundAccess != null)
+            {
+                subnet.DefaultOutboundAccess = this.DefaultOutboundAccess;
+            }
+
             if (!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))
             {
                 subnet.PrivateEndpointNetworkPolicies = this.PrivateEndpointNetworkPoliciesFlag;

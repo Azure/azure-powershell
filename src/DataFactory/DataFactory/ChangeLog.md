@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.18.9
+* Added pageSize support to Salesforce V2 Source.
+* Added pageSize support to ServiceNow V2 Source.
+* Added host property to Snowflake linked service.
+* Fixed missing authenticationType in PostgreSQL V2 linked service.
+
+## Version 1.18.8
+* Added support for Iceberg format as a sink.
+* Enabled sslMode and useSystemTrustStore options for MariaDB.
+
+## Version 1.18.7
 * Supported managed identity for Data Factory Azure File connector.
 * Supported ServicePrincipalCert Auth for Data Factory Rest connector.
 * Supported ServicePrincipalCert Auth for Data Factory SharePointOnlineList connector.

@@ -34,6 +34,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionProperties EncryptionProperty { get => (this._encryptionProperty = this._encryptionProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionProperties()); set => this._encryptionProperty = value; }
 
+        /// <summary>Backing field for <see cref="EnforceDataIntegrityCheckForIscsi" /> property.</summary>
+        private bool? _enforceDataIntegrityCheckForIscsi;
+
+        /// <summary>A boolean indicating whether or not Data Integrity Check is enabled</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public bool? EnforceDataIntegrityCheckForIscsi { get => this._enforceDataIntegrityCheckForIscsi; set => this._enforceDataIntegrityCheckForIscsi = value; }
+
         /// <summary>
         /// This is a read only property that represents the expiration time of the current version of the customer managed key used
         /// for encryption.
@@ -157,6 +164,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"userAssignedIdentity",
         PossibleTypes = new [] { typeof(string) })]
         string EncryptionIdentityEncryptionUserAssignedIdentity { get; set; }
+        /// <summary>A boolean indicating whether or not Data Integrity Check is enabled</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A boolean indicating whether or not Data Integrity Check is enabled",
+        SerializedName = @"enforceDataIntegrityCheckForIscsi",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnforceDataIntegrityCheckForIscsi { get; set; }
         /// <summary>
         /// This is a read only property that represents the expiration time of the current version of the customer managed key used
         /// for encryption.
@@ -291,6 +309,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionIdentity EncryptionPropertyEncryptionIdentity { get; set; }
         /// <summary>Properties provided by key vault.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IKeyVaultProperties EncryptionPropertyKeyVaultProperty { get; set; }
+        /// <summary>A boolean indicating whether or not Data Integrity Check is enabled</summary>
+        bool? EnforceDataIntegrityCheckForIscsi { get; set; }
         /// <summary>
         /// This is a read only property that represents the expiration time of the current version of the customer managed key used
         /// for encryption.

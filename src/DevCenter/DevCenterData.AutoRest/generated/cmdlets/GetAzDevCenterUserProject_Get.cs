@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
 
     /// <summary>Gets a project.</summary>
     /// <remarks>
-    /// [OpenAPI] GetProject=>GET:"/projects/{projectName}"
+    /// [OpenAPI] Get=>GET:"/projects/{projectName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDevCenterUserProject_Get")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Description(@"Gets a project.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.HttpPath(Path = "/projects/{projectName}", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.HttpPath(Path = "/projects/{projectName}", ApiVersion = "2024-05-01-preview")]
     public partial class GetAzDevCenterUserProject_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener
     {
@@ -90,24 +90,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>Name of the project.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the project.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Name of the project.",
+        SerializedName = @"projectName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("ProjectName")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Path)]
+        public string Name { get => this._name; set => this._name = value; }
+
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.HttpPipeline Pipeline { get; set; }
-
-        /// <summary>Backing field for <see cref="ProjectName" /> property.</summary>
-        private string _projectName;
-
-        /// <summary>The DevCenter Project upon which to execute operations.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The DevCenter Project upon which to execute operations.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The DevCenter Project upon which to execute operations.",
-        SerializedName = @"projectName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Path)]
-        public string ProjectName { get => this._projectName; set => this._projectName = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -130,24 +131,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -309,12 +310,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.DevCenterGetProject(Endpoint, ProjectName, onOk, onDefault, this, Pipeline);
+                    await this.Client.ProjectsGet(Endpoint, Name, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Endpoint=Endpoint,ProjectName=ProjectName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Endpoint=Endpoint,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -352,12 +353,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -374,15 +375,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, Name=Name })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, Name=Name })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -392,12 +393,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject> response)
         {
             using( NoSynchronizationContext )
             {
@@ -409,7 +410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject
                 WriteObject((await response));
             }
         }

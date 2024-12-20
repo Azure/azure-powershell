@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update part of a data collection endpoint.</summary>
+    /// <summary>update a data collection endpoint.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDataCollectionEndpoint_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Update part of a data collection endpoint.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"update a data collection endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}", ApiVersion = "2022-06-01")]
     public partial class UpdateAzDataCollectionEndpoint_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IContext
@@ -32,8 +32,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
-        /// <summary>Definition of ARM tracked top level resource properties for update operation.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IResourceForUpdate _body = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdate();
+        /// <summary>Definition of ARM tracked top level resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource _body = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResource();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -73,6 +73,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Description of the data collection endpoint.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Description of the data collection endpoint.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Description of the data collection endpoint.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Description { get => _body.Description ?? null; set => _body.Description = value; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -89,18 +104,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
         /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The immutable ID of this data collection endpoint resource. This property is READ-ONLY.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
-        SerializedName = @"type",
+        Description = @"The immutable ID of this data collection endpoint resource. This property is READ-ONLY.",
+        SerializedName = @"immutableId",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
-        public string IdentityType { get => _body.IdentityType ?? null; set => _body.IdentityType = value; }
+        public string ImmutableId { get => _body.ImmutableId ?? null; set => _body.ImmutableId = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity _inputObject;
@@ -113,6 +127,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>The kind of the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The kind of the resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The kind of the resource.",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Linux", "Windows")]
+        public string Kind { get => _body.Kind ?? null; set => _body.Kind = value; }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -120,6 +146,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>
+        /// The configuration to set whether network access from public internet to the endpoints are allowed.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The configuration to set whether network access from public internet to the endpoints are allowed.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The configuration to set whether network access from public internet to the endpoints are allowed.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
+        public string NetworkAclsPublicNetworkAccess { get => _body.NetworkAclsPublicNetworkAccess ?? null; set => _body.NetworkAclsPublicNetworkAccess = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.HttpPipeline" /> that the remote call will use.
@@ -151,24 +191,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IResourceForUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IResourceForUpdateTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities UserAssignedIdentity { get => _body.IdentityUserAssignedIdentity ?? null /* object */; set => _body.IdentityUserAssignedIdentity = value; }
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
+
+        /// <summary>
+        /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
+        /// happens on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource</see>
+        /// from the remote call</param>
+        /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
+        /// return immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -319,6 +363,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
             }
         }
 
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _body?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _body.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _body.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.UserAssignedIdentity());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _body.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _body.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _body.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _body.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _body.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _body.IdentityType = "None";
+            }
+        }
+
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -327,7 +409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'DataCollectionEndpointsUpdate' operation"))
+                if (ShouldProcess($"Call remote 'DataCollectionEndpointsCreate' operation"))
                 {
                     using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token) )
                     {
@@ -381,7 +463,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.DataCollectionEndpointsUpdateViaIdentity(InputObject.Id, _body, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
+                        _body = await this.Client.DataCollectionEndpointsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_body();
+                        await this.Client.DataCollectionEndpointsCreateViaIdentity(InputObject.Id, _body, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -398,7 +483,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.DataCollectionEndpointName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.DataCollectionEndpointsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.DataCollectionEndpointName ?? null, _body, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
+                        _body = await this.Client.DataCollectionEndpointsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.DataCollectionEndpointName ?? null, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_body();
+                        await this.Client.DataCollectionEndpointsCreate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.DataCollectionEndpointName ?? null, _body, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -431,6 +519,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
 
         }
 
+        private void Update_body()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Kind")))
+            {
+                this.Kind = (string)(this.MyInvocation?.BoundParameters["Kind"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Description")))
+            {
+                this.Description = (string)(this.MyInvocation?.BoundParameters["Description"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ImmutableId")))
+            {
+                this.ImmutableId = (string)(this.MyInvocation?.BoundParameters["ImmutableId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NetworkAclsPublicNetworkAccess")))
+            {
+                this.NetworkAclsPublicNetworkAccess = (string)(this.MyInvocation?.BoundParameters["NetworkAclsPublicNetworkAccess"]);
+            }
+        }
+
         /// <param name="sendToPipeline"></param>
         new protected void WriteObject(object sendToPipeline)
         {
@@ -444,6 +556,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         {
             Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
             base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource</see>
+        /// from the remote call</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource> response)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnCreated(responseMessage, response, ref _returnNow);
+                // if overrideOnCreated has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onCreated - response for 201 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
+            }
         }
 
         /// <summary>

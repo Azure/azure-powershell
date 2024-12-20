@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to create or update the extension.
+The operation to update the extension.
 .Description
-The operation to create or update the extension.
+The operation to update the extension.
 .Example
 $splat = @{
     ResourceGroupName = "connectedMachines"
@@ -96,7 +96,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -124,7 +123,6 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.

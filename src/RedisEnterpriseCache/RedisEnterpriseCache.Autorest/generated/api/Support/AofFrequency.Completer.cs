@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
-    /// <summary>Sets the frequency at which data is written to disk.</summary>
+    /// <summary>
+    /// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always'
+    /// setting is deprecated, because of its performance impact.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequencyTypeConverter))]
     public partial struct AofFrequency :
         System.Management.Automation.IArgumentCompleter

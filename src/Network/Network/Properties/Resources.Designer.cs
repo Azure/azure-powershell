@@ -8,10 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Properties {
+namespace Microsoft.Azure.Commands.Network.Properties
+{
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,278 +23,338 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
-        
+    internal class Resources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Network.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Adding Resource.
         /// </summary>
-        internal static string AddingResourceMessage {
-            get {
+        internal static string AddingResourceMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("AddingResourceMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to authenticationCertificates.
         /// </summary>
-        internal static string ApplicationGatewayAuthenticationCertificateName {
-            get {
+        internal static string ApplicationGatewayAuthenticationCertificateName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayAuthenticationCertificateName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
-        internal static string ApplicationGatewayBackendAddressPoolName {
-            get {
+        internal static string ApplicationGatewayBackendAddressPoolName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayBackendAddressPoolName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to backendHttpSettingsCollection.
         /// </summary>
-        internal static string ApplicationGatewaybackendHttpSettingsName {
-            get {
+        internal static string ApplicationGatewaybackendHttpSettingsName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewaybackendHttpSettingsName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to backendSettingsCollection.
         /// </summary>
-        internal static string ApplicationGatewaybackendSettingsName {
-            get {
+        internal static string ApplicationGatewaybackendSettingsName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewaybackendSettingsName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/applicationGateways/{2}/{3}/{4}.
         /// </summary>
-        internal static string ApplicationGatewayChildResourceId {
-            get {
+        internal static string ApplicationGatewayChildResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayChildResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to firewallPolicy.
         /// </summary>
-        internal static string ApplicationGatewayFirewallPolicy {
-            get {
+        internal static string ApplicationGatewayFirewallPolicy
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayFirewallPolicy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to frontendIpConfigurations.
         /// </summary>
-        internal static string ApplicationGatewayFrontendIPConfigName {
-            get {
+        internal static string ApplicationGatewayFrontendIPConfigName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayFrontendIPConfigName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to frontendPorts.
         /// </summary>
-        internal static string ApplicationGatewayFrontendPortName {
-            get {
+        internal static string ApplicationGatewayFrontendPortName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayFrontendPortName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to httpListeners.
         /// </summary>
-        internal static string ApplicationGatewayHttpListenerName {
-            get {
+        internal static string ApplicationGatewayHttpListenerName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayHttpListenerName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to gatewayIpConfigurations.
         /// </summary>
-        internal static string ApplicationGatewayIPConfigurationName {
-            get {
+        internal static string ApplicationGatewayIPConfigurationName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayIPConfigurationName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to listeners.
         /// </summary>
-        internal static string ApplicationGatewayListenerName {
-            get {
+        internal static string ApplicationGatewayListenerName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayListenerName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ApplicationGatewayNameNotSet.
         /// </summary>
-        internal static string ApplicationGatewayNameNotSet {
-            get {
+        internal static string ApplicationGatewayNameNotSet
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayNameNotSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to privateEndpointConnections.
         /// </summary>
-        internal static string ApplicationGatewayPrivateEndpointConnectionName {
-            get {
+        internal static string ApplicationGatewayPrivateEndpointConnectionName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayPrivateEndpointConnectionName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to privateLinkConfigurations.
         /// </summary>
-        internal static string ApplicationGatewayPrivateLinkConfigurationName {
-            get {
+        internal static string ApplicationGatewayPrivateLinkConfigurationName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayPrivateLinkConfigurationName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ipConfigurations.
         /// </summary>
-        internal static string ApplicationGatewayPrivateLinkIpConfigurationName {
-            get {
+        internal static string ApplicationGatewayPrivateLinkIpConfigurationName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayPrivateLinkIpConfigurationName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to probes.
         /// </summary>
-        internal static string ApplicationGatewayProbeName {
-            get {
+        internal static string ApplicationGatewayProbeName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayProbeName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to redirectConfigurations.
         /// </summary>
-        internal static string ApplicationGatewayRedirectConfigurationName {
-            get {
+        internal static string ApplicationGatewayRedirectConfigurationName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayRedirectConfigurationName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to requestRoutingRules.
         /// </summary>
-        internal static string ApplicationGatewayRequestRoutingRuleName {
-            get {
+        internal static string ApplicationGatewayRequestRoutingRuleName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayRequestRoutingRuleName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to rewriteRuleSets.
         /// </summary>
-        internal static string ApplicationGatewayRewriteRuleSetName {
-            get {
+        internal static string ApplicationGatewayRewriteRuleSetName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayRewriteRuleSetName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to routingRules.
         /// </summary>
-        internal static string ApplicationGatewayRoutingRuleName {
-            get {
+        internal static string ApplicationGatewayRoutingRuleName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayRoutingRuleName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to sslCertificates.
         /// </summary>
-        internal static string ApplicationGatewaySslCertificateName {
-            get {
+        internal static string ApplicationGatewaySslCertificateName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewaySslCertificateName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to sslProfiles.
         /// </summary>
-        internal static string ApplicationGatewaySslProfileName {
-            get {
+        internal static string ApplicationGatewaySslProfileName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewaySslProfileName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to trustedClientCertificates.
         /// </summary>
-        internal static string ApplicationGatewayTrustedClientCertificateName {
-            get {
+        internal static string ApplicationGatewayTrustedClientCertificateName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayTrustedClientCertificateName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to trustedRootCertificates.
         /// </summary>
-        internal static string ApplicationGatewayTrustedRootCertificateName {
-            get {
+        internal static string ApplicationGatewayTrustedRootCertificateName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayTrustedRootCertificateName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to urlPathMaps.
         /// </summary>
-        internal static string ApplicationGatewayUrlPathMapName {
-            get {
+        internal static string ApplicationGatewayUrlPathMapName
+        {
+            get
+            {
                 return ResourceManager.GetString("ApplicationGatewayUrlPathMapName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Toggling copy/paste is available on Standard SKU or higher.
         /// </summary>
@@ -349,11 +410,38 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Bastion shareable link(s)?.
+        /// </summary>
+        internal static string BastionShareableLinkConfirmRemove {
+            get {
+                return ResourceManager.GetString("BastionShareableLinkConfirmRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggling shareable link is available on Standard SKU or higher.
         /// </summary>
         internal static string BastionShareableLinkInvalidValue {
             get {
                 return ResourceManager.GetString("BastionShareableLinkInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shareable link feature is not enabled.
+        /// </summary>
+        internal static string BastionShareableLinkNotEnabled {
+            get {
+                return ResourceManager.GetString("BastionShareableLinkNotEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Bastion shareable link(s).
+        /// </summary>
+        internal static string BastionShareableLinkRemoving {
+            get {
+                return ResourceManager.GetString("BastionShareableLinkRemoving", resourceCulture);
             }
         }
         
@@ -396,377 +484,470 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range..
         /// </summary>
-        internal static string ChecksFailedPercentIsOutOfRange {
-            get {
+        internal static string ChecksFailedPercentIsOutOfRange
+        {
+            get
+            {
                 return ResourceManager.GetString("ChecksFailedPercentIsOutOfRange", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
-        internal static string ChildResourceAlreadyPresentInResourceGroup {
-            get {
+        internal static string ChildResourceAlreadyPresentInResourceGroup
+        {
+            get
+            {
                 return ResourceManager.GetString("ChildResourceAlreadyPresentInResourceGroup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot have both more than one flag set.
         /// </summary>
-        internal static string CommissioningStateConflict {
-            get {
+        internal static string CommissioningStateConflict
+        {
+            get
+            {
                 return ResourceManager.GetString("CommissioningStateConflict", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
-        internal static string ConfirmMessage {
-            get {
+        internal static string ConfirmMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("ConfirmMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group contains duplicates in destination endpoint names. Destination endpoint names in testGroup must be unique..
         /// </summary>
-        internal static string ConnectionMonitorDestinationEndpointNamesMustBeUnique {
-            get {
+        internal static string ConnectionMonitorDestinationEndpointNamesMustBeUnique
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorDestinationEndpointNamesMustBeUnique", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor endpoint must have name..
         /// </summary>
-        internal static string ConnectionMonitorEndpointMustHaveName {
-            get {
+        internal static string ConnectionMonitorEndpointMustHaveName
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorEndpointMustHaveName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Unrecognized InputObject type..
         /// </summary>
-        internal static string ConnectionMonitorInputObject {
-            get {
+        internal static string ConnectionMonitorInputObject
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorInputObject", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor should have at least one testGroup..
         /// </summary>
-        internal static string ConnectionMonitorMustHaveTestGroups {
-            get {
+        internal static string ConnectionMonitorMustHaveTestGroups
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorMustHaveTestGroups", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor is not found..
         /// </summary>
-        internal static string ConnectionMonitorNotFound {
-            get {
+        internal static string ConnectionMonitorNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No output parameter is provided.
         /// </summary>
-        internal static string ConnectionMonitorOutput {
-            get {
+        internal static string ConnectionMonitorOutput
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorOutput", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group contains duplicates in source endpoint names. Source endpoint names in testGroup must be unique..
         /// </summary>
-        internal static string ConnectionMonitorSourceEndpointNamesMustBeUnique {
-            get {
+        internal static string ConnectionMonitorSourceEndpointNamesMustBeUnique
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorSourceEndpointNamesMustBeUnique", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Either SourceResourceId or InputObject or TestGroups is to be defined.
         /// </summary>
-        internal static string ConnectionMonitorSourceResourceIdInputObjectTestGroups {
-            get {
+        internal static string ConnectionMonitorSourceResourceIdInputObjectTestGroups
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorSourceResourceIdInputObjectTestGroups", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Required field &apos;Name&apos; is missing in connection monitor test configuration..
         /// </summary>
-        internal static string ConnectionMonitorTestConfigurationMustHaveName {
-            get {
+        internal static string ConnectionMonitorTestConfigurationMustHaveName
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorTestConfigurationMustHaveName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group must have at least one destination endpoint specified..
         /// </summary>
-        internal static string ConnectionMonitorTestGroupMustHaveDestinationEndpoint {
-            get {
+        internal static string ConnectionMonitorTestGroupMustHaveDestinationEndpoint
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorTestGroupMustHaveDestinationEndpoint", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Required field &apos;Name&apos; is missing in connection monitor test group..
         /// </summary>
-        internal static string ConnectionMonitorTestGroupMustHaveName {
-            get {
+        internal static string ConnectionMonitorTestGroupMustHaveName
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorTestGroupMustHaveName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group must have at least one source endpoint specified..
         /// </summary>
-        internal static string ConnectionMonitorTestGroupMustHaveSourceEndpoint {
-            get {
+        internal static string ConnectionMonitorTestGroupMustHaveSourceEndpoint
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorTestGroupMustHaveSourceEndpoint", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group must have at least one testConfiguration specified..
         /// </summary>
-        internal static string ConnectionMonitorTestGroupMustHaveTestConfiguration {
-            get {
+        internal static string ConnectionMonitorTestGroupMustHaveTestConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorTestGroupMustHaveTestConfiguration", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified.
         /// </summary>
-        internal static string ConnectionMonitorV1V2 {
-            get {
+        internal static string ConnectionMonitorV1V2
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectionMonitorV1V2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connectivity check destination resource id must not be the same as source: {0}.
         /// </summary>
-        internal static string ConnectivityDestinationIsMustNotBeTheSameAsSource {
-            get {
+        internal static string ConnectivityDestinationIsMustNotBeTheSameAsSource
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectivityDestinationIsMustNotBeTheSameAsSource", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connectivity check missing destination port.
         /// </summary>
-        internal static string ConnectivityMissingDestinationPort {
-            get {
+        internal static string ConnectivityMissingDestinationPort
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectivityMissingDestinationPort", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connectivity check missing destination resource id or address.
         /// </summary>
-        internal static string ConnectivityMissingDestinationResourceIdOrAddress {
-            get {
+        internal static string ConnectivityMissingDestinationResourceIdOrAddress
+        {
+            get
+            {
                 return ResourceManager.GetString("ConnectivityMissingDestinationResourceIdOrAddress", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ContainerNetworkInterfaceConfigurationNameNotSet.
         /// </summary>
-        internal static string ContainerNetworkInterfaceConfigurationNameNotSet {
-            get {
+        internal static string ContainerNetworkInterfaceConfigurationNameNotSet
+        {
+            get
+            {
                 return ResourceManager.GetString("ContainerNetworkInterfaceConfigurationNameNotSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Creating child resource with ResourceGroupName {0}, ParentResourceName {1} ResourceName {2}..
         /// </summary>
-        internal static string CreatingChildResourceLongRunningOperationMessage {
-            get {
+        internal static string CreatingChildResourceLongRunningOperationMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("CreatingChildResourceLongRunningOperationMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Creating resource with ResourceGroupName {0}, ResourceName {1}..
         /// </summary>
-        internal static string CreatingLongRunningOperationMessage {
-            get {
+        internal static string CreatingLongRunningOperationMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("CreatingLongRunningOperationMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Creating Resource.
         /// </summary>
-        internal static string CreatingResourceMessage {
-            get {
+        internal static string CreatingResourceMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("CreatingResourceMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The effective network security group list is empty because the specified network interface is not associated with a network security group or the subnet that is referenced by the network interface is also not associated with a network security group..
         /// </summary>
-        internal static string EmptyEffectiveNetworkSecurityGroupOnNic {
-            get {
+        internal static string EmptyEffectiveNetworkSecurityGroupOnNic
+        {
+            get
+            {
                 return ResourceManager.GetString("EmptyEffectiveNetworkSecurityGroupOnNic", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Type in the endpoint {0} should be populated. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork..
         /// </summary>
-        internal static string EmptyEndpointType {
-            get {
+        internal static string EmptyEndpointType
+        {
+            get
+            {
                 return ResourceManager.GetString("EmptyEndpointType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Endpoint filter items contain duplicate addresses..
         /// </summary>
-        internal static string EndpointFilterItemAddressesMustBeUnique {
-            get {
+        internal static string EndpointFilterItemAddressesMustBeUnique
+        {
+            get
+            {
                 return ResourceManager.GetString("EndpointFilterItemAddressesMustBeUnique", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Required property &apos;Address&apos; is missing in endpoint filter item..
         /// </summary>
-        internal static string EndpointFilterItemAddressIsMissing {
-            get {
+        internal static string EndpointFilterItemAddressIsMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("EndpointFilterItemAddressIsMissing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Connection monitor workspace endpoint must have at least one EndpointFilterItem..
         /// </summary>
-        internal static string EndpointFilterItemIsMissing {
-            get {
+        internal static string EndpointFilterItemIsMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("EndpointFilterItemIsMissing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Endpoint resourceId not in the correct format.
         /// </summary>
-        internal static string EndpointResourceId {
-            get {
+        internal static string EndpointResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("EndpointResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No sources or destination endpoints.
         /// </summary>
-        internal static string EndpointSourceDestination {
-            get {
+        internal static string EndpointSourceDestination
+        {
+            get
+            {
                 return ResourceManager.GetString("EndpointSourceDestination", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Endpoint with FilterType specified must have at least one EndpointFilterItem..
         /// </summary>
-        internal static string EndpointWilthFilterTypeMustHaveFilterItem {
-            get {
+        internal static string EndpointWilthFilterTypeMustHaveFilterItem
+        {
+            get
+            {
                 return ResourceManager.GetString("EndpointWilthFilterTypeMustHaveFilterItem", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Circuit Connection with Name &apos;{0}&apos; is already added..
         /// </summary>
-        internal static string ExpressRouteCircuitConnectionAlreadyAdded {
-            get {
+        internal static string ExpressRouteCircuitConnectionAlreadyAdded
+        {
+            get
+            {
                 return ResourceManager.GetString("ExpressRouteCircuitConnectionAlreadyAdded", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Circuit Connection with Name &apos;{0}&apos; was not added to the private peering..
         /// </summary>
-        internal static string ExpressRouteCircuitConnectionNotFound {
-            get {
+        internal static string ExpressRouteCircuitConnectionNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ExpressRouteCircuitConnectionNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The ExpressRouteConnection {0} could not be found..
         /// </summary>
-        internal static string ExpressRouteConnectionNotFound {
-            get {
+        internal static string ExpressRouteConnectionNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ExpressRouteConnectionNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The ExpressRouteGateway to modify could not be found.
         /// </summary>
-        internal static string ExpressRouteGatewayNotFound {
-            get {
+        internal static string ExpressRouteGatewayNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ExpressRouteGatewayNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
         /// </summary>
-        internal static string ExpressRouteGatewayRequiredToCreateExpressRouteConnection {
-            get {
+        internal static string ExpressRouteGatewayRequiredToCreateExpressRouteConnection
+        {
+            get
+            {
                 return ResourceManager.GetString("ExpressRouteGatewayRequiredToCreateExpressRouteConnection", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Private Peering needs to be configured on the Express Route Circuit..
         /// </summary>
-        internal static string ExpressRoutePrivatePeeringNotFound {
-            get {
+        internal static string ExpressRoutePrivatePeeringNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ExpressRoutePrivatePeeringNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Filtering string can be maximum of 1000 characters in length..
+        /// </summary>
+        internal static string FlowLogFilteringCriteriaExceedsLimit {
+            get {
+                return ResourceManager.GetString("FlowLogFilteringCriteriaExceedsLimit", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to A hub is required for HubAndSpoke connectivity topology..
         /// </summary>
-        internal static string HubRequiredForHubAndSpokeTopology {
-            get {
+        internal static string HubRequiredForHubAndSpokeTopology
+        {
+            get
+            {
                 return ResourceManager.GetString("HubRequiredForHubAndSpokeTopology", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
         /// </summary>
-        internal static string HubVnetConnectionNotFound {
-            get {
+        internal static string HubVnetConnectionNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("HubVnetConnectionNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Min {0} cannot be greater than Max {1}..
         /// </summary>
-        internal static string InvalidAutoScaleConfiguration {
-            get {
+        internal static string InvalidAutoScaleConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidAutoScaleConfiguration", resourceCulture);
             }
         }
@@ -774,1376 +955,1693 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         /// <summary>
         ///   Looks up a localized string similar to MinScaleUnit and MaxScaleUnit must be between 1 and 40, inclusive. .
         /// </summary>
-        internal static string InvalidAutoScaleConfigurationBounds {
-            get {
+        internal static string InvalidAutoScaleConfigurationBounds
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidAutoScaleConfigurationBounds", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid connection monitor output type. Only &apos;Workspace&apos; now is supported..
         /// </summary>
-        internal static string InvalidConnectionMonitorOutputType {
-            get {
+        internal static string InvalidConnectionMonitorOutputType
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidConnectionMonitorOutputType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Specified resourceID in endpoint is not a valid resource ID..
         /// </summary>
-        internal static string InvalidEndpointResourceId {
-            get {
+        internal static string InvalidEndpointResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidEndpointResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ResourceId is invalid for specified endpoint type {0}.
         /// </summary>
-        internal static string InvalidEndpointResourceIdForSpecifiedType {
-            get {
+        internal static string InvalidEndpointResourceIdForSpecifiedType
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidEndpointResourceIdForSpecifiedType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualNetwork, Subnet and Workspace. Please update the resource ID of endpoint..
         /// </summary>
-        internal static string InvalidEndpointResourceType {
-            get {
+        internal static string InvalidEndpointResourceType
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidEndpointResourceType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid type in the endpoint {0}. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, ExternalAddress..
         /// </summary>
-        internal static string InvalidEndpointType {
-            get {
+        internal static string InvalidEndpointType
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidEndpointType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid format type. Supported value is &apos;JSON&apos;..
         /// </summary>
-        internal static string InvalidFlowLogFormatType {
-            get {
+        internal static string InvalidFlowLogFormatType
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidFlowLogFormatType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid format version. Supported values are 0, 1 and 2..
         /// </summary>
-        internal static string InvalidFlowLogFormatVersion {
-            get {
+        internal static string InvalidFlowLogFormatVersion
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidFlowLogFormatVersion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Provided flowLog resourceId is invalid..
         /// </summary>
-        internal static string InvalidFlowLogResourceId {
-            get {
+        internal static string InvalidFlowLogResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidFlowLogResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The Fqdn specified is invalid..
         /// </summary>
-        internal static string InvalidFqdn {
-            get {
+        internal static string InvalidFqdn
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidFqdn", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid HTTP request header in HTTPConfiguration. Both name and value should be populated..
         /// </summary>
-        internal static string InvalidHTTPRequestHeader {
-            get {
+        internal static string InvalidHTTPRequestHeader
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidHTTPRequestHeader", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid format of path in HTTPConfiguration..
         /// </summary>
-        internal static string InvalidHttpUriPathFormat {
-            get {
+        internal static string InvalidHttpUriPathFormat
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidHttpUriPathFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The IpAddress specified is invalid..
         /// </summary>
-        internal static string InvalidIPAddress {
-            get {
+        internal static string InvalidIPAddress
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidIPAddress", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 21 and less than or equal to 31 and then try the command again.
         /// </summary>
-        internal static string InvalidIPv4IPPrefixLength {
-            get {
+        internal static string InvalidIPv4IPPrefixLength
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidIPv4IPPrefixLength", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 117 and less than or equal to 127 and then try the command again.
         /// </summary>
-        internal static string InvalidIPv6IPPrefixLength {
-            get {
+        internal static string InvalidIPv6IPPrefixLength
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidIPv6IPPrefixLength", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Field Name {0} contains invalid character..
         /// </summary>
-        internal static string InvalidName {
-            get {
+        internal static string InvalidName
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Port value in protocol configuration is out of range. The value must be between 0 and 65535..
         /// </summary>
-        internal static string InvalidPortValue {
-            get {
+        internal static string InvalidPortValue
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidPortValue", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid value for PreferredIPVersion parameter. Supported values are IPv4 and IPv6..
         /// </summary>
-        internal static string InvalidPreferredIPVersion {
-            get {
+        internal static string InvalidPreferredIPVersion
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidPreferredIPVersion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The private IP range specified, {0}, is invalid..
         /// </summary>
-        internal static string InvalidPrivateIPRange {
-            get {
+        internal static string InvalidPrivateIPRange
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidPrivateIPRange", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The private IP range specified, {0}, is invalid. Subnet masks should be between 0 and 32 bits..
         /// </summary>
-        internal static string InvalidPrivateIPRangeMask {
-            get {
+        internal static string InvalidPrivateIPRangeMask
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidPrivateIPRangeMask", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The private IP range specified, {0}, is invalid. Bits not covered by the subnet mask should be all 0..
         /// </summary>
-        internal static string InvalidPrivateIPRangeUnmaskedBits {
-            get {
+        internal static string InvalidPrivateIPRangeUnmaskedBits
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidPrivateIPRangeUnmaskedBits", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ResourceId and Address should not be specified together in connection monitor endpoint..
         /// </summary>
-        internal static string InvalidPropertiesInConnectionMonitorEndpoint {
-            get {
+        internal static string InvalidPropertiesInConnectionMonitorEndpoint
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidPropertiesInConnectionMonitorEndpoint", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Provided ResourceId isn&apos;t in the right format or doesn&apos;t refer to the right resource type ({0}).
         /// </summary>
-        internal static string InvalidResourceId {
-            get {
+        internal static string InvalidResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Number of days in retention policy should be greater than 0..
         /// </summary>
-        internal static string InvalidRetentionPolicyDaysValue {
-            get {
+        internal static string InvalidRetentionPolicyDaysValue
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidRetentionPolicyDaysValue", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to RoundTripTimeMs for success threshold should be a positive value. The specified value is invalid..
         /// </summary>
-        internal static string InvalidRoundtripTimeMs {
-            get {
+        internal static string InvalidRoundtripTimeMs
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidRoundtripTimeMs", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid format of status code ranges in HTTPConfiguration. Example of valid values: &apos;100&apos;, &apos;200-205&apos;, &apos;3xx&apos;. Codes should be between 100 and 600..
         /// </summary>
-        internal static string InvalidStatusCodeRangesFormat {
-            get {
+        internal static string InvalidStatusCodeRangesFormat
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidStatusCodeRangesFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to StorageId specified in flow log is not a valid ID of storage account..
         /// </summary>
-        internal static string InvalidStorageId {
-            get {
+        internal static string InvalidStorageId
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidStorageId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to TargetResourceId specified in flow log is not a valid resource ID of Network security group, Virtual Network, Subnet or Network Interface..
         /// </summary>
-        internal static string InvalidTargetResourceId {
-            get {
+        internal static string InvalidTargetResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidTargetResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to TrafficAnalyticsInterval is invalid. Supported values are 10 and 60..
         /// </summary>
-        internal static string InvalidTrafficAnalyticsInterval {
-            get {
+        internal static string InvalidTrafficAnalyticsInterval
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidTrafficAnalyticsInterval", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permitted values for VnetLocalRouteOverrideCriteria are Equal and Contains..
         /// </summary>
-        internal static string InvalidVnetLocalRouteOverrideCriteriaValue {
-            get {
+        internal static string InvalidVnetLocalRouteOverrideCriteriaValue
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidVnetLocalRouteOverrideCriteriaValue", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LogAnalytics workspace..
         /// </summary>
-        internal static string InvalidWorkspaceResourceId {
-            get {
+        internal static string InvalidWorkspaceResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidWorkspaceResourceId", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to InvalidUserAssignedManagedIdentity specified in flow log is not a valid ManagedIdentity.
+        /// </summary>
+        internal static string InvalidUserAssignedManagedIdentity
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidUserAssignedManagedIdentity", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
-        internal static string LoadBalancerBackendAddressPoolName {
-            get {
+        internal static string LoadBalancerBackendAddressPoolName
+        {
+            get
+            {
                 return ResourceManager.GetString("LoadBalancerBackendAddressPoolName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}.
         /// </summary>
-        internal static string LoadBalancerChildResourceId {
-            get {
+        internal static string LoadBalancerChildResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("LoadBalancerChildResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to frontendIPConfigurations.
         /// </summary>
-        internal static string LoadBalancerFrontendIpConfigName {
-            get {
+        internal static string LoadBalancerFrontendIpConfigName
+        {
+            get
+            {
                 return ResourceManager.GetString("LoadBalancerFrontendIpConfigName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to inboundNatPools.
         /// </summary>
-        internal static string LoadBalancerInboundNatPoolName {
-            get {
+        internal static string LoadBalancerInboundNatPoolName
+        {
+            get
+            {
                 return ResourceManager.GetString("LoadBalancerInboundNatPoolName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to inboundNatRules.
         /// </summary>
-        internal static string LoadBalancerInBoundNatRuleName {
-            get {
+        internal static string LoadBalancerInBoundNatRuleName
+        {
+            get
+            {
                 return ResourceManager.GetString("LoadBalancerInBoundNatRuleName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to LoadBalancerNameNotSet.
         /// </summary>
-        internal static string LoadBalancerNameNotSet {
-            get {
+        internal static string LoadBalancerNameNotSet
+        {
+            get
+            {
                 return ResourceManager.GetString("LoadBalancerNameNotSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to probes.
         /// </summary>
-        internal static string LoadBalancerProbeName {
-            get {
+        internal static string LoadBalancerProbeName
+        {
+            get
+            {
                 return ResourceManager.GetString("LoadBalancerProbeName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to loadBalancingRules.
         /// </summary>
-        internal static string LoadBalancerRuleName {
-            get {
+        internal static string LoadBalancerRuleName
+        {
+            get
+            {
                 return ResourceManager.GetString("LoadBalancerRuleName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Endpoint should have either ResourceId or Address..
         /// </summary>
-        internal static string MissedPropertiesInConnectionMonitorEndpoint {
-            get {
+        internal static string MissedPropertiesInConnectionMonitorEndpoint
+        {
+            get
+            {
                 return ResourceManager.GetString("MissedPropertiesInConnectionMonitorEndpoint", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to NetworkWatcherName or resourceGroup are not defined in connectionMonitor object..
         /// </summary>
-        internal static string MissingBaseParametersInConnectionMonitor {
-            get {
+        internal static string MissingBaseParametersInConnectionMonitor
+        {
+            get
+            {
                 return ResourceManager.GetString("MissingBaseParametersInConnectionMonitor", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Moving ExpressRoute Circuit.
         /// </summary>
-        internal static string MovingExpressRoutCircuitMessage {
-            get {
+        internal static string MovingExpressRoutCircuitMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("MovingExpressRoutCircuitMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to NetworkProfileNameNotSet.
         /// </summary>
-        internal static string NetworkProfileNameNotSet {
-            get {
+        internal static string NetworkProfileNameNotSet
+        {
+            get
+            {
                 return ResourceManager.GetString("NetworkProfileNameNotSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to There is no network watcher in specified location..
         /// </summary>
-        internal static string NoNetworkWatcherFound {
-            get {
+        internal static string NoNetworkWatcherFound
+        {
+            get
+            {
                 return ResourceManager.GetString("NoNetworkWatcherFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to There is no network watcher in location {0}.
         /// </summary>
-        internal static string NoNetworkWatcherInLocation {
-            get {
+        internal static string NoNetworkWatcherInLocation
+        {
+            get
+            {
                 return ResourceManager.GetString("NoNetworkWatcherInLocation", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to overwrite resource &apos;{0}&apos;.
         /// </summary>
-        internal static string OverwritingResource {
-            get {
+        internal static string OverwritingResource
+        {
+            get
+            {
                 return ResourceManager.GetString("OverwritingResource", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Overwriting resource ....
         /// </summary>
-        internal static string OverwritingResourceMessage {
-            get {
+        internal static string OverwritingResourceMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("OverwritingResourceMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The P2SVpnGateway to modify could not be found.
         /// </summary>
-        internal static string P2SVpnGatewayNotFound {
-            get {
+        internal static string P2SVpnGatewayNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("P2SVpnGatewayNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The parent ExpressRouteGateway for this connection cannot be found..
         /// </summary>
-        internal static string ParentExpressRouteGatewayNotFound {
-            get {
+        internal static string ParentExpressRouteGatewayNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ParentExpressRouteGatewayNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The parent virtual hub mentioned could not be found..
         /// </summary>
-        internal static string ParentVirtualHubNotFound {
-            get {
+        internal static string ParentVirtualHubNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ParentVirtualHubNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The parent VpnGateway already contains a connection with this name. If you wish to change the properties of the connection, please use the SET operation instead..
         /// </summary>
-        internal static string ParentVpnGatewayDuplicateConnection {
-            get {
+        internal static string ParentVpnGatewayDuplicateConnection
+        {
+            get
+            {
                 return ResourceManager.GetString("ParentVpnGatewayDuplicateConnection", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The parent VpnGateway for this connection cannot be found..
         /// </summary>
-        internal static string ParentVpnGatewayNotFound {
-            get {
+        internal static string ParentVpnGatewayNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ParentVpnGatewayNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The parent VpnServerConfiguration for this PolicyGroup cannot be found..
         /// </summary>
-        internal static string ParentVpnServerConfigurationNotFound {
-            get {
+        internal static string ParentVpnServerConfigurationNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ParentVpnServerConfigurationNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to IP version is undefined.
         /// </summary>
-        internal static string ProtocolConfigurationIPVersion {
-            get {
+        internal static string ProtocolConfigurationIPVersion
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtocolConfigurationIPVersion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Protocol configuration is not defined..
         /// </summary>
-        internal static string ProtocolConfigurationIsNotDefined {
-            get {
+        internal static string ProtocolConfigurationIsNotDefined
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtocolConfigurationIsNotDefined", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Protocol configuration is not supported.
         /// </summary>
-        internal static string ProtocolConfigurationNotSupported {
-            get {
+        internal static string ProtocolConfigurationNotSupported
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtocolConfigurationNotSupported", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Port can not be zero for TCP configuration.
         /// </summary>
-        internal static string ProtocolConfigurationPort {
-            get {
+        internal static string ProtocolConfigurationPort
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtocolConfigurationPort", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Only TCP, HTTP, or ICMP are supported.
         /// </summary>
-        internal static string ProtocolConfigurationProtocol {
-            get {
+        internal static string ProtocolConfigurationProtocol
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtocolConfigurationProtocol", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Test frequency can not be zero.
         /// </summary>
-        internal static string ProtocolConfigurationTestFrequency {
-            get {
+        internal static string ProtocolConfigurationTestFrequency
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtocolConfigurationTestFrequency", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing resource ....
         /// </summary>
-        internal static string RemoveResourceMessage {
-            get {
+        internal static string RemoveResourceMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveResourceMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing this Route Map resource may affect the routing in your VirtualHub.
         /// </summary>
-        internal static string RemoveRouteMapWarning {
-            get {
+        internal static string RemoveRouteMapWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveRouteMapWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing a Route Server will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
-        internal static string RemoveRouteServerWarning {
-            get {
+        internal static string RemoveRouteServerWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveRouteServerWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub.
         /// </summary>
-        internal static string RemoveRoutingIntentWarning {
-            get {
+        internal static string RemoveRoutingIntentWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveRoutingIntentWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub..
         /// </summary>
-        internal static string RemoveVHubRouteTableWarning {
-            get {
+        internal static string RemoveVHubRouteTableWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveVHubRouteTableWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
-        internal static string RemoveVirtualRouterWarning {
-            get {
+        internal static string RemoveVirtualRouterWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveVirtualRouterWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
-        internal static string RemovingExpressRouteGatewayWarning {
-            get {
+        internal static string RemovingExpressRouteGatewayWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemovingExpressRouteGatewayWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
-        internal static string RemovingP2SVpnGatewayWarning {
-            get {
+        internal static string RemovingP2SVpnGatewayWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemovingP2SVpnGatewayWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
-        internal static string RemovingResource {
-            get {
+        internal static string RemovingResource
+        {
+            get
+            {
                 return ResourceManager.GetString("RemovingResource", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing a VirtualHub will also remove all HubVirtualNetworkExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
-        internal static string RemovingVirtualHubWarning {
-            get {
+        internal static string RemovingVirtualHubWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemovingVirtualHubWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing a VpnGateway will also remove all VpnExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
-        internal static string RemovingVpnGatewayWarning {
-            get {
+        internal static string RemovingVpnGatewayWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemovingVpnGatewayWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Resetting Resource.
         /// </summary>
-        internal static string ResettingResourceMessage {
-            get {
+        internal static string ResettingResourceMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("ResettingResourceMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ResourceGroupName must be specified if ResourceName is specified..
         /// </summary>
-        internal static string ResouceGroupNameMustBeSpecified {
-            get {
+        internal static string ResouceGroupNameMustBeSpecified
+        {
+            get
+            {
                 return ResourceManager.GetString("ResouceGroupNameMustBeSpecified", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Resource : {0}, Already present.
         /// </summary>
-        internal static string ResourceAlreadyPresent {
-            get {
+        internal static string ResourceAlreadyPresent
+        {
+            get
+            {
                 return ResourceManager.GetString("ResourceAlreadyPresent", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
-        internal static string ResourceAlreadyPresentInResourceGroup {
-            get {
+        internal static string ResourceAlreadyPresentInResourceGroup
+        {
+            get
+            {
                 return ResourceManager.GetString("ResourceAlreadyPresentInResourceGroup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ResourceGroupNotSet.
         /// </summary>
-        internal static string ResourceGroupNotSet {
-            get {
+        internal static string ResourceGroupNotSet
+        {
+            get
+            {
                 return ResourceManager.GetString("ResourceGroupNotSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to An endpoint with &apos;Filter&apos; specified must always have a resourceID..
         /// </summary>
-        internal static string ResourceIDIsMissingInEndpointWithFilter {
-            get {
+        internal static string ResourceIDIsMissingInEndpointWithFilter
+        {
+            get
+            {
                 return ResourceManager.GetString("ResourceIDIsMissingInEndpointWithFilter", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Resource &apos;{0}&apos; not found.
         /// </summary>
-        internal static string ResourceNotFound {
-            get {
+        internal static string ResourceNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The route map resource could not be found.
         /// </summary>
-        internal static string RouteMapNotFound {
-            get {
+        internal static string RouteMapNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("RouteMapNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The virtual hub route table to modify could not be found.
         /// </summary>
-        internal static string RouteTableNotFound {
-            get {
+        internal static string RouteTableNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("RouteTableNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The routing intent resource could not be found.
         /// </summary>
-        internal static string RoutingIntentNotFound {
-            get {
+        internal static string RoutingIntentNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("RoutingIntentNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
-        internal static string SameTypeChildResourceAlreadyPresentInResourceGroup {
-            get {
+        internal static string SameTypeChildResourceAlreadyPresentInResourceGroup
+        {
+            get
+            {
                 return ResourceManager.GetString("SameTypeChildResourceAlreadyPresentInResourceGroup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SetByFqdn.
         /// </summary>
-        internal static string SetByFqdn {
-            get {
+        internal static string SetByFqdn
+        {
+            get
+            {
                 return ResourceManager.GetString("SetByFqdn", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SetByIP.
         /// </summary>
-        internal static string SetByIP {
-            get {
+        internal static string SetByIP
+        {
+            get
+            {
                 return ResourceManager.GetString("SetByIP", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SetByIpConfiguration.
         /// </summary>
-        internal static string SetByIpConfiguration {
-            get {
+        internal static string SetByIpConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("SetByIpConfiguration", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SetByIpConfigurationResourceId.
         /// </summary>
-        internal static string SetByIpConfigurationResourceId {
-            get {
+        internal static string SetByIpConfigurationResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("SetByIpConfigurationResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SetByResource.
         /// </summary>
-        internal static string SetByResource {
-            get {
+        internal static string SetByResource
+        {
+            get
+            {
                 return ResourceManager.GetString("SetByResource", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SetByResourceId.
         /// </summary>
-        internal static string SetByResourceId {
-            get {
+        internal static string SetByResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("SetByResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Setting Resource.
         /// </summary>
-        internal static string SettingResourceMessage {
-            get {
+        internal static string SettingResourceMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("SettingResourceMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to PrivateIpAddress needs to be specified in Static allocation.
         /// </summary>
-        internal static string StaticIpAddressErrorMessage {
-            get {
+        internal static string StaticIpAddressErrorMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("StaticIpAddressErrorMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Static Routes are not supported in Routing Configuration for ExpressRoute Connection, VpnConnection and P2SGatewayConnectionConfiguration objects..
         /// </summary>
-        internal static string StaticRoutesNotSupportedForThisRoutingConfiguration {
-            get {
+        internal static string StaticRoutesNotSupportedForThisRoutingConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("StaticRoutesNotSupportedForThisRoutingConfiguration", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to TCP protocol configuration mast have port..
         /// </summary>
-        internal static string TCPProtocolConfigurationMustHavePort {
-            get {
+        internal static string TCPProtocolConfigurationMustHavePort
+        {
+            get
+            {
                 return ResourceManager.GetString("TCPProtocolConfigurationMustHavePort", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No test configuraiton is provided.
         /// </summary>
-        internal static string TestConfiguration {
-            get {
+        internal static string TestConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("TestConfiguration", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Test group contains duplicates in test configuration names. TestConfiguration names in testGroup must be unique..
         /// </summary>
-        internal static string TestConfigurationNamesMustBeUnique {
-            get {
+        internal static string TestConfigurationNamesMustBeUnique
+        {
+            get
+            {
                 return ResourceManager.GetString("TestConfigurationNamesMustBeUnique", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Test frequency in seconds should be greater or equal to 30 and lesser or equal to 1800 seconds..
         /// </summary>
-        internal static string TestFrequencyIsOutOfRange {
-            get {
+        internal static string TestFrequencyIsOutOfRange
+        {
+            get
+            {
                 return ResourceManager.GetString("TestFrequencyIsOutOfRange", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to TestGroup is empty.
         /// </summary>
-        internal static string TestGroupEmpty {
-            get {
+        internal static string TestGroupEmpty
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupEmpty", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No Endpoint parameter is provided.
         /// </summary>
-        internal static string TestGroupEndpointParameter {
-            get {
+        internal static string TestGroupEndpointParameter
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupEndpointParameter", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Endpoint ResourceId and Address can not be both empty.
         /// </summary>
-        internal static string TestGroupEndpointResourceIdorAddress {
-            get {
+        internal static string TestGroupEndpointResourceIdorAddress
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupEndpointResourceIdorAddress", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Source or destination endpoint is undefined.
         /// </summary>
-        internal static string TestGroupEndpoints {
-            get {
+        internal static string TestGroupEndpoints
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupEndpoints", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Test group is missing one or more mandatory parameter.
         /// </summary>
-        internal static string TestGroupParameters {
-            get {
+        internal static string TestGroupParameters
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupParameters", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Protocol in test configuration is not provided.
         /// </summary>
-        internal static string TestGroupProtocol {
-            get {
+        internal static string TestGroupProtocol
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupProtocol", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Protocol configuration is not provided.
         /// </summary>
-        internal static string TestGroupProtocolConfiguration {
-            get {
+        internal static string TestGroupProtocolConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupProtocolConfiguration", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Test configuration is undefined.
         /// </summary>
-        internal static string TestGroupTestConfiguration {
-            get {
+        internal static string TestGroupTestConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupTestConfiguration", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Test configuration name is not unique.
         /// </summary>
-        internal static string TestGroupTestConfigurationName {
-            get {
+        internal static string TestGroupTestConfigurationName
+        {
+            get
+            {
                 return ResourceManager.GetString("TestGroupTestConfigurationName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Workspace resourceID should be provided if traffic analytics is enabled..
         /// </summary>
-        internal static string TrafficAnalyticsWorkspaceResourceIdIsMissing {
-            get {
+        internal static string TrafficAnalyticsWorkspaceResourceIdIsMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("TrafficAnalyticsWorkspaceResourceIdIsMissing", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds..
         /// </summary>
-        internal static string UltraPerformaceGatewayWarning {
-            get {
+        internal static string UltraPerformaceGatewayWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("UltraPerformaceGatewayWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds..
         /// </summary>
-        internal static string UltraPerformanceGatewayWarningMessage {
-            get {
+        internal static string UltraPerformanceGatewayWarningMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("UltraPerformanceGatewayWarningMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid value for DestinationPortBehavior. Supported values are &apos;None&apos;, &apos;ListenIfAvailable&apos;..
         /// </summary>
-        internal static string UnsupportedDestinationPortBehavior {
-            get {
+        internal static string UnsupportedDestinationPortBehavior
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedDestinationPortBehavior", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Specified EndpointFilterItemType is not supported. Supported type is &apos;AgentAddress&apos;..
         /// </summary>
-        internal static string UnsupportedEndpointFilterItemType {
-            get {
+        internal static string UnsupportedEndpointFilterItemType
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedEndpointFilterItemType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Filter type is not supported. Supported type is &apos;Include&apos;..
         /// </summary>
-        internal static string UnsupportedEndpointFilterType {
-            get {
+        internal static string UnsupportedEndpointFilterType
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedEndpointFilterType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Resource type is not supported for endpoint with filter. Supported type is &apos;workspace&apos;. Please set Log analytics workspace resource ID in resourceID field..
         /// </summary>
-        internal static string UnsupportedEndpointTypeForEndpointWithFilter {
-            get {
+        internal static string UnsupportedEndpointTypeForEndpointWithFilter
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedEndpointTypeForEndpointWithFilter", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Method in HTTPConfiguration is not supported. Valid values are &apos;GET&apos; and &apos;POST&apos;..
         /// </summary>
-        internal static string UnsupportedHTTPMethod {
-            get {
+        internal static string UnsupportedHTTPMethod
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedHTTPMethod", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Either TCP, HTTP or ICMP protocol should be defined..
         /// </summary>
-        internal static string UnsupportedProtocolConfigurationType {
-            get {
+        internal static string UnsupportedProtocolConfigurationType
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedProtocolConfigurationType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} doesn&apos;t support private endpoint connection..
         /// </summary>
-        internal static string UnsupportPrivateEndpointConnectionType {
-            get {
+        internal static string UnsupportPrivateEndpointConnectionType
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportPrivateEndpointConnectionType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} doesn&apos;t support private link resource..
         /// </summary>
-        internal static string UnsupportPrivateLinkResourceType {
-            get {
+        internal static string UnsupportPrivateLinkResourceType
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportPrivateLinkResourceType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Updating resource with ResourceGroupName {0}, ResourceName {1}..
         /// </summary>
-        internal static string UpdatingLongRunningOperationMessage {
-            get {
+        internal static string UpdatingLongRunningOperationMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("UpdatingLongRunningOperationMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VHub RouteMap reference is required.
         /// </summary>
-        internal static string VHubRouteMapReferenceNotFound {
-            get {
+        internal static string VHubRouteMapReferenceNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VHubRouteMapReferenceNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The HubRouteTable could not be found..
         /// </summary>
-        internal static string VHubRouteTableNotFound {
-            get {
+        internal static string VHubRouteTableNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VHubRouteTableNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid HubRouteTable reference is required..
         /// </summary>
-        internal static string VHubRouteTableReferenceNotFound {
-            get {
+        internal static string VHubRouteTableReferenceNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VHubRouteTableReferenceNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VirtualNetworkGateway is required to create Virtual Router.
         /// </summary>
-        internal static string VirtualGatewayRequiredForVirtualRouter {
-            get {
+        internal static string VirtualGatewayRequiredForVirtualRouter
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualGatewayRequiredForVirtualRouter", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VirtualHub reference is required to create an ExpressRouteGateway..
         /// </summary>
-        internal static string VirtualHubRequiredForExpressRouteGateway {
-            get {
+        internal static string VirtualHubRequiredForExpressRouteGateway
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualHubRequiredForExpressRouteGateway", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VirtualHub reference is required to create a VpnGateway..
         /// </summary>
-        internal static string VirtualHubRequiredForVpnGateway {
-            get {
+        internal static string VirtualHubRequiredForVpnGateway
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualHubRequiredForVpnGateway", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The VirtualHub to update could not be found..
         /// </summary>
-        internal static string VirtualHubToUpdateNotFound {
-            get {
+        internal static string VirtualHubToUpdateNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualHubToUpdateNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/{3}/{4}.
         /// </summary>
-        internal static string VirtualNetworkGatewayChildResourceId {
-            get {
+        internal static string VirtualNetworkGatewayChildResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualNetworkGatewayChildResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to virtualNetworkGatewayIpConfiguration.
         /// </summary>
-        internal static string VirtualNetworkGatewayIpConfigName {
-            get {
+        internal static string VirtualNetworkGatewayIpConfigName
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualNetworkGatewayIpConfigName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to virtualNetworkGatewayName.
         /// </summary>
-        internal static string VirtualNetworkGatewayName {
-            get {
+        internal static string VirtualNetworkGatewayName
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualNetworkGatewayName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to VirtualNetworkGatewayNameNotSet.
         /// </summary>
-        internal static string VirtualNetworkGatewayNameNotSet {
-            get {
+        internal static string VirtualNetworkGatewayNameNotSet
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The VirtualNetworkGatewayNatRule could not be found.
         /// </summary>
-        internal static string VirtualNetworkGatewayNatRuleNotFound {
-            get {
+        internal static string VirtualNetworkGatewayNatRuleNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualNetworkGatewayNatRuleNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No revoked certificates found on VirtualNetworkGateway {0}.
         /// </summary>
-        internal static string VirtualNetworkGatewayNoRevokedCertificate {
-            get {
+        internal static string VirtualNetworkGatewayNoRevokedCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualNetworkGatewayNoRevokedCertificate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No root certificates found on VirtualNetworkGateway {0}.
         /// </summary>
-        internal static string VirtualNetworkGatewayNoRootCertificate {
-            get {
+        internal static string VirtualNetworkGatewayNoRootCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualNetworkGatewayNoRootCertificate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A remote virtual network reference is required to create a HubVirtualNetworkConnection..
         /// </summary>
-        internal static string VirtualNetworkReferenceRequiredToCreateHubVnetConnection {
-            get {
+        internal static string VirtualNetworkReferenceRequiredToCreateHubVnetConnection
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualNetworkReferenceRequiredToCreateHubVnetConnection", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The referenced VirtualWan could not be found..
         /// </summary>
-        internal static string VirtualWanNotFound {
-            get {
+        internal static string VirtualWanNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualWanNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VirtualWan reference is required to create a VirtualHub..
         /// </summary>
-        internal static string VirtualWanReferenceNeededForVirtualHub {
-            get {
+        internal static string VirtualWanReferenceNeededForVirtualHub
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualWanReferenceNeededForVirtualHub", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid Virtual WAN is required to generate a vpnSites configuration..
         /// </summary>
-        internal static string VirtualWanRequiredForVpnSiteConfiguration {
-            get {
+        internal static string VirtualWanRequiredForVpnSiteConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualWanRequiredForVpnSiteConfiguration", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnConnection could not be found..
         /// </summary>
-        internal static string VpnConnectionNotFound {
-            get {
+        internal static string VpnConnectionNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnConnectionNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead..
         /// </summary>
-        internal static string VpnConnectionPropertyIsDeprecated {
-            get {
+        internal static string VpnConnectionPropertyIsDeprecated
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnConnectionPropertyIsDeprecated", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnGatewayNatRule could not be found.
         /// </summary>
-        internal static string VpnGatewayNatRuleNotFound {
-            get {
+        internal static string VpnGatewayNatRuleNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnGatewayNatRuleNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnGateway to modify could not be found.
         /// </summary>
-        internal static string VpnGatewayNotFound {
-            get {
+        internal static string VpnGatewayNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnGatewayNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnConnection..
         /// </summary>
-        internal static string VpnGatewayRequiredToCreateVpnConnection {
-            get {
+        internal static string VpnGatewayRequiredToCreateVpnConnection
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnNatRule.
         /// </summary>
-        internal static string VpnGatewayRequiredToCreateVpnNatRule {
-            get {
+        internal static string VpnGatewayRequiredToCreateVpnNatRule
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnNatRule", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Warning: VpnClientProtocol being configured are: OpenVPN, IkeV2. AAD is one of the auth types configured. Since AAD is only supported for OpenVPN, it will only be used for OpenVPN..
         /// </summary>
-        internal static string VpnMultiAuthIkev2OpenvpnAadWarning {
-            get {
+        internal static string VpnMultiAuthIkev2OpenvpnAadWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnMultiAuthIkev2OpenvpnAadWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to VpnClientProtocol being configured are : OpenVPN, IkeV2. VpnAuthenticationType being configured is AAD. Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol..
         /// </summary>
-        internal static string VpnMultiAuthIkev2OpenvpnOnlyAad {
-            get {
+        internal static string VpnMultiAuthIkev2OpenvpnOnlyAad
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnMultiAuthIkev2OpenvpnOnlyAad", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to One or more port ranges specified the VPN NAT rule does not have a corresponding subnet mapping. The count of supplied port ranges in {0} must match with the count of subnets in {1}. .
         /// </summary>
-        internal static string VpnNatRuleUnmatchedPortRange {
-            get {
+        internal static string VpnNatRuleUnmatchedPortRange
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnNatRuleUnmatchedPortRange", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
         /// </summary>
-        internal static string VpnServerConfigurationNotFound {
-            get {
+        internal static string VpnServerConfigurationNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnServerConfigurationNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnServerConfigurationPolicyGroup could not be found..
         /// </summary>
-        internal static string VpnServerConfigurationPolicyGroupNotFound {
-            get {
+        internal static string VpnServerConfigurationPolicyGroupNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnServerConfigurationPolicyGroupNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnServerConfiguration is required to create a P2SVpnGateway.
         /// </summary>
-        internal static string VpnServerConfigurationRequiredForP2SVpnGateway {
-            get {
+        internal static string VpnServerConfigurationRequiredForP2SVpnGateway
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnServerConfigurationRequiredForP2SVpnGateway", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnServerConfiguration reference is required to create or update a PolicyGroup..
         /// </summary>
-        internal static string VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup {
-            get {
+        internal static string VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnSiteLink attached to a VpnSite is required to create a VpnSiteLinkConnection.
         /// </summary>
-        internal static string VpnSiteLinkRequiredForVpnSiteLinkConnection {
-            get {
+        internal static string VpnSiteLinkRequiredForVpnSiteLinkConnection
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnSiteLinkRequiredForVpnSiteLinkConnection", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A list of connected VpnSites is required to generate a vpnSites configuration..
         /// </summary>
-        internal static string VpnSiteListRequiredForVpnSiteConfiguration {
-            get {
+        internal static string VpnSiteListRequiredForVpnSiteConfiguration
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnSiteListRequiredForVpnSiteConfiguration", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnSite could not be found..
         /// </summary>
-        internal static string VpnSiteNotFound {
-            get {
+        internal static string VpnSiteNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnSiteNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead..
         /// </summary>
-        internal static string VpnSitePropertyIsDeprecated {
-            get {
+        internal static string VpnSitePropertyIsDeprecated
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnSitePropertyIsDeprecated", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnSite is required to create a VpnConnection.
         /// </summary>
-        internal static string VpnSiteRequiredForVpnConnection {
-            get {
+        internal static string VpnSiteRequiredForVpnConnection
+        {
+            get
+            {
                 return ResourceManager.GetString("VpnSiteRequiredForVpnConnection", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Output WorkspaceResourceId parameter is empty.
         /// </summary>
-        internal static string WorkspaceResourceId {
-            get {
+        internal static string WorkspaceResourceId
+        {
+            get
+            {
                 return ResourceManager.GetString("WorkspaceResourceId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to WorkspaceResourceId must be provided in connection monitor output..
         /// </summary>
-        internal static string WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput {
-            get {
+        internal static string WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput
+        {
+            get
+            {
                 return ResourceManager.GetString("WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput", resourceCulture);
             }
         }

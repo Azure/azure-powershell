@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create the agent pool in the provisioned cluster</summary>
+    /// <summary>create the agent pool in the provisioned cluster</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAksArcNodepool_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Create the agent pool in the provisioned cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"create the agent pool in the provisioned cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.HttpPath(Path = "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}", ApiVersion = "2024-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.NotSuggestDefaultParameterSet]

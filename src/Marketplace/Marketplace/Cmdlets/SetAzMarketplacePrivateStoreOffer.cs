@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Commands.Marketplace.Cmdlets
 
             if (ShouldProcess(OfferId, $"Adding offer {OfferId} under private store {PrivateStoreId}"))
             {
-                var updatedOffer = isSubscriptionScope ? ResourceMarketplaceClient.PrivateStorePrivateOffer.CreateOrUpdate(SubscriptionId, PrivateStoreId, OfferId, offerToUpdate) : 
-                                                         ResourceMarketplaceClient.PrivateStoreOffer.CreateOrUpdate(PrivateStoreId, OfferId, offerToUpdate);
+                var updatedOffer = isSubscriptionScope ? ResourceMarketplaceClient.PrivateStorePrivateOffer.CreateOrUpdate(SubscriptionId, PrivateStoreId, OfferId, offerToUpdate.ETag, offerToUpdate.SpecificPlanIdsLimitation) : 
+                                                         ResourceMarketplaceClient.PrivateStoreOffer.CreateOrUpdate(PrivateStoreId, OfferId, offerToUpdate.ETag, offerToUpdate.SpecificPlanIdsLimitation);
 
                 WriteObject(updatedOffer.ToPSPrivateStoreOffer());
             }

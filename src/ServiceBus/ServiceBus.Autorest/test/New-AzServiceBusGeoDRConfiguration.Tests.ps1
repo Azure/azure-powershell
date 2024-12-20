@@ -1,17 +1,16 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusGeoDRConfiguration'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzServiceBusGeoDRConfiguration.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+if (($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusGeoDRConfiguration')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzServiceBusGeoDRConfiguration.Recording.json'
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'New-AzServiceBusGeoDRConfiguration' {
@@ -22,9 +21,9 @@ Describe 'New-AzServiceBusGeoDRConfiguration' {
         $drConfig.PartnerNamespace | Should -Be $env.secondaryNamespaceResourceId
         $drConfig.Role | Should -Be "Primary"
 
-        while($drConfig.ProvisioningState -ne "Succeeded"){
+        while ($drConfig.ProvisioningState -ne "Succeeded") {
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-Sleep 10
+            Start-TestSleep 10
         }
 
         $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace

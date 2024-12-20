@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphEndpoint(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"capability",@"providerId",@"providerName",@"providerResourceId",@"uri" }) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphEndpoint(json, new global::System.Collections.Generic.HashSet<string>(){ @"ResourceGroupName",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"capability",@"providerId",@"providerName",@"providerResourceId",@"uri" }) : null;
         }
 
         /// <summary>
@@ -83,11 +83,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
             __microsoftGraphDirectoryObject = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObject(json);
-            {_capability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("capability"), out var __jsonCapability) ? (string)__jsonCapability : (string)Capability;}
-            {_providerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("providerId"), out var __jsonProviderId) ? (string)__jsonProviderId : (string)ProviderId;}
-            {_providerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("providerName"), out var __jsonProviderName) ? (string)__jsonProviderName : (string)ProviderName;}
-            {_providerResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("providerResourceId"), out var __jsonProviderResourceId) ? (string)__jsonProviderResourceId : (string)ProviderResourceId;}
-            {_uri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("uri"), out var __jsonUri) ? (string)__jsonUri : (string)Uri;}
+            {_capability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("capability"), out var __jsonCapability) ? (string)__jsonCapability : (string)_capability;}
+            {_providerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("providerId"), out var __jsonProviderId) ? (string)__jsonProviderId : (string)_providerId;}
+            {_providerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("providerName"), out var __jsonProviderName) ? (string)__jsonProviderName : (string)_providerName;}
+            {_providerResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("providerResourceId"), out var __jsonProviderResourceId) ? (string)__jsonProviderResourceId : (string)_providerResourceId;}
+            {_uri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("uri"), out var __jsonUri) ? (string)__jsonUri : (string)_uri;}
             AfterFromJson(json);
         }
 

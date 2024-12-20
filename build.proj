@@ -106,7 +106,6 @@
   <UsingTask Condition="$(OnPremiseBuild)" TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)/Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Condition="$(OnPremiseBuild)" Project="$(CIToolsPath)/Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
   <UsingTask TaskName="ESRPSignTask" AssemblyFile="$(CISignRepoPath)/tools/sdkbuildtools/tasks/MS.Az.Sdk.OnPremise.Build.Tasks.dll" />
-  <UsingTask TaskName="FilesChangedTask" AssemblyFile="$(RepoArtifacts)Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="CIFilterTask" AssemblyFile="$(RepoArtifacts)Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.dll" />
 
   <Target Name="Clean">
@@ -131,16 +130,11 @@
     <!-- Build the Microsoft.Azure.Build.Tasks project -->
     <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration)" />
 
-    <!-- Get all of the files changed in the given pull request -->
-    <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)"  OutputFile="$(RepoArtifacts)FilesChanged.txt">
-      <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
-    </FilesChangedTask>
-
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareAutorestModule.ps1&quot;" Condition="'$(IsGenerateBased)' == 'true'"/>
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)CreateFilterMappings.ps1&quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareForSecurityCheck.ps1&quot;" Condition="'$(IsSecurityCheck)' == 'true'"/>
 
-    <CIFilterTask FilesChanged="@(FilesChanged)" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
+    <CIFilterTask FilesChangedFile="$(RepoArtifacts)FilesChanged.txt" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
       <Output TaskParameter="BuildCsprojList" ItemName="BuildCsprojList" />
       <Output TaskParameter="TestCsprojList" ItemName="TestCsprojList" />
       <Output TaskParameter="SubTasks" PropertyName="SubTasks" />

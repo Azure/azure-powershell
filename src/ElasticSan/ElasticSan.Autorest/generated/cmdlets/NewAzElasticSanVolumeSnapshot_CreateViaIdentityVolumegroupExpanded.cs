@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Volume Snapshot.</summary>
+    /// <summary>create a Volume Snapshot.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzElasticSanVolumeSnapshot_CreateViaIdentityVolumegroupExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshot))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"Create a Volume Snapshot.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"create a Volume Snapshot.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}", ApiVersion = "2023-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}", ApiVersion = "2024-05-01")]
     public partial class NewAzElasticSanVolumeSnapshot_CreateViaIdentityVolumegroupExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext

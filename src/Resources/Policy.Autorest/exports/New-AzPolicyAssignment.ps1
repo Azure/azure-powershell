@@ -36,7 +36,7 @@ $Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 .Example
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -44,7 +44,7 @@ New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinitio
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.DisplayName -eq 'Allowed locations'}
@@ -67,13 +67,22 @@ $PolicySet = Get-AzPolicySetDefinition -Name 'VirtualMachinePolicySet'
 $NonComplianceMessages = @(@{Message="Only DsV2 SKUs are allowed."; PolicyDefinitionReferenceId="DefRef1"}, @{Message="Virtual machines must follow cost management best practices."})
 New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicySetDefinition $PolicySet -NonComplianceMessage $NonComplianceMessages
 .Example
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -ResourceSelector $ResourceSelector
+.Example
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$Selector = @{Kind = "resourceLocation"; In = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Override $Override
+.Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
 $Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 .Example
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -81,7 +90,7 @@ New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinitio
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
@@ -97,6 +106,25 @@ System.String
 System.String[]
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+OVERRIDE <IOverride[]>: The policy property value override.
+  [Kind <String>]: The override kind.
+  [Selector <List<ISelector>>]: The list of the selector expressions.
+    [In <List<String>>]: The list of values to filter in.
+    [Kind <String>]: The selector kind.
+    [NotIn <List<String>>]: The list of values to filter out.
+  [Value <String>]: The value to override the policy property.
+
+RESOURCESELECTOR <IResourceSelector[]>: The resource selector list to filter policies by resource properties.
+  [Name <String>]: The name of the resource selector.
+  [Selector <List<ISelector>>]: The list of the selector expressions.
+    [In <List<String>>]: The list of values to filter in.
+    [Kind <String>]: The selector kind.
+    [NotIn <List<String>>]: The list of values to filter out.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyassignment
 #>
@@ -184,6 +212,20 @@ param(
     # The messages that describe why a resource is non-compliant with the policy.
     # To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.
     ${NonComplianceMessage},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]

@@ -44,7 +44,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the scale rule.
-    # To construct, see NOTES section for AUTH properties and create a hash table.
     ${Auth},
 
     [Parameter()]

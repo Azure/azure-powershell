@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.DataProtection
+Module Name: Az.Dataprotection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackupvault
 schema: 2.0.0
 ---

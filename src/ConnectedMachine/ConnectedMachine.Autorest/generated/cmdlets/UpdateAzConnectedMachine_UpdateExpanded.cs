@@ -14,11 +14,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzConnectedMachine_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to update a hybrid machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2024-03-31-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2024-07-31-preview")]
     public partial class UpdateAzConnectedMachine_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IContext
@@ -52,13 +53,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>The correlation ID passed in from RSM per upgrade.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The correlation ID passed in from RSM per upgrade.")]
+        /// <summary>The correlation ID associated with an agent upgrade operation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The correlation ID associated with an agent upgrade operation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The correlation ID passed in from RSM per upgrade.",
+        Description = @"The correlation ID associated with an agent upgrade operation.",
         SerializedName = @"correlationId",
         PossibleTypes = new [] { typeof(string) })]
         public string AgentUpgradeCorrelationId { get => _parametersBody.AgentUpgradeCorrelationId ?? null; set => _parametersBody.AgentUpgradeCorrelationId = value; }
@@ -74,13 +75,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string AgentUpgradeDesiredVersion { get => _parametersBody.AgentUpgradeDesiredVersion ?? null; set => _parametersBody.AgentUpgradeDesiredVersion = value; }
 
-        /// <summary>Specifies if RSM should try to upgrade this machine</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies if RSM should try to upgrade this machine")]
+        /// <summary>Specifies if the machine's agent should be upgraded</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies if the machine's agent should be upgraded")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Specifies if RSM should try to upgrade this machine",
+        Description = @"Specifies if the machine's agent should be upgraded",
         SerializedName = @"enableAutomaticUpgrade",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter AgentUpgradeEnableAutomatic { get => _parametersBody.AgentUpgradeEnableAutomaticUpgrade ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.AgentUpgradeEnableAutomaticUpgrade = value; }
@@ -150,30 +151,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS")]
         public string Kind { get => _parametersBody.Kind ?? null; set => _parametersBody.Kind = value; }
 
-        /// <summary>Specifies the assessment mode.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the assessment mode.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Specifies the assessment mode.",
-        SerializedName = @"assessmentMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        public string LinuxConfigurationPatchSettingsAssessmentMode { get => _parametersBody.LinuxConfigurationPatchSettingsAssessmentMode ?? null; set => _parametersBody.LinuxConfigurationPatchSettingsAssessmentMode = value; }
-
-        /// <summary>Specifies the patch mode.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the patch mode.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Specifies the patch mode.",
-        SerializedName = @"patchMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        public string LinuxConfigurationPatchSettingsPatchMode { get => _parametersBody.LinuxConfigurationPatchSettingsPatchMode ?? null; set => _parametersBody.LinuxConfigurationPatchSettingsPatchMode = value; }
-
         /// <summary>The city or locality where the resource is located.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The city or locality where the resource is located.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
@@ -240,6 +217,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         [global::System.Management.Automation.Alias("MachineName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
+
+        /// <summary>Specifies the operating system settings for the hybrid machine.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the operating system settings for the hybrid machine.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the operating system settings for the hybrid machine.",
+        SerializedName = @"osProfile",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile OSProfile { get => _parametersBody.OSProfile ?? null /* object */; set => _parametersBody.OSProfile = value; }
 
         /// <summary>
         /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
@@ -334,30 +322,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags Tag { get => _parametersBody.Tags ?? null /* object */; set => _parametersBody.Tags = value; }
-
-        /// <summary>Specifies the assessment mode.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the assessment mode.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Specifies the assessment mode.",
-        SerializedName = @"assessmentMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        public string WindowsConfigurationPatchSettingsAssessmentMode { get => _parametersBody.WindowsConfigurationPatchSettingsAssessmentMode ?? null; set => _parametersBody.WindowsConfigurationPatchSettingsAssessmentMode = value; }
-
-        /// <summary>Specifies the patch mode.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the patch mode.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Specifies the patch mode.",
-        SerializedName = @"patchMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        public string WindowsConfigurationPatchSettingsPatchMode { get => _parametersBody.WindowsConfigurationPatchSettingsPatchMode ?? null; set => _parametersBody.WindowsConfigurationPatchSettingsPatchMode = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

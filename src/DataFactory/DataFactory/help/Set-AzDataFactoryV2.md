@@ -15,106 +15,109 @@ Creates a data factory.
 ### ByFactoryName (Default)
 ```
 Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-IdentityType <String>]
+ [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisablePublish] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>]
+Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>] [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisablePublish] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>]
+Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>] [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
- [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LastCommitId <String>] [-DisablePublish] -ProjectName <String> [-TenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>]
+Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>] [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
- [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LastCommitId <String>] [-DisablePublish] -HostName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryNameFactoryRepoGitConfig
 ```
 Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-IdentityType <String>]
+ [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
- [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LastCommitId <String>] [-DisablePublish] -HostName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryNameFactoryRepoVstsConfig
 ```
 Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-IdentityType <String>]
+ [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
- [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LastCommitId <String>] [-DisablePublish] -ProjectName <String> [-TenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Set-AzDataFactoryV2 [-IdentityType <String>]
+Set-AzDataFactoryV2 [-IdentityType <String>] [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] -InputObject <PSDataFactory> [[-Location] <String>]
  [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisablePublish] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 [-IdentityType <String>]
+Set-AzDataFactoryV2 [-IdentityType <String>] [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] -InputObject <PSDataFactory> [[-Location] <String>]
  [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-AccountName <String>] [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>]
- [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LastCommitId <String>] [-DisablePublish] -ProjectName <String> [-TenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 [-IdentityType <String>]
+Set-AzDataFactoryV2 [-IdentityType <String>] [-PublicNetworkAccess <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
  [-EncryptionUserAssignedIdentity <String>] -InputObject <PSDataFactory> [[-Location] <String>]
  [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-AccountName <String>] [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>]
- [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LastCommitId <String>] [-DisablePublish] -HostName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +136,7 @@ Set-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
 ```
 
 ```output
-    DataFactoryName   : WikiADF
+DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
     ResourceGroupName : ADF
     Location          : EastUS
@@ -149,7 +152,7 @@ Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" | Set-AzDataFactory
 ```
 
 ```output
-    DataFactoryName   : WikiADF
+DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
     ResourceGroupName : ADF
     Location          : EastUS
@@ -167,7 +170,7 @@ Set-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location 'EastUS' 
 ```
 
 ```output
-    DataFactoryName   : WikiADF
+DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
     ResourceGroupName : ADF
     Location          : EastUS
@@ -242,6 +245,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisablePublish
+Disable manual publish operation in ADF studio to favor automated publish.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -370,20 +388,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-Whether or not public network access is allowed for the data factory. Options are 'Enabled' or 'Disabled'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Required: False
-Position: Named
-Default value: Enabled
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 The data factory object.
 
@@ -405,21 +409,6 @@ The last commit id for repo configuration.
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceIdFactoryRepoVstsConfig, ByResourceIdFactoryRepoGitConfig, ByFactoryNameFactoryRepoGitConfig, ByFactoryNameFactoryRepoVstsConfig, ByInputObjectFactoryRepoVstsConfig, ByInputObjectFactoryRepoGitConfig
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisablePublish
-Disable manual publish operation in ADF studio to favor automated publish.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -482,6 +471,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public network access is allowed for the data factory. Options are 'Enabled' or 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: Enabled
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

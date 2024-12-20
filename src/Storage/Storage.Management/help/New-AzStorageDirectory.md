@@ -17,29 +17,26 @@ Creates a directory.
 ```
 New-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Share
 ```
-New-AzStorageDirectory [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Path] <String>
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+New-AzStorageDirectory [-ShareClient] <ShareClient> [-Path] <String> [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-New-AzStorageDirectory [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
- [-Path] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+New-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String>
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzStorageDirectory** cmdlet creates a directory.
-This cmdlet returns a **CloudFileDirectory** object.
+This cmdlet returns a **AzureStorageFileDirectory** object.
 
 ## EXAMPLES
 
@@ -127,24 +124,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Directory
-Specifies a folder as a **CloudFileDirectory** object.
-This cmdlet creates the folder in the location that this parameter specifies.
-To obtain a directory, use the New-AzStorageDirectory cmdlet.
-You can also use the Get-AzStorageFile cmdlet to obtain a directory.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileDirectory
-Parameter Sets: Directory
-Aliases: CloudFileDirectory
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -DisAllowTrailingDot
 Disallow trailing dot (.) to suffix directory and file names.
 
@@ -191,25 +170,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Share
-Specifies a **CloudFileShare** object.
-This cmdlet creates a folder in the file share that this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
-This object contains the storage context.
-If you specify this parameter, do not specify the *Context* parameter.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileShare
-Parameter Sets: Share
-Aliases: CloudFileShare
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -ShareClient
 ShareClient object indicated the share where the files/directories would be listed.
 
@@ -218,8 +178,8 @@ Type: Azure.Storage.Files.Shares.ShareClient
 Parameter Sets: Share
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -233,8 +193,8 @@ Type: Azure.Storage.Files.Shares.ShareDirectoryClient
 Parameter Sets: Directory
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -261,9 +221,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Azure.Storage.Files.Shares.ShareClient
 
-### Microsoft.Azure.Storage.File.CloudFileDirectory
+### Azure.Storage.Files.Shares.ShareDirectoryClient
 
 ### System.String
 

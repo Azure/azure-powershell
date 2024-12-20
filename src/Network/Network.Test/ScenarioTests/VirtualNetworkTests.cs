@@ -209,5 +209,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkEncryption");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
+        public void TestVirtualNetworkPrivateEndpointVNetPolicies()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkPrivateEndpointVNetPolicies");
+        }
     }
 }

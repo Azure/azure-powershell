@@ -462,3 +462,103 @@ function Test-BastionIpObjectParam {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+Test Bastion Shareable Link
+#>
+function Test-BastionShareableLink {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $resourceTypeParent = "Microsoft.Network/bastionHosts"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $subnetName = "AzureBastionSubnet"
+    $vnetName = "$(Get-ResourceName)-Vnet"
+    $vnetName2 = "$(Get-ResourceName)-Vnet"
+    $publicIpName = "$(Get-ResourceName)-Pip"
+    $publicIpName2 = "$(Get-ResourceName)-Pip"
+    $bastionName = "$(Get-ResourceName)-Bastion"
+    $bastionName2 = "$(Get-ResourceName)-Bastion2"
+    $vmUsername = "azureuser"
+    $vmPassword = ConvertTo-SecureString "$vmUsername@123" -AsPlainText -Force
+    $vmName = "$(Get-ResourceName)-Vm"
+    $vmSize = "Standard_D2ds_v4"
+    $nicName = "$(Get-ResourceName)-Nic"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create Public IP
+        $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+        $publicIp2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Static -Sku Standard
+
+        # Create Bastion
+        $createBastionJob = New-AzBastion -Name $bastionName -ResourceGroupName $rgname -VirtualNetwork $vnet -PublicIpAddress $publicIp -EnableShareableLink $true -AsJob
+        $createBastionJob2 = New-AzBastion -Name $bastionName2 -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicIp2 -Sku Basic -AsJob
+
+        # Create VM
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RgName -Location $location -SubnetId $vnet.Subnets[0].Id
+        $Credential = New-Object System.Management.Automation.PSCredential ($vmUsername, $vmPassword);
+        $vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize
+        $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+        $vm = Add-AzVMNetworkInterface -VM $vm -Id $NIC.Id
+        $vm = Set-AzVMSourceImage -VM $vm -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-datacenter-azure-edition-core" -Version latest
+        $vm = Set-AzVMBootDiagnostic -VM $vm -Disable
+        $createVmJob = New-AzVM -ResourceGroupName $RgName -Location $location -VM $vm -Verbose -AsJob
+
+        # Wait for create Basic Bastion completion
+        $createBastionJob2 | Wait-Job
+        $bastion2 = $createBastionJob2 | Receive-Job
+        Assert-NotNull $bastion2
+
+        # Receive error message
+        $randomName = Get-ResourceName
+        # New BSL
+        Assert-Throws { New-AzBastionShareableLink -ResourceGroupName $rgname -Name $randomName -TargetVmId $bastionName2 } "Resource '$randomName' not found"
+        Assert-Throws { New-AzBastionShareableLink -ResourceGroupName $rgname -Name $bastionName2 -TargetVmId $bastionName2 } "Shareable link feature is not enabled"
+        # Get BSL
+        Assert-Throws { Get-AzBastionShareableLink -ResourceGroupName $rgname -Name $randomName -TargetVmId $bastionName2 } "Resource '$randomName' not found"
+        Assert-Throws { Get-AzBastionShareableLink -ResourceGroupName $rgname -Name $bastionName2 -TargetVmId $bastionName2 } "Shareable link feature is not enabled"
+        # Remove BSL
+        Assert-Throws { Remove-AzBastionShareableLink -ResourceGroupName $rgname -Name $randomName -TargetVmId $bastionName2 -Force } "Resource '$randomName' not found"
+        Assert-Throws { Remove-AzBastionShareableLink -ResourceGroupName $rgname -Name $bastionName2 -TargetVmId $bastionName2 -Force } "Shareable link feature is not enabled"
+
+        # Wait for create Bastion completion
+        $createBastionJob | Wait-Job
+        $bastion = $createBastionJob | Receive-Job
+        Assert-NotNull $bastion
+        Assert-AreEqual $true $bastion.EnableShareableLink
+
+        # Wait for create VM completion
+        $createVmJob | Wait-Job
+        $vm = Get-AzVM -ResourceGroupName $RgName -Name $vmName
+        Assert-NotNull $vm
+        Assert-NotNull $vm.Id
+
+        # Create BSL
+        New-AzBastionShareableLink -InputObject $bastion -TargetVmId $vm.Id
+
+        # Get BSL
+        $getBsl = Get-AzBastionShareableLink -InputObject $bastion
+        Assert-NotNull $getBsl
+        Assert-AreEqual $vm.Id $getBsl.VmId
+        Assert-NotNull $getBsl.Bsl
+        Assert-NotNull $getBsl.CreatedAt
+
+        # Delete BSL
+        Remove-AzBastionShareableLink -InputObject $bastion -TargetVmId $vm.Id -Force
+
+        # Get BSL
+        $getBsl = Get-AzBastionShareableLink -InputObject $bastion
+        Assert-AreEqual 0 $getBsl.Count
+    }
+    finally {
+        # Clean up
+        Clean-ResourceGroup $rgname
+    }
+}

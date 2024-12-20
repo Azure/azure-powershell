@@ -185,6 +185,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ServiceStatuses = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatuses) content.GetValueForProperty("ServiceStatuses",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ServiceStatuses, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatusesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("HardwareProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfile) content.GetValueForProperty("HardwareProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.HardwareProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StorageProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).StorageProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfile) content.GetValueForProperty("StorageProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).StorageProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.StorageProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FirmwareProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfile) content.GetValueForProperty("FirmwareProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.FirmwareProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("CloudMetadata"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).CloudMetadata = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata) content.GetValueForProperty("CloudMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).CloudMetadata, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadataTypeConverter.ConvertFrom);
@@ -192,10 +204,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AgentUpgrade"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgrade) content.GetValueForProperty("AgentUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgrade, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgradeTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("NetworkProfile"))
             {
@@ -205,6 +213,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).DetectedProperty = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties) content.GetValueForProperty("DetectedProperty",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).DetectedProperty, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DetectedPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("OSProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("IdentityPrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
@@ -212,10 +224,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("IdentityTenantId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("LicenseProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView) content.GetValueForProperty("LicenseProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceViewTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -305,6 +313,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).MssqlDiscovered = (string) content.GetValueForProperty("MssqlDiscovered",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).MssqlDiscovered, global::System.Convert.ToString);
             }
+            if (content.Contains("LicenseProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView) content.GetValueForProperty("LicenseProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceViewTypeConverter.ConvertFrom);
+            }
             if (content.Contains("LocationDataName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LocationDataName = (string) content.GetValueForProperty("LocationDataName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LocationDataName, global::System.Convert.ToString);
@@ -329,6 +341,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentConfigurationExtensionsEnabled = (string) content.GetValueForProperty("AgentConfigurationExtensionsEnabled",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentConfigurationExtensionsEnabled, global::System.Convert.ToString);
             }
+            if (content.Contains("HardwareProfileProcessor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileProcessor = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor>) content.GetValueForProperty("HardwareProfileProcessor",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileProcessor, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProcessorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("StorageProfileDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).StorageProfileDisk = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk>) content.GetValueForProperty("StorageProfileDisk",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).StorageProfileDisk, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DiskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("FirmwareProfileSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfileSerialNumber = (string) content.GetValueForProperty("FirmwareProfileSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfileSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirmwareProfileType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfileType = (string) content.GetValueForProperty("FirmwareProfileType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfileType, global::System.Convert.ToString);
+            }
             if (content.Contains("CloudMetadataProvider"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).CloudMetadataProvider = (string) content.GetValueForProperty("CloudMetadataProvider",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).CloudMetadataProvider, global::System.Convert.ToString);
@@ -340,10 +368,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AgentUpgradeCorrelationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeCorrelationId = (string) content.GetValueForProperty("AgentUpgradeCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeCorrelationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("LicenseProfileLicenseStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileLicenseStatus = (string) content.GetValueForProperty("LicenseProfileLicenseStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileLicenseStatus, global::System.Convert.ToString);
             }
             if (content.Contains("NetworkProfileNetworkInterface"))
             {
@@ -385,6 +409,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ServiceStatusesGuestConfigurationService = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus) content.GetValueForProperty("ServiceStatusesGuestConfigurationService",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ServiceStatusesGuestConfigurationService, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatusTypeConverter.ConvertFrom);
             }
+            if (content.Contains("HardwareProfileTotalPhysicalMemoryInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileTotalPhysicalMemoryInByte = (long?) content.GetValueForProperty("HardwareProfileTotalPhysicalMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileTotalPhysicalMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("HardwareProfileNumberOfCpuSocket"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileNumberOfCpuSocket = (int?) content.GetValueForProperty("HardwareProfileNumberOfCpuSocket",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileNumberOfCpuSocket, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("AgentUpgradeEnableAutomaticUpgrade"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeEnableAutomaticUpgrade = (bool?) content.GetValueForProperty("AgentUpgradeEnableAutomaticUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeEnableAutomaticUpgrade, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -405,46 +437,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeLastAttemptMessage = (string) content.GetValueForProperty("AgentUpgradeLastAttemptMessage",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeLastAttemptMessage, global::System.Convert.ToString);
             }
-            if (content.Contains("OSProfileWindowsConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileWindowsConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfiguration) content.GetValueForProperty("OSProfileWindowsConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileWindowsConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileWindowsConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfileLinuxConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileLinuxConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfiguration) content.GetValueForProperty("OSProfileLinuxConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileLinuxConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileLinuxConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfileComputerName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileComputerName = (string) content.GetValueForProperty("OSProfileComputerName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileComputerName, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowConfigurationPatchSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("WindowConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LinuxConfigurationPatchSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("LinuxConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LicenseProfileSoftwareAssurance"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileSoftwareAssurance = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceViewSoftwareAssurance) content.GetValueForProperty("LicenseProfileSoftwareAssurance",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileSoftwareAssurance, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceViewSoftwareAssuranceTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LicenseProfileEsuProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileEsuProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceViewEsuProperties) content.GetValueForProperty("LicenseProfileEsuProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileEsuProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceViewEsuPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LicenseProfileProductProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileProductProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfileProperties) content.GetValueForProperty("LicenseProfileProductProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileProductProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileArmProductProfilePropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LicenseProfileLicenseChannel"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileLicenseChannel = (string) content.GetValueForProperty("LicenseProfileLicenseChannel",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileLicenseChannel, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileEsuEligibility"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuEligibility = (string) content.GetValueForProperty("EsuProfileEsuEligibility",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuEligibility, global::System.Convert.ToString);
-            }
             if (content.Contains("ExtensionServiceStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ExtensionServiceStatus = (string) content.GetValueForProperty("ExtensionServiceStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ExtensionServiceStatus, global::System.Convert.ToString);
@@ -460,74 +452,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("GuestConfigurationServiceStartupType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).GuestConfigurationServiceStartupType = (string) content.GetValueForProperty("GuestConfigurationServiceStartupType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).GuestConfigurationServiceStartupType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SoftwareAssuranceCustomer"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).SoftwareAssuranceCustomer = (bool?) content.GetValueForProperty("SoftwareAssuranceCustomer",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).SoftwareAssuranceCustomer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("EsuProfileAssignedLicenseImmutableId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileAssignedLicenseImmutableId = (string) content.GetValueForProperty("EsuProfileAssignedLicenseImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileAssignedLicenseImmutableId, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileEsuKey"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuKey = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey>) content.GetValueForProperty("EsuProfileEsuKey",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuKey, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.EsuKeyTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("EsuProfileServerType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileServerType = (string) content.GetValueForProperty("EsuProfileServerType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileServerType, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileEsuKeyState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuKeyState = (string) content.GetValueForProperty("EsuProfileEsuKeyState",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuKeyState, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileLicenseAssignmentState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileLicenseAssignmentState = (string) content.GetValueForProperty("EsuProfileLicenseAssignmentState",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileLicenseAssignmentState, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileAssignedLicense"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileAssignedLicense = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense) content.GetValueForProperty("EsuProfileAssignedLicense",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileAssignedLicense, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ProductProfileSubscriptionStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileSubscriptionStatus = (string) content.GetValueForProperty("ProductProfileSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileSubscriptionStatus, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProductProfileProductType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileProductType = (string) content.GetValueForProperty("ProductProfileProductType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileProductType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProductProfileBillingStartDate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileBillingStartDate = (global::System.DateTime?) content.GetValueForProperty("ProductProfileBillingStartDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileBillingStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("ProductProfileEnrollmentDate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileEnrollmentDate = (global::System.DateTime?) content.GetValueForProperty("ProductProfileEnrollmentDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileEnrollmentDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("ProductProfileDisenrollmentDate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileDisenrollmentDate = (global::System.DateTime?) content.GetValueForProperty("ProductProfileDisenrollmentDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileDisenrollmentDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("ProductProfileProductFeature"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileProductFeature = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>) content.GetValueForProperty("ProductProfileProductFeature",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileProductFeature, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("WindowsConfigurationPatchSettingsAssessmentMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowsConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowsConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowsConfigurationPatchSettingsPatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowsConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowsConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinuxConfigurationPatchSettingsAssessmentMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinuxConfigurationPatchSettingsPatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -622,6 +546,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ServiceStatuses = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatuses) content.GetValueForProperty("ServiceStatuses",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ServiceStatuses, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatusesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("HardwareProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfile) content.GetValueForProperty("HardwareProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.HardwareProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StorageProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).StorageProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfile) content.GetValueForProperty("StorageProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).StorageProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.StorageProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FirmwareProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfile) content.GetValueForProperty("FirmwareProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.FirmwareProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("CloudMetadata"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).CloudMetadata = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata) content.GetValueForProperty("CloudMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).CloudMetadata, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadataTypeConverter.ConvertFrom);
@@ -629,10 +565,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AgentUpgrade"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgrade) content.GetValueForProperty("AgentUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgrade, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgradeTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("NetworkProfile"))
             {
@@ -642,6 +574,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).DetectedProperty = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties) content.GetValueForProperty("DetectedProperty",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).DetectedProperty, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DetectedPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("OSProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("IdentityPrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
@@ -649,10 +585,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("IdentityTenantId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("LicenseProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView) content.GetValueForProperty("LicenseProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceViewTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -742,6 +674,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).MssqlDiscovered = (string) content.GetValueForProperty("MssqlDiscovered",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).MssqlDiscovered, global::System.Convert.ToString);
             }
+            if (content.Contains("LicenseProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView) content.GetValueForProperty("LicenseProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceViewTypeConverter.ConvertFrom);
+            }
             if (content.Contains("LocationDataName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LocationDataName = (string) content.GetValueForProperty("LocationDataName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LocationDataName, global::System.Convert.ToString);
@@ -766,6 +702,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentConfigurationExtensionsEnabled = (string) content.GetValueForProperty("AgentConfigurationExtensionsEnabled",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentConfigurationExtensionsEnabled, global::System.Convert.ToString);
             }
+            if (content.Contains("HardwareProfileProcessor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileProcessor = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor>) content.GetValueForProperty("HardwareProfileProcessor",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileProcessor, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProcessorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("StorageProfileDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).StorageProfileDisk = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk>) content.GetValueForProperty("StorageProfileDisk",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).StorageProfileDisk, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DiskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("FirmwareProfileSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfileSerialNumber = (string) content.GetValueForProperty("FirmwareProfileSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfileSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirmwareProfileType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfileType = (string) content.GetValueForProperty("FirmwareProfileType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).FirmwareProfileType, global::System.Convert.ToString);
+            }
             if (content.Contains("CloudMetadataProvider"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).CloudMetadataProvider = (string) content.GetValueForProperty("CloudMetadataProvider",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).CloudMetadataProvider, global::System.Convert.ToString);
@@ -777,10 +729,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AgentUpgradeCorrelationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeCorrelationId = (string) content.GetValueForProperty("AgentUpgradeCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeCorrelationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("LicenseProfileLicenseStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileLicenseStatus = (string) content.GetValueForProperty("LicenseProfileLicenseStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileLicenseStatus, global::System.Convert.ToString);
             }
             if (content.Contains("NetworkProfileNetworkInterface"))
             {
@@ -822,6 +770,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ServiceStatusesGuestConfigurationService = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus) content.GetValueForProperty("ServiceStatusesGuestConfigurationService",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ServiceStatusesGuestConfigurationService, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatusTypeConverter.ConvertFrom);
             }
+            if (content.Contains("HardwareProfileTotalPhysicalMemoryInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileTotalPhysicalMemoryInByte = (long?) content.GetValueForProperty("HardwareProfileTotalPhysicalMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileTotalPhysicalMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("HardwareProfileNumberOfCpuSocket"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileNumberOfCpuSocket = (int?) content.GetValueForProperty("HardwareProfileNumberOfCpuSocket",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).HardwareProfileNumberOfCpuSocket, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("AgentUpgradeEnableAutomaticUpgrade"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeEnableAutomaticUpgrade = (bool?) content.GetValueForProperty("AgentUpgradeEnableAutomaticUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeEnableAutomaticUpgrade, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -842,46 +798,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeLastAttemptMessage = (string) content.GetValueForProperty("AgentUpgradeLastAttemptMessage",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).AgentUpgradeLastAttemptMessage, global::System.Convert.ToString);
             }
-            if (content.Contains("OSProfileWindowsConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileWindowsConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfiguration) content.GetValueForProperty("OSProfileWindowsConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileWindowsConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileWindowsConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfileLinuxConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileLinuxConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfiguration) content.GetValueForProperty("OSProfileLinuxConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileLinuxConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileLinuxConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfileComputerName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileComputerName = (string) content.GetValueForProperty("OSProfileComputerName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).OSProfileComputerName, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowConfigurationPatchSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("WindowConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LinuxConfigurationPatchSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("LinuxConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LicenseProfileSoftwareAssurance"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileSoftwareAssurance = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceViewSoftwareAssurance) content.GetValueForProperty("LicenseProfileSoftwareAssurance",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileSoftwareAssurance, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceViewSoftwareAssuranceTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LicenseProfileEsuProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileEsuProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceViewEsuProperties) content.GetValueForProperty("LicenseProfileEsuProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileEsuProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceViewEsuPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LicenseProfileProductProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileProductProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfileProperties) content.GetValueForProperty("LicenseProfileProductProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileProductProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileArmProductProfilePropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LicenseProfileLicenseChannel"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileLicenseChannel = (string) content.GetValueForProperty("LicenseProfileLicenseChannel",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LicenseProfileLicenseChannel, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileEsuEligibility"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuEligibility = (string) content.GetValueForProperty("EsuProfileEsuEligibility",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuEligibility, global::System.Convert.ToString);
-            }
             if (content.Contains("ExtensionServiceStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ExtensionServiceStatus = (string) content.GetValueForProperty("ExtensionServiceStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ExtensionServiceStatus, global::System.Convert.ToString);
@@ -897,74 +813,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("GuestConfigurationServiceStartupType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).GuestConfigurationServiceStartupType = (string) content.GetValueForProperty("GuestConfigurationServiceStartupType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).GuestConfigurationServiceStartupType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SoftwareAssuranceCustomer"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).SoftwareAssuranceCustomer = (bool?) content.GetValueForProperty("SoftwareAssuranceCustomer",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).SoftwareAssuranceCustomer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("EsuProfileAssignedLicenseImmutableId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileAssignedLicenseImmutableId = (string) content.GetValueForProperty("EsuProfileAssignedLicenseImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileAssignedLicenseImmutableId, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileEsuKey"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuKey = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey>) content.GetValueForProperty("EsuProfileEsuKey",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuKey, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.EsuKeyTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("EsuProfileServerType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileServerType = (string) content.GetValueForProperty("EsuProfileServerType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileServerType, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileEsuKeyState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuKeyState = (string) content.GetValueForProperty("EsuProfileEsuKeyState",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileEsuKeyState, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileLicenseAssignmentState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileLicenseAssignmentState = (string) content.GetValueForProperty("EsuProfileLicenseAssignmentState",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileLicenseAssignmentState, global::System.Convert.ToString);
-            }
-            if (content.Contains("EsuProfileAssignedLicense"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileAssignedLicense = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense) content.GetValueForProperty("EsuProfileAssignedLicense",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).EsuProfileAssignedLicense, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ProductProfileSubscriptionStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileSubscriptionStatus = (string) content.GetValueForProperty("ProductProfileSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileSubscriptionStatus, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProductProfileProductType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileProductType = (string) content.GetValueForProperty("ProductProfileProductType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileProductType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProductProfileBillingStartDate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileBillingStartDate = (global::System.DateTime?) content.GetValueForProperty("ProductProfileBillingStartDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileBillingStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("ProductProfileEnrollmentDate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileEnrollmentDate = (global::System.DateTime?) content.GetValueForProperty("ProductProfileEnrollmentDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileEnrollmentDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("ProductProfileDisenrollmentDate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileDisenrollmentDate = (global::System.DateTime?) content.GetValueForProperty("ProductProfileDisenrollmentDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileDisenrollmentDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("ProductProfileProductFeature"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileProductFeature = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>) content.GetValueForProperty("ProductProfileProductFeature",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).ProductProfileProductFeature, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("WindowsConfigurationPatchSettingsAssessmentMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowsConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowsConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowsConfigurationPatchSettingsPatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowsConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).WindowsConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinuxConfigurationPatchSettingsAssessmentMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinuxConfigurationPatchSettingsPatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal)this).LinuxConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

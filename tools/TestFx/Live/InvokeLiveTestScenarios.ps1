@@ -13,7 +13,7 @@ param (
 )
 
 $srcDir = Join-Path -Path ${env:BUILD_SOURCESDIRECTORY} -ChildPath "src"
-$liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" -ErrorAction SilentlyContinue | Get-ChildItem -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
+$liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" -ErrorAction SilentlyContinue | Get-ChildItem -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" -Recurse | Select-Object -ExpandProperty FullName
 
 $maxRunspaces = 9
 [void][int]::TryParse(${env:RSPTHROTTLE}, [ref]$maxRunspaces)
@@ -27,16 +27,17 @@ $liveJobs = $liveScenarios | ForEach-Object {
     $ps = [powershell]::Create()
     $ps.RunspacePool = $rsp
     [void]$ps.AddScript({
-        param (
-            [string] $Module,
-            [string] $RunPlatform,
-            [string] $LiveScenarioScript
-        )
+            param (
+                [string] $Module,
+                [string] $RunPlatform,
+                [string] $LiveScenarioScript
+            )
 
-        Import-Module "./tools/TestFx/Assert.ps1" -Force
-        Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $Module, $RunPlatform, ${env:DATALOCATION} -Force
-        . $LiveScenarioScript
-    }).AddParameter("Module", $module).AddParameter("RunPlatform", $RunPlatform).AddParameter("LiveScenarioScript", $_)
+            Import-Module "./tools/TestFx/Assert.ps1" -Force
+            Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $Module, $RunPlatform, ${env:DATALOCATION} -Force
+            . $LiveScenarioScript
+        }
+    ).AddParameter("Module", $module).AddParameter("RunPlatform", $RunPlatform).AddParameter("LiveScenarioScript", $_)
 
     [PSCustomObject]@{
         Id          = $ps.InstanceId
@@ -136,7 +137,7 @@ while ($queuedJobs.Count -gt 0) {
 }
 
 $accountsDir = Join-Path -Path $srcDir -ChildPath "Accounts"
-$accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse -ErrorAction SilentlyContinue | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
+$accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse -ErrorAction SilentlyContinue | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" -Recurse | Select-Object -ExpandProperty FullName
 if ($null -ne $accountsLiveScenario) {
     Write-Output ""
     Write-Output "##[section]Live test run for module `"Accounts`"."
@@ -150,11 +151,12 @@ $liveJobs | ForEach-Object {
     if ($null -ne $_.Instance) {
         $_.Instance.Commands.Clear()
         [void]$_.Instance.AddScript({
-            $cleanupJobs = Get-Job
-            $cleanupJobs | Wait-Job | Out-Null
-            $cleanupJobs | Select-Object Name, Command, State, PSBeginTime, PSEndTime, Output
-            $cleanupJobs | Remove-Job
-        })
+                $cleanupJobs = Get-Job
+                $cleanupJobs | Wait-Job | Out-Null
+                $cleanupJobs | Select-Object Name, Command, State, PSBeginTime, PSEndTime, Output
+                $cleanupJobs | Remove-Job
+            }
+        )
         $_.AsyncHandle = $_.Instance.BeginInvoke()
     }
 }

@@ -66,10 +66,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// auth with encrypted private key.
         /// </param>
 
+        /// <param name="host">The host name of the Snowflake account.
+        /// </param>
+
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SnowflakeLinkedV2ServiceTypeProperties(object accountIdentifier, object database, object warehouse, object user = default(object), SecretBase password = default(SecretBase), string authenticationType = default(string), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object tenantId = default(object), object scope = default(object), SecretBase privateKey = default(SecretBase), SecretBase privateKeyPassphrase = default(SecretBase), string encryptedCredential = default(string))
+        public SnowflakeLinkedV2ServiceTypeProperties(object accountIdentifier, object database, object warehouse, object user = default(object), SecretBase password = default(SecretBase), string authenticationType = default(string), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object tenantId = default(object), object scope = default(object), SecretBase privateKey = default(SecretBase), SecretBase privateKeyPassphrase = default(SecretBase), object host = default(object), string encryptedCredential = default(string))
 
         {
             this.AccountIdentifier = accountIdentifier;
@@ -84,6 +87,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Scope = scope;
             this.PrivateKey = privateKey;
             this.PrivateKeyPassphrase = privateKeyPassphrase;
+            this.Host = host;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
         }
@@ -175,6 +179,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public SecretBase PrivateKeyPassphrase {get; set; }
 
         /// <summary>
+        /// Gets or sets the host name of the Snowflake account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "host")]
+        public object Host {get; set; }
+
+        /// <summary>
         /// Gets or sets the encrypted credential used for authentication. Credentials
         /// are encrypted using the integration runtime credential manager. Type:
         /// string.
@@ -201,6 +211,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Warehouse");
             }
+
 
 
 
