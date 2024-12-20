@@ -67,7 +67,7 @@ function New-AzMLWorkspaceKubernetesObject {
         [string]
         $RelayConnectionString,
         [Parameter(HelpMessage="ServiceBus connection string.")]
-        [string]
+        [System.Security.SecureString]
         $ServiceBusConnectionString,
         [Parameter(HelpMessage="VC name.")]
         [string]

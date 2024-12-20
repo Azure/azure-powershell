@@ -17,7 +17,7 @@ New-AzMLWorkspaceKubernetesObject [-DefaultInstanceType <String>] [-Description 
  [-DisableLocalAuth <Boolean>] [-ExtensionInstanceReleaseTrain <String>] [-ExtensionPrincipalId <String>]
  [-InstanceLimit <Hashtable>] [-InstanceNodeSelector <Hashtable>] [-InstanceRequest <Hashtable>]
  [-Namespace <String>] [-RelayConnectionString <String>] [-ResourceId <String>]
- [-ServiceBusConnectionString <String>] [-VcName <String>] [<CommonParameters>]
+ [-ServiceBusConnectionString <SecureString>] [-VcName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 ServiceBus connection string.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
