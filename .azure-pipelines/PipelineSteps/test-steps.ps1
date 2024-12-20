@@ -21,7 +21,7 @@ param (
 Write-Host -ForegroundColor Green "-------------------- Start removing pre-installed Az modules ... --------------------"
 $commonUtilityScriptPath = Join-Path $RepoRoot "tools" "TestFx" "Utilities" "CommonUtility.ps1"
 & $commonUtilityScriptPath
-Write-Host -ForegroundColor DarkGreen "-------------------- End removing pre-installed Az modules ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End removing pre-installed Az modules ... --------------------`n`n`n`n`n"
 
 # Test
 Write-Host -ForegroundColor Green "-------------------- Start testing ... --------------------"
@@ -32,13 +32,13 @@ $preference = $ErrorActionPreference
 $ErrorActionPreference = 'Continue'
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
 dotnet msbuild $buildProjPath /t:Test "/p:Configuration=$Configuration;TestFramework=$TestFramework"
-Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
 # Test AutoGen Modules With PowerShell Core
 Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with PowerShell Core ... --------------------"
 $executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
 $currentPath = $PWD
-$debugFolderPath = Join-Path $RepoRoot "Artifacts" "Debug"
+$debugFolderPath = Join-Path $RepoRoot "artifacts" "Debug"
 Set-Location $debugFolderPath
 
 Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force
@@ -52,13 +52,13 @@ $repoArtifact = Join-Path $RepoRoot 'artifacts'
 
 $ErrorActionPreference = $preference
 Set-Location $currentPath
-Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with PowerShell Core ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with PowerShell Core ... --------------------`n`n`n`n`n"
 
 # Analyze test coverage
 Write-Host -ForegroundColor Green "-------------------- Start analyzing test coverage ... --------------------"
 $validateTestCoverageScriptPath = Join-Path $RepoRoot 'tools' 'TestFx' 'Coverage' 'ValidateTestCoverage.ps1'
 & $validateTestCoverageScriptPath
-Write-Host -ForegroundColor DarkGreen "-------------------- End analyzing test coverage ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End analyzing test coverage ... --------------------`n`n`n`n`n"
 
 # Check test status
 Write-Host -ForegroundColor Green "-------------------- Start checking test status ... --------------------"
@@ -74,4 +74,4 @@ if ($FailedModuleList.Length -ne 0)
 }
 
 Set-Location $currentPath
-Write-Host -ForegroundColor DarkGreen "-------------------- End checking test status ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End checking test status ... --------------------`n`n`n`n`n"

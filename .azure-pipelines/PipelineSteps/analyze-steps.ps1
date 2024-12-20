@@ -19,7 +19,7 @@ param (
 # Install PowerShell dependencies
 Write-Host -ForegroundColor Green "-------------------- Start installing PowerShell dependencies ... --------------------"
 Install-Module "platyPS", "PSScriptAnalyzer" -Repository PSGallery -Force -Confirm:$false -Scope CurrentUser
-Write-Host -ForegroundColor DarkGreen "-------------------- End installing PowerShell dependencies ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End installing PowerShell dependencies ... --------------------`n`n`n`n`n"
 
 # Install latest Az modules
 Write-Host -ForegroundColor Green "-------------------- Start installing latest Az modules ... --------------------"
@@ -27,7 +27,7 @@ New-Item -ItemType Directory -Path "Az-Cmdlets-latest"
 Invoke-WebRequest -Uri "https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz" -OutFile "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -MaximumRetryCount 2 -RetryIntervalSec 1
 tar -xvzf "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -C "Az-Cmdlets-latest"
 & Az-Cmdlets-latest/InstallModule.ps1
-Write-Host -ForegroundColor DarkGreen "-------------------- End installing latest Az modules ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End installing latest Az modules ... --------------------`n`n`n`n`n"
 
 # Generate help
 Write-Host -ForegroundColor Green "-------------------- Start generating help ... --------------------"
@@ -36,9 +36,9 @@ if ($PowerShellPlatform) {
 }
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
 dotnet msbuild $buildProjPath /t:GenerateHelp "/p:Configuration=$Configuration"
-Write-Host -ForegroundColor DarkGreen "-------------------- End generating help ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End generating help ... --------------------`n`n`n`n`n"
 
 # Static Analysis
 Write-Host -ForegroundColor Green "-------------------- Start static analysis ... --------------------"
 dotnet msbuild $buildProjPath /t:StaticAnalysis "/p:Configuration=$Configuration"
-Write-Host -ForegroundColor DarkGreen "-------------------- End static analysis ... --------------------"
+Write-Host -ForegroundColor DarkGreen "-------------------- End static analysis ... --------------------`n`n`n`n`n"
