@@ -6,13 +6,13 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c8bd9146-5b84-4598-9b0e-3676e2e7d626"
+          "9327dfc0-83f5-4b36-9727-b347f0fcd5d5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.5"
@@ -33,13 +33,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "84c17d50-5d3e-4332-ad2b-e7bbbe33436a"
+          "601617e8-6291-43eb-bbe7-1eab2b541082"
         ],
         "x-ms-correlation-request-id": [
-          "84c17d50-5d3e-4332-ad2b-e7bbbe33436a"
+          "601617e8-6291-43eb-bbe7-1eab2b541082"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20241030T040917Z:84c17d50-5d3e-4332-ad2b-e7bbbe33436a"
+          "EASTUS:20241114T162929Z:601617e8-6291-43eb-bbe7-1eab2b541082"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 3C65AFD52EF0444C969D37D04CF8456E Ref B: MNZ221060608033 Ref C: 2024-10-30T04:09:17Z"
+          "Ref A: 81F8BAB02B144A73B577D4FBB41700C3 Ref B: MNZ221060618051 Ref C: 2024-11-14T16:29:29Z"
         ],
         "Date": [
-          "Wed, 30 Oct 2024 04:09:17 GMT"
+          "Thu, 14 Nov 2024 16:29:29 GMT"
         ],
         "Content-Length": [
           "174"
@@ -66,7 +66,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '10/30/2024 4:08:38 AM' is earlier than current UTC time '10/30/2024 4:09:17 AM'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '11/14/2024 4:29:08 PM' is earlier than current UTC time '11/14/2024 4:29:29 PM'.\"\r\n  }\r\n}",
       "StatusCode": 401
     }
   ],

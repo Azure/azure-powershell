@@ -6,13 +6,13 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1bcb3e92-e23f-43b0-a7d9-7be26bc72ab2"
+          "45346e9a-272a-4094-9147-17092ae53fea"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.102"
@@ -39,13 +39,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "9764c452-8b78-46e1-ae3b-23365204a931"
+          "88f39b7a-8d33-4076-80ab-8cf881630461"
         ],
         "x-ms-correlation-request-id": [
-          "9764c452-8b78-46e1-ae3b-23365204a931"
+          "88f39b7a-8d33-4076-80ab-8cf881630461"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20241030T040907Z:9764c452-8b78-46e1-ae3b-23365204a931"
+          "EASTUS:20241121T051127Z:88f39b7a-8d33-4076-80ab-8cf881630461"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,10 +57,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 6A9EDE7E807245F093A5BCE448064F06 Ref B: MNZ221060608007 Ref C: 2024-10-30T04:09:07Z"
+          "Ref A: 09058D7A02C74908997399FA75FFA566 Ref B: MNZ221060609023 Ref C: 2024-11-21T05:11:27Z"
         ],
         "Date": [
-          "Wed, 30 Oct 2024 04:09:07 GMT"
+          "Thu, 21 Nov 2024 05:11:27 GMT"
         ],
         "Content-Length": [
           "174"
@@ -72,7 +72,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '10/30/2024 4:08:38 AM' is earlier than current UTC time '10/30/2024 4:09:07 AM'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '11/21/2024 4:55:00 AM' is earlier than current UTC time '11/21/2024 5:11:27 AM'.\"\r\n  }\r\n}",
       "StatusCode": 401
     },
     {
@@ -81,13 +81,13 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "103ad543-3e46-4053-badb-ae6b0dcb4cd9"
+          "cbc95fe8-d4b8-4f22-9640-69c13bb47ead"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.5"
@@ -108,13 +108,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "65ff3c0d-a599-40ff-9b80-47d36514b43e"
+          "9a2ca97f-6045-44cd-b88f-5bc9494ecc5f"
         ],
         "x-ms-correlation-request-id": [
-          "65ff3c0d-a599-40ff-9b80-47d36514b43e"
+          "9a2ca97f-6045-44cd-b88f-5bc9494ecc5f"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20241030T040907Z:65ff3c0d-a599-40ff-9b80-47d36514b43e"
+          "EASTUS:20241121T051127Z:9a2ca97f-6045-44cd-b88f-5bc9494ecc5f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -126,10 +126,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 1A394F9EED3C4EB7AD762DAA2747C2A5 Ref B: MNZ221060619023 Ref C: 2024-10-30T04:09:07Z"
+          "Ref A: 0DFB8CB13BEE471993AA63CAB511D1E9 Ref B: MNZ221060619011 Ref C: 2024-11-21T05:11:27Z"
         ],
         "Date": [
-          "Wed, 30 Oct 2024 04:09:06 GMT"
+          "Thu, 21 Nov 2024 05:11:27 GMT"
         ],
         "Content-Length": [
           "174"
@@ -141,7 +141,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '10/30/2024 4:08:38 AM' is earlier than current UTC time '10/30/2024 4:09:07 AM'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '11/21/2024 4:55:00 AM' is earlier than current UTC time '11/21/2024 5:11:27 AM'.\"\r\n  }\r\n}",
       "StatusCode": 401
     }
   ],
