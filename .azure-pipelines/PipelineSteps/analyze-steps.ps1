@@ -26,7 +26,7 @@ Write-Host -ForegroundColor Green "-------------------- Start installing latest 
 New-Item -ItemType Directory -Path "Az-Cmdlets-latest"
 Invoke-WebRequest -Uri "https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz" -OutFile "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -MaximumRetryCount 2 -RetryIntervalSec 1
 tar -xvzf "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -C "Az-Cmdlets-latest"
-. Az-Cmdlets-latest/InstallModule.ps1
+& Az-Cmdlets-latest/InstallModule.ps1
 Write-Host -ForegroundColor DarkGreen "-------------------- End installing latest Az modules ... --------------------"
 
 # Generate help

@@ -20,7 +20,7 @@ param (
 # Remove pre-installed Az modules
 Write-Host -ForegroundColor Green "-------------------- Start removing pre-installed Az modules ... --------------------"
 $commonUtilityScriptPath = Join-Path $RepoRoot "tools" "TestFx" "Utilities" "CommonUtility.ps1"
-. $commonUtilityScriptPath
+& $commonUtilityScriptPath
 Write-Host -ForegroundColor DarkGreen "-------------------- End removing pre-installed Az modules ... --------------------"
 
 # Test
@@ -38,15 +38,16 @@ Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... ----
 Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with PowerShell Core ... --------------------"
 $executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
 $currentPath = $PWD
-$debugFolderPath = Join-Path $RepoRoot "artifacts" "debug"
+$debugFolderPath = Join-Path $RepoRoot "Artifacts" "Debug"
 Set-Location $debugFolderPath
 
-Install-Module -Name Pester Repository PSGallery -RequiredVersion 4.10.1 -Force
+Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force
 if ($IsWindows) { $sp = ";" } else { $sp = ":" }
 $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
 Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
 Write-Host $_.Directory.FullName
-. $executeCIStepScriptPath -TestAutorest -AutorestDirectory $_.Directory.FullName
+$repoArtifact = Join-Path $RepoRoot 'artifacts'
+& $executeCIStepScriptPath -TestAutorest -AutorestDirectory $_.Directory.FullName -RepoArtifacts $repoArtifact
 }
 
 $ErrorActionPreference = $preference
@@ -56,7 +57,7 @@ Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen 
 # Analyze test coverage
 Write-Host -ForegroundColor Green "-------------------- Start analyzing test coverage ... --------------------"
 $validateTestCoverageScriptPath = Join-Path $RepoRoot 'tools' 'TestFx' 'Coverage' 'ValidateTestCoverage.ps1'
-. $validateTestCoverageScriptPath
+& $validateTestCoverageScriptPath
 Write-Host -ForegroundColor DarkGreen "-------------------- End analyzing test coverage ... --------------------"
 
 # Check test status
