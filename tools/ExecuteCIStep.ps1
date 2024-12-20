@@ -87,8 +87,8 @@ Param(
     $TargetModule
 )
 
-$CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
-$PipelineResultPath = "$RepoArtifacts/PipelineResult/PipelineResult.json"
+$CIPlanPath = Join-Path $RepoArtifacts 'PipelineResult' 'CIPlan.json'
+$PipelineResultPath = Join-Path $RepoArtifacts 'PipelineResult' 'PipelineResult.json'
 
 $testResults = @{
     Succeeded = 1
@@ -195,8 +195,13 @@ If ($Build)
         $Platform = Get-PlatformInfo
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" -Raw | ConvertFrom-Json
         $ModuleBuildInfoList = @()
-        $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" -Raw
-        Write-Warning $CIPlan
+        Write-Warning "******************************* I'm here 1 *******************************"
+        Get-Content $CIPlanPath -Raw
+        Write-Warning "******************************* I'm here 2 *******************************"
+        Get-Content $CIPlanPath -Raw | Write-Warning
+        Write-Warning "******************************* I'm here 3 *******************************"
+        $CIPlan = Get-Content $CIPlanPath -Raw
+        Write-Warning "******************************* I'm here 4 *******************************"
         $CIPlan = $CIPlan | ConvertFrom-Json
         ForEach ($ModuleName In $CIPlan.build)
         {
