@@ -60,22 +60,22 @@ Gets lists of resources that supports Privatelinks.
 Gets the details of an EventHub schema group.
 
 ### [New-AzEventHub](New-AzEventHub.md)
-Create a new Event Hub as a nested resource within a Namespace.
+create a new Event Hub as a nested resource within a Namespace.
 
 ### [New-AzEventHubApplicationGroup](New-AzEventHubApplicationGroup.md)
-Create an ApplicationGroup for a Namespace.
+create an ApplicationGroup for a Namespace.
 
 ### [New-AzEventHubAuthorizationRule](New-AzEventHubAuthorizationRule.md)
 Creates an EventHub Authorization Rule
 
 ### [New-AzEventHubCluster](New-AzEventHubCluster.md)
-Create an instance of an Event Hubs Cluster.
+create an instance of an Event Hubs Cluster.
 
 ### [New-AzEventHubConsumerGroup](New-AzEventHubConsumerGroup.md)
-Create an Event Hubs consumer group as a nested resource within a Namespace.
+create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ### [New-AzEventHubGeoDRConfiguration](New-AzEventHubGeoDRConfiguration.md)
-Create a new Alias(Disaster Recovery configuration)
+create a new Alias(Disaster Recovery configuration)
 
 ### [New-AzEventHubIPRuleConfig](New-AzEventHubIPRuleConfig.md)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
@@ -86,11 +86,14 @@ Regenerates an EventHub SAS key
 ### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
 Create an in-memory object for KeyVaultProperties.
 
+### [New-AzEventHubLocationsNameObject](New-AzEventHubLocationsNameObject.md)
+Create an in-memory object for NamespaceReplicaLocation.
+
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an EventHub Namespace
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
-Create an EventHub schema group.
+create an EventHub schema group.
 
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
@@ -154,6 +157,9 @@ Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
 Sets an EventHub Namespace Network Rule Set
+
+### [Start-AzEventHubNamespaceFailOver](Start-AzEventHubNamespaceFailOver.md)
+Triggers EventHub Namespace Failover
 
 ### [Test-AzEventHubName](Test-AzEventHubName.md)
 Checks availability of a namespace name or disaster recovery alias.
