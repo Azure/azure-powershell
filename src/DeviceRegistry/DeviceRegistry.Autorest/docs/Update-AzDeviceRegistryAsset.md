@@ -105,7 +105,8 @@ Uuid                         :
 Version                      :
 ```
 
-This command updates an asset's `Model` property with value `ContosoModel2`. Note: the output response is only the operation status of the update command, not the patched asset.
+This command updates an asset's `Model` property with value `ContosoModel2`.
+Note: the output response is only the operation status of the update command, not the patched asset.
 
 ### Example 2: UpdateViaIdentity for asset.
 ```powershell
@@ -160,7 +161,8 @@ Uuid                         :
 Version                      :
 ```
 
-This command updates an asset's `Model` property with value `ContosoModel2` via Identity input object. Note: the output response is only the operation status of the update command, not the patched asset.
+This command updates an asset's `Model` property with value `ContosoModel2` via Identity input object.
+Note: the output response is only the operation status of the update command, not the patched asset.
 
 ### Example 3: Update an asset from a JSON file path
 ```powershell
@@ -214,7 +216,8 @@ Uuid                         :
 Version                      :
 ```
 
-This command updates an asset's property(ies) with new value(s) by specifying a JSON file path containing the patch body. Note: the output response is only the operation status of the update command, not the patched asset.
+This command updates an asset's property(ies) with new value(s) by specifying a JSON file path containing the patch body.
+Note: the output response is only the operation status of the update command, not the patched asset.
 
 ### Example 4: Update an asset from a stringified JSON
 ```powershell
@@ -273,7 +276,8 @@ Uuid                         :
 Version                      :
 ```
 
-This command updates an asset's `Model` property with new value `ContosoModel2` by specifying the patch as a stringified JSON body. Note: the output response is only the operation status of the update command, not the patched asset.
+This command updates an asset's `Model` property with new value `ContosoModel2` by specifying the patch as a stringified JSON body.
+Note: the output response is only the operation status of the update command, not the patched asset.
 
 ## PARAMETERS
 

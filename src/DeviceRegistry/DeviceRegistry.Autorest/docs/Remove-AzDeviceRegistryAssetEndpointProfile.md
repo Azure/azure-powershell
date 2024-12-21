@@ -45,7 +45,6 @@ Remove-AzDeviceRegistryAssetEndpointProfile -InputObject $assetEndpointProfile
 
 This command deletes asset endpoint profile `test-assetendpointprofile` via the Identity input object.
 
-
 ## PARAMETERS
 
 ### -AsJob

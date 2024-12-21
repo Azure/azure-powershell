@@ -69,8 +69,6 @@ eastus2  test-asset2  12/19/2024 8:52:54 PM user@outlook.com    User            
 
 This command lists all the assets in resource group `test-rg`
 
-
-
 ### Example 3: get an asset by name and resource group
 ```powershell
 Get-AzDeviceRegistryAsset -Name test-asset -ResourceGroupName test-rg

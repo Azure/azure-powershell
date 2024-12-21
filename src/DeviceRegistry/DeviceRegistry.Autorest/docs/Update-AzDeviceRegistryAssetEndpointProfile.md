@@ -84,7 +84,8 @@ Uuid                                          :
 X509CredentialsCertificateSecretName          :
 ```
 
-This command updates an asset endpoint profile's `TargetAddress` property with value `opc.tcp://bar`. Note: the output response is only the operation status of the update command, not the patched asset endpoint profile.
+This command updates an asset endpoint profile's `TargetAddress` property with value `opc.tcp://bar`.
+Note: the output response is only the operation status of the update command, not the patched asset endpoint profile.
 
 ### Example 2: UpdateViaIdentity for asset endpoint profile.
 ```powershell
@@ -121,7 +122,8 @@ Uuid                                          :
 X509CredentialsCertificateSecretName          :
 ```
 
-This command updates an asset endpoint profile's `TargetAddress` property with value `opc.tcp://bar` via Identity input object. Note: the output response is only the operation status of the update command, not the patched asset endpoint profile.
+This command updates an asset endpoint profile's `TargetAddress` property with value `opc.tcp://bar` via Identity input object.
+Note: the output response is only the operation status of the update command, not the patched asset endpoint profile.
 
 ### Example 3: Update an asset endpoint profile from a JSON file path
 ```powershell
@@ -157,7 +159,8 @@ Uuid                                          :
 X509CredentialsCertificateSecretName          :
 ```
 
-This command updates an asset endpoint profile's property(ies) with new value(s) by specifying a JSON file path containing the patch body. Note: the output response is only the operation status of the update command, not the patched asset endpoint profile.
+This command updates an asset endpoint profile's property(ies) with new value(s) by specifying a JSON file path containing the patch body.
+Note: the output response is only the operation status of the update command, not the patched asset endpoint profile.
 
 ### Example 4: Update an asset endpoint profile from a stringified JSON
 ```powershell
@@ -198,7 +201,8 @@ Uuid                                          :
 X509CredentialsCertificateSecretName          :
 ```
 
-This command updates an asset endpoint profile's `TargetAddress` property with new value `opc.tcp://bar` by specifying the patch as a stringified JSON body. Note: the output response is only the operation status of the update command, not the patched asset endpoint profile.
+This command updates an asset endpoint profile's `TargetAddress` property with new value `opc.tcp://bar` by specifying the patch as a stringified JSON body.
+Note: the output response is only the operation status of the update command, not the patched asset endpoint profile.
 
 ## PARAMETERS
 

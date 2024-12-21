@@ -33,6 +33,7 @@ Delete a Asset
 ```powershell
 Remove-AzDeviceRegistryAsset -Name test-asset -ResourceGroupName test-rg
 ```
+
 This command deletes asset `test-asset` from resource group `test-rg`
 
 ### Example 2: DeleteViaIdentity for asset.
