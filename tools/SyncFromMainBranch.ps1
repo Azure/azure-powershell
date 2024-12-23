@@ -7,7 +7,7 @@ param(
 	[Parameter()]
     [array]$SyncPaths,
 	[Parameter()]
-    [array]$UnSyncPaths,
+    [array]$UnSyncPaths
 )
 
 $TmpFolder = New-Item -ItemType Directory -Path tmp
