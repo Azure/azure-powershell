@@ -61,7 +61,7 @@ jobs:
           
       - pwsh: |
           $Title = "Sync tools code from $(Build.SourceBranchName) branch to ${{ ToBranch }} branch"
-          $HeadBranch = "syncToolsFolder/$${{ ToBranch }}"
+          $HeadBranch = "syncToolsFolder/${{ ToBranch }}"
           $BaseBranch = "${{ ToBranch }}"
           $Description = "Migrate Sync tools code from $(Build.SourceBranchName) branch to ${{ ToBranch }} branch"
           ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description

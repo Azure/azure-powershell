@@ -44,4 +44,4 @@ foreach ($SyncPath in $SyncPaths)
 
 git commit -m "Sync tools folder from main branch to $BranchName branch"
 git remote set-url origin "https://$GithubToken@github.com/Azure/azure-powershell.git"
-git push origin "syncToolsFolder-$BranchName" --force
+git push origin "syncToolsFolder/$BranchName" --force
