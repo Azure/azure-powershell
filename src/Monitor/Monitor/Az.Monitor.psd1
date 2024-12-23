@@ -62,7 +62,7 @@ RequiredAssemblies = 'ActionGroup.Autorest/bin/Az.ActionGroup.private.dll',
                'DataCollectionRule.Autorest/bin/Az.DataCollectionRule.private.dll', 
                'DiagnosticSetting.Autorest/bin/Az.DiagnosticSetting.private.dll', 
                'MetricData.Autorest/bin/Az.Metricdata.private.dll', 
-               'Microsoft.Azure.Management.Monitor.dll', 
+               'Microsoft.Azure.PowerShell.Monitor.Management.Sdk.dll', 
                'MonitorWorkspace.Autorest/bin/Az.MonitorWorkspace.private.dll', 
                'PipelineGroup.Autorest/bin/Az.PipelineGroup.private.dll', 
                'ScheduledQueryRule.Autorest/bin/Az.ScheduledQueryRule.private.dll'

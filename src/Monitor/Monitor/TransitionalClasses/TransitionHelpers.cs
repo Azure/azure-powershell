@@ -179,28 +179,6 @@ namespace Microsoft.Azure.Commands.Insights.TransitionalClasses
             return null;
         }
 
-        static public Management.Monitor.Management.Models.ReceiverStatus? ConvertNamespace(ReceiverStatus? operatorType)
-        {
-            if (operatorType.HasValue)
-            {
-                int value = (int)operatorType;
-                return (Management.Monitor.Management.Models.ReceiverStatus)value;
-            }
-
-            return null;
-        }
-
-        static public ReceiverStatus? ConvertNamespace(Management.Monitor.Management.Models.ReceiverStatus? operatorType)
-        {
-            if (operatorType.HasValue)
-            {
-                int value = (int)operatorType;
-                return (ReceiverStatus)value;
-            }
-
-            return null;
-        }
-
         static public Management.Monitor.Management.Models.TimeAggregationOperator? ConvertNamespace(TimeAggregationOperator? operatorType)
         {
             if (operatorType.HasValue)
