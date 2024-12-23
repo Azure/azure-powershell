@@ -9,6 +9,8 @@ schema: 2.0.0
 
 ## SYNOPSIS
 To remove network manager verifier workspace reachability analysis intent. 
+## SYNTAX
+
 ### ByName (Default)
 
 ```

@@ -10,6 +10,8 @@ schema: 2.0.0
 ## SYNOPSIS
 To remove network manager verifier workspace. 
 
+## SYNTAX
+
 ### ByName (Default)
 
 ```

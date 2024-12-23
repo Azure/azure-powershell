@@ -8,7 +8,10 @@ schema: 2.0.0
 # Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun
 
 ## SYNOPSIS
-To remove network manager verifier workspace reachability analysis run. 
+To remove network manager verifier workspace reachability analysis run.
+
+## SYNTAX
+
 
 ### ByName (Default)
 
