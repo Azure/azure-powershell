@@ -18,12 +18,4 @@ Describe 'Get-AzDeviceRegistryOperationStatus' {
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'GetViaIdentityLocation' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }
