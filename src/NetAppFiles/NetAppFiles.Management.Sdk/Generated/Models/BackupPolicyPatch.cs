@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="tags">Resource tags
         /// </param>
 
-        /// <param name="backupPolicyId">Backup Policy Resource ID
+        /// <param name="backupPolicyId">Backup Policy GUID ID
         /// </param>
 
         /// <param name="provisioningState">Azure lifecycle management
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
-        /// Gets backup Policy Resource ID
+        /// Gets backup Policy GUID ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupPolicyId")]
         public string BackupPolicyId {get; private set; }

@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated vnv and ipam cmdlets
+* Allowed TA interval to be set as 0 incase TA is disabled
 * Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
     - `Get-AzNetworkManagerAssociatedResourcesList`
     - `Get-AzNetworkManagerIpamPool`
@@ -47,6 +48,11 @@
     - `New-AzNetworkManagerAddressPrefixItemCommand`
 * Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
 * Added support for `AutoscaleConfiguration` property in `AzureFirewall` model for `New-AzFirewall` and `Set-AzFirewall` commands
+* Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` command for ExpressRoute
+
+## Version 7.11.0
+* Updated Device Update Private Link provider configuration
+    - Updated Microsoft.DeviceUpdate/accounts API version to 2023-07-01
 
 ## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management

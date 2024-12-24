@@ -1392,7 +1392,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
+        ///   Looks up a localized string similar to RetentionDuration in {0} should be from {1} - {2}.
         /// </summary>
         public static string RetentionDurationCountInvalidException
         {
@@ -2751,6 +2751,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups.
+        /// </summary>
+        public static string AFSPolicyUpdateNotAllowed
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateNotAllowed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Changing the backup tier keeps current snapshots as-is under the existing policy. Future backups will be stored in the vault with new retention settings. This action is irreversible and incurs additional costs. Switching from vault to snapshot requires reconfiguration. Learn more at https://learn.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview?tabs=snapshot.
+        /// </summary>
+        public static string AFSPolicyUpdateWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Changing Policy to VaultStandard tier.
+        /// </summary>
+        public static string AFSPolicyUpdate
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Canceled Operation.
+        /// </summary>
+        public static string AFSPolicyUpdateCanceled
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateCanceled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotRetentionInDays should be from 1 - 30.
+        /// </summary>
+        public static string SnapshotRetentionInDaysInvalidException
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotRetentionInDaysInvalidException", resourceCulture);
             }
         }
     }

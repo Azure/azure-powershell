@@ -157,6 +157,7 @@ configuration:
             mentionees:
             - mojayara
             - jportugal0
+            - pkrishnanms
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1764,7 +1765,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - idear1203
+            - MikeRys
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1999,7 +2000,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - Tanmayeekamath
+            - anishtrakru
+            - derekbekoe
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2301,7 +2303,8 @@ configuration:
             mentionees:
             - RandalliLama
             - schaabs
-            - jlichwa
+            - chen-karen
+            - chandanrr
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3451,6 +3454,9 @@ configuration:
         - mentionUsers:
             mentionees:
             - kenieva
+            - shanhix1
+            - calecarter
+            - mentat9
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -4134,7 +4140,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - wonner
+            - wanyang7
             - v-yanjungao
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False

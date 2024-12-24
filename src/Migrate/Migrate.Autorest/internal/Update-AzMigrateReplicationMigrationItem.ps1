@@ -25,7 +25,7 @@ The operation to update the recovery settings of an ASR migration item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ PROVIDERSPECIFICDETAIL <IUpdateMigrationItemProviderSpecificInput>: The provider
 https://learn.microsoft.com/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
 #>
 function Update-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -79,7 +79,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateMigrationItemProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IUpdateMigrationItemProviderSpecificInput]
     # The provider specific input to update migration item.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},

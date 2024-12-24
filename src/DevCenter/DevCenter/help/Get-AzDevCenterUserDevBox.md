@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDevCenterUserDevBox
 
 ## SYNOPSIS
-Gets a Dev Box
+Gets a Dev Box.
 
 ## SYNTAX
 
@@ -73,7 +73,7 @@ Get-AzDevCenterUserDevBox -DevCenterName <String> -ProjectName <String> -UserId 
 ```
 
 ## DESCRIPTION
-Gets a Dev Box
+Gets a Dev Box.
 
 ## EXAMPLES
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of a Dev Box.
+Display name for the Dev Box.
 
 ```yaml
 Type: System.String
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The DevCenter Project upon which to execute operations.
+Name of the project.
 
 ```yaml
 Type: System.String
@@ -268,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox
 
 ## NOTES
 

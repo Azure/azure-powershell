@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The interval in minutes which would decide how frequently TA service should do flow analytics.",
              ParameterSetName = SetByLocationWithTA)]
         [ValidateNotNull]
-        [ValidateRange(1, int.MaxValue)]
+        [ValidateRange(0, int.MaxValue)]
         public int? TrafficAnalyticsInterval { get; set; }
 
         [Parameter(

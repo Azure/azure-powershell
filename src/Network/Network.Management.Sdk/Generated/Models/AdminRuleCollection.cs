@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Defines the admin rule collection.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AdminRuleCollection : CommonProxyResource
+    public partial class AdminRuleCollection : ChildResource
     {
         /// <summary>
         /// Initializes a new instance of the AdminRuleCollection class.
@@ -25,19 +25,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the AdminRuleCollection class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. E.g.
-        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource
+        /// <param name="name">Resource name.
         /// </param>
 
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// <param name="type">Resource type.
         /// </param>
 
-        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
-        /// information.
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// </param>
+
+        /// <param name="systemData">The system metadata related to this resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the resource.
@@ -52,10 +52,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public AdminRuleCollection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<NetworkManagerSecurityGroupItem> appliesToGroups = default(System.Collections.Generic.IList<NetworkManagerSecurityGroupItem>), string resourceGuid = default(string))
+        public AdminRuleCollection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<NetworkManagerSecurityGroupItem> appliesToGroups = default(System.Collections.Generic.IList<NetworkManagerSecurityGroupItem>), string resourceGuid = default(string))
 
-        : base(id, name, type, systemData)
+        : base(id, name, type, etag)
         {
+            this.SystemData = systemData;
             this.ProvisioningState = provisioningState;
             this.Description = description;
             this.AppliesToGroups = appliesToGroups;
@@ -68,6 +69,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets the system metadata related to this resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

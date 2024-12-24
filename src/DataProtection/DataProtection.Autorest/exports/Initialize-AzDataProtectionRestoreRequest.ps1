@@ -55,6 +55,22 @@ $recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $inst
 $targetContainerURI = "https://{targetStorageAccountName}.blob.core.windows.net/{targetContainerName}"
 $fileNamePrefix = "oss-pstest-crrasfiles"
 $OssRestoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.ReplicatedRegion[0] -RestoreType RestoreAsFiles -RecoveryPoint $recoveryPointsCrr[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix
+.Example
+
+$subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "resourceGroupName"
+$vaultName = "vaultName"
+$location = "eastasia"
+$snapshotResourceGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/stagingRG"
+$stagingStorageAccount = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/stagingRG/providers/Microsoft.Storage/storageAccounts/snapshotsa"
+$targetAKSClusterARMId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/targetRG/providers/Microsoft.ContainerService/managedClusters/targetKubernetesCluster"
+
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "aks-cluster-name" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+ $aksRestoreCriteria = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService  -PersistentVolumeRestoreMode RestoreWithVolumeData -IncludeClusterScopeResource $true -StagingResourceGroupId $snapshotResourceGroupId -StagingStorageAccountId $stagingStorageAccount -IncludedNamespace "hrweb" -NamespaceMapping @{"hrweb"="hrwebrestore"}
+
+$aksALRRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService -SourceDataStore VaultStore -RestoreLocation $location -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -TargetResourceId $targetAKSClusterARMId
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
@@ -100,24 +116,6 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
     [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
   [Tag <IDppProxyResourceTags>]: Proxy Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-
-RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>: Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.
-  IncludeClusterScopeResource <Boolean>: Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
-  ObjectType <String>: Type of the specific object - used for deserializing
-  [ConflictPolicy <ExistingResourcePolicy?>]: Gets or sets the Conflict Policy property. This property sets policy during conflict of resources during restore.
-  [ExcludedNamespace <String[]>]: Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
-  [ExcludedResourceType <String[]>]: Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
-  [IncludedNamespace <String[]>]: Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
-  [IncludedResourceType <String[]>]: Gets or sets the include resource types property. This property sets the resource types to be included during restore.
-  [LabelSelector <String[]>]: Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
-  [NamespaceMapping <IKubernetesClusterRestoreCriteriaNamespaceMappings>]: Gets or sets the Namespace Mappings property. This property sets if namespace needs to be change during restore.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [PersistentVolumeRestoreMode <PersistentVolumeRestoreMode?>]: Gets or sets the PV (Persistent Volume) Restore Mode property. This property sets whether volumes needs to be restored.
-  [ResourceModifierReferenceName <String>]: Name of the resource
-  [ResourceModifierReferenceNamespace <String>]: Namespace in which the resource exists
-  [RestoreHookReference <INamespacedNameResource[]>]: Gets or sets the restore hook references. This property sets the hook reference to be executed during restore.
-    [Name <String>]: Name of the resource
-    [Namespace <String>]: Namespace in which the resource exists
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 #>
@@ -195,10 +193,9 @@ param(
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteria]
+    [System.Management.Automation.PSObject]
     # Restore configuration for restore.
     # Use this parameter to restore with AzureKubernetesService.
-    # To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
     ${RestoreConfiguration},
 
     [Parameter(ParameterSetName='AlternateLocationFullRecovery')]

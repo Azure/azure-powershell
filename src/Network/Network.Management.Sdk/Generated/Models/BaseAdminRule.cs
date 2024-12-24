@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Network base admin rule.
     /// </summary>
     [Newtonsoft.Json.JsonObject("BaseAdminRule")]
-    public partial class BaseAdminRule : CommonProxyResource
+    public partial class BaseAdminRule : ChildResource
     {
         /// <summary>
         /// Initializes a new instance of the BaseAdminRule class.
@@ -25,24 +25,25 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the BaseAdminRule class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. E.g.
-        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource
+        /// <param name="name">Resource name.
         /// </param>
 
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// <param name="type">Resource type.
         /// </param>
 
-        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
-        /// information.
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
-        public BaseAdminRule(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
 
-        : base(id, name, type, systemData)
+        /// <param name="systemData">The system metadata related to this resource.
+        /// </param>
+        public BaseAdminRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData))
+
+        : base(id, name, type, etag)
         {
+            this.SystemData = systemData;
             CustomInit();
         }
 
@@ -51,5 +52,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets the system metadata related to this resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData {get; private set; }
     }
 }

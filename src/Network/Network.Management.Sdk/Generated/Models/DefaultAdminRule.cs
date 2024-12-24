@@ -26,19 +26,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the DefaultAdminRule class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. E.g.
-        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource
+        /// <param name="name">Resource name.
         /// </param>
 
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// <param name="type">Resource type.
         /// </param>
 
-        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
-        /// information.
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// </param>
+
+        /// <param name="systemData">The system metadata related to this resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the resource.
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public DefaultAdminRule(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string description = default(string), string flag = default(string), string protocol = default(string), System.Collections.Generic.IList<AddressPrefixItem> sources = default(System.Collections.Generic.IList<AddressPrefixItem>), System.Collections.Generic.IList<AddressPrefixItem> destinations = default(System.Collections.Generic.IList<AddressPrefixItem>), System.Collections.Generic.IList<string> sourcePortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), string access = default(string), int? priority = default(int?), string direction = default(string), string resourceGuid = default(string))
+        public DefaultAdminRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string description = default(string), string flag = default(string), string protocol = default(string), System.Collections.Generic.IList<AddressPrefixItem> sources = default(System.Collections.Generic.IList<AddressPrefixItem>), System.Collections.Generic.IList<AddressPrefixItem> destinations = default(System.Collections.Generic.IList<AddressPrefixItem>), System.Collections.Generic.IList<string> sourcePortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), string access = default(string), int? priority = default(int?), string direction = default(string), string resourceGuid = default(string))
 
-        : base(id, name, type, systemData)
+        : base(id, name, type, etag, systemData)
         {
             this.ProvisioningState = provisioningState;
             this.Description = description;

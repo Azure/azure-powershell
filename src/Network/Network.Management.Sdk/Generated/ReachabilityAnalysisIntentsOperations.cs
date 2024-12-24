@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (workspaceName == null)
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (workspaceName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[a-zA-Z0-9_.-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[a-zA-Z0-9_.-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
 
@@ -368,9 +368,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (workspaceName == null)
@@ -379,9 +379,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (workspaceName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[a-zA-Z0-9_.-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[a-zA-Z0-9_.-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (reachabilityAnalysisIntentName == null)
@@ -390,9 +390,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (reachabilityAnalysisIntentName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(reachabilityAnalysisIntentName, "^[a-zA-Z0-9_.-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(reachabilityAnalysisIntentName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisIntentName", "^[a-zA-Z0-9_.-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisIntentName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
@@ -622,9 +622,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (workspaceName == null)
@@ -633,9 +633,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (workspaceName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[a-zA-Z0-9_.-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[a-zA-Z0-9_.-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (reachabilityAnalysisIntentName == null)
@@ -644,9 +644,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (reachabilityAnalysisIntentName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(reachabilityAnalysisIntentName, "^[a-zA-Z0-9_.-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(reachabilityAnalysisIntentName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisIntentName", "^[a-zA-Z0-9_.-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisIntentName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
@@ -887,9 +887,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (workspaceName == null)
@@ -898,9 +898,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (workspaceName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[a-zA-Z0-9_.-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[a-zA-Z0-9_.-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (reachabilityAnalysisIntentName == null)
@@ -909,9 +909,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (reachabilityAnalysisIntentName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(reachabilityAnalysisIntentName, "^[a-zA-Z0-9_.-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(reachabilityAnalysisIntentName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisIntentName", "^[a-zA-Z0-9_.-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisIntentName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
