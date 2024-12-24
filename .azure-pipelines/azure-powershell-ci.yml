@@ -46,6 +46,17 @@ jobs:
 
   steps:
   - checkout: self
+
+  - task: PowerShell@2
+    displayName: 'Build'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        Get-ChildItem -Path Env: | ForEach-Object {
+          Write-Warning "$($_.Name) = $($_.Value)"
+        }
+
   - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
@@ -85,8 +96,6 @@ jobs:
         $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
         #Yabo: cannot use join-path because in ci-config we use slash, backslash cannot match
         $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
-
-        #TODO: calculate actual files changed in CI
         
         $baseBranchName = "origin/$(Build.SourceBranchName)"
         $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
