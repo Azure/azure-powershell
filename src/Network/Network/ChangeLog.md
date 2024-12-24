@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated vnv and ipam cmdlets
 * Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
     - `Get-AzNetworkManagerAssociatedResourcesList`
     - `Get-AzNetworkManagerIpamPool`
