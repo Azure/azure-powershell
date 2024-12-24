@@ -69,6 +69,9 @@ flatten-userassignedidentity: false
 disable-transform-identity-type: true
 
 directive:
+  - from: swagger-document
+    where: $.definitions.AzureFileProperties.properties.accountKey
+    transform: $["format"] = "password"
   - from: swagger-document 
     where: $.definitions.Certificate.properties.properties.properties.password
     transform: >-

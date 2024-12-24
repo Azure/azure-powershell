@@ -8,14 +8,14 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
+ [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <SecureString>]
  [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -23,14 +23,14 @@ New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGr
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-AzureFileAccountKey <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityManagedEnvironmentExpanded
 ```
 New-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKey <SecureString>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ## EXAMPLES
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Storage account key for azure file.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
