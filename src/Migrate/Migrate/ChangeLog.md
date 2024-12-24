@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for PremiumV2 disk type.
 * Added SBM support.
 
 ## Version 2.5.0
