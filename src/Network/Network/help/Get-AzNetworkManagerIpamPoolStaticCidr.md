@@ -39,7 +39,7 @@ If given a Static Cidr name, the **Get-AzNetworkManagerIpamPoolStaticCidr** cmdl
 
 ### Example 1
 ```powershell
-Get-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testPool
+Get-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -IpamPoolName testPool
 ```
 
 ```output
@@ -61,7 +61,7 @@ Gets static Cidr with name 'testStaticCidr'
 
 ### Example 2
 ```powershell
-Get-AzNetworkManagerIpamPoolStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testPool
+Get-AzNetworkManagerIpamPoolStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -IpamPoolName testPool
 ```
 
 ```output
