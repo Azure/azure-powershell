@@ -12,20 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerIpamPool", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerIpamPool", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzNetworkManagerIpamPoolCommand : IpamPoolBaseCmdlet
     {
+        private const string DeleteByNameParameterSet = "ByName";
+        private const string DeleteByResourceIdParameterSet = "ByResourceId";
+        private const string DeleteByInputObjectParameterSet = "ByInputObject";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = DeleteByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/NetworkManagers/ipamPools", "ResourceGroupName", "NetworkManagerName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -33,7 +41,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The network manager name.")]
+            HelpMessage = "The network manager name.",
+            ParameterSetName = DeleteByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/NetworkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string NetworkManagerName { get; set; }
@@ -41,10 +50,26 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = DeleteByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipeline = true,
+           HelpMessage = "The IPAM Pool.",
+           ParameterSetName = DeleteByInputObjectParameterSet)]
+        [ValidateNotNull]
+        public PSIpamPool InputObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource id.",
+            ParameterSetName = DeleteByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -59,6 +84,15 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if (ParameterSetName.Equals(DeleteByResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                this.PopulateResourceInfoFromId(this.ResourceId);
+            }
+            else if (ParameterSetName.Equals(DeleteByInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                this.PopulateResourceInfoFromId(this.InputObject.Id);
+            }
+
             base.Execute();
             ConfirmAction(
                 Force.IsPresent,
@@ -72,7 +106,21 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         WriteObject(true);
                     }
-                });
+                }
+            );
+        }
+        private void PopulateResourceInfoFromId(string id)
+        {
+            var parsedResourceId = new ResourceIdentifier(id);
+            this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+            this.Name = parsedResourceId.ResourceName;
+
+            var segments = parsedResourceId.ParentResource.Split('/');
+            if (segments.Length < 2)
+            {
+                throw new PSArgumentException("Invalid format. Ensure the ResourceId or Input Object is in the correct format.");
+            }
+            this.NetworkManagerName = segments[1];
         }
     }
 }

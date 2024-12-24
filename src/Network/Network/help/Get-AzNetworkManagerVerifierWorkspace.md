@@ -12,16 +12,21 @@ To get network manager verifier workspace
 
 ## SYNTAX
 
-### NoExpand (Default)
+### ByName (Default)
 ```
 Get-AzNetworkManagerVerifierWorkspace [-Name <String>] -NetworkManagerName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### Expand
+### ByList
 ```
 Get-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+### ByResourceId
+```
+Get-AzNetworkManagerVerifierWorkspace -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -242,7 +247,7 @@ Gets the network manager verifier workspace of name'testVerifierWorkspace9'.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -257,23 +262,11 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
-Parameter Sets: NoExpand
+Type: System.String
+Parameter Sets: ByName
 Aliases: ResourceName
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: ResourceName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -284,8 +277,8 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -299,7 +292,7 @@ Accept wildcard characters: True
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -314,8 +307,8 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -323,6 +316,19 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+### -ResourceId
+The Verifier Workspace resource id.
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: VerifierWorkspaceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### CommonParameters

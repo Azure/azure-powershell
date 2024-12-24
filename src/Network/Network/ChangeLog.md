@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated vnv and ipam cmdlets
 * Allowed TA interval to be set as 0 incase TA is disabled
 * Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
     - `Get-AzNetworkManagerAssociatedResourcesList`

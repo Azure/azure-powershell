@@ -12,18 +12,24 @@ Gets Static Cidr(s) in an IPAM pool.
 
 ## SYNTAX
 
-### NoExpand (Default)
+### ByList (Default)
+```
+Get-AzNetworkManagerIpamPoolStaticCidr -NetworkManagerName <String> -ResourceGroupName <String>
+ -IpamPoolName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
+```
+
+### ByName
 ```
 Get-AzNetworkManagerIpamPoolStaticCidr [-Name <String>] -NetworkManagerName <String>
  -ResourceGroupName <String> -IpamPoolName <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### Expand
+### ByResourceId
 ```
-Get-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- -IpamPoolName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Get-AzNetworkManagerIpamPoolStaticCidr -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +44,7 @@ Get-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName 
 
 ```output
 Name               : testStaticCidr
-IpamPoolName           : testPool
+PoolName           : testPool
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -50,6 +56,7 @@ SystemDataText     : {
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/ipamPools
                      /testPool/staticCidrs/testStaticCidr
 ```
+
 Gets static Cidr with name 'testStaticCidr'
 
 ### Example 2
@@ -59,7 +66,7 @@ Get-AzNetworkManagerIpamPoolStaticCidr -NetworkManagerName testNM -ResourceGroup
 
 ```output
 Name               : New
-IpamPoolName           :
+PoolName           :
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -72,7 +79,7 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
                      /testPool/staticCidrs/New
 
 Name               : New2
-IpamPoolName           :
+PoolName           :
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -85,7 +92,7 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
                      /testPool/staticCidrs/New2
 
 Name               : On-Prem
-IpamPoolName           :
+PoolName           :
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -97,6 +104,7 @@ SystemDataText     : {
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/ipamPools
                      /testPool/staticCidrs/On-Prem
 ```
+
 Gets all Static Cidrs present in the testPool.
 
 ## PARAMETERS
@@ -105,7 +113,7 @@ Gets all Static Cidrs present in the testPool.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -116,27 +124,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The resource name.
+### -IpamPoolName
+The pool resource name.
 
 ```yaml
-Type: String
-Parameter Sets: NoExpand
-Aliases: ResourceName
+Type: System.String
+Parameter Sets: ByList, ByName
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
+### -Name
+The resource name.
+
 ```yaml
-Type: String
-Parameter Sets: Expand
+Type: System.String
+Parameter Sets: ByName
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -147,23 +158,8 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-### -IpamPoolName
-The pool resource name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -177,7 +173,7 @@ Accept wildcard characters: True
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -192,9 +188,24 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByList, ByName
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -ResourceId
+The Ipam Pool resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: IpamPoolId
 
 Required: True
 Position: Named
@@ -217,6 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Remove-AzNetworkManagerIpamPoolStaticCidr](./Remove-AzNetworkManagerIpamPoolStaticCidr.md)
 
 [Set-AzNetworkManagerIpamPoolStaticCidr](./Set-AzNetworkManagerIpamPoolStaticCidr.md)

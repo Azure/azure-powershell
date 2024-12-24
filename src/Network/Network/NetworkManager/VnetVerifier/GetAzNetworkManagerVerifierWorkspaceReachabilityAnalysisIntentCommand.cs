@@ -20,41 +20,53 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using System;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSReachabilityAnalysisIntent))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSReachabilityAnalysisIntent))]
     public class GetAzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntentCommand : ReachabilityAnalysisIntentBaseCmdlet
     {
-        [Alias("ResourceName")]
+        private const string ListParameterSet = "ByList";
+        private const string GetByNameParameterSet = "ByName";
+        private const string GetByResourceIdParameterSet = "ByResourceId";
+
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpand")]
-        [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
-           ParameterSetName = "Expand")]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/reachabilityAnalysisIntents", "ResourceGroupName", "NetworkManagerName")]
+            ParameterSetName = GetByNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisIntents", "ResourceGroupName", "NetworkManagerName", "VerifierWorkspaceName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
+          Mandatory = true,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The network manager name.",
+            ParameterSetName = GetByNameParameterSet)]
+        [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+           HelpMessage = "The network manager name.",
+            ParameterSetName = ListParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+            Mandatory = true,
+            ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ListParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -63,42 +75,115 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The verifier workspace name.")]
-        [ResourceGroupCompleter]
+           HelpMessage = "The verifier workspace name.",
+           ParameterSetName = ListParameterSet)]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The verifier workspace name.",
+           ParameterSetName = GetByNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/verifierWorkspaces", "ResourceGroupName", "NetworkManagerName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string VerifierWorkspaceName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = GetByResourceIdParameterSet,
+            HelpMessage = "The network manager verifier workspace analysis intent id.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("ReachabilityAnalysisIntentId")]
+        public string ResourceId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-            if (this.Name != null)
+
+            try
+            {
+                if (this.ParameterSetName == GetByResourceIdParameterSet)
+                {
+                    ProcessByResourceId();
+                }
+                else if (this.ParameterSetName == GetByNameParameterSet)
+                {
+                    ProcessByName(expand: true);
+                }
+                else if (this.ParameterSetName == ListParameterSet)
+                {
+                    ProcessByName(expand: false);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new PSInvalidOperationException($"An error occurred while executing the cmdlet: {ex.Message}", ex);
+            }
+        }
+
+        private void ProcessByResourceId()
+        {
+            if (string.IsNullOrEmpty(this.ResourceId))
+            {
+                throw new PSArgumentNullException(nameof(this.ResourceId), "ResourceId cannot be null or empty.");
+            }
+
+            try
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                // Validate the format of the ResourceId
+                var segments = parsedResourceId.ParentResource.Split('/');
+                if (segments.Length < 4)
+                {
+                    throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                }
+
+                this.Name = parsedResourceId.ResourceName;
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.NetworkManagerName = segments[1];
+                this.VerifierWorkspaceName = segments[3];
+
+                var analysisIntent = this.GetAnalysisIntent(this.ResourceGroupName, this.NetworkManagerName, this.VerifierWorkspaceName, this.Name); 
+                WriteObject(analysisIntent);
+            }
+            catch (Exception ex)
+            {
+                throw new PSArgumentException($"Failed to parse ResourceId: {ex.Message}", nameof(this.ResourceId));
+            }
+        }
+
+        private void ProcessByName(bool expand)
+        {
+            if (expand)
             {
                 var analysisIntent = this.GetAnalysisIntent(this.ResourceGroupName, this.NetworkManagerName, this.VerifierWorkspaceName, this.Name);
-                analysisIntent.ResourceGroupName = this.ResourceGroupName;
-                analysisIntent.NetworkManagerName = this.NetworkManagerName;
                 WriteObject(analysisIntent);
             }
             else
             {
-                IPage<ReachabilityAnalysisIntent> analysisIntentPage;
-                analysisIntentPage = this.ReachabilityAnalysisIntentClient.List(this.ResourceGroupName, this.NetworkManagerName, this.VerifierWorkspaceName);
-
-                // Get all resources by polling on next page link
-                var analysisIntentList = ListNextLink<ReachabilityAnalysisIntent>.GetAllResourcesByPollingNextLink(analysisIntentPage, this.ReachabilityAnalysisIntentClient.ListNext);
-
-                var psAnalysisIntentList = new List<PSReachabilityAnalysisIntent>();
-
-                foreach (var analysisIntent in analysisIntentList)
-                {
-                    var psAnalysisIntent = this.ToPsReachabilityAnalysisIntent(analysisIntent);
-                    psAnalysisIntent.ResourceGroupName = this.ResourceGroupName;
-                    psAnalysisIntent.NetworkManagerName = this.NetworkManagerName;
-                    psAnalysisIntentList.Add(psAnalysisIntent);
-                }
-
-                WriteObject(psAnalysisIntentList);
+                ProcessAll();
             }
+        }
+        private void ProcessAll()
+        {
+            IPage<ReachabilityAnalysisIntent> analysisIntentPage;
+            analysisIntentPage = this.ReachabilityAnalysisIntentClient.List(this.ResourceGroupName, this.NetworkManagerName, this.VerifierWorkspaceName);
+
+            // Get all resources by polling on next page link
+            var analysisIntentList = ListNextLink<ReachabilityAnalysisIntent>.GetAllResourcesByPollingNextLink(analysisIntentPage, this.ReachabilityAnalysisIntentClient.ListNext);
+
+            var psAnalysisIntentList = new List<PSReachabilityAnalysisIntent>();
+
+            foreach (var analysisIntent in analysisIntentList)
+            {
+                var psAnalysisIntent = this.ToPsReachabilityAnalysisIntent(analysisIntent);
+                psAnalysisIntent.ResourceGroupName = this.ResourceGroupName;
+                psAnalysisIntent.NetworkManagerName = this.NetworkManagerName;
+                psAnalysisIntentList.Add(psAnalysisIntent);
+            }
+
+            WriteObject(psAnalysisIntentList);
         }
     }
 }
