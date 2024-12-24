@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
                   name: alertRuleResource?.Name,
                   type: alertRuleResource?.Type,
                   tags: alertRuleResource?.Tags,
-                  alertRuleResourceName: alertRuleResource?.AlertRuleResourceName,
+                  propertiesName: alertRuleResource?.PropertiesName,
                   description: alertRuleResource?.Description,
                   actions: alertRuleResource?.Actions,
                   isEnabled: alertRuleResource == null ? false : alertRuleResource.IsEnabled,

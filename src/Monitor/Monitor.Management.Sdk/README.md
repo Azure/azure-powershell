@@ -5,14 +5,14 @@ This directory contains management plane service clients of Az.Monitor module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -120,4 +120,9 @@ directive:
     from: autoscale_API.json
     where: $.paths
     reason: 'Operations API is defined in a separate swagger spec for Microsoft.Insights namespace (https://github.com/Azure/azure-rest-api-specs/blob/master/specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/operations_API.json)'
+  - where:
+      model-name: HttpRequestInfo
+      property-name: ClientIPAddress
+    set:
+      property-name: ClientIpAddress
 ```

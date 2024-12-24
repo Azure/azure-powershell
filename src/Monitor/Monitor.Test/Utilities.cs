@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                     uri: "http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
                     method: "PUT",
                     clientRequestId: "1234",
-                    clientIpAddress: "123.123.123.123"),
+                    clientIPAddress: "123.123.123.123"),
                 properties: new Dictionary<string, string>(),
                 submissionTimestamp: newDates ? DateTime.Now : fixedDate);
         }
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             return new AlertRuleResource(
                 id: "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d",
                 location: "East US",
-                alertRuleResourceName: Name,
+                propertiesName: Name,
                 isEnabled: true,
                 condition: condition)
             {

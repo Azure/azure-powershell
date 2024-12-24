@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                location: ruleSpec.Location,
                name: ruleSpec.Name,
                type: ruleSpec.Type,
-               alertRuleResourceName: ruleSpec.Name,
+               propertiesName: ruleSpec.Name,
                isEnabled: ruleSpec.IsEnabled,
                condition: ruleSpec.Condition,
                lastUpdatedTime: ruleSpec.LastUpdatedTime)
