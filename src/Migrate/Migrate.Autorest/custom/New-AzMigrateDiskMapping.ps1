@@ -40,8 +40,8 @@ function New-AzMigrateDiskMapping {
         ${IsOSDisk},
 
         [Parameter(Mandatory)]
-        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
-        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS" })]
+        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS")]
+        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS"})]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the type of disks to be used for the Azure VM.
@@ -61,7 +61,8 @@ function New-AzMigrateDiskMapping {
         $validDiskTypeSpellings = @{ 
             Standard_LRS    = "Standard_LRS";
             Premium_LRS     = "Premium_LRS";
-            StandardSSD_LRS = "StandardSSD_LRS"
+            StandardSSD_LRS = "StandardSSD_LRS";
+            PremiumV2_LRS   = "PremiumV2_LRS";
         }
         $DiskObject.DiskType = $validDiskTypeSpellings[$DiskType]
 
@@ -73,6 +74,11 @@ function New-AzMigrateDiskMapping {
         if ($PSBoundParameters.ContainsKey('DiskEncryptionSetID')) {
             $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
         }
+
+        if ($DiskObject.IsOSDisk -eq "true" -and $DiskObject.DiskType -eq $validDiskTypeSpellings["PremiumV2_LRS"]) {
+            throw "Premium SSD V2 disk is not supported as an OS Disk in Azure."
+        }
+
         return $DiskObject 
     }
 
