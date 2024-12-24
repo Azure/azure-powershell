@@ -41,7 +41,7 @@ The **Remove-AzNetworkManagerIpamPoolStaticCidr** cmdlet removes the given Stati
 
 ### Example 1
 ```powershell
-Remove-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testPool
+Remove-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -IpamPoolName testPool
 ```
 
 ```output
