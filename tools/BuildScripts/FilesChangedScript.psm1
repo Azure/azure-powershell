@@ -100,7 +100,7 @@ function Get-FilesChangedFromCommit {
     $response = Invoke-WebRequest -Uri $uri -Headers $Headers -Method GET
     $response | Foreach-Object { Write-Warning $_ }
 
-    $changedFiles = $response | ConvertFrom-Json | Select-Object -ExpandProperty files | ForEach-Object { $_.filename }
+    $response | ConvertFrom-Json | Select-Object -ExpandProperty files | ForEach-Object { Write-Warning $_.filename }
     Write-Warning "********************************exit now********************************"
     exit 1
 }
