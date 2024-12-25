@@ -64,8 +64,12 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/$(Build.BuildId)/changes?api-version=7.0"
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/changes?fromBuildId=212952&toBuildId=212953&7.2-preview.2"
         $headers = @{ "Authorization" = "Bearer $(System.AccessToken)" }
+        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
+        $response | Foreach-Object { Write-Warning $_ }
+
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds?definitions={System.DefinitionId}&reasonFilter=batchedCI"
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
         $response | Foreach-Object { Write-Warning $_ }
 
