@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Made the breaking change warnings about `Get-AzAccessToken` not appear when `-AsSecureString` is used.
 * Fixed an issue that cmdlets may report warnings of "KeyNotFoundException". #26624
 * Fixed an issue that the `-AppliesTo` parameter of `Update-AzConfig` does not work as expected.
 * Upgraded Azure.Core to 1.44.1 and Azure.Identity to 1.13.0.
