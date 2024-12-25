@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 Actions = this.Action?.Select(TransitionHelpers.ToMirrorNamespace).ToList(),
                 Location = this.Location,
                 IsEnabled = !this.DisableRule,
-                PropertiesName = this.Name,
+                AlertRuleResourceName = this.Name,
 
                 // DO NOT REMOVE OR CHANGE the following. The two elements in the Tags are required by other services.
                 Tags = new Dictionary<string, string>()

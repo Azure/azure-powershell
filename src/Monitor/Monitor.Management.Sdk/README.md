@@ -125,4 +125,9 @@ directive:
       property-name: ClientIPAddress
     set:
       property-name: ClientIpAddress
+  - where:
+      model-name: AlertRuleResource
+      property-name: PropertiesName
+    set:
+      property-name: AlertRuleResourceName
 ```

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// <param name="tags">Resource tags
         /// </param>
 
-        /// <param name="propertiesName">the name of the alert rule.
+        /// <param name="alertRuleResourceName">the name of the alert rule.
         /// </param>
 
         /// <param name="description">the description of the alert rule that will be included in the alert email.
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Management.Monitor.Models
 
         /// <param name="lastUpdatedTime">Last time the rule was updated in ISO8601 format.
         /// </param>
-        public AlertRuleResource(string location, string propertiesName, bool isEnabled, RuleCondition condition, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string description = default(string), string provisioningState = default(string), RuleAction action = default(RuleAction), System.Collections.Generic.IList<RuleAction> actions = default(System.Collections.Generic.IList<RuleAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
+        public AlertRuleResource(string location, string alertRuleResourceName, bool isEnabled, RuleCondition condition, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string description = default(string), string provisioningState = default(string), RuleAction action = default(RuleAction), System.Collections.Generic.IList<RuleAction> actions = default(System.Collections.Generic.IList<RuleAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
 
         : base(location, id, name, type, tags)
         {
-            this.PropertiesName = propertiesName;
+            this.AlertRuleResourceName = alertRuleResourceName;
             this.Description = description;
             this.ProvisioningState = provisioningState;
             this.IsEnabled = isEnabled;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// Gets or sets the name of the alert rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.name")]
-        public string PropertiesName {get; set; }
+        public string AlertRuleResourceName {get; set; }
 
         /// <summary>
         /// Gets or sets the description of the alert rule that will be included in the
@@ -145,9 +145,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
         public override void Validate()
         {
             base.Validate();
-            if (this.PropertiesName == null)
+            if (this.AlertRuleResourceName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "PropertiesName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AlertRuleResourceName");
             }
             if (this.Condition == null)
             {

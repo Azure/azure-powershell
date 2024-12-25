@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             {
                 Location = null, 
                 IsEnabled = true, 
-                PropertiesName = "a name"
+                AlertRuleResourceName = "a name"
             };
 
             response = new Rest.Azure.AzureOperationResponse<AlertRuleResource>()
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 Assert.Equal(actionsCount, this.createOrUpdatePrms.Actions.Count);
             }
 
-            Assert.Equal(Utilities.Name, this.createOrUpdatePrms.PropertiesName);
+            Assert.Equal(Utilities.Name, this.createOrUpdatePrms.AlertRuleResourceName);
             Assert.Equal(isEnabled, this.createOrUpdatePrms.IsEnabled);
             Assert.True(this.createOrUpdatePrms.Condition is Management.Monitor.Models.LocationThresholdRuleCondition, "Checking type #1");
 

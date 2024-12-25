@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             AlertRuleResource alertRuleResourceInput = new AlertRuleResource()
             {
-                PropertiesName = "a name", 
+                AlertRuleResourceName = "a name", 
                 Location = null, 
                 IsEnabled = true
             };
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 Assert.Equal(actionsCount, this.alertRuleResource.Actions.Count);
             }
 
-            Assert.Equal(Utilities.Name, this.alertRuleResource.PropertiesName);
+            Assert.Equal(Utilities.Name, this.alertRuleResource.AlertRuleResourceName);
             Assert.Equal(isEnabled, this.alertRuleResource.IsEnabled);
 
             Assert.True(this.alertRuleResource.Condition is ThresholdRuleCondition);

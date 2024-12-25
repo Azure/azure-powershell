@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             return new AlertRuleResource(
                 id: "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d",
                 location: "East US",
-                propertiesName: Name,
+                alertRuleResourceName: Name,
                 isEnabled: true,
                 condition: condition)
             {
