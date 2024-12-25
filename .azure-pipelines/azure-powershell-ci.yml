@@ -98,7 +98,6 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
-        exit 1
         $forceRegenerate = $false
         if ('true' -eq '${{ parameters.ForceRegenerate }}') {
           $forceRegenerate = $true
