@@ -102,5 +102,5 @@ function Get-FilesChangedFromCommit {
 
     $response | ConvertFrom-Json | Select-Object -ExpandProperty files | ForEach-Object { Write-Warning $_.filename }
     Write-Warning "********************************exit now********************************"
-    exit 1
+    # exit 1
 }
