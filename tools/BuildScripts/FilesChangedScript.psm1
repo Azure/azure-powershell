@@ -87,3 +87,20 @@ function Get-FilesChangedFromPR {
       $changedFiles | Foreach-Object {Write-Host $_}
       return $changedFiles
 }
+
+function Get-FilesChangedFromCommit {
+    param (
+        [string]$Owner = "Azure",
+        [string]$Repository = "azure-powershell",
+        [string]$CommitId,
+        [string]$AccessToken
+    )
+    $uri = "https://api.github.com/repos/$Owner/$Repository/commits/$CommitId"
+    $Headers = @{ "Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $AccessToken"; "X-GitHub-Api-Version" = "2022-11-28" }
+    $response = Invoke-WebRequest -Uri $uri -Headers $Headers -Method GET
+    $response | Foreach-Object { Write-Warning $_ }
+
+    # $changedFiles = $response | ConvertFrom-Json | Select-Object -ExpandProperty files | ForEach-Object { $_.filename }
+    # Write-Warning "********************************exit now********************************"
+    # exit 1
+}
