@@ -20,9 +20,6 @@ Get a AssetEndpointProfile
 ### [Get-AzDeviceRegistryBillingContainer](Get-AzDeviceRegistryBillingContainer.md)
 Get a BillingContainer
 
-### [Get-AzDeviceRegistryOperationStatus](Get-AzDeviceRegistryOperationStatus.md)
-Returns the current status of an async operation.
-
 ### [New-AzDeviceRegistryAsset](New-AzDeviceRegistryAsset.md)
 create a Asset
 

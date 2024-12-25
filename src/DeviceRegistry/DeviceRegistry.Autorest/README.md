@@ -61,9 +61,11 @@ directive:
   - where:
       variant: ^CreateViaIdentity.*$
     remove: true
-  # Remove GetViaIdentity and GetViaIdentityLocation from the Get-AzDeviceRegistryOperationStatus
+  # Remove OperationStatus from autorest generation.
+  # Pwsh polls Async OperationStatuses during Create/Updates automatically
+  # and the generated commandlets do not work due to Async-OperationStatus
+  # uri signing query params (see here: https://armwiki.azurewebsites.net/api_contracts/AsyncOperationSigningAndValidation.html#async-operation-uri-signing)
   - where:
-      variant: ^GetViaIdentity$|GetViaIdentityLocation$
       subject: OperationStatus
     remove: true
   # Follow directive is v3 specific. If you are using v3, uncomment following directive and comments out two directives above
