@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `New-AzSqlDatabaseExport` with support for Managed Identity
+ 	- Added `ManagedIdentity` to `StorageKeyType` auth list
+   	- Added `ManagedIdentity` to `AuthenticationType` auth list
+* Updated `New-AzSqlDatabaseImport` with support for Managed Identity
+  	- Added `ManagedIdentity` to `StorageKeyType` auth list
+	- Added `ManagedIdentity` to `AuthenticationType` auth list
 
 ## Version 6.0.0
 * Added `Start-AzSqlInstanceLinkFailover` cmdlet for Managed Instance Link.
