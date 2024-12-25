@@ -64,6 +64,11 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/$(Build.BuildId)/changes?api-version=7.0"
+        $headers = @{ "Authorization" = "Bearer $(System.AccessToken)" }
+        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
+        $response | Foreach-Object { Write-Warning $_ }
+
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
         Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -CommitId "$(Build.SourceVersion)" -AccessToken $(GithubToken)
@@ -93,6 +98,7 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
+        exit 1
         $forceRegenerate = $false
         if ('true' -eq '${{ parameters.ForceRegenerate }}') {
           $forceRegenerate = $true
