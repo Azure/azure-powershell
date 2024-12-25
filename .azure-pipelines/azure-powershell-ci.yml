@@ -55,6 +55,15 @@ jobs:
           Write-Warning "$($_.Name) = $($_.Value)"
         }
 
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/changes?fromBuildId=212952&toBuildId=212953&api-version=7.2-preview.2"
+        $headers = @{ "Authorization" = "Bearer $(System.AccessToken)" }
+        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
+        $response | Foreach-Object { Write-Warning $_ }
+
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds?definitions={System.DefinitionId}&reasonFilter=batchedCI&api-version=7.2-preview.2"
+        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
+        $response | Foreach-Object { Write-Warning $_ }
+
   - checkout: self
   - template: util/get-github-pat-steps.yml
 
@@ -64,7 +73,7 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/changes?fromBuildId=212952&toBuildId=212953&7.2-preview.2"
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/changes?fromBuildId=212952&toBuildId=212953&api-version=7.2-preview.2"
         $headers = @{ "Authorization" = "Bearer $(System.AccessToken)" }
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
         $response | Foreach-Object { Write-Warning $_ }
