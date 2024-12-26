@@ -65,7 +65,6 @@ jobs:
 
         $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/212953/changes?api-version=7.1"
         $response2 = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | convertfrom-json
-        $response2 | Foreach-Object { Write-Warning $_ }
         $id2 = $response2.value | foreach-object {$_.Id}
         $id2 | Foreach-Object { Write-Warning $_ }
 
@@ -76,8 +75,8 @@ jobs:
         Write-Warning "**************************list**************************"
         $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds?definitions=${System.DefinitionId}&reasonFilter=batchedCI&api-version=7.0"
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | ConvertFrom-Json
-        Write-Warning $response[0]
-        Write-Warning $response[1]
+        Write-Warning $response.value[0]
+        Write-Warning $response.value[1]
   - checkout: self
   - template: util/get-github-pat-steps.yml
 
