@@ -98,9 +98,33 @@ function Get-FilesChangedFromCommit {
     $uri = "https://api.github.com/repos/$Owner/$Repository/commits/$CommitId"
     $Headers = @{ "Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $AccessToken"; "X-GitHub-Api-Version" = "2022-11-28" }
     $response = Invoke-WebRequest -Uri $uri -Headers $Headers -Method GET
-    $response | Foreach-Object { Write-Warning $_ }
+    $diff =  $response | ConvertFrom-Json | Select-Object -ExpandProperty files | Select-Object -ExcludeProperty filename
+    Write-Host "********************************Files changed in commit: $CommitId********************************"
+    $diff | Write-Host
+    return $diff
+}
 
-    $response | ConvertFrom-Json | Select-Object -ExpandProperty files | ForEach-Object { Write-Warning $_.filename }
-    Write-Warning "********************************exit now********************************"
-    #exit 1
+function Get-LatestBatchedCommits {
+    param (
+        [string]$Org,
+        [string]$Project,
+        [string]$PipelineDefinitionId,
+        [string]$AccessToken
+    )
+    $headers = @{ "Authorization" = "Bearer $AccessToken" }
+
+    $apiVersion = "7.0"
+    $listBuildsUri = "$Org$Project/_apis/build/builds?definitions=$PipelineDefinitionId&reasonFilter=batchedCI&api-version=$apiVersion"
+    $builds = Invoke-WebRequest -Uri $listBuildsUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExcludeProperty id
+    Write-Host "Last batched CI build: $builds[1]"
+    Write-Host "Current batched CI build: $builds[0]"
+    $currentChangesUri = "$Org$Project/_apis/build/builds/$builds[0]/changes?api-version=7.1"
+    $lastChangesUri = "$Org$Project/_apis/build/builds/$builds[1]/changes?api-version=7.1"
+    
+    $currentChanges = Invoke-WebRequest -Uri $currentChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExcludeProperty id
+    $lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExcludeProperty id
+    $currentChanges = $currentChanges | Where-Object { $_ -NotIn $lastChanges }
+    Write-Host "********************************Batched commits between $builds[1] and $builds[0]********************************"
+    $currentChanges | Write-Host
+    return $currentChanges
 }

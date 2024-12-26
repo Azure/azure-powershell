@@ -45,51 +45,8 @@ jobs:
   pool: pool-windows-2019
 
   steps:
-  - task: PowerShell@2
-    displayName: 'display environment variables'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        Get-ChildItem -Path Env: | ForEach-Object {
-          Write-Warning "$($_.Name) = $($_.Value)"
-        }
-
-        $headers = @{ "Authorization" = "Bearer $(System.AccessToken)" }
-
-        Write-Warning "**************************changes**************************"
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/212952/changes?api-version=7.1"
-        $response1 = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | convertfrom-json
-        $id1 = $response1.value | foreach-object {$_.Id}
-        $id1 | Foreach-Object { Write-Warning $_ }
-
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/212953/changes?api-version=7.1"
-        $response2 = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | convertfrom-json
-        $id2 = $response2.value | foreach-object {$_.Id}
-        $id2 | Foreach-Object { Write-Warning $_ }
-
-        Write-Warning "**************************diff**************************"
-        $diff = $id2 | Where-Object { $_ -NotIn $id1 } | foreach-Object { Write-Warning $_ }
-
-
-        Write-Warning "**************************list**************************"
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds?definitions=${System.DefinitionId}&reasonFilter=batchedCI&api-version=7.0"
-        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | ConvertFrom-Json
-        Write-Warning $response.value[0].id
-        Write-Warning $response.value[1].id
   - checkout: self
   - template: util/get-github-pat-steps.yml
-
-  - task: PowerShell@2
-    displayName: 'Try commit'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
-        Import-Module $filesChangedScriptPath
-        Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -CommitId "$(Build.SourceVersion)" -AccessToken $(GithubToken)
-
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
@@ -125,11 +82,12 @@ jobs:
         New-Item -Type File -Path $filesChangedOutputPath -Force
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
-        $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
-        #Yabo: cannot use join-path because in ci-config we use slash, backslash cannot match
-        $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
-
-        #TODO: calculate actual files changed in CI
+        $filesChanged = @()
+        $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)'
+        $batchedCommits | ForEach-Object {
+          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -CommitId $_ -AccessToken $(GithubToken) | Foreach-Object { Write-Host $filesChanged += $_ }
+        }
+        $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
         
         $baseBranchName = "origin/$(Build.SourceBranchName)"
         $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
