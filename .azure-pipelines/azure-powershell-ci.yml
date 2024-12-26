@@ -57,33 +57,24 @@ jobs:
 
         $headers = @{ "Authorization" = "Bearer $(System.AccessToken)" }
 
-        Write-Warning "**************************diff**************************"
+        Write-Warning "**************************changes**************************"
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/212952/changes?api-version=7.1"
+        $response1 = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | convertfrom-json
+        $id1 = $response1.value | foreach-object {$_.Id}
+        $id1 | Foreach-Object { Write-Warning $_ }
+
         $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/212953/changes?api-version=7.1"
-        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
-        $response | Foreach-Object { Write-Warning $_ }
+        $response2 = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | convertfrom-json
+        $response2 | Foreach-Object { Write-Warning $_ }
+        $id2 = $response2.value | foreach-object {$_.Id}
+        $id2 | Foreach-Object { Write-Warning $_ }
 
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/213036/changes?api-version=7.1"
-        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
-        $response | Foreach-Object { Write-Warning $_ }
+        Write-Warning "**************************diff**************************"
+        $diff = $id2 | Where-Object { $_ -NotIn $id1 } | foreach-Object { Write-Warning $_ }
 
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=6.0-preview.2"
-        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
-        $response | Foreach-Object { Write-Warning $_ }
-
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=7.0"
-        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
-        $response | Foreach-Object { Write-Warning $_ }
-
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=7.1"
-        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
-        $response | Foreach-Object { Write-Warning $_ }
-
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=7.2-preview.2"
-        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
-        $response | Foreach-Object { Write-Warning $_ }
 
         Write-Warning "**************************list**************************"
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds?definitions=${System.DefinitionId}&reasonFilter=batchedCI&&api-version=7.0"
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds?definitions=${System.DefinitionId}&reasonFilter=batchedCI&api-version=7.0"
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | ConvertFrom-Json
         Write-Warning $response[0]
         Write-Warning $response[1]
