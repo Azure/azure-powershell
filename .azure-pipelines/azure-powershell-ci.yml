@@ -75,8 +75,8 @@ jobs:
         Write-Warning "**************************list**************************"
         $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds?definitions=${System.DefinitionId}&reasonFilter=batchedCI&api-version=7.0"
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | ConvertFrom-Json
-        Write-Warning $response.value[0]
-        Write-Warning $response.value[1]
+        Write-Warning $response.value[0].id
+        Write-Warning $response.value[1].id
   - checkout: self
   - template: util/get-github-pat-steps.yml
 
