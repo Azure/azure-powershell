@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
                         { "Microsoft.Resources", null },
                         { "Microsoft.Features", null },
                         { "Microsoft.Authorization", null },
-                        { "Microsoft.Maintenance", null }
+                        { "Microsoft.Maintenance", null },
+                        { "Microsoft.Network", null }
                     }
                 )
                 .Build();
