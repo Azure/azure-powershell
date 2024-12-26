@@ -943,5 +943,9 @@
   {
     "module": "ComputeFleet",
     "alias": "ComputeFleet"
+  },
+  {
+    "module": "ComputeSchedule",
+    "alias": "ComputeSchedule"
   }
 ]
