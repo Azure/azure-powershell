@@ -116,15 +116,17 @@ function Get-LatestBatchedCommits {
     $apiVersion = "7.0"
     $listBuildsUri = "$Org$Project/_apis/build/builds?definitions=$PipelineDefinitionId&reasonFilter=batchedCI&api-version=$apiVersion"
     $builds = Invoke-WebRequest -Uri $listBuildsUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExcludeProperty id
-    Write-Host "Last batched CI build: $builds[1]"
-    Write-Host "Current batched CI build: $builds[0]"
-    $currentChangesUri = "$Org$Project/_apis/build/builds/$builds[0]/changes?api-version=7.1"
-    $lastChangesUri = "$Org$Project/_apis/build/builds/$builds[1]/changes?api-version=7.1"
+    $currentBuildId = $builds[0]
+    $lastBuildId = $builds[1]
+    Write-Host "Last batched CI build: $lastBuildId"
+    Write-Host "Current batched CI build: $currentBuildId"
+    $currentChangesUri = "$Org$Project/_apis/build/builds/$currentBuildId/changes?api-version=7.1"
+    $lastChangesUri = "$Org$Project/_apis/build/builds/$lastBuildId/changes?api-version=7.1"
     
     $currentChanges = Invoke-WebRequest -Uri $currentChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExcludeProperty id
     $lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExcludeProperty id
     $currentChanges = $currentChanges | Where-Object { $_ -NotIn $lastChanges }
-    Write-Host "********************************Batched commits between $builds[1] and $builds[0]********************************"
+    Write-Host "********************************Batched commits between $lastBuildId and $currentBuildId********************************"
     $currentChanges | Write-Host
     return $currentChanges
 }
