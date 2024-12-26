@@ -55,21 +55,31 @@ jobs:
           Write-Warning "$($_.Name) = $($_.Value)"
         }
 
-        Write-Warning "**************************diff**************************"
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=7.0"
         $headers = @{ "Authorization" = "Bearer $(System.AccessToken)" }
+
+        Write-Warning "**************************diff**************************"
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=6.0-preview.2"
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
         $response | Foreach-Object { Write-Warning $_ }
 
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212965&toBuildId=212461&api-version=7.0"
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=7.0"
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
         $response | Foreach-Object { Write-Warning $_ }
+
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=7.1"
+        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
+        $response | Foreach-Object { Write-Warning $_ }
+
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/changes?fromBuildId=212461&toBuildId=212965&api-version=7.2-preview.2"
+        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
+        $response | Foreach-Object { Write-Warning $_ }
+
 
         Write-Warning "**************************list**************************"
         $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds?definitions=${System.DefinitionId}&reasonFilter=batchedCI&$top=7&api-version=7.0"
-        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
-        $response | Foreach-Object { Write-Warning $_ }
-
+        $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET | ConvertFrom-Json
+        Write-Warning $response[0]
+        Write-Warning $response[1]
   - checkout: self
   - template: util/get-github-pat-steps.yml
 
