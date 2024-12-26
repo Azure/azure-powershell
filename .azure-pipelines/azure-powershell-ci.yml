@@ -58,11 +58,11 @@ jobs:
         $headers = @{ "Authorization" = "Bearer $(System.AccessToken)" }
 
         Write-Warning "**************************diff**************************"
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/212953/changes?api-version=7.1
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/212953/changes?api-version=7.1"
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
         $response | Foreach-Object { Write-Warning $_ }
 
-        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/213036/changes?api-version=7.1
+        $uri = "$(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/213036/changes?api-version=7.1"
         $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
         $response | Foreach-Object { Write-Warning $_ }
 
