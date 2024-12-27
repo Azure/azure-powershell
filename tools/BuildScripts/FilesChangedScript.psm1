@@ -120,8 +120,8 @@ function Get-LatestBatchedCommits {
     $lastBuildId = $builds[1]
     Write-Host "Last batched CI build: $lastBuildId"
     Write-Host "Current batched CI build: $currentBuildId"
-    $currentChangesUri = "$Org$Project/_apis/build/builds/$currentBuildId/changes?$top=500&api-version=$apiVersion"
-    $lastChangesUri = "$Org$Project/_apis/build/builds/$lastBuildId/changes?$top=500&api-version=$apiVersion"
+    $currentChangesUri = "$Org$Project/_apis/build/builds/$currentBuildId/changes?api-version=$apiVersion"
+    $lastChangesUri = "$Org$Project/_apis/build/builds/$lastBuildId/changes?api-version=$apiVersion"
     
     #$currentChanges = Invoke-WebRequest -Uri $currentChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
     #$lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
