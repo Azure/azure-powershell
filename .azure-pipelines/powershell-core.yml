@@ -72,7 +72,7 @@ jobs:
         New-Item -Type File -Path $filesChangedOutputPath -Force
         $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
 
-        Write-Host "##[section]Filter changed files"
+        Write-Host "##[group]Filter changed files"
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
         if ("PullRequest" -eq "$(Build.Reason)") {
@@ -80,7 +80,7 @@ jobs:
         } else {
           Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
         }
-        Write-Host "##[section]build steps"
+        Write-Host "##[group]build steps"
         $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
         & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -SubTasksFilePath $subTasksFilePath -BuildReason $(Build.Reason) -Trigger $trigger
   - template: util/publish-artifacts-steps.yml
