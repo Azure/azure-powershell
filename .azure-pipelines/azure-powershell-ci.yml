@@ -83,9 +83,20 @@ jobs:
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
         $filesChanged = @()
-        $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)'
-        $batchedCommits | ForEach-Object {
-          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -CommitId $_ -AccessToken $(GithubToken) | Foreach-Object { Write-Host $filesChanged += $_ }
+        if ("$(Build.reason)" -eq 'IndividualCI') {
+          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -CommitId "$(Build.SourceVersion)" -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
+        } elseif ("$(Build.reason)" -eq 'BatchedCI') {
+          $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)'
+          $batchedCommits | ForEach-Object {
+            Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -CommitId $_ -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
+          }
+        } elseif ("$(Build.reason)" -eq 'Manual') {
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+        } elseif ("$(Build.reason)" -eq 'Schedule') {
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+        } else {
+          Write-Host "##vso[task.logissue type=error]Invalid trigger: $(Build.reason)."
+          exit 1
         }
         $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
         
