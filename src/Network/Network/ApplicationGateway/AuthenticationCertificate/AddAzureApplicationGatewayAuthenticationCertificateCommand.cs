@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Network
                 authCertificate = base.NewObject();
                 this.ApplicationGateway.AuthenticationCertificates.Add(authCertificate);
 
+                //test
                 WriteObject(this.ApplicationGateway);
             }
         }
