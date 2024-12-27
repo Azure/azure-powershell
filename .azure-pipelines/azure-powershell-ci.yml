@@ -77,7 +77,7 @@ jobs:
           $forceRegenerate = $true
         }
 
-        Write-Host "##[group]Filter changed files"
+        Write-Host "`n##[group]Filter changed files"
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
         New-Item -Type File -Path $filesChangedOutputPath -Force
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
@@ -117,15 +117,15 @@ jobs:
             $trigger = 'Schedule'
           }
         }
-        Write-Host "##[group]Switch from $baseBranchName to $tmpBranchName"
+        Write-Host "`n##[group]Switch from $baseBranchName to $tmpBranchName"
         git fetch origin $(Build.SourceBranchName)
         git checkout -b $tmpBranchName $baseBranchName
 
-        Write-Host "##[group]build steps"
+        Write-Host "`n##[group]build steps"
         $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
         & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -ForceRegenerate $forceRegenerate -BuildReason $(Build.Reason) -Trigger $trigger
 
-        Write-Host "##[group]create PR"
+        Write-Host "`n##[group]create PR"
         $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
         $diff = ( git status --short --untracked-files $generatedPath)
         if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {

@@ -56,7 +56,7 @@ jobs:
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
         New-Item -Type File -Path $filesChangedOutputPath -Force
 
-        Write-Host "##[group]Filter changed files"
+        Write-Host "`n##[group]Filter changed files"
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
         if ("PullRequest" -eq "$(Build.Reason)") {
@@ -65,7 +65,7 @@ jobs:
           Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
         }
         
-        Write-Host "##[group]build steps"
+        Write-Host "`n##[group]build steps"
         $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
         & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "Debug" -FilesChangedOutputPath $filesChangedOutputPath -IsSecurityCheck $true -BuildReason $(Build.Reason) -Trigger $trigger
 
