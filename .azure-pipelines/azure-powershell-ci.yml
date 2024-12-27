@@ -84,11 +84,11 @@ jobs:
         Import-Module $filesChangedScriptPath
         $filesChanged = @()
         if ("$(Build.reason)" -eq 'IndividualCI') {
-          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -CommitId "$(Build.SourceVersion)" -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
+          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId "$(Build.SourceVersion)" -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
         } elseif ("$(Build.reason)" -eq 'BatchedCI') {
           $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)'
           $batchedCommits | ForEach-Object {
-            Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -CommitId $_ -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
+            Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId $_ -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
           }
         } elseif ("$(Build.reason)" -eq 'Manual') {
           $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
