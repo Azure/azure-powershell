@@ -595,6 +595,137 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// This operation retrieves the details of all the failover tests performed on
+        /// the gateway for different peering locations
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves the details of all the failover tests performed on
+        /// the gateway for different peering locations
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ExpressRouteFailoverTestDetails>,VirtualNetworkGatewaysGetFailoverAllTestDetailsHeaders>> GetFailoverAllTestDetailsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string type, bool fetchLatest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation retrieves the details of a particular failover test
+        /// performed on the gateway based on the test Guid
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves the details of a particular failover test
+        /// performed on the gateway based on the test Guid
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails>,VirtualNetworkGatewaysGetFailoverSingleTestDetailsHeaders>> GetFailoverSingleTestDetailsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, string failoverTestId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation starts failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <remarks>
+        /// This operation starts failover simulation on the gateway for the specified
+        /// peering location
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string,VirtualNetworkGatewaysStartExpressRouteSiteFailoverSimulationHeaders>> StartExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation stops failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <remarks>
+        /// This operation stops failover simulation on the gateway for the specified
+        /// peering location
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='stopParameters'>
+        /// Virtual network gateway stop simulation parameters supplied to stop
+        /// failover simulation on gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string,VirtualNetworkGatewaysStopExpressRouteSiteFailoverSimulationHeaders>> StopExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, ExpressRouteFailoverStopApiParameters stopParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Get VPN client connection health detail per P2S client connection of the
         /// virtual network gateway in the specified resource group.
         /// </summary>
@@ -1099,6 +1230,137 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation retrieves the details of all the failover tests performed on
+        /// the gateway for different peering locations
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves the details of all the failover tests performed on
+        /// the gateway for different peering locations
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ExpressRouteFailoverTestDetails>,VirtualNetworkGatewaysGetFailoverAllTestDetailsHeaders>> BeginGetFailoverAllTestDetailsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string type, bool fetchLatest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation retrieves the details of a particular failover test
+        /// performed on the gateway based on the test Guid
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves the details of a particular failover test
+        /// performed on the gateway based on the test Guid
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails>,VirtualNetworkGatewaysGetFailoverSingleTestDetailsHeaders>> BeginGetFailoverSingleTestDetailsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, string failoverTestId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation starts failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <remarks>
+        /// This operation starts failover simulation on the gateway for the specified
+        /// peering location
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string,VirtualNetworkGatewaysStartExpressRouteSiteFailoverSimulationHeaders>> BeginStartExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation stops failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <remarks>
+        /// This operation stops failover simulation on the gateway for the specified
+        /// peering location
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='stopParameters'>
+        /// Virtual network gateway stop simulation parameters supplied to stop
+        /// failover simulation on gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string,VirtualNetworkGatewaysStopExpressRouteSiteFailoverSimulationHeaders>> BeginStopExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, ExpressRouteFailoverStopApiParameters stopParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get VPN client connection health detail per P2S client connection of the
