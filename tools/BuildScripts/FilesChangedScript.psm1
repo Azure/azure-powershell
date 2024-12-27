@@ -123,8 +123,8 @@ function Get-LatestBatchedCommits {
     $currentChangesUri = "$Org$Project/_apis/build/builds/$currentBuildId/changes?$top=500&api-version=$apiVersion"
     $lastChangesUri = "$Org$Project/_apis/build/builds/$lastBuildId/changes?$top=500&api-version=$apiVersion"
     
-    $currentChanges = Invoke-WebRequest -Uri $currentChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExcludeProperty id
-    $lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExcludeProperty id
+    $currentChanges = Invoke-WebRequest -Uri $currentChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
+    $lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
     $currentChanges = $currentChanges | Where-Object { $_ -NotIn $lastChanges }
     Write-Host "********************************Batched commits between $lastBuildId and $currentBuildId********************************"
     $currentChanges | Write-Host
