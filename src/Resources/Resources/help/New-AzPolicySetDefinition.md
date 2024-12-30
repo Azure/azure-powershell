@@ -16,7 +16,7 @@ Creates or updates a policy set definition.
 ```
 New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-DisplayNam
 New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> -PolicyDefinition <String>
  [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
  [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
@@ -33,7 +33,7 @@ New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> -PolicyDe
 New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
  [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
  [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,6 +259,21 @@ To construct, see NOTES section for POLICYDEFINITIONGROUP properties and create 
 Type: System.String
 Parameter Sets: (All)
 Aliases: GroupDefinition
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
