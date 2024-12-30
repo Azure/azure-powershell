@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="iterationCount">
         /// </param>
-        public OperationResult(System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), RunActionCorrelation correlation = default(RunActionCorrelation), string status = default(string), string code = default(string), object error = default(object), string trackingId = default(string), object inputs = default(object), ContentLink inputsLink = default(ContentLink), object outputs = default(object), ContentLink outputsLink = default(ContentLink), object trackedProperties = default(object), System.Collections.Generic.IList<RetryHistory> retryHistory = default(System.Collections.Generic.IList<RetryHistory>), int? iterationCount = default(int?))
+        public OperationResult(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), RunActionCorrelation correlation = default(RunActionCorrelation), string status = default(string), string code = default(string), object error = default(object), string trackingId = default(string), object inputs = default(object), ContentLink inputsLink = default(ContentLink), object outputs = default(object), ContentLink outputsLink = default(ContentLink), object trackedProperties = default(object), System.Collections.Generic.IList<RetryHistory> retryHistory = default(System.Collections.Generic.IList<RetryHistory>), int? iterationCount = default(int?))
 
         : base(startTime, endTime, correlation, status, code, error)
         {

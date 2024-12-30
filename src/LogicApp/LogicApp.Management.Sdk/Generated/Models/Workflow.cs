@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="parameters">The parameters.
         /// </param>
-        public Workflow(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string provisioningState = default(string), System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), string state = default(string), string version = default(string), string accessEndpoint = default(string), ResourceReference integrationAccount = default(ResourceReference), object definition = default(object), System.Collections.Generic.IDictionary<string, WorkflowParameter> parameters = default(System.Collections.Generic.IDictionary<string, WorkflowParameter>))
+        public Workflow(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string provisioningState = default(string), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), string state = default(string), string version = default(string), string accessEndpoint = default(string), ResourceReference integrationAccount = default(ResourceReference), object definition = default(object), System.Collections.Generic.IDictionary<string, WorkflowParameter> parameters = default(System.Collections.Generic.IDictionary<string, WorkflowParameter>))
 
         : base(id, name, type, location, tags)
         {
@@ -113,13 +113,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets gets the created time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdTime")]
-        public System.DateTimeOffset? CreatedTime {get; private set; }
+        public System.DateTime? CreatedTime {get; private set; }
 
         /// <summary>
         /// Gets gets the changed time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.changedTime")]
-        public System.DateTimeOffset? ChangedTime {get; private set; }
+        public System.DateTime? ChangedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the state. Possible values include: &#39;NotSpecified&#39;, &#39;Completed&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;Deleted&#39;, &#39;Suspended&#39;

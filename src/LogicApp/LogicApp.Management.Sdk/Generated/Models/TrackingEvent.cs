@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="error">
         /// </param>
-        public TrackingEvent(EventLevel eventLevel, System.DateTimeOffset eventTime, string recordType, TrackingEventErrorInfo error = default(TrackingEventErrorInfo))
+        public TrackingEvent(EventLevel eventLevel, System.DateTime eventTime, string recordType, TrackingEventErrorInfo error = default(TrackingEventErrorInfo))
 
         {
             this.EventLevel = eventLevel;
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets or sets
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "eventTime")]
-        public System.DateTimeOffset EventTime {get; set; }
+        public System.DateTime EventTime {get; set; }
 
         /// <summary>
         /// Gets or sets the tracking record type. Possible values include: &#39;NotSpecified&#39;, &#39;Custom&#39;, &#39;AS2Message&#39;, &#39;AS2MDN&#39;, &#39;X12Interchange&#39;, &#39;X12FunctionalGroup&#39;, &#39;X12TransactionSet&#39;, &#39;X12InterchangeAcknowledgment&#39;, &#39;X12FunctionalGroupAcknowledgment&#39;, &#39;X12TransactionSetAcknowledgment&#39;, &#39;EdifactInterchange&#39;, &#39;EdifactFunctionalGroup&#39;, &#39;EdifactTransactionSet&#39;, &#39;EdifactInterchangeAcknowledgment&#39;, &#39;EdifactFunctionalGroupAcknowledgment&#39;, &#39;EdifactTransactionSetAcknowledgment&#39;

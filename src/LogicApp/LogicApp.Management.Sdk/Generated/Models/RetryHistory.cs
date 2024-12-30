@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="error">Gets the error response.
         /// </param>
-        public RetryHistory(System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string code = default(string), string clientRequestId = default(string), string serviceRequestId = default(string), ErrorResponse error = default(ErrorResponse))
+        public RetryHistory(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string code = default(string), string clientRequestId = default(string), string serviceRequestId = default(string), ErrorResponse error = default(ErrorResponse))
 
         {
             this.StartTime = startTime;
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets or sets gets the start time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startTime")]
-        public System.DateTimeOffset? StartTime {get; set; }
+        public System.DateTime? StartTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets the end time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endTime")]
-        public System.DateTimeOffset? EndTime {get; set; }
+        public System.DateTime? EndTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets the status code.

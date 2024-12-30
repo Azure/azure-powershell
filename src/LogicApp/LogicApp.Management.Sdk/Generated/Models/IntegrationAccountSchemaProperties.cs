@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="contentLink">The content link.
         /// </param>
-        public IntegrationAccountSchemaProperties(string schemaType, string targetNamespace = default(string), string documentName = default(string), string fileName = default(string), System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), object metadata = default(object), string content = default(string), string contentType = default(string), ContentLink contentLink = default(ContentLink))
+        public IntegrationAccountSchemaProperties(string schemaType, string targetNamespace = default(string), string documentName = default(string), string fileName = default(string), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), object metadata = default(object), string content = default(string), string contentType = default(string), ContentLink contentLink = default(ContentLink))
 
         {
             this.SchemaType = schemaType;
@@ -103,13 +103,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets the created time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createdTime")]
-        public System.DateTimeOffset? CreatedTime {get; private set; }
+        public System.DateTime? CreatedTime {get; private set; }
 
         /// <summary>
         /// Gets the changed time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "changedTime")]
-        public System.DateTimeOffset? ChangedTime {get; private set; }
+        public System.DateTime? ChangedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the metadata.

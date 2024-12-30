@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="publicCertificate">The public certificate.
         /// </param>
-        public IntegrationAccountCertificateProperties(System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), object metadata = default(object), KeyVaultKeyReference key = default(KeyVaultKeyReference), string publicCertificate = default(string))
+        public IntegrationAccountCertificateProperties(System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), object metadata = default(object), KeyVaultKeyReference key = default(KeyVaultKeyReference), string publicCertificate = default(string))
 
         {
             this.CreatedTime = createdTime;
@@ -59,13 +59,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets the created time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createdTime")]
-        public System.DateTimeOffset? CreatedTime {get; private set; }
+        public System.DateTime? CreatedTime {get; private set; }
 
         /// <summary>
         /// Gets the changed time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "changedTime")]
-        public System.DateTimeOffset? ChangedTime {get; private set; }
+        public System.DateTime? ChangedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the metadata.

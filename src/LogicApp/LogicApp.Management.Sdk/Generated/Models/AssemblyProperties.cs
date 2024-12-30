@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="assemblyPublicKeyToken">The assembly public key token.
         /// </param>
-        public AssemblyProperties(string assemblyName, System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), object metadata = default(object), object content = default(object), string contentType = default(string), ContentLink contentLink = default(ContentLink), string assemblyVersion = default(string), string assemblyCulture = default(string), string assemblyPublicKeyToken = default(string))
+        public AssemblyProperties(string assemblyName, System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), object metadata = default(object), object content = default(object), string contentType = default(string), ContentLink contentLink = default(ContentLink), string assemblyVersion = default(string), string assemblyCulture = default(string), string assemblyPublicKeyToken = default(string))
 
         : base(createdTime, changedTime, metadata, content, contentType, contentLink)
         {

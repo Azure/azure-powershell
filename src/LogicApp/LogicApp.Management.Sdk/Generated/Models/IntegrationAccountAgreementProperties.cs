@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="content">The agreement content.
         /// </param>
-        public IntegrationAccountAgreementProperties(AgreementType agreementType, string hostPartner, string guestPartner, BusinessIdentity hostIdentity, BusinessIdentity guestIdentity, AgreementContent content, System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), object metadata = default(object))
+        public IntegrationAccountAgreementProperties(AgreementType agreementType, string hostPartner, string guestPartner, BusinessIdentity hostIdentity, BusinessIdentity guestIdentity, AgreementContent content, System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), object metadata = default(object))
 
         {
             this.CreatedTime = createdTime;
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets the created time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createdTime")]
-        public System.DateTimeOffset? CreatedTime {get; private set; }
+        public System.DateTime? CreatedTime {get; private set; }
 
         /// <summary>
         /// Gets the changed time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "changedTime")]
-        public System.DateTimeOffset? ChangedTime {get; private set; }
+        public System.DateTime? ChangedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the metadata.

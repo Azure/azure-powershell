@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="workflow">Gets the reference to workflow.
         /// </param>
-        public WorkflowTrigger(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), string state = default(string), string status = default(string), System.DateTimeOffset? lastExecutionTime = default(System.DateTimeOffset?), System.DateTimeOffset? nextExecutionTime = default(System.DateTimeOffset?), WorkflowTriggerRecurrence recurrence = default(WorkflowTriggerRecurrence), ResourceReference workflow = default(ResourceReference))
+        public WorkflowTrigger(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), string state = default(string), string status = default(string), System.DateTime? lastExecutionTime = default(System.DateTime?), System.DateTime? nextExecutionTime = default(System.DateTime?), WorkflowTriggerRecurrence recurrence = default(WorkflowTriggerRecurrence), ResourceReference workflow = default(ResourceReference))
 
         : base(id)
         {
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets gets the created time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdTime")]
-        public System.DateTimeOffset? CreatedTime {get; private set; }
+        public System.DateTime? CreatedTime {get; private set; }
 
         /// <summary>
         /// Gets gets the changed time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.changedTime")]
-        public System.DateTimeOffset? ChangedTime {get; private set; }
+        public System.DateTime? ChangedTime {get; private set; }
 
         /// <summary>
         /// Gets gets the state. Possible values include: &#39;NotSpecified&#39;, &#39;Completed&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;Deleted&#39;, &#39;Suspended&#39;
@@ -136,13 +136,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets gets the last execution time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastExecutionTime")]
-        public System.DateTimeOffset? LastExecutionTime {get; private set; }
+        public System.DateTime? LastExecutionTime {get; private set; }
 
         /// <summary>
         /// Gets gets the next execution time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextExecutionTime")]
-        public System.DateTimeOffset? NextExecutionTime {get; private set; }
+        public System.DateTime? NextExecutionTime {get; private set; }
 
         /// <summary>
         /// Gets gets the workflow trigger recurrence.

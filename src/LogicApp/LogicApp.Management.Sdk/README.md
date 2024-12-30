@@ -15,7 +15,7 @@ isSdkGenerator: true
 powershell: true
 title: LogicManagementClient
 openapi-type: arm
-useDateTimeOffset: true
+useDateTimeOffset: false
 clear-output-folder: true
 reflect-api-versions: true
 azure-arm: true

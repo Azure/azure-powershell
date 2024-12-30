@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="trackedProperties">Gets the tracked properties.
         /// </param>
-        public WorkflowRunTrigger(string name = default(string), object inputs = default(object), ContentLink inputsLink = default(ContentLink), object outputs = default(object), ContentLink outputsLink = default(ContentLink), System.DateTimeOffset? scheduledTime = default(System.DateTimeOffset?), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string trackingId = default(string), Correlation correlation = default(Correlation), string code = default(string), string status = default(string), object error = default(object), object trackedProperties = default(object))
+        public WorkflowRunTrigger(string name = default(string), object inputs = default(object), ContentLink inputsLink = default(ContentLink), object outputs = default(object), ContentLink outputsLink = default(ContentLink), System.DateTime? scheduledTime = default(System.DateTime?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string trackingId = default(string), Correlation correlation = default(Correlation), string code = default(string), string status = default(string), object error = default(object), object trackedProperties = default(object))
 
         {
             this.Name = name;
@@ -127,19 +127,19 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets gets the scheduled time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scheduledTime")]
-        public System.DateTimeOffset? ScheduledTime {get; private set; }
+        public System.DateTime? ScheduledTime {get; private set; }
 
         /// <summary>
         /// Gets gets the start time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startTime")]
-        public System.DateTimeOffset? StartTime {get; private set; }
+        public System.DateTime? StartTime {get; private set; }
 
         /// <summary>
         /// Gets gets the end time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endTime")]
-        public System.DateTimeOffset? EndTime {get; private set; }
+        public System.DateTime? EndTime {get; private set; }
 
         /// <summary>
         /// Gets gets the tracking id.

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="metadata">Anything
         /// </param>
-        public ArtifactProperties(System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), object metadata = default(object))
+        public ArtifactProperties(System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), object metadata = default(object))
 
         {
             this.CreatedTime = createdTime;
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets or sets the artifact creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createdTime")]
-        public System.DateTimeOffset? CreatedTime {get; set; }
+        public System.DateTime? CreatedTime {get; set; }
 
         /// <summary>
         /// Gets or sets the artifact changed time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "changedTime")]
-        public System.DateTimeOffset? ChangedTime {get; set; }
+        public System.DateTime? ChangedTime {get; set; }
 
         /// <summary>
         /// Gets or sets anything

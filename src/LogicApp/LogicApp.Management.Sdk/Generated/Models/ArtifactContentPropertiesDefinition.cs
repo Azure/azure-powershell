@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="contentLink">The content link.
         /// </param>
-        public ArtifactContentPropertiesDefinition(System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), object metadata = default(object), object content = default(object), string contentType = default(string), ContentLink contentLink = default(ContentLink))
+        public ArtifactContentPropertiesDefinition(System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), object metadata = default(object), object content = default(object), string contentType = default(string), ContentLink contentLink = default(ContentLink))
 
         : base(createdTime, changedTime, metadata)
         {

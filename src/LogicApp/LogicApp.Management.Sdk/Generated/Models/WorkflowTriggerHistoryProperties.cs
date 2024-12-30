@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="run">Gets the reference to workflow run.
         /// </param>
-        public WorkflowTriggerHistoryProperties(System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string status = default(string), string code = default(string), object error = default(object), string trackingId = default(string), Correlation correlation = default(Correlation), ContentLink inputsLink = default(ContentLink), ContentLink outputsLink = default(ContentLink), bool? fired = default(bool?), ResourceReference run = default(ResourceReference))
+        public WorkflowTriggerHistoryProperties(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string status = default(string), string code = default(string), object error = default(object), string trackingId = default(string), Correlation correlation = default(Correlation), ContentLink inputsLink = default(ContentLink), ContentLink outputsLink = default(ContentLink), bool? fired = default(bool?), ResourceReference run = default(ResourceReference))
 
         {
             this.StartTime = startTime;
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets gets the start time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startTime")]
-        public System.DateTimeOffset? StartTime {get; private set; }
+        public System.DateTime? StartTime {get; private set; }
 
         /// <summary>
         /// Gets gets the end time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endTime")]
-        public System.DateTimeOffset? EndTime {get; private set; }
+        public System.DateTime? EndTime {get; private set; }
 
         /// <summary>
         /// Gets gets the status. Possible values include: &#39;NotSpecified&#39;, &#39;Paused&#39;, &#39;Running&#39;, &#39;Waiting&#39;, &#39;Succeeded&#39;, &#39;Skipped&#39;, &#39;Suspended&#39;, &#39;Cancelled&#39;, &#39;Failed&#39;, &#39;Faulted&#39;, &#39;TimedOut&#39;, &#39;Aborted&#39;, &#39;Ignored&#39;

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="response">Gets the response of the flow run.
         /// </param>
-        public WorkflowRunProperties(System.DateTimeOffset? waitEndTime = default(System.DateTimeOffset?), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string status = default(string), string code = default(string), object error = default(object), string correlationId = default(string), Correlation correlation = default(Correlation), ResourceReference workflow = default(ResourceReference), WorkflowRunTrigger trigger = default(WorkflowRunTrigger), System.Collections.Generic.IDictionary<string, WorkflowOutputParameter> outputs = default(System.Collections.Generic.IDictionary<string, WorkflowOutputParameter>), WorkflowRunTrigger response = default(WorkflowRunTrigger))
+        public WorkflowRunProperties(System.DateTime? waitEndTime = default(System.DateTime?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string status = default(string), string code = default(string), object error = default(object), string correlationId = default(string), Correlation correlation = default(Correlation), ResourceReference workflow = default(ResourceReference), WorkflowRunTrigger trigger = default(WorkflowRunTrigger), System.Collections.Generic.IDictionary<string, WorkflowOutputParameter> outputs = default(System.Collections.Generic.IDictionary<string, WorkflowOutputParameter>), WorkflowRunTrigger response = default(WorkflowRunTrigger))
 
         {
             this.WaitEndTime = waitEndTime;
@@ -89,19 +89,19 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets gets the wait end time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "waitEndTime")]
-        public System.DateTimeOffset? WaitEndTime {get; private set; }
+        public System.DateTime? WaitEndTime {get; private set; }
 
         /// <summary>
         /// Gets gets the start time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startTime")]
-        public System.DateTimeOffset? StartTime {get; private set; }
+        public System.DateTime? StartTime {get; private set; }
 
         /// <summary>
         /// Gets gets the end time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endTime")]
-        public System.DateTimeOffset? EndTime {get; private set; }
+        public System.DateTime? EndTime {get; private set; }
 
         /// <summary>
         /// Gets gets the status. Possible values include: &#39;NotSpecified&#39;, &#39;Paused&#39;, &#39;Running&#39;, &#39;Waiting&#39;, &#39;Succeeded&#39;, &#39;Skipped&#39;, &#39;Suspended&#39;, &#39;Cancelled&#39;, &#39;Failed&#39;, &#39;Faulted&#39;, &#39;TimedOut&#39;, &#39;Aborted&#39;, &#39;Ignored&#39;

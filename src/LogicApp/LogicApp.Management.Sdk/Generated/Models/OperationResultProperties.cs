@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="error">Anything
         /// </param>
-        public OperationResultProperties(System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), RunActionCorrelation correlation = default(RunActionCorrelation), string status = default(string), string code = default(string), object error = default(object))
+        public OperationResultProperties(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), RunActionCorrelation correlation = default(RunActionCorrelation), string status = default(string), string code = default(string), object error = default(object))
 
         {
             this.StartTime = startTime;
@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets or sets the start time of the workflow scope repetition.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startTime")]
-        public System.DateTimeOffset? StartTime {get; set; }
+        public System.DateTime? StartTime {get; set; }
 
         /// <summary>
         /// Gets or sets the end time of the workflow scope repetition.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endTime")]
-        public System.DateTimeOffset? EndTime {get; set; }
+        public System.DateTime? EndTime {get; set; }
 
         /// <summary>
         /// Gets or sets the correlation properties.

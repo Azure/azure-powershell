@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="contentType">The content type.
         /// </param>
-        public IntegrationAccountSchema(string schemaType, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ContentLink contentLink = default(ContentLink), string targetNamespace = default(string), string documentName = default(string), string fileName = default(string), System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), object metadata = default(object), string content = default(string), string contentType = default(string))
+        public IntegrationAccountSchema(string schemaType, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ContentLink contentLink = default(ContentLink), string targetNamespace = default(string), string documentName = default(string), string fileName = default(string), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), object metadata = default(object), string content = default(string), string contentType = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -126,13 +126,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets the created time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdTime")]
-        public System.DateTimeOffset? CreatedTime {get; private set; }
+        public System.DateTime? CreatedTime {get; private set; }
 
         /// <summary>
         /// Gets the changed time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.changedTime")]
-        public System.DateTimeOffset? ChangedTime {get; private set; }
+        public System.DateTime? ChangedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the metadata.

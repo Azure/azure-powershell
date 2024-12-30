@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="repetitionIndexes">The repetition indexes.
         /// </param>
-        public WorkflowRunActionRepetitionDefinition(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), RunActionCorrelation correlation = default(RunActionCorrelation), string status = default(string), string code = default(string), object error = default(object), string trackingId = default(string), object inputs = default(object), ContentLink inputsLink = default(ContentLink), object outputs = default(object), ContentLink outputsLink = default(ContentLink), object trackedProperties = default(object), System.Collections.Generic.IList<RetryHistory> retryHistory = default(System.Collections.Generic.IList<RetryHistory>), int? iterationCount = default(int?), System.Collections.Generic.IList<RepetitionIndex> repetitionIndexes = default(System.Collections.Generic.IList<RepetitionIndex>))
+        public WorkflowRunActionRepetitionDefinition(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), RunActionCorrelation correlation = default(RunActionCorrelation), string status = default(string), string code = default(string), object error = default(object), string trackingId = default(string), object inputs = default(object), ContentLink inputsLink = default(ContentLink), object outputs = default(object), ContentLink outputsLink = default(ContentLink), object trackedProperties = default(object), System.Collections.Generic.IList<RetryHistory> retryHistory = default(System.Collections.Generic.IList<RetryHistory>), int? iterationCount = default(int?), System.Collections.Generic.IList<RepetitionIndex> repetitionIndexes = default(System.Collections.Generic.IList<RepetitionIndex>))
 
         : base(id, name, type, location, tags)
         {
@@ -118,13 +118,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets or sets the start time of the workflow scope repetition.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startTime")]
-        public System.DateTimeOffset? StartTime {get; set; }
+        public System.DateTime? StartTime {get; set; }
 
         /// <summary>
         /// Gets or sets the end time of the workflow scope repetition.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endTime")]
-        public System.DateTimeOffset? EndTime {get; set; }
+        public System.DateTime? EndTime {get; set; }
 
         /// <summary>
         /// Gets or sets the correlation properties.

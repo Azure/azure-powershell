@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="keyType">The key type.
         /// Possible values include: &#39;NotSpecified&#39;, &#39;Primary&#39;, &#39;Secondary&#39;</param>
-        public GetCallbackUrlParameters(System.DateTimeOffset? notAfter = default(System.DateTimeOffset?), string keyType = default(string))
+        public GetCallbackUrlParameters(System.DateTime? notAfter = default(System.DateTime?), string keyType = default(string))
 
         {
             this.NotAfter = notAfter;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets or sets the expiry time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "notAfter")]
-        public System.DateTimeOffset? NotAfter {get; set; }
+        public System.DateTime? NotAfter {get; set; }
 
         /// <summary>
         /// Gets or sets the key type. Possible values include: &#39;NotSpecified&#39;, &#39;Primary&#39;, &#39;Secondary&#39;

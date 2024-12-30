@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="run">Gets the reference to workflow run.
         /// </param>
-        public WorkflowTriggerHistory(string id = default(string), string name = default(string), string type = default(string), Correlation correlation = default(Correlation), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string status = default(string), string code = default(string), object error = default(object), string trackingId = default(string), ContentLink inputsLink = default(ContentLink), ContentLink outputsLink = default(ContentLink), bool? fired = default(bool?), ResourceReference run = default(ResourceReference))
+        public WorkflowTriggerHistory(string id = default(string), string name = default(string), string type = default(string), Correlation correlation = default(Correlation), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string status = default(string), string code = default(string), object error = default(object), string trackingId = default(string), ContentLink inputsLink = default(ContentLink), ContentLink outputsLink = default(ContentLink), bool? fired = default(bool?), ResourceReference run = default(ResourceReference))
 
         : base(id)
         {
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets gets the start time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startTime")]
-        public System.DateTimeOffset? StartTime {get; private set; }
+        public System.DateTime? StartTime {get; private set; }
 
         /// <summary>
         /// Gets gets the end time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endTime")]
-        public System.DateTimeOffset? EndTime {get; private set; }
+        public System.DateTime? EndTime {get; private set; }
 
         /// <summary>
         /// Gets gets the status. Possible values include: &#39;NotSpecified&#39;, &#39;Paused&#39;, &#39;Running&#39;, &#39;Waiting&#39;, &#39;Succeeded&#39;, &#39;Skipped&#39;, &#39;Suspended&#39;, &#39;Cancelled&#39;, &#39;Failed&#39;, &#39;Faulted&#39;, &#39;TimedOut&#39;, &#39;Aborted&#39;, &#39;Ignored&#39;

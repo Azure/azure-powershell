@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="changedTime">The changed time of integration account sessions.
         /// </param>
-        public IntegrationAccountSessionFilter(System.DateTimeOffset changedTime)
+        public IntegrationAccountSessionFilter(System.DateTime changedTime)
 
         {
             this.ChangedTime = changedTime;
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets or sets the changed time of integration account sessions.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "changedTime")]
-        public System.DateTimeOffset ChangedTime {get; set; }
+        public System.DateTime ChangedTime {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

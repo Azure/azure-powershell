@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Logic.Models
 
         /// <param name="releaseCriteria">The batch release criteria.
         /// </param>
-        public BatchConfigurationProperties(string batchGroupName, BatchReleaseCriteria releaseCriteria, System.DateTimeOffset? createdTime = default(System.DateTimeOffset?), System.DateTimeOffset? changedTime = default(System.DateTimeOffset?), object metadata = default(object))
+        public BatchConfigurationProperties(string batchGroupName, BatchReleaseCriteria releaseCriteria, System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?), object metadata = default(object))
 
         : base(createdTime, changedTime, metadata)
         {
