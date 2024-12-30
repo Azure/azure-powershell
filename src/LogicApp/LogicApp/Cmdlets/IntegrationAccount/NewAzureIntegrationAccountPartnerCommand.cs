@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                         PartnerType = this.PartnerType,
                         Content = new PartnerContent
                         {
-                            B2B = new B2BPartnerContent
+                            B2b = new B2BPartnerContent
                             {
                                 BusinessIdentities = CmdletHelper.ConvertToBusinessIdentityList(BusinessIdentities)
                             }

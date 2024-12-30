@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Logic.Models
         public PartnerContent(B2BPartnerContent b2B = default(B2BPartnerContent))
 
         {
-            this.B2B = b2B;
+            this.B2b = b2B;
             CustomInit();
         }
 
@@ -43,6 +43,6 @@ namespace Microsoft.Azure.Management.Logic.Models
         /// Gets or sets the B2B partner content.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "b2b")]
-        public B2BPartnerContent B2B {get; set; }
+        public B2BPartnerContent B2b {get; set; }
     }
 }

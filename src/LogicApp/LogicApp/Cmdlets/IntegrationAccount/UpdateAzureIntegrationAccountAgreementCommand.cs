@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             if (!string.IsNullOrEmpty(this.HostIdentityQualifier) && !string.IsNullOrEmpty(this.HostIdentityQualifierValue))
             {
                 var hostIdentity =
-                    hostPartner.Content.B2B.BusinessIdentities.FirstOrDefault(
+                    hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
                         s => (s.Qualifier == this.HostIdentityQualifier && s.Value == this.HostIdentityQualifierValue));
 
                 if (hostIdentity == null)
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             if (!string.IsNullOrEmpty(this.GuestIdentityQualifier) && !string.IsNullOrEmpty(this.GuestIdentityQualifierValue))
             {
                 var guestIdentity =
-                    guestPartner.Content.B2B.BusinessIdentities.FirstOrDefault(
+                    guestPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
                         s => (s.Qualifier == this.GuestIdentityQualifier && s.Value == this.GuestIdentityQualifierValue));
 
                 if (guestIdentity == null)

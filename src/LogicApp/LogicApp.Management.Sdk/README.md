@@ -46,4 +46,9 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/run"].post.responses.default.schema["$ref"]
     transform: return "#/definitions/ErrorResponse"
+  - where:
+     model-name: PartnerContent
+     property-name: B2B
+    set:
+     property-name: B2b
 ```
