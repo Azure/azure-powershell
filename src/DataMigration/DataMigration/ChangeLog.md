@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
 * Updated the URL to download the SQL Assessment Zip to `https://aka.ms/sqlassessmentpackage`
 
 ## Version 0.14.8
