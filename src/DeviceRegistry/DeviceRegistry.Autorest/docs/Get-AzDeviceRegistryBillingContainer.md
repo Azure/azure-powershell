@@ -77,7 +77,7 @@ $billingContainer = @{
   SubscriptionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   BillingContainerName = "my-billingContainer1"
 }
-Get-AzDeviceRegistryBillingContainer -InputObject
+Get-AzDeviceRegistryBillingContainer -InputObject $billingContainer
 ```
 
 ```output
