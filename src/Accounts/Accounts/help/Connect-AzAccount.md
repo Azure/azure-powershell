@@ -317,9 +317,7 @@ Accept wildcard characters: False
 
 ### -AccountId
 
-Account Id / User Id / User Name to login with in **Default (UserWithSubscriptionId)** parameter set; Account ID for access token in **AccessToken** parameter set; Account ID for managed service in
-**ManagedService** parameter set. Can be a managed service resource ID, or the associated client ID.
-To use the system assigned identity, leave this field blank.
+Account Id / User Id / User Name to login with in **Default (UserWithSubscriptionId)** parameter set; Account ID for access token in **AccessToken** parameter set; Account ID for managed service in **ManagedService** parameter set. It is the associated client id of UserAssigned identity. To use the SystemAssigned identity, leave this field blank.
 
 ```yaml
 Type: System.String
