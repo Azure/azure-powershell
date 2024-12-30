@@ -147,6 +147,7 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-NotNull $expectedNic.DefaultOutboundConnectivityEnabled
         Assert-AreEqual $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
 
         $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
