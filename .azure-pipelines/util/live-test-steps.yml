@@ -1,9 +1,18 @@
 parameters:
 - name: name
+  type: string
 - name: vmImage
+  type: string
 - name: osType
+  type: string
 - name: psVersion
+  type: string
 - name: dotnetVersion
+  type: string
+- name: galleryName
+  type: string
+- name: pipelineBuildId
+  type: string
 
 jobs:
 - job: ${{ parameters.name }}
@@ -29,7 +38,7 @@ jobs:
       arguments: -DesiredVersion ${{ parameters.psVersion }}
 
   - task: PowerShell@2
-    displayName: Create live test data location directory
+    displayName: Prepare for artifacts
     condition: ne(variables['skipLatest'], 'true')
     inputs:
       pwsh: true
@@ -38,74 +47,47 @@ jobs:
         New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
 
   - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'DailyBuild'), eq(variables['PipelineBuildId'], ''))
-    displayName: Download latest artifacts from daily build pipeline main branch
+    condition: ${{ in(parameters.galleryName, 'DailyBuild', 'Sign') }}
+    displayName: Download artifacts from ${{ parameters.galleryName }}
     inputs:
       buildType: 'specific'
-      project: $(BuildPipelineProject)
-      definition: $(BuildPipelineDefinitionId)
-      buildVersionToDownload: 'latestFromBranch'
-      branchName: 'refs/heads/main'
-      artifactName: 'artifacts'
+      ${{ if eq(parameters.galleryName, 'DailyBuild') }}:
+        project: $(BuildPipelineProject)
+        definition: $(BuildPipelineDefinitionId)
+        artifactName: 'artifacts'
+      ${{ elseif eq(parameters.galleryName, 'Sign') }}:
+        project: $(SignPipelineProject)
+        definition: $(SignPipelineDefinitionId)
+        artifactName: $(ArtifactName)
+        itemPattern: '**/artifacts/**'
+      ${{ if eq(replace(parameters.pipelineBuildId, ' ', ''), '') }}:
+        buildVersionToDownload: 'latestFromBranch'
+        branchName: refs/heads/$(PipelineBranchName)
+      ${{ else }}:
+        buildVersionToDownload: 'specific'
+        pipelineId: ${{ parameters.PipelineBuildId }}
       targetPath: $(Pipeline.Workspace)
 
-  - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'DailyBuild'), ne(variables['PipelineBuildId'], ''))
-    displayName: Download specific artifacts from daily build pipeline
-    inputs:
-      buildType: 'specific'
-      project: $(BuildPipelineProject)
-      definition: $(BuildPipelineDefinitionId)
-      buildVersionToDownload: 'specific'
-      pipelineId: $(PipelineBuildId)
-      artifactName: 'artifacts'
-      targetPath: $(Pipeline.Workspace)
-
-  - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'Sign'), eq(variables['PipelineBuildId'], ''))
-    displayName: Download latest artifacts from sign pipeline internal/release branch
-    inputs:
-      buildType: 'specific'
-      project: $(SignPipelineProject)
-      definition: $(SignPipelineDefinitionId)
-      buildVersionToDownload: 'latestFromBranch'
-      branchName: 'refs/heads/internal/release'
-      artifactName: $(ArtifactName)
-      targetPath: $(Pipeline.Workspace)
-      itemPattern: '**/artifacts/**'
-
-  - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'Sign'), ne(variables['PipelineBuildId'], ''))
-    displayName: Download specific artifacts from sign pipeline
-    inputs:
-      buildType: 'specific'
-      project: $(SignPipelineProject)
-      definition: $(SignPipelineDefinitionId)
-      buildVersionToDownload: 'specific'
-      pipelineId: $(PipelineBuildId)
-      artifactName: $(ArtifactName)
-      targetPath: $(Pipeline.Workspace)
-      itemPattern: '**/artifacts/**'
   - task: PowerShell@2
-    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), ne(variables['GalleryName'], 'PSGallery'))
-    displayName: Copy artifacts to local repository
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), ${{ ne(parameters.galleryName, 'PSGallery') }})
+    displayName: Prepare for Az module
     inputs:
       pwsh: true
       targetType: inline
       script: |
         $azPackagesDir = New-Item -Name AzPreviewPackages -Path $(DataLocation) -ItemType Directory -Force
-        $azPackagesFiles =  Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg" 
+        $azPackagesFiles =  Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg"
         Move-Item -Path $azPackagesFiles -Destination $azPackagesDir
         Get-ChildItem -LiteralPath $azPackagesDir
 
   - task: PowerShell@2
-    displayName: Install desired Az module from $(GalleryName)
+    displayName: Install desired Az module from ${{ parameters.galleryName }}
     condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
     inputs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
-      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InstallLiveTestAzModules.ps1 -Source $(GalleryName) -AzPackagesLocation (Join-Path -Path $(DataLocation) -ChildPath AzPreviewPackages)'
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InstallLiveTestAzModules.ps1 -Source ${{ parameters.galleryName }} -AzPackagesLocation (Join-Path -Path $(DataLocation) -ChildPath AzPreviewPackages)'
 
   - template: get-keyvault-secret-steps.yml
     parameters:

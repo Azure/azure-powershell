@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for PremiumV2 disk type.
+* Added SBM support.
+
+## Version 2.5.0
+* Validated user login with Microsoft Managed System Identity (MSI) in `Initialize-AzMigrateHCIReplicationInfrastructure`
+* Passed appropriate Hyper-V Generation value based on source VMware firmware type in `New-AzMigrateHCIServerReplication`
+* Added support for LinuxLicenseType in Az.Migrate module.
 
 ## Version 2.4.0
 * Removed "at lease one NIC needs to be user selected" constrain when creating/updating server replication (protected item)

@@ -23,12 +23,12 @@ Create an in-memory object for EndpointDependency.
 New-AzNetworkCloudEndpointDependencyObject -DomainName domainName -Port 1234
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EndpointDependency
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EndpointDependency
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudEndpointDependencyObject
 #>
 function New-AzNetworkCloudEndpointDependencyObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EndpointDependency])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EndpointDependency])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

@@ -14,7 +14,7 @@ Creates a new disk mapping
 
 ```
 New-AzMigrateDiskMapping -DiskID <String> -IsOSDisk <String> -DiskType <String> [-DiskEncryptionSetID <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,15 +22,26 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 
 ## EXAMPLES
 
-### Example 1: Make disks
+### Example 1: Make Standard disks
 ```powershell
-New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
+New-AzMigrateDiskMapping -DiskID a -DiskType Standard_LRS -IsOSDisk 'true'
 ```
 
 ```output
-DiskEncryptionSetId DiskId   DiskType  IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
-------------------- ------   --------  -------- ------------------- ------------------------------   
-                      a      Standard  true
+DiskEncryptionSetId DiskId DiskType     IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
+------------------- ------ --------     -------- ------------------- ------------------------------   
+                    a      Standard_LRS true
+```
+
+### Example 2: Make Premium V2 disks
+```powershell
+New-AzMigrateDiskMapping -DiskID b -DiskType PremiumV2_LRS -IsOSDisk 'false'
+```
+
+```output
+DiskEncryptionSetId DiskId DiskType      IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
+------------------- ------ --------      -------- ------------------- ------------------------------   
+                    b      PremiumV2_LRS false
 ```
 
 Get disks object to provide input for New-AzMigrateServerReplication
@@ -97,6 +108,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -104,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput
 
 ## NOTES
 

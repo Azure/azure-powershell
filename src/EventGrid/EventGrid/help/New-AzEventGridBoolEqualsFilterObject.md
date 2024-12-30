@@ -13,7 +13,7 @@ Create an in-memory object for BoolEqualsFilter.
 ## SYNTAX
 
 ```
-New-AzEventGridBoolEqualsFilterObject [-Value <Boolean>] [-Key <String>] [-ProgressAction <ActionPreference>]
+New-AzEventGridBoolEqualsFilterObject [-Value <Boolean>] [-Key <String>]
  [<CommonParameters>]
 ```
 
@@ -42,21 +42,6 @@ The field/property in the event based on which you want to filter.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

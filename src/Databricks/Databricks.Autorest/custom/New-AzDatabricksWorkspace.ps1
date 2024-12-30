@@ -315,33 +315,36 @@ function New-AzDatabricksWorkspace {
         ${VnetAddressPrefix},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
+        [Alias('EnhancedSecurityMonitoringValue')]        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]
         # Status of Enhanced Security Monitoring feature.
-        ${EnhancedSecurityMonitoringValue},
+        ${EnhancedSecurityMonitoring},
 
         [Parameter()]
+        [Alias('AutomaticClusterUpdateValue')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]
         # Status of automated cluster updates feature.
-        ${AutomaticClusterUpdateValue},
+        ${AutomaticClusterUpdate},
 
         [Parameter()]
+        [Alias('ComplianceSecurityProfileComplianceStandard')]
         [AllowEmptyCollection()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]]
         # Compliance standards associated with the workspace.
-        ${ComplianceSecurityProfileComplianceStandard},
+        ${ComplianceStandard},
 
         [Parameter()]
+        [Alias('ComplianceSecurityProfileValue')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue])]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]
         # Status of Compliance Security Profile feature.
-        ${ComplianceSecurityProfileValue},
+        ${EnhancedSecurityCompliance},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -433,6 +436,22 @@ function New-AzDatabricksWorkspace {
 
     process {
         try {
+            if ($PSBoundParameters.Remove('EnhancedSecurityMonitoring'))
+            {
+                $PSBoundParameters.Add('EnhancedSecurityMonitoringValue', $EnhancedSecurityMonitoring)
+            }
+            if ($PSBoundParameters.Remove('AutomaticClusterUpdate'))
+            {
+                $PSBoundParameters.Add('AutomaticClusterUpdateValue', $AutomaticClusterUpdate)
+            }
+            if ($PSBoundParameters.Remove('ComplianceStandard'))
+            {
+                $PSBoundParameters.Add('ComplianceSecurityProfileComplianceStandard', $ComplianceStandard)
+            }
+            if ($PSBoundParameters.Remove('EnhancedSecurityCompliance'))
+            {
+                $PSBoundParameters.Add('ComplianceSecurityProfileValue', $EnhancedSecurityCompliance)
+            }
             if (-not $PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
                 $randomStr = -join ((48..57) + (97..122) | Get-Random -Count 13 | % { [char]$_ })
                 $manageResourceGroupName = "databricks-rg-{0}-{1}" -f $PSBoundParameters["Name"], $randomStr

@@ -77,14 +77,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// and number of vCores.
         /// </param>
 
-        /// <param name="storageIOps">Storage IOps. Minimum value: 120. Maximum value: 120000. Increments of 1
+        /// <param name="storageIOps">Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1
         /// IOps allowed only. Maximum value depends on the selected hardware family
         /// and number of vCores.
         /// </param>
 
-        /// <param name="storageThroughputMBps">Storage throughput in MBps. Minimum value: 25. Maximum value: 4000.
-        /// Increments of 1 MBps allowed only. Maximum value depends on the selected
-        /// hardware family and number of vCores.
+        /// <param name="storageThroughputMBps">Storage throughput MBps parameter is not supported in the instance
+        /// create/update operation.
         /// </param>
 
         /// <param name="collation">Collation of the managed instance.
@@ -330,7 +329,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         public int? StorageSizeInGb {get; set; }
 
         /// <summary>
-        /// Gets or sets storage IOps. Minimum value: 120. Maximum value: 120000.
+        /// Gets or sets storage IOps. Minimum value: 300. Maximum value: 80000.
         /// Increments of 1 IOps allowed only. Maximum value depends on the selected
         /// hardware family and number of vCores.
         /// </summary>
@@ -338,9 +337,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         public int? StorageIOps {get; set; }
 
         /// <summary>
-        /// Gets or sets storage throughput in MBps. Minimum value: 25. Maximum value:
-        /// 4000. Increments of 1 MBps allowed only. Maximum value depends on the
-        /// selected hardware family and number of vCores.
+        /// Gets or sets storage throughput MBps parameter is not supported in the
+        /// instance create/update operation.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageThroughputMBps")]
         public int? StorageThroughputMBps {get; set; }

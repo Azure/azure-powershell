@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const string separator = ";";
         private const CmdletModel.RetentionDurationType defaultFileRetentionType =
             CmdletModel.RetentionDurationType.Days;
+        private const int defaultSnapshotRetentionInDays = 5;
         private const int defaultFileRetentionCount = 30;
         private const int defaultDailyRetentionCountForHourly = 5;
         private const int defaultWeeklyRetentionCount = 12;
@@ -398,9 +400,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 null;
 
             CmdletModel.ScheduleRunType ScheduleRunFrequency = (schedulePolicy != null) ? ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunFrequency :
-                ((policy != null) ? ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunFrequency : 0);            
+                ((policy != null) ? ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunFrequency : 0);
 
-            // convert Window start time to UTC as expected
+
             if (schedulePolicy != null && ScheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly &&
                 ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleWindowStartTime != null)
             {
@@ -431,10 +433,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 
                 if (retentionPolicy != null)
                 {
-                    AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy, BackupManagementType.AzureStorage, ScheduleRunFrequency);
-                    ((AzureFileSharePolicy)policy).RetentionPolicy = retentionPolicy;
-                    Logger.Instance.WriteDebug("Validation of Retention policy is successful");
-                }               
+                    if (ProviderData.TryGetValue(PolicyParams.RetentionPolicy, out var retentionPolicyObj) && retentionPolicyObj != null)
+                    {
+                        if (retentionPolicyObj.GetType() == typeof(CmdletModel.VaultRetentionPolicy))
+                        {
+                            AzureWorkloadProviderHelper.ValidateVaultRetentionPolicy((CmdletModel.VaultRetentionPolicy)retentionPolicyObj, BackupManagementType.AzureStorage, ScheduleRunFrequency);
+                            ((AzureFileSharePolicy)policy).RetentionPolicy = retentionPolicy;
+                            Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                        }
+                        else if (retentionPolicyObj.GetType() == typeof(CmdletModel.LongTermRetentionPolicy))
+                        {
+                            AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy((CmdletModel.LongTermRetentionPolicy)retentionPolicyObj, BackupManagementType.AzureStorage, ScheduleRunFrequency);
+                            ((AzureFileSharePolicy)policy).RetentionPolicy = retentionPolicy;
+                            Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                        }
+                    }
+                }
 
                 // copy the backupSchedule time to retentionPolicy after converting to UTC
                 AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes(
@@ -448,12 +462,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
-                // construct Service Client policy request            
+                // construct Service Client policy request                           
                 AzureFileShareProtectionPolicy azureFileShareProtectionPolicy = new AzureFileShareProtectionPolicy();
-                azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy);
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                 (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
+                
+                if (retentionPolicy is CmdletModel.VaultRetentionPolicy)
+                {
+                    int SnapshotRetentionInDays = ((CmdletModel.VaultRetentionPolicy)retentionPolicy).SnapshotRetentionInDays;
+                    ServiceClientModel.RetentionPolicy retPol = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
+                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = new ServiceClientModel.VaultRetentionPolicy(retPol, SnapshotRetentionInDays);
+                    azureFileShareProtectionPolicy.RetentionPolicy = null;
+                }
+                else
+                {
+                    azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
+                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = null;
+                }
 
                 // timeZone should be customizable                
                 string timeZone = ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunTimeZone;
@@ -467,6 +494,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                
+                
+
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
             }
             else
@@ -481,26 +511,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
 
                 // validate RetentionPolicy
-                AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy, BackupManagementType.AzureStorage, ScheduleRunFrequency);
-                Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                if (ProviderData.TryGetValue(PolicyParams.RetentionPolicy, out var retentionPolicyObj) && retentionPolicyObj != null)
+                {
+                    if (retentionPolicyObj.GetType() == typeof(CmdletModel.VaultRetentionPolicy))
+                    {
+                        AzureWorkloadProviderHelper.ValidateVaultRetentionPolicy((CmdletModel.VaultRetentionPolicy)retentionPolicyObj, BackupManagementType.AzureStorage, ScheduleRunFrequency);
+                        Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                    }
+                    else if (retentionPolicyObj.GetType() == typeof(CmdletModel.LongTermRetentionPolicy))
+                    {
+                        AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy((CmdletModel.LongTermRetentionPolicy)retentionPolicyObj, BackupManagementType.AzureStorage, ScheduleRunFrequency);
+                        Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                    }
+                }
                 
                 // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
                 AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes((CmdletModel.LongTermRetentionPolicy)retentionPolicy,
                                                  (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
                 Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
-                
+
                 // Now validate both RetentionPolicy and SchedulePolicy together
                 PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                                     (CmdletModel.LongTermRetentionPolicy)retentionPolicy,
                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
-                
-                // construct Service Client policy request            
+
+                // construct Service Client policy request                            
                 AzureFileShareProtectionPolicy azureFileShareProtectionPolicy = new AzureFileShareProtectionPolicy();
-                azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);                           
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
+                
+                if (retentionPolicy is CmdletModel.VaultRetentionPolicy)
+                {
+                    int SnapshotRetentionInDays = ((CmdletModel.VaultRetentionPolicy)retentionPolicy).SnapshotRetentionInDays;
+                    ServiceClientModel.RetentionPolicy retPol = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
+                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = new ServiceClientModel.VaultRetentionPolicy(retPol, SnapshotRetentionInDays);
+                    azureFileShareProtectionPolicy.RetentionPolicy = null;
+                }
+                else
+                {
+                    azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
+                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = null;
+                }
 
                 // timeZone should be customizable                
                 string timeZone = ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunTimeZone;
@@ -514,7 +568,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(workloadType.ToString());
-                
+
+
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
             }
 
@@ -771,6 +826,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();
             DateTime retentionTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
 
+            //Backup Tier
+            CmdletModel.BackupTierType backupTier = (CmdletModel.BackupTierType)ProviderData[PolicyParams.BackupTier];
+
+            
+
             //Daily Retention policy
             defaultRetention.IsDailyScheduleEnabled = true;
             defaultRetention.DailySchedule = new CmdletModel.DailyRetentionSchedule();
@@ -779,8 +839,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if (scheduleRunFrequency != CmdletModel.ScheduleRunType.Hourly)
             {
-                defaultRetention.DailySchedule.RetentionTimes = new List<DateTime>();
-                defaultRetention.DailySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.DailySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.DailySchedule.RetentionTimes.Add(retentionTime);
             }            
 
             // Weekly Retention Policy
@@ -836,6 +896,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             defaultRetention.BackupManagementType = backupManagementType;
+
+            if (backupTier == CmdletModel.BackupTierType.VaultStandard)
+            {
+                CmdletModel.VaultRetentionPolicy vaultRetention = new CmdletModel.VaultRetentionPolicy();
+                CopyProperties(source: defaultRetention, target: vaultRetention);
+                vaultRetention.SnapshotRetentionInDays = defaultSnapshotRetentionInDays;
+                return vaultRetention;
+            }
 
             return defaultRetention;
         }
@@ -927,6 +995,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public void RegisterContainer()
         {
             throw new NotImplementedException();
+        }
+
+        public static void CopyProperties<TSource, TTarget>(TSource source, TTarget target)
+        {
+            var sourceProperties = typeof(TSource).GetProperties();
+            var targetProperties = typeof(TTarget).GetProperties();
+
+            foreach (var sourceProperty in sourceProperties)
+            {
+                var targetProperty = targetProperties.FirstOrDefault(p => p.Name == sourceProperty.Name && p.PropertyType == sourceProperty.PropertyType);
+                if (targetProperty != null && targetProperty.CanWrite)
+                {
+                    targetProperty.SetValue(target, sourceProperty.GetValue(source));
+                }
+            }
         }
 
         private RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableOrModifyProtection(bool disableWithRetentionData = false)

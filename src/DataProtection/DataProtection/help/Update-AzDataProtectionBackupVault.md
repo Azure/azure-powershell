@@ -23,8 +23,8 @@ Update-AzDataProtectionBackupVault [-Token <String>] [-AzureMonitorAlertsForAllJ
  [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
  [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
- [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>] [-SecureToken <SecureString>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -35,7 +35,7 @@ Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Toke
  [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
  [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,6 +119,24 @@ vaultName southeastasia Microsoft.DataProtection/backupVaults UserAssigned
 
 This command is used to change CmkIdentityType from SystemAssigned to UserAssgined.
 CmkIdenityId is a required parameter.
+
+### Example 6: Update vault to assign a User Assigned Managed Identity (UAMI)
+```powershell
+$UAMI = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityName"=[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.UserAssignedIdentity]::new()}
+
+$vault = Update-AzDataProtectionBackupVault -AssignUserIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -IdentityType 'SystemAssigned,UserAssigned'
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned, UserAssigned
+```
+
+First, create a hashtable for the User Assigned Managed Identity (UAMI) object.
+This object maps the UAMI resource ID to a new instance of UserAssignedIdentity.
+Next, use the Update-AzDataProtectionBackupVault cmdlet to assign the UAMI to the backup vault while keeping the System Assigned Managed Identity.
+The -IdentityType parameter specifies that both SystemAssigned and UserAssigned identities are used.
 
 ## PARAMETERS
 
@@ -300,7 +318,7 @@ Gets or sets the user assigned identities.
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: UserAssignedIdentity
+Aliases: UserAssignedIdentity, AssignUserIdentity
 
 Required: False
 Position: Named
@@ -356,6 +374,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -378,6 +411,22 @@ ResourceGuardOperationRequests on which LAC check will be performed
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False

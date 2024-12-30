@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzConnectedReconcileNe
 
 Describe 'Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration' {
     It 'Reconcile' {
-        Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupNameNSP -ScopeName $env.PrivateLinkScopeNameNSP
+        Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName
     }
 
     It 'ReconcileViaIdentityPrivateLinkScope' -skip {

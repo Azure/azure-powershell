@@ -38,12 +38,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: f41d0c9332078cb2ef07b749081d94915255ada5
+commit: a9980ec5181a161dd26c5277f7651722b60503ea
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2024-07-10/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-07-31-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-07-31-preview/privateLinkScopes.json
  
 module-version: 0.1.0
 title: ConnectedMachine
@@ -176,41 +176,41 @@ directive:
       }
 
   # add 200 response to run-command delete - comment out for stable release
-  # - from: swagger-document
-  #   where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"].delete.responses
-  #   transform: >-
-  #     return {
-  #       "200": {
-  #         "description": "OK"
-  #       },
-  #       "202": {
-  #         "description": "Accepted",
-  #         "headers": {
-  #           "Location": {
-  #             "description": "The URL of the resource used to check the status of the asynchronous operation.",
-  #             "type": "string"
-  #           },
-  #           "Retry-After": {
-  #             "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.",
-  #             "type": "integer",
-  #             "format": "int32"
-  #           },
-  #           "Azure-AsyncOperation": {
-  #             "description": "The URI to poll for completion status.",
-  #             "type": "string"
-  #           }
-  #         }
-  #       },
-  #       "204": {
-  #         "description": "No Content"
-  #       },
-  #       "default": {
-  #         "description": "Error response describing why the operation failed.",
-  #         "schema": {
-  #           "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
-  #         }
-  #       }
-  #     }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK"
+        },
+        "202": {
+          "description": "Accepted",
+          "headers": {
+            "Location": {
+              "description": "The URL of the resource used to check the status of the asynchronous operation.",
+              "type": "string"
+            },
+            "Retry-After": {
+              "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "Azure-AsyncOperation": {
+              "description": "The URI to poll for completion status.",
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "No Content"
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
 
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
@@ -259,6 +259,11 @@ directive:
       parameter-name: AgentUpgradeEnableAutomaticUpgrade
     set:
       parameter-name: AgentUpgradeEnableAutomatic
+  - where:
+      subject: MachineRunCommand
+      parameter-name: SubscriptionId
+    set:
+      alias: Subscription
     
   # Rename Tag to Tags
   - where:
@@ -324,23 +329,18 @@ directive:
       subject: MachineRunCommand
       verb: Set
     remove: true
-  # internal API
-  - where:
-      subject: LicenseProfile
-    remove: true
   - where:
       subject: Extension
       variant: Upgrade
     remove: true
 
-  # we will release gateway and setting commands in a seperate module - comment out for stable release
-  # - where:
-  #     subject: Gateway
-  #   remove: true
-  # Remove when this API version is added - comment out for stable release
-  # - where:
-  #     subject: Setting
-  #   remove: true
+  # we will release gateway and setting commands in a seperate module
+  - where:
+      subject: Gateway
+    remove: true
+  - where:
+      subject: Setting
+    remove: true
 
   # We don't want user to send PATCH to the ESU license API
   - where:
@@ -354,6 +354,12 @@ directive:
   - where:
       subject: License
       verb: Test
+    remove: true
+
+  # hide Set-AzConnectedLicenseProfile (PUT) from user and keep Update-AzConnectedLicenseProfile (PATCH)
+  - where:
+      subject: LicenseProfile
+      verb: Set
     remove: true
 
   # We don't want user to talk directly to the network configuration API
@@ -392,5 +398,14 @@ directive:
   - model-cmdlet:
     - model-name: LicenseDetails
       cmdlet-name: New-AzConnectedLicenseDetail
+  
+  # Generate complex object for Update-AzConnectedLicenseProfile
+  - model-cmdlet:
+    - model-name: ProductFeatureUpdate
+      cmdlet-name: Update-AzConnectedLicenseProfileFeature
+  # Generate complex object for New-AzConnectedLicenseProfile, change prefix to New- will cause CI styling issue
+  - model-cmdlet:
+    - model-name: ProductFeature
+      cmdlet-name: New-AzConnectedLicenseProfileFeature
 
 ```

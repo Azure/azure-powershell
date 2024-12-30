@@ -45,6 +45,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        public void TestVirtualNetworkCRUDWithIpamPool()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkCRUDWithIpamPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
         public void TestVirtualNetworkSubnetCRUD()
         {
             TestRunner.RunTestScript("Test-subnetCRUD");
