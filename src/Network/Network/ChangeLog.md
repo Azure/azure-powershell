@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlet `AddAzureVirtualNetworkPeering` to add support for subnet peering
 
 ## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
@@ -33,7 +34,6 @@
     - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
     - `New-AzNetworkManagerSecurityUserGroupItem`
 * Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
-* Updated cmdlet `AddAzureVirtualNetworkPeering` to add support for subnet peering
   
 ## Version 7.9.0
 * Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
