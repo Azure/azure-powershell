@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated SDK via autorest.powershell.
+* Added `Get-AzCognitiveServicesAccountRaiPolicy` cmdlet.
+* Added `New-AzCognitiveServicesAccountRaiPolicy` cmdlet.
+* Added `Remove-AzCognitiveServicesAccountRaiPolicy` cmdlet.
+* Added `Get-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
+* Added `New-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
+* Added `Remove-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
+* Added `Get-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
+* Added `New-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
+* Added `Remove-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
+* Added `Get-AzCognitiveServicesRaiContentFilters` cmdlet.
+* Added `Get-AzCognitiveServicesAccountDefenderForAISetting` cmdlet.
+* Added `New-AzCognitiveServicesAccountDefenderForAISetting` cmdlet.
+* Added `Get-AzCognitiveServicesAccountDeploymentSku` cmdlet.
+* Added `Get-AzCognitiveServicesAccountEncryptionScope` cmdlet.
+* Added `New-AzCognitiveServicesAccountEncryptionScope` cmdlet.
+* Added `Remove-AzCognitiveServicesAccountEncryptionScope` cmdlet.
+* Added `Get-AzCognitiveServicesAccountNetworkSecurityPerimeterConfiguration` cmdlet.
+* Added `Reconcile-AzCognitiveServicesAccountNetworkSecurityPerimeterConfiguration` cmdlet.
+* Added `Get-AzCognitiveServicesModelCapacity` cmdlet.
 
 ## Version 1.15.0
 * Upgraded nuget package to signed package.
