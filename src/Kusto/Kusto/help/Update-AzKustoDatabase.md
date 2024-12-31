@@ -19,7 +19,7 @@ Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <
  [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
  [-KeyVaultPropertyUserIdentity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,7 +28,7 @@ Update-AzKustoDatabase -InputObject <IKustoIdentity> [-CallerRole <CallerRole>] 
  [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
  [-KeyVaultPropertyUserIdentity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -310,6 +310,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group containing the Kusto cluster.
 
@@ -396,7 +411,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
 
 ## NOTES
 

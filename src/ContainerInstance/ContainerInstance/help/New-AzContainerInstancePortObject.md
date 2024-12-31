@@ -13,7 +13,7 @@ Create a in-memory object for ContainerPort
 ## SYNTAX
 
 ```
-New-AzContainerInstancePortObject -Port <Int32> [-Protocol <String>]
+New-AzContainerInstancePortObject -Port <Int32> [-Protocol <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -46,6 +46,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

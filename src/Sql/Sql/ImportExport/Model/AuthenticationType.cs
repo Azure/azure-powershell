@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
     {
         None,
         Sql,
-        AdPassword
+        AdPassword,
+        ManagedIdentity
     }
 }

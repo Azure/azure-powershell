@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
 * Fixed bug unexpected type issue: [#26752]
+* Added parameter `RequestedAccessTokenVersion` for `New-AzADApplication` and `Update-AzADApplication`
 
 ## Version 7.7.0
 * Updated Resources SDK to 2024-07-01.

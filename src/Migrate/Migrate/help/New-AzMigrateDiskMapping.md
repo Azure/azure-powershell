@@ -14,7 +14,7 @@ Creates a new disk mapping
 
 ```
 New-AzMigrateDiskMapping -DiskID <String> -IsOSDisk <String> -DiskType <String> [-DiskEncryptionSetID <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,15 +22,26 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 
 ## EXAMPLES
 
-### Example 1: Make disks
+### Example 1: Make Standard disks
 ```powershell
-New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
+New-AzMigrateDiskMapping -DiskID a -DiskType Standard_LRS -IsOSDisk 'true'
 ```
 
 ```output
-DiskEncryptionSetId DiskId   DiskType  IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
-------------------- ------   --------  -------- ------------------- ------------------------------   
-                      a      Standard  true
+DiskEncryptionSetId DiskId DiskType     IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
+------------------- ------ --------     -------- ------------------- ------------------------------   
+                    a      Standard_LRS true
+```
+
+### Example 2: Make Premium V2 disks
+```powershell
+New-AzMigrateDiskMapping -DiskID b -DiskType PremiumV2_LRS -IsOSDisk 'false'
+```
+
+```output
+DiskEncryptionSetId DiskId DiskType      IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
+------------------- ------ --------      -------- ------------------- ------------------------------   
+                    b      PremiumV2_LRS false
 ```
 
 Get disks object to provide input for New-AzMigrateServerReplication
@@ -91,6 +102,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

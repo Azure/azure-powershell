@@ -24,9 +24,9 @@ New-AzADApplication -DisplayName <String> [-AddIn <IMicrosoftGraphAddIn[]>]
  [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
- [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ReplyUrls <String[]>] [-RequestedAccessTokenVersion <Int32>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-ServiceManagementReference <String>]
+ [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -44,9 +44,9 @@ New-AzADApplication -DisplayName <String> -KeyCredentials <IMicrosoftGraphKeyCre
  [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
- [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ReplyUrls <String[]>] [-RequestedAccessTokenVersion <Int32>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-ServiceManagementReference <String>]
+ [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -64,10 +64,10 @@ New-AzADApplication -CertValue <String> -DisplayName <String> [-AddIn <IMicrosof
  [-IsFallbackPublicClient] [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
- [-StartDate <DateTime>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
- [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ReplyUrls <String[]>] [-RequestedAccessTokenVersion <Int32>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-ServiceManagementReference <String>]
+ [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-StartDate <DateTime>] [-Tag <String[]>]
+ [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -84,9 +84,9 @@ New-AzADApplication -DisplayName <String> -PasswordCredentials <IMicrosoftGraphP
  [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
- [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ReplyUrls <String[]>] [-RequestedAccessTokenVersion <Int32>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-ServiceManagementReference <String>]
+ [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -104,10 +104,10 @@ New-AzADApplication -DisplayName <String> [-AddIn <IMicrosoftGraphAddIn[]>]
  [-IsFallbackPublicClient] [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
- [-StartDate <DateTime>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
- [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ReplyUrls <String[]>] [-RequestedAccessTokenVersion <Int32>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-ServiceManagementReference <String>]
+ [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-StartDate <DateTime>] [-Tag <String[]>]
+ [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -580,6 +580,21 @@ The application reply Urls.
 Type: System.String[]
 Parameter Sets: (All)
 Aliases: WebRedirectUri
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestedAccessTokenVersion
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

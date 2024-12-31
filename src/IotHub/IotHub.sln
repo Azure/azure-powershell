@@ -43,13 +43,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHub.Management.Sdk", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{6C82EC40-709C-41AD-AA50-20D1746B3A01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IotHub.Management.Sdk", "IotHub.Management.Sdk\IotHub.Management.Sdk.csproj", "{32919D1F-CA97-E868-75D7-EB03630CD65D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B92C4EA2-0691-4DCF-8CE6-F5F1A4CD1F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -120,6 +119,13 @@ Global
 		{6C82EC40-709C-41AD-AA50-20D1746B3A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C82EC40-709C-41AD-AA50-20D1746B3A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C82EC40-709C-41AD-AA50-20D1746B3A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32919D1F-CA97-E868-75D7-EB03630CD65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32919D1F-CA97-E868-75D7-EB03630CD65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32919D1F-CA97-E868-75D7-EB03630CD65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32919D1F-CA97-E868-75D7-EB03630CD65D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B92C4EA2-0691-4DCF-8CE6-F5F1A4CD1F66} = {288D3263-6A42-42CB-AE65-AAD537508CC2}
@@ -139,5 +145,8 @@ Global
 		{3C48465F-6A9C-4B21-9670-B45B72FC7FE6} = {90417597-E872-4719-B425-6E7B289828E2}
 		{708379BC-B3EE-4B95-9156-8A7699B4EB5D} = {4E40A0F5-1A53-4325-A138-1D5325CBBD87}
 		{6C82EC40-709C-41AD-AA50-20D1746B3A01} = {4E40A0F5-1A53-4325-A138-1D5325CBBD87}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97F56575-6AC7-4F08-B798-B870BEB6F1AF}
 	EndGlobalSection
 EndGlobal
