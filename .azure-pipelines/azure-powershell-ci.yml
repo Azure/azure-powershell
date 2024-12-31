@@ -1,3 +1,13 @@
+parameters:
+- name: TargetModule
+  displayName: 'List of target modules, all modules if not provided'
+  type: string
+  default: 'all'
+- name: ForceRegenerate
+  displayName: 'Force regenerate autorest generated modules when pipeline triggered manually'
+  type: boolean
+  default: false
+
 variables:
   WindowsName: windows
   WindowsAgentPoolName: pool-windows-2019
@@ -12,7 +22,6 @@ variables:
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
-  IsGenerateBased: $[startsWith(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
@@ -22,9 +31,8 @@ variables:
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
-trigger: none
-
-pr:
+trigger:
+  batch: true
   branches:
     include:
       - future
@@ -35,8 +43,10 @@ jobs:
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool: pool-windows-2019
+
   steps:
   - checkout: self
+  - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
@@ -55,34 +65,89 @@ jobs:
       targetType: inline
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
+  
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
       targetType: inline
       pwsh: true
       script: |
-        if ("Manual" -eq "$(Build.Reason)") {
-          #TODO: change value of $trigger to the account who trigger this run
-          $trigger = 'Manual'
-        } else {
-          $trigger = "$(System.PullRequest.PullRequestNumber)"
+        $forceRegenerate = $false
+        if ('true' -eq '${{ parameters.ForceRegenerate }}') {
+          $forceRegenerate = $true
         }
-
-        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-        New-Item -Type File -Path $filesChangedOutputPath -Force
-        $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
 
         Write-Host "`n##[group]Filter changed files"
+        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+        New-Item -Type File -Path $filesChangedOutputPath -Force
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
-        if ("PullRequest" -eq "$(Build.Reason)") {
-          Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
+        $filesChanged = @()
+        if ("$(Build.reason)" -eq 'IndividualCI') {
+          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId "$(Build.SourceVersion)" -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
+        } elseif ("$(Build.reason)" -eq 'BatchedCI') {
+          $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)'
+          $batchedCommits | ForEach-Object {
+            Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId $_ -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
+          }
+        } elseif ("$(Build.reason)" -eq 'Manual') {
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+        } elseif ("$(Build.reason)" -eq 'Schedule') {
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
         } else {
-          Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+          Write-Host "##vso[task.logissue type=error]Invalid trigger: $(Build.reason)."
+          exit 1
         }
+        $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
+        
+        $baseBranchName = "origin/$(Build.SourceBranchName)"
+        $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
+        if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
+          $trigger = "$(Build.SourceVersion)"
+          $tmpBranchName += "/$(Build.SourceVersion)"
+          $prTitle = "[skip ci] Archive $(Build.SourceVersion)"
+        } else {
+          #TODO: replace $(Build.reason) with account when manual and datetime when schedule
+          $prTitle = "[skip ci] Archive $(Build.reason)"
+          if ("Manual" -eq "$(Build.Reason)") {
+            #TODO: change value of $trigger to the account who trigger this run
+            $trigger = 'Manual'
+          } elseif ("Schedule" -eq "$(Build.Reason)") {
+            #TODO: change value of $trigger to datetime this run was scheduled
+            $trigger = 'Schedule'
+          }
+        }
+        Write-Host "`n##[group]Switch from $baseBranchName to $tmpBranchName"
+        git fetch origin $(Build.SourceBranchName)
+        git checkout -b $tmpBranchName $baseBranchName
+
         Write-Host "`n##[group]build steps"
         $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
-        & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -SubTasksFilePath $subTasksFilePath -BuildReason $(Build.Reason) -Trigger $trigger
+        & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -ForceRegenerate $forceRegenerate -BuildReason $(Build.Reason) -Trigger $trigger
+
+        Write-Host "`n##[group]create PR"
+        $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
+        $diff = ( git status --short --untracked-files $generatedPath)
+        if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
+          return
+        }
+        #TODO: add better PR description
+        $prDescription = ""
+        $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
+
+        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+        git config user.name "azure-powershell-bot";
+        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
+        git add $generatedPath
+        git commit -m $prTitle
+        git push origin $tmpBranchName --force
+        
+        & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken $(GithubToken) -Description $prDescription
+
+        <#
+          this commidId will be useful when we push directly to target branch in the future
+          $commitId = (git rev-parse HEAD)
+        #>
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: build-${{ variables.TestFramework }}
@@ -119,8 +184,8 @@ jobs:
     displayName: 'Analyze'
     inputs:
       targetType: inline
-      workingDirectory: $(Build.SourcesDirectory)
       pwsh: true
+      workingDirectory: $(Build.SourcesDirectory)
       script: .azure-pipelines/PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
   - template: util/publish-artifacts-steps.yml
     parameters:
