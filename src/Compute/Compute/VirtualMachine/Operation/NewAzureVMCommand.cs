@@ -586,7 +586,9 @@ namespace Microsoft.Azure.Commands.Compute
                     publicIpSku = _cmdlet.PublicIpSku == "Basic" ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
                 else {
-                    publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
+                    // since Az 13.0.0 and Az.Compute 9.0.0, if PublicIpSku is not specified, it should be Standard by default.
+                    // https://aka.ms/ipbasictostandard
+                    publicIpSku = PublicIPAddressStrategy.Sku.Standard;
                 }
                 
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))

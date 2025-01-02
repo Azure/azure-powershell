@@ -84,7 +84,7 @@ The list of curated data extraction commands to be executed directly against the
 To construct, see NOTES section for COMMAND properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBareMetalMachineCommandSpecification[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineCommandSpecification[]
 Parameter Sets: (All)
 Aliases:
 

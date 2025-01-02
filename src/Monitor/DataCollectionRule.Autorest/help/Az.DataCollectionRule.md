@@ -87,7 +87,7 @@ Deletes a data collection rule.
 Deletes an association.
 
 ### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
-update part of a data collection endpoint.
+update a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Update a data collection rule.

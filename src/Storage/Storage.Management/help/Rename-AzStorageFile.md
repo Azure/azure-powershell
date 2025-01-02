@@ -17,14 +17,14 @@ Renames a file.
 Rename-AzStorageFile [-ShareName] <String> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-ContentType <String>] [-Permission <String>] [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot]
  [-Force] [-AsJob] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileObject
 ```
 Rename-AzStorageFile [-ShareFileClient] <ShareFileClient> [[-DestinationPath] <String>] [-ContentType <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Rename-AzStorageFile [-ShareFileClient] <ShareFileClient> [[-DestinationPath] <S
 ```
 Rename-AzStorageFile [-ShareClient] <ShareClient> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Rename-AzStorageFile [-ShareClient] <ShareClient> [-SourcePath] <String> [[-Dest
 Rename-AzStorageFile [-ShareDirectoryClient] <ShareDirectoryClient> [-SourcePath] <String>
  [[-DestinationPath] <String>] [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,7 @@ Rename-AzStorageFile -SourcePath testfile1 -DestinationPath testfile2 -ShareName
 ```
 
 ```output
-Directory: https://myaccount.file.core.windows.net/myshare
+AccountName: myaccount, ShareName: myshare
 
 Type                Length Name
 ----                ------ ----
@@ -70,7 +70,7 @@ Get-AzStorageFile -ShareName myshare -Path testfile1 | Rename-AzStorageFile -Des
 ```
 
 ```output
-Directory: https://myaccount.file.core.windows.net/myshare
+AccountName: myaccount, ShareName: myshare
 
 Type                Length Name
 ----                ------ ----
@@ -228,6 +228,21 @@ If SDDL is specified as input, it must have owner, group and dacl.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

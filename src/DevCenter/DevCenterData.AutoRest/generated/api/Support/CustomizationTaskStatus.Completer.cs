@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "WaitingForUserInputUac".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'WaitingForUserInputUac'", "WaitingForUserInputUac", global::System.Management.Automation.CompletionResultType.ParameterValue, "WaitingForUserInputUac");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "WaitingForUserSession".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'WaitingForUserSession'", "WaitingForUserSession", global::System.Management.Automation.CompletionResultType.ParameterValue, "WaitingForUserSession");
+            }
         }
     }
 }

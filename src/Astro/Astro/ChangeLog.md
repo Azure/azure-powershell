@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Fixed the failure issue when deleting or replacing UserAssignedIdentity.
+
 ## Version 0.1.0
 * First preview release for module Az.Astro
 

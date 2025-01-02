@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnvCert
 
 ## SYNOPSIS
-Create a Certificate.
+create a Certificate.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzContainerAppConnectedEnvCert -InputObject <IAppIdentity> [-InputFile <Stri
 ```
 
 ## DESCRIPTION
-Create a Certificate.
+create a Certificate.
 
 ## EXAMPLES
 

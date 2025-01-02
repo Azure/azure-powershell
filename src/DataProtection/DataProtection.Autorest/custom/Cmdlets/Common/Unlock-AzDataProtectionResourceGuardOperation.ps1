@@ -27,9 +27,13 @@ function Unlock-AzDataProtectionResourceGuardOperation
         [System.String]
         ${ResourceToBeDeleted},
         
-        [Parameter(ParameterSetName="UnlockDelete", Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.')]
+        [Parameter(ParameterSetName="UnlockDelete", Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.')]
         [System.String]
         ${Token},
+
+        [Parameter(ParameterSetName="UnlockDelete", Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
+        [System.Security.SecureString]
+        ${SecureToken},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -103,10 +107,21 @@ function Unlock-AzDataProtectionResourceGuardOperation
             $null = $PSBoundParameters.Add("ResourceGuardOperationRequest", $ResourceGuardOperationRequestInternal)
         }
 
-        if($PSBoundParameters.ContainsKey("Token"))
-        {            
-            $null = $PSBoundParameters.Remove("Token")
-            $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+        $hasToken = $PSBoundParameters.Remove("Token")
+        $hasSecureToken = $PSBoundParameters.Remove("SecureToken")
+        if($hasToken -or $hasSecureToken)
+        {   
+            if($hasSecureToken -and $hasToken){
+                throw "Both Token and SecureToken parameters cannot be provided together"
+            }
+            elseif($hasToken){
+                Write-Warning -Message 'The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.'
+                $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+            }
+            else{
+                $plainToken = UnprotectSecureString -SecureString $SecureToken
+                $null = $PSBoundParameters.Add("Token", "Bearer $plainToken")
+            }
         }
        
         Az.DataProtection.Internal\Unlock-AzDataProtectionDppResourceGuardProxyDelete @PSBoundParameters

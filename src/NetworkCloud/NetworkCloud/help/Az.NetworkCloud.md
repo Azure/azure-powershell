@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: NetworkCloud cmdlets
 
 ## Az.NetworkCloud Cmdlets
 ### [Deploy-AzNetworkCloudCluster](Deploy-AzNetworkCloudCluster.md)
-Deploy the cluster to the provided rack.
+Deploy the cluster using the rack configuration provided during creation.
 
 ### [Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement](Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement.md)
 Disable remote vendor management of the provided storage appliance.
@@ -43,6 +43,9 @@ Get properties of the provided virtual machine console.
 
 ### [Get-AzNetworkCloudKubernetesCluster](Get-AzNetworkCloudKubernetesCluster.md)
 Get properties of the provided the Kubernetes cluster.
+
+### [Get-AzNetworkCloudKubernetesClusterFeature](Get-AzNetworkCloudKubernetesClusterFeature.md)
+Get properties of the provided the Kubernetes cluster feature.
 
 ### [Get-AzNetworkCloudL2Network](Get-AzNetworkCloudL2Network.md)
 Get properties of the provided layer 2 (L2) network.
@@ -98,8 +101,14 @@ The URL to storage account with the command execution results and the command ex
 ### [Invoke-AzNetworkCloudBareMetalMachineUncordon](Invoke-AzNetworkCloudBareMetalMachineUncordon.md)
 Uncordon the provided bare metal machine's Kubernetes node.
 
+### [Invoke-AzNetworkCloudClusterContinueVersionUpdate](Invoke-AzNetworkCloudClusterContinueVersionUpdate.md)
+Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.
+
 ### [Invoke-AzNetworkCloudClusterVersionUpdate](Invoke-AzNetworkCloudClusterVersionUpdate.md)
 Update the version of the provided cluster to one of the available supported versions.
+
+### [Invoke-AzNetworkCloudScanClusterRuntime](Invoke-AzNetworkCloudScanClusterRuntime.md)
+Triggers the execution of a runtime protection scan to detect and remediate detected issues, in accordance with the cluster configuration.
 
 ### [Invoke-AzNetworkCloudVirtualMachineReimage](Invoke-AzNetworkCloudVirtualMachineReimage.md)
 Reimage the provided virtual machine.
@@ -151,6 +160,9 @@ Create an in-memory object for KeySetUser.
 
 ### [New-AzNetworkCloudKubernetesCluster](New-AzNetworkCloudKubernetesCluster.md)
 Create a new Kubernetes cluster or update the properties of the existing one.
+
+### [New-AzNetworkCloudKubernetesClusterFeature](New-AzNetworkCloudKubernetesClusterFeature.md)
+Create a new Kubernetes cluster feature or update properties of the Kubernetes cluster feature if it exists.
 
 ### [New-AzNetworkCloudL2Network](New-AzNetworkCloudL2Network.md)
 Create a new layer 2 (L2) network or update the properties of the existing network.
@@ -211,6 +223,9 @@ Delete the provided virtual machine console.
 
 ### [Remove-AzNetworkCloudKubernetesCluster](Remove-AzNetworkCloudKubernetesCluster.md)
 Delete the provided Kubernetes cluster.
+
+### [Remove-AzNetworkCloudKubernetesClusterFeature](Remove-AzNetworkCloudKubernetesClusterFeature.md)
+Delete the provided Kubernetes cluster feature.
 
 ### [Remove-AzNetworkCloudL2Network](Remove-AzNetworkCloudL2Network.md)
 Delete the provided layer 2 (L2) network.
@@ -285,6 +300,9 @@ Properties and tag updates can be done independently.
 ### [Update-AzNetworkCloudKubernetesCluster](Update-AzNetworkCloudKubernetesCluster.md)
 Patch the properties of the provided Kubernetes cluster, or update the tags associated with the Kubernetes cluster.
 Properties and tag updates can be done independently.
+
+### [Update-AzNetworkCloudKubernetesClusterFeature](Update-AzNetworkCloudKubernetesClusterFeature.md)
+Patch properties of the provided Kubernetes cluster feature.
 
 ### [Update-AzNetworkCloudL2Network](Update-AzNetworkCloudL2Network.md)
 Update tags associated with the provided layer 2 (L2) network.

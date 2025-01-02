@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudMetricsConfiguration+[NoContext]+ListByParent+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/linquan-sim-rg/providers/Microsoft.NetworkCloud/clusters/simulator/metricsConfigurations?api-version=2023-07-01+1": {
+  "Get-AzNetworkCloudMetricsConfiguration+[NoContext]+ListByParent+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/linquan-sim-rg/providers/Microsoft.NetworkCloud/clusters/simulator/metricsConfigurations?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/linquan-sim-rg/providers/Microsoft.NetworkCloud/clusters/simulator/metricsConfigurations?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/linquan-sim-rg/providers/Microsoft.NetworkCloud/clusters/simulator/metricsConfigurations?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudMetricsConfiguration+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/linquan-sim-rg/providers/Microsoft.NetworkCloud/clusters/simulator/metricsConfigurations/default?api-version=2023-07-01+1": {
+  "Get-AzNetworkCloudMetricsConfiguration+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/linquan-sim-rg/providers/Microsoft.NetworkCloud/clusters/simulator/metricsConfigurations/default?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/linquan-sim-rg/providers/Microsoft.NetworkCloud/clusters/simulator/metricsConfigurations/default?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/linquan-sim-rg/providers/Microsoft.NetworkCloud/clusters/simulator/metricsConfigurations/default?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

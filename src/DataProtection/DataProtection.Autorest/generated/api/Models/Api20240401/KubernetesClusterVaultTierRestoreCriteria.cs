@@ -120,7 +120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401
         /// Gets or sets the resource modifier reference. This property sets the reference for resource modifier during restore.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.INamespacedNameResource ResourceModifierReference { get => (this._resourceModifierReference = this._resourceModifierReference ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource()); set => this._resourceModifierReference = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.INamespacedNameResource ResourceModifierReference { get => (this._resourceModifierReference = this._resourceModifierReference ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource()); set => this._resourceModifierReference = value; }
 
         /// <summary>Name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
