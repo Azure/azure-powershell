@@ -1,6 +1,6 @@
 BeforeAll {
     if (-not (Get-Module AzDev)) {
-        Import-Module "$PSScriptRoot/../../Output/AzDev/AzDev.psd1"
+        Import-Module "$PSScriptRoot/../../../../artifacts/AzDev/AzDev.psd1"
     }
 }
 
