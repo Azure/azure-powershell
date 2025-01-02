@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private DeploymentValidateResult ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        private object ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
             var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
 
