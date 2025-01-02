@@ -21,13 +21,13 @@ ModuleVersion = '0.0.1'
 GUID = 'e989d571-a6ed-4912-bf5c-7b0c55261607'
 
 # Author of this module
-Author = 'Yeming Liu'
+Author = 'Microsoft Corporation'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '(c) Yeming Liu. All rights reserved.'
+Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
 # Description = ''
