@@ -1,7 +1,6 @@
 ## Next
 - Feature: further distinguish track 1/2 SDKs, data/management plane, package/project.
 - Bug: `obj/` folder is not ignored
-- Connect common repo and ps repo
 - Local static analysis (Invoke-AzStaticAnalyzer)
 - New-TestEnvironment and other existing tools
 - Deploy compliant resources
@@ -13,6 +12,7 @@
 
 ## 2025/1/2
 - Misc: moved to azure-powershell repo
+- Feature: Connect common repo and ps repo
 
 ## 2024/12/30
 - Fix: path issue on Windows

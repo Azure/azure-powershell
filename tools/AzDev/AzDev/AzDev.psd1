@@ -66,10 +66,11 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 FormatsToProcess = @('AzDev.format.ps1xml')
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('bin/AzDev.dll')
+NestedModules = @('bin/AzDev.dll',
+    'CommonRepo.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = '*'
+FunctionsToExport = 'Connect-DevCommonRepo', 'Disconnect-DevCommonRepo'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-DevContext', 'Set-DevContext',

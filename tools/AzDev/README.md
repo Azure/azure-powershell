@@ -1,14 +1,14 @@
 # AzDev - developer module for Azure PowerShell
 
-This module is designed to help developers of Azure PowerShell modules. It provides tools to troubleshoot issues, get repo inventory, and automate common tasks.
+This module is designed to help developers of Azure PowerShell modules. It provides tools to assist development, troubleshooting issues, etc.
+
+All the cmdlets in this module are prefixed with `Dev-` to avoid conflicts with other modules.
 
 ## Quick start
 
 ```powershell
 # build the module
 ./tools/AzDev/build.ps1
-# test the module (.net 8)
-dotnet test
 # import the module
 Import-Module ./artifacts/AzDev/AzDev.psd1
 # set up the context (only once)
@@ -48,6 +48,18 @@ Test             70
 Track1Sdk        48
 Other             8
 LegacyHelper      4
+```
+
+### Connect azure-powershell and azure-powershell-common
+
+Help you connect the azure-powershell and azure-powershell-common repositories for developing or debugging.
+
+```powershell
+# Connect
+Connect-CommonRepo
+
+# Disconnect
+Disconnect-CommonRepo
 ```
 
 ### Autorest helper
