@@ -18,7 +18,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewExtensions
 {
     using Formatters;
-    using Management.Resources.Models;
+    using Management.ResourceManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using System;
     using System.Collections.Generic;

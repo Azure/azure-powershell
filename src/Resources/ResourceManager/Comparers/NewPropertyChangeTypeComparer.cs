@@ -17,7 +17,7 @@
 //The reason for this is this module has both cmdlets that use the old sdk version and cmdlets that use the new one, so this one acts as the class to be used by the cmdlets using the newer bits for the time being
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewComparers
 {
-    using Management.Resources.Models;
+    using Management.ResourceManager.Models;
     using System.Collections.Generic;
 
     public class PropertyChangeTypeComparer : IComparer<PropertyChangeType>
