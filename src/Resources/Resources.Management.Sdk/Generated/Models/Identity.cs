@@ -8,7 +8,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Identity for the resource.
+    /// Identity for the resource.  Policy assignments support a maximum of one
+    /// identity.  That is either a system assigned identity or a single user
+    /// assigned identity.
     /// </summary>
     public partial class Identity
     {
@@ -24,21 +26,23 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
         /// Initializes a new instance of the Identity class.
         /// </summary>
 
-        /// <param name="principalId">The principal ID of resource identity.
+        /// <param name="principalId">The principal ID of the resource identity.  This property will only be
+        /// provided for a system assigned identity
         /// </param>
 
-        /// <param name="tenantId">The tenant ID of resource.
+        /// <param name="tenantId">The tenant ID of the resource identity.  This property will only be
+        /// provided for a system assigned identity
         /// </param>
 
-        /// <param name="type">The identity type.
-        /// Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;SystemAssigned,
-        /// UserAssigned&#39;, &#39;None&#39;</param>
+        /// <param name="type">The identity type. This is the only required field when adding a system or
+        /// user assigned identity to a resource.
+        /// Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;None&#39;</param>
 
-        /// <param name="userAssignedIdentities">The list of user identities associated with the resource. The user identity
-        /// dictionary key references will be ARM resource ids in the form:
+        /// <param name="userAssignedIdentities">The user identity associated with the policy. The user identity dictionary
+        /// key references will be ARM resource ids in the form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </param>
-        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, IdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, IdentityUserAssignedIdentitiesValue>))
+        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesValue>))
 
         {
             this.PrincipalId = principalId;
@@ -55,30 +59,32 @@ namespace Microsoft.Azure.Management.ResourceManager.Models
 
 
         /// <summary>
-        /// Gets the principal ID of resource identity.
+        /// Gets the principal ID of the resource identity.  This property will only be
+        /// provided for a system assigned identity
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "principalId")]
         public string PrincipalId {get; private set; }
 
         /// <summary>
-        /// Gets the tenant ID of resource.
+        /// Gets the tenant ID of the resource identity.  This property will only be
+        /// provided for a system assigned identity
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tenantId")]
         public string TenantId {get; private set; }
 
         /// <summary>
-        /// Gets or sets the identity type. Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;SystemAssigned, UserAssigned&#39;, &#39;None&#39;
+        /// Gets or sets the identity type. This is the only required field when adding
+        /// a system or user assigned identity to a resource. Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;None&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public ResourceIdentityType? Type {get; set; }
 
         /// <summary>
-        /// Gets or sets the list of user identities associated with the resource. The
-        /// user identity dictionary key references will be ARM resource ids in the
-        /// form:
+        /// Gets or sets the user identity associated with the policy. The user
+        /// identity dictionary key references will be ARM resource ids in the form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedIdentities")]
-        public System.Collections.Generic.IDictionary<string, IdentityUserAssignedIdentitiesValue> UserAssignedIdentities {get; set; }
+        public System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesValue> UserAssignedIdentities {get; set; }
     }
 }
