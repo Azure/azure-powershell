@@ -39,7 +39,7 @@
     * `New-AzPolicyExemption`
     * `Update-AzPolicyAssignment`
     * `Update-AzPolicyExemption`
-* Fixed bug deserializing property: `policyDefinitionReferenceId` [#25112] 
+* Fixed bug deserializing property: `policyDefinitionReferenceId` [#25112]
 * Fixed overriding of Bicep parameters in Deployment cmdlets to support `SecureString` parameters.
 * Added Test cmdlets for Deployment Stacks.
 
