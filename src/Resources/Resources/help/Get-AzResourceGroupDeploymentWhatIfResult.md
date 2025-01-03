@@ -229,7 +229,7 @@ Accept wildcard characters: False
 The deployment mode.
 
 ```yaml
-Type: Microsoft.Azure.Management.Resources.Models.DeploymentMode
+Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: Incremental, Complete
@@ -305,7 +305,7 @@ Accept wildcard characters: False
 The What-If result format.
 
 ```yaml
-Type: Microsoft.Azure.Management.Resources.Models.WhatIfResultFormat
+Type: Microsoft.Azure.Management.ResourceManager.Models.WhatIfResultFormat
 Parameter Sets: (All)
 Aliases:
 Accepted values: ResourceIdOnly, FullResourcePayloads
