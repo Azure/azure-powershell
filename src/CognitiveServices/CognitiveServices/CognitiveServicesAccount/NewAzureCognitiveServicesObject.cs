@@ -128,18 +128,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         WriteObject(obj);
                     }
                     break;
-                case CognitiveServicesObjectType.EncryptionScopeProperties:
-                    {
-                        var obj = new EncryptionScopeProperties();
-                        WriteObject(obj);
-                    }
-                    break;
-                case CognitiveServicesObjectType.KeyVaultProperties:
-                    {
-                        var obj = new KeyVaultProperties();
-                        WriteObject(obj);
-                    }
-                    break;
             }
         }
     }
@@ -155,8 +143,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         RaiBlocklistProperties,
         RaiBlocklistItemProperties,
         CustomBlocklistConfig,
-        RaiPolicyContentFilter,
-        EncryptionScopeProperties,
-        KeyVaultProperties
+        RaiPolicyContentFilter
     }
 }
