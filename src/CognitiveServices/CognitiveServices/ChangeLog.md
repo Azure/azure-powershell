@@ -32,11 +32,6 @@
 * Added `Get-AzCognitiveServicesAccountDefenderForAISetting` cmdlet.
 * Added `New-AzCognitiveServicesAccountDefenderForAISetting` cmdlet.
 * Added `Get-AzCognitiveServicesAccountDeploymentSku` cmdlet.
-* Added `Get-AzCognitiveServicesAccountEncryptionScope` cmdlet.
-* Added `New-AzCognitiveServicesAccountEncryptionScope` cmdlet.
-* Added `Remove-AzCognitiveServicesAccountEncryptionScope` cmdlet.
-* Added `Get-AzCognitiveServicesAccountNetworkSecurityPerimeterConfiguration` cmdlet.
-* Added `Reconcile-AzCognitiveServicesAccountNetworkSecurityPerimeterConfiguration` cmdlet.
 * Added `Get-AzCognitiveServicesModelCapacity` cmdlet.
 
 ## Version 1.15.0

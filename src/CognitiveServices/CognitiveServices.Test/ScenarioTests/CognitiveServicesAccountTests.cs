@@ -300,20 +300,6 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestEncryptionScope()
-        {
-            TestRunner.RunTestScript("Test-EncryptionScope");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNsp()
-        {
-            TestRunner.RunTestScript("Test-NetworkSecurityPerimeterConfiguration");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDefenderForAISetting()
         {
             TestRunner.RunTestScript("Test-DefenderForAISetting");
