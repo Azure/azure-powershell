@@ -61,7 +61,7 @@ This command gets the keys for the specified Azure Storage account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -74,12 +74,9 @@ Accept wildcard characters: False
 
 ### -ListKerbKey
 Lists the Kerberos keys (if active directory enabled) for the specified storage account.
-Kerberos key is generated per storage account for Azure Files identity based authentication either with Microsoft Entra Domain Service (Microsoft Entra Domain Services) or Active Directory Domain Service (AD DS). 
-It is used as the password of the identity registered in the domain service that represents the storage account. 
-Kerberos key does not provide access permission to perform any control or data plane read or write operations against the storage account.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -91,10 +88,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account for which this cmdlet gets keys.
+Storage Account Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountName, AccountName
 
@@ -109,7 +106,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -121,10 +118,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the Storage account.
+Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -144,10 +141,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Storage.Models.StorageAccountKey
+### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccountKey
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzStorageAccountKey](./New-AzStorageAccountKey.md)
