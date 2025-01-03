@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: Kusto cmdlets
 
 ## Az.Kusto Cmdlets
+### [Add-AzKustoClusterCalloutPolicy](Add-AzKustoClusterCalloutPolicy.md)
+Adds a list of callout policies for engine services.
+
 ### [Add-AzKustoClusterLanguageExtension](Add-AzKustoClusterLanguageExtension.md)
 Add a list of language extensions that can run within KQL queries.
 
@@ -23,7 +26,13 @@ Returns an attached database configuration.
 ### [Get-AzKustoCluster](Get-AzKustoCluster.md)
 Gets a Kusto cluster.
 
+### [Get-AzKustoClusterCalloutPolicy](Get-AzKustoClusterCalloutPolicy.md)
+Returns the allowed callout policies for the specified service.
+
 ### [Get-AzKustoClusterFollowerDatabase](Get-AzKustoClusterFollowerDatabase.md)
+Returns a list of databases that are owned by this cluster and were followed by another cluster.
+
+### [Get-AzKustoClusterFollowerDatabaseGet](Get-AzKustoClusterFollowerDatabaseGet.md)
 Returns a list of databases that are owned by this cluster and were followed by another cluster.
 
 ### [Get-AzKustoClusterLanguageExtension](Get-AzKustoClusterLanguageExtension.md)
@@ -124,6 +133,9 @@ Deletes the attached database configuration with the given name.
 
 ### [Remove-AzKustoCluster](Remove-AzKustoCluster.md)
 Deletes a Kusto cluster.
+
+### [Remove-AzKustoClusterCalloutPolicy](Remove-AzKustoClusterCalloutPolicy.md)
+Removes callout policy for engine services.
 
 ### [Remove-AzKustoClusterLanguageExtension](Remove-AzKustoClusterLanguageExtension.md)
 Remove a list of language extensions that can run within KQL queries.

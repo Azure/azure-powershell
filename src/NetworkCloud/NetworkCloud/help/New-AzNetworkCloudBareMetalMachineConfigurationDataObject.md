@@ -15,7 +15,7 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 ```
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword <SecureString>
  -BmcCredentialsUsername <String> -BmcMacAddress <String> -BootMacAddress <String> -RackSlot <Int64>
- -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>]
+ -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 
 ### Example 1: Create an in-memory object for BareMetalMachineConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
 
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername username -BmcMacAddress "00:BB:CC:DD:EE:FF" -BootMacAddress "00:BB:CC:DD:EE:FF" -RackSlot 1 -SerialNumber serialNumber -MachineDetail machineDetail -MachineName machineName
 ```
@@ -133,6 +133,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RackSlot
 The slot the physical machine is in the rack based on the BOM configuration.
 
@@ -172,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineConfigurationData
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineConfigurationData
 
 ## NOTES
 

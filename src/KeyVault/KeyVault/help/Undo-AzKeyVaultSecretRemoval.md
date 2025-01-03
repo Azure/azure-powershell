@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 ### -Id
 The URI of the KeyVault Secret.
-Please ensure it follows the format: https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>
+Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
 
 ```yaml
 Type: String

@@ -27,7 +27,7 @@ New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-Su
  [-UserData <String>] [-VMDeviceModel <VirtualMachineDeviceModelType>]
  [-VMImageRepositoryCredentialsPassword <SecureString>] [-VMImageRepositoryCredentialsRegistryUrl <String>]
  [-VMImageRepositoryCredentialsUsername <String>] [-VirtioInterface <VirtualMachineVirtioInterfaceType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ $sshPublicKey = @{
     KeyData = "ssh-rsa aaaKyfsdx= fakekey@vm"
 }
 
-$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$securePassword = ConvertTo-SecureString "password" -asplaintext -force
 
 New-AzNetworkCloudVirtualMachine -Name vmName  -ResourceGroupName resourceGroup -AdminUsername adminUsername -CloudServiceNetworkAttachmentAttachedNetworkId csnAttachedNetworkId -CloudServiceNetworkAttachmentIPAllocationMethod ipAllocationMethod -CpuCore cpuCore -ExtendedLocationName extendedLocationName -ExtendedLocationType "Custom" -Location location -SubscriptionId subscriptionId -MemorySizeGb memorySizeGb -OSDiskSizeGb osDiskSizeGb -VMImage vmImage -BootMethod bootMethod -CloudServiceNetworkAttachmentDefaultGateway defaultGateway -CloudServiceNetworkAttachmentName csnAttachmentName -IsolateEmulatorThread isolateEmulatorThread -NetworkAttachment $networkAttachment -NetworkData networkData -OSDiskCreateOption osDiskCreationOption -OSDiskDeleteOption osDiskDeleteOption -PlacementHint $hint -SshPublicKey $sshPublicKey -Tag @{tags = "tags"} -UserData userData -VirtioInterface virtioInterface -VMDeviceModel vmDeviceModel -VMImageRepositoryCredentialsUsername registryUsername -VMImageRepositoryCredentialsPassword $securePassword -VMImageRepositoryCredentialsRegistryUrl registryUrl
 ```
@@ -297,7 +297,8 @@ Accept wildcard characters: False
 ```
 
 ### -MemorySizeGb
-The memory size of the virtual machine in GB.
+The memory size of the virtual machine.
+Allocations are measured in gibibytes.
 
 ```yaml
 Type: System.Int64
@@ -331,7 +332,7 @@ The list of network attachments to the virtual machine.
 To construct, see NOTES section for NETWORKATTACHMENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.INetworkAttachment[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.INetworkAttachment[]
 Parameter Sets: (All)
 Aliases:
 
@@ -403,8 +404,9 @@ Accept wildcard characters: False
 ```
 
 ### -OSDiskSizeGb
-The size of the disk in gigabytes.
+The size of the disk.
 Required if the createOption is Ephemeral.
+Allocations are measured in gibibytes.
 
 ```yaml
 Type: System.Int64
@@ -423,9 +425,24 @@ The scheduling hints for the virtual machine.
 To construct, see NOTES section for PLACEMENTHINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IVirtualMachinePlacementHint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachinePlacementHint[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -456,7 +473,7 @@ Each key will be added to the virtual machine using the cloud-init ssh_authorize
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -657,7 +674,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachine
 
 ## NOTES
 

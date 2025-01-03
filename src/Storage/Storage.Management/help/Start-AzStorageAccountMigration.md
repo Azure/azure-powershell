@@ -18,28 +18,28 @@ Zone-redundant storage (ZRS) replicates your storage account synchronously acros
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -TargetSku <String> [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CustomerViaJsonString
-```
-Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaJsonFilePath
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CustomerViaJsonString
+```
+Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaIdentityExpanded
 ```
 Start-AzStorageAccountMigration -InputObject <IStorageIdentity> -TargetSku <String> [-Name <String>]
  [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +91,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -223,13 +223,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group within the user's subscription.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -244,7 +259,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: False

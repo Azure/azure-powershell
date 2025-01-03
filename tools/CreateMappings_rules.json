@@ -939,5 +939,17 @@
   {
     "alias": "NeonPostgres",
     "module": "NeonPostgres"
+  },
+  {
+    "module": "ComputeFleet",
+    "alias": "ComputeFleet"
+  },
+  {
+    "module": "ComputeSchedule",
+    "alias": "ComputeSchedule"
+  },
+  {
+    "module": "DeviceRegistry",
+    "alias": "DeviceRegistry"
   }
 ]

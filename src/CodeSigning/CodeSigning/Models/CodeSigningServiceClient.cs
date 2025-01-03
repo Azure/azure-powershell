@@ -78,7 +78,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             GetCertificateProfileClient(endpoint);
 
             var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
-            return eku.Value?.ToArray();
+
+            return eku.Value?.Distinct().ToArray();
         }
         public string[] GetCodeSigningEku(string metadataPath)
         {

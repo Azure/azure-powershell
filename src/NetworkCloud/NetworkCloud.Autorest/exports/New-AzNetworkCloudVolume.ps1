@@ -23,12 +23,12 @@ Create a new volume or update the properties of the existing one.
 New-AzNetworkCloudVolume -Name volumeName -ResourceGroupName resourceGroupName -ExtendedLocationName extendedLocation -ExtendedLocationType "CustomLocation " -Location location -SizeMiB size -Tag @{ tag = "newTag" }
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IVolume
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVolume
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudvolume
 #>
 function New-AzNetworkCloudVolume {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IVolume])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVolume])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -79,7 +79,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

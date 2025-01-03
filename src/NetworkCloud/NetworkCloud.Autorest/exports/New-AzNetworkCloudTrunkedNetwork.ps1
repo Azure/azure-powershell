@@ -23,12 +23,12 @@ Create a new trunked network or update the properties of the existing trunked ne
 New-AzNetworkCloudTrunkedNetwork -Name trunkedNetworkName -ResourceGroupName trunkedNetworkRg -SubscriptionId subscriptionId -ExtendedLocationName extendedLocationName -ExtendedLocationType "CustomLocation" -Location location -Vlan vlans -IsolationDomainId isolationDomainId -InterfaceName interfaceName -Tag @{ tag = "tag" }
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ITrunkedNetwork
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudtrunkednetwork
 #>
 function New-AzNetworkCloudTrunkedNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ITrunkedNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetwork])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -104,7 +104,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
