@@ -59,20 +59,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public uint RouteServerAsn { get; set; }
-
         [Ps1Xml(Target = ViewControl.Table)]
         public List<string> RouteServerIps { get; set; }
-
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string HostedSubnet { get; set; }
         public List<PSRouteServerPeer> Peerings { get; set; }
         public bool AllowBranchToBranchTraffic { get; set; }
         public string PublicIpAddress { get; set; }
-
         [Ps1Xml(Target = ViewControl.Table)]
         public string HubRoutingPreference { get; set; }
-
         public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
 
         [JsonIgnore]
