@@ -17,6 +17,44 @@ $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pscloudtestrg/providers/Microsoft.Compute/virtualMachines/psbvtsqlvm"
 
+function Test-AzureVmWorkloadUnDeleteContainer
+{
+	$subscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault2"
+	$containerName = "sql-migration-vm2"
+
+	try
+	{   
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		# get soft deleted container 
+		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | where-object { $_.Name -match $containerName}
+
+		# verify isDeferredDelete - currently not supported
+
+		# undelete 
+		$undeletedContainer = Undo-AzRecoveryServicesBackupContainerDeletion -Container $container[0] -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID
+
+		# verify isDeferredDelete false - currently not supported
+
+		# Reregister  
+		$reregisteredContainer = Register-AzRecoveryServicesBackupContainer -Container $container -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID
+		
+		Assert-True {$reregisteredContainer.Status -eq "Registered"}
+
+		# soft delete container
+		Unregister-AzRecoveryServicesBackupContainer -Container $reregisteredCont -VaultId $vault.ID
+		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | where-object { $_.Name -match $containerName}
+
+		Assert-True {$container.Status -eq "SoftDeleted"}
+	}
+	finally	
+	{						
+		# no cleanup
+	}
+}
+
 function Get-AzureVmWorkloadContainer
 {
    $resourceGroupName = "sqlcontainer-pstest-rg" #"pstestwlRG1bca8"
