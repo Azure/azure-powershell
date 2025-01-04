@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var routeServer = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
-            PSVirtualHub routeServerToUpdate = this.ToPsVirtualHub(routeServer); //?? throw new PSArgumentException(Properties.Resources.RouteServerToUpdateNotFound);
+            PSVirtualHub routeServerToUpdate = this.ToPsVirtualHub(routeServer) ?? throw new PSArgumentException(Properties.Resources.RouteServerToUpdateNotFound);
 
             if (this.AllowBranchToBranchTraffic.HasValue)
             {
@@ -117,16 +117,17 @@ namespace Microsoft.Azure.Commands.Network
                 routeServerToUpdate.VirtualRouterAutoScaleConfiguration = this.VirtualRouterAutoScaleConfiguration;
             }
 
-            this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, routeServer);
+            var routeServerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualHub>(routeServerToUpdate);
+            this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, routeServerModel);
 
             routeServerToUpdate.ResourceGroupName = this.ResourceGroupName;
             routeServerToUpdate.Tag = TagsConversionHelper.CreateTagHashtable(routeServer.Tags);
             AddBgpConnectionsToPSVirtualHub(routeServerToUpdate, ResourceGroupName, RouteServerName);
             AddIpConfigurtaionToPSVirtualHub(routeServerToUpdate, this.ResourceGroupName, RouteServerName);
 
-            var routeServerModel = new PSRouteServer(routeServerToUpdate);
-            routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(routeServer.Tags);
-            WriteObject(routeServerModel, true);
+            var routeServerPSModel = new PSRouteServer(routeServerToUpdate);
+            routeServerPSModel.Tag = TagsConversionHelper.CreateTagHashtable(routeServer.Tags);
+            WriteObject(routeServerPSModel, true);
         }
     }
 }
