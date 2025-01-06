@@ -502,6 +502,11 @@ function New-AzADApplication {
     ${PublicClientRedirectUri},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Int32]
+    ${RequestedAccessTokenVersion},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[]]
@@ -513,7 +518,6 @@ function New-AzADApplication {
     # To construct, see NOTES section for REQUIREDRESOURCEACCESS properties and create a hash table.
     ${RequiredResourceAccess},
 
-    
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -671,6 +675,14 @@ function New-AzADApplication {
       $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri' = $PSBoundParameters['PublicClientRedirectUri'] }
       $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
     }
+
+    if ($PSBoundParameters['RequestedAccessTokenVersion'] -and $PSBoundParameters['Api']) {
+      $PSBoundParameters['Api'].RequestedAccessTokenVersion = $PSBoundParameters['RequestedAccessTokenVersion']
+    }
+    elseif ($PSBoundParameters['RequestedAccessTokenVersion']) {
+      $PSBoundParameters['Api'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApiApplication" -Property @{'RequestedAccessTokenVersion' = $PSBoundParameters['RequestedAccessTokenVersion'] }
+    }
+    $null = $PSBoundParameters.Remove('RequestedAccessTokenVersion')
 
     if ($PSBoundParameters['StartDate']) {
       $sd = $PSBoundParameters['StartDate']

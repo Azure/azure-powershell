@@ -23,12 +23,12 @@ Creates or updates an attached database configuration.
 New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf" -Name "myfollowerconfiguration" -Location "East US" -ClusterResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Kusto/Clusters/testnewkustocluster" -DatabaseName "mykustodatabase" -DefaultPrincipalsModificationKind "Union"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAttachedDatabaseConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoattacheddatabaseconfiguration
 #>
 function New-AzKustoAttachedDatabaseConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAttachedDatabaseConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

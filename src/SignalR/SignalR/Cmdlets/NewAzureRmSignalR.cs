@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         features: features,
                         cors: cors);
 
-                    Client.SignalR.CreateOrUpdate(parameters, ResourceGroupName, Name);
+                    Client.SignalR.CreateOrUpdate(ResourceGroupName, Name, parameters);
 
                     var signalr = Client.SignalR.Get(ResourceGroupName, Name);
                     WriteObject(new PSSignalRResource(signalr));

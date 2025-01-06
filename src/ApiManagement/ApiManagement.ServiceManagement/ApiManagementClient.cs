@@ -1403,7 +1403,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
             else
             {
-                apiCreateParams = new ApiCreateOrUpdateParameter(api.Path);
+                apiCreateParams = new ApiCreateOrUpdateParameter(path: api.Path);
                 apiCreateParams.SourceApiId = Utils.GetApiIdFullPath(apiId, sourceRevisionId);
             }
 
@@ -1909,8 +1909,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             int? subscriptionsLimit,
             PsApiManagementProductState? state)
         {
-            var productContract = new ProductContract(title)
-            {
+            var productContract = new ProductContract()
+            {   
+                DisplayName = title,
                 ApprovalRequired = approvalRequired,
                 Description = description,
                 SubscriptionRequired = subscriptionRequired,
@@ -2086,14 +2087,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (productId != null)
             {
                 createParameters = new SubscriptionCreateParameters(
-                    Utils.GetProductIdFullPath(productId),
-                    name);
+                    scope: Utils.GetProductIdFullPath(productId),
+                    displayName: name);
             }
             else
             {
                 createParameters = new SubscriptionCreateParameters(
-                    scope,
-                    name);
+                    scope: scope,
+                    displayName: name);
             }
 
             if (primaryKey != null)
@@ -2393,7 +2394,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             PsApiManagementGroupType? type,
             string externalId)
         {
-            var groupCreateParameters = new GroupCreateParameters(name)
+            var groupCreateParameters = new GroupCreateParameters(displayName: name)
             {
                 Description = description
             };
@@ -3219,7 +3220,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string clientSecret,
             string description)
         {
-            var openIdProviderCreateParameters = new OpenidConnectProviderContract(name, metadataEndpointUri, clientId);
+            var openIdProviderCreateParameters = new OpenidConnectProviderContract()
+            {
+                DisplayName = name,
+                MetadataEndpoint = metadataEndpointUri,
+                ClientId = clientId
+            };
 
             if (!string.IsNullOrWhiteSpace(clientSecret))
             {
@@ -3498,7 +3504,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string profileEditPolicyName,
             string signinTenant)
         {
-            var identityProviderCreateParameters = new IdentityProviderCreateContract(clientId, clientSecret);
+            var identityProviderCreateParameters = new IdentityProviderCreateContract(clientId: clientId, clientSecret: clientSecret);
             if (allowedTenants != null)
             {
                 identityProviderCreateParameters.AllowedTenants = allowedTenants;
@@ -3674,7 +3680,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             PsApiManagementBackendProxy proxy,
             PsApiManagementServiceFabric serviceFabric)
         {
-            var backendCreateParams = new BackendContract(url, protocol);
+            var backendCreateParams = new BackendContract(url: url, protocol: protocol);
             if (!string.IsNullOrEmpty(resourceId))
             {
                 backendCreateParams.ResourceId = resourceId;
@@ -3878,7 +3884,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string resourceid,
             string UseFromLocation)
         {
-            var cacheCreateParameters = new CacheContract(connectionString, UseFromLocation);
+            var cacheCreateParameters = new CacheContract(connectionString: connectionString, useFromLocation: UseFromLocation);
             if (description != null)
             {
                 cacheCreateParameters.Description = description;
@@ -3988,7 +3994,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             PsApiManagementPipelineDiagnosticSetting frontend,
             PsApiManagementPipelineDiagnosticSetting backend)
         {
-            var diagnosticContract = new DiagnosticContract(Utils.GetLoggerIdFullPath(loggerId));
+            var diagnosticContract = new DiagnosticContract(loggerId: Utils.GetLoggerIdFullPath(loggerId));
             if (!string.IsNullOrEmpty(alwaysLog))
             {
                 diagnosticContract.AlwaysLog = Utils.GetAlwaysLog(alwaysLog);

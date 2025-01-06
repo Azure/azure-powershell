@@ -28,16 +28,68 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// AzureKeyVaultSecretReference.
         /// </param>
 
+        /// <param name="server">Server name for connection. Type: string.
+        /// </param>
+
+        /// <param name="port">The port for the connection. Type: integer.
+        /// </param>
+
+        /// <param name="username">Username for authentication. Type: string.
+        /// </param>
+
+        /// <param name="database">Database name for connection. Type: string.
+        /// </param>
+
+        /// <param name="sslMode">SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3:
+        /// require, 4: verify-ca, 5: verify-full. Type: integer.
+        /// </param>
+
+        /// <param name="timeout">The time to wait (in seconds) while trying to establish a connection before
+        /// terminating the attempt and generating an error. Type: integer.
+        /// </param>
+
+        /// <param name="commandTimeout">The time to wait (in seconds) while trying to execute a command before
+        /// terminating the attempt and generating an error. Set to zero for infinity.
+        /// Type: integer.
+        /// </param>
+
+        /// <param name="trustServerCertificate">Whether to trust the server certificate without validating it. Type:
+        /// boolean.
+        /// </param>
+
+        /// <param name="readBufferSize">Determines the size of the internal buffer uses when reading. Increasing
+        /// may improve performance if transferring large values from the database.
+        /// Type: integer.
+        /// </param>
+
+        /// <param name="timezone">Gets or sets the session timezone. Type: string.
+        /// </param>
+
+        /// <param name="encoding">Gets or sets the .NET encoding that will be used to encode/decode
+        /// PostgreSQL string data. Type: string
+        /// </param>
+
         /// <param name="password">The Azure key vault secret reference of password in connection string.
         /// </param>
 
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public AzurePostgreSqlLinkedServiceTypeProperties(object connectionString = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public AzurePostgreSqlLinkedServiceTypeProperties(object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object timeout = default(object), object commandTimeout = default(object), object trustServerCertificate = default(object), object readBufferSize = default(object), object timezone = default(object), object encoding = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
         {
             this.ConnectionString = connectionString;
+            this.Server = server;
+            this.Port = port;
+            this.Username = username;
+            this.Database = database;
+            this.SslMode = sslMode;
+            this.Timeout = timeout;
+            this.CommandTimeout = commandTimeout;
+            this.TrustServerCertificate = trustServerCertificate;
+            this.ReadBufferSize = readBufferSize;
+            this.Timezone = timezone;
+            this.Encoding = encoding;
             this.Password = password;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
@@ -55,6 +107,81 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectionString")]
         public object ConnectionString {get; set; }
+
+        /// <summary>
+        /// Gets or sets server name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "server")]
+        public object Server {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port for the connection. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "port")]
+        public object Port {get; set; }
+
+        /// <summary>
+        /// Gets or sets username for authentication. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "username")]
+        public object Username {get; set; }
+
+        /// <summary>
+        /// Gets or sets database name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "database")]
+        public object Database {get; set; }
+
+        /// <summary>
+        /// Gets or sets sSL mode for connection. Type: integer. 0: disable, 1:allow,
+        /// 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sslMode")]
+        public object SslMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets the time to wait (in seconds) while trying to establish a
+        /// connection before terminating the attempt and generating an error. Type:
+        /// integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timeout")]
+        public object Timeout {get; set; }
+
+        /// <summary>
+        /// Gets or sets the time to wait (in seconds) while trying to execute a
+        /// command before terminating the attempt and generating an error. Set to zero
+        /// for infinity. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "commandTimeout")]
+        public object CommandTimeout {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to trust the server certificate without validating it.
+        /// Type: boolean.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "trustServerCertificate")]
+        public object TrustServerCertificate {get; set; }
+
+        /// <summary>
+        /// Gets or sets determines the size of the internal buffer uses when reading.
+        /// Increasing may improve performance if transferring large values from the
+        /// database. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "readBufferSize")]
+        public object ReadBufferSize {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets or sets the session timezone. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timezone")]
+        public object Timezone {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets or sets the .NET encoding that will be used to
+        /// encode/decode PostgreSQL string data. Type: string
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "encoding")]
+        public object Encoding {get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in connection
@@ -78,6 +205,17 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </exception>
         public virtual void Validate()
         {
+
+
+
+
+
+
+
+
+
+
+
 
             if (this.Password != null)
             {

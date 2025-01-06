@@ -46,7 +46,7 @@ New-AzNetworkCloudKubernetesCluster -ResourceGroupName resourceGroupName `
                 -Tag $tagHash
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesCluster
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -71,8 +71,8 @@ BGPADVERTISEMENT <IBgpAdvertisement[]>: The association of IP address pools to t
   [Community <String[]>]: The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
   [Peer <String[]>]: The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
 
-BGPIPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be allocated to Load Balancer services.
-  Address <String[]>: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+BGPIPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be allocated to load balancer services.
+  Address <String[]>: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
   Name <String>: The name used to identify this IP address pool for association with a BGP advertisement.
   [AutoAssign <BfdEnabled?>]: The indicator to determine if automatic allocation from the pool should occur.
   [OnlyUseHostIP <BfdEnabled?>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
@@ -83,8 +83,8 @@ BGPPEER <IServiceLoadBalancerBgpPeer[]>: The list of additional BgpPeer entities
   PeerAsn <Int64>: The autonomous system number expected from the remote end of the BGP session.
   [BfdEnabled <BfdEnabled?>]: The indicator of BFD enablement for this BgpPeer.
   [BgpMultiHop <BgpMultiHop?>]: The indicator to enable multi-hop peering support.
-  [HoldTime <String>]: The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
-  [KeepAliveTime <String>]: The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+  [HoldTime <String>]: Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+  [KeepAliveTime <String>]: Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
   [MyAsn <Int64?>]: The autonomous system number used for the local end of the BGP session.
   [Password <String>]: The authentication password for routers enforcing TCP MD5 authenticated sessions.
   [PeerPort <Int64?>]: The port used to connect this BGP session.
@@ -117,7 +117,15 @@ INITIALAGENTPOOLCONFIGURATION <IInitialAgentPoolConfiguration[]>: The agent pool
     Key <String>: The name of the label or taint.
     Value <String>: The value of the label or taint.
   [Taint <IKubernetesLabel[]>]: The taints applied to the nodes in this agent pool.
-  [UpgradeSettingMaxSurge <String>]: The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+  [UpgradeSettingDrainTimeout <Int64?>]: The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+  [UpgradeSettingMaxSurge <String>]: The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+  [UpgradeSettingMaxUnavailable <String>]: The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+
+L2SERVICELOADBALANCERCONFIGURATIONIPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be allocated to load balancer services.
+  Address <String[]>: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
+  Name <String>: The name used to identify this IP address pool for association with a BGP advertisement.
+  [AutoAssign <BfdEnabled?>]: The indicator to determine if automatic allocation from the pool should occur.
+  [OnlyUseHostIP <BfdEnabled?>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
 
 SSHPUBLICKEY <ISshPublicKey[]>: The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
   KeyData <String>: The SSH public key data.
@@ -125,7 +133,7 @@ SSHPUBLICKEY <ISshPublicKey[]>: The SSH configuration for the operating systems 
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudkubernetescluster
 #>
 function New-AzNetworkCloudKubernetesCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -176,7 +184,7 @@ param(
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IInitialAgentPoolConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IInitialAgentPoolConfiguration[]]
     # The agent pools that are created with this Kubernetes cluster for running critical system services and workloads.
     # This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster.
     # After creation, the management of agent pools is done using the agentPools sub-resource.
@@ -187,8 +195,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The Kubernetes version for this cluster.
-    # Accepts n.n, n.n.n, and n.n.n-n format.
-    # The interpreted version used will be resolved into this field after creation or update.
     ${KubernetesVersion},
 
     [Parameter(Mandatory)]
@@ -226,7 +232,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IL2NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2NetworkAttachmentConfiguration[]]
     # The list of Layer 2 Networks and related configuration for attachment.
     # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL2NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL2Network},
@@ -234,7 +240,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IL3NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL3NetworkAttachmentConfiguration[]]
     # The list of Layer 3 Networks and related configuration for attachment.
     # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL3NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL3Network},
@@ -242,7 +248,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ITrunkedNetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetworkAttachmentConfiguration[]]
     # The list of Trunked Networks and related configuration for attachment.
     # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationTrunkedNetwork},
@@ -250,7 +256,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBgpAdvertisement[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBgpAdvertisement[]]
     # The association of IP address pools to the communities and peers, allowing for announcement of IPs.
     # To construct, see NOTES section for BGPADVERTISEMENT properties and create a hash table.
     ${BgpAdvertisement},
@@ -258,15 +264,15 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IIPAddressPool[]]
-    # The list of pools of IP addresses that can be allocated to Load Balancer services.
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IIPAddressPool[]]
+    # The list of pools of IP addresses that can be allocated to load balancer services.
     # To construct, see NOTES section for BGPIPADDRESSPOOL properties and create a hash table.
     ${BgpIPAddressPool},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IServiceLoadBalancerBgpPeer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IServiceLoadBalancerBgpPeer[]]
     # The list of additional BgpPeer entities that the Kubernetes cluster will peer with.
     # All peering must be explicitly defined.
     # To construct, see NOTES section for BGPPEER properties and create a hash table.
@@ -282,7 +288,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
     # The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
     # In some cases, specification of public keys may be required to produce a working environment.
     # To construct, see NOTES section for CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY properties and create a hash table.
@@ -302,6 +308,14 @@ param(
     # The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane.
     # If not specified, all availability zones will be used.
     ${ControlPlaneNodeConfigurationAvailabilityZone},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IIPAddressPool[]]
+    # The list of pools of IP addresses that can be allocated to load balancer services.
+    # To construct, see NOTES section for L2SERVICELOADBALANCERCONFIGURATIONIPADDRESSPOOL properties and create a hash table.
+    ${L2ServiceLoadBalancerConfigurationIPAddressPool},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
@@ -345,7 +359,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
     # The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
     # In some cases, specification of public keys may be required to produce a working environment.
     # To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
@@ -353,7 +367,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

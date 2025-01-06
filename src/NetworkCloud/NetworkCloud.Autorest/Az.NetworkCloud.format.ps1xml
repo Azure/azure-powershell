@@ -33,6 +33,9 @@
             <Label>ConsoleName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>FeatureName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>KubernetesClusterName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -97,6 +100,9 @@
                 <PropertyName>ConsoleName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>FeatureName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>KubernetesClusterName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -138,9 +144,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.ErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ErrorDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -172,9 +178,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ManagedServiceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ManagedServiceIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.Operation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -212,9 +246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -252,9 +286,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -274,61 +308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.OperationStatusResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.OperationStatusResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>EndTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PercentComplete</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>EndTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PercentComplete</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -348,9 +330,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -400,9 +382,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.TrackedResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -464,9 +446,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.TrackedResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -486,9 +468,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AadConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.UserAssignedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AadConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.UserAssignedIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AadConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AadConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -508,9 +518,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AdministrativeCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AdministrativeCredentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AdministrativeCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AdministrativeCredentials</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -530,9 +540,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AdministratorConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AdministratorConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AdministratorConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AdministratorConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -552,9 +562,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentOptions</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentOptions</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentOptions</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentOptions</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -580,9 +590,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPool</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPool</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -650,9 +660,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -690,9 +700,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -712,9 +722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -734,9 +744,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -756,9 +766,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -820,21 +830,33 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolUpgradeSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolUpgradeSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolUpgradeSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolUpgradeSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>DrainTimeout</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MaxSurge</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxUnavailable</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>DrainTimeout</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MaxSurge</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxUnavailable</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -842,9 +864,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AvailableUpgrade</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AvailableUpgrade</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AvailableUpgrade</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AvailableUpgrade</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -870,9 +892,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachine</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachine</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachine</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachine</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -940,9 +962,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineCommandSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineCommandSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineCommandSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineCommandSpecification</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -968,9 +990,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineConfigurationData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineConfigurationData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineConfigurationData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineConfigurationData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1026,9 +1048,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineCordonParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineCordonParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineCordonParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineCordonParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1048,9 +1070,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySet</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1118,9 +1140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySetList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySetList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1140,9 +1162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySetPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySetPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1162,9 +1184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySetPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySetPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1190,9 +1212,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySetProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineKeySetProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineKeySetProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1260,9 +1282,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1282,9 +1304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachinePatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachinePatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachinePatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachinePatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1304,9 +1326,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachinePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachinePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachinePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachinePatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1326,9 +1348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachinePowerOffParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachinePowerOffParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachinePowerOffParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachinePowerOffParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1348,9 +1370,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1388,10 +1410,16 @@
             <Label>KubernetesVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>MachineClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MachineDetail</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MachineName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MachineRole</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MachineSkuId</Label>
@@ -1467,10 +1495,16 @@
                 <PropertyName>KubernetesVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MachineClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MachineDetail</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MachineName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MachineRole</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MachineSkuId</PropertyName>
@@ -1514,9 +1548,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineReplaceParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineReplaceParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineReplaceParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineReplaceParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1554,9 +1588,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineRunCommandParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineRunCommandParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineRunCommandParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineRunCommandParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1588,9 +1622,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineRunDataExtractsParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineRunDataExtractsParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineRunDataExtractsParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineRunDataExtractsParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1610,9 +1644,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineRunReadCommandsParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineRunReadCommandsParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineRunReadCommandsParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineRunReadCommandsParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1632,9 +1666,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpAdvertisement</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpAdvertisement</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpAdvertisement</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpAdvertisement</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1672,9 +1706,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpServiceLoadBalancerConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpServiceLoadBalancerConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpServiceLoadBalancerConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpServiceLoadBalancerConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1694,9 +1728,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySet</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1764,9 +1798,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1786,9 +1820,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1808,9 +1842,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1830,9 +1864,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1888,9 +1922,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetwork</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetwork</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetwork</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetwork</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1958,9 +1992,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetworkList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetworkList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetworkList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetworkList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1980,9 +2014,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetworkPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetworkPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetworkPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetworkPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2002,9 +2036,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetworkPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetworkPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetworkPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetworkPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2024,9 +2058,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetworkProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetworkProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.CloudServicesNetworkProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CloudServicesNetworkProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2094,9 +2128,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Cluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Cluster</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Cluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Cluster</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2164,9 +2198,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterAvailableUpgradeVersion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterAvailableUpgradeVersion</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterAvailableUpgradeVersion</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterAvailableUpgradeVersion</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2216,9 +2250,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterAvailableVersion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterAvailableVersion</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterAvailableVersion</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterAvailableVersion</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2244,9 +2278,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterCapacity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterCapacity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterCapacity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterCapacity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2308,9 +2342,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterDeployParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterContinueUpdateVersionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterDeployParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterContinueUpdateVersionParameters</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MachineGroupTargetingMode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MachineGroupTargetingMode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterDeployParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterDeployParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2330,9 +2386,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2352,9 +2408,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterManager</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterManager</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterManager</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterManager</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2422,9 +2478,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterManagerList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterManagerList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterManagerList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterManagerList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2444,9 +2500,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterManagerPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterManagerPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterManagerPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterManagerPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2466,9 +2522,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterManagerProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterManagerProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterManagerProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterManagerProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2524,9 +2580,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2594,9 +2650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfigurationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfigurationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfigurationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfigurationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2616,9 +2672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfigurationPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfigurationPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfigurationPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfigurationPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2638,9 +2694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfigurationPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfigurationPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfigurationPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfigurationPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2666,9 +2722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterMetricsConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterMetricsConfigurationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2718,9 +2774,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2740,9 +2796,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2762,9 +2818,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2862,9 +2918,105 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterUpdateVersionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterScanRuntimeParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ClusterUpdateVersionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterScanRuntimeParameters</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ScanActivity</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ScanActivity</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterSecretArchive</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterSecretArchive</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>KeyVaultId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UseKeyVault</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>KeyVaultId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UseKeyVault</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterUpdateStrategy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterUpdateStrategy</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaxUnavailable</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StrategyType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ThresholdType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ThresholdValue</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WaitTimeMinute</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaxUnavailable</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StrategyType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ThresholdType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ThresholdValue</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WaitTimeMinute</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterUpdateVersionParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ClusterUpdateVersionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2884,9 +3036,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Console</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CommandOutputSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Console</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.CommandOutputSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ContainerUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ContainerUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Console</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Console</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2954,9 +3128,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ConsoleList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ConsoleList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ConsoleList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ConsoleList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2976,9 +3150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ConsolePatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ConsolePatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ConsolePatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ConsolePatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2998,9 +3172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ConsolePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ConsolePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ConsolePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ConsolePatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3026,9 +3200,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ConsoleProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ConsoleProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ConsoleProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ConsoleProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3084,9 +3258,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ControlPlaneNodeConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ControlPlaneNodeConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3118,9 +3292,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ControlPlaneNodePatchConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodePatchConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ControlPlaneNodePatchConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodePatchConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3140,9 +3314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EgressEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EgressEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EgressEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EgressEndpoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3162,9 +3336,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EndpointDependency</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EndpointDependency</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EndpointDependency</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EndpointDependency</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3190,9 +3364,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ExtendedLocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ExtendedLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ExtendedLocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ExtendedLocation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3212,9 +3386,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.FeatureStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.FeatureStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.FeatureStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.FeatureStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3252,9 +3426,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.HardwareInventory</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.HardwareInventory</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.HardwareInventory</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.HardwareInventory</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3274,9 +3448,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.HardwareInventoryNetworkInterface</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.HardwareInventoryNetworkInterface</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.HardwareInventoryNetworkInterface</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.HardwareInventoryNetworkInterface</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3314,9 +3488,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.HardwareValidationStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.HardwareValidationStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.HardwareValidationStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.HardwareValidationStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3342,9 +3516,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ImageRepositoryCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IdentitySelector</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ImageRepositoryCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IdentitySelector</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IdentityType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserAssignedIdentityResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IdentityType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserAssignedIdentityResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ImageRepositoryCredentials</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ImageRepositoryCredentials</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3370,9 +3572,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.InitialAgentPoolConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.InitialAgentPoolConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.InitialAgentPoolConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.InitialAgentPoolConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3416,9 +3618,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IPAddressPool</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IPAddressPool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IPAddressPool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IPAddressPool</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3456,9 +3658,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KeySetUser</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUser</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KeySetUser</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUser</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3467,6 +3669,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserPrincipalName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -3478,15 +3683,18 @@
               <TableColumnItem>
                 <PropertyName>Description</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserPrincipalName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KeySetUserStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUserStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KeySetUserStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUserStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3518,9 +3726,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesCluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesCluster</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesCluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesCluster</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3588,9 +3796,79 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterFeature</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterFeature</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterFeatureList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterFeatureList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3610,9 +3888,105 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterNode</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterFeaturePatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterNode</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterFeaturePatchParametersTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterFeatureProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterFeatureProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AvailabilityLifecycle</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DetailedStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DetailedStatusMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Required</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AvailabilityLifecycle</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DetailedStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DetailedStatusMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Required</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterNode</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterNode</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3716,9 +4090,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3738,9 +4112,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3760,9 +4134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3824,9 +4198,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterRestartNodeParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterRestartNodeParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesClusterRestartNodeParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesClusterRestartNodeParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3846,9 +4220,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesLabel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesLabel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KubernetesLabel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KubernetesLabel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3874,9 +4248,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2Network</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2Network</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2Network</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2Network</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3944,9 +4318,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2NetworkAttachmentConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2NetworkAttachmentConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2NetworkAttachmentConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2NetworkAttachmentConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3972,9 +4346,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2NetworkList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2NetworkList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2NetworkList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2NetworkList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3994,9 +4368,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2NetworkPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2NetworkPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2NetworkPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2NetworkPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4016,9 +4390,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2NetworkProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2NetworkProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L2NetworkProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L2NetworkProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4092,9 +4466,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3Network</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3Network</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3Network</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3Network</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4162,9 +4536,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkAttachmentConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkAttachmentConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkAttachmentConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkAttachmentConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4196,9 +4570,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4218,9 +4592,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4240,9 +4614,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4346,9 +4720,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.LldpNeighbor</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.LldpNeighbor</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.LldpNeighbor</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.LldpNeighbor</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4386,9 +4760,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.MachineDisk</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.MachineDisk</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.MachineDisk</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.MachineDisk</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4414,9 +4788,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.MachineSkuProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.MachineSkuProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.MachineSkuProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.MachineSkuProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4484,9 +4858,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.MachineSkuSlot</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.MachineSkuSlot</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.MachineSkuSlot</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.MachineSkuSlot</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4506,9 +4880,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ManagedResourceGroupConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ManagedResourceGroupConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ManagedResourceGroupConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ManagedResourceGroupConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4534,9 +4908,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkAttachment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkAttachment</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkAttachment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkAttachment</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4592,9 +4966,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4638,9 +5012,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkInterface</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkInterface</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkInterface</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkInterface</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4696,9 +5070,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Nic</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Nic</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Nic</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Nic</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4724,9 +5098,101 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.OSDisk</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.OperationStatusResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.OSDisk</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.OperationStatusResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PercentComplete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.OperationStatusResultProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.OperationStatusResultProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExitCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OutputHead</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResultRef</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResultUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExitCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OutputHead</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResultRef</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResultUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.OSDisk</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.OSDisk</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4758,9 +5224,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Rack</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Rack</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Rack</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Rack</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4828,9 +5294,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4874,9 +5340,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4896,9 +5362,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4918,9 +5384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4982,9 +5448,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5046,9 +5512,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackSkuList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackSkuList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackSkuList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackSkuList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5068,9 +5534,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackSkuProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackSkuProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackSkuProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackSkuProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5114,9 +5580,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RacksPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RacksPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RacksPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RacksPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5142,9 +5608,151 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServiceLoadBalancerBgpPeer</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RuntimeProtectionConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServiceLoadBalancerBgpPeer</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RuntimeProtectionConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EnforcementLevel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EnforcementLevel</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RuntimeProtectionStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RuntimeProtectionStatus</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DefinitionsLastUpdated</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DefinitionsVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScanCompletedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScanScheduledTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScanStartedTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DefinitionsLastUpdated</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DefinitionsVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScanCompletedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScanScheduledTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScanStartedTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.SecretArchiveReference</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.SecretArchiveReference</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>KeyVaultId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecretName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecretVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>KeyVaultId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecretName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecretVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.SecretRotationStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.SecretRotationStatus</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExpirePeriodDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastRotationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RotationPeriodDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecretType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExpirePeriodDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastRotationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RotationPeriodDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecretType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5218,9 +5826,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServicePrincipalInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServicePrincipalInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServicePrincipalInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServicePrincipalInformation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5252,9 +5860,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.SshPublicKey</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.SshPublicKey</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.SshPublicKey</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.SshPublicKey</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5274,9 +5882,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageAppliance</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageAppliance</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageAppliance</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageAppliance</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5344,9 +5952,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceConfigurationData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceConfigurationData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceConfigurationData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceConfigurationData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5378,9 +5986,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceEnableRemoteVendorManagementParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceEnableRemoteVendorManagementParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceEnableRemoteVendorManagementParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceEnableRemoteVendorManagementParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5400,9 +6008,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5422,9 +6030,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageAppliancePatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageAppliancePatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageAppliancePatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageAppliancePatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5444,9 +6052,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageAppliancePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageAppliancePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageAppliancePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageAppliancePatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5466,9 +6074,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5491,6 +6099,12 @@
             <Label>ManagementIpv4Address</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Manufacturer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -5510,6 +6124,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StorageApplianceSkuId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -5534,6 +6151,12 @@
                 <PropertyName>ManagementIpv4Address</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Manufacturer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -5554,15 +6177,18 @@
               <TableColumnItem>
                 <PropertyName>StorageApplianceSkuId</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceSkuProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceSkuProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceSkuProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceSkuProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5588,9 +6214,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceSkuSlot</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceSkuSlot</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceSkuSlot</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceSkuSlot</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5610,9 +6236,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5632,9 +6258,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TagsParameterTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StringKeyValuePair</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TagsParameterTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StringKeyValuePair</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Key</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Key</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TagsParameterTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TagsParameterTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5654,9 +6308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetwork</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetwork</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetwork</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetwork</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5724,9 +6378,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetworkAttachmentConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetworkAttachmentConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetworkAttachmentConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetworkAttachmentConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5752,9 +6406,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetworkList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetworkList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetworkList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetworkList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5774,9 +6428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetworkPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetworkPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetworkPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetworkPatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5796,9 +6450,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetworkProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetworkProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.TrunkedNetworkProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.TrunkedNetworkProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5878,9 +6532,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ValidationThreshold</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ValidationThreshold</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ValidationThreshold</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ValidationThreshold</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5906,9 +6560,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachine</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachine</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachine</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachine</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5976,9 +6630,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachineList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachineList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachineList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachineList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5998,9 +6652,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6020,9 +6674,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePlacementHint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePlacementHint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePlacementHint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePlacementHint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6060,9 +6714,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePowerOffParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePowerOffParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePowerOffParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePowerOffParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6082,9 +6736,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachineProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachineProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachineProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachineProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6206,9 +6860,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Volume</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Volume</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.Volume</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.Volume</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6276,9 +6930,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VolumeList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VolumeList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VolumeList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VolumeList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6298,9 +6952,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VolumePatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VolumePatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VolumePatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VolumePatchParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6320,9 +6974,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VolumeProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VolumeProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VolumeProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VolumeProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

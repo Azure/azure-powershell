@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 0.7.2
 * Fixed issue that `New-AzKubernetesExtension` installing Flux fails with error "Failed to perform resource identity operation" [#22455]
