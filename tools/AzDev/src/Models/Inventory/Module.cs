@@ -43,6 +43,7 @@ namespace AzDev.Models.Inventory
                 Projects = fs.Directory.GetDirectories(path)
                     .Where(dir => !Conventions.IsExcludedProjectDirectory(fs, dir, out _))
                     .Select(dir => Project.FromFileSystem(fs, dir))
+                    .ToList()
             };
 
             (m.Type, m.TypeDeductionReason) = (Conventions.DeductModuleType(m.Projects, out string reason), reason);

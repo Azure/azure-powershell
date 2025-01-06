@@ -1,14 +1,14 @@
 ## Next
 - Feature: further distinguish track 1/2 SDKs, data/management plane, package/project.
-- Bug: `obj/` folder is not ignored
 - Local static analysis (Invoke-AzStaticAnalyzer)
 - New-TestEnvironment and other existing tools
-- Deploy compliant resources
-- Look into tools/
+- Scripts to help deploy compliant resources
+- Look into tools/, what else can be ported here?
 - Install daily build
-- What CLI's az dev support?
+- Check what CLI's az dev support?
 - Wildcard of project and module names - need to implement by hand? Can leverage `DirectoryInfo.GetFiles`? It supports kind of wildcard.
 - Quick start templates
+- Versioning and publishing AzDev module
 
 ## 2025/1/2
 - Misc: moved to azure-powershell repo

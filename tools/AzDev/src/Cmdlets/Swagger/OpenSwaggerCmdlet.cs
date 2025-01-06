@@ -36,12 +36,10 @@ namespace AzDev.Cmdlets.Swagger
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            Codebase codebase = AzDevModule.GetComponent<ICodebaseProvider>(nameof(ICodebaseProvider)).GetCodebase()
-                ?? throw new PSInvalidOperationException("Codebase is not loaded. Please run Set-DevContext first.");
 
             if (ParameterSetName == SearchParameterSet)
             {
-                IEnumerable<AutoRestProject> projects = codebase.FilterProjects(Search)
+                IEnumerable<AutoRestProject> projects = Codebase.FilterProjects(Search)
                     .Where(p => p is AutoRestProject)
                     .Cast<AutoRestProject>();
                 if (!projects.Any())

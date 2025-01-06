@@ -33,6 +33,7 @@ namespace AzDev.Models.Inventory
                     .Where(dir => !Conventions.IsExcludedModuleDirectory(dir))
                     .Select(dir => Module.FromFileSystem(fs, dir))
                     .Where(module => module != null)
+                    .ToList()
             };
         }
     }
