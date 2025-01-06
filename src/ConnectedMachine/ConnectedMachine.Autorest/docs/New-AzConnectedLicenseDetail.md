@@ -120,7 +120,6 @@ Accept wildcard characters: False
 
 ### -VolumeLicenseDetail
 A list of volume license details.
-To construct, see NOTES section for VOLUMELICENSEDETAIL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails[]

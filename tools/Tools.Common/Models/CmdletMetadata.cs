@@ -354,12 +354,17 @@ namespace Tools.Common.Models
                 var otherParameterSet = other.ParameterSets.Find(p => string.Equals(p.Name, thisParameterSet.Name, StringComparison.OrdinalIgnoreCase));
                 if (otherParameterSet == null)
                 {
+                    // Console.WriteLine($"Parameter set {thisParameterSet.Name} in cmdlet {this.Name} is not found in new module.");
                     return false;
                 }
 
                 cmdletsEqual &= thisParameterSet.Equals(otherParameterSet);
             }
 
+            /*if (this.ParameterSets.Count != other.ParameterSets.Count)
+             {
+                 Console.WriteLine($"The number of parameter sets in cmdlet {this.Name} is unmatched.");
+             }*/
             cmdletsEqual &= this.ParameterSets.Count == other.ParameterSets.Count;
             return cmdletsEqual;
         }

@@ -248,7 +248,8 @@ Accept wildcard characters: False
 
 ### -SkuName
 The name of the SKU.
-Ex - P3.
+E.g.
+P3.
 It is typically a letter+number code
 
 ```yaml
@@ -364,7 +365,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition
 
 ## NOTES
 

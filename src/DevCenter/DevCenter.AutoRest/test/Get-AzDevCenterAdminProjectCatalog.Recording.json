@@ -1,0 +1,91 @@
+{
+  "Get-AzDevCenterAdminProjectCatalog+[NoContext]+List+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs?api-version=2024-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "62695592-a120-4160-83e3-9d29573cd1fd" ],
+        "CommandName": [ "Get-AzDevCenterAdminProjectCatalog" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminProjectCatalog_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.19", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6d50e9d5-0d68-463f-8a64-5597ce3fccff" ],
+        "x-ms-correlation-request-id": [ "30c18b48-bd8b-481e-9d62-4a11efe181af" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240801T225536Z:30c18b48-bd8b-481e-9d62-4a11efe181af" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E3F275CD89D9459F9E3B8C084C961128 Ref B: CO6AA3150218035 Ref C: 2024-08-01T22:55:36Z" ],
+        "Date": [ "Thu, 01 Aug 2024 22:55:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "7095" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/test1\",\"name\":\"test1\",\"type\":\"microsoft.devcenter/projects/catalogs\",\"systemData\":{\"createdBy\":\"amlim@fidalgosh010.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-07T07:11:02.7698509Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-05-14T19:43:37.6358247Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"syncState\":\"Failed\",\"gitHub\":{\"uri\":\"https://github.com/fake/fake.git\",\"branch\":\"main\",\"secretIdentifier\":\"https://ibiza-test-kv.vault.azure.net/secrets/git-pat/f7ff791a84c645f38e26b92f5abb6092\",\"path\":\"/Environments\"},\"connectionState\":\"Connected\",\"lastConnectionTime\":\"2024-02-07T07:11:28.5997445Z\",\"lastSyncTime\":\"2024-05-14T19:43:37.6336464Z\",\"lastSyncStats\":{\"added\":0,\"updated\":0,\"unchanged\":0,\"removed\":0,\"validationErrors\":0,\"synchronizationErrors\":1}}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/github-oauth\",\"name\":\"github-oauth\",\"type\":\"microsoft.devcenter/projects/catalogs\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-27T18:52:50.5651724Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-05-14T19:43:23.3989319Z\"},\"properties\":{\"syncState\":\"Succeeded\",\"connectionState\":\"Connected\",\"lastSyncTime\":\"2024-05-14T19:43:23.3975417Z\",\"gitHub\":{\"uri\":\"https://github.com/fake/fake.git\",\"branch\":\"main\",\"path\":\"Environments\"},\"provisioningState\":\"Succeeded\",\"lastConnectionTime\":\"2024-02-27T22:35:06.4915523Z\",\"lastSyncStats\":{\"added\":4,\"updated\":0,\"unchanged\":0,\"removed\":0,\"validationErrors\":0,\"synchronizationErrors\":0,\"syncedCatalogItemTypes\":[\"EnvironmentDefinition\"]}}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-cat\",\"name\":\"proj-cat\",\"type\":\"microsoft.devcenter/projects/catalogs\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-27T18:57:54.9602309Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-05-14T19:43:45.3005495Z\"},\"properties\":{\"syncState\":\"Succeeded\",\"connectionState\":\"Connected\",\"lastSyncTime\":\"2024-05-14T19:43:45.2680505Z\",\"gitHub\":{\"uri\":\"https://github.com/fake/fake.git\",\"branch\":\"main\",\"path\":\"Environments\"},\"provisioningState\":\"Succeeded\",\"lastConnectionTime\":\"2024-02-27T22:23:18.1770323Z\",\"lastSyncStats\":{\"added\":4,\"updated\":0,\"unchanged\":0,\"removed\":0,\"validationErrors\":0,\"synchronizationErrors\":0,\"syncedCatalogItemTypes\":[\"EnvironmentDefinition\"]}}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/test-ado-errors2\",\"name\":\"test-ado-errors2\",\"type\":\"microsoft.devcenter/projects/catalogs\",\"systemData\":{\"createdBy\":\"amlim@fidalgosh010.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-03-14T21:07:09.6044941Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-05-14T19:43:30.9942296Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"syncState\":\"Failed\",\"adoGit\":{\"uri\":\"https://dev.azure.com/test-ado-ibiza/Bug-Bash-Project/_git/Bug-Bash-Project\",\"branch\":\"main\",\"path\":\"Environments\"},\"connectionState\":\"Connected\",\"lastConnectionTime\":\"2024-03-14T21:07:35.2820488Z\",\"lastSyncTime\":\"2024-05-14T19:43:30.924629Z\",\"lastSyncStats\":{\"added\":0,\"updated\":0,\"unchanged\":0,\"removed\":0,\"validationErrors\":0,\"synchronizationErrors\":1,\"syncedCatalogItemTypes\":[\"EnvironmentDefinition\"]}}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/testSucceeds\",\"name\":\"testSucceeds\",\"type\":\"microsoft.devcenter/projects/catalogs\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-03-15T18:52:00.5287704Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-05-14T19:43:37.9601544Z\"},\"properties\":{\"syncState\":\"Failed\",\"lastSyncStats\":{\"added\":0,\"updated\":0,\"unchanged\":0,\"removed\":0,\"validationErrors\":0,\"synchronizationErrors\":1,\"syncedCatalogItemTypes\":[\"EnvironmentDefinition\"]},\"connectionState\":\"Connected\",\"lastConnectionTime\":\"2024-03-15T18:52:03.888656Z\",\"lastSyncTime\":\"2024-05-14T19:43:37.9403252Z\",\"gitHub\":{\"uri\":\"https://github.com/fake/fake.git\",\"branch\":\"main\",\"secretIdentifier\":\"https://ibiza-test-kv.vault.azure.net/secrets/git-pat/3974d2f380e24181a8c53a4531131ba4\",\"path\":\"Environments\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/test-demo\",\"name\":\"test-demo\",\"type\":\"microsoft.devcenter/projects/catalogs\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-28T18:47:00.2429393Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-28T19:06:14.682726Z\"},\"properties\":{\"syncState\":\"Succeeded\",\"lastSyncStats\":{\"added\":0,\"updated\":0,\"unchanged\":4,\"removed\":0,\"validationErrors\":0,\"synchronizationErrors\":0,\"syncedCatalogItemTypes\":[\"EnvironmentDefinition\"]},\"connectionState\":\"Connected\",\"lastConnectionTime\":\"2024-05-28T18:47:07.832464Z\",\"lastSyncTime\":\"2024-05-28T19:07:37.0365497Z\",\"gitHub\":{\"uri\":\"https://github.com/fake/fake.git\",\"secretIdentifier\":\"https://ibiza-test-kv.vault.azure.net/secrets/projectCatalogs/d1fb9aab30ed472081b80ac9a0a238fd\",\"path\":\"Environments\"},\"syncType\":\"Manual\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing\",\"name\":\"proj-catalog-testing\",\"type\":\"microsoft.devcenter/projects/catalogs\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-18T20:01:18.5434869Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-18T20:02:26.0707274Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"syncState\":\"Succeeded\",\"gitHub\":{\"uri\":\"https://github.com/fake/fake.git\",\"branch\":\"\",\"path\":\"Environments\"},\"syncType\":\"Scheduled\",\"connectionState\":\"Connected\",\"lastSyncTime\":\"2024-06-18T20:02:26.0448152Z\",\"lastConnectionTime\":\"2024-06-18T20:02:04.707755Z\",\"lastSyncStats\":{\"added\":4,\"updated\":0,\"unchanged\":0,\"removed\":0,\"validationErrors\":0,\"synchronizationErrors\":0,\"syncedCatalogItemTypes\":[\"EnvironmentDefinition\"]}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterAdminProjectCatalog+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing?api-version=2024-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "5dce355a-fb6f-49d7-bced-e06b6b220fd2" ],
+        "CommandName": [ "Get-AzDevCenterAdminProjectCatalog" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminProjectCatalog_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.19", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000800-0000-3400-0000-6671e7d20000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9b37197f-9e8a-45cc-a1da-8dcbf8997e64" ],
+        "x-ms-correlation-request-id": [ "5e8c42ea-c862-4f86-a2da-41f716ae045c" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240801T225537Z:5e8c42ea-c862-4f86-a2da-41f716ae045c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5BD699F9681B456AA9688E1DEC64B93A Ref B: CO6AA3150218035 Ref C: 2024-08-01T22:55:36Z" ],
+        "Date": [ "Thu, 01 Aug 2024 22:55:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1000" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing\",\"name\":\"proj-catalog-testing\",\"type\":\"microsoft.devcenter/projects/catalogs\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-18T20:01:18.5434869Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-18T20:02:26.0707274Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"syncState\":\"Succeeded\",\"gitHub\":{\"uri\":\"https://github.com/fake/fake.git\",\"branch\":\"\",\"path\":\"Environments\"},\"syncType\":\"Scheduled\",\"connectionState\":\"Connected\",\"lastSyncTime\":\"2024-06-18T20:02:26.0448152Z\",\"lastConnectionTime\":\"2024-06-18T20:02:04.707755Z\",\"lastSyncStats\":{\"added\":4,\"updated\":0,\"unchanged\":0,\"removed\":0,\"validationErrors\":0,\"synchronizationErrors\":0,\"syncedCatalogItemTypes\":[\"EnvironmentDefinition\"]}}}",
+      "isContentBase64": false
+    }
+  }
+}

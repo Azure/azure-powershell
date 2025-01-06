@@ -1,0 +1,476 @@
+{
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedEnableATP+$GET+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "7ef3ba8d-3f23-473d-b4fd-5780bcd71f61" ],
+        "CommandName": [ "Update-AzSecurityDefenderForStorage" ],
+        "FullCommandName": [ "Update-AzSecurityDefenderForStorage_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "fd463327-4381-4eac-a38d-43ff2d5c8f65" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "a0c1b02f-6280-441c-942d-902636f1adb1" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091237Z:a0c1b02f-6280-441c-942d-902636f1adb1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DA93B83B94CA49719E2AA9C4D685765B Ref B: MRS211050619035 Ref C: 2024-08-01T09:12:36Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:12:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":false,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":false,\"capGBPerMonth\":-1}},\"sensitiveDataDiscovery\":{\"isEnabled\":false},\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedEnableATP+$PUT+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"malwareScanning\": {\n      \"onUpload\": {\n        \"isEnabled\": false,\n        \"capGBPerMonth\": -1\n      }\n    },\n    \"sensitiveDataDiscovery\": {\n      \"isEnabled\": false\n    },\n    \"isEnabled\": true,\n    \"overrideSubscriptionLevelSettings\": false\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "275" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5d75c486-5724-41b7-99b3-b4a4f2ddd3bf" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "22798935-0e01-4b9d-a3f3-6bdf327d24e3" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091247Z:22798935-0e01-4b9d-a3f3-6bdf327d24e3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0083961A94CB4416B39CFEAD5707778A Ref B: MRS211050619035 Ref C: 2024-08-01T09:12:37Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:12:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "544" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":true,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":false,\"capGBPerMonth\":-1},\"operationStatus\":{\"code\":\"Succeeded\"}},\"sensitiveDataDiscovery\":{\"isEnabled\":false,\"operationStatus\":{\"code\":\"Succeeded\"}},\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedEnableATPAndScanningServices+$GET+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "f72163ee-33a6-4c9f-91ab-a327cd6961aa" ],
+        "CommandName": [ "Update-AzSecurityDefenderForStorage" ],
+        "FullCommandName": [ "Update-AzSecurityDefenderForStorage_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0dd23b27-b674-4b1b-a6c3-39ae02c7251e" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "748" ],
+        "x-ms-correlation-request-id": [ "32a14e4f-adea-4120-b4f8-ca377b4fd178" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091248Z:32a14e4f-adea-4120-b4f8-ca377b4fd178" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5AE020FB18E24CBCA54011DAFAEFD0EE Ref B: MRS211050619035 Ref C: 2024-08-01T09:12:47Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:12:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":false,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":false,\"capGBPerMonth\":-1}},\"sensitiveDataDiscovery\":{\"isEnabled\":false},\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedEnableATPAndScanningServices+$PUT+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"malwareScanning\": {\n      \"onUpload\": {\n        \"isEnabled\": true,\n        \"capGBPerMonth\": -1\n      }\n    },\n    \"sensitiveDataDiscovery\": {\n      \"isEnabled\": true\n    },\n    \"isEnabled\": true,\n    \"overrideSubscriptionLevelSettings\": false\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "273" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "93c82d8b-40c2-4734-ac06-e42827386684" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "d081b75f-1761-4423-b6bd-5829adade1cd" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091315Z:d081b75f-1761-4423-b6bd-5829adade1cd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5CCEF0CB8FD248D2AEA197B5D58055A3 Ref B: MRS211050619035 Ref C: 2024-08-01T09:12:48Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "681" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":true,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":true,\"capGBPerMonth\":-1},\"operationStatus\":{\"code\":\"Succeeded\"}},\"sensitiveDataDiscovery\":{\"isEnabled\":true,\"operationStatus\":{\"code\":\"Succeeded\"}},\"dataScannerResourceId\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/providers/Microsoft.Security/datascanners/StorageDataScanner\",\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedDisableATPWhileScanningServicesAreOn+$GET+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "fb41f009-69c9-4c9b-93e6-8e7425106159" ],
+        "CommandName": [ "Update-AzSecurityDefenderForStorage" ],
+        "FullCommandName": [ "Update-AzSecurityDefenderForStorage_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7379e6eb-d1e9-4f1e-b9a3-ca65b7779fdb" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "643fe4cd-3c47-4888-9752-82c336530d28" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091316Z:643fe4cd-3c47-4888-9752-82c336530d28" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A74899876DD2419EB4E4188B68E5814C Ref B: MRS211050619035 Ref C: 2024-08-01T09:13:15Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "603" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":true,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":true,\"capGBPerMonth\":-1}},\"sensitiveDataDiscovery\":{\"isEnabled\":true},\"dataScannerResourceId\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/providers/Microsoft.Security/datascanners/StorageDataScanner\",\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedDisableATPWhileScanningServicesAreOn+$PUT+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"malwareScanning\": {\n      \"onUpload\": {\n        \"isEnabled\": true,\n        \"capGBPerMonth\": -1\n      }\n    },\n    \"sensitiveDataDiscovery\": {\n      \"isEnabled\": true\n    },\n    \"isEnabled\": false,\n    \"overrideSubscriptionLevelSettings\": false\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "274" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "6445a8c9-f2e4-44d6-b80d-f7998c4f4b04" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "8df6cf21-a43f-4ec2-92fd-0f1289c0dc6c" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091318Z:8df6cf21-a43f-4ec2-92fd-0f1289c0dc6c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5BC5F6AC9A6A47A29F083FF3AA22B2FD Ref B: MRS211050619035 Ref C: 2024-08-01T09:13:16Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"Can\u0027t enable MalwareScanning without enabling defender for storage\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedEnableScanningServicesWithoutATP+$GET+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa2/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa2/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "556c66b7-6daf-4ec6-b941-eee029d7a4eb" ],
+        "CommandName": [ "Update-AzSecurityDefenderForStorage" ],
+        "FullCommandName": [ "Update-AzSecurityDefenderForStorage_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "cfa6b636-ceb9-4ed5-a125-34300b5b52d6" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "e9f2a21f-ad0c-4041-922a-620559294956" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091319Z:e9f2a21f-ad0c-4041-922a-620559294956" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0536BC92649348529728412A247E1569 Ref B: MRS211050619035 Ref C: 2024-08-01T09:13:18Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":false,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":false,\"capGBPerMonth\":-1}},\"sensitiveDataDiscovery\":{\"isEnabled\":false},\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa2/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedEnableScanningServicesWithoutATP+$PUT+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa2/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa2/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"malwareScanning\": {\n      \"onUpload\": {\n        \"isEnabled\": true,\n        \"capGBPerMonth\": -1\n      }\n    },\n    \"sensitiveDataDiscovery\": {\n      \"isEnabled\": true\n    },\n    \"isEnabled\": false,\n    \"overrideSubscriptionLevelSettings\": false\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "274" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "6a01754c-2288-4e31-b52f-ac4e68dfffd8" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "748" ],
+        "x-ms-correlation-request-id": [ "c3db4076-6682-4ac9-a0fb-b08d3bb97b6c" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091320Z:c3db4076-6682-4ac9-a0fb-b08d3bb97b6c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2E6CE3D3025B43BAB141382666418A79 Ref B: MRS211050619035 Ref C: 2024-08-01T09:13:19Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"Can\u0027t enable MalwareScanning without enabling defender for storage\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedPassInvalidCap+$GET+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "a56c528b-4772-4726-96fa-101b8824152d" ],
+        "CommandName": [ "Update-AzSecurityDefenderForStorage" ],
+        "FullCommandName": [ "Update-AzSecurityDefenderForStorage_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "00011ea8-f362-48f5-9bf8-6e36dbadfec4" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "748" ],
+        "x-ms-correlation-request-id": [ "3f2d96bf-afbc-429f-933c-efc56cbf2821" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091320Z:3f2d96bf-afbc-429f-933c-efc56cbf2821" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DDFF1FE85E1A42F5B5850FECDD1E470A Ref B: MRS211050619035 Ref C: 2024-08-01T09:13:20Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "603" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":true,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":true,\"capGBPerMonth\":-1}},\"sensitiveDataDiscovery\":{\"isEnabled\":true},\"dataScannerResourceId\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/providers/Microsoft.Security/datascanners/StorageDataScanner\",\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedPassInvalidCap+$PUT+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"malwareScanning\": {\n      \"onUpload\": {\n        \"isEnabled\": true,\n        \"capGBPerMonth\": -20\n      }\n    },\n    \"sensitiveDataDiscovery\": {\n      \"isEnabled\": true\n    },\n    \"isEnabled\": true,\n    \"overrideSubscriptionLevelSettings\": false\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "274" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8bb4ea7d-d054-4852-8987-07f13cfda18e" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "747" ],
+        "x-ms-correlation-request-id": [ "d51fa22b-1449-4380-8535-1001640cf0e5" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091321Z:d51fa22b-1449-4380-8535-1001640cf0e5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B3788055BF004A2687A630065961EEFB Ref B: MRS211050619035 Ref C: 2024-08-01T09:13:20Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "111" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"MalwareScanning.OnUpload.CapGBPerMonth must be -1 or greater than 0\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedDisableATPAndScanning+$GET+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "13489f91-4dd9-4f9c-a35a-073d20270f51" ],
+        "CommandName": [ "Update-AzSecurityDefenderForStorage" ],
+        "FullCommandName": [ "Update-AzSecurityDefenderForStorage_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "85dc5b00-1dae-480e-a692-f18e6d0949e2" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "b2e8af6b-9989-4e3f-bcc3-4c26004b54f9" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091321Z:b2e8af6b-9989-4e3f-bcc3-4c26004b54f9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7DF8CA79A5954ED7A749E3431BEEB428 Ref B: MRS211050619035 Ref C: 2024-08-01T09:13:21Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "603" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":true,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":true,\"capGBPerMonth\":-1}},\"sensitiveDataDiscovery\":{\"isEnabled\":true},\"dataScannerResourceId\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/providers/Microsoft.Security/datascanners/StorageDataScanner\",\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityDefenderForStorage+[NoContext]+UpdateExpandedDisableATPAndScanning+$PUT+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"malwareScanning\": {\n      \"onUpload\": {\n        \"isEnabled\": false,\n        \"capGBPerMonth\": -1\n      }\n    },\n    \"sensitiveDataDiscovery\": {\n      \"isEnabled\": false\n    },\n    \"isEnabled\": false,\n    \"overrideSubscriptionLevelSettings\": false\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "276" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "f4d81a68-dd42-4f6d-a007-b6a74d6b0a03" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "26f09cf2-a929-4702-815c-f6ca1db3ed4f" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091338Z:26f09cf2-a929-4702-815c-f6ca1db3ed4f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 280BA89A89444C5996FC9846E581945A Ref B: MRS211050619035 Ref C: 2024-08-01T09:13:22Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:13:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "545" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":false,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":false,\"capGBPerMonth\":-1},\"operationStatus\":{\"code\":\"Succeeded\"}},\"sensitiveDataDiscovery\":{\"isEnabled\":false,\"operationStatus\":{\"code\":\"Succeeded\"}},\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa1/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  }
+}

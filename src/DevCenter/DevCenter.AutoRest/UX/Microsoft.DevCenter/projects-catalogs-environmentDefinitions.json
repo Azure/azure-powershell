@@ -1,0 +1,105 @@
+{
+  "resourceType": "projects/catalogs/environmentDefinitions",
+  "apiVersion": "2024-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail",
+      "description": "Gets Environment Definition error details",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectenvironmentdefinitionerrordetail"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-EnvironmentDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets Environment Definition error details",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-EnvironmentDefinitionName",
+              "value": "[Path.environmentDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzDevCenterAdminProjectEnvironmentDefinition",
+      "description": "Gets an environment definition from the catalog.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectenvironmentdefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-EnvironmentDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an environment definition from the catalog.",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-EnvironmentDefinitionName",
+              "value": "[Path.environmentDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

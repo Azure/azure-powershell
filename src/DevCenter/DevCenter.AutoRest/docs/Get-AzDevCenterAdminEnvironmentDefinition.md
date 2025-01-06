@@ -40,22 +40,22 @@ Gets an environment definition from the catalog.
 Get-AzDevCenterAdminEnvironmentDefinition -DevCenterName Contoso -CatalogName CentralCatalog -ResourceGroupName testRg
 ```
 
-This command lists the environment definitions in a catalog
+This command lists the environment definitions in a catalog.
 
-### Example 2: Get environment definition 
+### Example 2: Get an environment definition 
 ```powershell
 Get-AzDevCenterAdminEnvironmentDefinition -DevCenterName Contoso -CatalogName CentralCatalog -ResourceGroupName testRg -Name envDefName
 ```
 
 This command gets the environment definition "envDefName".
 
-### Example 3: Get environment definition using InputObject
+### Example 3: Get an environment definition using InputObject
 ```powershell
 $environmentDefinition = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "EnvironmentDefinitionName"="envDefName"}
 $environmentDefinition = Get-AzDevCenterAdminEnvironmentDefinition -InputObject $environmentDefinition
 ```
 
-This command gets the environment definition "envDefName" using InputObject
+This command gets the environment definition "envDefName" using InputObject.
 
 ## PARAMETERS
 
@@ -176,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentDefinition
 
 ## NOTES
 

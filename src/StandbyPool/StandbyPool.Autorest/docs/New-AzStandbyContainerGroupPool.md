@@ -39,7 +39,7 @@ Create a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 
-### Example 1: Create a standby container pool
+### Example 1: Create a standby container group pool
 ```powershell
 New-AzStandbyContainerGroupPool `
 -Name testPool `
@@ -77,7 +77,7 @@ Tag                               : {
 Type                              : microsoft.standbypool/standbycontainergrouppools
 ```
 
-The above command created a standby container pool.
+The above command created a standby container group pool.
 
 ## PARAMETERS
 

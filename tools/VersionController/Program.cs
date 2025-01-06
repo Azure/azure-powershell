@@ -32,7 +32,9 @@ namespace VersionController
         private static SyntaxChangelogGenerator _syntaxChangelogGenerator = new SyntaxChangelogGenerator();
         private static Dictionary<string, AzurePSVersion> _minimalVersion = new Dictionary<string, AzurePSVersion>();
         private static List<string> _projectDirectories, _outputDirectories;
-        private static string _rootDirectory, _moduleNameFilter;
+        private static string _rootDirectory, _moduleNameFilter, _exceptionsDirectory, _assignedVersion;
+        private static ReleaseType _releaseType = ReleaseType.STS;
+        private static bool _generateSyntaxChangelog = true;
 
         private const string Psd1NameExtension = ".psd1";
 
@@ -48,44 +50,76 @@ namespace VersionController
         };
         public static void Main(string[] args)
         {
-            var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
-            var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
-            var artifactsDirectory = Directory.GetParent(versionControllerDirectory).FullName;
-            var syntaxChangelog = true;
-             _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
-            _projectDirectories = new List<string>{ Path.Combine(_rootDirectory, @"src\") }.Where((d) => Directory.Exists(d)).ToList();
-            _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Release\") }.Where((d) => Directory.Exists(d)).ToList();
-
-            SharedAssemblyLoader.Load(_outputDirectories.FirstOrDefault());
-            var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
-            if (args != null && args.Length > 0)
-            {
-                exceptionsDirectory = args[0];
-                syntaxChangelog = false;
-            }
-
-            if (!Directory.Exists(exceptionsDirectory))
-            {
-                throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (artifacts/Exceptions).");
-            }
-
-            _moduleNameFilter = string.Empty;
-            if (args != null && args.Length > 1)
-            {
-                _moduleNameFilter = args[1] + Psd1NameExtension;
-            }
-
-            ConsolidateExceptionFiles(exceptionsDirectory);
+            // bez: to do: change positional parameters to dictionary parameters
+            Initialize(args);
+            ConsolidateExceptionFiles(_exceptionsDirectory);
             ValidateManifest();
-            if (syntaxChangelog) {
-                GenerateSyntaxChangelog(_rootDirectory);
+            if (_generateSyntaxChangelog && _releaseType == ReleaseType.STS) {
+               GenerateSyntaxChangelog(_rootDirectory);
             }
             BumpVersions();
         }
-        private static void GenerateSyntaxChangelog(string _projectDirectories)
+
+        private static void Initialize(string[] args)
         {
-            _syntaxChangelogGenerator.Analyze(_projectDirectories);
+            var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
+            var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
+            var artifactsDirectory = Directory.GetParent(versionControllerDirectory).FullName;
+            _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
+            _projectDirectories = new List<string> { Path.Combine(_rootDirectory, @"src\") }.Where((d) => Directory.Exists(d)).ToList();
+            _outputDirectories = new List<string> { Path.Combine(_rootDirectory, @"artifacts\Release\") }.Where((d) => Directory.Exists(d)).ToList();
+            _moduleNameFilter = string.Empty;
+            _exceptionsDirectory  = Path.Combine(versionControllerDirectory, "Exceptions");
+            SharedAssemblyLoader.Load(_outputDirectories.FirstOrDefault());
+
+            if(null != args)
+            {
+                switch (args.Length)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        Enum.TryParse(args[0], out _releaseType);
+                        break;
+                    default:
+                        if (args.Length > 0 && !string.IsNullOrEmpty(args[0]))
+                        {
+                            _exceptionsDirectory = args[0];
+                            _generateSyntaxChangelog = false;
+                        }
+
+                        if (!Directory.Exists(_exceptionsDirectory))
+                        {
+                            throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (artifacts/Exceptions).");
+                        }
+                        if (args.Length > 1 && !string.IsNullOrEmpty(args[1]))
+                        {
+                            _moduleNameFilter = args[1] + Psd1NameExtension;
+                        }
+                        if(args.Length > 2  && !string.IsNullOrEmpty(args[2]))
+                        {
+                            Enum.TryParse(args[2], out _releaseType);
+                        }
+                        if (args.Length > 3  && !string.IsNullOrEmpty(args[3]))
+                        {
+                            _assignedVersion = args[3];
+                        }
+                        break;
+                }
+            }           
         }
+
+        private static void GenerateSyntaxChangelog(string projectDirectories)
+        {
+            try
+            {
+                _syntaxChangelogGenerator.Analyze(projectDirectories);
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Warning: Cannot generate syntax change log because {ex.Message}");
+            }
+        }
+
         private static void ValidateManifest()
         {
             foreach (var directory in _projectDirectories)
@@ -131,20 +165,14 @@ namespace VersionController
             {
                 powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
                 powershell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
-                powershell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
                 powershell.AddScript("Get-PSRepository");
                 var repositories = powershell.Invoke();
                 string psgallery = null;
-                string testgallery = null;
                 foreach (var repo in repositories)
                 {
                     if ("https://www.powershellgallery.com/api/v2".Equals(repo.Properties["SourceLocation"]?.Value))
                     {
                         psgallery = repo.Properties["Name"]?.Value?.ToString();
-                    }
-                    if ("https://www.poshtestgallery.com/api/v2".Equals(repo.Properties["SourceLocation"]?.Value))
-                    {
-                        testgallery = repo.Properties["Name"]?.Value?.ToString();
                     }
                 }
                 if (psgallery == null)
@@ -152,15 +180,6 @@ namespace VersionController
                     throw new Exception("Cannot calculate module version because PSGallery is not available.");
                 }
                 targetRepositories = psgallery;
-                if (testgallery == null)
-                {
-                    Console.WriteLine("Warning: Cannot calculate module version precisely because TestGallery is not available.");
-                }
-                else
-                {
-                    targetRepositories += $",{testgallery}";
-                }
-
             }
 
             var changedModules = new List<string>();
@@ -178,15 +197,15 @@ namespace VersionController
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
             var miniVersionFile = Path.Combine(versionControllerDirectory, "MinimalVersion.csv");
+            var changedModuleNames = changedModules.Select(c => Path.GetFileName(c).Replace(".psd1", ""));
             if (File.Exists(miniVersionFile))
             {
                 var file = File.ReadAllLines(miniVersionFile);
                 var header = file.First();
-                var lines = file.Skip(1).Where(c => !string.IsNullOrEmpty(c));
+                var lines = file.Skip(1).Where(c => !string.IsNullOrWhiteSpace(c));
 
                 var bumpingModule = _moduleNameFilter.Replace(Psd1NameExtension, "");
                 List<string> _minimalVersionContent = new List<string>() { header };
-
                 foreach (var line in lines)
                 {
                     var cols = line.Split(",").Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
@@ -197,7 +216,8 @@ namespace VersionController
                         _minimalVersion.Add(cols[0], new AzurePSVersion(cols[1]));
 
                         // Bump one module, only remove its minimal version from MinimalVersion.csv content
-                        if (!string.IsNullOrEmpty(bumpingModule) && !cols[0].Equals(bumpingModule))
+                        if (!string.IsNullOrEmpty(bumpingModule) && !cols[0].Equals(bumpingModule) ||
+                            !changedModuleNames.Contains(cols[0]))
                         {
                             _minimalVersionContent.Add(line);
                         }
@@ -209,7 +229,7 @@ namespace VersionController
             }
 
             //Make Az.Accounts as the last module to calculate
-            changedModules = changedModules.OrderByDescending(c => c == "Az.Accounts" ? "" : c).ToList();
+            changedModules = changedModules.OrderByDescending(c => c.Contains("Az.Accounts") ? "" : c).ToList();
             foreach (var projectModuleManifestPath in changedModules)
             {
                 var moduleFileName = Path.GetFileName(projectModuleManifestPath);
@@ -229,8 +249,11 @@ namespace VersionController
                 }
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
-
-                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules);
+                if (!string.IsNullOrEmpty(_assignedVersion)) {
+                    _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules,new AzurePSVersion(_assignedVersion), _releaseType);
+                } else {
+                    _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules, _releaseType);
+                }
                 _versionBumper.PSRepositories = targetRepositories;
                 if (_minimalVersion.ContainsKey(moduleName))
                 {

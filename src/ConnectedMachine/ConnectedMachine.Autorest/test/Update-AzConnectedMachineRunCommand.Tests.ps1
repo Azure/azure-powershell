@@ -15,21 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedMachineRunC
 }
 
 Describe 'Update-AzConnectedMachineRunCommand' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Update' {
         $tags = @{Tag1="tag1"; Tag2="tag2"}
         $runCommand = Update-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId -Tag $tags
         $runCommand.Count | Should -Not -BeNullOrEmpty
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

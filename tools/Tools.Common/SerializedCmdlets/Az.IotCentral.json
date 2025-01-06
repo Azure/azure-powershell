@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.IotCentral",
-  "ModuleVersion": "0.10.1",
+  "ModuleVersion": "0.10.2",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Identity": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity",
@@ -323,7 +323,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Identity": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity",
@@ -440,7 +440,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -622,7 +622,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -758,7 +758,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -839,7 +839,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -857,7 +857,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Identity": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity",
@@ -881,7 +881,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -934,7 +934,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -949,7 +949,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1010,7 +1010,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1025,7 +1025,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1071,7 +1071,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
                   "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
                     "Identity": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity",
@@ -1101,7 +1101,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1116,7 +1116,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1192,7 +1192,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1207,7 +1207,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1260,7 +1260,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Identity": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity",
@@ -1377,7 +1377,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Identity": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity",
@@ -1401,7 +1401,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1529,7 +1529,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1665,7 +1665,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1711,7 +1711,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
                   "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
                     "Identity": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity",
@@ -1816,7 +1816,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1967,7 +1967,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2053,7 +2053,7 @@
     "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo": {
       "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
       "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.10.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String"
       },
@@ -2095,7 +2095,7 @@
     "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity": {
       "Namespace": "Microsoft.Azure.Management.IotCentral.Models",
       "Name": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity, Microsoft.Azure.Management.IotCentral, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity, Microsoft.Azure.PowerShell.IotCentral.Management.Sdk, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.Nullable`1[System.Guid]",
         "TenantId": "System.Nullable`1[System.Guid]",

@@ -1,0 +1,161 @@
+{
+  "resourceType": "capacities",
+  "apiVersion": "2023-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.fabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFabricCapacity",
+      "description": "Get a FabricCapacity",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.fabric/get-azfabriccapacity"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CapacityName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a FabricCapacity",
+          "parameters": [
+            {
+              "name": "-CapacityName",
+              "value": "[Path.capacityName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFabricCapacity",
+      "description": "Delete a FabricCapacity",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.fabric/remove-azfabriccapacity"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CapacityName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a FabricCapacity",
+          "parameters": [
+            {
+              "name": "-CapacityName",
+              "value": "[Path.capacityName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Resume-AzFabricCapacity",
+      "description": "Resume operation of the specified Fabric capacity instance.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/resume",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.fabric/resume-azfabriccapacity"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CapacityName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Resume operation of the specified Fabric capacity instance.",
+          "parameters": [
+            {
+              "name": "-CapacityName",
+              "value": "[Path.capacityName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Suspend-AzFabricCapacity",
+      "description": "Suspend operation of the specified Fabric capacity instance.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/suspend",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.fabric/suspend-azfabriccapacity"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CapacityName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Suspend operation of the specified Fabric capacity instance.",
+          "parameters": [
+            {
+              "name": "-CapacityName",
+              "value": "[Path.capacityName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

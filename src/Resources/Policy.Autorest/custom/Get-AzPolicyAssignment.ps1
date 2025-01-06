@@ -72,7 +72,7 @@ param(
     [Parameter(ParameterSetName='IncludeDescendent', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.Management.Automation.SwitchParameter]
-    # Get all policy assignments that target the given policy definition [fully qualified] ID.
+    # Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes. If not provided, only assignments at and above the given scope are included.
     ${IncludeDescendent},
 
     [Parameter()]

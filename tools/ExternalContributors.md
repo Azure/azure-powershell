@@ -1,2 +1,2 @@
 ### Thanks to our community contributors
-* Felipe Andrade (@andradf), Use named parameter for appPackageUrl in CreateOrUpdateApplicationTyp… (#25113)
+* @sidesw1pe, Update Copy-AzRecoveryServicesVault.md (#26570)

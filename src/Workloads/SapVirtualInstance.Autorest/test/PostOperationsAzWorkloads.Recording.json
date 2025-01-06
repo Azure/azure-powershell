@@ -1,0 +1,242 @@
+{
+  "PostOperationsAzWorkloads+[NoContext]+PostOperationsSapDiskConfiguration+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getDiskConfigurations?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getDiskConfigurations?api-version=2023-10-01-preview",
+      "Content": "{\n  \"appLocation\": \"northeurope\",\n  \"environment\": \"NonProd\",\n  \"sapProduct\": \"S4HANA\",\n  \"databaseType\": \"HANA\",\n  \"deploymentType\": \"SingleServer\",\n  \"dbVmSku\": \"Standard_E32ds_v4\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "184" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "421f13be-00d2-4912-ae8e-d0823891a531" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01, 2023-10-01-preview, 2024-02-01-preview" ],
+        "x-ms-request-id": [ "ce7bf49f-a3bc-461c-9249-5c52eb7ce603" ],
+        "x-ms-correlation-request-id": [ "65c21fd3-08fc-4602-a2f3-4a4840f4f765" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20240813T050711Z:65c21fd3-08fc-4602-a2f3-4a4840f4f765" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 63D71092DDF84F97BC8CC0005460B17A Ref B: MAA201060514023 Ref C: 2024-08-13T05:07:03Z" ],
+        "Date": [ "Tue, 13 Aug 2024 05:07:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5334" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"volumeConfigurations\":{\"hana/data\":{\"recommendedConfiguration\":{\"count\":3,\"sizeGB\":128,\"sku\":{\"name\":\"Premium_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":3,\"maximumSupportedDiskCount\":7,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"}]},\"hana/log\":{\"recommendedConfiguration\":{\"count\":3,\"sizeGB\":128,\"sku\":{\"name\":\"Premium_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":3,\"maximumSupportedDiskCount\":7,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"}]},\"hana/shared\":{\"recommendedConfiguration\":{\"count\":1,\"sizeGB\":256,\"sku\":{\"name\":\"StandardSSD_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E15\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E20\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":1024,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E30\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":2048,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E40\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":4096,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E50\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":1100,\"mbpsReadWrite\":125,\"diskTier\":\"P15\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":2300,\"mbpsReadWrite\":150,\"diskTier\":\"P20\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":1024,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":5000,\"mbpsReadWrite\":200,\"diskTier\":\"P30\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":2048,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":7500,\"mbpsReadWrite\":250,\"diskTier\":\"P40\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":4096,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":7500,\"mbpsReadWrite\":250,\"diskTier\":\"P50\"}]},\"usr/sap\":{\"recommendedConfiguration\":{\"count\":1,\"sizeGB\":128,\"sku\":{\"name\":\"Premium_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E10\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E15\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E20\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":1100,\"mbpsReadWrite\":125,\"diskTier\":\"P15\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":2300,\"mbpsReadWrite\":150,\"diskTier\":\"P20\"}]},\"backup\":{\"recommendedConfiguration\":{\"count\":2,\"sizeGB\":256,\"sku\":{\"name\":\"StandardSSD_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E10\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E15\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E20\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":1100,\"mbpsReadWrite\":125,\"diskTier\":\"P15\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":2300,\"mbpsReadWrite\":150,\"diskTier\":\"P20\"}]},\"os\":{\"recommendedConfiguration\":{\"count\":1,\"sizeGB\":64,\"sku\":{\"name\":\"StandardSSD_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":64,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E6\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E10\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":64,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":240,\"mbpsReadWrite\":50,\"diskTier\":\"P6\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"}]}}}",
+      "isContentBase64": false
+    }
+  },
+  "PostOperationsAzWorkloads+[NoContext]+PostOperationsSapSizingRecommendation+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getSizingRecommendations?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getSizingRecommendations?api-version=2023-10-01-preview",
+      "Content": "{\n  \"appLocation\": \"northeurope\",\n  \"environment\": \"NonProd\",\n  \"sapProduct\": \"S4HANA\",\n  \"deploymentType\": \"SingleServer\",\n  \"saps\": 10000,\n  \"dbMemory\": 256,\n  \"databaseType\": \"HANA\",\n  \"dbScaleMethod\": \"ScaleUp\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "216" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "34770f31-c247-4ebf-93da-54315420bedc" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01, 2023-10-01-preview, 2024-02-01-preview" ],
+        "x-ms-request-id": [ "5432964e-f1f0-4dd6-bdb1-0cbebb0aa407" ],
+        "x-ms-correlation-request-id": [ "825268d8-6953-439b-91ea-28d26072fffd" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20240813T050719Z:825268d8-6953-439b-91ea-28d26072fffd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 45EDD11D5B6448358369732813F7408E Ref B: MAA201060514023 Ref C: 2024-08-13T05:07:12Z" ],
+        "Date": [ "Tue, 13 Aug 2024 05:07:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "61" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"vmSku\":\"Standard_E32ds_v4\",\"deploymentType\":\"SingleServer\"}",
+      "isContentBase64": false
+    }
+  },
+  "PostOperationsAzWorkloads+[NoContext]+PostOperationsSapSupportedSku+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getSapSupportedSku?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getSapSupportedSku?api-version=2023-10-01-preview",
+      "Content": "{\n  \"appLocation\": \"northeurope\",\n  \"environment\": \"Prod\",\n  \"sapProduct\": \"S4HANA\",\n  \"deploymentType\": \"ThreeTier\",\n  \"databaseType\": \"HANA\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "144" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "b7320b66-130d-400a-bd39-81677b5e61e4" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01, 2023-10-01-preview, 2024-02-01-preview" ],
+        "x-ms-request-id": [ "35619958-6217-493e-8f32-85e87791cdbc" ],
+        "x-ms-correlation-request-id": [ "7f5d5f65-f066-4a72-b238-8fcd15352663" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20240813T050728Z:7f5d5f65-f066-4a72-b238-8fcd15352663" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F83D5723239C4DC392D0FA6A1C2C1880 Ref B: MAA201060514023 Ref C: 2024-08-13T05:07:19Z" ],
+        "Date": [ "Tue, 13 Aug 2024 05:07:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5093" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"supportedSkus\":[{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D16ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D16ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D32ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D32ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D48ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D48ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D4ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D4ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D64ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D64ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D8ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D8ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D96ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E16ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E16ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E20ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E20ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E32ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E32ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E48ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E48ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E4ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E4ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E64ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E64ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E8ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E8ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E96ds_v5\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128dms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128ds_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128ms\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128s\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M176ds_3_v3\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M176ds_4_v3\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M192idms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M192ids_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M192ims_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M192is_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M208ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M208s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32dms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32ls\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32ts\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M416ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M416s_8_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M416s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M48ds_1_v3\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64dms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ds_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ls\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ms\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64s\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M96ds_1_v3\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M96ds_2_v3\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "PostOperationsAzWorkloads+[NoContext]+PostOperationsSapDiskConfigurationAlias+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getDiskConfigurations?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getDiskConfigurations?api-version=2023-10-01-preview",
+      "Content": "{\n  \"appLocation\": \"northeurope\",\n  \"environment\": \"NonProd\",\n  \"sapProduct\": \"S4HANA\",\n  \"databaseType\": \"HANA\",\n  \"deploymentType\": \"SingleServer\",\n  \"dbVmSku\": \"Standard_E32ds_v4\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "184" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "421f13be-00d2-4912-ae8e-d0823891a531" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01, 2023-10-01-preview, 2024-02-01-preview" ],
+        "x-ms-request-id": [ "ce7bf49f-a3bc-461c-9249-5c52eb7ce603" ],
+        "x-ms-correlation-request-id": [ "65c21fd3-08fc-4602-a2f3-4a4840f4f765" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20240813T050711Z:65c21fd3-08fc-4602-a2f3-4a4840f4f765" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 63D71092DDF84F97BC8CC0005460B17A Ref B: MAA201060514023 Ref C: 2024-08-13T05:07:03Z" ],
+        "Date": [ "Tue, 13 Aug 2024 05:07:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5334" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"volumeConfigurations\":{\"hana/data\":{\"recommendedConfiguration\":{\"count\":3,\"sizeGB\":128,\"sku\":{\"name\":\"Premium_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":3,\"maximumSupportedDiskCount\":7,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"}]},\"hana/log\":{\"recommendedConfiguration\":{\"count\":3,\"sizeGB\":128,\"sku\":{\"name\":\"Premium_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":3,\"maximumSupportedDiskCount\":7,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"}]},\"hana/shared\":{\"recommendedConfiguration\":{\"count\":1,\"sizeGB\":256,\"sku\":{\"name\":\"StandardSSD_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E15\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E20\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":1024,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E30\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":2048,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E40\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":4096,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E50\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":1100,\"mbpsReadWrite\":125,\"diskTier\":\"P15\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":2300,\"mbpsReadWrite\":150,\"diskTier\":\"P20\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":1024,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":5000,\"mbpsReadWrite\":200,\"diskTier\":\"P30\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":2048,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":7500,\"mbpsReadWrite\":250,\"diskTier\":\"P40\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":4096,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":7500,\"mbpsReadWrite\":250,\"diskTier\":\"P50\"}]},\"usr/sap\":{\"recommendedConfiguration\":{\"count\":1,\"sizeGB\":128,\"sku\":{\"name\":\"Premium_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E10\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E15\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E20\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":1100,\"mbpsReadWrite\":125,\"diskTier\":\"P15\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":2300,\"mbpsReadWrite\":150,\"diskTier\":\"P20\"}]},\"backup\":{\"recommendedConfiguration\":{\"count\":2,\"sizeGB\":256,\"sku\":{\"name\":\"StandardSSD_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E10\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E15\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E20\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":256,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":1100,\"mbpsReadWrite\":125,\"diskTier\":\"P15\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":512,\"minimumSupportedDiskCount\":0,\"maximumSupportedDiskCount\":6,\"iopsReadWrite\":2300,\"mbpsReadWrite\":150,\"diskTier\":\"P20\"}]},\"os\":{\"recommendedConfiguration\":{\"count\":1,\"sizeGB\":64,\"sku\":{\"name\":\"StandardSSD_LRS\"}},\"supportedConfigurations\":[{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":64,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E6\"},{\"sku\":{\"name\":\"StandardSSD_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"E10\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":64,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":240,\"mbpsReadWrite\":50,\"diskTier\":\"P6\"},{\"sku\":{\"name\":\"Premium_LRS\"},\"sizeGB\":128,\"minimumSupportedDiskCount\":1,\"maximumSupportedDiskCount\":1,\"iopsReadWrite\":500,\"mbpsReadWrite\":100,\"diskTier\":\"P10\"}]}}}",
+      "isContentBase64": false
+    }
+  },
+  "PostOperationsAzWorkloads+[NoContext]+PostOperationsSapSizingRecommendationAlias+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getSizingRecommendations?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getSizingRecommendations?api-version=2023-10-01-preview",
+      "Content": "{\n  \"appLocation\": \"northeurope\",\n  \"environment\": \"NonProd\",\n  \"sapProduct\": \"S4HANA\",\n  \"deploymentType\": \"SingleServer\",\n  \"saps\": 10000,\n  \"dbMemory\": 256,\n  \"databaseType\": \"HANA\",\n  \"dbScaleMethod\": \"ScaleUp\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "216" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "34770f31-c247-4ebf-93da-54315420bedc" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01, 2023-10-01-preview, 2024-02-01-preview" ],
+        "x-ms-request-id": [ "5432964e-f1f0-4dd6-bdb1-0cbebb0aa407" ],
+        "x-ms-correlation-request-id": [ "825268d8-6953-439b-91ea-28d26072fffd" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20240813T050719Z:825268d8-6953-439b-91ea-28d26072fffd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 45EDD11D5B6448358369732813F7408E Ref B: MAA201060514023 Ref C: 2024-08-13T05:07:12Z" ],
+        "Date": [ "Tue, 13 Aug 2024 05:07:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "61" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"vmSku\":\"Standard_E32ds_v4\",\"deploymentType\":\"SingleServer\"}",
+      "isContentBase64": false
+    }
+  },
+  "PostOperationsAzWorkloads+[NoContext]+PostOperationsSapSupportedSkuAlias+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getSapSupportedSku?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/northeurope/sapVirtualInstanceMetadata/default/getSapSupportedSku?api-version=2023-10-01-preview",
+      "Content": "{\n  \"appLocation\": \"northeurope\",\n  \"environment\": \"Prod\",\n  \"sapProduct\": \"S4HANA\",\n  \"deploymentType\": \"ThreeTier\",\n  \"databaseType\": \"HANA\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "144" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "b7320b66-130d-400a-bd39-81677b5e61e4" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01, 2023-10-01-preview, 2024-02-01-preview" ],
+        "x-ms-request-id": [ "35619958-6217-493e-8f32-85e87791cdbc" ],
+        "x-ms-correlation-request-id": [ "7f5d5f65-f066-4a72-b238-8fcd15352663" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20240813T050728Z:7f5d5f65-f066-4a72-b238-8fcd15352663" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F83D5723239C4DC392D0FA6A1C2C1880 Ref B: MAA201060514023 Ref C: 2024-08-13T05:07:19Z" ],
+        "Date": [ "Tue, 13 Aug 2024 05:07:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5093" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"supportedSkus\":[{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D16ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D16ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D32ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D32ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D48ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D48ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D4ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D4ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D64ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D64ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D8ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D8ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D96ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E16ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E16ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E20ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E20ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E32ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E32ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E48ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E48ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E4ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E4ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E64ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E64ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E8ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E8ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E96ds_v5\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128dms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128ds_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128ms\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128s\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M176ds_3_v3\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M176ds_4_v3\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M192idms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M192ids_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M192ims_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M192is_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M208ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M208s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32dms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32ls\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32ts\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M416ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M416s_8_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M416s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M48ds_1_v3\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64dms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ds_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ls\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ms\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64s\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M96ds_1_v3\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M96ds_2_v3\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

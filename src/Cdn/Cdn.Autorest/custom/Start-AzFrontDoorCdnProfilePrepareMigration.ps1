@@ -238,12 +238,16 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of WAF policy instance in the profile."
         }
 
-        if (($PSBoundParameters.ContainsKey('IdentityType')) -ne ($allPoliciesWithVault.count -gt 0)) {
-            throw "MSIIdentity should be associated if the front door has Customer Certificates. If not, remove MSIIdentity parameter."
+        # We should raise a complaint if the customer did not enable managed identity when they have BYOC enabled. 
+        # However, if the customer does not have BYOC but has specified a managed identity, we could ignore the validation for BYOC, no need to keep consisence with Portal behavior.
+        if (($allPoliciesWithVault.count -gt 0) -and !($PSBoundParameters.ContainsKey('IdentityType')))
+        {
+            throw "IdentityType parameter should be provided when the front door has Customer Certificates."
         }
-        Write-Host("The parameters have been successfully validated.")
 
-        # Deal with Waf policy
+        Write-Host("The parameters have been validated successfully.")
+
+        # Step1: Deal with Waf policy
         if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
             Write-Host("Starting to configure WAF policy upgrades.")
 
@@ -287,7 +291,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             Write-Host("WAF policy upgrades have been configured successfully.")
         }
 
-        # Create AFDx Profile
+        # Step2: Create AFDx Profile
         # If create AfdX profile firstly, then an error ("Invalid migrated to waf reference.") will be thrown if the migrated-To-WAF is supposed to created. (not exists in current subscription)
         Write-Host("Your new Front Door profile is being created. Please wait until the process has finished completely. This may take several minutes.")
         $null = $PSBoundParameters.Remove('IdentityType')
@@ -302,9 +306,8 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
         Write-Host("Your new Front Door profile with the configuration has been successfully created.")
         
-        # Deal with MSI parameter
-        # if ($PSBoundParameters.ContainsKey('IdentityType')) {
-        if ($allPoliciesWithVault.count -gt 0) {
+        # Step 3: Deal with MSI parameter
+        if (${IdentityType}) {
             Write-Host("Starting to enable managed identity.")
 
             # Waiting for results of profile created return
@@ -318,7 +321,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             
             $enableMSISuccessMessage = 'Enabling managed identity succeeded.'
             $enableMSIRetryMessage = 'Retrying to enable managed identity...'
-            $enableMSIErrorMessage = "Enableing managed identity failed."
+            $enableMSIErrorMessage = "Enabling managed identity failed."
             $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile' -CommandArgs $commandArgs -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $enableMSISuccessMessage -RetryMessage $enableMSIRetryMessage -ErrorMessage $enableMSIErrorMessage
             $identity = [System.Collections.ArrayList]@()
             foreach ($id in $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId) {
@@ -331,24 +334,31 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
             }
 
-            # Waiting for MSI granted access...
+            # Waiting for Enabling managed identity...
             Start-Sleep(20)
-            Write-Host("Starting to grant managed identity to key vault.")
-            foreach ($vault in $allPoliciesWithVault) {
-                foreach ($principal in $identity) {
-                    $grantAccessSuccessMessage = 'Granting managed identity to key vault succeeded.'
-                    $grantAccessRetryMessage = 'Retrying to grant managed identity to key vault...'
-                    $grantAccessErrorMessage = 'Granting managed identity to key vault failed.'
 
-                    $commandInfo = @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'; BypassObjectIdValidation = $true}
+            # When the classic front door has BYOC, need to grant managed identity to the key vault.
+            if ($allPoliciesWithVault.count -gt 0)
+            {
+                Write-Host("Starting to grant managed identity to key vault.")
+                foreach ($vault in $allPoliciesWithVault) {
+                    foreach ($principal in $identity) {
+                        $grantAccessSuccessMessage = 'Granting managed identity to key vault succeeded.'
+                        $grantAccessRetryMessage = 'Retrying to grant managed identity to key vault...'
+                        $grantAccessErrorMessage = 'Granting managed identity to key vault failed.'
 
-                    # Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
-                    # Adding the parameter `-BypassObjectIdValidation` to bypass the validation when using pipeline to do migration, the type of `-BypassObjectIdValidation` is 'SwitchParameter'.
-                    RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs $commandInfo -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $grantAccessSuccessMessage -RetryMessage $grantAccessRetryMessage -ErrorMessage $grantAccessErrorMessage
+                        $commandInfo = @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'; BypassObjectIdValidation = $true}
+
+                        # Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                        # Adding the parameter `-BypassObjectIdValidation` to bypass the validation when using pipeline to do migration, the type of `-BypassObjectIdValidation` is 'SwitchParameter'.
+                        RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs $commandInfo -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $grantAccessSuccessMessage -RetryMessage $grantAccessRetryMessage -ErrorMessage $grantAccessErrorMessage
+                    }
                 }
-            }
 
-            Write-Host("Your have successfully granted managed identity to key vault.")
+                Write-Host("Your have successfully granted managed identity to key vault.")
+            }
+        } else {
+            Write-Debug("IdentityType paramter not provided and no BYOC for the current front door, skip Managed Identity step.")
         }
 
         Write-Host("The change need to be committed after this.")

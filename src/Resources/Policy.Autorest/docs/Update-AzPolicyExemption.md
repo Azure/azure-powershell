@@ -17,16 +17,17 @@ This operation updates a policy exemption with the given scope and name.
 Update-AzPolicyExemption -Name <String> [-ExemptionCategory <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
  [-BackwardCompatible] [-ClearExpiration] [-Description <String>] [-DisplayName <String>]
- [-ExpiresOn <DateTime?>] [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ExpiresOn <DateTime?>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicyExemption -Id <String> [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
  [-AssignmentScopeValidation <String>] [-BackwardCompatible] [-ClearExpiration] [-Description <String>]
- [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### InputObject
@@ -34,7 +35,8 @@ Update-AzPolicyExemption -Id <String> [-ExemptionCategory <String>] [-PolicyDefi
 Update-AzPolicyExemption -InputObject <IPolicyExemption> [-ExemptionCategory <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-BackwardCompatible]
  [-ClearExpiration] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
- [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +98,16 @@ The second command gets the policy exemption named PolicyExemption07 by using th
 The command stores that object in the $PolicyExemption variable.
 The final command updates the expiration date time for the policy exemption on the default subscription.
 
-### Example 5: [Backcompat] Clear the expiration date time
+### Example 5: Update resource selector
+```powershell
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyExemption -Name 'VirtualMachineExemption' -ResourceSelector $ResourceSelector
+```
+
+The first command creates a resource selector object that will be used to specify the exemption should only apply to resources in locations other than East US or East US 2 and stores it in the $ResourceSelector variable.
+The final command updates the policy exemption named VirtualMachineExemption with the resource selector specified by $ResourceSelector.
+
+### Example 6: [Backcompat] Clear the expiration date time
 ```powershell
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
 Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
@@ -304,6 +315,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceSelector
+The resource selector list to filter policies by resource properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

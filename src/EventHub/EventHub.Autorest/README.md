@@ -457,3 +457,4 @@ directive:
   - model-cmdlet:
     - model-name: KeyVaultProperties
       cmdlet-name: New-AzEventHubKeyVaultPropertiesObject
+```
