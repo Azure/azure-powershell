@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 * Updated the policy, protection commands to support AFS Vault Tier.
 
 ## Version 7.3.0

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 0.7.4
 * Removed Microsoft.Azure.Management.ManagementPartner 1.1.1-preview dependency
