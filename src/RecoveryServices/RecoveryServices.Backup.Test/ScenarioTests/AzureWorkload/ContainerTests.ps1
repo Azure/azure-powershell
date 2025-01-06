@@ -34,24 +34,22 @@ function Test-AzureVmWorkloadUnDeleteContainer
 		# verify isDeferredDelete - currently not supported
 
 		# undelete 
-		$undeletedContainer = Undo-AzRecoveryServicesBackupContainerDeletion -Container $container[0] -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID
+		$undeletedContainer = Undo-AzRecoveryServicesBackupContainerDeletion -Container $container[0] -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID -Force -Confirm:$false
 
 		# verify isDeferredDelete false - currently not supported
 
 		# Reregister  
-		$reregisteredContainer = Register-AzRecoveryServicesBackupContainer -Container $container -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID
+		$reregisteredContainer = Register-AzRecoveryServicesBackupContainer -Container $container -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID -Force
 		
-		Assert-True {$reregisteredContainer.Status -eq "Registered"}
-
-		# soft delete container
-		Unregister-AzRecoveryServicesBackupContainer -Container $reregisteredCont -VaultId $vault.ID
-		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | where-object { $_.Name -match $containerName}
-
-		Assert-True {$container.Status -eq "SoftDeleted"}
+		Assert-True {$reregisteredContainer.Status -eq "Registered"}		
 	}
 	finally	
 	{						
-		# no cleanup
+		# soft delete container
+		Unregister-AzRecoveryServicesBackupContainer -Container $reregisteredContainer -VaultId $vault.ID -Force -Confirm:$false
+		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | where-object { $_.Name -match $containerName}
+
+		Assert-True {$container.Status -eq "SoftDeleted"}
 	}
 }
 

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
@@ -61,7 +60,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
             if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
             {
-                DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays((int)protectedItem.SoftDeleteRetentionPeriodInDays);
+                int softDeleteRetentionDays = protectedItem?.SoftDeleteRetentionPeriodInDays ?? 14;
+                DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays((int)softDeleteRetentionDays);
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
             }
 

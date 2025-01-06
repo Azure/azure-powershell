@@ -16,8 +16,9 @@ Updates properties of a Vault.
 ### AzureRSVaultSoftDelteParameterSet (Default)
 ```
 Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
- [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftDeleteRetentionPeriodInDays <Int32>] [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultCMKParameterSet
@@ -171,6 +172,21 @@ Type: System.String
 Parameter Sets: AzureRSVaultSoftDelteParameterSet
 Aliases:
 Accepted values: Enable, Disable, AlwaysON
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteRetentionPeriodInDays
+Specifies the retention period for soft deleted items in days.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Aliases:
 
 Required: False
 Position: Named
