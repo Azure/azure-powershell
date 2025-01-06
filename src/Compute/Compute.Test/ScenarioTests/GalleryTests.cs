@@ -85,5 +85,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("TestGen-newazgalleryimageversion");
         }
-            }
+    }
 }
