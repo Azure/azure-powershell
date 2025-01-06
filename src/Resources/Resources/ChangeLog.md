@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded nuget package to signed package.
 * Added DefaultApiVersion to the returned properties of the `Get-AzResourceProvider` cmdlet's Resource Type array
 * Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
 * Fixed bug unexpected type issue: [#26752]
