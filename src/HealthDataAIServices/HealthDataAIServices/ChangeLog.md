@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 * Upgraded API version to 2024-09-20
-* Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
 
 ## Version 0.1.0
 * First preview release for module Az.HealthDataAIServices
