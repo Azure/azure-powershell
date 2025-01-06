@@ -1,4 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.DynatraceObservability","1","Dynatrace.Observability","monitors-singleSignOnConfigurations","Get-AzDynatraceMonitorSSOConfig","configurationName is defined in path but cannot find in example"
-"Az.DynatraceObservability","1","Dynatrace.Observability","monitors-tagRules","Get-AzDynatraceMonitorTagRule","ruleSetName is defined in path but cannot find in example"
-"Az.DynatraceObservability","1","Dynatrace.Observability","monitors-tagRules","Remove-AzDynatraceMonitorTagRule","ruleSetName is defined in path but cannot find in example"

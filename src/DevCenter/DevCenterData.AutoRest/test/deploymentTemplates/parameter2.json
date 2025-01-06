@@ -1,9 +1,0 @@
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "managedIdentityPrincipalId": {
-      "value": "a51d9238-8c8d-4f78-a027-479cdad5cc18"
-    }
-  }
-}

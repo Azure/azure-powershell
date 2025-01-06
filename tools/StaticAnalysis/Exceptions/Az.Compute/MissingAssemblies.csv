@@ -1,6 +1,0 @@
-"Directory","Assembly Name","Assembly Version","Referencing Assembly","Severity","ProblemId","Description","Remediation"
-"Az.Compute","Microsoft.Win32.Registry","4.1.1.0","System.Management.Automation","0","3000","Missing assembly Microsoft.Win32.Registry referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
-"Az.Compute","Microsoft.PowerShell.CoreCLR.Eventing","6.1.0.0","System.Management.Automation","0","3000","Missing assembly Microsoft.PowerShell.CoreCLR.Eventing referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
-"Az.Compute","System.IO.Hashing","6.0.0.0","Azure.Storage.Blobs","0","3000","Missing ALC assembly System.IO.Hashing referenced from Azure.Storage.Blobs","Ensure that the assembly is included in the Wix file or directory"
-"Az.Compute","System.Runtime.CompilerServices.Unsafe","4.0.6.0","Azure.Storage.Blobs","0","3000","Missing ALC assembly System.Runtime.CompilerServices.Unsafe referenced from Azure.Storage.Blobs","Ensure that the assembly is included in the Wix file or directory"
-"Az.Compute","System.IO.Hashing","6.0.0.0","Azure.Storage.Common","0","3000","Missing ALC assembly System.IO.Hashing referenced from Azure.Storage.Common","Ensure that the assembly is included in the Wix file or directory"

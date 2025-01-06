@@ -1,5 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.ServiceBus","1","Microsoft.ServiceBus","namespaces-migrationConfigurations","Complete-AzServiceBusMigration","configName is defined in path but cannot find in example"
-"Az.ServiceBus","1","Microsoft.ServiceBus","namespaces-migrationConfigurations","Get-AzServiceBusMigration","configName is defined in path but cannot find in example"
-"Az.ServiceBus","1","Microsoft.ServiceBus","namespaces-migrationConfigurations","Remove-AzServiceBusMigration","configName is defined in path but cannot find in example"
-"Az.ServiceBus","1","Microsoft.ServiceBus","namespaces-migrationConfigurations","Stop-AzServiceBusMigration","configName is defined in path but cannot find in example"

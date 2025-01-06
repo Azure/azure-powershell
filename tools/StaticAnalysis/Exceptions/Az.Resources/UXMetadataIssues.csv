@@ -1,3 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.Resources","1","Microsoft.Resources","dataBoundaries","Get-AzDataBoundaryTenant","default is defined in path but cannot find in example"
-"Az.Resources","1","Microsoft.Resources","dataBoundaries","Get-AzDataBoundaryScope","default is defined in path but cannot find in example"

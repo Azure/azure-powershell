@@ -1,3 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.Kusto","1","Microsoft.Kusto","Clusters-Databases","Invoke-AzKustoInviteDatabaseFollower","Cannot find a matched parameter set for example of Invoke-AzKustoInviteDatabaseFollower"
-"Az.Kusto","1","Microsoft.Kusto","Clusters","Invoke-AzKustoClusterMigration","Cannot find a matched parameter set for example of Invoke-AzKustoClusterMigration"

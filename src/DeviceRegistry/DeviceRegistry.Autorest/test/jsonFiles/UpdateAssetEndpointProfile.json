@@ -1,6 +1,0 @@
-{
-  "properties": {
-      "targetAddress": "opc.tcp://bar",
-      "additionalConfiguration": "{\"foo\": \"bar\"}"
-  }
-}

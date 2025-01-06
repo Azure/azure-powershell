@@ -1,2 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.Elastic","1","Microsoft.Elastic","monitors-tagRules","Get-AzElasticTagRule","ruleSetName is defined in path but cannot find in example"

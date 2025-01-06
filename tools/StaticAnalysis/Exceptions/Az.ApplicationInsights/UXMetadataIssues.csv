@@ -1,3 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.ApplicationInsights","1","microsoft.insights","components-linkedStorageAccounts","Get-AzApplicationInsightsLinkedStorageAccount","storageType is defined in path but cannot find in example"
-"Az.ApplicationInsights","1","microsoft.insights","components-linkedStorageAccounts","Remove-AzApplicationInsightsLinkedStorageAccount","storageType is defined in path but cannot find in example"

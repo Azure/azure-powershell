@@ -1,9 +1,0 @@
-{
-    "properties": {
-        "annotations": [],
-        "type": "SqlServer",
-        "typeProperties": {
-            "connectionString": "integrated security=False;data source=irservertest-manual6.database.windows.net;initial catalog=TEstDB;user id=asdfasdfasdfasdfasdf",
-        }
-    }
-}

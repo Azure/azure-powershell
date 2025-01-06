@@ -1,8 +1,0 @@
-{
-    "location": "eastus",
-    "properties": {
-        "networkAcls": {
-            "publicNetworkAccess": "Enabled"
-            }
-        }
-}
