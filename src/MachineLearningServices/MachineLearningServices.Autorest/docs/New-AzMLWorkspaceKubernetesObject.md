@@ -17,8 +17,7 @@ New-AzMLWorkspaceKubernetesObject [-DefaultInstanceType <String>] [-Description 
  [-DisableLocalAuth <Boolean>] [-ExtensionInstanceReleaseTrain <String>] [-ExtensionPrincipalId <String>]
  [-InstanceLimit <Hashtable>] [-InstanceNodeSelector <Hashtable>] [-InstanceRequest <Hashtable>]
  [-Namespace <String>] [-RelayConnectionString <String>] [-ResourceId <String>]
- [-ServiceBusConnectionString <String>] [-ServiceBusConnectionStringSecure <SecureString>] [-VcName <String>]
- [<CommonParameters>]
+ [-ServiceBusConnectionStringSecure <SecureString>] [-VcName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,21 +186,6 @@ Accept wildcard characters: False
 
 ### -ResourceId
 ARM resource id of the underlying compute.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceBusConnectionString
-ServiceBus connection string.
 
 ```yaml
 Type: System.String
