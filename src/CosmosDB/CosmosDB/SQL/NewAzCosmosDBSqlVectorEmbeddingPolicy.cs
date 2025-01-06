@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlVectorEmbeddingPolicy"), OutputType(typeof(PSSqlVectorEmbeddingPolicy))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlVectorEmbeddingPolicy", SupportsShouldProcess = true), OutputType(typeof(PSSqlVectorEmbeddingPolicy))]
     public class NewAzCosmosDBSqlVectorEmbeddingPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.VectorEmbeddingPolicyVectorEmbeddingHelpMessage)]
