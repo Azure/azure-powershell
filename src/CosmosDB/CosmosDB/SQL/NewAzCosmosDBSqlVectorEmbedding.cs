@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlVectorEmbedding"), OutputType(typeof(PSVectorEmbedding))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlVectorEmbedding", SupportsShouldProcess = true), OutputType(typeof(PSVectorEmbedding))]
     public class NewAzCosmosDBSqlVectorEmbedding : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.VectorEmbeddingPathHelpMessage)]
