@@ -27,9 +27,24 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
     public class AddAzureCognitiveServicesAccountNetworkRuleCommand : CognitiveServicesAccountBaseCmdlet
     {
+         /// <summary>
+        /// NetWorkRule in String parameter set name
+        /// </summary>
         private const string NetWorkRuleStringParameterSet = "NetWorkRuleString";
+
+        /// <summary>
+        /// IpRule in String paremeter set name
+        /// </summary>
         private const string IpRuleStringParameterSet = "IpRuleString";
+
+        /// <summary>
+        /// NetWorkRule Objects pipeline parameter set
+        /// </summary>
         private const string NetworkRuleObjectParameterSet = "NetworkRuleObject";
+
+        /// <summary>
+        /// IpRule Objects pipeline parameter set
+        /// </summary>
         private const string IpRuleObjectParameterSet = "IpRuleObject";
 
         [Parameter(
