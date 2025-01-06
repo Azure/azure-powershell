@@ -130,8 +130,4 @@ directive:
       property-name: PropertiesName
     set:
       property-name: AlertRuleResourceName
-  # metricAlert_API.json
-  - from: swagger-document
-    where: $.definitions.MultiMetricCriteria
-    transform: $['additionalProperties'] = true
 ```
