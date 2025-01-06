@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
 * upgraded nuget package to signed package.
 * Updated `Remove-AzNetworkWatcherFlowLog` command to return boolean value
 * Updated vnv and ipam cmdlets
