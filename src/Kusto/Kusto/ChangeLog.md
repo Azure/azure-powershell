@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 * Added new cmdlets
     - `Add-AzKustoClusterCalloutPolicy`
     - `Get-AzKustoClusterCalloutPolicy`

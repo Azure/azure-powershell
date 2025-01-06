@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 1.1.0
 * Added 4 new DNS Resolver Policy (DNS Security Policy) resources into the cmdlets

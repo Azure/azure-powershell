@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 6.0.0
 * The parameters of the `New-AzDataCollectionEndpoint`, `New-AzDataCollectionRule`, `Update-AzDataCollectionEndpoint`, `Update-AzDataCollectionRule` commands have changed.

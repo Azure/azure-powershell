@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 3.2.2
 * Fix bug where parameters could not be set to false for `Publish-AzWebApp`
