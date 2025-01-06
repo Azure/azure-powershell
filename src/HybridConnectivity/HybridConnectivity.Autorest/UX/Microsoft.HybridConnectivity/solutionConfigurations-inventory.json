@@ -1,0 +1,47 @@
+{
+  "resourceType": "solutionConfigurations/inventory",
+  "apiVersion": "2024-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHybridConnectivityInventory",
+      "description": "Get a InventoryResource",
+      "path": "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/inventory/{inventoryId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/get-azhybridconnectivityinventory"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-ResourceUri <String>",
+              "-SolutionConfiguration <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a InventoryResource",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.inventoryId]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-SolutionConfiguration",
+              "value": "[Path.solutionConfiguration]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
