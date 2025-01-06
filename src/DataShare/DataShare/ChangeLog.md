@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 1.0.2
 * Removed the outdated deps.json file.

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 * Updated `New-AzSqlDatabaseExport` with support for Managed Identity
  	- Added `ManagedIdentity` to `StorageKeyType` auth list
    	- Added `ManagedIdentity` to `AuthenticationType` auth list

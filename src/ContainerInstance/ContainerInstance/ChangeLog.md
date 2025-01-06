@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* upgraded nuget package to signed package.
 * Added breaking change warning for removing default value for OsType `New-AzContainerGroup`
 
 ## Version 4.1.0

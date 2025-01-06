@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 2.3.1
 * Fixed the bug in server registration

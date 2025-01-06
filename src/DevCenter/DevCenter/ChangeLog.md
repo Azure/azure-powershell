@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 2.0.0
 * Updated data plane to 2024-05-01-preview and removed deprecation warnings.
