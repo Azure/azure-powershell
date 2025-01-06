@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* upgraded nuget package to signed package.
+* Upgraded nuget package to signed package.
 * Fixed the Managed Identity parameter set description of `AccountId` in `Connect-AzAccount`.
 * Made the breaking change warnings about `Get-AzAccessToken` not appear when `-AsSecureString` is used.
 * Fixed an issue that cmdlets may report warnings of "KeyNotFoundException". #26624

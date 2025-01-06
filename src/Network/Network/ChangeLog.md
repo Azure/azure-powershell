@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
-* upgraded nuget package to signed package.
+* Upgraded nuget package to signed package.
 * Updated `Remove-AzNetworkWatcherFlowLog` command to return boolean value
 * Updated vnv and ipam cmdlets
 * Allowed TA interval to be set as 0 incase TA is disabled
