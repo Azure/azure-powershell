@@ -21,11 +21,6 @@
 -->
 ## Upcoming Release
 * Added new parameter `-ReplicationMode` to `New-AzGalleryImageVersion` cmdlet.
-    - Allows users to specify replication mode as 'Full' or 'Shallow' for quicker provisioning of gallery image versions without a full copy of the source image.
-
-* upgraded nuget package to signed package.
-* Upgraded Azure.Core to 1.44.1.
-* Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
 * upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 * Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
