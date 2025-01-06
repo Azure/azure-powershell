@@ -66,9 +66,6 @@ function New-AzMLWorkspaceKubernetesObject {
         [Parameter(HelpMessage="Relay connection string.")]
         [string]
         $RelayConnectionString,
-        [Parameter(HelpMessage="ServiceBus connection string.")]
-        [string]
-        $ServiceBusConnectionString,
         [Parameter(HelpMessage="ServiceBus connection string in SecureString format.")]
         [System.Security.SecureString]
         $ServiceBusConnectionStringSecure,
@@ -143,9 +140,6 @@ function New-AzMLWorkspaceKubernetesObject {
         }
         if ($PSBoundParameters.ContainsKey('ServiceBusConnectionStringSecure')) {
             $Object.ServiceBusConnectionStringSecure = $ServiceBusConnectionStringSecure
-        }
-        elseif ($PSBoundParameters.ContainsKey('ServiceBusConnectionString')) {
-            $Object.ServiceBusConnectionString = $ServiceBusConnectionString
         }
         if ($PSBoundParameters.ContainsKey('VcName')) {
             $Object.VcName = $VcName

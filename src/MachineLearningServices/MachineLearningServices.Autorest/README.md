@@ -49,6 +49,11 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - from: swagger-document
+    where: $.definitions.KubernetesProperties.properties.serviceBusConnectionString
+    transform: >
+      $["x-ms-client-name"] = "ServiceBusConnectionStringSecure";
+      $["format"] = "password";
   # Fix URL type in autorest v3
   - from: swagger-document
     where: $.definitions.WorkspaceConnectionOAuth2.properties.authUrl
