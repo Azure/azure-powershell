@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// Initializes a new instance of the MultiMetricCriteria class.
         /// </summary>
 
+        /// <param name="additionalProperties">The types of conditions for a multi resource alert.
+        /// </param>
+
         /// <param name="name">Name of the criteria.
         /// </param>
 
@@ -43,9 +46,10 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// <param name="skipMetricValidation">Allows creating an alert rule on a custom metric that isn&#39;t yet emitted, by
         /// causing the metric validation to be skipped.
         /// </param>
-        public MultiMetricCriteria(string name, string metricName, string timeAggregation, string metricNamespace = default(string), System.Collections.Generic.IList<MetricDimension> dimensions = default(System.Collections.Generic.IList<MetricDimension>), bool? skipMetricValidation = default(bool?))
+        public MultiMetricCriteria(string name, string metricName, string timeAggregation, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string metricNamespace = default(string), System.Collections.Generic.IList<MetricDimension> dimensions = default(System.Collections.Generic.IList<MetricDimension>), bool? skipMetricValidation = default(bool?))
 
         {
+            this.AdditionalProperties = additionalProperties;
             this.Name = name;
             this.MetricName = metricName;
             this.MetricNamespace = metricNamespace;
@@ -60,6 +64,12 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the types of conditions for a multi resource alert.
+        /// </summary>
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
 
         /// <summary>
         /// Gets or sets name of the criteria.
@@ -117,6 +127,7 @@ namespace Microsoft.Azure.Management.Monitor.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TimeAggregation");
             }
+
 
 
 

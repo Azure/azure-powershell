@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// Initializes a new instance of the MetricCriteria class.
         /// </summary>
 
+        /// <param name="additionalProperties">The types of conditions for a multi resource alert.
+        /// </param>
+
         /// <param name="name">Name of the criteria.
         /// </param>
 
@@ -50,9 +53,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
 
         /// <param name="threshold">the criteria threshold value that activates the alert.
         /// </param>
-        public MetricCriteria(string name, string metricName, string timeAggregation, string operatorProperty, double threshold, string metricNamespace = default(string), System.Collections.Generic.IList<MetricDimension> dimensions = default(System.Collections.Generic.IList<MetricDimension>), bool? skipMetricValidation = default(bool?))
+        public MetricCriteria(string name, string metricName, string timeAggregation, string operatorProperty, double threshold, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string metricNamespace = default(string), System.Collections.Generic.IList<MetricDimension> dimensions = default(System.Collections.Generic.IList<MetricDimension>), bool? skipMetricValidation = default(bool?))
 
-        : base(name, metricName, timeAggregation, metricNamespace, dimensions, skipMetricValidation)
+        : base(name, metricName, timeAggregation, additionalProperties, metricNamespace, dimensions, skipMetricValidation)
         {
             this.OperatorProperty = operatorProperty;
             this.Threshold = threshold;

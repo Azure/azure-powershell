@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// Initializes a new instance of the DynamicMetricCriteria class.
         /// </summary>
 
+        /// <param name="additionalProperties">The types of conditions for a multi resource alert.
+        /// </param>
+
         /// <param name="name">Name of the criteria.
         /// </param>
 
@@ -58,9 +61,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// <param name="ignoreDataBefore">Use this option to set the date from which to start learning the metric
         /// historical data and calculate the dynamic thresholds (in ISO8601 format)
         /// </param>
-        public DynamicMetricCriteria(string name, string metricName, string timeAggregation, string operatorProperty, string alertSensitivity, DynamicThresholdFailingPeriods failingPeriods, string metricNamespace = default(string), System.Collections.Generic.IList<MetricDimension> dimensions = default(System.Collections.Generic.IList<MetricDimension>), bool? skipMetricValidation = default(bool?), System.DateTime? ignoreDataBefore = default(System.DateTime?))
+        public DynamicMetricCriteria(string name, string metricName, string timeAggregation, string operatorProperty, string alertSensitivity, DynamicThresholdFailingPeriods failingPeriods, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string metricNamespace = default(string), System.Collections.Generic.IList<MetricDimension> dimensions = default(System.Collections.Generic.IList<MetricDimension>), bool? skipMetricValidation = default(bool?), System.DateTime? ignoreDataBefore = default(System.DateTime?))
 
-        : base(name, metricName, timeAggregation, metricNamespace, dimensions, skipMetricValidation)
+        : base(name, metricName, timeAggregation, additionalProperties, metricNamespace, dimensions, skipMetricValidation)
         {
             this.OperatorProperty = operatorProperty;
             this.AlertSensitivity = alertSensitivity;
