@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+* Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 * Upgraded to rebranded package Azure.Developer.TrustedSigning.CryptoProvider.
 * Upgraded to updated Azure.Codesigning.Sdk.
