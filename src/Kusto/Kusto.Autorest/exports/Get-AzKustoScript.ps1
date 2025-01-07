@@ -27,7 +27,7 @@ Get-AzKustoScript -ClusterName testnewkustocluster -ResourceGroupName testrg -Da
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +53,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoscript
 #>
 function Get-AzKustoScript {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

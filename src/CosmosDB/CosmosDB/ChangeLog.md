@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
 
 ## Version 1.15.0
 * Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.

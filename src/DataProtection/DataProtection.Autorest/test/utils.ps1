@@ -202,6 +202,14 @@ function setupEnv() {
         TargetCrossSubStorageAccountRGName = "hiagaTestRG"
     }
 
+    $UpdateBIWithUAMIVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "hiagarg"
+        VaultName = "psbackupvault"
+        UserIdentityARMId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2"
+        BackupInstanceName = "psDiskBI"
+    }
+
     $BackupConfigVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         StorageAccountResourceGroup = "blob-pstest-rg"
@@ -311,6 +319,7 @@ function setupEnv() {
     $env.add("TestPGFlexRestore", $PGFlexRestoreVariables) | Out-Null
     $env.add("TestMySQLRestore", $MySQLRestoreVariables) | Out-Null
     $env.add("TestCmkEncryption", $CmkEncryptionVariables) | Out-Null
+    $env.add("TestUpdateBIWithUAMI", $UpdateBIWithUAMIVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

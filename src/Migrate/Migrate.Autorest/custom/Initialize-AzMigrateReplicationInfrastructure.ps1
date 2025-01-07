@@ -13,6 +13,21 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Create-RoleAssignments(
+    [string]$objectId,
+    [string]$saId) {
+
+    $storageBlobDataContributorRoleDefinitionId = [System.Guid]::parse($RoleDefinitionIds.StorageBlobDataContributorId)
+    $contributorRoleDefinitionId = [System.Guid]::parse($RoleDefinitionIds.ContributorId)
+    $existingRoleAssignments = Get-AzRoleAssignment -ObjectId $objectId -Scope $saId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+    if (-not $existingRoleAssignments) {
+        Write-Host "Creating role assignments for object" $objectId
+        $output = New-AzRoleAssignment -ObjectId $objectId -Scope $saId -RoleDefinitionId $storageBlobDataContributorRoleDefinitionId
+        $output = New-AzRoleAssignment -ObjectId $objectId -Scope $saId -RoleDefinitionId $contributorRoleDefinitionId
+    }
+}
+
 <#
 .Synopsis
 Initialises the infrastructure for the migrate project.
@@ -117,9 +132,9 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
     process {
         Import-Module Az.Resources
-        Import-Module Az.KeyVault
         Import-Module Az.Storage
-        Import-Module Az.ServiceBus
+        Import-Module Az.RecoveryServices
+        Import-Module $PSScriptRoot\Helper\AzStackHCICommonSettings.ps1
         
         # Validate user specified target region
         $TargetRegion = $TargetRegion.ToLower()
@@ -212,6 +227,9 @@ public static int hashForArtifact(String artifact)
             throw 'Azure Migrate appliance not configured. Setup Azure Migrate appliance before proceeding.'
         }
         $VaultName = $smsSolution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+        $VaultDetails = Get-AzRecoveryServicesVault -ResourceGroupName $ResourceGroupName -Name $VaultName
+        $isPublicScenario = $VaultDetails.Properties.PrivateEndpointStateForSiteRecovery -eq "None"
+
 
         # Get all appliances and sites in the project from SDS solution.
         $sdsSolution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Discovery-ServerDiscovery"
@@ -241,20 +259,26 @@ public static int hashForArtifact(String artifact)
         foreach ($eachApp in $appMap.GetEnumerator()) {
             $SiteName = $eachApp.Value.Split("/")[8]
             $applianceName = $eachApp.Key
-            $HashCodeInput = $SiteName + $TargetRegion
 
             # User cannot change location if it's already set in mapping.
             $mappingName = "containermapping"
             $allFabrics = Get-AzMigrateReplicationFabric -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
 
             foreach ($fabric in $allFabrics) {
-                if (($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)) {
+                if (($fabric.Property.CustomDetail.InstanceType -eq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -eq $SiteName)) {
+                    $fabricName = $fabric.Name
+                    $HashCodeInput = $fabric.Id
                     $peContainers = Get-AzMigrateReplicationProtectionContainer -FabricName $fabric.Name -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
                     $peContainer = $peContainers[0]
                     $existingMapping = Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -FabricName $fabric.Name -ProtectionContainerName $peContainer.Name -MappingName $mappingName -ErrorVariable notPresent -ErrorAction SilentlyContinue
                     if (($existingMapping) -and ($existingMapping.ProviderSpecificDetail.TargetLocation -ne $TargetRegion)) {
                         $targetRegionMismatchExceptionMsg = $ProjectName + " is already configured for migrating servers to " + $TargetRegion + ". Target Region cannot be modified once configured."
                         throw $targetRegionMismatchExceptionMsg
+                    }
+
+                    if (($isPublicScenario) -and ($CacheStorageAccountId) -and ($existingMapping) -and ($existingMapping.ProviderSpecificDetail.StorageAccountId -ne $CacheStorageAccountId)) {
+                        $saMismatchExceptionMsg = $applianceName + " is already configured for migrating servers with storage account " + $existingMapping.ProviderSpecificDetail.StorageAccountId + ". Storage account cannot be modified once configured."
+                        throw $saMismatchExceptionMsg
                     }
                 }
             }
@@ -269,265 +293,118 @@ public static int hashForArtifact(String artifact)
 
             Write-Host "Initiating Artifact Creation for Appliance: ", $applianceName
             $MigratePrefix = "migrate"
-
-            if ([string]::IsNullOrEmpty($CacheStorageAccountId)) {
+            
+            if ($isPublicScenario) {
                 # Phase 1
                 # Storage account
-                $LogStorageAcName = $MigratePrefix + "lsa" + $hash
-                $GateWayStorageAcName = $MigratePrefix + "gwsa" + $hash
-                $StorageType = "Microsoft.Storage/storageAccounts"
-                $StorageApiVersion = "2017-10-01" 
-                $LogStorageProperties = @{
-                    encryption               = @{
-                        services  = @{
-                            blob  = @{enabled = $true };
-                            file  = @{enabled = $true };
-                            table = @{enabled = $true };
-                            queue = @{enabled = $true }
-                        };
-                        keySource = "Microsoft.Storage"
-                    };
-                    supportsHttpsTrafficOnly = $true
-                }
-                $ResourceTag = @{"Migrate Project" = $ProjectName }
-                $StorageSku = @{name = "Standard_LRS" }
-                $ResourceKind = "Storage"
+                if ([string]::IsNullOrEmpty($CacheStorageAccountId)) {
+                    if (!$existingMapping) {
+                        $ReplicationStorageAcName = $MigratePrefix + "rsa" + $hash
+                        $StorageType = "Microsoft.Storage/storageAccounts"
+                        $StorageApiVersion = "2017-10-01" 
+                        $ReplicationStorageProperties = @{
+                            encryption               = @{
+                                services  = @{
+                                    blob  = @{enabled = $true };
+                                    file  = @{enabled = $true };
+                                    table = @{enabled = $true };
+                                    queue = @{enabled = $true }
+                                };
+                                keySource = "Microsoft.Storage"
+                            };
+                            supportsHttpsTrafficOnly = $true
+                        }
+                        $ResourceTag = @{"Migrate Project" = $ProjectName }
+                        $StorageSku = @{name = "Standard_LRS" }
+                        $ResourceKind = "Storage"
 
-                $lsaStorageAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $LogStorageAcName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if (!$lsaStorageAccount) {
-                    $output = New-AzResource -ResourceGroupName $ResourceGroupName -Location $TargetRegion -Properties  $LogStorageProperties -ResourceName $LogStorageAcName -ResourceType  $StorageType -ApiVersion $StorageApiVersion -Kind  $ResourceKind -Sku  $StorageSku -Tag $ResourceTag -Force
-                    Write-Host $LogStringCreated, $LogStorageAcName
-                }
-                else {
-                     Write-Host $LogStorageAcName, $LogStringSkipping
-                }
+                        $replicationStorageAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $ReplicationStorageAcName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                        if (!$replicationStorageAccount) {
+                            $output = New-AzResource -ResourceGroupName $ResourceGroupName -Location $TargetRegion -Properties  $ReplicationStorageProperties -ResourceName $ReplicationStorageAcName -ResourceType  $StorageType -ApiVersion $StorageApiVersion -Kind  $ResourceKind -Sku  $StorageSku -Tag $ResourceTag -Force
+                            Write-Host $LogStringCreated, $ReplicationStorageAcName
+                        }
+                        elseif ($replicationStorageAccount.Location -ne $TargetRegion){
+                            throw "Storage account with name '$($ReplicationStorageAcName)' already exists in '$($replicationStorageAccount.Location)'. You can either migrate to '$($replicationStorageAccount.Location)' or delete the existing storage account."
+                        }
+                        else {
+                             Write-Host $ReplicationStorageAcName, $LogStringSkipping
+                        }
 
-                $gwyStorageAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $GateWayStorageAcName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if (!$gwyStorageAccount) {
-                    $output = New-AzResource -ResourceGroupName $ResourceGroupName -Location $TargetRegion -Properties  $LogStorageProperties -ResourceName $GateWayStorageAcName -ResourceType  $StorageType -ApiVersion $StorageApiVersion -Kind  $ResourceKind -Sku  $StorageSku -Tag $ResourceTag -Force
-                    Write-Host $LogStringCreated, $GateWayStorageAcName
-                }
-                else {
-                    Write-Host $GateWayStorageAcName, $LogStringSkipping
-                }
-
-                # Service bus namespace
-                $ServiceBusNamespace = $MigratePrefix + "sbns" + $hash
-                $ServiceBusType = "Microsoft.ServiceBus/namespaces"
-                $ServiceBusApiVersion = "2017-04-01"
-                $ServiceBusSku = @{
-                    name = "Standard";
-                    tier = "Standard"
-                }
-                $ServiceBusProperties = @{}
-                $ServieBusKind = "ServiceBusNameSpace"
-
-                $serviceBusAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $ServiceBusNamespace -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if (!$serviceBusAccount) {
-                    $output = New-AzResource -ResourceGroupName $ResourceGroupName -Location $TargetRegion -Properties  $ServiceBusProperties -ResourceName $ServiceBusNamespace -ResourceType  $ServiceBusType -ApiVersion $ServiceBusApiVersion -Kind  $ServieBusKind -Sku  $ServiceBusSku -Tag $ResourceTag -Force
-                    Write-Host $LogStringCreated, $ServiceBusNamespace
-                }
-                else {
-                    Write-Host $ServiceBusNamespace, $LogStringSkipping
-                }
-
-                # Key vault
-                $KeyVaultName = $MigratePrefix + "kv" + $hash
-                $KeyVaultType = "Microsoft.KeyVault/vaults"
-                $KeyVaultApiVersion = "2016-10-01"
-                $KeyVaultKind = "KeyVault"
-
-                $existingKeyVaultAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $KeyVaultName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if ($existingKeyVaultAccount) {
-                    Write-Host $KeyVaultName, $LogStringSkipping
-                }
-                else {
-                    $tenantID = $context.Tenant.TenantId
-                    $KeyVaultPermissions = @{
-                    keys         = @("Get", "List", "Create", "Update", "Delete");
-                    secrets      = @("Get", "Set", "List", "Delete");
-                    certificates = @("Get", "List");
-                    storage      = @("get", "list", "delete", "set", "update", "regeneratekey", "getsas",
-                        "listsas", "deletesas", "setsas", "recover", "backup", "restore", "purge")
-                    }
-
-                    $CloudEnvironMent = $context.Environment.Name
-                    $HyperVManagerAppId = "b8340c3b-9267-498f-b21a-15d5547fd85e"
-                    if ($CloudEnvironMent -eq "AzureUSGovernment") {
-                        $HyperVManagerAppId = "AFAE2AF7-62E0-4AA4-8F66-B11F74F56326"
-                    }
-                    $hyperVManagerObject = Get-AzADServicePrincipal -ApplicationID $HyperVManagerAppId
-                    $accessPolicies = @()
-                    $userAccessPolicy = @{
-                        "tenantId"    = $tenantID;
-                        "objectId"    = $userObject.Id;
-                        "permissions" = $KeyVaultPermissions
-                    }
-                    $hyperVAccessPolicy = @{
-                        "tenantId"    = $tenantID;
-                        "objectId"    = $hyperVManagerObject.Id;
-                        "permissions" = $KeyVaultPermissions
-                    }
-                    $accessPolicies += $userAccessPolicy
-                    $accessPolicies += $hyperVAccessPolicy
-
-                    $allFabrics = Get-AzMigrateReplicationFabric -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
-                    $selectedFabricName = ""
-                    foreach ($fabric in $allFabrics) {
-                        if (($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)) {
-                            $projectRSPObject = Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
-                            foreach ($projectRSP in $projectRSPObject) {
-                                $projectRSPFabricName = $projectRSP.Id.Split("/")[10]
-                                if (($projectRSP.FabricType -eq "VMwareV2") -and ($fabric.Name -eq $projectRSPFabricName)) {
-                                    $projectAccessPolicy = @{
-                                        "tenantId"    = $tenantID;
-                                        "objectId"    = $projectRSP.ResourceAccessIdentityDetailObjectId;
-                                        "permissions" = $KeyVaultPermissions
-                                    }
-                                    $accessPolicies += $projectAccessPolicy
-                                }
-                            }
+                        # Locks
+                        $CommonLockName = $ProjectName + "lock"
+                        $lockNotes = "This is in use by Azure Migrate project"
+                        $rsaLock = Get-AzResourceLock -LockName $CommonLockName -ResourceName $ReplicationStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                        if (!$rsaLock) {
+                            $output = New-AzResourceLock -LockLevel CanNotDelete -LockName $CommonLockName -ResourceName $ReplicationStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -LockNotes $lockNotes -Force
+                            Write-Host $LogStringCreated, $CommonLockName, " for ", $ReplicationStorageAcName
+                        }
+                        else {
+                            Write-Host $CommonLockName, " for ", $ReplicationStorageAcName, $LogStringSkipping
                         }
                     }
-                    $keyVaultProperties = @{
-                        sku                          = @{
-                            family = "A";
-                            name   = "standard"
-                        };
-                        tenantId                     = $tenantID;
-                        enabledForDeployment         = $true;
-                        enabledForDiskEncryption     = $false;
-                        enabledForTemplateDeployment = $true;
-                        enableSoftDelete             = $true;
-                        accessPolicies               = $accessPolicies
+                }
+                else {
+                    $ReplicationStorageAcName = $CacheStorageAccountId.Split("/")[-1]
+                    $response = Get-AzResource -ResourceId $CacheStorageAccountId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    if ($response -eq $null) {
+                        throw "Storage account '$($CacheStorageAccountId)' does not exist."
                     }
-
-                    $output = New-AzResource -ResourceGroupName $ResourceGroupName -Location $TargetRegion -Properties  $keyVaultProperties -ResourceName $KeyVaultName -ResourceType  $KeyVaultType -ApiVersion $KeyVaultApiVersion -Kind $KeyVaultKind -Tag $ResourceTag -Force
-                    Write-Host $LogStringCreated, $KeyVaultName
-                }
-
-                # Locks
-                $CommonLockName = $ProjectName + "lock"
-                $lockNotes = "This is in use by Azure Migrate project"
-                $lsaLock = Get-AzResourceLock -LockName $CommonLockName -ResourceName $LogStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if (!$lsaLock) {
-                    $output = New-AzResourceLock -LockLevel CanNotDelete -LockName $CommonLockName -ResourceName $LogStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -LockNotes $lockNotes -Force
-                    Write-Host $LogStringCreated, $CommonLockName, " for ", $LogStorageAcName
-                }
-                else {
-                    Write-Host $CommonLockName, " for ", $LogStorageAcName, $LogStringSkipping
-                }
-
-                $gwyLock = Get-AzResourceLock -LockName $CommonLockName -ResourceName $GateWayStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if (!$gwyLock) {
-                    $output = New-AzResourceLock -LockLevel CanNotDelete -LockName $CommonLockName -ResourceName $GateWayStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -LockNotes $lockNotes -Force
-                    Write-Host $LogStringCreated, $CommonLockName, " for ", $GateWayStorageAcName
-                }
-                else {
-                    Write-Host $CommonLockName, " for ", $LogStorageAcName, $LogStringSkipping
-                }
-
-                $sbsnsLock = Get-AzResourceLock -LockName $CommonLockName -ResourceName $ServiceBusNamespace -ResourceType $ServiceBusType -ResourceGroupName $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if (!$sbsnsLock) {
-                    $output = New-AzResourceLock -LockLevel CanNotDelete -LockName $CommonLockName -ResourceName $ServiceBusNamespace -ResourceType $ServiceBusType -ResourceGroupName $ResourceGroupName -LockNotes $lockNotes -Force
-                    Write-Host $LogStringCreated, $CommonLockName, " for ", $ServiceBusNamespace
-                }
-                else {
-                    Write-Host $CommonLockName, " for ", $ServiceBusNamespace, $LogStringSkipping
-                }
-
-                $kvLock = Get-AzResourceLock -LockName $CommonLockName -ResourceName $KeyVaultName -ResourceType $KeyVaultType -ResourceGroupName $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if (!$kvLock) {
-                    $output = New-AzResourceLock -LockLevel CanNotDelete -LockName $CommonLockName -ResourceName $KeyVaultName -ResourceType $KeyVaultType -ResourceGroupName $ResourceGroupName -LockNotes $lockNotes -Force
-                    Write-Host $LogStringCreated, $CommonLockName, " for ", $KeyVaultName
-                }
-                else {
-                    Write-Host $CommonLockName, " for ", $KeyVaultName, $LogStringSkipping
                 }
 
                 # Intermediate phase
                 # RoleAssignments
-            
-                $roleDefinitionId = "81a9662b-bebf-436f-a333-f67b29880f12"
-                $kvspnid = Get-AzADServicePrincipal -DisplayName "Azure Key Vault"
-                $Id = ""
-                if($kvspnid -ne $null){
-                    $type = $kvspnid.GetType().BaseType
-                    Write-Host $type.Name
-                    if ($type.Name -eq "Array"){
-                        $Id = $kvspnid[0].Id
-                    }
-                    else{
-                         $Id = $kvspnid.Id
-                    }
+                $applianceDetails = Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
+                if ($applianceDetails.length -eq 1){
+                    $applianceSpnId = $applianceDetails.ResourceAccessIdentityDetailObjectId
                 }
-                else{
-                    Write-Host "Unable to retrieve KV SPN Id"
-                }
-                Write-Host $Id
-
-                $kvspnid = $Id
-                $gwyStorageAccount = Get-AzResource -ResourceName $GateWayStorageAcName -ResourceGroupName $ResourceGroupName 
-                $lsaStorageAccount = Get-AzResource -ResourceName $LogStorageAcName -ResourceGroupName $ResourceGroupName
-                $gwyRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $gwyStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                $lsaRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $lsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if (-not $lsaRoleAssignments) {
-                    $output = New-AzRoleAssignment -ObjectId $kvspnid -Scope $lsaStorageAccount.Id -RoleDefinitionId $roleDefinitionId
-                }
-                if (-not $gwyRoleAssignments) {
-                    $output = New-AzRoleAssignment -ObjectId $kvspnid -Scope $gwyStorageAccount.Id -RoleDefinitionId $roleDefinitionId
-                }
-
-                if (-not $lsaRoleAssignments -or -not $gwyRoleAssignments) {
-                    for ($i = 1; $i -le 18; $i++) {
-                        Write-Information "Waiting for Role Assignments to be available... $( $i * 10 ) seconds" -InformationAction Continue
-                        Start-Sleep -Seconds 10
-
-                        $gwyRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $gwyStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                        $lsaRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $lsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
-
-                        if ($gwyRoleAssignments -and $lsaRoleAssignments) {
-                            break
+                else {
+                    foreach ($appliance in $applianceDetails){
+                        if ($appliance.FabricFriendlyName -eq $fabricName){
+                            $applianceSpnId = $appliance.ResourceAccessIdentityDetailObjectId
                         }
                     }
                 }
 
-                # SA. SAS definition
+                $vaultMsiPrincipalId = $VaultDetails.Identity.PrincipalId
 
-                $gatewayStorageAccountSasSecretName = "gwySas"
-                $cacheStorageAccountSasSecretName = "cacheSas"
-                $regenerationPeriod = [System.Timespan]::FromDays(30)
-                $keyName = 'Key2'
-                Add-AzKeyVaultManagedStorageAccount -VaultName $KeyVaultName -AccountName $LogStorageAcName -AccountResourceId  $lsaStorageAccount.Id  -ActiveKeyName $keyName -RegenerationPeriod $regenerationPeriod
-                Add-AzKeyVaultManagedStorageAccount -VaultName $KeyVaultName -AccountName $GateWayStorageAcName -AccountResourceId  $gwyStorageAccount.Id  -ActiveKeyName $keyName -RegenerationPeriod $regenerationPeriod
-
-                $lsasctx = New-AzStorageContext -StorageAccountName $LogStorageAcName -Protocol Https -StorageAccountKey $keyName
-                $gwysctx = New-AzStorageContext -StorageAccountName $GateWayStorageAcName -Protocol Https -StorageAccountKey $keyName
-
-                $lsaat = New-AzStorageAccountSasToken -Service blob, file, Table, Queue -ResourceType Service, Container, Object -Permission "racwdlup" -Protocol HttpsOnly -Context $lsasctx
-                $gwyat = New-AzStorageAccountSasToken -Service blob, file, Table, Queue -ResourceType Service, Container, Object -Permission "racwdlup" -Protocol HttpsOnly -Context $gwysctx
-
-                Set-AzKeyVaultManagedStorageSasDefinition -AccountName $LogStorageAcName -VaultName $KeyVaultName -Name $cacheStorageAccountSasSecretName -TemplateUri $lsaat -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
-                Set-AzKeyVaultManagedStorageSasDefinition -AccountName $GateWayStorageAcName -VaultName $KeyVaultName -Name $gatewayStorageAccountSasSecretName -TemplateUri $gwyat -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
-
-                # Phase 2
-
-                # ServiceBusConnectionString
-                $serviceBusConnString = "ServiceBusConnectionString"
-                $serviceBusSecretObject = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name $serviceBusConnString -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if ($serviceBusSecretObject) {
-                    Write-Host $serviceBusConnString, " for ", $applianceName, $LogStringSkipping
+                if ($applianceSpnId -eq $null) {
+                    Write-Host "The appliance '$($applianceName)' does not have SPN enabled. Please enable and retry the operation."
+                    continue
                 }
-                else {
-                    $serviceBusRootKey = Get-AzServiceBusKey -ResourceGroupName $ResourceGroupName -Namespace $ServiceBusNamespace -Name "RootManageSharedAccessKey"
-                    $secret = ConvertTo-SecureString -String $serviceBusRootKey.PrimaryConnectionString -AsPlainText -Force
-                    $output = Set-AzKeyVaultSecret -VaultName $KeyVaultName -Name $serviceBusConnString -SecretValue $secret
-                    Write-Host $LogStringCreated, $serviceBusConnString, " for ", $applianceName
+
+                if ($vaultMsiPrincipalId -eq $null) {
+                    Write-Host "The vault '$($VaultName)' does not have MSI enabled. Please enable system assigned MSI and retry the operation."
+                    continue
+                }
+
+                $rsaStorageAccount = Get-AzResource -ResourceName $ReplicationStorageAcName -ResourceGroupName $ResourceGroupName
+                for ($i = 1; $i -le 18; $i++) {
+                    Write-Host "Waiting for" $ReplicationStorageAcName "to be available... $( $i * 10 ) seconds" -InformationAction Continue
+                    Start-Sleep -Seconds 10
+                    $rsaStorageAccount = Get-AzResource -ResourceName $ReplicationStorageAcName -ResourceGroupName $ResourceGroupName
+                    if ($rsaStorageAccount) {
+                        break
+                    }
+                }
+
+                Create-RoleAssignments $applianceSpnId $rsaStorageAccount.Id
+                Create-RoleAssignments $vaultMsiPrincipalId $rsaStorageAccount.Id
+
+                for ($i = 1; $i -le 18; $i++) {
+                    Write-Information "Waiting for Role Assignments to be available... $( $i * 10 ) seconds" -InformationAction Continue
+                    Start-Sleep -Seconds 10
+
+                    $applianceRoleAssignment = Get-AzRoleAssignment -ObjectId $applianceSpnId -Scope $rsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    $vaultRoleAssignments = Get-AzRoleAssignment -ObjectId $vaultMsiPrincipalId -Scope $rsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+                    if ($applianceRoleAssignment -and $vaultRoleAssignments) {
+                        break
+                    }
                 }
            }
            else {
-               $response = Get-AzResource -ResourceId $CacheStorageAccountId -ErrorVariable notPresent -ErrorAction SilentlyContinue
-               if ($response -eq $null) {
+               $rsaStorageAccount = Get-AzResource -ResourceId $CacheStorageAccountId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+               if ($rsaStorageAccount -eq $null) {
                    throw "Storage account '$($CacheStorageAccountId)' does not exist."
                }
 
@@ -558,7 +435,7 @@ public static int hashForArtifact(String artifact)
             $mappingName = "containermapping"
             $allFabrics = Get-AzMigrateReplicationFabric -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
             foreach ($fabric in $allFabrics) {
-                if (($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)) {
+                if (($fabric.Property.CustomDetail.InstanceType -eq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -eq $SiteName)) {
                     $peContainers = Get-AzMigrateReplicationProtectionContainer -FabricName $fabric.Name -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
                     $peContainer = $peContainers[0]
                     $existingMapping = Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -FabricName $fabric.Name -ProtectionContainerName $peContainer.Name -MappingName $mappingName -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -569,18 +446,9 @@ public static int hashForArtifact(String artifact)
                         $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtContainerMappingInput]::new()
                         $providerSpecificInput.InstanceType = "VMwareCbt"
                         $providerSpecificInput.TargetLocation = $TargetRegion
-                        if ([string]::IsNullOrEmpty($CacheStorageAccountId)) {
-                            $keyVaultAccountDetails = Get-AzKeyVault -ResourceGroupName $ResourceGroupName -Name $KeyVaultName
-                            $gwyStorageAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -ResourceName $GateWayStorageAcName
-                            $providerSpecificInput.KeyVaultId = $keyVaultAccountDetails.ResourceId
-                            $providerSpecificInput.KeyVaultUri = $keyVaultAccountDetails.VaultUri
-                            $providerSpecificInput.ServiceBusConnectionStringSecretName = $serviceBusConnString
-                            $providerSpecificInput.StorageAccountId = $gwyStorageAccount.Id
-                            $providerSpecificInput.StorageAccountSasSecretName = $GateWayStorageAcName + "-gwySas"
-                        }
-                        else {
-                            $providerSpecificInput.StorageAccountId = $CacheStorageAccountId
-                        }
+                        
+                        # If mapping does not exist, it means green field scenario. Hence, no service bus/KV required.
+                        $providerSpecificInput.StorageAccountId = $rsaStorageAccount.Id
 
                         $output = New-AzMigrateReplicationProtectionContainerMapping -FabricName $fabric.Name -MappingName $mappingName -ProtectionContainerName $peContainer.Name -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -PolicyId $existingPolicyObject.Id -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId  "Microsoft Azure"
                         Write-Host $LogStringCreated, $mappingName, " for ", $applianceName

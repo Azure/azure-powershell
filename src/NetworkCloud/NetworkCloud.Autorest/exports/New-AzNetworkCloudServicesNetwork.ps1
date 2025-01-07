@@ -28,7 +28,7 @@ $endpointEgressList = @{}
 New-AzNetworkCloudServicesNetwork -CloudServicesNetworkName cloudNetworkServicesName -ResourceGroupName resourceGroupName -ExtendedLocationName "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/customLocationName" -ExtendedLocationType "CustomLocation" -Location eastus -AdditionalEgressEndpoint $endpointEgressList -EnableDefaultEgressEndpoint false -Tag $tags -SubscriptionId subscriptionId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ICloudServicesNetwork
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICloudServicesNetwork
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,7 +43,7 @@ ADDITIONALEGRESSENDPOINT <IEgressEndpoint[]>: The list of egress endpoints. This
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudservicesnetwork
 #>
 function New-AzNetworkCloudServicesNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ICloudServicesNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICloudServicesNetwork])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -88,7 +88,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IEgressEndpoint[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IEgressEndpoint[]]
     # The list of egress endpoints.
     # This allows for connection from a Hybrid AKS cluster to the specified endpoint.
     # To construct, see NOTES section for ADDITIONALEGRESSENDPOINT properties and create a hash table.
@@ -103,7 +103,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

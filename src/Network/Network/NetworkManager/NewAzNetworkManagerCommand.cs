@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSNetworkManagerScopes NetworkManagerScope { get; set; }
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Network Manager Scope Access. Valid values include 'SecurityAdmin' and 'Connectivity'.")]
         public NetworkManagerScopeAccessType[] NetworkManagerScopeAccess { get; set; }
@@ -119,9 +119,12 @@ namespace Microsoft.Azure.Commands.Network
             networkManager.NetworkManagerScopes = this.NetworkManagerScope;
 
             networkManager.NetworkManagerScopeAccesses = new List<string>();
-            foreach (NetworkManagerScopeAccessType accessType in this.NetworkManagerScopeAccess)
+            if (this.NetworkManagerScopeAccess != null)
             {
-                networkManager.NetworkManagerScopeAccesses.Add(accessType.ToString());
+                foreach (NetworkManagerScopeAccessType accessType in this.NetworkManagerScopeAccess)
+                {
+                    networkManager.NetworkManagerScopeAccesses.Add(accessType.ToString());
+                }
             }
             if (!string.IsNullOrEmpty(this.Description))
             {

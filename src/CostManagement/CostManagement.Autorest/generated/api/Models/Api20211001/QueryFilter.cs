@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001
         Required = false,
         ReadOnly = false,
         Description = @"Has comparison expression for a tag",
-        SerializedName = @"tag",
+        SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryComparisonExpression) })]
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryComparisonExpression Tag { get; set; }
 

@@ -16,7 +16,7 @@ Lists entities from groups or get entity from groups by key
 ```
 Get-AzADGroup [-Count] [-Expand <String[]>] [-Select <String[]>] [-Filter <String>] [-Orderby <String[]>]
  [-Search <String>] [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-DefaultProfile <PSObject>] [-CountVariable <String>]
+ [-DefaultProfile <PSObject>] [-CountVariable <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -24,20 +24,20 @@ Get-AzADGroup [-Count] [-Expand <String[]>] [-Select <String[]>] [-Filter <Strin
 ```
 Get-AzADGroup [-Expand <String[]>] [-Select <String[]>] [-ConsistencyLevel <String>] [-First <UInt64>]
  [-Skip <UInt64>] [-AppendSelected] -DisplayName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
 Get-AzADGroup [-Expand <String[]>] [-Select <String[]>] [-ConsistencyLevel <String>] [-First <UInt64>]
  [-Skip <UInt64>] [-AppendSelected] -DisplayNameStartsWith <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
 Get-AzADGroup [-Expand <String[]>] [-Select <String[]>] [-ConsistencyLevel <String>] [-AppendSelected]
- -ObjectId <Guid> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ObjectId <Guid> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -242,6 +242,21 @@ Order items by property values
 Type: System.String[]
 Parameter Sets: EmptyParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

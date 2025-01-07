@@ -16,10 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudBmcKeySet_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch properties of baseboard management controller key set for the provided cluster, or update the tags associated with it. Properties and tag updates can be done independently.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}", ApiVersion = "2023-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}", ApiVersion = "2024-07-01")]
     public partial class UpdateAzNetworkCloudBmcKeySet_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary>
         /// BmcKeySetPatchParameters represents the body of the request to patch the baseboard management controller key set.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySetPatchParameters _bmcKeySetUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BmcKeySetPatchParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySetPatchParameters _bmcKeySetUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BmcKeySetPatchParameters();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -147,8 +147,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The Azure resource tags that will replace the existing ones.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySetPatchParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySetPatchParametersTags Tag { get => _bmcKeySetUpdateParametersBody.Tag ?? null /* object */; set => _bmcKeySetUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySetPatchParametersTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySetPatchParametersTags Tag { get => _bmcKeySetUpdateParametersBody.Tag ?? null /* object */; set => _bmcKeySetUpdateParametersBody.Tag = value; }
 
         /// <summary>The unique list of permitted users.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -159,32 +159,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The unique list of permitted users.",
         SerializedName = @"userList",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKeySetUser) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKeySetUser[] UserList { get => _bmcKeySetUpdateParametersBody.UserList ?? null /* arrayOf */; set => _bmcKeySetUpdateParametersBody.UserList = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[] UserList { get => _bmcKeySetUpdateParametersBody.UserList ?? null /* arrayOf */; set => _bmcKeySetUpdateParametersBody.UserList = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -467,12 +467,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_bmcKeySetUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -507,12 +507,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet> response)
         {
             using( NoSynchronizationContext )
             {
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet
                 WriteObject((await response));
             }
         }

@@ -40,11 +40,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// image has been reported as violating Microsoft's policies.</param>
         /// <param name="policyViolations">A list of Policy Violations that
         /// have been reported for this Gallery Image Version.</param>
-        public GalleryImageVersionSafetyProfile(bool? allowDeletionOfReplicatedLocations = default(bool?), bool? reportedForPolicyViolation = default(bool?), IList<PolicyViolation> policyViolations = default(IList<PolicyViolation>))
+        /// <param name="blockDeletionBeforeEndOfLife">Indicates whether or not
+        /// the deletion is blocked for this Gallery Image Version if its End
+        /// Of Life has not expired.</param>
+        public GalleryImageVersionSafetyProfile(bool? allowDeletionOfReplicatedLocations = default(bool?), bool? reportedForPolicyViolation = default(bool?), IList<PolicyViolation> policyViolations = default(IList<PolicyViolation>), bool? blockDeletionBeforeEndOfLife = default(bool?))
             : base(allowDeletionOfReplicatedLocations)
         {
             ReportedForPolicyViolation = reportedForPolicyViolation;
             PolicyViolations = policyViolations;
+            BlockDeletionBeforeEndOfLife = blockDeletionBeforeEndOfLife;
             CustomInit();
         }
 
@@ -66,6 +70,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "policyViolations")]
         public IList<PolicyViolation> PolicyViolations { get; private set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether or not the deletion is blocked for
+        /// this Gallery Image Version if its End Of Life has not expired.
+        /// </summary>
+        [JsonProperty(PropertyName = "blockDeletionBeforeEndOfLife")]
+        public bool? BlockDeletionBeforeEndOfLife { get; set; }
 
     }
 }

@@ -14,26 +14,26 @@ Lists key credentials and password credentials for an application.
 
 ### ApplicationObjectIdParameterSet (Default)
 ```
-Get-AzADAppCredential -ObjectId <String> [-DefaultProfile <PSObject>]
+Get-AzADAppCredential -ObjectId <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Get-AzADAppCredential -ApplicationId <Guid> [-DefaultProfile <PSObject>]
+Get-AzADAppCredential -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADAppCredential -DisplayName <String> [-DefaultProfile <PSObject>]
+Get-AzADAppCredential -DisplayName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectParameterSet
 ```
 Get-AzADAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,6 +119,21 @@ Parameter Sets: ApplicationObjectIdParameterSet
 Aliases: Id
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

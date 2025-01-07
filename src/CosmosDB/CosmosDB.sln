@@ -55,6 +55,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosDB.Management.Sdk", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "..\KeyVault\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{678BA287-7C32-4542-826A-838574141C00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataBoundary", "..\Resources\DataBoundary.Autorest\Az.DataBoundary.csproj", "{9D4535A9-F8FC-4C9A-9CD6-B80C631634D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{678BA287-7C32-4542-826A-838574141C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678BA287-7C32-4542-826A-838574141C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678BA287-7C32-4542-826A-838574141C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D4535A9-F8FC-4C9A-9CD6-B80C631634D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D4535A9-F8FC-4C9A-9CD6-B80C631634D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D4535A9-F8FC-4C9A-9CD6-B80C631634D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D4535A9-F8FC-4C9A-9CD6-B80C631634D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -180,5 +186,6 @@ Global
 		{DB6EF569-954F-41B8-9432-883BA2AC5CC4} = {B559D184-6859-4B41-A1ED-B4B0F51F6C21}
 		{00BC8852-1105-4B18-8B93-6BD23B1F227F} = {B559D184-6859-4B41-A1ED-B4B0F51F6C21}
 		{678BA287-7C32-4542-826A-838574141C00} = {B559D184-6859-4B41-A1ED-B4B0F51F6C21}
+		{9D4535A9-F8FC-4C9A-9CD6-B80C631634D5} = {B559D184-6859-4B41-A1ED-B4B0F51F6C21}
 	EndGlobalSection
 EndGlobal

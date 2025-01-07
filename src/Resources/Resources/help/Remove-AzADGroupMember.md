@@ -18,47 +18,47 @@ Supports $expand.
 
 ### ExplicitParameterSet  (Default)
 ```
-Remove-AzADGroupMember [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+Remove-AzADGroupMember [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupObjectId
 ```
 Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String[]> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberUPNWithGroupObjectIdParameterSet
 ```
 Remove-AzADGroupMember -GroupObjectId <String> -MemberUserPrincipalName <String[]> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberUPNWithGroupObjectParameterSet
 ```
 Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupObject <MicrosoftGraphGroup>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### MemberUPNWithGroupDisplayNameParameterSet
 ```
 Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupDisplayName <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupObject
 ```
 Remove-AzADGroupMember -MemberObjectId <String[]> -GroupObject <MicrosoftGraphGroup>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupDisplayName
 ```
 Remove-AzADGroupMember -MemberObjectId <String[]> -GroupDisplayName <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,6 +179,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

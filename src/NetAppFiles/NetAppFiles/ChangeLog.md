@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+
+## Version 0.20.0
 * Removed parameters `Location`, `PoolName`, `VolumeName` from `Get-AzNetAppFilesBackup`, `New-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
 
 ## Version 0.19.0

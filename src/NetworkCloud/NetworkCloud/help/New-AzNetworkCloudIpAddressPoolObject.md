@@ -14,7 +14,7 @@ Create an in-memory object for IpAddressPool.
 
 ```
 New-AzNetworkCloudIpAddressPoolObject -Address <String[]> -Name <String> [-AutoAssign <BfdEnabled>]
- [-OnlyUseHostIP <BfdEnabled>] [<CommonParameters>]
+ [-OnlyUseHostIP <BfdEnabled>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,7 @@ Create an in-memory object for IpAddressPool.
 ### -Address
 The list of IP address ranges.
 Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
 
 ```yaml
 Type: System.String[]
@@ -99,6 +100,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -106,7 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IPAddressPool
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IPAddressPool
 
 ## NOTES
 

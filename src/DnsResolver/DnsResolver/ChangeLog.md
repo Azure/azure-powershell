@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+
+## Version 1.1.0
+* Added 4 new DNS Resolver Policy (DNS Security Policy) resources into the cmdlets
+    - DNS Resolver Policy (DNS Security Policy)
+    - DNS Security Rule
+    - DNS Resolver Policy Link (DNS Security Policy Link)
+    - DNS Resolver Domain List
 
 ## Version 1.0.0
 * General availability for module Az.DnsResolver
@@ -27,7 +35,7 @@
 
 ## Version 0.2.1
 * Reformatted exception message for cmdlets
-* Upgraded API version to 2022-07-01 
+* Upgraded API version to 2022-07-01
 
 ## Version 0.2.0
 * Preview release for module Az.DnsResolver

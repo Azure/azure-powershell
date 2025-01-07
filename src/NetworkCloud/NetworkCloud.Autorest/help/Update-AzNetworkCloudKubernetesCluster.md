@@ -16,15 +16,17 @@ Properties and tag updates can be done independently.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
+ [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity>
- [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
+ [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,22 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ControlPlaneNodeConfigurationAdminPublicKey
+SshPublicKey represents the public key used to authenticate with a resource through SSH.
+To construct, see NOTES section for CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,8 +135,6 @@ Accept wildcard characters: False
 
 ### -KubernetesVersion
 The Kubernetes version for this cluster.
-Accepts n.n, n.n.n, and n.n.n-n format.
-The interpreted version used will be resolved into this field after creation or update.
 
 ```yaml
 Type: System.String
@@ -172,6 +188,22 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshPublicKey
+SshPublicKey represents the public key used to authenticate with a resource through SSH.
+To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,7 +281,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesCluster
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster
 
 ## NOTES
 

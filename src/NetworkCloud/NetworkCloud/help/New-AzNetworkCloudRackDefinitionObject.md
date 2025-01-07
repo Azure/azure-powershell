@@ -16,7 +16,7 @@ Create an in-memory object for RackDefinition.
 New-AzNetworkCloudRackDefinitionObject -NetworkRackId <String> -RackSerialNumber <String> -RackSkuId <String>
  [-AvailabilityZone <String>] [-BareMetalMachineConfigurationData <IBareMetalMachineConfigurationData[]>]
  [-RackLocation <String>] [-StorageApplianceConfigurationData <IStorageApplianceConfigurationData[]>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Create an in-memory object for RackDefinition.
 
 ### Example 1: Create an in-memory object for RackDefinition.
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
 $bmmConfigurationData = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername "username" -BmcMacAddress "00:BB:CC:DD:EE:FF" -BootMacAddress "00:BB:CC:DD:EE:FF" -RackSlot 1 -SerialNumber "serialNumber" -MachineDetail "machineDetail" -MachineName "machineName"
 $saConfigurationData = New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername "username" -RackSlot 1 -SerialNumber "serialNumber" -StorageApplianceName "storageApplianceName"
 
@@ -89,7 +89,7 @@ The unordered list of bare metal machine configuration.
 To construct, see NOTES section for BAREMETALMACHINECONFIGURATIONDATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBareMetalMachineConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,6 +109,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,7 +181,7 @@ The list of storage appliance configuration data for this rack.
 To construct, see NOTES section for STORAGEAPPLIANCECONFIGURATIONDATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IStorageApplianceConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStorageApplianceConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackDefinition
 
 ## NOTES
 

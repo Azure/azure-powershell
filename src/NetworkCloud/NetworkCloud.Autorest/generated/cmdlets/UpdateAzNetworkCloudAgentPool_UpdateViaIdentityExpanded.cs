@@ -16,10 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudAgentPool_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch the properties of the provided Kubernetes cluster agent pool, or update the tags associated with the Kubernetes cluster agent pool. Properties and tag updates can be done independently.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}", ApiVersion = "2023-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}", ApiVersion = "2024-07-01")]
     public partial class UpdateAzNetworkCloudAgentPool_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
     {
@@ -35,12 +35,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary>
         /// AgentPoolPatchParameters represents the body of the request to patch the Kubernetes cluster agent pool.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPoolPatchParameters _agentPoolUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.AgentPoolPatchParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPoolPatchParameters _agentPoolUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.AgentPoolPatchParameters();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>
+        /// SshPublicKey represents the public key used to authenticate with a resource through SSH.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SshPublicKey represents the public key used to authenticate with a resource through SSH.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"SshPublicKey represents the public key used to authenticate with a resource through SSH.",
+        SerializedName = @"sshPublicKeys",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[] AdministratorConfigurationSshPublicKey { get => _agentPoolUpdateParametersBody.AdministratorConfigurationSshPublicKey ?? null /* arrayOf */; set => _agentPoolUpdateParametersBody.AdministratorConfigurationSshPublicKey = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -145,47 +159,78 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The Azure resource tags that will replace the existing ones.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPoolPatchParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPoolPatchParametersTags Tag { get => _agentPoolUpdateParametersBody.Tag ?? null /* object */; set => _agentPoolUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPoolPatchParametersTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPoolPatchParametersTags Tag { get => _agentPoolUpdateParametersBody.Tag ?? null /* object */; set => _agentPoolUpdateParametersBody.Tag = value; }
 
         /// <summary>
-        /// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5')
-        /// or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time
-        /// of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+        /// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent
+        /// pool. If not specified during creation, a value of 1800 seconds is used.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.",
+        Description = @"The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.",
+        SerializedName = @"drainTimeout",
+        PossibleTypes = new [] { typeof(long) })]
+        public long UpgradeSettingDrainTimeout { get => _agentPoolUpdateParametersBody.UpgradeSettingDrainTimeout ?? default(long); set => _agentPoolUpdateParametersBody.UpgradeSettingDrainTimeout = value; }
+
+        /// <summary>
+        /// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5')
+        /// or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time
+        /// of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used.
+        /// One of MaxSurge and MaxUnavailable must be greater than 0.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.",
         SerializedName = @"maxSurge",
         PossibleTypes = new [] { typeof(string) })]
         public string UpgradeSettingMaxSurge { get => _agentPoolUpdateParametersBody.UpgradeSettingMaxSurge ?? null; set => _agentPoolUpdateParametersBody.UpgradeSettingMaxSurge = value; }
+
+        /// <summary>
+        /// The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer
+        /// (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size
+        /// at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value
+        /// of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.",
+        SerializedName = @"maxUnavailable",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UpgradeSettingMaxUnavailable { get => _agentPoolUpdateParametersBody.UpgradeSettingMaxUnavailable ?? null; set => _agentPoolUpdateParametersBody.UpgradeSettingMaxUnavailable = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -468,12 +513,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -490,7 +535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_agentPoolUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -508,12 +553,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool> response)
         {
             using( NoSynchronizationContext )
             {
@@ -525,7 +570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool
                 WriteObject((await response));
             }
         }

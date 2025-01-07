@@ -29,7 +29,11 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         {
             "System.Diagnostics.DiagnosticSource",
             "System.Runtime.CompilerServices.Unsafe",
-            "Newtonsoft.Json"
+            "Newtonsoft.Json",
+            "System.Memory.Data",
+            "System.Text.Json",
+            "Microsoft.Bcl.AsyncInterfaces",
+            "System.Text.Encodings.Web"
         };
 
         public static void Initialize()

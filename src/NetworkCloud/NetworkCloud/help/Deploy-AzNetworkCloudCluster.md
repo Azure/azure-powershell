@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deploy-AzNetworkCloudCluster
 
 ## SYNOPSIS
-Deploy the cluster to the provided rack.
+Deploy the cluster using the rack configuration provided during creation.
 
 ## SYNTAX
 
@@ -16,18 +16,18 @@ Deploy the cluster to the provided rack.
 ```
 Deploy-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-SkipValidationsForMachine <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeployViaIdentityExpanded
 ```
 Deploy-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-SkipValidationsForMachine <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deploy the cluster to the provided rack.
+Deploy the cluster using the rack configuration provided during creation.
 
 ## EXAMPLES
 
@@ -130,6 +130,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
