@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
 * Added warning message for account migration cmdlet.
     - `Start-AzStorageAccountMigration`
 * Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.

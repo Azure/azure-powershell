@@ -33,7 +33,7 @@ Update-AzADServicePrincipal -ObjectId <String> [-KeyCredential <IMicrosoftGraphK
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpApplicationIdWithDisplayNameParameterSet
@@ -57,7 +57,7 @@ Update-AzADServicePrincipal [-KeyCredential <IMicrosoftGraphKeyCredential[]>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -ApplicationId <Guid> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectWithDisplayNameParameterSet
@@ -81,7 +81,7 @@ Update-AzADServicePrincipal [-KeyCredential <IMicrosoftGraphKeyCredential[]>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -InputObject <IMicrosoftGraphServicePrincipal>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ Update-AzADServicePrincipal [-KeyCredential <IMicrosoftGraphKeyCredential[]>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -ServicePrincipalName <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -684,6 +684,21 @@ May be removed in future versions.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

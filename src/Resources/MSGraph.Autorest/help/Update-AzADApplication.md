@@ -24,9 +24,9 @@ Update-AzADApplication -ObjectId <String> [-AddIn <IMicrosoftGraphAddIn[]>]
  [-IsFallbackPublicClient] [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrl <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
- [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ReplyUrl <String[]>] [-RequestedAccessTokenVersion <Int32>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-ServiceManagementReference <String>]
+ [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -44,9 +44,9 @@ Update-AzADApplication -ApplicationId <Guid> [-AddIn <IMicrosoftGraphAddIn[]>]
  [-IsFallbackPublicClient] [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrl <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
- [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ReplyUrl <String[]>] [-RequestedAccessTokenVersion <Int32>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-ServiceManagementReference <String>]
+ [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -64,9 +64,9 @@ Update-AzADApplication -InputObject <IMicrosoftGraphApplication> [-AddIn <IMicro
  [-IsFallbackPublicClient] [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrl <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
- [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ReplyUrl <String[]>] [-RequestedAccessTokenVersion <Int32>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-ServiceManagementReference <String>]
+ [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -548,6 +548,21 @@ The application reply Urls.
 Type: System.String[]
 Parameter Sets: (All)
 Aliases: ReplyUrls, WebRedirectUri
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestedAccessTokenVersion
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
