@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixd the source app retrival from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
 
 ## Version 3.2.2
 * Fix bug where parameters could not be set to false for `Publish-AzWebApp`
-* Fix the source app retrival from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
 
 ## Version 3.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
