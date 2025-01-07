@@ -211,13 +211,6 @@ Get-AzRoleAssignment -ServicePrincipalName $ApplicationObject.AppId
 
 Gets role assignments for the specified Service Principal using Get-AzAdServicePrincipal.
 
-### Example 6
-```powershell
-Get-AzRoleAssignment -ServicePrincipalName 'e456d065-ed9e-4b16-a43d-ef4aea724f52'
-```
-
-Gets role assignments for the specified Service Principal using the application id.
-
 ## PARAMETERS
 
 ### -DefaultProfile
