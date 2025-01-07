@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
+* Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
 
 ## Version 7.7.0
 * Updated Resources SDK to 2024-07-01.
