@@ -16,13 +16,13 @@ Gets a resource provider.
 ### ListAvailable (Default)
 ```
 Get-AzResourceProvider [-Location <String>] [-ListAvailable] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### IndividualProvider
 ```
 Get-AzResourceProvider -ProviderNamespace <String[]> [-Location <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -214,6 +214,22 @@ Locations         : {West US, East US, North Europe, West Europe…}
 
 This command Gets all the resource providers under "Microsoft.Compute" and "Microsoft.Network".
 
+### Example 4: Get the default API version for a specific resource type
+
+```powershell
+$crp = Get-AzResourceProvider -ProviderNamespace "Microsoft.Compute"
+$crp.ResourceTypes | Where-Object { $_.ResourceTypeName -eq "disks" }
+```
+
+```output
+ResourceTypeName  : disks
+Locations         : {Southeast Asia, East US 2, Central US, West Europe…}
+ApiVersions       : {2024-03-02, 2023-10-02, 2023-04-02, 2023-01-02…}
+DefaultApiVersion : 2022-03-02
+```
+
+To get the default API version for a specific resource type, get the resource provider first then filter the resource type by name.
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -284,6 +300,21 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

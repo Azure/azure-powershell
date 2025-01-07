@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 * Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+* Added support for PremiumV2 disk type.
 * Added SBM support.
 
 ## Version 2.5.0
