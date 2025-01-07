@@ -20,6 +20,11 @@
 
 -->
 ## Upcoming Release
+* Added `BlockDeletionBeforeEndOfLife` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` cmdlets.
+    - This optional boolean parameter prevents accidental deletions of GalleryImageVersion resources before their EndOfLife date when set to true.
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+* Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
 * upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 * Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
