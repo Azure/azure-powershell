@@ -20,6 +20,7 @@
 
 
 ## Upcoming Release
+* Upgraded nuget package to signed package.
 
 ## Version 2.0.3
 * Migrated Attestation SDK to generated SDK
