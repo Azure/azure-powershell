@@ -776,25 +776,26 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="accountName">Account name</param>
         /// <param name="filter">Query to match items in trash</param>
         /// <param name="count">Minimum number of entries to search for</param>
+        /// <param name="listAfter">The continuation token for pagination</param>
         /// <param name="cmdlet"></param>
         /// <param name="cmdletCancellationToken">CancellationToken</param>
-        public IEnumerable<TrashEntry> EnumerateDeletedItems(string accountName, string filter, int count, Cmdlet cmdlet, CancellationToken cmdletCancellationToken = default(CancellationToken))
+        public (IEnumerable<TrashEntry>, string) EnumerateDeletedItems(string accountName, string filter, int count, string listAfter, Cmdlet cmdlet, CancellationToken cmdletCancellationToken = default(CancellationToken))
         {
             var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
             if (_isDebugEnabled)
             {
-                IEnumerable<TrashEntry> result = null;
+                (IEnumerable<TrashEntry>, string) result = (Enumerable.Empty<TrashEntry>(), string.Empty);
                 // Api call below consists of multiple rest calls so multiple debug statements will be posted
                 // so since we want to the debug lines to be updated while the command runs, we have to flush the debug statements in queue and thats why we want to do it this way
                 var enumerateTask = Task.Run(() => {
-                result = client.EnumerateDeletedItems(filter, "", count, null, cmdletCancellationToken);
+                result = client.EnumerateDeletedItemsWithToken(filter, listAfter, count, null, cmdletCancellationToken);
                 }, cmdletCancellationToken);
                 TrackTaskProgress(enumerateTask, cmdlet, null, cmdletCancellationToken);
                 return result;
             }
             else
             {
-                return client.EnumerateDeletedItems(filter, "", count, null, cmdletCancellationToken);
+                return client.EnumerateDeletedItemsWithToken(filter, listAfter, count, null, cmdletCancellationToken);
             }
         }
 
