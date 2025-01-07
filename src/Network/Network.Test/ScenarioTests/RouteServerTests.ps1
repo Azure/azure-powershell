@@ -68,7 +68,7 @@ function Test-RouteServerCRUD
       Assert-AreEqual $list[0].Location $actualvr.Location
       Assert-AreEqual $list[0].HubRoutingPreference $actualvr.HubRoutingPreference
       Assert-AreEqual $list[0].AllowBranchToBranchTraffic $actualvr.AllowBranchToBranchTraffic
-      Assert-AreEqual $list[0].VirtualRouterAutoScaleConfiguration $actualvr.VirtualRouterAutoScaleConfiguration
+      Assert-AreEqual $list[0].VirtualRouterAutoScaleConfiguration.MinCapacity $actualvr.VirtualRouterAutoScaleConfiguration.MinCapacity
       Assert-AreEqual $list[0].VirtualRouterAutoScaleConfiguration.MinCapacity $minCapacity
         
       # Delete VR
