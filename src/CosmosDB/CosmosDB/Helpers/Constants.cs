@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string VectorEmbeddingPathHelpMessage = "The path to the vector field in the document.";
         public const string VectorEmbeddingDataTypeHelpMessage = "Indicates the data type of vector.";
         public const string VectorEmbeddingDistanceFunctionHelpMessage = "The distance function to use for distance calculation in between vectors.";
-        public const string VectorEmbeddingDimensionsHelpMessage = "The number of dimensions in the vector.";
+        public const string VectorEmbeddingDimensionHelpMessage = "The number of dimensions in the vector.";
         public const string IndexingPolicyVectorIndexHelpMessage = "Array of strings containing path to the vector field in the document.";
 
         //SQL Client Side Encryption
