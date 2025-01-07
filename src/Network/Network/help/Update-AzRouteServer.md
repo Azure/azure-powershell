@@ -16,13 +16,17 @@ Update an Azure RouteServer.
 ```
 Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String>
  [-AllowBranchToBranchTraffic <Boolean>] [-HubRoutingPreference <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RouteServerResourceIdParameterSet
 ```
 Update-AzRouteServer [-AllowBranchToBranchTraffic <Boolean>] -ResourceId <String>
- [-HubRoutingPreference <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-HubRoutingPreference <String>]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -51,6 +55,14 @@ Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerNam
 ```
 
 To change routing preference for route server.
+
+### Example 4
+```powershell
+$autoscale = New-AzVirtualRouterAutoScaleConfiguration -MinCapacity 3
+Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -VirtualRouterAutoScaleConfiguration $autoscale
+```
+
+To update the Routing Infrastructure Units to 3.
 
 ## PARAMETERS
 
@@ -143,6 +155,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -VirtualRouterAutoScaleConfiguration
+Autoscale configuration for route server.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterAutoScaleConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Confirm

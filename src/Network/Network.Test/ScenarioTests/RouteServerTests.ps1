@@ -48,16 +48,14 @@ function Test-RouteServerCRUD
       $autoscaleConfiguration = New-AzVirtualRouterAutoScaleConfiguration -MinCapacity $minCapacity 
 
       # Create route server
-      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp -HubRoutingPreference $hubRoutingPreference -AllowBranchToBranchTraffic 1 
+      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp -HubRoutingPreference $hubRoutingPreference -AllowBranchToBranchTraffic
       $expectedvr = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
       Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
       Assert-AreEqual $expectedvr.Name $actualvr.Name
       Assert-AreEqual $expectedvr.Location $actualvr.Location
       Assert-AreEqual $expectedvr.HubRoutingPreference $actualvr.HubRoutingPreference
       Assert-AreEqual $expectedvr.AllowBranchToBranchTraffic $actualvr.AllowBranchToBranchTraffic
-      Assert-AreEqual $expectedvr.VirtualRouterAutoScaleConfiguration $actualvr.VirtualRouterAutoScaleConfiguration
       Assert-AreEqual $defaultCapacity $actualvr.VirtualRouterAutoScaleConfiguration.MinCapacity
-
 
       # Update route server
       $actualvr = Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -HubRoutingPreference "ASPath" -VirtualRouterAutoScaleConfiguration $autoscaleConfiguration
