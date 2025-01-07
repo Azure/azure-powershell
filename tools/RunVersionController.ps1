@@ -512,7 +512,8 @@ switch ($PSCmdlet.ParameterSetName)
         # Refresh AzPreview.psd1
         Update-AzPreview
         Update-AzPreviewChangelog
-        Update-AzSyntaxChangelog
+        # LTS don't have SyntaxChangelog
+        # Update-AzSyntaxChangelog
         # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
         if ([PSVersion]::MINOR -Eq $versionBump)
         {
