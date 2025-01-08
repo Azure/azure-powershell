@@ -150,7 +150,7 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 > [!CAUTION]
-> Azure PowerShell will enforce mandatory multi-factor authentication (MFA) for all users starting in early 2025.
+> Azure PowerShell will enforce mandatory multifactor authentication (MFA) for all users starting in early 2025.
 > 
 > The -Credential option will no longer be available once enforcement begins.
 > 
