@@ -39,7 +39,7 @@ pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac38,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SecurityInsights.3.1.2.zip;sourceType=sa]Az.SecurityInsights,3.1.2
 pac39,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SelfHelp.0.2.0.zip;sourceType=sa]Az.SelfHelp,0.2.0
 pac40,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceBus.4.0.1.zip;sourceType=sa]Az.ServiceBus,4.0.1
-pac41,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceFabric.3.3.4.zip;sourceType=sa]Az.ServiceFabric,3.3.4
+pac41,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceFabric.4.1.0.zip;sourceType=sa]Az.ServiceFabric,4.1.0
 pac42,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceLinker.0.2.2.zip;sourceType=sa]Az.ServiceLinker,0.2.2
 pac43,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SignalR.2.0.2.zip;sourceType=sa]Az.SignalR,2.0.2
 pac44,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sphere.0.1.2.zip;sourceType=sa]Az.Sphere,0.1.2
