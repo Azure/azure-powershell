@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.1.0
 * Updated ServiceFabricManagedClusters.Sdk to 2024-06-01-preview
 
 ## 4.0.0-preview
