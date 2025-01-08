@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
-using System.Collections.Generic;
-using System.Reflection;
+using System.IO.Abstractions;
 
-namespace Microsoft.Azure.Commands.TestFx
+namespace AzDev.Models.Inventory
 {
-    public static class PageExtensions
+    internal class OtherProject : Project
     {
-        public static void SetItemValue<T>(this Page<T> pagableObj, List<T> collection)
+        protected OtherProject(IFileSystem fs, string path) : base(fs, path) { }
+        internal OtherProject() { }
+        public new static OtherProject FromFileSystem(IFileSystem fs, string path)
         {
-            var property = typeof(Page<T>).GetProperty("Items", BindingFlags.Instance | BindingFlags.NonPublic);
-            property.SetValue(pagableObj, collection);
+            return new OtherProject(fs, path)
+            {
+                Type = ProjectType.Other,
+                Name = fs.Path.GetFileName(path)
+            };
         }
     }
 }
