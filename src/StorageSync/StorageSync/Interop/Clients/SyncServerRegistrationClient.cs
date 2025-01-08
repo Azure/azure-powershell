@@ -157,6 +157,17 @@ namespace Commands.StorageSync.Interop.Clients
                     throw new ServerRegistrationException(ServerRegistrationErrorCode.GetSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
                 }
             }
+            else
+            {
+                hr = this.EcsManagementInteropClient.ResetServerCertificateSettingsRegistry();
+
+                success = hr == 0;
+
+                if (!success)
+                {
+                    throw new ServerRegistrationException(ServerRegistrationErrorCode.ResetServerCertificateSettingsRegistryFailed, hr, ErrorCategory.InvalidResult);
+                }
+            }
 
             hr = EcsManagementInteropClient.GetSyncServerId(out string syncServerId);
 
