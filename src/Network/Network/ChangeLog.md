@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
 * Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
 * Upgraded nuget package to signed package.
 * Updated `Remove-AzNetworkWatcherFlowLog` command to return boolean value
