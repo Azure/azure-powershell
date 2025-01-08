@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 8.1.0
 * Upgraded nuget package to signed package.
 * Added warning message for account migration cmdlet.
     - `Start-AzStorageAccountMigration`
