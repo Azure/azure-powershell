@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             {
                 DeletedSiteId = deletedSiteId,
                 RecoverConfiguration = !this.RestoreContentOnly,
-                UseDRSecondary = UseDisasterRecovery
+                UseDrSecondary = UseDisasterRecovery
             };
 
             Action restoreAction = () => WebsitesClient.RestoreDeletedWebApp(TargetResourceGroupName, TargetName, TargetSlot, restoreReq);

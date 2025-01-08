@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                                 if (ase.InternalLoadBalancingMode != "None")
                                 {
                                     var vipInfo = WebsitesClient.GetAppServiceEnvironmentAddresses(ResourceGroupName, Name);
-                                    inboundIPAddress = vipInfo.InternalIpAddress;
+                                    inboundIPAddress = vipInfo.InternalIPAddress;
                                 }
                                 else
                                 {

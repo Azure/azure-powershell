@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                 RecoverConfiguration = this.RecoverConfiguration,
                 IgnoreConflictingHostNames = true,
                 RecoverySource = source,
-                UseDRSecondary = UseDisasterRecovery
+                UseDrSecondary = UseDisasterRecovery
             };
             Action recoverAction = () => WebsitesClient.RestoreSnapshot(ResourceGroupName, Name, Slot, recoveryReq);
             ConfirmAction(this.Force.IsPresent, "Web app contents will be overwritten with the contents of the snapshot.",

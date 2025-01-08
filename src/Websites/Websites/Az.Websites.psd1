@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Websites.dll', 
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.Websites.Management.Sdk.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.dll', 
                'Websites.Autorest/bin/Az.Websites.private.dll'
 

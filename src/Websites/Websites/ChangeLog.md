@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.Websites" Version "3.1.2" PackageReference
 
 ## Version 3.2.2
 * Fix bug where parameters could not be set to false for `Publish-AzWebApp`

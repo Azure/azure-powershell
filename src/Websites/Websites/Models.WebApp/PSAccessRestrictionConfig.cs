@@ -11,12 +11,12 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             ResourceGroupName = resourceGroupName;
             WebAppName = webAppName;
             SlotName = slotName;
-            ScmSiteUseMainSiteRestrictionConfig = siteConfig.ScmIpSecurityRestrictionsUseMain ?? false;
+            ScmSiteUseMainSiteRestrictionConfig = siteConfig.ScmIPSecurityRestrictionsUseMain ?? false;
 
             MainSiteAccessRestrictions = new List<PSAccessRestriction>();
-            if (siteConfig.IpSecurityRestrictions != null)
+            if (siteConfig.IPSecurityRestrictions != null)
             {
-                foreach (var accessRestriction in siteConfig.IpSecurityRestrictions)
+                foreach (var accessRestriction in siteConfig.IPSecurityRestrictions)
                 {
                     var psAccessRestiction = new PSAccessRestriction();
                     psAccessRestiction.RuleName = accessRestriction.Name;
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                     psAccessRestiction.Description = accessRestriction.Description;
                     psAccessRestiction.Tag = accessRestriction.Tag;
                     psAccessRestiction.HttpHeader = accessRestriction.Headers != null ? ConvertHeaders(accessRestriction.Headers) : null;
-                    if (accessRestriction.IpAddress != null)
-                        psAccessRestiction.IpAddress = accessRestriction.IpAddress;
+                    if (accessRestriction.IPAddress != null)
+                        psAccessRestiction.IpAddress = accessRestriction.IPAddress;
                     else
                         psAccessRestiction.SubnetId = accessRestriction.VnetSubnetResourceId;
                     MainSiteAccessRestrictions.Add(psAccessRestiction);
@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             }
 
             ScmSiteAccessRestrictions = new List<PSAccessRestriction>();
-            if (siteConfig.ScmIpSecurityRestrictions != null)
+            if (siteConfig.ScmIPSecurityRestrictions != null)
             {
-                foreach (var accessRestriction in siteConfig.ScmIpSecurityRestrictions)
+                foreach (var accessRestriction in siteConfig.ScmIPSecurityRestrictions)
                 {
                     var psAccessRestiction = new PSAccessRestriction();
                     psAccessRestiction.RuleName = accessRestriction.Name;
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                     psAccessRestiction.Description = accessRestriction.Description;
                     psAccessRestiction.Tag = accessRestriction.Tag;
                     psAccessRestiction.HttpHeader = accessRestriction.Headers != null ? ConvertHeaders(accessRestriction.Headers) : null;
-                    if (accessRestriction.IpAddress != null)
-                        psAccessRestiction.IpAddress = accessRestriction.IpAddress;
+                    if (accessRestriction.IPAddress != null)
+                        psAccessRestiction.IpAddress = accessRestriction.IPAddress;
                     else
                         psAccessRestiction.SubnetId = accessRestriction.VnetSubnetResourceId;
                     ScmSiteAccessRestrictions.Add(psAccessRestiction);

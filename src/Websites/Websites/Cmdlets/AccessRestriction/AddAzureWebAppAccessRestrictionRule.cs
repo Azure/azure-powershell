@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, SlotName));
                 SiteConfig siteConfig = webApp.SiteConfig;
-                var accessRestrictionList = TargetScmSite ? siteConfig.ScmIpSecurityRestrictions : siteConfig.IpSecurityRestrictions;
+                var accessRestrictionList = TargetScmSite ? siteConfig.ScmIPSecurityRestrictions : siteConfig.IPSecurityRestrictions;
                 IpSecurityRestriction ipSecurityRestriction = null;
                 IDictionary<string, IList<string>> httpHeader = null;
                 if (HttpHeader != null)
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             foreach (var accessRestriction in accessRestrictionList)
             {
-                if (accessRestriction.IpAddress == ipRange)
+                if (accessRestriction.IPAddress == ipRange)
                     throw new Exception($"Rule for '{ipRange}' already exist");
             }
         }
