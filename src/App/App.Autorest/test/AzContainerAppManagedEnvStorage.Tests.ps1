@@ -21,7 +21,7 @@ Describe 'AzContainerAppManagedEnvStorage' {
     It 'CreateExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
-            $storageAccountKey = "1234"
+            $storageAccountKey = "1234" | ConvertTo-SecureString -AsPlainText
 
             $config = New-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
@@ -45,7 +45,7 @@ Describe 'AzContainerAppManagedEnvStorage' {
     It 'UpdateExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
-            $storageAccountKey = "1234"
+            $storageAccountKey = "1234" | ConvertTo-SecureString -AsPlainText
 
             $config = Update-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
@@ -55,7 +55,7 @@ Describe 'AzContainerAppManagedEnvStorage' {
     It 'UpdateViaIdentityExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
-            $storageAccountKey = "1234"
+            $storageAccountKey = "1234" | ConvertTo-SecureString -AsPlainText
             $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage
 
             $config = Update-AzContainerAppManagedEnvStorage -InputObject $config -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename

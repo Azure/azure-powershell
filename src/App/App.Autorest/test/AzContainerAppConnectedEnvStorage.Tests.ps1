@@ -21,7 +21,7 @@ Describe 'AzContainerAppConnectedEnvStorage' {
     It 'CreateExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
-            $storageAccountKey = "1234"
+            $storageAccountKey = "1234" | ConvertTo-SecureString -AsPlainText
 
             $config = New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
@@ -45,7 +45,7 @@ Describe 'AzContainerAppConnectedEnvStorage' {
     It 'UpdateExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
-            $storageAccountKey = "1234"
+            $storageAccountKey = "1234" | ConvertTo-SecureString -AsPlainText
             
             $config = Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
@@ -56,7 +56,7 @@ Describe 'AzContainerAppConnectedEnvStorage' {
     It 'UpdateViaIdentityExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
-            $storageAccountKey = "1234"
+            $storageAccountKey = "1234" | ConvertTo-SecureString -AsPlainText
             $config = Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnvStorage
 
             $config = Update-AzContainerAppConnectedEnvStorage -InputObject $config -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
