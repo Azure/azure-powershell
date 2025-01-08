@@ -154,7 +154,7 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 > 
 > The -Credential option will no longer be available once enforcement begins.
 > 
-> For more details, check the [Planning for mandatory multifactor authentication for Azure and other administration portals](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication) documentation.
+> For more information, see [Planning for mandatory multifactor authentication for Azure and other administration portals](https://learn.microsoft.com/entra/identity/authentication/concept-mandatory-multifactor-authentication).
 
 ### Example 3: Connect to Azure using a service principal account
 
