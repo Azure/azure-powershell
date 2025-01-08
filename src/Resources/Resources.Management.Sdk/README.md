@@ -4,16 +4,8 @@ This directory contains management plane service clients of Az.Resources module.
 ## Run Generation
 In this directory, run AutoRest:
 ```
-rm -r Generated/*
 autorest --reset
-autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
-autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
-autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
-autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-07
-autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
-autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
-autorest --use:@autorest/powershell@4.x --tag=package-policy-2021-06
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
@@ -23,10 +15,19 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.ResourceManager
 isSdkGenerator: true
 powershell: true
-clear-output-folder: false
+clear-output-folder: true
 reflect-api-versions: true
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
+batch:
+ - tag: package-privatelinks-2020-05
+ - tag: package-subscriptions-2021-01
+ - tag: package-features-2021-07
+ - tag: package-deploymentscripts-2020-10
+ - tag: package-resources-2024-07
+ - tag: package-deploymentstacks-2024-03
+ - tag: package-templatespecs-2021-05
+ - tag: package-policy-2021-06
 ```
 
 ## Configuration

@@ -114,22 +114,7 @@ try {
             if ([regex]::Matches($readMeContent, '\s*powershell\s*:\s*true\s*') -and [regex]::Matches($readMeContent, '\s*isSdkGenerator\s*:\s*true\s*'))
             {
                 Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
-                if ($IsResources)
-                {
-                    Write-Host "Specific generation for Resources.Management.Sdk"
-                    rm -r Generated/*
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-07
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
-                }
-                else
-                {
-                    npx autorest
-                }
+                npx autorest
             }
             elseif ([regex]::Matches($readMeContent, '\s*csharp\s*:\s*true\s*'))
             {
