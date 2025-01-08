@@ -16,13 +16,13 @@ Get appRoleAssignments from servicePrincipals
 ```
 Get-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId <String> [-Expand <String[]>]
  [-Select <String[]>] [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Skip <UInt64>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId <String> -AppRoleAssignmentId <String>
- [-Expand <String[]>] [-Select <String[]>] [-DefaultProfile <PSObject>]
+ [-Expand <String[]>] [-Select <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -143,6 +143,21 @@ Order items by property values
 Type: System.String[]
 Parameter Sets: List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

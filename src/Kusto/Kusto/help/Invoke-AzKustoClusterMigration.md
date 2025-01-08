@@ -16,27 +16,27 @@ Migrate data from a Kusto cluster to another cluster.
 ```
 Invoke-AzKustoClusterMigration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ClusterResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Migrate
 ```
 Invoke-AzKustoClusterMigration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ClusterMigrateRequest <IClusterMigrateRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentityExpanded
 ```
 Invoke-AzKustoClusterMigration -InputObject <IKustoIdentity> -ClusterResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
 ```
 Invoke-AzKustoClusterMigration -InputObject <IKustoIdentity> -ClusterMigrateRequest <IClusterMigrateRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ A cluster migrate request.
 To construct, see NOTES section for CLUSTERMIGRATEREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
 Parameter Sets: Migrate, MigrateViaIdentity
 Aliases:
 
@@ -177,6 +177,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -244,7 +259,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 

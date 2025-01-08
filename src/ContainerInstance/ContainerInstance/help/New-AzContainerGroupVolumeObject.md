@@ -16,7 +16,7 @@ Create an in-memory object for Volume.
 New-AzContainerGroupVolumeObject -Name <String> [-AzureFileReadOnly] [-AzureFileShareName <String>]
  [-AzureFileStorageAccountKey <SecureString>] [-AzureFileStorageAccountName <String>]
  [-EmptyDir <IVolumeEmptyDir>] [-GitRepoDirectoryName <String>] [-GitRepoRepositoryUrl <String>]
- [-GitRepoRevision <String>] [-Secret <ISecretVolume>]
+ [-GitRepoRevision <String>] [-Secret <ISecretVolume>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -196,6 +196,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

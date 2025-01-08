@@ -23,7 +23,7 @@ Migrate data from a Kusto cluster to another cluster.
 Invoke-AzKustoClusterMigration -Name "myCluster" -ResourceGroupName "myResourceGroup" -ClusterResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/xxxx/providers/Microsoft.Kusto/clusters/destinationClusterName"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
@@ -94,7 +94,7 @@ param(
     [Parameter(ParameterSetName='Migrate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest]
     # A cluster migrate request.
     # To construct, see NOTES section for CLUSTERMIGRATEREQUEST properties and create a hash table.
     ${ClusterMigrateRequest},

@@ -17,14 +17,14 @@ Approve or reject a private endpoint connection with a given name.
 New-AzKustoPrivateEndpointConnection -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-PrivateLinkServiceConnectionStateDescription <String>]
  [-PrivateLinkServiceConnectionStateStatus <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzKustoPrivateEndpointConnection -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Parameter <IPrivateEndpointConnection> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,7 +128,7 @@ A private endpoint connection
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 Parameter Sets: Create
 Aliases:
 
@@ -161,6 +161,21 @@ The private link service connection status.
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -236,11 +251,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 
 ## NOTES
 

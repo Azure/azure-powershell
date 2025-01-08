@@ -20,12 +20,12 @@ Creates a Kusto database script.
 .Description
 Creates a Kusto database script.
 .Example
-New-AzKustoScript -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Name newkustoscript -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken
+New-AzKustoScript -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Name newkustoscript -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,6 +35,8 @@ PARAMETER <IScript>: Class representing a database script.
   [Content <String>]: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
   [ContinueOnError <Boolean?>]: Flag that indicates whether to continue if one of the command fails.
   [ForceUpdateTag <String>]: A unique string. If changed the script will be applied again.
+  [Level <ScriptLevel?>]: Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+  [PrincipalPermissionsAction <PrincipalPermissionsAction?>]: Indicates if the permissions for the script caller are kept following completion of the script.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
@@ -47,7 +49,7 @@ PARAMETER <IScript>: Class representing a database script.
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoscript
 #>
 function New-AzKustoScript {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -85,7 +87,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript]
     # Class representing a database script.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -104,12 +106,27 @@ param(
     ${ForceUpdateTag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction]
+    # Indicates if the permissions for the script caller are kept following completion of the script.
+    ${PrincipalPermissionsAction},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The script content.
     # This property should be used when the script is provide inline and not through file in a SA.
     # Must not be used together with scriptUrl and scriptUrlSasToken properties.
     ${ScriptContent},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel]
+    # Differentiates between the type of script commands included - Database or Cluster.
+    # The default is Database.
+    ${ScriptLevel},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]

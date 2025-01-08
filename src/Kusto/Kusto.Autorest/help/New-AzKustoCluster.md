@@ -16,12 +16,12 @@ Create or update a Kusto cluster.
 New-AzKustoCluster -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <AzureSkuName>
  -SkuTier <AzureSkuTier> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AcceptedAudience <IAcceptedAudiences[]>] [-AllowedFqdnList <String[]>] [-AllowedIPRangeList <String[]>]
- [-EnableAutoStop] [-EnableDiskEncryption] [-EnableDoubleEncryption] [-EnablePurge] [-EnableStreamingIngest]
- [-EngineType <EngineType>] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>]
- [-LanguageExtensionValue <ILanguageExtension[]>] [-OptimizedAutoscaleIsEnabled]
- [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+ [-CalloutPolicy <ICalloutPolicy[]>] [-EnableAutoStop] [-EnableDiskEncryption] [-EnableDoubleEncryption]
+ [-EnablePurge] [-EnableStreamingIngest] [-EngineType <EngineType>] [-IdentityType <IdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyKeyName <String>]
+ [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
+ [-KeyVaultPropertyUserIdentity <String>] [-LanguageExtensionValue <ILanguageExtension[]>]
+ [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
  [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <PublicIPType>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>]
  [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
@@ -56,7 +56,7 @@ The cluster's accepted audiences.
 To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAcceptedAudiences[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAcceptedAudiences[]
 Parameter Sets: (All)
 Aliases:
 
@@ -102,6 +102,22 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CalloutPolicy
+List of callout policies for egress from Cluster.
+To construct, see NOTES section for CALLOUTPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -349,7 +365,7 @@ The list of language extensions.
 To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -608,7 +624,7 @@ The cluster's external tenants.
 To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ITrustedExternalTenant[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ITrustedExternalTenant[]
 Parameter Sets: (All)
 Aliases:
 
@@ -747,7 +763,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster
 
 ## NOTES
 

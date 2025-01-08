@@ -15,7 +15,7 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 ```
 New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId <String>
  [-IpamEnabled <L3NetworkConfigurationIpamEnabled>] [-PluginType <KubernetesPluginType>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +83,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -90,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkAttachmentConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkAttachmentConfiguration
 
 ## NOTES
 

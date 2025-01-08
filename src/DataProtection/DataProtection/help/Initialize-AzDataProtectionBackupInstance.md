@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
@@ -16,7 +16,8 @@ Initializes Backup instance Request object for configuring backup
 Initialize-AzDataProtectionBackupInstance -DatasourceType <DatasourceTypes> -DatasourceLocation <String>
  [-PolicyId <String>] [-DatasourceId <String>] [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
  [-SnapshotResourceGroupId <String>] [-FriendlyName <String>]
- [-BackupConfiguration <IBackupDatasourceParameters>] [<CommonParameters>]
+ [-BackupConfiguration <IBackupDatasourceParameters>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,6 +184,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SecretStoreType
 Secret store type for secret store authentication of data source.
 This parameter is only supported for AzureDatabaseForPostgreSQL currently.
@@ -221,6 +237,36 @@ Sanpshot Resource Group
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityArmId
+User assigned identity ARM Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AssignUserIdentity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSystemAssignedIdentity
+Use system assigned identity
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

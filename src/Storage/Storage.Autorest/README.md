@@ -44,17 +44,18 @@ nested-object-to-string: true
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document
+    where: $.paths.["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration"].post.operationId    
+    transform: return "StartAccountMigration"
   - remove-operation: StorageAccounts_Update
   - where:
       subject: ^StorageAccountCustomerInitiatedMigration$
     set:
       subject: StorageAccountMigration
   - where:
-      verb: Invoke
-      subject: ^CustomerStorageAccountInitiatedMigration$
-    set:
       verb: Start
       subject: AccountMigration
+    hide: true
   - where:
       variant: ^Customer$|^CustomerViaIdentity$
     remove: true

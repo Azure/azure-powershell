@@ -155,7 +155,7 @@ param(
     ${Tag},
 
     [Parameter()]
-    [Alias('UserAssignedIdentity')]
+    [Alias('UserAssignedIdentity', 'AssignUserIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Collections.Hashtable]
     # Gets or sets the user assigned identities.

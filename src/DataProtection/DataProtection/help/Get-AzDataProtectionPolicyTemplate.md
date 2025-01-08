@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionpolicytemplate
 schema: 2.0.0
 ---
@@ -13,7 +13,7 @@ Gets default policy template for a selected datasource type.
 ## SYNTAX
 
 ```
-Get-AzDataProtectionPolicyTemplate -DatasourceType <DatasourceTypes>
+Get-AzDataProtectionPolicyTemplate -DatasourceType <DatasourceTypes> [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -48,6 +48,21 @@ Aliases:
 Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

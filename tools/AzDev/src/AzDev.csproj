@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.0.22" />
+    <PackageReference Include="YamlDotNet" Version="16.1.0" />
+  </ItemGroup>
+
+</Project>

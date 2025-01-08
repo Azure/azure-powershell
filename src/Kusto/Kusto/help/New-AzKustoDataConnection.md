@@ -19,7 +19,7 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
  -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-MappingRuleName <String>] [-Compression <Compression>] [-ManagedIdentityResourceId <String>]
  [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedEventGrid
@@ -29,7 +29,7 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
  -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>] [-MappingRuleName <String>]
  [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>] -StorageAccountResourceId <String>
  [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord] [-EventGridResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
  -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
  [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
  -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedCosmosDb
@@ -49,7 +49,7 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
  -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
  [-MappingRuleName <String>] -ManagedIdentityResourceId <String> [-RetrievalStartDate <DateTime>]
  -CosmosDbAccountResourceId <String> -CosmosDbDatabase <String> -CosmosDbContainer <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -60,7 +60,7 @@ Creates or updates a data connection.
 
 ### Example 1: Create a new EventHub data connection
 ```powershell
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "EventsMapping"
 ```
 
 ```output
@@ -73,7 +73,7 @@ The above command creates a new EventHub data connection named "myeventhubdc" fo
 
 ### Example 2: Create a new EventGrid data connection
 ```powershell
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 ```
 
 ```output
@@ -86,7 +86,7 @@ The above command creates a new EventGrid data connection named "myeventgriddc" 
 
 ### Example 3: Create a new IotHub data connection
 ```powershell
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 ```
 
 ```output
@@ -458,6 +458,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group containing the Kusto cluster.
 
@@ -589,7 +604,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
 
 ## NOTES
 
