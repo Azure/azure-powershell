@@ -16,16 +16,19 @@ Properties and tag updates can be done independently.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Count <Int64>] [-Tag <Hashtable>] [-UpgradeSettingMaxSurge <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-Count <Int64>]
+ [-Tag <Hashtable>] [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
+ [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-Count <Int64>] [-Tag <Hashtable>]
- [-UpgradeSettingMaxSurge <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity>
+ [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-Count <Int64>] [-Tag <Hashtable>]
+ [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
+ [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +51,22 @@ westus3  agentpool1 07/17/2023 18:14:59 <identity>                           App
 This command updates a Kubernetes cluster agent pool's properties.
 
 ## PARAMETERS
+
+### -AdministratorConfigurationSshPublicKey
+SshPublicKey represents the public key used to authenticate with a resource through SSH.
+To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -156,6 +175,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -203,6 +237,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UpgradeSettingDrainTimeout
+The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool.
+If not specified during creation, a value of 1800 seconds is used.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UpgradeSettingMaxSurge
 The maximum number or percentage of nodes that are surged during upgrade.
 This can either be set to an integer (e.g.
@@ -210,7 +260,30 @@ This can either be set to an integer (e.g.
 '50%').
 If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade.
 For percentages, fractional nodes are rounded up.
-If not specified, the default is 1.
+If not specified during creation, a value of 1 is used.
+One of MaxSurge and MaxUnavailable must be greater than 0.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradeSettingMaxUnavailable
+The maximum number or percentage of nodes that can be unavailable during upgrade.
+This can either be set to an integer (e.g.
+'5') or a percentage (e.g.
+'50%').
+If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade.
+For percentages, fractional nodes are rounded up.
+If not specified during creation, a value of 0 is used.
+One of MaxSurge and MaxUnavailable must be greater than 0.
 
 ```yaml
 Type: System.String
@@ -264,7 +337,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool
 
 ## NOTES
 

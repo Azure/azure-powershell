@@ -21,32 +21,32 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpServiceLoadBalancerConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpServiceLoadBalancerConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject
 #>
 function New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpServiceLoadBalancerConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpServiceLoadBalancerConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The association of IP address pools to the communities and peers, allowing for announcement of IPs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBgpAdvertisement[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBgpAdvertisement[]]
         $BgpAdvertisement,
         [Parameter(HelpMessage="The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IServiceLoadBalancerBgpPeer[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IServiceLoadBalancerBgpPeer[]]
         $BgpPeer,
         [Parameter(HelpMessage="The indicator to specify if the load balancer peers with the network fabric.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled])]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled]
         $FabricPeeringEnabled,
-        [Parameter(HelpMessage="The list of pools of IP addresses that can be allocated to Load Balancer services.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IIPAddressPool[]]
+        [Parameter(HelpMessage="The list of pools of IP addresses that can be allocated to load balancer services.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IIPAddressPool[]]
         $IPAddressPool
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpServiceLoadBalancerConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpServiceLoadBalancerConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('BgpAdvertisement')) {
             $Object.BgpAdvertisement = $BgpAdvertisement
