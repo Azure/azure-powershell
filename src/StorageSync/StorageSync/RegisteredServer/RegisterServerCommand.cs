@@ -275,6 +275,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                         CloudEndpoint cloudEndpoint = endpoint.Item2;
                         var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
                         var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+
                         StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                            serverIdentityGuid,
                            Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
