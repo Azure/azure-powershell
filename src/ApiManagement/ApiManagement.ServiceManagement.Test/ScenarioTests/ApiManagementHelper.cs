@@ -1,4 +1,4 @@
-﻿// 
+// 
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
 //  You may obtain a copy of the License at
@@ -13,8 +13,8 @@
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Management.ApiManagement;
 using Microsoft.Azure.Management.ApiManagement.Models;
-using Microsoft.Azure.PowerShell.Clients.ResourceManager;
-using Microsoft.Azure.PowerShell.Clients.ResourceManager.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Linq;
