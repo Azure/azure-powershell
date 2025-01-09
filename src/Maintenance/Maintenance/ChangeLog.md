@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.5.0
 * Upgraded nuget package to signed package.
 * Added list of allowed classifications in description for Maintenance Configuration
 * Fixed incorrect parameter mapping in Get-AzApplyUpdate
