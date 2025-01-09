@@ -148,6 +148,7 @@ Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
+Add a test line here!
 
 ### Example 3: Connect to Azure using a service principal account
 
