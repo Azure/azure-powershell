@@ -19,7 +19,7 @@ Update-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -R
  [-SubscriptionId <String>] [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-Count <Int64>]
  [-Tag <Hashtable>] [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
  [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,7 +28,7 @@ Update-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity>
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-Count <Int64>] [-Tag <Hashtable>]
  [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
  [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,21 +167,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

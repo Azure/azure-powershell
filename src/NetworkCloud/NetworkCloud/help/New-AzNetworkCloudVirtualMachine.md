@@ -27,7 +27,7 @@ New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-Su
  [-UserData <String>] [-VMDeviceModel <VirtualMachineDeviceModelType>]
  [-VMImageRepositoryCredentialsPassword <SecureString>] [-VMImageRepositoryCredentialsRegistryUrl <String>]
  [-VMImageRepositoryCredentialsUsername <String>] [-VirtioInterface <VirtualMachineVirtioInterfaceType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -428,21 +428,6 @@ To construct, see NOTES section for PLACEMENTHINT properties and create a hash t
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachinePlacementHint[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
