@@ -13,8 +13,8 @@
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Management.ApiManagement;
 using Microsoft.Azure.Management.ApiManagement.Models;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.PowerShell.Clients.ResourceManager;
+using Microsoft.Azure.PowerShell.Clients.ResourceManager.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Linq;
