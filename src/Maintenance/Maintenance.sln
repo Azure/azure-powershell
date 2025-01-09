@@ -31,9 +31,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compute", "..\Compute\Compu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Network\Network.csproj", "{81458F7F-A6D1-4A91-BD03-936E83EE3518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\Compute\Compute.Autorest\Az.Compute.csproj", "{5CFF7FFB-35FB-981C-5667-D79C67D70ADC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{F2BAFE8D-D324-463D-9B6A-214BE3661EF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{FA241079-5768-4025-86F3-2E0236A9D5ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,10 +89,10 @@ Global
 		{81458F7F-A6D1-4A91-BD03-936E83EE3518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81458F7F-A6D1-4A91-BD03-936E83EE3518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81458F7F-A6D1-4A91-BD03-936E83EE3518}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CFF7FFB-35FB-981C-5667-D79C67D70ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CFF7FFB-35FB-981C-5667-D79C67D70ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CFF7FFB-35FB-981C-5667-D79C67D70ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CFF7FFB-35FB-981C-5667-D79C67D70ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA241079-5768-4025-86F3-2E0236A9D5ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA241079-5768-4025-86F3-2E0236A9D5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA241079-5768-4025-86F3-2E0236A9D5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA241079-5768-4025-86F3-2E0236A9D5ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +109,5 @@ Global
 		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {CF29856B-2E93-432B-BDDF-123C5787A99D}
 		{414F4F98-1239-5B3F-E8D8-FC0445880942} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{81458F7F-A6D1-4A91-BD03-936E83EE3518} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{5CFF7FFB-35FB-981C-5667-D79C67D70ADC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 EndGlobal
