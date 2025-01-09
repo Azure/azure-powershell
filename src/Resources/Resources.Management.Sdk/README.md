@@ -27,28 +27,12 @@ batch:
  - tag: package-resources-2024-07
  - tag: package-deploymentstacks-2024-03
  - tag: package-templatespecs-2021-05
- - tag: package-policy-2021-06
 ```
 
 ## Configuration
 
 ```yaml
 commit: 44051823078bc61d1210c324faf6d12e409497b7
-```
-
-### Tag: package-policy-2021-06
-These settings apply only when `--tag=package-policy-2021-06` is specified on the command line.
-``` yaml $(tag) == 'package-policy-2021-06'
-input-file:
-- https://github.com/Azure/azure-rest-api-specs/blob/b9e6e16643bf008391b990a09995cf00d2f40a9d/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-09-01/dataPolicyManifests.json
-- https://github.com/Azure/azure-rest-api-specs/blob/b9e6e16643bf008391b990a09995cf00d2f40a9d/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policyAssignments.json
-- https://github.com/Azure/azure-rest-api-specs/blob/b9e6e16643bf008391b990a09995cf00d2f40a9d/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policyDefinitions.json
-- https://github.com/Azure/azure-rest-api-specs/blob/b9e6e16643bf008391b990a09995cf00d2f40a9d/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policySetDefinitions.json
-- https://github.com/Azure/azure-rest-api-specs/blob/b9e6e16643bf008391b990a09995cf00d2f40a9d/specification/resources/resource-manager/Microsoft.Authorization/preview/2020-07-01-preview/policyExemptions.json
-
-# Needed when there is more than one input file
-override-info:
-  title: PolicyClient
 ```
 
 ### Tag: package-resources-2021-04
@@ -135,49 +119,13 @@ directive:
     where: $
     transform: $ = $.replace(/common-types\/resource-management\/v5\/types.json#\/parameters\/SubscriptionIdParameter/g, 'common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter');
   - suppress: UniqueResourcePaths
-    from: policySetDefinitions.json
-    where: $.paths
-    reason: policy set definition under an extension resource with Microsoft.Management
-  - suppress: UniqueResourcePaths
     from: resources.json
     where: $.paths
     reason: route definitions under an extension resource with Microsoft.Management
-  - suppress: UniqueResourcePaths
-    from: policyDefinitions.json
-    where: $.paths
-    reason: policy definition under an extension resource with Microsoft.Management
-  - suppress: UniqueResourcePaths
-    from: policyAssignments.json
-    where: $.paths
-    reason: policy assignment under an extension resource with Microsoft.Management
-  - suppress: UniqueResourcePaths
-    from: policyExemptions.json
-    where: $.paths
-    reason: policy exemption under an extension resource with Microsoft.Management
-  - suppress: OperationsAPIImplementation
-    from: policyAssignments.json
-    where: $.paths
-    reason: operation APIs for Microsoft.Authorization are to be defined in RBAC swagger
   - suppress: OperationsAPIImplementation
     from: privateLinks.json
     where: $.paths
     reason: operation APIs for Microsoft.Authorization are to be defined in RBAC swagger
-  - suppress: OperationsAPIImplementation
-    from: policyDefinitions.json
-    where: $.paths
-    reason: operation APIs for Microsoft.Authorization are to be defined in RBAC swagger
-  - suppress: OperationsAPIImplementation
-    from: policySetDefinitions.json
-    where: $.paths
-    reason: operation APIs for Microsoft.Authorization are to be defined in RBAC swagger
-  - suppress: OperationsAPIImplementation
-    from: policyExemptions.json
-    where: $.paths
-    reason: operation APIs for Microsoft.Authorization are to be defined in RBAC swagger
-  - suppress: BodyTopLevelProperties
-    from: policyExemptions.json
-    where: $.definitions.PolicyExemption.properties
-    reason: Currently systemData is not allowed
   - suppress: BodyTopLevelProperties
     from: resources.json
     where: $.definitions.ResourceGroup.properties
@@ -210,22 +158,6 @@ directive:
     from: resources.json
     where: '$.paths["/subscriptions/{subscriptionId}/tagNames/{tagName}"].put'
     reason: TagDetails is not an Azure resource
-  - suppress: BodyTopLevelProperties
-    from: managedapplications.json
-    where: $.definitions.Appliance.properties
-    reason: managedBy is a top level property
-  - suppress: BodyTopLevelProperties
-    from: managedapplications.json
-    where: $.definitions.ApplianceDefinition.properties
-    reason: managedBy is a top level property
-  - suppress: BodyTopLevelProperties
-    from: managedapplications.json
-    where: $.definitions.AppliancePatchable.properties
-    reason: managedBy is a top level property
-  - suppress: BodyTopLevelProperties
-    from: managedapplications.json
-    where: $.definitions.GenericResource.properties
-    reason: managedBy is a top level property
   - from: deploymentScripts.json
     suppress: TrackedResourceGetOperation
     where: $.definitions.AzureCliScript
@@ -273,22 +205,6 @@ directive:
     from: templateSpecs.json
     where: $.definitions.TemplateSpecVersion
     reason: Tooling issue
-  - suppress: OperationsAPIImplementation
-    where: $.paths
-    from: dataPolicyManifests.json
-    reason: operation APIs for Microsoft.Authorization are to be defined in RBAC swagger
-  - suppress: EnumInsteadOfBoolean
-    where: $.definitions.DataManifestCustomResourceFunctionDefinition.properties.allowCustomProperties
-    from: dataPolicyManifests.json
-    reason: 'This property can only have two values. '
-  - suppress: EnumInsteadOfBoolean
-    where: $.definitions.DataPolicyManifestProperties.properties.isBuiltInOnly
-    from: dataPolicyManifests.json
-    reason: 'This property can only have two values. '
-  - suppress: PageableOperation
-    where: '$.paths["/providers/Microsoft.Authorization/dataPolicyManifests"].get'
-    from: dataPolicyManifests.json
-    reason: Pagination not supported. The size of the result list is pretty limited
   - suppress: DescriptionAndTitleMissing
     where: $.definitions.AliasPathMetadata
     from: resources.json
@@ -297,12 +213,6 @@ directive:
     where: $.paths
     from: resources.json
     reason: Pre-existing lint error. Not related to this version release.
-  - suppress: TopLevelResourcesListByResourceGroup
-    from: policyDefinitions.json
-    reason: Policy definitions are a proxy resource that is only usable on subscriptions or management groups
-  - suppress: TopLevelResourcesListByResourceGroup
-    from: policySetDefinitions.json
-    reason: Policy set definitions are a proxy resource that is only usable on subscriptions or management groups
   - suppress: RequiredReadOnlySystemData
     from: privateLinks.json
     reason: We do not yet support system data
@@ -315,14 +225,4 @@ directive:
   - suppress: TopLevelResourcesListByResourceGroup
     from: privateLinks.json
     reason: The resource is managed in a management group level (instead of inside a resource group)
-  - suppress: TopLevelResourcesListBySubscription
-    from: changes.json
-    reason: We will be pushing customers to use Azure Resource Graph for those at scale scenarios. 
-  - from: changes.json
-    suppress: OperationsAPIImplementation
-    where: $.paths
-    reason: 'Duplicate Operations API causes generation issues'
-  - suppress: RequiredReadOnlySystemData
-    from: changes.json
-    reason: System Metadata from a change resource perspective is irrelevant
 ```
