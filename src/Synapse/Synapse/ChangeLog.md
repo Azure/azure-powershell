@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.0
 * Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 

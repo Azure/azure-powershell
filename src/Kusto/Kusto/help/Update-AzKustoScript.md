@@ -18,14 +18,14 @@ Update-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String>
  [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>]
  [-PrincipalPermissionsAction <PrincipalPermissionsAction>] [-ScriptContent <String>]
  [-ScriptLevel <ScriptLevel>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Parameter <IScript> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -33,13 +33,13 @@ Update-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String>
 Update-AzKustoScript -InputObject <IKustoIdentity> [-ContinueOnError] [-ForceUpdateTag <String>]
  [-PrincipalPermissionsAction <PrincipalPermissionsAction>] [-ScriptContent <String>]
  [-ScriptLevel <ScriptLevel>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzKustoScript -InputObject <IKustoIdentity> -Parameter <IScript> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -223,21 +223,6 @@ Indicates if the permissions for the script caller are kept following completion
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
