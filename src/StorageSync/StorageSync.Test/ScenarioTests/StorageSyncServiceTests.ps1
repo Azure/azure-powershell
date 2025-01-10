@@ -136,17 +136,7 @@ function Test-NewStorageSyncServiceWithIdentity
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        try 
-        {
-            $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName -AssignIdentity -IdentityType SystemAssigned
-        }
-        catch 
-        {
-            Write-Host $_.Exception.Message
-            Write-Host $_.Exception.InnerException.Message
-            throw $_
-        }
-
+        $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName -AssignIdentity -IdentityType SystemAssigned
     }
     finally
     {

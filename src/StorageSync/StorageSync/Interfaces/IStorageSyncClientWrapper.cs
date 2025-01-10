@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <param name="roleDefinitionId">Role definition id</param>
         /// <param name="scope">Scope</param>
         /// <returns>Role Assignment</returns>
-        RoleAssignment EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope);
+        (RoleAssignment, bool) EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope);
 
         /// <summary>
         /// This function will try to delete role assignment if it exists.
