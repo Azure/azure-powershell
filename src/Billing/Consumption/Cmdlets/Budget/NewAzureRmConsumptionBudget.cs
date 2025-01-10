@@ -116,10 +116,10 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             if (ShouldProcess(Name, "Create Consumption Budget"))
             {
                 var requestBudget = new Budget(
-                this.Category,
-                this.Amount,
-                this.TimeGrain,
-                CreateBudgetTimePeriod(),
+                category: this.Category,
+                amount: this.Amount,
+                timeGrain: this.TimeGrain,
+                timePeriod: CreateBudgetTimePeriod(),
                 filters: CreateFilters(),
                 notifications: CreateNotifications());
 
