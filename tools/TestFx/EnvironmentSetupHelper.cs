@@ -130,9 +130,6 @@ namespace Microsoft.Azure.Commands.TestFx
 
             AzureSession.Instance.DataStore = datastore;
 
-            // Ignore SSL errors
-            System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
-
             if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName, "testcredentials.json")))
             {
                 SetEnvironmentVariableFromCredentialFile();

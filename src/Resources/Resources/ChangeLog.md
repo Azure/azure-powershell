@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
 
 ## Version 7.8.0
 * Upgraded nuget package to signed package.

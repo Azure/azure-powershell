@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
 
 ## Version 7.12.0
 * Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
