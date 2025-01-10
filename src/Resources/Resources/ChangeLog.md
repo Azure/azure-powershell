@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
 * Upgraded nuget package to signed package.
 * Added DefaultApiVersion to the returned properties of the `Get-AzResourceProvider` cmdlet's Resource Type array
 * Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
