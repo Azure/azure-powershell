@@ -83,7 +83,7 @@ function New-AzAksArcCluster {
         # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}
         ${VnetId},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # IP address of the Kubernetes API server
@@ -418,7 +418,7 @@ function New-AzAksArcCluster {
 
         # Network Validations
         # Logical Network
-        if ($VnetId -match $logicalNetworkArmIDRegex) {
+        if (($PSBoundParameters.ContainsKey('ControlPlaneIP')) -And ($VnetId -match $logicalNetworkArmIDRegex)) {
             $response = Invoke-AzRestMethod -Path "$VnetId/?api-version=2024-01-01" -Method GET
             if ($response.StatusCode -eq 200) {
                 $lnet = ($response.Content | ConvertFrom-Json)
@@ -467,6 +467,30 @@ function New-AzAksArcCluster {
         # Configure Agent Pool
         $AgentPoolProfile = CreateAgentPoolProfile -EnableAutoScaling:$EnableAutoScaling -MinCount $MinCount -MaxCount $MaxCount -MaxPod $MaxPod -NodeTaint $NodeTaint -NodeLabel $NodeLabel
         $null = $PSBoundParameters.Add("AgentPoolProfile", $AgentPoolProfile)
+        
+        if ($PSBoundParameters.ContainsKey('EnableAzureHybridBenefit')) {
+            $null = $PSBoundParameters.Remove("EnableAzureHybridBenefit")
+        }
+
+        if ($PSBoundParameters.ContainsKey('NodeTaint')) {
+            $null = $PSBoundParameters.Remove("NodeTaint")
+        }
+
+        if ($PSBoundParameters.ContainsKey('NodeLabel')) {
+            $null = $PSBoundParameters.Remove("NodeLabel")
+        }
+
+        if ($PSBoundParameters.ContainsKey('MinCount')) {
+            $null = $PSBoundParameters.Remove("MinCount")
+        }
+
+        if ($PSBoundParameters.ContainsKey('MaxCount')) {
+            $null = $PSBoundParameters.Remove("MaxCount")
+        }
+
+        if ($PSBoundParameters.ContainsKey('MaxPod')) {
+            $null = $PSBoundParameters.Remove("MaxPod")
+        }
 
         # Create Provisioned Cluster
         if ($EnableAzureHybridBenefit) {
@@ -474,9 +498,7 @@ function New-AzAksArcCluster {
         } else {
             $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $false)
         }
-        $null = $PSBoundParameters.Remove("EnableAzureHybridBenefit")
-        $null = $PSBoundParameters.Remove("NodeTaint")
-        $null = $PSBoundParameters.Remove("NodeLabel")
+
         Az.AksArc.internal\New-AzAksArcCluster @PSBoundParameters
     }
     }

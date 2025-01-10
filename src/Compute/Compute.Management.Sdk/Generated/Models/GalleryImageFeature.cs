@@ -31,10 +31,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         /// <param name="name">The name of the gallery image feature.</param>
         /// <param name="value">The value of the gallery image feature.</param>
-        public GalleryImageFeature(string name = default(string), string value = default(string))
+        /// <param name="startsAtVersion">The minimum gallery image version
+        /// which supports this feature.</param>
+        public GalleryImageFeature(string name = default(string), string value = default(string), string startsAtVersion = default(string))
         {
             Name = name;
             Value = value;
+            StartsAtVersion = startsAtVersion;
             CustomInit();
         }
 
@@ -54,6 +57,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum gallery image version which supports this
+        /// feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "startsAtVersion")]
+        public string StartsAtVersion { get; set; }
 
     }
 }

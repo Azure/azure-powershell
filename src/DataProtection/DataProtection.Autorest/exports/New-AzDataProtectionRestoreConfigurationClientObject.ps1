@@ -32,6 +32,10 @@ To create the parameters described below, construct a hash table containing the 
 NAMESPACEMAPPING <KubernetesClusterRestoreCriteriaNamespaceMappings>: Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
   [(Any) <String>]: This indicates any property can be added to this object.
 
+RESOURCEMODIFIERREFERENCE <NamespacedNameResource>: Resource modifier reference to be executed during restore.
+  [Name <String>]: Name of the resource
+  [Namespace <String>]: Namespace in which the resource exists
+
 RESTOREHOOKREFERENCE <NamespacedNameResource[]>: Hook reference to be executed during restore.
   [Name <String>]: Name of the resource
   [Namespace <String>]: Namespace in which the resource exists
@@ -113,7 +117,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]]
     # Hook reference to be executed during restore.
     # To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
-    ${RestoreHookReference}
+    ${RestoreHookReference},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource]
+    # Resource modifier reference to be executed during restore.
+    # To construct, see NOTES section for RESOURCEMODIFIERREFERENCE properties and create a hash table.
+    ${ResourceModifierReference},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Staging resource group Id for restore.
+    ${StagingResourceGroupId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Staging storage account Id for restore.
+    ${StagingStorageAccountId}
 )
 
 begin {

@@ -319,6 +319,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PartnerSubscriptionId
+Specifies the subscription of the Azure SQL database server if it is different from the source.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the Azure Resource Group to which this cmdlet assigns the primary database.
 

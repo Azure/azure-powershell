@@ -112,20 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected virtual void DoBeginProcessing()
         {
-            CmdletOperationContext.Init();
-            CmdletCancellationToken = _cancellationTokenSource.Token;
-            WriteDebugLog(String.Format(Resources.InitOperationContextLog, GetType().Name, CmdletOperationContext.ClientRequestId));
-
-            if (_enableMultiThread)
-            {
-                SetUpMultiThreadEnvironment();
-            }
-
-            OpContext.GlobalSendingRequest +=
-                (sender, args) =>
-                {
-                    //https://github.com/Azure/azure-storage-net/issues/658
-                };
+            base.BeginProcessing();
 
             OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
 

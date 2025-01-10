@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsAddKey_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsAddKey_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/microsoft.graph.addKey'");
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -103,11 +103,241 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsAddKey_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsAddKey_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ApplicationsAddKey" /> method.</summary>
+        /// <summary>Invoke action addKey</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Action parameters</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential> ApplicationsAddKeyViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths17CrvdcApplicationsApplicationIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var applicationId = _match.Groups["application-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + applicationId
+                        + "/microsoft.graph.addKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsAddKeyWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addKey</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsAddKey operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ApplicationsAddKeyViaJsonString(string applicationId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/microsoft.graph.addKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ApplicationsAddKey_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addKey</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsAddKey operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential> ApplicationsAddKeyViaJsonStringWithResult(string applicationId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/microsoft.graph.addKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsAddKeyWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addKey</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="body">Action parameters</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential> ApplicationsAddKeyWithResult(string applicationId, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths17CrvdcApplicationsApplicationIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/microsoft.graph.addKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsAddKeyWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ApplicationsAddKeyWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential> ApplicationsAddKeyWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ApplicationsAddKey" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -215,7 +445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsAddPassword_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsAddPassword_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -241,7 +471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/microsoft.graph.addPassword'");
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -267,11 +497,241 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsAddPassword_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsAddPassword_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ApplicationsAddPassword" /> method.</summary>
+        /// <summary>Invoke action addPassword</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Action parameters</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential> ApplicationsAddPasswordViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths141Ryo0ApplicationsApplicationIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var applicationId = _match.Groups["application-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + applicationId
+                        + "/microsoft.graph.addPassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsAddPasswordWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addPassword</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsAddPassword operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ApplicationsAddPasswordViaJsonString(string applicationId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/microsoft.graph.addPassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ApplicationsAddPassword_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addPassword</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsAddPassword operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential> ApplicationsAddPasswordViaJsonStringWithResult(string applicationId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/microsoft.graph.addPassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsAddPasswordWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addPassword</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="body">Action parameters</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential> ApplicationsAddPasswordWithResult(string applicationId, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths141Ryo0ApplicationsApplicationIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/microsoft.graph.addPassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsAddPasswordWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ApplicationsAddPasswordWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential> ApplicationsAddPasswordWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ApplicationsAddPassword" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -376,12 +836,185 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationCreateApplication_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationCreateApplication_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to applications</summary>
+        /// <param name="jsonString">Json string supplied to the ApplicationsApplicationCreateApplication operation</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ApplicationsApplicationCreateApplicationViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ApplicationsApplicationCreateApplication_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to applications</summary>
+        /// <param name="jsonString">Json string supplied to the ApplicationsApplicationCreateApplication operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication> ApplicationsApplicationCreateApplicationViaJsonStringWithResult(global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsApplicationCreateApplicationWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to applications</summary>
+        /// <param name="body">New entity</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication> ApplicationsApplicationCreateApplicationWithResult(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsApplicationCreateApplicationWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsApplicationCreateApplication" /> method.
+        /// Actual wire call for <see cref= "ApplicationsApplicationCreateApplicationWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication> ApplicationsApplicationCreateApplicationWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ApplicationsApplicationCreateApplication" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -491,7 +1124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationDeleteApplication_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationDeleteApplication_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -546,12 +1179,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationDeleteApplication_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationDeleteApplication_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsApplicationDeleteApplication" /> method.
+        /// Actual wire call for <see cref= "ApplicationsApplicationDeleteApplication" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -647,9 +1280,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/applications/"
                         + global::System.Uri.EscapeDataString(applicationId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -667,7 +1300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationGetApplication_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationGetApplication_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -707,9 +1340,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/applications/"
                         + applicationId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -727,12 +1360,180 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationGetApplication_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationGetApplication_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsApplicationGetApplication" /> method.
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication> ApplicationsApplicationGetApplicationViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var applicationId = _match.Groups["application-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + applicationId
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsApplicationGetApplicationWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication> ApplicationsApplicationGetApplicationWithResult(string applicationId, string consistencyLevel, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsApplicationGetApplicationWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ApplicationsApplicationGetApplicationWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication> ApplicationsApplicationGetApplicationWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ApplicationsApplicationGetApplication" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -835,11 +1636,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -857,7 +1658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationListApplication_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationListApplication_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -902,11 +1703,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -924,12 +1725,194 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationListApplication_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationListApplication_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get entities from applications</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfApplication> ApplicationsApplicationListApplicationViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/applications'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsApplicationListApplicationWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get entities from applications</summary>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfApplication> ApplicationsApplicationListApplicationWithResult(string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsApplicationListApplicationWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsApplicationListApplication" /> method.
+        /// Actual wire call for <see cref= "ApplicationsApplicationListApplicationWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfApplication>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfApplication> ApplicationsApplicationListApplicationWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.CollectionOfApplication.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ApplicationsApplicationListApplication" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1045,7 +2028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationUpdateApplication_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationUpdateApplication_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -1099,12 +2082,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsApplicationUpdateApplication_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsApplicationUpdateApplication_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsApplicationUpdateApplication" /> method.
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsApplicationUpdateApplication operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ApplicationsApplicationUpdateApplicationViaJsonString(string applicationId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ApplicationsApplicationUpdateApplication_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ApplicationsApplicationUpdateApplication" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1175,7 +2201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             }
         }
 
-        /// <summary>Create new navigation property to federatedIdentityCredentials for applications</summary>
+        /// <summary>create new navigation property to federatedIdentityCredentials for applications</summary>
         /// <param name="applicationId">key: id of application</param>
         /// <param name="body">New navigation property</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -1213,11 +2239,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsCreateFederatedIdentityCredentials_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.ApplicationsCreateFederatedIdentityCredentials_Call (request, onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create new navigation property to federatedIdentityCredentials for applications</summary>
+        /// <summary>create new navigation property to federatedIdentityCredentials for applications</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New navigation property</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -1239,7 +2265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/federatedIdentityCredentials'");
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1265,12 +2291,244 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsCreateFederatedIdentityCredentials_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.ApplicationsCreateFederatedIdentityCredentials_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create new navigation property to federatedIdentityCredentials for applications</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">New navigation property</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ApplicationsCreateFederatedIdentityCredentialsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var applicationId = _match.Groups["application-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + applicationId
+                        + "/federatedIdentityCredentials"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsCreateFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>create new navigation property to federatedIdentityCredentials for applications</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsCreateFederatedIdentityCredentials operation</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ApplicationsCreateFederatedIdentityCredentialsViaJsonString(string applicationId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/federatedIdentityCredentials"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ApplicationsCreateFederatedIdentityCredentials_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create new navigation property to federatedIdentityCredentials for applications</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsCreateFederatedIdentityCredentials operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ApplicationsCreateFederatedIdentityCredentialsViaJsonStringWithResult(string applicationId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/federatedIdentityCredentials"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsCreateFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>create new navigation property to federatedIdentityCredentials for applications</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="body">New navigation property</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ApplicationsCreateFederatedIdentityCredentialsWithResult(string applicationId, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/federatedIdentityCredentials"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsCreateFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsCreateFederatedIdentityCredentials" /> method.
+        /// Actual wire call for <see cref= "ApplicationsCreateFederatedIdentityCredentialsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ApplicationsCreateFederatedIdentityCredentialsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphFederatedIdentityCredential.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ApplicationsCreateFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -1382,7 +2640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsDeleteFederatedIdentityCredentials_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsDeleteFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -1437,12 +2695,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsDeleteFederatedIdentityCredentials_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsDeleteFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsDeleteFederatedIdentityCredentials" /> method.
+        /// Actual wire call for <see cref= "ApplicationsDeleteFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1539,9 +2797,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "/federatedIdentityCredentials/"
                         + global::System.Uri.EscapeDataString(federatedIdentityCredentialId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1553,7 +2811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsGetFederatedIdentityCredentials_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsGetFederatedIdentityCredentials_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1592,9 +2850,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "/federatedIdentityCredentials/"
                         + federatedIdentityCredentialId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1606,12 +2864,166 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsGetFederatedIdentityCredentials_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsGetFederatedIdentityCredentials_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get federatedIdentityCredentials from applications</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ApplicationsGetFederatedIdentityCredentialsViaIdentityWithResult(global::System.String viaIdentity, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)/federatedIdentityCredentials/(?<federatedIdentityCredential-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/federatedIdentityCredentials/{federatedIdentityCredential-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var applicationId = _match.Groups["application-id"].Value;
+                var federatedIdentityCredentialId = _match.Groups["federatedIdentityCredential-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + applicationId
+                        + "/federatedIdentityCredentials/"
+                        + federatedIdentityCredentialId
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsGetFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get federatedIdentityCredentials from applications</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="federatedIdentityCredentialId">key: id of federatedIdentityCredential</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ApplicationsGetFederatedIdentityCredentialsWithResult(string applicationId, string federatedIdentityCredentialId, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/federatedIdentityCredentials/"
+                        + global::System.Uri.EscapeDataString(federatedIdentityCredentialId)
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsGetFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsGetFederatedIdentityCredentials" /> method.
+        /// Actual wire call for <see cref= "ApplicationsGetFederatedIdentityCredentialsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ApplicationsGetFederatedIdentityCredentialsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphFederatedIdentityCredential.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ApplicationsGetFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1716,11 +3128,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1732,7 +3144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsListFederatedIdentityCredentials_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsListFederatedIdentityCredentials_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1779,11 +3191,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1795,12 +3207,186 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsListFederatedIdentityCredentials_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ApplicationsListFederatedIdentityCredentials_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get federatedIdentityCredentials from applications</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse> ApplicationsListFederatedIdentityCredentialsViaIdentityWithResult(global::System.String viaIdentity, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)/federatedIdentityCredentials$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/federatedIdentityCredentials'");
+                }
+
+                // replace URI parameters with values from identity
+                var applicationId = _match.Groups["application-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + applicationId
+                        + "/federatedIdentityCredentials"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsListFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get federatedIdentityCredentials from applications</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse> ApplicationsListFederatedIdentityCredentialsWithResult(string applicationId, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/federatedIdentityCredentials"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ApplicationsListFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsListFederatedIdentityCredentials" /> method.
+        /// Actual wire call for <see cref= "ApplicationsListFederatedIdentityCredentialsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse> ApplicationsListFederatedIdentityCredentialsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphFederatedIdentityCredentialCollectionResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ApplicationsListFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1914,7 +3500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsRemoveKey_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsRemoveKey_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -1940,7 +3526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/microsoft.graph.removeKey'");
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1966,11 +3552,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsRemoveKey_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsRemoveKey_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ApplicationsRemoveKey" /> method.</summary>
+        /// <summary>Invoke action removeKey</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsRemoveKey operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ApplicationsRemoveKeyViaJsonString(string applicationId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/microsoft.graph.removeKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ApplicationsRemoveKey_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ApplicationsRemoveKey" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2078,7 +3705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsRemovePassword_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsRemovePassword_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -2104,7 +3731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/applications/(?<application-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}/microsoft.graph.removePassword'");
+                    throw new global::System.Exception("Invalid identity for URI '/applications/{application-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2130,11 +3757,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsRemovePassword_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsRemovePassword_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ApplicationsRemovePassword" /> method.</summary>
+        /// <summary>Invoke action removePassword</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsRemovePassword operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ApplicationsRemovePasswordViaJsonString(string applicationId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/microsoft.graph.removePassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ApplicationsRemovePassword_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ApplicationsRemovePassword" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2204,7 +3872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             }
         }
 
-        /// <summary>Update the navigation property federatedIdentityCredentials in applications</summary>
+        /// <summary>update the navigation property federatedIdentityCredentials in applications</summary>
         /// <param name="applicationId">key: id of application</param>
         /// <param name="federatedIdentityCredentialId">key: id of federatedIdentityCredential</param>
         /// <param name="body">New navigation property values</param>
@@ -2244,11 +3912,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsUpdateFederatedIdentityCredentials_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsUpdateFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Update the navigation property federatedIdentityCredentials in applications</summary>
+        /// <summary>update the navigation property federatedIdentityCredentials in applications</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New navigation property values</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2298,12 +3966,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ApplicationsUpdateFederatedIdentityCredentials_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ApplicationsUpdateFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update the navigation property federatedIdentityCredentials in applications</summary>
+        /// <param name="applicationId">key: id of application</param>
+        /// <param name="federatedIdentityCredentialId">key: id of federatedIdentityCredential</param>
+        /// <param name="jsonString">Json string supplied to the ApplicationsUpdateFederatedIdentityCredentials operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ApplicationsUpdateFederatedIdentityCredentialsViaJsonString(string applicationId, string federatedIdentityCredentialId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/applications/"
+                        + global::System.Uri.EscapeDataString(applicationId)
+                        + "/federatedIdentityCredentials/"
+                        + global::System.Uri.EscapeDataString(federatedIdentityCredentialId)
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ApplicationsUpdateFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ApplicationsUpdateFederatedIdentityCredentials" /> method.
+        /// Actual wire call for <see cref= "ApplicationsUpdateFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2417,7 +4128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsCreateGraphRefMembers_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsCreateGraphRefMembers_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -2446,7 +4157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/members$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/members/$ref'");
+                    throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/members'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2472,11 +4183,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsCreateGraphRefMembers_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsCreateGraphRefMembers_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsCreateGraphRefMembers" /> method.</summary>
+        /// <summary>
+        /// UMembers of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add
+        /// member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
+        /// </summary>
+        /// <param name="groupId">key: id of group</param>
+        /// <param name="jsonString">Json string supplied to the GroupsCreateGraphRefMembers operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GroupsCreateGraphRefMembersViaJsonString(string groupId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + global::System.Uri.EscapeDataString(groupId)
+                        + "/members/$ref"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/beta{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GroupsCreateGraphRefMembers_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsCreateGraphRefMembers" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2546,7 +4301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             }
         }
 
-        /// <summary>Create new navigation property ref to owners for groups</summary>
+        /// <summary>create new navigation property ref to owners for groups</summary>
         /// <param name="groupId">The unique identifier of group</param>
         /// <param name="body">New navigation property ref value</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2584,11 +4339,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsCreateOwnersGraphBPreRef_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsCreateOwnersGraphBPreRef_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create new navigation property ref to owners for groups</summary>
+        /// <summary>create new navigation property ref to owners for groups</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New navigation property ref value</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2610,7 +4365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/owners$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/owners/$ref'");
+                    throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/owners'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2636,11 +4391,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsCreateOwnersGraphBPreRef_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsCreateOwnersGraphBPreRef_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsCreateOwnersGraphBPreRef" /> method.</summary>
+        /// <summary>create new navigation property ref to owners for groups</summary>
+        /// <param name="groupId">The unique identifier of group</param>
+        /// <param name="jsonString">Json string supplied to the GroupsCreateOwnersGraphBPreRef operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GroupsCreateOwnersGraphBPreRefViaJsonString(string groupId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + global::System.Uri.EscapeDataString(groupId)
+                        + "/owners/$ref"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GroupsCreateOwnersGraphBPreRef_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsCreateOwnersGraphBPreRef" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2754,7 +4550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsDeleteOwnersGraphBPreRef_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsDeleteOwnersGraphBPreRef_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -2812,11 +4608,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsDeleteOwnersGraphBPreRef_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsDeleteOwnersGraphBPreRef_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsDeleteOwnersGraphBPreRef" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "GroupsDeleteOwnersGraphBPreRef" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2928,7 +4724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsDeleteRefMembers_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsDeleteRefMembers_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -2981,11 +4777,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsDeleteRefMembers_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsDeleteRefMembers_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsDeleteRefMembers" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "GroupsDeleteRefMembers" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3089,11 +4885,182 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupCreateGroup_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.GroupsGroupCreateGroup_Call (request, onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsGroupCreateGroup" /> method.</summary>
+        /// <summary>Add new entity to groups</summary>
+        /// <param name="jsonString">Json string supplied to the GroupsGroupCreateGroup operation</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GroupsGroupCreateGroupViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GroupsGroupCreateGroup_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to groups</summary>
+        /// <param name="jsonString">Json string supplied to the GroupsGroupCreateGroup operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup> GroupsGroupCreateGroupViaJsonStringWithResult(global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsGroupCreateGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to groups</summary>
+        /// <param name="body">New entity</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup> GroupsGroupCreateGroupWithResult(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsGroupCreateGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsGroupCreateGroupWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup> GroupsGroupCreateGroupWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsGroupCreateGroup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3202,7 +5169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupDeleteGroup_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsGroupDeleteGroup_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -3257,11 +5224,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupDeleteGroup_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsGroupDeleteGroup_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsGroupDeleteGroup" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "GroupsGroupDeleteGroup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3356,9 +5323,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/groups/"
                         + global::System.Uri.EscapeDataString(groupId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3376,7 +5343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupGetGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.GroupsGroupGetGroup_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3416,9 +5383,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/groups/"
                         + groupId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3436,11 +5403,177 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupGetGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.GroupsGroupGetGroup_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsGroupGetGroup" /> method.</summary>
+        /// <summary>
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup> GroupsGroupGetGroupViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var groupId = _match.Groups["group-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + groupId
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsGroupGetGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        /// <param name="groupId">key: id of group</param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup> GroupsGroupGetGroupWithResult(string groupId, string consistencyLevel, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + global::System.Uri.EscapeDataString(groupId)
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsGroupGetGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsGroupGetGroupWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup> GroupsGroupGetGroupWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsGroupGetGroup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3542,11 +5675,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3564,7 +5697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupListGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.GroupsGroupListGroup_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3609,11 +5742,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3631,11 +5764,191 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupListGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.GroupsGroupListGroup_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsGroupListGroup" /> method.</summary>
+        /// <summary>Get entities from groups</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfGroup> GroupsGroupListGroupViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/groups'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsGroupListGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get entities from groups</summary>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfGroup> GroupsGroupListGroupWithResult(string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsGroupListGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsGroupListGroupWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfGroup>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfGroup> GroupsGroupListGroupWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.CollectionOfGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsGroupListGroup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3710,7 +6023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             }
         }
 
-        /// <summary>Update entity in groups</summary>
+        /// <summary>update entity in groups</summary>
         /// <param name="groupId">key: id of group</param>
         /// <param name="body">New property values</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -3747,11 +6060,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupUpdateGroup_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsGroupUpdateGroup_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Update entity in groups</summary>
+        /// <summary>update entity in groups</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New property values</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -3798,11 +6111,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsGroupUpdateGroup_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.GroupsGroupUpdateGroup_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsGroupUpdateGroup" /> method.</summary>
+        /// <summary>update entity in groups</summary>
+        /// <param name="groupId">key: id of group</param>
+        /// <param name="jsonString">Json string supplied to the GroupsGroupUpdateGroup operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GroupsGroupUpdateGroupViaJsonString(string groupId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + global::System.Uri.EscapeDataString(groupId)
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GroupsGroupUpdateGroup_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsGroupUpdateGroup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3908,11 +6261,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3924,7 +6277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsListMembers_Call(request,onOk,onDefault,eventListener,sender);
+                await this.GroupsListMembers_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3974,11 +6327,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3990,11 +6343,189 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsListMembers_Call(request,onOk,onDefault,eventListener,sender);
+                await this.GroupsListMembers_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsListMembers" /> method.</summary>
+        /// <summary>
+        /// UMembers of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add
+        /// member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated> GroupsListMembersViaIdentityWithResult(global::System.String viaIdentity, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/members$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/members'");
+                }
+
+                // replace URI parameters with values from identity
+                var groupId = _match.Groups["group-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + groupId
+                        + "/members"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/beta{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsListMembersWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// UMembers of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add
+        /// member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
+        /// </summary>
+        /// <param name="groupId">key: id of group</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated> GroupsListMembersWithResult(string groupId, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + global::System.Uri.EscapeDataString(groupId)
+                        + "/members"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/beta{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsListMembersWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsListMembersWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.ICollectionOfDirectoryObjectAutoGenerated> GroupsListMembersWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.CollectionOfDirectoryObjectAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsListMembers" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4107,11 +6638,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4129,7 +6660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsListOwners_Call(request,onOk,onDefault,eventListener,sender);
+                await this.GroupsListOwners_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4181,11 +6712,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4203,11 +6734,205 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GroupsListOwners_Call(request,onOk,onDefault,eventListener,sender);
+                await this.GroupsListOwners_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="GroupsListOwners" /> method.</summary>
+        /// <summary>
+        /// The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft
+        /// 365 group, the calling user is automatically assigned as the group owner. Supports $filter (/$count eq 0, /$count ne 0,
+        /// /$count eq 1, /$count ne 1). Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectCollectionResponse> GroupsListOwnersViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/groups/(?<group-id>[^/]+)/owners$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/groups/{group-id}/owners'");
+                }
+
+                // replace URI parameters with values from identity
+                var groupId = _match.Groups["group-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + groupId
+                        + "/owners"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsListOwnersWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft
+        /// 365 group, the calling user is automatically assigned as the group owner. Supports $filter (/$count eq 0, /$count ne 0,
+        /// /$count eq 1, /$count ne 1). Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+        /// </summary>
+        /// <param name="groupId">The unique identifier of group</param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectCollectionResponse> GroupsListOwnersWithResult(string groupId, string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/groups/"
+                        + global::System.Uri.EscapeDataString(groupId)
+                        + "/owners"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GroupsListOwnersWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsListOwnersWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObjectCollectionResponse> GroupsListOwnersWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObjectCollectionResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GroupsListOwners" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4319,11 +7044,184 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OrganizationCreateOrganization_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.OrganizationCreateOrganization_Call (request, onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="OrganizationCreateOrganization" /> method.</summary>
+        /// <summary>Add new entity to organization</summary>
+        /// <param name="jsonString">Json string supplied to the OrganizationCreateOrganization operation</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task OrganizationCreateOrganizationViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphODataErrorsOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/organization"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.OrganizationCreateOrganization_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to organization</summary>
+        /// <param name="jsonString">Json string supplied to the OrganizationCreateOrganization operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization> OrganizationCreateOrganizationViaJsonStringWithResult(global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/organization"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OrganizationCreateOrganizationWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to organization</summary>
+        /// <param name="body">New entity</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization> OrganizationCreateOrganizationWithResult(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/organization"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OrganizationCreateOrganizationWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "OrganizationCreateOrganizationWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization> OrganizationCreateOrganizationWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphOrganization.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphODataErrorsOdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphODataErrorsOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "OrganizationCreateOrganization" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4421,11 +7319,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4437,7 +7335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OrganizationListOrganization_Call(request,onOk,onDefault,eventListener,sender);
+                await this.OrganizationListOrganization_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4481,11 +7379,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4497,11 +7395,179 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OrganizationListOrganization_Call(request,onOk,onDefault,eventListener,sender);
+                await this.OrganizationListOrganization_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="OrganizationListOrganization" /> method.</summary>
+        /// <summary>Retrieve a list of organization objects.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationCollectionResponse> OrganizationListOrganizationViaIdentityWithResult(global::System.String viaIdentity, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/organization$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/organization'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/organization"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OrganizationListOrganizationWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieve a list of organization objects.</summary>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationCollectionResponse> OrganizationListOrganizationWithResult(string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/organization"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OrganizationListOrganizationWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "OrganizationListOrganizationWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationCollectionResponse> OrganizationListOrganizationWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphOrganizationCollectionResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphODataErrorsOdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphODataErrorsOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "OrganizationListOrganization" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4612,7 +7678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsAddKey_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsAddKey_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4638,7 +7704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.addKey'");
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4664,11 +7730,241 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsAddKey_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsAddKey_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ServicePrincipalsAddKey" /> method.</summary>
+        /// <summary>Invoke action addKey</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Action parameters</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential> ServicePrincipalsAddKeyViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsN3Fx9GServiceprincipalsServiceprincipalIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "/microsoft.graph.addKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsAddKeyWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addKey</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsAddKey operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsAddKeyViaJsonString(string servicePrincipalId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/microsoft.graph.addKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsAddKey_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addKey</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsAddKey operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential> ServicePrincipalsAddKeyViaJsonStringWithResult(string servicePrincipalId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/microsoft.graph.addKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsAddKeyWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addKey</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="body">Action parameters</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential> ServicePrincipalsAddKeyWithResult(string servicePrincipalId, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsN3Fx9GServiceprincipalsServiceprincipalIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/microsoft.graph.addKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsAddKeyWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ServicePrincipalsAddKeyWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential> ServicePrincipalsAddKeyWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ServicePrincipalsAddKey" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4776,7 +8072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsAddPassword_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsAddPassword_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4802,7 +8098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.addPassword'");
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4828,11 +8124,243 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsAddPassword_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsAddPassword_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ServicePrincipalsAddPassword" /> method.</summary>
+        /// <summary>Invoke action addPassword</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Action parameters</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential> ServicePrincipalsAddPasswordViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsIeboplServiceprincipalsServiceprincipalIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "/microsoft.graph.addPassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsAddPasswordWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addPassword</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsAddPassword operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsAddPasswordViaJsonString(string servicePrincipalId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/microsoft.graph.addPassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsAddPassword_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addPassword</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsAddPassword operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential> ServicePrincipalsAddPasswordViaJsonStringWithResult(string servicePrincipalId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/microsoft.graph.addPassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsAddPasswordWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Invoke action addPassword</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="body">Action parameters</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential> ServicePrincipalsAddPasswordWithResult(string servicePrincipalId, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsIeboplServiceprincipalsServiceprincipalIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/microsoft.graph.addPassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsAddPasswordWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsAddPasswordWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential> ServicePrincipalsAddPasswordWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ServicePrincipalsAddPassword" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4902,7 +8430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             }
         }
 
-        /// <summary>Create new navigation property to appRoleAssignments for servicePrincipals</summary>
+        /// <summary>create new navigation property to appRoleAssignments for servicePrincipals</summary>
         /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
         /// <param name="body">New navigation property</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -4940,11 +8468,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsCreateAppRoleAssignments_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.ServicePrincipalsCreateAppRoleAssignments_Call (request, onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create new navigation property to appRoleAssignments for servicePrincipals</summary>
+        /// <summary>create new navigation property to appRoleAssignments for servicePrincipals</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New navigation property</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -4966,7 +8494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/appRoleAssignments'");
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4992,12 +8520,244 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsCreateAppRoleAssignments_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.ServicePrincipalsCreateAppRoleAssignments_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create new navigation property to appRoleAssignments for servicePrincipals</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">New navigation property</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment> ServicePrincipalsCreateAppRoleAssignmentsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "/appRoleAssignments"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsCreateAppRoleAssignmentsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>create new navigation property to appRoleAssignments for servicePrincipals</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsCreateAppRoleAssignments operation</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsCreateAppRoleAssignmentsViaJsonString(string servicePrincipalId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/appRoleAssignments"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsCreateAppRoleAssignments_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create new navigation property to appRoleAssignments for servicePrincipals</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsCreateAppRoleAssignments operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment> ServicePrincipalsCreateAppRoleAssignmentsViaJsonStringWithResult(string servicePrincipalId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/appRoleAssignments"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsCreateAppRoleAssignmentsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>create new navigation property to appRoleAssignments for servicePrincipals</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="body">New navigation property</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment> ServicePrincipalsCreateAppRoleAssignmentsWithResult(string servicePrincipalId, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/appRoleAssignments"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsCreateAppRoleAssignmentsWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsCreateAppRoleAssignments" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsCreateAppRoleAssignmentsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment> ServicePrincipalsCreateAppRoleAssignmentsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphAppRoleAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsCreateAppRoleAssignments" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -5069,7 +8829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         }
 
         /// <summary>
-        /// Create new navigation property to federatedIdentityCredentials for servicePrincipals
+        /// create new navigation property to federatedIdentityCredentials for servicePrincipals
         /// </summary>
         /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
         /// <param name="body">New navigation property</param>
@@ -5108,12 +8868,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsCreateFederatedIdentityCredentials_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.ServicePrincipalsCreateFederatedIdentityCredentials_Call (request, onCreated,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Create new navigation property to federatedIdentityCredentials for servicePrincipals
+        /// create new navigation property to federatedIdentityCredentials for servicePrincipals
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New navigation property</param>
@@ -5136,7 +8896,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/federatedIdentityCredentials'");
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5162,12 +8922,252 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsCreateFederatedIdentityCredentials_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.ServicePrincipalsCreateFederatedIdentityCredentials_Call (request, onCreated,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsCreateFederatedIdentityCredentials" /> method.
+        /// create new navigation property to federatedIdentityCredentials for servicePrincipals
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">New navigation property</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ServicePrincipalsCreateFederatedIdentityCredentialsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "/federatedIdentityCredentials"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsCreateFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// create new navigation property to federatedIdentityCredentials for servicePrincipals
+        /// </summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsCreateFederatedIdentityCredentials operation</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsCreateFederatedIdentityCredentialsViaJsonString(string servicePrincipalId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/federatedIdentityCredentials"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsCreateFederatedIdentityCredentials_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// create new navigation property to federatedIdentityCredentials for servicePrincipals
+        /// </summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsCreateFederatedIdentityCredentials operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ServicePrincipalsCreateFederatedIdentityCredentialsViaJsonStringWithResult(string servicePrincipalId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/federatedIdentityCredentials"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsCreateFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// create new navigation property to federatedIdentityCredentials for servicePrincipals
+        /// </summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="body">New navigation property</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ServicePrincipalsCreateFederatedIdentityCredentialsWithResult(string servicePrincipalId, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/federatedIdentityCredentials"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsCreateFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsCreateFederatedIdentityCredentialsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ServicePrincipalsCreateFederatedIdentityCredentialsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphFederatedIdentityCredential.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsCreateFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -5279,7 +9279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsDeleteAppRoleAssignments_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsDeleteAppRoleAssignments_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -5334,12 +9334,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsDeleteAppRoleAssignments_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsDeleteAppRoleAssignments_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsDeleteAppRoleAssignments" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsDeleteAppRoleAssignments" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -5452,7 +9452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsDeleteFederatedIdentityCredentials_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsDeleteFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -5507,12 +9507,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsDeleteFederatedIdentityCredentials_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsDeleteFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsDeleteFederatedIdentityCredentials" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsDeleteFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -5609,9 +9609,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "/appRoleAssignments/"
                         + global::System.Uri.EscapeDataString(appRoleAssignmentId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -5623,7 +9623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsGetAppRoleAssignments_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsGetAppRoleAssignments_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -5662,9 +9662,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "/appRoleAssignments/"
                         + appRoleAssignmentId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -5676,12 +9676,166 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsGetAppRoleAssignments_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsGetAppRoleAssignments_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get appRoleAssignments from servicePrincipals</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment> ServicePrincipalsGetAppRoleAssignmentsViaIdentityWithResult(global::System.String viaIdentity, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)/appRoleAssignments/(?<appRoleAssignment-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/appRoleAssignments/{appRoleAssignment-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                var appRoleAssignmentId = _match.Groups["appRoleAssignment-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "/appRoleAssignments/"
+                        + appRoleAssignmentId
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsGetAppRoleAssignmentsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get appRoleAssignments from servicePrincipals</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="appRoleAssignmentId">key: id of appRoleAssignment</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment> ServicePrincipalsGetAppRoleAssignmentsWithResult(string servicePrincipalId, string appRoleAssignmentId, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/appRoleAssignments/"
+                        + global::System.Uri.EscapeDataString(appRoleAssignmentId)
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsGetAppRoleAssignmentsWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsGetAppRoleAssignments" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsGetAppRoleAssignmentsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment> ServicePrincipalsGetAppRoleAssignmentsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphAppRoleAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsGetAppRoleAssignments" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5778,9 +9932,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "/federatedIdentityCredentials/"
                         + global::System.Uri.EscapeDataString(federatedIdentityCredentialId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -5792,7 +9946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsGetFederatedIdentityCredentials_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsGetFederatedIdentityCredentials_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -5831,9 +9985,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "/federatedIdentityCredentials/"
                         + federatedIdentityCredentialId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -5845,12 +9999,166 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsGetFederatedIdentityCredentials_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsGetFederatedIdentityCredentials_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get federatedIdentityCredentials from servicePrincipals</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ServicePrincipalsGetFederatedIdentityCredentialsViaIdentityWithResult(global::System.String viaIdentity, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)/federatedIdentityCredentials/(?<federatedIdentityCredential-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/federatedIdentityCredentials/{federatedIdentityCredential-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                var federatedIdentityCredentialId = _match.Groups["federatedIdentityCredential-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "/federatedIdentityCredentials/"
+                        + federatedIdentityCredentialId
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsGetFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get federatedIdentityCredentials from servicePrincipals</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="federatedIdentityCredentialId">key: id of federatedIdentityCredential</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ServicePrincipalsGetFederatedIdentityCredentialsWithResult(string servicePrincipalId, string federatedIdentityCredentialId, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/federatedIdentityCredentials/"
+                        + global::System.Uri.EscapeDataString(federatedIdentityCredentialId)
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsGetFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsGetFederatedIdentityCredentials" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsGetFederatedIdentityCredentialsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential> ServicePrincipalsGetFederatedIdentityCredentialsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphFederatedIdentityCredential.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsGetFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5955,11 +10263,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -5971,7 +10279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsListAppRoleAssignments_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsListAppRoleAssignments_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -6018,11 +10326,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -6034,12 +10342,186 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsListAppRoleAssignments_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsListAppRoleAssignments_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get appRoleAssignments from servicePrincipals</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignmentCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignmentCollectionResponse> ServicePrincipalsListAppRoleAssignmentsViaIdentityWithResult(global::System.String viaIdentity, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)/appRoleAssignments$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/appRoleAssignments'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "/appRoleAssignments"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsListAppRoleAssignmentsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get appRoleAssignments from servicePrincipals</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignmentCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignmentCollectionResponse> ServicePrincipalsListAppRoleAssignmentsWithResult(string servicePrincipalId, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/appRoleAssignments"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsListAppRoleAssignmentsWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsListAppRoleAssignments" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsListAppRoleAssignmentsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignmentCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignmentCollectionResponse> ServicePrincipalsListAppRoleAssignmentsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphAppRoleAssignmentCollectionResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsListAppRoleAssignments" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6148,11 +10630,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -6164,7 +10646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsListFederatedIdentityCredentials_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsListFederatedIdentityCredentials_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -6211,11 +10693,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -6227,12 +10709,186 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsListFederatedIdentityCredentials_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsListFederatedIdentityCredentials_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get federatedIdentityCredentials from servicePrincipals</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse> ServicePrincipalsListFederatedIdentityCredentialsViaIdentityWithResult(global::System.String viaIdentity, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)/federatedIdentityCredentials$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/federatedIdentityCredentials'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "/federatedIdentityCredentials"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsListFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get federatedIdentityCredentials from servicePrincipals</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse> ServicePrincipalsListFederatedIdentityCredentialsWithResult(string servicePrincipalId, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/federatedIdentityCredentials"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsListFederatedIdentityCredentialsWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsListFederatedIdentityCredentials" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsListFederatedIdentityCredentialsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredentialCollectionResponse> ServicePrincipalsListFederatedIdentityCredentialsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphFederatedIdentityCredentialCollectionResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsListFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6346,7 +11002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsRemoveKey_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsRemoveKey_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -6372,7 +11028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.removeKey'");
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6398,11 +11054,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsRemoveKey_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsRemoveKey_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ServicePrincipalsRemoveKey" /> method.</summary>
+        /// <summary>Invoke action removeKey</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsRemoveKey operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsRemoveKeyViaJsonString(string servicePrincipalId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/microsoft.graph.removeKey"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsRemoveKey_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ServicePrincipalsRemoveKey" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -6510,7 +11207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsRemovePassword_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsRemovePassword_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -6536,7 +11233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.removePassword'");
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6562,11 +11259,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsRemovePassword_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsRemovePassword_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ServicePrincipalsRemovePassword" /> method.</summary>
+        /// <summary>Invoke action removePassword</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsRemovePassword operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsRemovePasswordViaJsonString(string servicePrincipalId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/microsoft.graph.removePassword"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsRemovePassword_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ServicePrincipalsRemovePassword" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -6671,12 +11409,185 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalCreateServicePrincipal_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalCreateServicePrincipal_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to servicePrincipals</summary>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsServicePrincipalCreateServicePrincipal operation</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsServicePrincipalCreateServicePrincipalViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsServicePrincipalCreateServicePrincipal_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to servicePrincipals</summary>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsServicePrincipalCreateServicePrincipal operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal> ServicePrincipalsServicePrincipalCreateServicePrincipalViaJsonStringWithResult(global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsServicePrincipalCreateServicePrincipalWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to servicePrincipals</summary>
+        /// <param name="body">New entity</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal> ServicePrincipalsServicePrincipalCreateServicePrincipalWithResult(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsServicePrincipalCreateServicePrincipalWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsServicePrincipalCreateServicePrincipal" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsServicePrincipalCreateServicePrincipalWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal> ServicePrincipalsServicePrincipalCreateServicePrincipalWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphServicePrincipal.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsServicePrincipalCreateServicePrincipal" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -6786,7 +11697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalDeleteServicePrincipal_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalDeleteServicePrincipal_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -6841,12 +11752,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalDeleteServicePrincipal_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalDeleteServicePrincipal_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsServicePrincipalDeleteServicePrincipal" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsServicePrincipalDeleteServicePrincipal" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -6942,9 +11853,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/servicePrincipals/"
                         + global::System.Uri.EscapeDataString(servicePrincipalId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -6962,7 +11873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalGetServicePrincipal_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalGetServicePrincipal_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -7002,9 +11913,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/servicePrincipals/"
                         + servicePrincipalId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -7022,12 +11933,180 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalGetServicePrincipal_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalGetServicePrincipal_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsServicePrincipalGetServicePrincipal" /> method.
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal> ServicePrincipalsServicePrincipalGetServicePrincipalViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals/(?<servicePrincipal-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals/{servicePrincipal-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var servicePrincipalId = _match.Groups["servicePrincipal-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + servicePrincipalId
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsServicePrincipalGetServicePrincipalWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal> ServicePrincipalsServicePrincipalGetServicePrincipalWithResult(string servicePrincipalId, string consistencyLevel, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsServicePrincipalGetServicePrincipalWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsServicePrincipalGetServicePrincipalWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal> ServicePrincipalsServicePrincipalGetServicePrincipalWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphServicePrincipal.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsServicePrincipalGetServicePrincipal" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7130,11 +12209,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -7152,7 +12231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalListServicePrincipal_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalListServicePrincipal_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -7197,11 +12276,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -7219,12 +12298,194 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalListServicePrincipal_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalListServicePrincipal_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get entities from servicePrincipals</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfServicePrincipal> ServicePrincipalsServicePrincipalListServicePrincipalViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/servicePrincipals$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/servicePrincipals'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsServicePrincipalListServicePrincipalWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get entities from servicePrincipals</summary>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfServicePrincipal> ServicePrincipalsServicePrincipalListServicePrincipalWithResult(string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ServicePrincipalsServicePrincipalListServicePrincipalWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsServicePrincipalListServicePrincipal" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsServicePrincipalListServicePrincipalWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfServicePrincipal>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfServicePrincipal> ServicePrincipalsServicePrincipalListServicePrincipalWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.CollectionOfServicePrincipal.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsServicePrincipalListServicePrincipal" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7340,7 +12601,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalUpdateServicePrincipal_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalUpdateServicePrincipal_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -7394,12 +12655,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsServicePrincipalUpdateServicePrincipal_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsServicePrincipalUpdateServicePrincipal_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsServicePrincipalUpdateServicePrincipal" /> method.
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsServicePrincipalUpdateServicePrincipal operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsServicePrincipalUpdateServicePrincipalViaJsonString(string servicePrincipalId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsServicePrincipalUpdateServicePrincipal_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsServicePrincipalUpdateServicePrincipal" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -7470,7 +12774,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             }
         }
 
-        /// <summary>Update the navigation property appRoleAssignments in servicePrincipals</summary>
+        /// <summary>update the navigation property appRoleAssignments in servicePrincipals</summary>
         /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
         /// <param name="appRoleAssignmentId">key: id of appRoleAssignment</param>
         /// <param name="body">New navigation property values</param>
@@ -7510,11 +12814,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsUpdateAppRoleAssignments_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsUpdateAppRoleAssignments_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Update the navigation property appRoleAssignments in servicePrincipals</summary>
+        /// <summary>update the navigation property appRoleAssignments in servicePrincipals</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New navigation property values</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -7564,12 +12868,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsUpdateAppRoleAssignments_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsUpdateAppRoleAssignments_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update the navigation property appRoleAssignments in servicePrincipals</summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="appRoleAssignmentId">key: id of appRoleAssignment</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsUpdateAppRoleAssignments operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsUpdateAppRoleAssignmentsViaJsonString(string servicePrincipalId, string appRoleAssignmentId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/appRoleAssignments/"
+                        + global::System.Uri.EscapeDataString(appRoleAssignmentId)
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsUpdateAppRoleAssignments_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsUpdateAppRoleAssignments" /> method.
+        /// Actual wire call for <see cref= "ServicePrincipalsUpdateAppRoleAssignments" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -7643,7 +12990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         }
 
         /// <summary>
-        /// Update the navigation property federatedIdentityCredentials in servicePrincipals
+        /// update the navigation property federatedIdentityCredentials in servicePrincipals
         /// </summary>
         /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
         /// <param name="federatedIdentityCredentialId">key: id of federatedIdentityCredential</param>
@@ -7684,12 +13031,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsUpdateFederatedIdentityCredentials_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsUpdateFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Update the navigation property federatedIdentityCredentials in servicePrincipals
+        /// update the navigation property federatedIdentityCredentials in servicePrincipals
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New navigation property values</param>
@@ -7740,12 +13087,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServicePrincipalsUpdateFederatedIdentityCredentials_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.ServicePrincipalsUpdateFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ServicePrincipalsUpdateFederatedIdentityCredentials" /> method.
+        /// update the navigation property federatedIdentityCredentials in servicePrincipals
+        /// </summary>
+        /// <param name="servicePrincipalId">key: id of servicePrincipal</param>
+        /// <param name="federatedIdentityCredentialId">key: id of federatedIdentityCredential</param>
+        /// <param name="jsonString">Json string supplied to the ServicePrincipalsUpdateFederatedIdentityCredentials operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ServicePrincipalsUpdateFederatedIdentityCredentialsViaJsonString(string servicePrincipalId, string federatedIdentityCredentialId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/servicePrincipals/"
+                        + global::System.Uri.EscapeDataString(servicePrincipalId)
+                        + "/federatedIdentityCredentials/"
+                        + global::System.Uri.EscapeDataString(federatedIdentityCredentialId)
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ServicePrincipalsUpdateFederatedIdentityCredentials_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ServicePrincipalsUpdateFederatedIdentityCredentials" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -7841,11 +13233,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/me/ownedObjects/$/Microsoft.Graph.Application"
                         + "?"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -7857,7 +13249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersListOwnedApplications_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersListOwnedApplications_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -7894,11 +13286,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/me/ownedObjects/$/Microsoft.Graph.Application"
                         + "?"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -7910,11 +13302,165 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersListOwnedApplications_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersListOwnedApplications_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="UsersListOwnedApplications" /> method.</summary>
+        /// <summary>
+        /// Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject> UsersListOwnedApplicationsViaIdentityWithResult(global::System.String viaIdentity, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/me/ownedObjects/$/Microsoft.Graph.Application$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/me/ownedObjects/$/Microsoft.Graph.Application'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/me/ownedObjects/$/Microsoft.Graph.Application"
+                        + "?"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersListOwnedApplicationsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+        /// </summary>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject> UsersListOwnedApplicationsWithResult(string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/me/ownedObjects/$/Microsoft.Graph.Application"
+                        + "?"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersListOwnedApplicationsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "UsersListOwnedApplicationsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObject> UsersListOwnedApplicationsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.CollectionOfDirectoryObject.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersListOwnedApplications" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8006,11 +13552,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/me/ownedObjects/$/Microsoft.Graph.Application"
                         + "?"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8022,7 +13568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersListOwnedObjects_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersListOwnedObjects_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -8059,11 +13605,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/me/ownedObjects/$/Microsoft.Graph.Application"
                         + "?"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8075,11 +13621,163 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersListOwnedObjects_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersListOwnedObjects_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="UsersListOwnedObjects" /> method.</summary>
+        /// <summary>
+        /// Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectAutoGenerated2>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectAutoGenerated2> UsersListOwnedObjectsViaIdentityWithResult(global::System.String viaIdentity, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/me/ownedObjects/$/Microsoft.Graph.Application$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/me/ownedObjects/$/Microsoft.Graph.Application'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/me/ownedObjects/$/Microsoft.Graph.Application"
+                        + "?"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersListOwnedObjectsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+        /// </summary>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectAutoGenerated2>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectAutoGenerated2> UsersListOwnedObjectsWithResult(string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/me/ownedObjects/$/Microsoft.Graph.Application"
+                        + "?"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersListOwnedObjectsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersListOwnedObjectsWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectAutoGenerated2>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectAutoGenerated2> UsersListOwnedObjectsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.CollectionOfDirectoryObjectAutoGenerated2.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersListOwnedObjects" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8183,11 +13881,182 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserCreateUser_Call(request,onCreated,onDefault,eventListener,sender);
+                await this.UsersUserCreateUser_Call (request, onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="UsersUserCreateUser" /> method.</summary>
+        /// <summary>Add new entity to users</summary>
+        /// <param name="jsonString">Json string supplied to the UsersUserCreateUser operation</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UsersUserCreateUserViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/users"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UsersUserCreateUser_Call (request, onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to users</summary>
+        /// <param name="jsonString">Json string supplied to the UsersUserCreateUser operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserCreateUserViaJsonStringWithResult(global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/users"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersUserCreateUserWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Add new entity to users</summary>
+        /// <param name="body">New entity</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserCreateUserWithResult(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser body, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/users"
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersUserCreateUserWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserCreateUserWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserCreateUserWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphUser.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserCreateUser" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8293,7 +14162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserDeleteUser_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.UsersUserDeleteUser_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -8345,11 +14214,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserDeleteUser_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.UsersUserDeleteUser_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="UsersUserDeleteUser" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "UsersUserDeleteUser" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8438,9 +14307,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/me"
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8452,7 +14321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserGetSignedInUser_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersUserGetSignedInUser_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -8486,9 +14355,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/me"
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8500,11 +14369,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserGetSignedInUser_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersUserGetSignedInUser_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="UsersUserGetSignedInUser" /> method.</summary>
+        /// <summary>Represents current signed-in user object.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserGetSignedInUserViaIdentityWithResult(global::System.String viaIdentity, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/me$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/me'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/me"
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersUserGetSignedInUserWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Represents current signed-in user object.</summary>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserGetSignedInUserWithResult(string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/me"
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersUserGetSignedInUserWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserGetSignedInUserWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserGetSignedInUserWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphUser.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserGetSignedInUser" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8595,9 +14606,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/users/"
                         + global::System.Uri.EscapeDataString(userId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8615,7 +14626,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserGetUser_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersUserGetUser_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -8652,9 +14663,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/users/"
                         + userId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8672,11 +14683,171 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserGetUser_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersUserGetUser_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="UsersUserGetUser" /> method.</summary>
+        /// <summary>Represents an Azure Active Directory user object.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserGetUserViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/users/(?<user-id>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/users/{user-id}'");
+                }
+
+                // replace URI parameters with values from identity
+                var userId = _match.Groups["user-id"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/users/"
+                        + userId
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersUserGetUserWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Represents an Azure Active Directory user object.</summary>
+        /// <param name="userId">key: id of user</param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserGetUserWithResult(string userId, string consistencyLevel, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "?"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersUserGetUserWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserGetUserWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser> UsersUserGetUserWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphUser.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserGetUser" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8778,11 +14949,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8800,7 +14971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserListUser_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersUserListUser_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -8845,11 +15016,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8867,11 +15038,191 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserListUser_Call(request,onOk,onDefault,eventListener,sender);
+                await this.UsersUserListUser_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="UsersUserListUser" /> method.</summary>
+        /// <summary>Get entities from users</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUser> UsersUserListUserViaIdentityWithResult(global::System.String viaIdentity, string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/users$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/users'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/users"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersUserListUserWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get entities from users</summary>
+        /// <param name="consistencyLevel">Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/</param>
+        /// <param name="Search">Search items by search phrases</param>
+        /// <param name="Filter">Filter items by property values</param>
+        /// <param name="Count">Include count of items</param>
+        /// <param name="Orderby">Order items by property values</param>
+        /// <param name="Select">Select properties to be returned</param>
+        /// <param name="Expand">Expand related entities</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUser> UsersUserListUserWithResult(string consistencyLevel, string Search, string Filter, bool? Count, string[] Orderby, string[] Select, string[] Expand, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/users"
+                        + "?"
+                        + (string.IsNullOrEmpty(Search) ? global::System.String.Empty : "$search=" + global::System.Uri.EscapeDataString(Search))
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
+                        + "&"
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != consistencyLevel)
+                {
+                    request.Headers.Add("ConsistencyLevel",consistencyLevel);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsersUserListUserWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserListUserWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUser>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUser> UsersUserListUserWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.CollectionOfUser.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.OdataError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Error?.Code;
+                            var message = (await _result)?.Error?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserListUser" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8983,7 +15334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserUpdateUser_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.UsersUserUpdateUser_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -9034,11 +15385,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.UsersUserUpdateUser_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.UsersUserUpdateUser_Call (request, onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="UsersUserUpdateUser" /> method.</summary>
+        /// <summary>Represents an Azure Active Directory user object.</summary>
+        /// <param name="userId">key: id of user</param>
+        /// <param name="jsonString">Json string supplied to the UsersUserUpdateUser operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UsersUserUpdateUserViaJsonString(string userId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync sender)
+        {
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://graph.microsoft.com/v1.0{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UsersUserUpdateUser_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsersUserUpdateUser" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled

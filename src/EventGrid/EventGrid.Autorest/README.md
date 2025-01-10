@@ -527,6 +527,7 @@ directive:
   - no-inline:
     - EventSubscriptionDestination
 
+# Version 4.0.7+ of the AutoReduce tool does not handle 2D arrays correctly, so the following four commands will be implemented through customization, and can be uncommented in the next version update if the AutoReduce tool supports compiling 2D arrays
   - model-cmdlet:
     - model-name: WebHookEventSubscriptionDestination
     - model-name: EventHubEventSubscriptionDestination
@@ -539,12 +540,50 @@ directive:
     - model-name: ResourceMoveChangeHistory
     - model-name: PrivateEndpointConnection
     - model-name: DynamicRoutingEnrichment
-    - model-name: DeliveryAttributeMapping
+    - model-name: DynamicDeliveryAttributeMapping
+    - model-name: StaticDeliveryAttributeMapping
     - model-name: StaticRoutingEnrichment
     - model-name: InboundIPRule
-    - model-name: AdvancedFilter
     - model-name: Partner
-    - model-name: Filter
+    - model-name: EventSubscriptionFilter
+    - model-name: BoolEqualsFilter
+    - model-name: IsNotNullFilter
+    - model-name: IsNullOrUndefinedFilter
+    - model-name: NumberGreaterThanFilter
+    - model-name: NumberGreaterThanOrEqualsFilter
+    - model-name: NumberInFilter
+    # - model-name: NumberInRangeFilter
+    - model-name: NumberLessThanFilter
+    - model-name: NumberLessThanOrEqualsFilter
+    - model-name: NumberNotInFilter
+    # - model-name: NumberNotInRangeFilter
+    - model-name: StringBeginsWithFilter
+    - model-name: StringContainsFilter
+    - model-name: StringEndsWithFilter
+    - model-name: StringInFilter
+    - model-name: StringNotBeginsWithFilter
+    - model-name: StringNotContainsFilter
+    - model-name: StringNotEndsWithFilter
+    - model-name: StringNotInFilter
+    - model-name: BoolEqualsAdvancedFilter
+    - model-name: IsNotNullAdvancedFilter
+    - model-name: IsNullOrUndefinedAdvancedFilter
+    - model-name: NumberGreaterThanAdvancedFilter
+    - model-name: NumberGreaterThanOrEqualsAdvancedFilter
+    - model-name: NumberInAdvancedFilter
+    # - model-name: NumberInRangeAdvancedFilter
+    - model-name: NumberLessThanAdvancedFilter
+    - model-name: NumberLessThanOrEqualsAdvancedFilter
+    - model-name: NumberNotInAdvancedFilter
+    # - model-name: NumberNotInRangeAdvancedFilter
+    - model-name: StringBeginsWithAdvancedFilter
+    - model-name: StringContainsAdvancedFilter
+    - model-name: StringEndsWithAdvancedFilter
+    - model-name: StringInAdvancedFilter
+    - model-name: StringNotBeginsWithAdvancedFilter
+    - model-name: StringNotContainsAdvancedFilter
+    - model-name: StringNotEndsWithAdvancedFilter
+    - model-name: StringNotInAdvancedFilter
 
   # CA Certificates cannot be updated. Please delete the existing CA Certificate resource and recreate it with the desired values.
   - where:

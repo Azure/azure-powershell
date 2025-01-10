@@ -19,6 +19,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+
+## Version 4.0.1
+* Migrated ServiceBus SDK to generated SDK
+    - Removed "Microsoft.Azure.Management.ServiceBus" Version "5.0.0" PackageReference
+    - Added ServiceBus.Management.Sdk ProjectReference 
 
 ## Version 4.0.0
 * Moved cmdlets to V4.

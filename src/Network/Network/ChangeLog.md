@@ -19,6 +19,46 @@
 --->
 
 ## Upcoming Release
+* Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
+* Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
+* Upgraded nuget package to signed package.
+* Updated `Remove-AzNetworkWatcherFlowLog` command to return boolean value
+* Updated vnv and ipam cmdlets
+* Allowed TA interval to be set as 0 incase TA is disabled
+* Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
+    - `Get-AzNetworkManagerAssociatedResourcesList`
+    - `Get-AzNetworkManagerIpamPool`
+    - `Get-AzNetworkManagerIpamPoolStaticCidr`
+    - `Get-AzNetworkManagerIpamPoolUsage`
+    - `New-AzNetworkManagerIpamPool`
+    - `New-AzNetworkManagerIpamPoolStaticCidr`
+    - `Remove-AzNetworkManagerIpamPool`
+    - `Remove-AzNetworkManagerIpamPoolStaticCidr`
+    - `Set-AzNetworkManagerIpamPool`
+* Onboarded Azure Virtual Network Manager Cmdlets for VnetVerifier
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerVerifierWorkspace`
+    - `Get-AzNetworkManagerVerifierWorkspace`
+    - `Set-AzNetworkManagerVerifierWorkspace`
+    - `Remove-AzNetworkManagerVerifierWorkspace`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+* Updated cmdlet to add the property of `NetworkGroupAddressSpaceAggregationOption`, and updated corresponding cmdlets.
+    - `New-AzNetworkManagerSecurityAdminConfiguration`
+    - `New-AzNetworkManagerAddressPrefixItemCommand`
+* Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
+* Added support for `AutoscaleConfiguration` property in `AzureFirewall` model for `New-AzFirewall` and `Set-AzFirewall` commands
+* Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` command for ExpressRoute
+
+## Version 7.11.0
+* Updated Device Update Private Link provider configuration
+    - Updated Microsoft.DeviceUpdate/accounts API version to 2023-07-01
+
+## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
     - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
     - `New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection`
@@ -47,6 +87,7 @@
 * Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
     - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
     - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
+* Added support for `PrivateEndpointVNetPolicies` property in `New-AzVirtualNetwork`
 
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.

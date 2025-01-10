@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -30,14 +32,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string BySecretNameParameterSet = "BySecretName";
         private const string BySecretVersionsParameterSet = "BySecretVersions";
+        private const string BySecretUriParameterSet = "BySecretUri";
 
         private const string InputObjectByVaultNameParameterSet = "ByInputObjectVaultName";
         private const string InputObjectBySecretNameParameterSet = "ByInputObjectSecretName";
         private const string InputObjectBySecretVersionsParameterSet = "ByInputObjectSecretVersions";
 
-        private const string ResourceIdByVaultNameParameterSet = "ByResourceIdVaultName";
-        private const string ResourceIdBySecretNameParameterSet = "ByResourceIdSecretName";
-        private const string ResourceIdBySecretVersionsParameterSet = "ByResourceIdSecretVersions";
+        private const string ParentResourceIdByVaultNameParameterSet = "ByParentResourceIdVaultName";
+        private const string ParentResourceIdBySecretNameParameterSet = "ByParentResourceIdSecretName";
+        private const string ParentResourceIdBySecretVersionsParameterSet = "ByParentResourceIdSecretVersions";
 
         #endregion
 
@@ -84,25 +87,38 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
-        /// KeyVault Resource ID
+        /// KeyVault Secret ID
+        /// </summary>
+        [Parameter(Mandatory = true,
+           Position = 0,
+           ParameterSetName = BySecretUriParameterSet,
+           HelpMessage = "The URI of the KeyVault Secret.")]
+        [Alias("SecretId")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
+
+        /// <summary>
+        /// KeyVault Parent Resource ID
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
+            ParameterSetName = ParentResourceIdByVaultNameParameterSet,
             HelpMessage = "KeyVault Resource Id.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdBySecretNameParameterSet,
+            ParameterSetName = ParentResourceIdBySecretNameParameterSet,
             HelpMessage = "KeyVault Resource Id.")]
         [Parameter(Mandatory = true,
            Position = 0,
            ValueFromPipelineByPropertyName = true,
-           ParameterSetName = ResourceIdBySecretVersionsParameterSet,
+           ParameterSetName = ParentResourceIdBySecretVersionsParameterSet,
            HelpMessage = "KeyVault Resource Id.")]
+        [Alias("ResourceId")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Secret name
@@ -117,7 +133,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [Parameter(Mandatory = false,
             Position = 1,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
+            ParameterSetName = ParentResourceIdByVaultNameParameterSet,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [Parameter(Mandatory = true,
             Position = 1,
@@ -129,7 +145,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [Parameter(Mandatory = true,
             Position = 1,
-            ParameterSetName = ResourceIdBySecretNameParameterSet,
+            ParameterSetName = ParentResourceIdBySecretNameParameterSet,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [Parameter(Mandatory = true,
             Position = 1,
@@ -141,7 +157,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [Parameter(Mandatory = true,
             Position = 1,
-            ParameterSetName = ResourceIdBySecretVersionsParameterSet,
+            ParameterSetName = ParentResourceIdBySecretVersionsParameterSet,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
@@ -160,7 +176,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 2,
             HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdBySecretNameParameterSet,
+            ParameterSetName = ParentResourceIdBySecretNameParameterSet,
             Position = 2,
             HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
         [Alias("SecretVersion")]
@@ -173,7 +189,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectBySecretVersionsParameterSet,
             HelpMessage = "Specifies whether to include the versions of the secret in the output.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdBySecretVersionsParameterSet,
+            ParameterSetName = ParentResourceIdBySecretVersionsParameterSet,
             HelpMessage = "Specifies whether to include the versions of the secret in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
@@ -184,16 +200,20 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectByVaultNameParameterSet,
             HelpMessage = "Specifies whether to show the previously deleted secrets in the output.")]
         [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
+            ParameterSetName = ParentResourceIdByVaultNameParameterSet,
+            HelpMessage = "Specifies whether to show the previously deleted secrets in the output.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = BySecretUriParameterSet,
             HelpMessage = "Specifies whether to show the previously deleted secrets in the output.")]
         public SwitchParameter InRemovedState { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = BySecretNameParameterSet, HelpMessage = "When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.")]
         [Parameter(Mandatory = false, ParameterSetName = ByVaultNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = BySecretUriParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = InputObjectBySecretNameParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = InputObjectByVaultNameParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceIdBySecretNameParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceIdByVaultNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ParentResourceIdBySecretNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ParentResourceIdByVaultNameParameterSet)]
         public SwitchParameter AsPlainText { get; set; }
         #endregion
 
@@ -201,16 +221,28 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             PSKeyVaultSecret secret;
 
+            // Check input object
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName.ToString();
             }
-            else if (!string.IsNullOrEmpty(ResourceId))
+            else if (!string.IsNullOrEmpty(ParentResourceId))
             {
-                var parsedResourceId = new ResourceIdentifier(ResourceId);
-                VaultName = parsedResourceId.ResourceName;
+                var parsedParentResourceId = new ResourceIdentifier(ParentResourceId);
+                VaultName = parsedParentResourceId.ResourceName;
             }
 
+            // Handle SecretId (uri) parameter
+            if (ParameterSetName == BySecretUriParameterSet)
+            {
+                SecretUriComponents splitUri = new SecretUriComponents(Id);
+
+                VaultName = splitUri.VaultName;
+                Name = splitUri.SecretName;
+                Version = splitUri.SecretVersion;
+            }
+
+            // Check Version/s of Sceret to get.
             if (!string.IsNullOrEmpty(Version))
             {
                 secret = DataServiceClient.GetSecret(VaultName, Name, Version);

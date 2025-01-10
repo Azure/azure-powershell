@@ -26,6 +26,18 @@ function Update-AzDataProtectionBackupInstanceAssociatedPolicy
         [Parameter(Mandatory, HelpMessage='Id of the Policy to be associated with the backup instance')]
         [System.String]
         ${PolicyId},
+        
+        [Parameter(Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.')]
+        [System.String[]]
+        ${ResourceGuardOperationRequest},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.')]
+        [System.String]
+        ${Token},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
+        [System.Security.SecureString]
+        ${SecureToken},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -84,8 +96,36 @@ function Update-AzDataProtectionBackupInstanceAssociatedPolicy
         $instance = Az.DataProtection\Get-AzDataProtectionBackupInstance @PSBoundParameters
         $instance.Property.PolicyInfo.PolicyId = $PolicyId
         $null = $PSBoundParameters.Remove("BackupInstanceName")
+
+        $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
+        if($hasResourceGuardOperationRequest){
+            $instance.Property.ResourceGuardOperationRequest = $ResourceGuardOperationRequest
+        }
+        
+        # Explicitly setting the whole DSSetInfo object as null when ResourceID is null
+        if($instance.Property.DataSourceSetInfo.ResourceId -eq $null){
+            $instance.Property.DataSourceSetInfo =$null      
+        }
+
         $null = $PSBoundParameters.Add("Parameter", $instance)
-        $null = $PSBoundParameters.Add("Name", $instance.Name)
+        $null = $PSBoundParameters.Add("Name", $instance.Name)        
+
+        $hasToken = $PSBoundParameters.Remove("Token")
+        $hasSecureToken = $PSBoundParameters.Remove("SecureToken")
+        if($hasToken -or $hasSecureToken)
+        {   
+            if($hasSecureToken -and $hasToken){
+                throw "Both Token and SecureToken parameters cannot be provided together"
+            }
+            elseif($hasToken){
+                Write-Warning -Message 'The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.'
+                $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+            }
+            else{
+                $plainToken = UnprotectSecureString -SecureString $SecureToken
+                $null = $PSBoundParameters.Add("Token", "Bearer $plainToken")
+            }
+        }
 
         Az.DataProtection.Internal\New-AzDataProtectionBackupInstance  @PSBoundParameters
     }

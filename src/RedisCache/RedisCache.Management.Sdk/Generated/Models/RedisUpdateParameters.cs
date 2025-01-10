@@ -80,7 +80,18 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="disableAccessKeyAuthentication">Authentication to Redis through access keys is disabled when set as true.
         /// Default value is false.
         /// </param>
-        public RedisUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string updateChannel = default(string), Sku sku = default(Sku), RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), System.Collections.Generic.IDictionary<string, string> tenantSettings = default(System.Collections.Generic.IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), bool? disableAccessKeyAuthentication = default(bool?))
+
+        /// <param name="zonalAllocationPolicy">Optional: Specifies how availability zones are allocated to the Redis
+        /// cache. &#39;Automatic&#39; enables zone redundancy and Azure will automatically
+        /// select zones based on regional availability and capacity. &#39;UserDefined&#39;
+        /// will select availability zones passed in by you using the &#39;zones&#39;
+        /// parameter. &#39;NoZones&#39; will produce a non-zonal cache. If
+        /// &#39;zonalAllocationPolicy&#39; is not passed, it will be set to &#39;UserDefined&#39; when
+        /// zones are passed in, otherwise, it will be set to &#39;Automatic&#39; in regions
+        /// where zones are supported and &#39;NoZones&#39; in regions where zones are not
+        /// supported.
+        /// Possible values include: &#39;Automatic&#39;, &#39;UserDefined&#39;, &#39;NoZones&#39;</param>
+        public RedisUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string updateChannel = default(string), Sku sku = default(Sku), RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), System.Collections.Generic.IDictionary<string, string> tenantSettings = default(System.Collections.Generic.IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), bool? disableAccessKeyAuthentication = default(bool?), string zonalAllocationPolicy = default(string))
 
         {
             this.Tags = tags;
@@ -97,6 +108,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             this.MinimumTlsVersion = minimumTlsVersion;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.DisableAccessKeyAuthentication = disableAccessKeyAuthentication;
+            this.ZonalAllocationPolicy = zonalAllocationPolicy;
             CustomInit();
         }
 
@@ -204,6 +216,20 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableAccessKeyAuthentication")]
         public bool? DisableAccessKeyAuthentication {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional: Specifies how availability zones are allocated to
+        /// the Redis cache. &#39;Automatic&#39; enables zone redundancy and Azure will
+        /// automatically select zones based on regional availability and capacity.
+        /// &#39;UserDefined&#39; will select availability zones passed in by you using the
+        /// &#39;zones&#39; parameter. &#39;NoZones&#39; will produce a non-zonal cache. If
+        /// &#39;zonalAllocationPolicy&#39; is not passed, it will be set to &#39;UserDefined&#39; when
+        /// zones are passed in, otherwise, it will be set to &#39;Automatic&#39; in regions
+        /// where zones are supported and &#39;NoZones&#39; in regions where zones are not
+        /// supported. Possible values include: &#39;Automatic&#39;, &#39;UserDefined&#39;, &#39;NoZones&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zonalAllocationPolicy")]
+        public string ZonalAllocationPolicy {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -222,6 +248,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             {
                 this.Sku.Validate();
             }
+
 
 
 

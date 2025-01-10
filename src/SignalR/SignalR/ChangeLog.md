@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+* Removed "Microsoft.Azure.Management.SignalR" Version "1.1.2-preview" PackageReference
 
 ## Version 2.0.2
 * Fixed secrets exposure in example documentation.

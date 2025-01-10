@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+
+## Version 2.4.1
 * added support for new environment
 
 ## Version 2.4.0

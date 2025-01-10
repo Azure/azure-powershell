@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridTopic
 
 ## SYNOPSIS
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ New-AzEventGridTopic -InputObject <IEventGridIdentity> -Location <String> [-Data
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 
 ## EXAMPLES
 

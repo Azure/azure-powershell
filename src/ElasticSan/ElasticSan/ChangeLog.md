@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+
+## Version 1.2.0
+* Removed breaking change warnings for MI best practices 
+    - `New-AzElasticSanVolumeGroup`
+    - `Update-AzElasticSanVolumeGroup`
 
 ## Version 1.1.0
 * Supported `EnforceDataIntegrityCheckForIscsi` for creating and updating volume groups

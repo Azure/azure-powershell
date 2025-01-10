@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Removed "Microsoft.Azure.Management.Billing" Version "4.1.0" PackageReference
 * Removed "Microsoft.Azure.Management.Consumption" Version "3.0.0" PackageReference
+* Upgraded nuget package to signed package.
 
 ## Version 2.1.0
 * Renamed `Get-UsageAggregates` to `Get-AzUsageAggregate` and added `Get-UsageAggregates` as the alias to avoid breaking change.

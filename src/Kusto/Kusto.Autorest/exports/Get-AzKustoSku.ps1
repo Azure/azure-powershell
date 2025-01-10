@@ -23,12 +23,12 @@ Lists eligible region SKUs for Kusto resource provider by Azure region.
 Get-AzKustoSku -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Location "East US"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustosku
 #>
 function Get-AzKustoSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

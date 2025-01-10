@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded nuget package to signed package.
+
+## Version 5.4.0
+* Added top level arm object for app attach packages
+
+## Version 4.3.2
+* Preannounced the breaking changes for Az.DesktopVirtualization 6.0.0
 
 ## Version 4.3.1
 * Introduced secrets detection feature to safeguard sensitive data.

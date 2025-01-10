@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update the AuthConfig for a Container App.</summary>
+    /// <summary>update the AuthConfig for a Container App.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs/{authConfigName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs/{authConfigName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerAppAuthConfig_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Update the AuthConfig for a Container App.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"update the AuthConfig for a Container App.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     public partial class UpdateAzContainerAppAuthConfig_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener,

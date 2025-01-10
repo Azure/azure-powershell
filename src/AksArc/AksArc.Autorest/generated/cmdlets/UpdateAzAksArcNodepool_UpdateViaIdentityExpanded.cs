@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update the agent pool in the provisioned cluster</summary>
+    /// <summary>update the agent pool in the provisioned cluster</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}"
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAksArcNodepool_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Update the agent pool in the provisioned cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"update the agent pool in the provisioned cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Generated]
     public partial class UpdateAzAksArcNodepool_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener,

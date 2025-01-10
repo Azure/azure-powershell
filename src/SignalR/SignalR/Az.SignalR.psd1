@@ -56,8 +56,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.SignalR.dll', 
-               'SignalR.Autorest/bin/Az.SignalR.private.dll'
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.SignalR.Management.Sdk.dll', 
+                'SignalR.Autorest/bin/Az.SignalR.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

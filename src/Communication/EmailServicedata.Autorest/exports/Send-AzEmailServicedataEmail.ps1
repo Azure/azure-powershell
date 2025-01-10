@@ -48,13 +48,21 @@ $emailRecipientTo = @(
     }
 )
 
-$fileBytes = [System.IO.File]::ReadAllBytes("<file path>")
+$fileBytes1 = [System.IO.File]::ReadAllBytes("<file path>")
+
+$fileBytes2 = [System.IO.File]::ReadAllBytes("<image file path>")
 
 $emailAttachment = @(
 	@{
-		ContentInBase64 = $fileBytes
+		ContentInBase64 = $fileBytes1
 		ContentType = "<text/plain>"
 		Name = "<test.txt>"
+	},
+	@{
+		ContentInBase64 = $fileBytes2
+		ContentType = "image/png"
+		Name = "<inline-attachment.png>"
+		contentId = "<inline-attachment>"
 	}
 )
 
@@ -90,7 +98,7 @@ $message = @{
 	RecipientTo = @($emailRecipientTo)  # Array of email address objects
 	SenderAddress = 'info@contoso.com'
 	Attachment = @($emailAttachment) # Array of attachments
-	ContentHtml = "<html><head><title>Enter title</title></head><body><h1>This is the first email from ACS - HTML</h1></body></html>"
+	ContentHtml = "<html><head><title>Enter title</title></head><body><img src='cid:inline-attachment' alt='Company Logo'/><h1>This is the first email from ACS - HTML</h1></body></html>"
 	ContentPlainText = "This is the first email from ACS - HTML"
 	Header = $headers  # Importance = high/medium/low or X-Priority = 2/3/4  
 	RecipientBcc = @($emailRecipientBcc) # Array of email address objects
@@ -110,19 +118,21 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ATTACHMENT <IEmailAttachment[]>: List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.
+ATTACHMENT <IEmailAttachment[]>: List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB.
   ContentInBase64 <Byte[]>: Base64 encoded contents of the attachment
   ContentType <String>: MIME type of the content being attached.
   Name <String>: Name of the attachment
+  [ContentId <String>]: Unique identifier (CID) to reference an inline attachment.
 
 MESSAGE <IEmailMessage>: Message payload for sending an email
   ContentSubject <String>: Subject of the email message
   RecipientTo <List<IEmailAddress>>: Email To recipients
   SenderAddress <String>: Sender email address from a verified domain.
-  [Attachment <List<IEmailAttachment>>]: List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.
+  [Attachment <List<IEmailAttachment>>]: List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB.
     ContentInBase64 <Byte[]>: Base64 encoded contents of the attachment
     ContentType <String>: MIME type of the content being attached.
     Name <String>: Name of the attachment
+    [ContentId <String>]: Unique identifier (CID) to reference an inline attachment.
   [ContentHtml <String>]: Html version of the email message.
   [ContentPlainText <String>]: Plain text version of the email message.
   [Header <IEmailMessageHeaders>]: Custom email headers to be passed.
@@ -205,7 +215,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment[]]
     # List of attachments.
-    # Please note that we limit the total size of an email request (which includes attachments) to 10MB.
+    # Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB.
     ${Attachment},
 
     [Parameter(ParameterSetName='SendExpanded')]
