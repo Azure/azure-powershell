@@ -19,7 +19,7 @@ Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <
  [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
  [-KeyVaultPropertyUserIdentity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,7 +28,7 @@ Update-AzKustoDatabase -InputObject <IKustoIdentity> [-CallerRole <CallerRole>] 
  [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
  [-KeyVaultPropertyUserIdentity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -302,21 +302,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -29,7 +29,7 @@ New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [
  [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
@@ -49,7 +49,7 @@ New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [
  [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] -KeyCredentials <IMicrosoftGraphKeyCredential[]>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
@@ -70,7 +70,7 @@ New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
  -PasswordCredentials <IMicrosoftGraphPasswordCredential[]> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyPlainParameterSet
@@ -90,7 +90,7 @@ New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [
  [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-EndDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -111,7 +111,7 @@ New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [
  [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -554,21 +554,6 @@ Parameter Sets: ApplicationWithPasswordCredentialParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
