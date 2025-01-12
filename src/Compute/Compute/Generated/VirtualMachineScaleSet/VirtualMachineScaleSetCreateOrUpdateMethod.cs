@@ -59,6 +59,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            if (this.IsParameterBound(c => c.VirtualMachineScaleSet))
+            {
+                if (this.ParameterSetName == "DefaultParameter")
+                {
+                    PSVirtualMachineScaleSetVMProfile vmProfile = this.VirtualMachineScaleSet.VirtualMachineProfile;
+                    
+                    if (vmProfile.SecurityProfile != null && vmProfile.SecurityProfile.EncryptionIdentity != null &&
+                        vmProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
+                    {
+                        if (VirtualMachineScaleSet.Identity == null || VirtualMachineScaleSet.Identity.UserAssignedIdentities == null ||
+                            !VirtualMachineScaleSet.Identity.UserAssignedIdentities.ContainsKey(
+                                vmProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId))
+                        {
+                            throw new Exception("Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource");
+                        }
+                    }
+                }
+            }
+
             base.ExecuteCmdlet();
             switch (ParameterSetName)
             {
