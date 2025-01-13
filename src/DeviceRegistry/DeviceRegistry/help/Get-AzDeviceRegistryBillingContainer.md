@@ -15,19 +15,19 @@ Get a BillingContainer
 ### List (Default)
 ```
 Get-AzDeviceRegistryBillingContainer [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDeviceRegistryBillingContainer -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDeviceRegistryBillingContainer -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,21 +139,6 @@ Parameter Sets: Get
 Aliases: BillingContainerName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

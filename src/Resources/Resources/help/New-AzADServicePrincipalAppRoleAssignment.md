@@ -16,28 +16,28 @@ Create new navigation property to appRoleAssignments for servicePrincipals
 ```
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId <String> -ResourceId <String>
  [-AdditionalProperties <Hashtable>] [-AppRoleId <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdWithResourceDisplayNameParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId <String> [-AdditionalProperties <Hashtable>]
  [-AppRoleId <String>] -ResourceDisplayName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithResourceIdParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment -ResourceId <String> [-AdditionalProperties <Hashtable>]
  [-AppRoleId <String>] -ServicePrincipalDisplayName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithResourceDisplayNameParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment [-AdditionalProperties <Hashtable>] [-AppRoleId <String>]
  -ResourceDisplayName <String> -ServicePrincipalDisplayName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,21 +114,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

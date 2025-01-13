@@ -16,21 +16,21 @@ Removes a Static Cidr.
 ```
 Remove-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -IpamPoolName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Remove-AzNetworkManagerIpamPoolStaticCidr -InputObject <PSStaticCidr> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Remove-AzNetworkManagerIpamPoolStaticCidr -ResourceId <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -166,21 +166,6 @@ Accept wildcard characters: False
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

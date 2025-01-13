@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.0
 * Upgraded nuget package to signed package.
 * Added support for UAMI in Backup Instance
 
