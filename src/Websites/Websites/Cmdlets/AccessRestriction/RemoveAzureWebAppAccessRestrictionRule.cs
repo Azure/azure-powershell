@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         }
                         else if (!string.IsNullOrWhiteSpace(IpAddress))
                         {
-                            if (!string.IsNullOrWhiteSpace(accessRestriction.IPAddress) && accessRestriction.IPAddress.ToLowerInvariant() == IpAddress.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
+                            if (!string.IsNullOrWhiteSpace(accessRestriction.IpAddress) && accessRestriction.IpAddress.ToLowerInvariant() == IpAddress.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
                                 if (!string.IsNullOrWhiteSpace(Name))
                                     if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() != Name.ToLowerInvariant())
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         }
                         else if (!string.IsNullOrWhiteSpace(ServiceTag))
                         {
-                            if (!string.IsNullOrWhiteSpace(accessRestriction.IPAddress) && accessRestriction.IPAddress.ToLowerInvariant() == ServiceTag.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
+                            if (!string.IsNullOrWhiteSpace(accessRestriction.IpAddress) && accessRestriction.IpAddress.ToLowerInvariant() == ServiceTag.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
                                 if (!string.IsNullOrWhiteSpace(Name))
                                     if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() != Name.ToLowerInvariant())

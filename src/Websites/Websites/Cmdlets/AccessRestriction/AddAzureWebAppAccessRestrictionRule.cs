@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             foreach (var accessRestriction in accessRestrictionList)
             {
-                if (accessRestriction.IPAddress == ipRange)
+                if (accessRestriction.IpAddress == ipRange)
                     throw new Exception($"Rule for '{ipRange}' already exist");
             }
         }

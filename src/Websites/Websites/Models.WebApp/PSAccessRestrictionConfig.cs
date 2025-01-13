@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                     psAccessRestiction.Description = accessRestriction.Description;
                     psAccessRestiction.Tag = accessRestriction.Tag;
                     psAccessRestiction.HttpHeader = accessRestriction.Headers != null ? ConvertHeaders(accessRestriction.Headers) : null;
-                    if (accessRestriction.IPAddress != null)
-                        psAccessRestiction.IpAddress = accessRestriction.IPAddress;
+                    if (accessRestriction.IpAddress != null)
+                        psAccessRestiction.IpAddress = accessRestriction.IpAddress;
                     else
                         psAccessRestiction.SubnetId = accessRestriction.VnetSubnetResourceId;
                     MainSiteAccessRestrictions.Add(psAccessRestiction);
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                     psAccessRestiction.Description = accessRestriction.Description;
                     psAccessRestiction.Tag = accessRestriction.Tag;
                     psAccessRestiction.HttpHeader = accessRestriction.Headers != null ? ConvertHeaders(accessRestriction.Headers) : null;
-                    if (accessRestriction.IPAddress != null)
-                        psAccessRestiction.IpAddress = accessRestriction.IPAddress;
+                    if (accessRestriction.IpAddress != null)
+                        psAccessRestiction.IpAddress = accessRestriction.IpAddress;
                     else
                         psAccessRestiction.SubnetId = accessRestriction.VnetSubnetResourceId;
                     ScmSiteAccessRestrictions.Add(psAccessRestiction);

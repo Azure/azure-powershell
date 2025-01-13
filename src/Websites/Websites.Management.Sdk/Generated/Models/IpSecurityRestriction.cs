@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public IpSecurityRestriction(string ipAddress = default(string), string subnetMask = default(string), string vnetSubnetResourceId = default(string), int? vnetTrafficTag = default(int?), int? subnetTrafficTag = default(int?), string action = default(string), string tag = default(string), int? priority = default(int?), string name = default(string), string description = default(string), System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> headers = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>>))
 
         {
-            this.IPAddress = ipAddress;
+            this.IpAddress = ipAddress;
             this.SubnetMask = subnetMask;
             this.VnetSubnetResourceId = vnetSubnetResourceId;
             this.VnetTrafficTag = vnetTrafficTag;
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// SubnetMask property must not be specified.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipAddress")]
-        public string IPAddress {get; set; }
+        public string IpAddress {get; set; }
 
         /// <summary>
         /// Gets or sets subnet mask for the range of IP addresses the restriction is
