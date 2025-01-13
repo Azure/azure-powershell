@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with no direct replacement.", "", "")]
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.ImportBlueprintParameterSet), OutputType(typeof(bool))]
     public class ImportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {

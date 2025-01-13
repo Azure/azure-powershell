@@ -26,9 +26,11 @@ using Microsoft.Azure.Commands.Blueprint.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with no direct replacement.", "", "")]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.UpdateTemplateArtifact), OutputType(typeof(Artifact))]
     public class SetAzureRmBlueprintArtifact : BlueprintArtifactsCmdletBase
     {

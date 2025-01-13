@@ -27,9 +27,11 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Newtonsoft.Json;
 using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with no direct replacement.", "", "")]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.UpdateBlueprintAssignment), OutputType(typeof(PSBlueprintAssignment))]
     public class SetAzureRMBlueprintAssignment : BlueprintAssignmentCmdletBase
     {
