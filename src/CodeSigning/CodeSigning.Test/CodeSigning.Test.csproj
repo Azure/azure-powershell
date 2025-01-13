@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CodeSigning.Autorest\CodeSigning.Autorest.csproj" />
     <ProjectReference Include="..\CodeSigning\CodeSigning.csproj" />
   </ItemGroup>
 
