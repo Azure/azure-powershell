@@ -29,7 +29,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with no direct replacement.", "", "")]
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with an encouraged migration to Deployments Stacks.", "", "")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateTemplateArtifact), OutputType(typeof(Artifact))]
     public class NewAzureRMBlueprintArtifact : BlueprintArtifactsCmdletBase
     {

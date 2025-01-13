@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with no direct replacement.", "", "")]
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with an encouraged migration to Deployments Stacks.", "", "")]
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifact", SupportsShouldProcess = true, DefaultParameterSetName =
          ParameterSetNames.ExportBlueprintParameterSet), OutputType(typeof(bool))]
     public class ExportAzureRmBlueprint : BlueprintDefinitionCmdletBase

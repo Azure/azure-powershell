@@ -31,7 +31,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with no direct replacement.", "", "")]
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with an encouraged migration to Deployments Stacks.", "", "")]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.UpdateBlueprintAssignment), OutputType(typeof(PSBlueprintAssignment))]
     public class SetAzureRMBlueprintAssignment : BlueprintAssignmentCmdletBase
     {

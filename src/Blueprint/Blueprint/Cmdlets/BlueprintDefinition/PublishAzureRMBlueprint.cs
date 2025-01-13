@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with no direct replacement.", "", "")]
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with an encouraged migration to Deployments Stacks.", "", "")]
     [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.PublishBlueprint), OutputType(typeof(PSPublishedBlueprint))]
     public class PublishAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
