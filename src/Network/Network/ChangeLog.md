@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
+    - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
 * Updated vnv and ipam cmdlets
 * Allowed TA interval to be set as 0 incase TA is disabled
 * Onboarded Azure Virtual Network Manager Cmdlets for IpamPool

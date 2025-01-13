@@ -76,8 +76,8 @@ namespace Microsoft.Azure.Commands.Network
             // Add the prefixInfo to the peering object and update the circuit object
             var prefix = new PSPeeringPrefixConfig();
             prefix.Prefix = this.Prefix;
-            prefix.ValidationId = this.ValidationId;
-            prefix.Signature = this.Signature;
+            prefix.ValidationId = !string.IsNullOrEmpty(this.ValidationId) ? this.ValidationId : string.Empty;
+            prefix.Signature = !string.IsNullOrEmpty(this.Signature) ? this.Signature : string.Empty;
             prefixes.Add(prefix);
 
             var peeringIndex = this.ExpressRouteCircuit.Peerings.FindIndex(resource => resource.Name.Equals("MicrosoftPeering"));
