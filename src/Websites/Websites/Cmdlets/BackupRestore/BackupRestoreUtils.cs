@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 BlobName = backup.BlobName,
                 Databases = dbs,
                 BackupId = backup.BackupId,
-                BackupName = backup.PropertiesName,
+                BackupName = backup.BackupItemName,
                 BackupStatus = status,
                 Scheduled = backup.Scheduled,
                 BackupSizeInBytes = backup.SizeInBytes,

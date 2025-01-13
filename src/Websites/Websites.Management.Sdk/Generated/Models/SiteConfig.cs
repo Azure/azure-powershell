@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.RemoteDebuggingVersion = remoteDebuggingVersion;
             this.HttpLoggingEnabled = httpLoggingEnabled;
             this.AcrUseManagedIdentityCreds = acrUseManagedIdentityCreds;
-            this.AcrUserManagedIdentityId = acrUserManagedIdentityId;
+            this.AcrUserManagedIdentityID = acrUserManagedIdentityId;
             this.LogsDirectorySizeLimit = logsDirectorySizeLimit;
             this.DetailedErrorLoggingEnabled = detailedErrorLoggingEnabled;
             this.PublishingUsername = publishingUsername;
@@ -306,9 +306,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.ManagedServiceIdentityId = managedServiceIdentityId;
             this.XManagedServiceIdentityId = xManagedServiceIdentityId;
             this.KeyVaultReferenceIdentity = keyVaultReferenceIdentity;
-            this.IPSecurityRestrictions = ipSecurityRestrictions;
-            this.ScmIPSecurityRestrictions = scmIPSecurityRestrictions;
-            this.ScmIPSecurityRestrictionsUseMain = scmIPSecurityRestrictionsUseMain;
+            this.IpSecurityRestrictions = ipSecurityRestrictions;
+            this.ScmIpSecurityRestrictions = scmIPSecurityRestrictions;
+            this.ScmIpSecurityRestrictionsUseMain = scmIPSecurityRestrictionsUseMain;
             this.Http20Enabled = http20Enabled;
             this.MinTlsVersion = minTlsVersion;
             this.ScmMinTlsVersion = scmMinTlsVersion;
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// ClientId
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "acrUserManagedIdentityID")]
-        public string AcrUserManagedIdentityId {get; set; }
+        public string AcrUserManagedIdentityID {get; set; }
 
         /// <summary>
         /// Gets or sets hTTP logs directory size limit.
@@ -659,19 +659,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets iP security restrictions for main.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipSecurityRestrictions")]
-        public System.Collections.Generic.IList<IpSecurityRestriction> IPSecurityRestrictions {get; set; }
+        public System.Collections.Generic.IList<IpSecurityRestriction> IpSecurityRestrictions {get; set; }
 
         /// <summary>
         /// Gets or sets iP security restrictions for scm.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scmIpSecurityRestrictions")]
-        public System.Collections.Generic.IList<IpSecurityRestriction> ScmIPSecurityRestrictions {get; set; }
+        public System.Collections.Generic.IList<IpSecurityRestriction> ScmIpSecurityRestrictions {get; set; }
 
         /// <summary>
         /// Gets or sets iP security restrictions for scm to use main.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scmIpSecurityRestrictionsUseMain")]
-        public bool? ScmIPSecurityRestrictionsUseMain {get; set; }
+        public bool? ScmIpSecurityRestrictionsUseMain {get; set; }
 
         /// <summary>
         /// Gets or sets http20Enabled: configures a web site to allow clients to

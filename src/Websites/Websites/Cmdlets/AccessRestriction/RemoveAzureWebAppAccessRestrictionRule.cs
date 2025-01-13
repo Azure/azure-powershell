@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, SlotName));
                     SiteConfig siteConfig = webApp.SiteConfig;
-                    var accessRestrictionList = TargetScmSite ? siteConfig.ScmIPSecurityRestrictions : siteConfig.IPSecurityRestrictions;
+                    var accessRestrictionList = TargetScmSite ? siteConfig.ScmIpSecurityRestrictions : siteConfig.IpSecurityRestrictions;
                     IpSecurityRestriction ipSecurityRestriction = null;
                     bool accessRestrictionExists = false;
                     int ruleTypes = Convert.ToInt32(!string.IsNullOrWhiteSpace(IpAddress)) + Convert.ToInt32(!string.IsNullOrWhiteSpace(ServiceTag)) +

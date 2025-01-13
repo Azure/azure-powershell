@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, SlotName));
                 SiteConfig siteConfig = webApp.SiteConfig;
-                var accessRestrictionList = TargetScmSite ? siteConfig.ScmIPSecurityRestrictions : siteConfig.IPSecurityRestrictions;
+                var accessRestrictionList = TargetScmSite ? siteConfig.ScmIpSecurityRestrictions : siteConfig.IpSecurityRestrictions;
                 IpSecurityRestriction ipSecurityRestriction = null;
                 IDictionary<string, IList<string>> httpHeader = null;
                 if (HttpHeader != null)

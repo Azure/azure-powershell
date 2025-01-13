@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, SlotName));
                     SiteConfig siteConfig = webApp.SiteConfig;
 
-                    if (siteConfig.ScmIPSecurityRestrictionsUseMain != inheritConfig)
+                    if (siteConfig.ScmIpSecurityRestrictionsUseMain != inheritConfig)
                     {
-                        siteConfig.ScmIPSecurityRestrictionsUseMain = inheritConfig;
+                        siteConfig.ScmIpSecurityRestrictionsUseMain = inheritConfig;
 
                         // Update web app configuration
                         WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, Name, SlotName, siteConfig);

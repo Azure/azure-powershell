@@ -11,12 +11,12 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             ResourceGroupName = resourceGroupName;
             WebAppName = webAppName;
             SlotName = slotName;
-            ScmSiteUseMainSiteRestrictionConfig = siteConfig.ScmIPSecurityRestrictionsUseMain ?? false;
+            ScmSiteUseMainSiteRestrictionConfig = siteConfig.ScmIpSecurityRestrictionsUseMain ?? false;
 
             MainSiteAccessRestrictions = new List<PSAccessRestriction>();
-            if (siteConfig.IPSecurityRestrictions != null)
+            if (siteConfig.IpSecurityRestrictions != null)
             {
-                foreach (var accessRestriction in siteConfig.IPSecurityRestrictions)
+                foreach (var accessRestriction in siteConfig.IpSecurityRestrictions)
                 {
                     var psAccessRestiction = new PSAccessRestriction();
                     psAccessRestiction.RuleName = accessRestriction.Name;
@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             }
 
             ScmSiteAccessRestrictions = new List<PSAccessRestriction>();
-            if (siteConfig.ScmIPSecurityRestrictions != null)
+            if (siteConfig.ScmIpSecurityRestrictions != null)
             {
-                foreach (var accessRestriction in siteConfig.ScmIPSecurityRestrictions)
+                foreach (var accessRestriction in siteConfig.ScmIpSecurityRestrictions)
                 {
                     var psAccessRestiction = new PSAccessRestriction();
                     psAccessRestiction.RuleName = accessRestriction.Name;

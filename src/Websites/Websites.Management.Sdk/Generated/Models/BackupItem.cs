@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="blobName">Name of the blob which contains data for this backup.
         /// </param>
 
-        /// <param name="propertiesName">Name of this backup.
+        /// <param name="backupItemName">Name of this backup.
         /// </param>
 
         /// <param name="status">Backup status.
@@ -81,14 +81,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="websiteSizeInBytes">Size of the original web app which has been backed up.
         /// </param>
-        public BackupItem(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string propertiesName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), System.Collections.Generic.IList<DatabaseBackupSetting> databases = default(System.Collections.Generic.IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
+        public BackupItem(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), System.Collections.Generic.IList<DatabaseBackupSetting> databases = default(System.Collections.Generic.IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
 
         : base(id, name, kind, type)
         {
             this.BackupId = backupId;
             this.StorageAccountUrl = storageAccountUrl;
             this.BlobName = blobName;
-            this.PropertiesName = propertiesName;
+            this.BackupItemName = backupItemName;
             this.Status = status;
             this.SizeInBytes = sizeInBytes;
             this.Created = created;
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets name of this backup.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.name")]
-        public string PropertiesName {get; private set; }
+        public string BackupItemName {get; private set; }
 
         /// <summary>
         /// Gets backup status. Possible values include: &#39;InProgress&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;TimedOut&#39;, &#39;Created&#39;, &#39;Skipped&#39;, &#39;PartiallySucceeded&#39;, &#39;DeleteInProgress&#39;, &#39;DeleteFailed&#39;, &#39;Deleted&#39;

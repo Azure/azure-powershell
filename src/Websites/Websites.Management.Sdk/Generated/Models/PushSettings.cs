@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="isPushEnabled">Gets or sets a flag indicating whether the Push endpoint is enabled.
         /// </param>
 
-        /// <param name="tagWhitelistJson">Gets or sets a JSON string containing a list of tags that are whitelisted
-        /// for use by the push registration endpoint.
+        /// <param name="tagWhitelistJson">Gets or sets a JSON string containing a list of tags that are in the
+        /// allowed list for use by the push registration endpoint.
         /// </param>
 
         /// <param name="tagsRequiringAuth">Gets or sets a JSON string containing a list of tags that require user
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets gets or sets a JSON string containing a list of tags that are
-        /// whitelisted for use by the push registration endpoint.
+        /// in the allowed list for use by the push registration endpoint.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.tagWhitelistJson")]
         public string TagWhitelistJson {get; set; }

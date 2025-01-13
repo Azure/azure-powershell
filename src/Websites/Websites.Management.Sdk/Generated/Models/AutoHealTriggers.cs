@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         {
             this.Requests = requests;
-            this.PrivateBytesInKb = privateBytesInKb;
+            this.PrivateBytesInKB = privateBytesInKb;
             this.StatusCodes = statusCodes;
             this.SlowRequests = slowRequests;
             this.SlowRequestsWithPath = slowRequestsWithPath;
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets a rule based on private bytes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateBytesInKB")]
-        public int? PrivateBytesInKb {get; set; }
+        public int? PrivateBytesInKB {get; set; }
 
         /// <summary>
         /// Gets or sets a rule based on status codes.

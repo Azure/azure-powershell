@@ -234,8 +234,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.ClientCertExclusionPaths = clientCertExclusionPaths;
             this.HostNamesDisabled = hostNamesDisabled;
             this.CustomDomainVerificationId = customDomainVerificationId;
-            this.OutboundIPAddresses = outboundIPAddresses;
-            this.PossibleOutboundIPAddresses = possibleOutboundIPAddresses;
+            this.OutboundIpAddresses = outboundIPAddresses;
+            this.PossibleOutboundIpAddresses = possibleOutboundIPAddresses;
             this.ContainerSize = containerSize;
             this.DailyMemoryTimeQuota = dailyMemoryTimeQuota;
             this.SuspendedTill = suspendedTill;
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// current settings. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.outboundIpAddresses")]
-        public string OutboundIPAddresses {get; private set; }
+        public string OutboundIpAddresses {get; private set; }
 
         /// <summary>
         /// Gets list of IP addresses that the app uses for outbound connections (e.g.
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.possibleOutboundIpAddresses")]
-        public string PossibleOutboundIPAddresses {get; private set; }
+        public string PossibleOutboundIpAddresses {get; private set; }
 
         /// <summary>
         /// Gets or sets size of the function container.
