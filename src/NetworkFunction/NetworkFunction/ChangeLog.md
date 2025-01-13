@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.5
 * Upgraded nuget package to signed package.
 
 ## Version 0.1.4

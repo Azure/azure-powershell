@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.0
 * Upgraded nuget package to signed package.
 * Updated Az.Databricks to use more intuitive parameter names for the ESC feature.
 

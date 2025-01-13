@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
 * Upgraded nuget package to signed package.
 * Removed "Microsoft.Azure.Management.Logic" Version "4.1.0" PackageReference
 
