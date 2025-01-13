@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// Push settings for the App.
     /// </summary>
+    [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class PushSettings : ProxyOnlyResource
     {
         /// <summary>
@@ -74,14 +75,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets gets or sets a flag indicating whether the Push endpoint is
         /// enabled.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "isPushEnabled")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isPushEnabled")]
         public bool IsPushEnabled {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets a JSON string containing a list of tags that are
         /// in the allowed list for use by the push registration endpoint.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tagWhitelistJson")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.tagWhitelistJson")]
         public string TagWhitelistJson {get; set; }
 
         /// <summary>
@@ -91,14 +92,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// &#39;_&#39;, &#39;@&#39;, &#39;#&#39;, &#39;.&#39;, &#39;:&#39;, &#39;-&#39;.
         /// Validation should be performed at the PushRequestHandler.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tagsRequiringAuth")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.tagsRequiringAuth")]
         public string TagsRequiringAuth {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets a JSON string containing a list of dynamic tags
         /// that will be evaluated from user claims in the push registration endpoint.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "dynamicTagsJson")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dynamicTagsJson")]
         public string DynamicTagsJson {get; set; }
         /// <summary>
         /// Validate the object.

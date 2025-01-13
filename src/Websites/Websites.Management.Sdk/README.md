@@ -182,7 +182,7 @@ directive:
         "description": "Push settings for the App.",
         "type": "object",
         "required": [
-          "isPushEnabled"
+          "properties"
         ],
         "allOf": [
           {
@@ -190,21 +190,31 @@ directive:
           }
         ],
         "properties": {
-          "isPushEnabled": {
-            "description": "Gets or sets a flag indicating whether the Push endpoint is enabled.",
-            "type": "boolean"
-          },
-          "tagWhitelistJson": {
-            "description": "Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.",
-            "type": "string"
-          },
-          "tagsRequiringAuth": {
-            "description": "Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.\nTags can consist of alphanumeric characters and the following:\n'_', '@', '#', '.', ':', '-'. \nValidation should be performed at the PushRequestHandler.",
-            "type": "string"
-          },
-          "dynamicTagsJson": {
-            "description": "Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.",
-            "type": "string"
+          "properties": {
+            "description": "PushSettings resource specific properties",
+            "required": [
+              "isPushEnabled"
+            ],
+            "type": "object",
+            "properties": {
+              "isPushEnabled": {
+                "description": "Gets or sets a flag indicating whether the Push endpoint is enabled.",
+                "type": "boolean"
+              },
+              "tagWhitelistJson": {
+                "description": "Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.",
+                "type": "string"
+              },
+              "tagsRequiringAuth": {
+                "description": "Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.\nTags can consist of alphanumeric characters and the following:\n'_', '@', '#', '.', ':', '-'. \nValidation should be performed at the PushRequestHandler.",
+                "type": "string"
+              },
+              "dynamicTagsJson": {
+                "description": "Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.",
+                "type": "string"
+              }
+            },
+            "x-ms-client-flatten": true
           }
         }
       }
