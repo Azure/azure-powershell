@@ -21,7 +21,7 @@ Stop-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-
 
 ### StopViaIdentityExpanded
 ```
-Stop-AzWorkloadsSapVirtualInstance -InputObject <IWorkloadsIdentity> [-DeallocateVM]
+Stop-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity> [-DeallocateVM]
  [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -81,7 +81,7 @@ Target            :
 Stop-AzWorkloadsSapVirtualInstance cmdlet stops the SAP application tier, that is App servers and ASCS instances of the system.
 In this example, you can see that system can be stopped by providing the VIS Azure resource ID as InputObject to the cmdlet.
 
-### Example 3: Stop an SAP system and its underlying Virtual Machine
+### Example 3: Stop an SAP system and its underlying Virtual Machine(s)
 ```powershell
 Stop-AzWorkloadsSapVirtualInstance -Name DB0 -ResourceGroupName db0-vis-rg -DeallocateVM
 ```
@@ -104,7 +104,7 @@ Target            :
 ```
 
 Stop-AzWorkloadsSapVirtualInstance cmdlet stops the SAP application tier and its underlying VIrtual Machine, that is App servers and ASCS instances of the system.
-In this example, you can see that system can be stopped by passing the VIS name and ResourceGroupName of the VIS as inputs.
+In this example, you can see that SAP application and the VMs can be stopped by passing the VIS name, ResourceGroupName of the VIS, and DeallocateVM parameter as inputs.
 
 ### Example 4: Soft Stop an SAP system
 ```powershell
@@ -129,7 +129,7 @@ Target            :
 ```
 
 Stop-AzWorkloadsSapVirtualInstance cmdlet soft stops the SAP application tier, that is App servers and ASCS instances of the system.
-In this example, you can see that system can be stopped by passing the VIS name, ResourceGroupName of the VIS and soft stop timeout seconds as inputs.
+In this example, you can see that system can be soft stopped by passing the VIS name, ResourceGroupName of the VIS and soft stop timeout seconds as inputs.
 
 ## PARAMETERS
 
@@ -184,7 +184,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: StopViaIdentityExpanded
 Aliases:
 
@@ -260,6 +260,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -309,32 +310,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult
 
 ## NOTES
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
-  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
-  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[MonitorName <String>]`: Name of the SAP monitor resource.
-  - `[ProviderInstanceName <String>]`: Name of the provider instance.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+Stop-AzVIS
 
 ## RELATED LINKS
 
