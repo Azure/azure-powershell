@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
+using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -253,17 +254,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 if (serverRegistrationData.ServerRole == InternalObjects.ServerRoleType.ClusterNode)
                 {
-                    var endpoints = new List<Tuple<ServerEndpoint, CloudEndpoint>>();
+                    var endpoints = new List<Tuple<ServerEndpoint, StorageSyncModels.CloudEndpoint>>();
                     StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, storageSyncServiceName).ForEach(syncGroup =>
                     {
-                        IEnumerable<CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
-                        CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
+                        IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
+                        StorageSyncModels.CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
 
                         StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name).ForEach(serverEndpoint =>
                         {
                             if (string.Equals(serverEndpoint.ServerResourceId, clusterNameResourceId, StringComparison.InvariantCultureIgnoreCase))
                             {
-                                endpoints.Add(new Tuple<ServerEndpoint, CloudEndpoint>(serverEndpoint, cloudEndpoint));
+                                endpoints.Add(new Tuple<ServerEndpoint, StorageSyncModels.CloudEndpoint>(serverEndpoint, cloudEndpoint));
                             }
                         });
                     });
@@ -271,8 +272,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     var serverIdentityGuid = serverRegistrationData.ApplicationId.Value;
                     foreach (var endpoint in endpoints)
                     {
-                        ServerEndpoint serverEndpoint = endpoint.Item1; 
-                        CloudEndpoint cloudEndpoint = endpoint.Item2;
+                        ServerEndpoint serverEndpoint = endpoint.Item1;
+                        StorageSyncModels.CloudEndpoint cloudEndpoint = endpoint.Item2;
                         var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
                         var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
 
