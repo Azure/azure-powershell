@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitMicrosoftPeeringPrefixConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitMicrosoftPeeringPrefixConfig", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = false), OutputType(typeof(PSExpressRouteCircuit))]
     public class SetAzureExpressRouteCircuitMicrosoftPeeringPrefixConfigCommand : AzureExpressRouteCircuitMicrosoftPeeringPrefixConfigBase
     {
         [Parameter(
