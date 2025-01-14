@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
+namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 {
 
     /// <summary>

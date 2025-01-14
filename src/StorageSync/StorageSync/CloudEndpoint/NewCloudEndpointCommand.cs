@@ -29,7 +29,7 @@ using System.Management.Automation;
 using System.Threading;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
-namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
+namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 {
 
     /// <summary>
