@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             Position = 0,
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
