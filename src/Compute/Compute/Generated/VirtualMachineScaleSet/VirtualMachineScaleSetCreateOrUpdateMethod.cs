@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                 }
             }
+
             base.ExecuteCmdlet();
             switch (ParameterSetName)
             {
@@ -186,6 +187,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     parameters.VirtualMachineProfile.SecurityProfile.SecurityType = null;
                                 }
                             }
+
                             VirtualMachineScaleSet result;
                             if (auxAuthHeader != null)
                             {
