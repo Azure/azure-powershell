@@ -58,26 +58,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                 }
             }
-
-            if (this.IsParameterBound(c => c.VirtualMachineScaleSet))
-            {
-                if (this.ParameterSetName == "DefaultParameter")
-                {
-                    PSVirtualMachineScaleSetVMProfile vmProfile = this.VirtualMachineScaleSet.VirtualMachineProfile;
-                    
-                    if (vmProfile.SecurityProfile != null && vmProfile.SecurityProfile.EncryptionIdentity != null &&
-                        vmProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
-                    {
-                        if (VirtualMachineScaleSet.Identity == null || VirtualMachineScaleSet.Identity.UserAssignedIdentities == null ||
-                            !VirtualMachineScaleSet.Identity.UserAssignedIdentities.ContainsKey(
-                                vmProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId))
-                        {
-                            throw new Exception("Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource");
-                        }
-                    }
-                }
-            }
-
             base.ExecuteCmdlet();
             switch (ParameterSetName)
             {
@@ -89,11 +69,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
                         {
+                            PSVirtualMachineScaleSetVMProfile vmProfile = this.VirtualMachineScaleSet.VirtualMachineProfile;
+                            if (vmProfile != null && vmProfile.SecurityProfile != null && vmProfile.SecurityProfile.EncryptionIdentity != null &&
+                                vmProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
+                            {
+                                if (VirtualMachineScaleSet.Identity == null || VirtualMachineScaleSet.Identity.UserAssignedIdentities == null ||
+                                    !VirtualMachineScaleSet.Identity.UserAssignedIdentities.ContainsKey(
+                                        vmProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId))
+                                {
+                                    throw new Exception("Encryption 22332 Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource");
+                                }
+                            }
+                               
                             if (this.VirtualMachineScaleSet?.VirtualMachineProfile != null)
                             {
                                 // TL defaulting for default param set, config object.
                                 // if security type not set, 
-
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
@@ -177,6 +168,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     }
                                 }
                             }
+                            this.WriteObject(parameters.VirtualMachineProfile.SecurityProfile);
                             // END: For Cross-tenant RBAC sharing
 
                             // Standard securityType is currently not supported in API, jsut used on client side for now,
@@ -195,7 +187,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     parameters.VirtualMachineProfile.SecurityProfile.SecurityType = null;
                                 }
                             }
-
+                            this.WriteObject(parameters.VirtualMachineProfile.SecurityProfile);
                             VirtualMachineScaleSet result;
                             if (auxAuthHeader != null)
                             {

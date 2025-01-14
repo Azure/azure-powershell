@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVmssDiskEncryptionExtension`
+* Added new parameter `EncryptionIdentity` to cmdlet `New-VmssConfig`
 
 ## Version 9.0.1
 * Upgraded nuget package to signed package.

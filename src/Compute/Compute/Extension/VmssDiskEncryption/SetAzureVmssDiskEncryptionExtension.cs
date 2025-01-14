@@ -303,16 +303,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 updateEncryptionIdentity = this.VirtualMachineScaleSetClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName, vmssParameters.Name, vmssParameters).GetAwaiter().GetResult();
 
-                if (!updateEncryptionIdentity.Response.IsSuccessStatusCode)
+                if (updateEncryptionIdentity != null && updateEncryptionIdentity.Response != null && 
+                    updateEncryptionIdentity.Response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
-                        "Failed to update encryption identity on VMSS", updateEncryptionIdentity.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult())),
-                        "InvalidResult", ErrorCategory.InvalidResult, null));
+                    this.WriteObject(updateEncryptionIdentity.Response.Content);
+                    this.WriteObject(updateEncryptionIdentity.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+                    return true;
+
                 }
                 else
                 {
-                    this.WriteObject(ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(updateEncryptionIdentity));
-                    return true;
+                    ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,"Failed to update encryption identity on VMSS")),
+                        "InvalidResult", ErrorCategory.InvalidResult, null));
                 }
                 return false;
             }
@@ -329,7 +331,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 && (this.Force.IsPresent ||
                 this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))) // Change this.
                 {
-                    VerifyParameters();
 
                     VirtualMachineScaleSet vmssResponse = this.VirtualMachineScaleSetClient.Get(
                         this.ResourceGroupName, VMScaleSetName);
@@ -364,6 +365,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             this.WriteObject("Encryption identity updated successfully on VM.");
                         }
                     }
+                    VerifyParameters();
 
                     vmssResponse.VirtualMachineProfile.ExtensionProfile.Extensions.Add(parameters);
 
@@ -429,6 +431,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     {
                         ThrowInvalidArgumentError("The location of key vault ID, {0}, does not match with the VM scale set.", keyVaultId);
 
+                    }
+                    VirtualMachineScaleSet vmssResponse = this.VirtualMachineScaleSetClient.Get(this.ResourceGroupName, VMScaleSetName);
+                    if (vmssResponse != null && vmssResponse.VirtualMachineProfile != null && vmssResponse.VirtualMachineProfile.SecurityProfile != null && 
+                        vmssResponse.VirtualMachineProfile.SecurityProfile.EncryptionIdentity != null && 
+                        vmssResponse.VirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
+                    {
+                        return;
                     }
                     else if (returnedKeyVault.Properties == null
                         || returnedKeyVault.Properties.EnabledForDiskEncryption == null
