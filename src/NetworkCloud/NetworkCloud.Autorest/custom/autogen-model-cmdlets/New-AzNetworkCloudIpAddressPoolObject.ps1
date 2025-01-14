@@ -21,16 +21,16 @@ Create an in-memory object for IpAddressPool.
 Create an in-memory object for IpAddressPool.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IpAddressPool
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IpAddressPool
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudIpAddressPoolObject
 #>
 function New-AzNetworkCloudIpAddressPoolObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IpAddressPool')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IpAddressPool')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.")]
+        [Parameter(Mandatory, HelpMessage="The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.")]
         [string[]]
         $Address,
         [Parameter(HelpMessage="The indicator to determine if automatic allocation from the pool should occur.")]
@@ -47,7 +47,7 @@ function New-AzNetworkCloudIpAddressPoolObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IpAddressPool]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IpAddressPool]::New()
 
         if ($PSBoundParameters.ContainsKey('Address')) {
             $Object.Address = $Address

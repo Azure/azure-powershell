@@ -99,6 +99,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine name</param>
+        /// <param name="assignIdentity">Assign Identity</param>
         /// <returns>Registered Server Resource</returns>
         /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
@@ -117,7 +118,8 @@ namespace Commands.StorageSync.Interop.Clients
             Guid? applicationId,
             string monitoringDataPath,
             string agentVersion,
-            string serverMachineName)
+            string serverMachineName,
+            bool assignIdentity)
         {
             int hr = EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
                 subscriptionId.ToString(),

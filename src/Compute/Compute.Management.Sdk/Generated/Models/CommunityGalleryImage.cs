@@ -61,6 +61,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// current community gallery image.</param>
         /// <param name="eula">The end-user license agreement for the current
         /// community gallery image.</param>
+        /// <param name="disclaimer">The disclaimer for a community gallery
+        /// resource.</param>
         public CommunityGalleryImage(OperatingSystemTypes osType, OperatingSystemStateTypes osState, CommunityGalleryImageIdentifier identifier, string name = default(string), string location = default(string), string type = default(string), string uniqueId = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), string hyperVGeneration = default(string), IList<GalleryImageFeature> features = default(IList<GalleryImageFeature>), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string architecture = default(string), string privacyStatementUri = default(string), string eula = default(string), string disclaimer = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>))
             : base(name, location, type, uniqueId)
         {
@@ -166,6 +168,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Eula { get; set; }
 
         /// <summary>
+        /// Gets or sets the disclaimer for a community gallery resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.disclaimer")]
         public string Disclaimer { get; set; }

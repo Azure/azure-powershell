@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Automanage",
-  "ModuleVersion": "1.0.2",
+  "ModuleVersion": "1.1.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Configuration": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -75,7 +75,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -85,7 +85,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -180,7 +180,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -196,7 +196,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -296,7 +296,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -312,7 +312,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -385,7 +385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Configuration": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -438,7 +438,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -482,7 +482,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -492,7 +492,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -618,7 +618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -634,7 +634,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -765,7 +765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -781,7 +781,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -897,7 +897,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -913,7 +913,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -979,7 +979,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -1041,7 +1041,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1057,7 +1057,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1157,7 +1157,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1173,7 +1173,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1246,7 +1246,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -1299,7 +1299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -1361,7 +1361,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1371,7 +1371,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1494,7 +1494,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1510,7 +1510,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1656,7 +1656,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1672,7 +1672,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1803,7 +1803,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1819,7 +1819,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1965,7 +1965,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1981,7 +1981,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2097,7 +2097,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2113,7 +2113,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2179,7 +2179,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -2241,7 +2241,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2257,7 +2257,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2357,7 +2357,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2373,7 +2373,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2446,7 +2446,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -2499,7 +2499,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -2543,7 +2543,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2553,7 +2553,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2676,7 +2676,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2692,7 +2692,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2758,7 +2758,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -2820,7 +2820,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2836,7 +2836,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2936,7 +2936,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2952,7 +2952,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3025,7 +3025,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -3078,7 +3078,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -3122,7 +3122,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3132,7 +3132,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3255,7 +3255,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3271,7 +3271,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3337,7 +3337,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -3399,7 +3399,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3415,7 +3415,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3515,7 +3515,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3531,7 +3531,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3604,7 +3604,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[]",
@@ -3676,7 +3676,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -3720,7 +3720,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3730,7 +3730,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3853,7 +3853,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3869,7 +3869,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4030,7 +4030,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4046,7 +4046,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4112,7 +4112,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -4174,7 +4174,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4190,7 +4190,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4290,7 +4290,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4306,7 +4306,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4379,7 +4379,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[]",
@@ -4451,7 +4451,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -4495,7 +4495,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4505,7 +4505,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4628,7 +4628,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4644,7 +4644,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4805,7 +4805,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4821,7 +4821,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4887,7 +4887,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -4949,7 +4949,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4965,7 +4965,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5065,7 +5065,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5081,7 +5081,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5154,7 +5154,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[]",
@@ -5229,7 +5229,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -5273,7 +5273,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5283,7 +5283,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5424,7 +5424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5440,7 +5440,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5586,7 +5586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5602,7 +5602,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5668,7 +5668,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -5730,7 +5730,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5746,7 +5746,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5846,7 +5846,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5862,7 +5862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5935,7 +5935,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Configuration": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -6036,7 +6036,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6046,7 +6046,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6216,7 +6216,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6232,7 +6232,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6305,7 +6305,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -6388,7 +6388,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6398,7 +6398,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6535,7 +6535,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6551,7 +6551,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6624,7 +6624,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -6707,7 +6707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6717,7 +6717,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6854,7 +6854,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6870,7 +6870,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6943,7 +6943,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -7026,7 +7026,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7036,7 +7036,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7173,7 +7173,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7189,7 +7189,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7305,7 +7305,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -7349,7 +7349,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7359,7 +7359,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7493,7 +7493,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7509,7 +7509,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7590,7 +7590,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -7652,7 +7652,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7668,7 +7668,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7783,7 +7783,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7799,7 +7799,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7927,7 +7927,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -7971,7 +7971,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7981,7 +7981,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8112,7 +8112,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8128,7 +8128,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8209,7 +8209,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -8271,7 +8271,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8287,7 +8287,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8402,7 +8402,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8418,7 +8418,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8546,7 +8546,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -8590,7 +8590,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8600,7 +8600,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8731,7 +8731,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8747,7 +8747,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8828,7 +8828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -8890,7 +8890,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8906,7 +8906,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9021,7 +9021,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9037,7 +9037,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9165,7 +9165,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -9209,7 +9209,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9219,7 +9219,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9350,7 +9350,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9366,7 +9366,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9447,7 +9447,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -9509,7 +9509,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9525,7 +9525,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9640,7 +9640,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9656,7 +9656,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9744,7 +9744,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Configuration": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
@@ -9796,7 +9796,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BestPracticeName": "System.String",
               "ClusterName": "System.String",
@@ -9858,7 +9858,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9868,7 +9868,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10023,7 +10023,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10039,7 +10039,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10105,7 +10105,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BestPracticeName": "System.String",
                     "ClusterName": "System.String",
@@ -10197,7 +10197,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10213,7 +10213,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10343,7 +10343,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10359,7 +10359,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10465,12 +10465,12 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType"
       ]
@@ -10478,7 +10478,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Support.CreatedByType, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -10574,7 +10574,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -10752,13 +10752,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Info": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAny",
         "Type": "System.String"
@@ -10767,18 +10767,18 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAny": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAny",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAny, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAny, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[]",
         "Detail": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[]",
@@ -10790,13 +10790,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource[], Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource[], Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource, Az.Automanage.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReportResource, Az.Automanage.private, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorAdditionalInfo[]",
         "Detail": "Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IErrorDetail[]",

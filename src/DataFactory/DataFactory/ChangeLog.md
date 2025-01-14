@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.19.0
+* Upgraded nuget package to signed package.
 * Added support for additional MySQL connection properties.
 * Added support for Azure PostgreSQL v2, updated connection strings, and corrected Linked JSON configurations.
 

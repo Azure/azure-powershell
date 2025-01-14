@@ -28,22 +28,26 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspaceReachabilityAnalysisRun", SupportsShouldProcess = true), OutputType(typeof(PSReachabilityAnalysisRun))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspaceReachabilityAnalysisRun", SupportsShouldProcess = true, DefaultParameterSetName = CreateByNameParameterSet), OutputType(typeof(PSReachabilityAnalysisRun))]
 
     public class NewAzNetworkManagerVerifierWorkspaceReachabilityAnalysisRunCommand : ReachabilityAnalysisRunBaseCmdlet
     {
+        private const string CreateByNameParameterSet = "ByName";
+
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Reachability Analysis Run name.")]
+            HelpMessage = "Reachability Analysis Run name.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The network manager name.")]
+            HelpMessage = "The network manager name.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string NetworkManagerName { get; set; }
@@ -51,7 +55,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -59,20 +64,23 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Verifier Workspace name.")]
-         [ValidateNotNullOrEmpty]
+         HelpMessage = "Verifier Workspace name.",
+            ParameterSetName = CreateByNameParameterSet)]
+        [ValidateNotNullOrEmpty]
         public virtual string VerifierWorkspaceName { get; set; }
 
         [Parameter(
          Mandatory = false,
          ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Description.")]
+         HelpMessage = "Description.",
+            ParameterSetName = CreateByNameParameterSet)]
         public virtual string Description { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Intent ID.")]
+            HelpMessage = "Intent ID.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string IntentId { get; set; }
 

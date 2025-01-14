@@ -68,6 +68,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string ConsoleName { get => this._consoleName; set => this._consoleName = value; }
 
+        /// <summary>Backing field for <see cref="FeatureName" /> property.</summary>
+        private string _featureName;
+
+        /// <summary>The name of the feature.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public string FeatureName { get => this._featureName; set => this._featureName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -232,6 +239,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"consoleName",
         PossibleTypes = new [] { typeof(string) })]
         string ConsoleName { get; set; }
+        /// <summary>The name of the feature.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the feature.",
+        SerializedName = @"featureName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FeatureName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -357,6 +372,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         string ClusterName { get; set; }
         /// <summary>The name of the virtual machine console.</summary>
         string ConsoleName { get; set; }
+        /// <summary>The name of the feature.</summary>
+        string FeatureName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of the Kubernetes cluster.</summary>

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="subnet">Reference of the subnet resource.
         /// </param>
 
-        /// <param name="publicIPAddress">Reference of the PublicIP resource.
+        /// <param name="publicIPAddress">Reference of the PublicIP resource. Null for private only bastion
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the bastion host IP configuration resource.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="privateIPAllocationMethod">Private IP allocation method.
         /// Possible values include: &#39;Static&#39;, &#39;Dynamic&#39;</param>
-        public BastionHostIPConfigurationPropertiesFormat(SubResource subnet, SubResource publicIPAddress, string provisioningState = default(string), string privateIPAllocationMethod = default(string))
+        public BastionHostIPConfigurationPropertiesFormat(SubResource subnet, SubResource publicIPAddress = default(SubResource), string provisioningState = default(string), string privateIPAllocationMethod = default(string))
 
         {
             this.Subnet = subnet;
@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource Subnet {get; set; }
 
         /// <summary>
-        /// Gets or sets reference of the PublicIP resource.
+        /// Gets or sets reference of the PublicIP resource. Null for private only
+        /// bastion
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddress")]
         public SubResource PublicIPAddress {get; set; }
@@ -86,10 +87,6 @@ namespace Microsoft.Azure.Management.Network.Models
             if (this.Subnet == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Subnet");
-            }
-            if (this.PublicIPAddress == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "PublicIPAddress");
             }
 
 

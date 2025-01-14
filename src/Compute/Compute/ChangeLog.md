@@ -20,7 +20,13 @@
 
 -->
 ## Upcoming Release
+
+## Version 9.0.1
+* Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
+* Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
+* Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVMDiskEncryptionExtension`
+* Added new parameter `EncryptionIdentity` to cmdlet `New-AzVMConfig`
 
 ## Version 9.0.0
 * Made `-PublicIpSku` parameter Standard by default in `New-AzVM`

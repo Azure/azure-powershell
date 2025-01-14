@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.6.0
+* Upgraded nuget package to signed package.
+* Added support for UAMI in Backup Instance
+
 ## Version 2.5.0
 * Added support for vault tier backup and restore for AzureKubernetesService
 * Added support for resource modifier reference

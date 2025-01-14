@@ -11,19 +11,25 @@ schema: 2.0.0
 To get network manager verifier workspace reachability analysis intent.
 ## SYNTAX
 
-### NoExpand (Default)
+### ByName (Default)
 ```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent [-Name <String>] -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
-### Expand
+### ByList
 ```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
+### ByResourceId
+```
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 
 ## DESCRIPTION
 When given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet gets that specific Verifier Workspace Reachability Analysis Intent. When not given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet gets a list of the Verifier Workspace Reachability Analysis Intents in the specified network manager.
@@ -130,7 +136,7 @@ Gets the Verifier Workspace Reachability Analysis Intent for 'testReachabilityAn
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -145,8 +151,8 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
-Parameter Sets: NoExpand
+Type: System.String
+Parameter Sets: ByName
 Aliases: ResourceName
 
 Required: False
@@ -156,24 +162,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
 
 ### -NetworkManagerName
 The network manager name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -183,27 +178,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -217,8 +197,8 @@ Accept wildcard characters: True
 The verifier workspace name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -226,6 +206,19 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+### -ResourceId
+The Verifier Workspace Analysis Intent resource id.
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: ReachabilityAnalysisIntentId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### CommonParameters

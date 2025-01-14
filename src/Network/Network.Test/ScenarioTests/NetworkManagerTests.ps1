@@ -1528,7 +1528,7 @@ function Test-NetworkManagerIpamPoolStaticCidrCRUD
         New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes
 
         # Create static cidr
-        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName -AddressPrefix $addressPrefixes
+        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -AddressPrefix $addressPrefixes
 
         # Get static cidr
         $staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName
@@ -1588,12 +1588,11 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-NotNull $verifierWorkspaceList;
         Assert-AreEqual $verifierWorkspaceList.Count 1;
 
-        # Update verifier workspace
-        $verifierWorkspace.Properties.Description = "A different description."
-        $newVerifierWorkspace = Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
-        Assert-NotNull $newVerifierWorkspace;
-        Assert-AreEqual "A different description." $newVerifierWorkspace.Properties.Description;
-        Assert-AreEqual $verifierWorkspaceName $newVerifierWorkspace.Name;
+         # Get by resourceId
+        $resourceId = $verifierWorkspace.Id
+        $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceId $resourceId
+        Assert-NotNull $verifierWorkspace
+        Assert-AreEqual $resourceId $verifierWorkspace.Id
 
         # Create analysis intent
         $sourcePortList = @("100")
@@ -1605,12 +1604,18 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
 
         $analysisIntent = New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName -SourceResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic $groupItem
 
-         # Get analysis intent
+        # Get analysis intent
         $reachabilityAnalysisIntent = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName
         Assert-NotNull $reachabilityAnalysisIntent;
         Assert-AreEqual $reachabilityAnalysisIntentName $reachabilityAnalysisIntent.Name;
         Assert-AreEqual $reachabilityAnalysisIntent.Properties.IpTraffic.SourceIps $sourceIpList;
         Assert-AreEqual $reachabilityAnalysisIntent.Properties.IpTraffic.DestinationIps $destinationIpList;
+
+        # Get by resourceId
+        $resourceId = $reachabilityAnalysisIntent.Id
+        $reachabilityAnalysisIntent = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceId $resourceId
+        Assert-NotNull $reachabilityAnalysisIntent
+        Assert-AreEqual $resourceId $reachabilityAnalysisIntent.Id
 
         # Get  analysis intent list
         $reachabilityAnalysisIntentList = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName
@@ -1620,7 +1625,6 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         # Create analysis run
         # Get the intent ID
         $intentId = $analysisIntent.Id
-        Write-Host "Analysis Intent ID: $intentId"
 
         New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisRunName -IntentId $intentId -Description "DESCription"
 
@@ -1634,18 +1638,22 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-NotNull $reachabilityAnalysisRunList;
         Assert-AreEqual $reachabilityAnalysisRunList.Count 1
 
+        # Get by resourceId
+        $resourceId = $reachabilityAnalysisRun.Id
+        $reachabilityAnalysisRun = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceId $resourceId
+        Assert-NotNull $reachabilityAnalysisRun
+        Assert-AreEqual $resourceId $reachabilityAnalysisRun.Id
+
         Start-TestSleep -Seconds 300
         Assert-NotNull $reachabilityAnalysisRun
 
-        # Output the value of AnalysisResult for debugging
-        Write-Output "AnalysisResult: $($reachabilityAnalysisRun.Properties.AnalysisResult)"
 
         Assert-NotNull $reachabilityAnalysisRun.Properties.AnalysisResult
         Assert-AreEqual "DESCription" $reachabilityAnalysisRun.Properties.Description;
         Assert-AreEqual $intentId  $reachabilityAnalysisRun.Properties.IntentId;
 
         # Delete analysis run
-        $job = Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $reachabilityAnalysisRunName -VerifierWorkspaceName $verifierWorkspaceName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceId $reachabilityAnalysisRun.Id -PassThru -Force -AsJob
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
@@ -1655,7 +1663,8 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         $removeResult = $job | Receive-Job;
 
         # Delete verifier workspace
-        $job = Remove-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -PassThru -Force -AsJob;
+        # Remove by InputObject
+        $job = Remove-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 	}

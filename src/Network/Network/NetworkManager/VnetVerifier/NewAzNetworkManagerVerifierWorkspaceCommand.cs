@@ -28,21 +28,25 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspace", SupportsShouldProcess = true), OutputType(typeof(PSVerifierWorkspace))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspace", SupportsShouldProcess = true, DefaultParameterSetName = CreateByNameParameterSet), OutputType(typeof(PSVerifierWorkspace))]
     public class NewAzNetworkManagerVerifierWorkspaceCommand : VerifierWorkspaceBaseCmdlet
     {
+        private const string CreateByNameParameterSet = "ByName";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The resource name.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The network manager name.")]
+            HelpMessage = "The network manager name.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string NetworkManagerName { get; set; }
@@ -50,7 +54,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -58,7 +63,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
-         HelpMessage = "location.")]
+         HelpMessage = "location.",
+            ParameterSetName = CreateByNameParameterSet)]
         [LocationCompleter("Microsoft.Network/networkManagers/verifierWorkspaces")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
@@ -67,14 +73,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
          Mandatory = false,
          ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Description.")]
+         HelpMessage = "Description.",
+            ParameterSetName = CreateByNameParameterSet)]
         public virtual string Description { get; set; }
 
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable which represents resource tags.")]
+            HelpMessage = "A hashtable which represents resource tags.",
+            ParameterSetName = CreateByNameParameterSet)]
         public Hashtable Tag { get; set; }
 
         [Parameter(

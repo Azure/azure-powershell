@@ -813,6 +813,23 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: CodeSigning
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: CodeSigning
+        then:
+        - mentionUsers:
+            mentionees:
+            - Jaxelr
+            - DawnWang17
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Cognitive - Anomaly Detector
         - hasLabel:
             label: Service Attention

@@ -123,3 +123,265 @@ end {
     }
 } 
 }
+
+<#
+.Synopsis
+Account Migration request can be triggered for a storage account to change its redundancy level.
+The migration start the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
+.Description
+Account Migration request can be triggered for a storage account to change its redundancy level.
+The migration start the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
+.Example
+Start-AzStorageAccountMigration -AccountName myaccount -ResourceGroupName myresourcegroup -TargetSku Standard_LRS -Name migration1 -AsJob
+.Example
+Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name myaccount | Start-AzStorageAccountMigration  -TargetSku Standard_LRS -AsJob
+.Example
+$properties = '{
+   "properties": {
+     "targetSkuName": "Standard_ZRS"
+   }
+}'
+ Start-AzStorageAccountMigration -ResourceGroupName myresourcegroup -AccountName myaccount -JsonString $properties -AsJob
+.Example
+# Before executing the cmdlet, make sure you have a json file that contains {"properties": {"targetSkuName": <TargetSKU>}} 
+Start-AzStorageAccountMigration -ResourceGroupName myresourcegroup -AccountName myaccount -JsonFilePath properties.json -AsJob
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [DeletedAccountName <String>]: Name of the deleted storage account.
+  [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The location of the deleted storage account.
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
+
+PARAMETER <IStorageAccountMigration>: The parameters or status associated with an ongoing or enqueued storage account migration in order to update its current SKU or region.
+  DetailTargetSkuName <String>: Target sku name for the account
+  [Name <String>]: current value is 'default' for customer initiated migration
+  [Type <String>]: SrpAccountMigrationType in ARM contract which is 'accountMigrations'
+.Link
+https://learn.microsoft.com/powershell/module/az.storage/start-azstorageaccountmigration
+#>
+function Start-AzStorageAccountMigration {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='StartExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [System.String]
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='StartViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [System.String]
+    # The name of the resource group within the user's subscription.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Start')]
+    [Parameter(ParameterSetName='StartExpanded')]
+    [Parameter(ParameterSetName='StartViaJsonFilePath')]
+    [Parameter(ParameterSetName='StartViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Start', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration]
+    # The parameters or status associated with an ongoing or enqueued storage account migration in order to update its current SKU or region.
+    ${Parameter},
+
+    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.String]
+    # Target sku name for the account
+    ${TargetSku},
+
+    [Parameter(ParameterSetName='StartExpanded')]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.String]
+    # current value is 'default' for customer initiated migration
+    ${Name},
+
+    [Parameter(ParameterSetName='StartExpanded')]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.String]
+    # SrpAccountMigrationType in ARM contract which is 'accountMigrations'
+    ${Type},
+
+    [Parameter(ParameterSetName='StartViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Start operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='StartViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.String]
+    # Json string supplied to the Start operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Start = 'Az.Storage.private\Start-AzStorageAccountMigration_Start';
+            StartExpanded = 'Az.Storage.private\Start-AzStorageAccountMigration_StartExpanded';
+            StartViaIdentity = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaIdentity';
+            StartViaIdentityExpanded = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaIdentityExpanded';
+            StartViaJsonFilePath = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaJsonFilePath';
+            StartViaJsonString = 'Az.Storage.private\Start-AzStorageAccountMigration_StartViaJsonString';
+        }
+        if (('Start', 'StartExpanded', 'StartViaJsonFilePath', 'StartViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}

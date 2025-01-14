@@ -226,7 +226,7 @@
     <value>In Monthly and Yearly retention schedules, RetentionFormatType cannot be 'Daily' if Weekly BackupSchedule is selected</value>
   </data>
   <data name="RetentionDurationCountInvalidException" xml:space="preserve">
-    <value>RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999</value>
+    <value>RetentionDuration in {0} should be from {1} - {2}</value>
   </data>
   <data name="WeeklyRetentionScheduleNullException" xml:space="preserve">
     <value>If Weekly backup schedule is enabled, then IsDailyScheduleEnabled should be false and Weekly retention schedule should not be null, IsWeeklyScheduleEnabled should be true</value>
@@ -860,7 +860,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists</value>
   </data>
   <data name="AFSPolicyUpdateNotAllowed" xml:space="preserve">
-    <value>Modifying existing policies to stop data transfer to the vault and retain backups only as snapshots is not supported. Please create a new policy to opt-out of the data transfer to the recovery services vault.</value>
+    <value>Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups.</value>
   </data>
   <data name="AFSPolicyUpdateWarning" xml:space="preserve">
     <value>Changing the backup tier keeps current snapshots as-is under the existing policy. Future backups will be stored in the vault with new retention settings. This action is irreversible and incurs additional costs. Switching from vault to snapshot requires reconfiguration. Learn more at https://learn.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview?tabs=snapshot.</value>

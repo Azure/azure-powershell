@@ -46,6 +46,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'PythonCustomImage'", "PythonCustomImage", global::System.Management.Automation.CompletionResultType.ParameterValue, "PythonCustomImage");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Python3_11_7".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Python3_11_7'", "Python3_11_7", global::System.Management.Automation.CompletionResultType.ParameterValue, "Python3_11_7");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Python3_11_7_DL".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Python3_11_7_DL'", "Python3_11_7_DL", global::System.Management.Automation.CompletionResultType.ParameterValue, "Python3_11_7_DL");
+            }
         }
     }
 }
