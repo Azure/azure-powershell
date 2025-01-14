@@ -55,7 +55,7 @@
         ${Tag},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Gets or sets the user assigned identities.')]
-        [Alias('UserAssignedIdentity')]
+        [Alias('UserAssignedIdentity', 'AssignUserIdentity')]
         [System.Collections.Hashtable]
         ${IdentityUserAssignedIdentity},
 

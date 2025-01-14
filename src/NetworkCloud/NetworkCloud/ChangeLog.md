@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
+* Upgraded API version to 2024-07-01
 
 ## Version 1.0.2
 * Fixed secrets exposure in example documentation.

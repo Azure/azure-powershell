@@ -134,6 +134,7 @@ function Validate_Cluster{
     $Cluster.SkuName | Should -Be $SkuName
     $Cluster.SkuTier | Should -Be $SkuTier
 	$Cluster.SkuCapacity | Should -Be $Capacity
+	$Cluster.ZoneStatus | Should -Be "NonZonal"
 }
 
 <#
@@ -208,10 +209,15 @@ function Validate_Script {
 		[bool]$continueOnErros,
 		[string]$clusterName,
 		[string]$databaseName,
-		[string]$scriptName)
+		[string]$scriptName,
+		[string]$principalPermissionsAction,
+		[string]$scriptLevel)
 		$ScriptFullName = "$clusterName/$databaseName/$scriptName"
 		$Script.Name | Should -Be $ScriptFullName
 		$Script.ForceUpdateTag | Should -Be $forceUpdateTag
+		$Script.PrincipalPermissionsAction | Should -Be $principalPermissionsAction
+		$Script.Level | Should -Be $scriptLevel
+		
 }
 
 function Validate_Inline_Script {
@@ -220,10 +226,14 @@ function Validate_Inline_Script {
 		[bool]$continueOnErros,
 		[string]$clusterName,
 		[string]$databaseName,
-		[string]$scriptName)
+		[string]$scriptName,
+		[string]$principalPermissionsAction,
+		[string]$scriptLevel)
 		$ScriptFullName = "$clusterName/$databaseName/$scriptName"
 		$Script.Name | Should -Be $ScriptFullName
 		$Script.ForceUpdateTag | Should -Be $forceUpdateTag
+		$Script.PrincipalPermissionsAction | Should -Be $principalPermissionsAction
+		$Script.Level | Should -Be $scriptLevel
 }
 
 <#

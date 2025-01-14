@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.HttpPath(Path = "/providers/Microsoft.HealthDataAIServices/operations", ApiVersion = "2024-02-28-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.HttpPath(Path = "/providers/Microsoft.HealthDataAIServices/operations", ApiVersion = "2024-09-20")]
     public partial class GetAzDeidOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IContext

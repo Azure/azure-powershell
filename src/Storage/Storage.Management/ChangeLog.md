@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
+* Added warning message for account migration cmdlet.
+    - `Start-AzStorageAccountMigration`
+* Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
+    - `New-AzStorageContext`
+* Upgraded Azure.Storage.Blobs to 12.23.0
+* Upgraded Azure.Storage.Files.Shares to 12.21.0
+* Upgraded Azure.Storage.Files.DataLake to 12.21.0
+* Upgraded Azure.Storage.Queues to 12.21.0
+* Supported ClientName property when listing file handles 
+    - `Get-AzStorageFileHandle`
+* Upgraded Azure.Core to 1.44.1.
+
+## Version 8.0.0
 * When downloading blob with parameter AbsoluteUri (alias Uri, BlobUri), not allow input parameter Context together.
     - `Get-AzStorageBlobContent`
 * Migrated following Azure Storage File dataplane cmdlets from 'Microsoft.Azure.Storage.File' to 'Azure.Storage.Files.Shares'

@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.TrafficAnalyticsWorkspaceResourceIdIsMissing);
             }
 
-            if (trafficAnalyticsInterval != null && trafficAnalyticsInterval != 10 && trafficAnalyticsInterval != 60)
+            if (trafficAnalyticsInterval != null && trafficAnalyticsInterval != 10 && trafficAnalyticsInterval != 60 && trafficAnalyticsInterval != 0)
             {
                 throw new PSArgumentException(Properties.Resources.InvalidTrafficAnalyticsInterval);
             }

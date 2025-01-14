@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
                 if (ShouldProcess($"{KeyType} key for {ResourceGroupName}/{Name}", "regenerate"))
                 {
-                    Client.SignalR.RegenerateKey(new RegenerateKeyParameters(KeyType), ResourceGroupName, Name);
+                    Client.SignalR.RegenerateKey(ResourceGroupName, Name, new RegenerateKeyParameters(KeyType));
 
                     if (PassThru)
                     {

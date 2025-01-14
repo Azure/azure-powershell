@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
+
+## Version 0.13.0
 * Fixed output type of cmdlet
 
 ## Version 0.12.0

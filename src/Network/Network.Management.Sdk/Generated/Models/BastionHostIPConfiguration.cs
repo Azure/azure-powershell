@@ -39,12 +39,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the bastion host IP configuration resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="subnet">Reference of the subnet resource.
         /// </param>
 
-        /// <param name="publicIPAddress">Reference of the PublicIP resource.
+        /// <param name="publicIPAddress">Reference of the PublicIP resource. Null for private only bastion
         /// </param>
 
         /// <param name="privateIPAllocationMethod">Private IP allocation method.
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the bastion host IP configuration resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the bastion host IP configuration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -102,7 +103,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource Subnet {get; set; }
 
         /// <summary>
-        /// Gets or sets reference of the PublicIP resource.
+        /// Gets or sets reference of the PublicIP resource. Null for private only
+        /// bastion
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddress")]
         public SubResource PublicIPAddress {get; set; }

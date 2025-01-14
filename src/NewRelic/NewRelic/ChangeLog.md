@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 0.2.0
 * Updated API version from 2022-07-01 to 2024-01-01.

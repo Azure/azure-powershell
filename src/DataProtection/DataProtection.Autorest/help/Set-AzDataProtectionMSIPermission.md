@@ -15,16 +15,16 @@ Grants required permissions to the backup vault and other resources for configur
 ### SetPermissionsForBackup (Default)
 ```
 Set-AzDataProtectionMSIPermission -BackupInstance <IBackupInstanceResource> -PermissionsScope <String>
- -VaultName <String> -VaultResourceGroup <String> [-KeyVaultId <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -VaultName <String> -VaultResourceGroup <String> [-KeyVaultId <String>] [-UserAssignedIdentityARMId <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetPermissionsForRestore
 ```
 Set-AzDataProtectionMSIPermission -PermissionsScope <String> -RestoreRequest <IAzureBackupRestoreRequest>
  -VaultName <String> -VaultResourceGroup <String> [-DatasourceType <DatasourceTypes>]
- [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>] [-SubscriptionId <String>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>] [-SubscriptionId <String>]
+ [-UserAssignedIdentityARMId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +100,22 @@ Waiting for 60 seconds for roles to propagate
 ```
 
 The above command is used to assign permissions to the backup vault "VaultName" under resource group "resourceGroupName" at the "ResourceGroup" scope.
+
+### Example 5: Grant Permissions using Vault UAMI for Configure Backup
+```powershell
+$backupinstance = Get-AzDataProtectionBackupInstance -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -SubscriptionId "SubscriptionId"
+
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "ResourceGroupName" -VaultName "VaultName" -PermissionsScope "ResourceGroup" -BackupInstance $backupinstance[0] -UserAssignedIdentityARMId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RGName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedIdentityName"
+```
+
+```output
+Using Vault UAMI with ARMId: /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedIdentityName with Principal ID: PrincipalId 
+Assigned Disk Snapshot Contributor permission to the backup vault over snapshot resource group with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName 
+Assigned Disk Backup Reader permission to the backup vault over DataSource with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.Compute/disks/DiskName
+Waiting for 60 seconds for roles to propagate
+```
+
+The above command is used to assign permissions to the backup vault "VaultName" under resource group "ResourceGroupName" at the "ResourceGroup" scope using a User Assigned Managed Identity (UAMI).
 
 ## PARAMETERS
 
@@ -218,6 +234,21 @@ Subscription Id of the backup vault
 Type: System.String
 Parameter Sets: SetPermissionsForRestore
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityARMId
+User Assigned Identity ARM ID of the backup vault to be used for assigning permissions
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AssignUserIdentity
 
 Required: False
 Position: Named

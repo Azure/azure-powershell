@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
+* Removed "Microsoft.Azure.Management.Logic" Version "4.1.0" PackageReference
 
 ## Version 1.5.1
 * Removed the *.deps.json file that caused false positive security alerts. [#23603]

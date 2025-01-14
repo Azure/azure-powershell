@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* upgraded nuget package to signed package.
+* Added list of allowed classifications in description for Maintenance Configuration
+* Fixed incorrect parameter mapping in Get-AzApplyUpdate
 
 ## Version 1.4.3
 * Fixed bug where AzMaintenanceConfiguration returned a List object. [#25781]

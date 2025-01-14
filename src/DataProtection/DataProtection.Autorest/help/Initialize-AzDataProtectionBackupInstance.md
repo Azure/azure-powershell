@@ -16,7 +16,8 @@ Initializes Backup instance Request object for configuring backup
 Initialize-AzDataProtectionBackupInstance -DatasourceLocation <String> -DatasourceType <DatasourceTypes>
  [-BackupConfiguration <IBackupDatasourceParameters>] [-DatasourceId <String>] [-FriendlyName <String>]
  [-PolicyId <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
- [-SnapshotResourceGroupId <String>] [<CommonParameters>]
+ [-SnapshotResourceGroupId <String>] [-UserAssignedIdentityArmId <String>]
+ [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,6 +220,36 @@ Sanpshot Resource Group
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityArmId
+User assigned identity ARM Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AssignUserIdentity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSystemAssignedIdentity
+Use system assigned identity
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 

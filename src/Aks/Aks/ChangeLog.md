@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
+* Fixed the issue that HTTP request body contains empty userAssignedIdentities object when identity type is `SystemAssigned`.
 
 ## Version 6.0.4
 * Fixed secrets exposure in example documentation.

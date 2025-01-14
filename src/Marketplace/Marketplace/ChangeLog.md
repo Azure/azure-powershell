@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
 
 ## Version 0.5.1
 * Removed Microsoft.Azure.Management.Marketplace 1.1.0 dependencies

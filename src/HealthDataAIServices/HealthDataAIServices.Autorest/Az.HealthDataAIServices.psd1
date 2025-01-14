@@ -1,5 +1,5 @@
 @{
-  GUID = '7154e3c5-87b9-4071-b213-28271141dae3'
+  GUID = '38e4b21d-b436-4d83-a47b-d94a7d963dc2'
   RootModule = './Az.HealthDataAIServices.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

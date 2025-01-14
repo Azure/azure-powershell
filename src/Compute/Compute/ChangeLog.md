@@ -20,6 +20,11 @@
 
 -->
 ## Upcoming Release
+* upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+* Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
+
+## Version 9.0.0
 * Made `-PublicIpSku` parameter Standard by default in `New-AzVM`
 
 ## Version 8.5.0

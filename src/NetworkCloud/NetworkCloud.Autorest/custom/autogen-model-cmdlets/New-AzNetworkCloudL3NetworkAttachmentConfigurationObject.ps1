@@ -21,12 +21,12 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkAttachmentConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkAttachmentConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudL3NetworkAttachmentConfigurationObject
 #>
 function New-AzNetworkCloudL3NetworkAttachmentConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkAttachmentConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkAttachmentConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,7 +44,7 @@ function New-AzNetworkCloudL3NetworkAttachmentConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.L3NetworkAttachmentConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkAttachmentConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('IpamEnabled')) {
             $Object.IpamEnabled = $IpamEnabled
