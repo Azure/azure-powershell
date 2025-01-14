@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update an existing event subscription of a namespace topic.
+update an existing event subscription of a namespace topic.
 .Description
-Update an existing event subscription of a namespace topic.
+update an existing event subscription of a namespace topic.
 .Example
 Update-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName azps-eventsubname -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic -DeliveryConfigurationDeliveryMode Queue -EventDeliverySchema CloudEventSchemaV1_0
 .Example

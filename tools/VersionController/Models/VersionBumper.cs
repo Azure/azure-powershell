@@ -456,9 +456,15 @@ namespace VersionController.Models
             tempModuleContent = tempModuleContent.Select(l => l = l.Replace(moduleName + "-temp", moduleName)).ToArray();
             var pattern = @"RootModule(\s*)=(\s*)(['\""])" + moduleName + @"(\.)psm1(['\""])";
             tempModuleContent = tempModuleContent.Select(l => Regex.Replace(l, pattern, @"# RootModule = ''")).ToArray();
-            
-            
-            File.WriteAllLines(projectModuleManifestPath, tempModuleContent);
+            var filteredContent = tempModuleContent.Select(l =>
+            {
+                if (l.TrimStart().StartsWith("NestedModules = @"))
+                {
+                    return File.ReadAllLines(projectModuleManifestPath).FirstOrDefault(x => x.TrimStart().StartsWith("NestedModules = @")) ?? l;
+                }
+                return l;
+            }).ToArray();
+            File.WriteAllLines(projectModuleManifestPath, filteredContent);
             File.Delete(tempModuleManifestPath);
         }
 

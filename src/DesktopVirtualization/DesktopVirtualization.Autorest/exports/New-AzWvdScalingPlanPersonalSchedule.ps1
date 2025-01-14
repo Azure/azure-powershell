@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update a ScalingPlanPersonalSchedule.
+create a ScalingPlanPersonalSchedule.
 .Description
-Create or update a ScalingPlanPersonalSchedule.
+create a ScalingPlanPersonalSchedule.
 .Example
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -54,12 +54,12 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -OffPeakMinutesToWaitOnLogoff 10
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplanpersonalschedule
 #>
 function New-AzWvdScalingPlanPersonalSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -86,203 +86,216 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]]
+    [System.String[]]
     # Set of days of the week on which this schedule is active.
     ${DaysOfWeek},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the off-peak period.
     ${OffPeakActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the off-peak period.
     ${OffPeakActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period.
     ${OffPeakMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
     ${OffPeakMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${OffPeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${OffPeakStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
     ${OffPeakStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the peak period.
     ${PeakActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the peak period.
     ${PeakActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period.
     ${PeakMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
     ${PeakMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${PeakStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${PeakStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the peak phase.
     ${PeakStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the ramp down period.
     ${RampDownActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the ramp down period.
     ${RampDownActionOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period.
     ${RampDownMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
     ${RampDownMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampDownStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampDownStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
     ${RampDownStartVMOnConnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a user disconnect during the ramp up period.
     ${RampUpActionOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation]
+    [System.String]
     # Action to be taken after a logoff during the ramp up period.
     ${RampUpActionOnLogoff},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "WithAssignedUser", "All")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior]
+    [System.String]
     # The desired startup behavior during the ramp up period for personal vms in the hostpool.
     ${RampUpAutoStartHost},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
     ${RampUpMinutesToWaitOnDisconnect},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
     ${RampUpMinutesToWaitOnLogoff},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The hour.
     ${RampUpStartTimeHour},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
     # The minute.
     ${RampUpStartTimeMinute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
+    [System.String]
     # The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
     # If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
     ${RampUpStartVMOnConnect},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -360,8 +373,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPersonalSchedule_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPersonalSchedule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DesktopVirtualization.private\New-AzWvdScalingPlanPersonalSchedule_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

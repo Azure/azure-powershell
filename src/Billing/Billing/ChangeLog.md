@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+* Upgraded nuget package to signed package.
+
 ## Version 2.1.0
 * Renamed `Get-UsageAggregates` to `Get-AzUsageAggregate` and added `Get-UsageAggregates` as the alias to avoid breaking change.
 

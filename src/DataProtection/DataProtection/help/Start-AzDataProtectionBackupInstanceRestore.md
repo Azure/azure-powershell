@@ -16,17 +16,17 @@ Triggers restore for a BackupInstance
 ```
 Start-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -BackupInstanceName <String>
  -VaultName <String> -Parameter <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
- [-ResourceGuardOperationRequest <String[]>] [-Token <String>] [-RestoreToSecondaryRegion]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceGuardOperationRequest <String[]>] [-Token <String>] [-SecureToken <SecureString>]
+ [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TriggerExpanded
 ```
 Start-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -BackupInstanceName <String>
  -VaultName <String> [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] -ObjectType <String>
- -RestoreTargetInfo <IRestoreTargetInfoBase> -SourceDataStoreType <SourceDataStoreType>
+ [-SecureToken <SecureString>] [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -ObjectType <String> -RestoreTargetInfo <IRestoreTargetInfoBase> -SourceDataStoreType <SourceDataStoreType>
  [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity]
  [-SourceResourceId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -233,6 +233,43 @@ The sixth command initializes the restore request object for AzureBlob restore w
 The seventh command triggers validate before restore.
 The last command triggers prefix match Item level restore for vaulted blob containers.
 
+### Example 11: Trigger alternate location vaulted restore for AzureKubernetesService
+```powershell
+$subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "resourceGroupName"
+$vaultName = "vaultName" 
+$location = "eastasia"
+$snapshotResourceGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/stagingRG"
+$stagingStorageAccount = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/stagingRG/providers/Microsoft.Storage/storageAccounts/snapshotsa"
+$targetAKSClusterARMId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/targetRG/providers/Microsoft.ContainerService/managedClusters/targetKubernetesCluster"
+
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "aks-cluster-name" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+ $aksRestoreCriteria = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService  -PersistentVolumeRestoreMode RestoreWithVolumeData -IncludeClusterScopeResource $true -StagingResourceGroupId $snapshotResourceGroupId -StagingStorageAccountId $stagingStorageAccount -IncludedNamespace "hrweb" -NamespaceMapping @{"hrweb"="hrwebrestore"}
+
+$aksALRRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService -SourceDataStore VaultStore -RestoreLocation $location -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -TargetResourceId $targetAKSClusterARMId
+
+# assign necessary permissions from portal
+Set-AzContext -SubscriptionId $subId
+Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -PermissionsScope "ResourceGroup" -RestoreRequest $aksALRRestoreRequest -SnapshotResourceGroupId $snapshotResourceGroupId
+
+$validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -RestoreRequest $aksALRRestoreRequest -Name $instance.BackupInstanceName 
+
+$restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $aksALRRestoreRequest
+```
+
+First, we initialize the necessary variables that will be used in the restore script.
+Then, we fetch the backup instance and recovery point for the instance.
+Next, we initialize the Restore Configuration client object, which is used to set up the restore request client object.
+Note that for vaulted restores, we have included the StagingResourceGroupId and StagingStorageAccountId parameters.
+
+We then initialize the restore request object for an Azure Kubernetes Service (AKS) alternate location restore.
+After that, we assign the required permissions to the backup vault and the target AKS cluster to enable the restore operation.
+Please note that this command is not fully supported for all AKS scenarios; use the Azure portal to assign the necessary permissions.
+
+Finally, we use the Test command to validate the restore configuration and ensure that the necessary permissions are in place before triggering the restore for Azure Kubernetes Service.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -417,6 +454,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceDataStoreType
 Type of the source data store
 
@@ -464,7 +517,7 @@ Accept wildcard characters: False
 
 ### -Token
 Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
 
 ```yaml
 Type: System.String

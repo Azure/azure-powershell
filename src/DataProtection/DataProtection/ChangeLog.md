@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 2.6.0
+* Upgraded nuget package to signed package.
+* Added support for UAMI in Backup Instance
+
+## Version 2.5.0
+* Added support for vault tier backup and restore for AzureKubernetesService
+* Added support for resource modifier reference
+* Added a fix for Update-AzDataProtectionBackupInstance
+
 ## Version 2.4.0
 * Added vault tier restore and update backup instance for blobs.
 * Added CmkEnryption parameters to Get-AzDataProtectionBackupVault, New-AzDataProtectionBackupVault and Update-AzDataProtectionBackupVault cmdlets.

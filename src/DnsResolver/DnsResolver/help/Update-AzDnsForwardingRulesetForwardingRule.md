@@ -188,6 +188,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -206,7 +207,7 @@ DNS servers to forward the DNS query to.
 To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ITargetDnsServer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ITargetDnsServer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -257,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IForwardingRule
 
 ## NOTES
 

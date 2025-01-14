@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 .Description
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 .Example
 $inboundIpRule = New-AzEventGridInboundIPRuleObject -Action Allow -IPMask "12.18.176.1"
 New-AzEventGridTopic -Name azps-topic -ResourceGroupName azps_test_group_eventgrid -Location eastus -PublicNetworkAccess Enabled -InboundIPRule $inboundIpRule

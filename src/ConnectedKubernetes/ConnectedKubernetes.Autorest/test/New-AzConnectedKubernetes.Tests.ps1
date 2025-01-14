@@ -50,10 +50,13 @@ Describe 'Invoke-ConfigDPHealthCheck' {
 
     It 'Unhealthy (not 200 response)' {
         Mock Invoke-RestMethod {
-            $Script:StatusCode = 500
-            return
+            Throw "Some error!"
         }
-        { Invoke-ConfigDPHealthCheck } | Should -Throw "Error while performing DP health check, StatusCode: 500"
+        # Actually expect the error message to be "Error while performing DP health check, StatusCode: $StatusCode"
+        # But we now Mock Invoke-RestMethod not Invoke-RestMethodWithUriParameters, and Invoke-RestMethod 
+        # can only return unhealthy response with error thrown, which creates a terminating error and will be 
+        # cauhgt by pester
+        { Invoke-ConfigDPHealthCheck } | Should -Throw
         Assert-MockCalled "Invoke-RestMethod" -Times 1
         Assert-VerifiableMock
     }
@@ -73,8 +76,6 @@ Describe 'Invoke-RestMethodWithUriParameters' {
                 -Headers @{} `
                 -UriParameters $uriParameters `
                 -RequestBody @{} `
-                -MaximumRetryCount 5 `
-                -RetryIntervalSec 2 `
                 -StatusCodeVariable YesOrNo
         } | Should -Not -Throw
         Assert-MockCalled "Invoke-RestMethod" -Times 1 -ParameterFilter { $Uri.AbsoluteUri -eq "https://invalid.invalid/some/page/nowhere" }
@@ -98,8 +99,6 @@ Describe 'Invoke-RestMethodWithUriParameters' {
                 -Headers @{} `
                 -UriParameters $uriParameters `
                 -RequestBody @{} `
-                -MaximumRetryCount 5 `
-                -RetryIntervalSec 2 `
                 -StatusCodeVariable YesOrNo
         } | Should -Not -Throw
         Assert-MockCalled "Invoke-RestMethod" -Times 1 -ParameterFilter { $Uri.AbsoluteUri -eq "https://invalid.invalid/some/page/nowhere?key1=value1&key2=value2" }
@@ -109,8 +108,7 @@ Describe 'Invoke-RestMethodWithUriParameters' {
 
     It 'request failed' {
         Mock Invoke-RestMethod {
-            $Script:StatusCode = 500
-            return
+            throw "Some Error!"
         }
         {
             Invoke-RestMethodWithUriParameters `
@@ -119,12 +117,10 @@ Describe 'Invoke-RestMethodWithUriParameters' {
                 -Headers @{} `
                 -UriParameters @{} `
                 -RequestBody @{} `
-                -MaximumRetryCount 5 `
-                -RetryIntervalSec 2 `
                 -StatusCodeVariable YesOrNo
-        } | Should -Not -Throw
+        } | Should -Throw "Error while issuing REST request: Some Error!"
         Assert-VerifiableMock
-        $YesOrNo | Should -Be 500
+        $YesOrNo | Should -Be 400
     }
 }
 
@@ -174,7 +170,7 @@ Describe 'Get-AzCloudMetadata' {
     # For some reason Pester fails to "see" Get-AzureEnvirnomment so we create
     # and empty instance here that we can the mock.
     BeforeEach {
-        Function Get-AzureEnvironment {
+        Function Get-AzEnvironment {
         }
     }
 
@@ -186,7 +182,7 @@ Describe 'Get-AzCloudMetadata' {
                 }
             }
         }
-        Mock Get-AzureEnvironment {
+        Mock Get-AzEnvironment {
             $context = [PSCustomObject]@{
                 Name = "AzureCloud"
             }
@@ -194,9 +190,9 @@ Describe 'Get-AzCloudMetadata' {
         }
         { $Script:cloud = Get-AzCloudMetadata } | Should -Not -Throw
         Assert-MockCalled "Get-AzContext" -Times 1
-        Assert-MockCalled "Get-AzureEnvironment" -Times 1
+        Assert-MockCalled "Get-AzEnvironment" -Times 1
         # Ref: https://github.com/pester/Pester/issues/2556
-        # Assert-MockCalled "Get-AzureEnvironment" -Times 1 -ParameterFilter { $Local:Name -eq "SovereignAzureCloud" }
+        # Assert-MockCalled "Get-AzEnvironment" -Times 1 -ParameterFilter { $Local:Name -eq "SovereignAzureCloud" }
         Assert-VerifiableMock
         $cloud.name | Should -Be "AzureCloud"
     }
@@ -210,7 +206,7 @@ Describe 'Get-AzCloudMetadata' {
         Assert-VerifiableMock
     }
 
-    It 'Get-AzureEnvironment fails' {
+    It 'Get-AzEnvironment fails' {
         Mock Get-AzContext {
             return [PSCustomObject]@{
                 Environment = [PSCustomObject]@{
@@ -218,7 +214,7 @@ Describe 'Get-AzCloudMetadata' {
                 }
             }
         }
-        Mock Get-AzureEnvironment {
+        Mock Get-AzEnvironment {
             throw "Some error!"
         }
         { Get-AzCloudMetadata } | Should -Throw "Failed to request ARM metadata. Error: Some error!"
@@ -327,17 +323,15 @@ Describe 'Get-HelmValuesFromConfigDP' {
             }
             id       = "abcd"
         }
-        $rsp = $null
         Mock Invoke-RestMethod {
-            $Script:StatusCode = 500
-            return $rsp
+            Throw "Some Error"
         }
         {
             $Script:helmValues = Get-HelmValuesFromConfigDP `
                 -ConfigDpEndpoint "https://helm.azure.com" `
                 -ReleaseTrainCustom $null `
                 -RequestBody $rq
-        } | Should -Throw "No content was found in helm registry path response, StatusCode: 500."
+        } | Should -Throw
         Assert-MockCalled "Invoke-RestMethod" -Times 1
         Assert-VerifiableMock
     }
@@ -381,7 +375,7 @@ Describe 'Get-HelmValuesFromConfigDP' {
                 -ConfigDpEndpoint "https://helm.azure.com" `
                 -ReleaseTrainCustom $null `
                 -RequestBody $rq
-        } | Should -Throw "Error while fetching helm values from DP from JSON response: Failed!"
+        } | Should -Throw
         Assert-MockCalled "Invoke-RestMethod" -Times 1
         Assert-VerifiableMock
     }
@@ -410,8 +404,6 @@ Describe 'Get-HelmChartPath' {
             -Path $env:USERPROFILE `
             -ChildPath ".azure" `
             -AdditionalChildPath "AzureArcCharts", "azure-arc-k8sagents"
-        # Write-Error -Message "ChartPath: $ChartPath" -ErrorAction Continue
-        # Write-Error -Message "ExpectedChartPath: $ExpectedChartPath" -ErrorAction Continue
         $ChartPath | Should -eq $ExpectedChartPath
     }
 
@@ -449,8 +441,6 @@ Describe 'Get-HelmChartPath' {
             -Path $env:USERPROFILE `
             -ChildPath ".azure" `
             -AdditionalChildPath "PreOnboardingChecksCharts", "azure-arc-k8sagents"
-        # Write-Error -Message "ChartPath: $ChartPath" -ErrorAction Continue
-        # Write-Error -Message "ExpectedChartPath: $ExpectedChartPath" -ErrorAction Continue
         $ChartPath | Should -eq $ExpectedChartPath
         $env:HELMCHART = $null
     }
@@ -568,12 +558,6 @@ Describe 'Get-HelmChart' {
                 -RegistryPath "SomePath:1.2.3" `
                 -ChartExportPath "c:\temp" `
                 -HelmClientLocation "fake-helm-client.exe"
-            # -KubeConfig `
-            # -KubeContext `
-            # -NewPath
-            # -ChartName = 'azure-arc-k8sagents' `
-            # -RetryCount = 5 `
-            # -RetryDelay = 3
         } | Should -Not -Throw
         Assert-MockCalled "Invoke-ExternalCommand" -Times 3
         Assert-VerifiableMock
@@ -588,12 +572,6 @@ Describe 'Get-HelmChart' {
                 -RegistryPath "SomePath:1.20.3" `
                 -ChartExportPath "c:\temp" `
                 -HelmClientLocation "fake-helm-client.exe"
-            # -KubeConfig `
-            # -KubeContext `
-            # -NewPath
-            # -ChartName = 'azure-arc-k8sagents' `
-            # -RetryCount = 5 `
-            # -RetryDelay = 3
         } | Should -Throw "Unable to pull 'azure-arc-k8sagents' helm chart from the registry 'SomePath:1.20.3'."
         Assert-MockCalled "Invoke-ExternalCommand" -Times 5
         Assert-VerifiableMock

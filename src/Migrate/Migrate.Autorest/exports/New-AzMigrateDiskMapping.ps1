@@ -20,15 +20,17 @@ Creates a new disk mapping
 .Description
 The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
 .Example
-New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
+New-AzMigrateDiskMapping -DiskID a -DiskType Standard_LRS -IsOSDisk 'true'
+.Example
+New-AzMigrateDiskMapping -DiskID b -DiskType PremiumV2_LRS -IsOSDisk 'false'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -45,7 +47,7 @@ param(
     ${IsOSDisk},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS" })]
+    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS"})]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the type of disks to be used for the Azure VM.

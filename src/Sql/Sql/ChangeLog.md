@@ -19,6 +19,26 @@
 -->
 ## Upcoming Release
 
+## Version 6.0.1
+* Upgraded nuget package to signed package.
+* Updated `New-AzSqlDatabaseExport` with support for Managed Identity
+ 	- Added `ManagedIdentity` to `StorageKeyType` auth list
+   	- Added `ManagedIdentity` to `AuthenticationType` auth list
+* Updated `New-AzSqlDatabaseImport` with support for Managed Identity
+  	- Added `ManagedIdentity` to `StorageKeyType` auth list
+	- Added `ManagedIdentity` to `AuthenticationType` auth list
+
+## Version 6.0.0
+* Added `Start-AzSqlInstanceLinkFailover` cmdlet for Managed Instance Link.
+* Updated `New-AzSqlInstanceLink` with new input parameters
+	- Added `DistributedAvailabilityGroupName`, `FailoverMode`, `InstanceLinkRole`, `SeedingMode`
+	- Renamed `SecondaryAvailabilityGroupName` -> `InstanceAvailabilityGroupName`
+			  `SourceEndpoint` -> `PartnerEndpoint`
+			  `PrimaryAvailabilityGroupName` -> `PartnerAvailabilityGroupName`
+	- `TargetDatabase` -> `Database`, parameter type is changed from string to string[].
+* Updated `AzureSqlManagedInstanceLinkModel` that is a return type of `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Update-AzSqlInstanceLink` ,`Remove-AzSqlInstanceLink`
+* Added new optional parameter for `New-AzSqlDatabaseSecondary` to support cross-subscription geo-replication.
+
 ## Version 5.3.0
 * Fixed secrets exposure in example documentation.
 * Fixed issues regarding Active Directory Administrator in `Set-AzSqlInstanceActiveDirectoryAdministrator` and `Set-AzSqlInstance` cmdlets.

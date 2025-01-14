@@ -20,6 +20,9 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 ### [Get-AzConnectedLicense](Get-AzConnectedLicense.md)
 Retrieves information about the view of a license.
 
+### [Get-AzConnectedLicenseProfile](Get-AzConnectedLicenseProfile.md)
+Retrieves information about the view of a license profile.
+
 ### [Get-AzConnectedMachine](Get-AzConnectedMachine.md)
 Retrieves information about the model view or the instance view of a hybrid machine.
 
@@ -41,11 +44,20 @@ The operation to install patches on a hybrid machine identity in Azure.
 ### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
 The operation to assess patches on a hybrid machine identity in Azure.
 
+### [Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration.md)
+Forces the network security perimeter configuration to refresh for a private link scope.
+
 ### [New-AzConnectedLicense](New-AzConnectedLicense.md)
 The operation to create a license.
 
 ### [New-AzConnectedLicenseDetail](New-AzConnectedLicenseDetail.md)
 Create an in-memory object for LicenseDetails.
+
+### [New-AzConnectedLicenseProfile](New-AzConnectedLicenseProfile.md)
+The operation to create a license profile.
+
+### [New-AzConnectedLicenseProfileFeature](New-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeature.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create the extension.
@@ -59,6 +71,9 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 
 ### [Remove-AzConnectedLicense](Remove-AzConnectedLicense.md)
 The operation to delete a license.
+
+### [Remove-AzConnectedLicenseProfile](Remove-AzConnectedLicenseProfile.md)
+The operation to delete a license profile.
 
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)
 The operation to delete a hybrid machine.
@@ -84,6 +99,12 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
+
+### [Update-AzConnectedLicenseProfile](Update-AzConnectedLicenseProfile.md)
+The operation to update a license profile.
+
+### [Update-AzConnectedLicenseProfileFeature](Update-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeatureUpdate.
 
 ### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
 The operation to update a hybrid machine.

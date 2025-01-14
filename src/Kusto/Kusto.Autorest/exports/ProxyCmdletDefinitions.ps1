@@ -16,6 +16,257 @@
 
 <#
 .Synopsis
+Adds a list of callout policies for engine services.
+.Description
+Adds a list of callout policies for engine services.
+.Example
+$kustoCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+    calloutType = "kusto"
+    outboundAccess = "Allow"
+    calloutUriRegex = "*"
+}
+$sqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+    calloutType = "sql"
+    outboundAccess = "Deny"
+    calloutUriRegex = "*"
+}
+Add-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub -Value @($kustoCalloutPolicy, $sqlCalloutPolicy)
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IKustoIdentity>: Identity Parameter
+  [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
+  [ClusterName <String>]: The name of the Kusto cluster.
+  [DataConnectionName <String>]: The name of the data connection.
+  [DatabaseName <String>]: The name of the database in the Kusto cluster.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
+  [ScriptName <String>]: The name of the Kusto database script.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+VALUE <ICalloutPolicy[]>: A list of the service's callout policies.
+  [CalloutType <CalloutType?>]: Type of the callout service, specifying the kind of external resource or service being accessed.
+  [CalloutUriRegex <String>]: Regular expression or FQDN pattern for the callout URI.
+  [OutboundAccess <OutboundAccess?>]: Indicates whether outbound access is permitted for the specified URI pattern.
+.Link
+https://learn.microsoft.com/powershell/module/az.kusto/add-azkustoclustercalloutpolicy
+#>
+function Add-AzKustoClusterCalloutPolicy {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='AddExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='AddExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the Kusto cluster.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='AddExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='AddExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='AddViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The URL to get the next set of callout policies list results if there are any.
+    ${NextLink},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy[]]
+    # A list of the service's callout policies.
+    # To construct, see NOTES section for VALUE properties and create a hash table.
+    ${Value},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            AddExpanded = 'Az.Kusto.private\Add-AzKustoClusterCalloutPolicy_AddExpanded';
+            AddViaIdentityExpanded = 'Az.Kusto.private\Add-AzKustoClusterCalloutPolicy_AddViaIdentityExpanded';
+        }
+        if (('AddExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Add a list of language extensions that can run within KQL queries.
 .Description
 Add a list of language extensions that can run within KQL queries.
@@ -89,7 +340,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]]
     # The list of language extensions.
     # To construct, see NOTES section for VALUE properties and create a hash table.
     ${Value},
@@ -260,7 +511,7 @@ Add-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkusto
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -294,7 +545,7 @@ VALUE <IDatabasePrincipal[]>: The list of Kusto database principals.
 https://learn.microsoft.com/powershell/module/az.kusto/add-azkustodatabaseprincipal
 #>
 function Add-AzKustoDatabasePrincipal {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal])]
 [CmdletBinding(DefaultParameterSetName='AddExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]
@@ -333,7 +584,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal[]]
     # The list of Kusto database principals.
     # To construct, see NOTES section for VALUE properties and create a hash table.
     ${Value},
@@ -488,7 +739,7 @@ Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAttachedDatabaseConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -514,7 +765,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoattacheddatabaseconfiguration
 #>
 function Get-AzKustoAttachedDatabaseConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAttachedDatabaseConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -694,6 +945,354 @@ end {
 
 <#
 .Synopsis
+Returns the allowed callout policies for the specified service.
+.Description
+Returns the allowed callout policies for the specified service.
+.Example
+
+Get-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub
+
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy
+.Link
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclustercalloutpolicy
+#>
+function Get-AzKustoClusterCalloutPolicy {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the Kusto cluster.
+    ${ClusterName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            List = 'Az.Kusto.private\Get-AzKustoClusterCalloutPolicy_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Returns a list of databases that are owned by this cluster and were followed by another cluster.
+.Description
+Returns a list of databases that are owned by this cluster and were followed by another cluster.
+.Example
+Get-AzKustoClusterFollowerDatabaseGet -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId subid
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IFollowerDatabaseDefinitionGet
+.Link
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterfollowerdatabaseget
+#>
+function Get-AzKustoClusterFollowerDatabaseGet {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IFollowerDatabaseDefinitionGet])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the Kusto cluster.
+    ${ClusterName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            List = 'Az.Kusto.private\Get-AzKustoClusterFollowerDatabaseGet_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Returns a list of databases that are owned by this cluster and were followed by another cluster.
 .Description
 Returns a list of databases that are owned by this cluster and were followed by another cluster.
@@ -701,12 +1300,12 @@ Returns a list of databases that are owned by this cluster and were followed by 
 Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testnewkustocluster
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseDefinition
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IFollowerDatabaseDefinition
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterfollowerdatabase
 #>
 function Get-AzKustoClusterFollowerDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IFollowerDatabaseDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -874,12 +1473,12 @@ Returns a list of language extensions that can run within KQL queries.
 Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterlanguageextension
 #>
 function Get-AzKustoClusterLanguageExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1047,12 +1646,12 @@ Gets the network endpoints of all outbound dependencies of a Kusto cluster
 Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName "mycluster" -ResourceGroupName "testrg"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOutboundNetworkDependenciesEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOutboundNetworkDependenciesEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusteroutboundnetworkdependencyendpoint
 #>
 function Get-AzKustoClusterOutboundNetworkDependencyEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOutboundNetworkDependenciesEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOutboundNetworkDependenciesEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1224,7 +1823,7 @@ Get-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName tes
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterPrincipalAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1250,7 +1849,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterprincipalassignment
 #>
 function Get-AzKustoClusterPrincipalAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterPrincipalAssignment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1438,14 +2037,14 @@ Get-AzKustoClusterSku
  Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAzureResourceSku
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAzureResourceSku
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
 #>
 function Get-AzKustoClusterSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAzureResourceSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAzureResourceSku])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -1618,7 +2217,7 @@ Get-AzKustoCluster -ResourceGroupName testrg
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1644,7 +2243,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustocluster
 #>
 function Get-AzKustoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1830,7 +2429,7 @@ Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName testrg -ClusterName te
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipalAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1856,7 +2455,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipalassignment
 #>
 function Get-AzKustoDatabasePrincipalAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipalAssignment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2049,12 +2648,12 @@ Returns a list of database principals of the given Kusto cluster and database.
 Get-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipal
 #>
 function Get-AzKustoDatabasePrincipal {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2232,7 +2831,7 @@ Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2258,7 +2857,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodatabase
 #>
 function Get-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2462,7 +3061,7 @@ Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkusto
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2488,7 +3087,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodataconnection
 #>
 function Get-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2686,7 +3285,7 @@ Get-AzKustoManagedPrivateEndpoint -ClusterName "mycluster" -ResourceGroupName "t
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2712,7 +3311,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustomanagedprivateendpoint
 #>
 function Get-AzKustoManagedPrivateEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3110,7 +3709,7 @@ Get-AzKustoOperationsResult -Location eastus -OperationId 5c1495e5-f1c4-4c5e-ac9
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOperationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3136,7 +3735,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresult
 #>
 function Get-AzKustoOperationsResult {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOperationResult])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3315,7 +3914,7 @@ Get-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3341,7 +3940,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoprivateendpointconnection
 #>
 function Get-AzKustoPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3532,7 +4131,7 @@ Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "test
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateLinkResource
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateLinkResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3558,7 +4157,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoprivatelinkresource
 #>
 function Get-AzKustoPrivateLinkResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateLinkResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateLinkResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3749,7 +4348,7 @@ Get-AzKustoSandboxCustomImage -ClusterName "myCluster" -Name "myImage" -Resource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3775,7 +4374,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustosandboxcustomimage
 #>
 function Get-AzKustoSandboxCustomImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3966,7 +4565,7 @@ Get-AzKustoScript -ClusterName testnewkustocluster -ResourceGroupName testrg -Da
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3992,7 +4591,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoscript
 #>
 function Get-AzKustoScript {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4186,12 +4785,12 @@ Lists eligible region SKUs for Kusto resource provider by Azure region.
 Get-AzKustoSku -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Location "East US"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustosku
 #>
 function Get-AzKustoSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -4352,7 +4951,7 @@ Migrate data from a Kusto cluster to another cluster.
 Invoke-AzKustoClusterMigration -Name "myCluster" -ResourceGroupName "myResourceGroup" -ClusterResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/xxxx/providers/Microsoft.Kusto/clusters/destinationClusterName"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
@@ -4423,7 +5022,7 @@ param(
     [Parameter(ParameterSetName='Migrate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest]
     # A cluster migrate request.
     # To construct, see NOTES section for CLUSTERMIGRATEREQUEST properties and create a hash table.
     ${ClusterMigrateRequest},
@@ -5051,7 +5650,7 @@ Generates an invitation token that allows attaching a follower database to this 
 Invoke-AzKustoInviteDatabaseFollower -ClusterName "myCluster" -DatabaseName "myDatabase" -ResourceGroupName "myResourceGroup" -InviteeEmail "user@contoso.com"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
@@ -5136,7 +5735,7 @@ param(
     [Parameter(ParameterSetName='Invite', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='InviteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest]
     # The request to invite a follower to a database.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -5360,12 +5959,12 @@ Creates or updates an attached database configuration.
 New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf" -Name "myfollowerconfiguration" -Location "East US" -ClusterResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Kusto/Clusters/testnewkustocluster" -DatabaseName "mykustodatabase" -DefaultPrincipalsModificationKind "Union"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAttachedDatabaseConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoattacheddatabaseconfiguration
 #>
 function New-AzKustoAttachedDatabaseConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAttachedDatabaseConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5647,12 +6246,12 @@ Create a Kusto cluster principalAssignment.
 New-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -PrincipalAssignmentName kustoprincipal1 -PrincipalId "7e1cb39f-d2cb-4f0d-801a-c9ea1f376e96" -PrincipalType App -Role AllDatabasesAdmin
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterPrincipalAssignment
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoclusterprincipalassignment
 #>
 function New-AzKustoClusterPrincipalAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterPrincipalAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5865,7 +6464,7 @@ Create or update a Kusto cluster.
 New-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -Location 'East US' -SkuName Standard_D11_v2 -SkuTier Standard -EnableDoubleEncryption -EngineType 'V2'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5873,6 +6472,11 @@ To create the parameters described below, construct a hash table containing the 
 
 ACCEPTEDAUDIENCE <IAcceptedAudiences[]>: The cluster's accepted audiences.
   [Value <String>]: GUID or valid URL representing an accepted audience.
+
+CALLOUTPOLICY <ICalloutPolicy[]>: List of callout policies for egress from Cluster.
+  [CalloutType <CalloutType?>]: Type of the callout service, specifying the kind of external resource or service being accessed.
+  [CalloutUriRegex <String>]: Regular expression or FQDN pattern for the callout URI.
+  [OutboundAccess <OutboundAccess?>]: Indicates whether outbound access is permitted for the specified URI pattern.
 
 LANGUAGEEXTENSIONVALUE <ILanguageExtension[]>: The list of language extensions.
   [CustomImageName <String>]: The language extension custom image name.
@@ -5885,7 +6489,7 @@ TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustocluster
 #>
 function New-AzKustoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5947,7 +6551,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAcceptedAudiences[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAcceptedAudiences[]]
     # The cluster's accepted audiences.
     # To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
     ${AcceptedAudience},
@@ -5965,6 +6569,14 @@ param(
     [System.String[]]
     # The list of ips in the format of CIDR allowed to connect to the cluster.
     ${AllowedIPRangeList},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy[]]
+    # List of callout policies for egress from Cluster.
+    # To construct, see NOTES section for CALLOUTPOLICY properties and create a hash table.
+    ${CalloutPolicy},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -6014,7 +6626,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The list of user identities associated with the Kusto cluster.
     # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -6047,7 +6659,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]]
     # The list of language extensions.
     # To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
     ${LanguageExtensionValue},
@@ -6115,7 +6727,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ITrustedExternalTenant[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ITrustedExternalTenant[]]
     # The cluster's external tenants.
     # To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
     ${TrustedExternalTenant},
@@ -6315,12 +6927,12 @@ Creates a Kusto cluster database principalAssignment.
 New-AzKustoDatabasePrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1 -PrincipalId "7e1cb39f-d2cb-4f0d-801a-c9ea1f376e96" -PrincipalType App -Role Admin
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipalAssignment
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabaseprincipalassignment
 #>
 function New-AzKustoDatabasePrincipalAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipalAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6539,9 +7151,9 @@ Creates a managed private endpoint.
 New-AzKustoManagedPrivateEndpoint -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "ManagedPrivateEndpointName" -GroupId "namespace" -RequestMessage "Please approve" -PrivateLinkResourceRegion "Australia Central" -PrivateLinkResourceId "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/testclientsns22"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6562,7 +7174,7 @@ PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoi
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustomanagedprivateendpoint
 #>
 function New-AzKustoManagedPrivateEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6594,7 +7206,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint]
     # Class representing a managed private endpoint.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -6781,9 +7393,9 @@ Approve or reject a private endpoint connection with a given name.
 New-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -SubscriptionId "12345678-1234-1234-1234-123456789098" -Parameter $privateEndpointConnection -Name "testprivateconnection-12345678-1234-1234-1234-123456789098"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6802,7 +7414,7 @@ PARAMETER <IPrivateEndpointConnection>: A private endpoint connection
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
 #>
 function New-AzKustoPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6834,7 +7446,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection]
     # A private endpoint connection
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -7009,22 +7621,23 @@ Creates or updates a sandbox custom image.
 New-AzKustoSandboxCustomImage -ClusterName "myCluster" -Name "myImage" -ResourceGroupName "myResourceGroup" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -LanguageVersion "3.9.7" -RequirementsFileContent "Pillow"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <ISandboxCustomImage>: Class representing a Kusto sandbox custom image.
-  [LanguageVersion <String>]: The version of the language.
+  [BaseImageName <String>]: The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
+  [LanguageVersion <String>]: The version of the language. Either this property or baseImageName should be specified.
   [RequirementsFileContent <String>]: The requirements file content.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustosandboxcustomimage
 #>
 function New-AzKustoSandboxCustomImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7056,7 +7669,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage]
     # Class representing a Kusto sandbox custom image.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -7064,7 +7677,16 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
+    # The base image name on which the custom image is built on top of.
+    # It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image.
+    # Either this property or languageVersion should be specified.
+    ${BaseImageName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
     # The version of the language.
+    # Either this property or baseImageName should be specified.
     ${LanguageVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -7228,12 +7850,12 @@ Creates a Kusto database script.
 .Description
 Creates a Kusto database script.
 .Example
-New-AzKustoScript -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Name newkustoscript -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken
+New-AzKustoScript -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Name newkustoscript -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7243,6 +7865,8 @@ PARAMETER <IScript>: Class representing a database script.
   [Content <String>]: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
   [ContinueOnError <Boolean?>]: Flag that indicates whether to continue if one of the command fails.
   [ForceUpdateTag <String>]: A unique string. If changed the script will be applied again.
+  [Level <ScriptLevel?>]: Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+  [PrincipalPermissionsAction <PrincipalPermissionsAction?>]: Indicates if the permissions for the script caller are kept following completion of the script.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
@@ -7255,7 +7879,7 @@ PARAMETER <IScript>: Class representing a database script.
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoscript
 #>
 function New-AzKustoScript {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7293,7 +7917,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript]
     # Class representing a database script.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -7312,12 +7936,27 @@ param(
     ${ForceUpdateTag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction]
+    # Indicates if the permissions for the script caller are kept following completion of the script.
+    ${PrincipalPermissionsAction},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The script content.
     # This property should be used when the script is provide inline and not through file in a SA.
     # Must not be used together with scriptUrl and scriptUrlSasToken properties.
     ${ScriptContent},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel]
+    # Differentiates between the type of script commands included - Database or Cluster.
+    # The default is Database.
+    ${ScriptLevel},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -7713,6 +8352,254 @@ end {
 
 <#
 .Synopsis
+Removes callout policy for engine services.
+.Description
+Removes callout policy for engine services.
+.Example
+Remove-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub -CalloutPolicy @{CalloutId = "*_cosmosdb"}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicyToRemove
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CALLOUTPOLICY <ICalloutPolicyToRemove>: Configuration for an external callout policy to remove.
+  [CalloutId <String>]: Unique identifier for the callout configuration.
+
+INPUTOBJECT <IKustoIdentity>: Identity Parameter
+  [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
+  [ClusterName <String>]: The name of the Kusto cluster.
+  [DataConnectionName <String>]: The name of the data connection.
+  [DatabaseName <String>]: The name of the database in the Kusto cluster.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
+  [ScriptName <String>]: The name of the Kusto database script.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoclustercalloutpolicy
+#>
+function Remove-AzKustoClusterCalloutPolicy {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='RemoveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Remove', Mandatory)]
+    [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the Kusto cluster.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='Remove', Mandatory)]
+    [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Remove')]
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='RemoveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Remove', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RemoveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicyToRemove]
+    # Configuration for an external callout policy to remove.
+    # To construct, see NOTES section for CALLOUTPOLICY properties and create a hash table.
+    ${CalloutPolicy},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Unique identifier for the callout configuration.
+    ${CalloutId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Remove = 'Az.Kusto.private\Remove-AzKustoClusterCalloutPolicy_Remove';
+            RemoveExpanded = 'Az.Kusto.private\Remove-AzKustoClusterCalloutPolicy_RemoveExpanded';
+            RemoveViaIdentity = 'Az.Kusto.private\Remove-AzKustoClusterCalloutPolicy_RemoveViaIdentity';
+            RemoveViaIdentityExpanded = 'Az.Kusto.private\Remove-AzKustoClusterCalloutPolicy_RemoveViaIdentityExpanded';
+        }
+        if (('Remove', 'RemoveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Remove a list of language extensions that can run within KQL queries.
 .Description
 Remove a list of language extensions that can run within KQL queries.
@@ -7786,7 +8673,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]]
     # The list of language extensions.
     # To construct, see NOTES section for VALUE properties and create a hash table.
     ${Value},
@@ -8642,7 +9529,7 @@ Remove-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewku
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8676,7 +9563,7 @@ VALUE <IDatabasePrincipal[]>: The list of Kusto database principals.
 https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustodatabaseprincipal
 #>
 function Remove-AzKustoDatabasePrincipal {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal])]
 [CmdletBinding(DefaultParameterSetName='RemoveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
@@ -8715,7 +9602,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal[]]
     # The list of Kusto database principals.
     # To construct, see NOTES section for VALUE properties and create a hash table.
     ${Value},
@@ -10700,7 +11587,7 @@ Test-AzKustoAttachedDatabaseConfigurationNameAvailability -ResourceGroupName "te
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -10726,7 +11613,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoattacheddatabaseconfigurationnameavailability
 #>
 function Test-AzKustoAttachedDatabaseConfigurationNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -10912,7 +11799,7 @@ Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -10938,7 +11825,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoclusternameavailability
 #>
 function Test-AzKustoClusterNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -11117,7 +12004,7 @@ Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName "testr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11143,7 +12030,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoclusterprincipalassignmentnameavailability
 #>
 function Test-AzKustoClusterPrincipalAssignmentNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -11329,7 +12216,7 @@ Test-AzKustoDatabaseNameAvailability -ResourceGroupName testrg -ClusterName test
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11355,7 +12242,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustodatabasenameavailability
 #>
 function Test-AzKustoDatabaseNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -11548,7 +12435,7 @@ Test-AzKustoDatabasePrincipalAssignmentNameAvailability -ResourceGroupName "test
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11574,7 +12461,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustodatabaseprincipalassignmentnameavailability
 #>
 function Test-AzKustoDatabasePrincipalAssignmentNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -11766,7 +12653,7 @@ Test-AzKustoDataConnectionNameAvailability -ClusterName testnewkustocluster -Dat
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11792,7 +12679,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustodataconnectionnameavailability
 #>
 function Test-AzKustoDataConnectionNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -11982,7 +12869,7 @@ Test-AzKustoManagedPrivateEndpointNameAvailability -ClusterName "mycluster" -Res
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12008,7 +12895,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustomanagedprivateendpointnameavailability
 #>
 function Test-AzKustoManagedPrivateEndpointNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -12192,7 +13079,7 @@ Test-AzKustoSandboxCustomImageNameAvailability -ClusterName "myCluster" -Resourc
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12218,7 +13105,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustosandboxcustomimagenameavailability
 #>
 function Test-AzKustoSandboxCustomImageNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -12404,7 +13291,7 @@ Test-AzKustoScriptNameAvailability -ClusterName testnewkustocluster -DatabaseNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12430,7 +13317,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoscriptnameavailability
 #>
 function Test-AzKustoScriptNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -12622,7 +13509,7 @@ Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -KeyVa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12630,6 +13517,11 @@ To create the parameters described below, construct a hash table containing the 
 
 ACCEPTEDAUDIENCE <IAcceptedAudiences[]>: The cluster's accepted audiences.
   [Value <String>]: GUID or valid URL representing an accepted audience.
+
+CALLOUTPOLICY <ICalloutPolicy[]>: List of callout policies for egress from Cluster.
+  [CalloutType <CalloutType?>]: Type of the callout service, specifying the kind of external resource or service being accessed.
+  [CalloutUriRegex <String>]: Regular expression or FQDN pattern for the callout URI.
+  [OutboundAccess <OutboundAccess?>]: Indicates whether outbound access is permitted for the specified URI pattern.
 
 INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
@@ -12659,7 +13551,7 @@ TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustocluster
 #>
 function Update-AzKustoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -12701,7 +13593,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAcceptedAudiences[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAcceptedAudiences[]]
     # The cluster's accepted audiences.
     # To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
     ${AcceptedAudience},
@@ -12719,6 +13611,14 @@ param(
     [System.String[]]
     # The list of ips in the format of CIDR allowed to connect to the cluster.
     ${AllowedIPRangeList},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy[]]
+    # List of callout policies for egress from Cluster.
+    # To construct, see NOTES section for CALLOUTPOLICY properties and create a hash table.
+    ${CalloutPolicy},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -12768,7 +13668,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The list of user identities associated with the Kusto cluster.
     # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -12801,7 +13701,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]]
     # The list of language extensions.
     # To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
     ${LanguageExtensionValue},
@@ -12881,7 +13781,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -12889,7 +13789,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ITrustedExternalTenant[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ITrustedExternalTenant[]]
     # The cluster's external tenants.
     # To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
     ${TrustedExternalTenant},
@@ -13090,11 +13990,11 @@ Updates a managed private endpoint.
 Update-AzKustoManagedPrivateEndpoint -ResourceGroupName "testrg" -ClusterName "mycluster" -Name "ManagedPrivateEndpointName" -RequestMessage "Please Approve Managed Private Endpoint Request." -GroupId "blob" -PrivateLinkResourceId "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/storageAccountTest"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13132,7 +14032,7 @@ PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoi
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustomanagedprivateendpoint
 #>
 function Update-AzKustoManagedPrivateEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -13177,7 +14077,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint]
     # Class representing a managed private endpoint.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -13370,11 +14270,11 @@ Updates a sandbox custom image.
 Update-AzKustoSandboxCustomImage -ClusterName "myCluster"  -Name "myImage" -ResourceGroupName "myResourceGroup" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -LanguageVersion "3.9.7" -RequirementsFileContent "Pillow"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13398,13 +14298,14 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <ISandboxCustomImage>: Class representing a Kusto sandbox custom image.
-  [LanguageVersion <String>]: The version of the language.
+  [BaseImageName <String>]: The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
+  [LanguageVersion <String>]: The version of the language. Either this property or baseImageName should be specified.
   [RequirementsFileContent <String>]: The requirements file content.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustosandboxcustomimage
 #>
 function Update-AzKustoSandboxCustomImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -13449,7 +14350,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage]
     # Class representing a Kusto sandbox custom image.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -13458,7 +14359,17 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
+    # The base image name on which the custom image is built on top of.
+    # It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image.
+    # Either this property or languageVersion should be specified.
+    ${BaseImageName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
     # The version of the language.
+    # Either this property or baseImageName should be specified.
     ${LanguageVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -13625,14 +14536,14 @@ Updates a database script.
 .Description
 Updates a database script.
 .Example
-Update-AzKustoScript -DatabaseName mykustodatabase -Name newkustoscript -ClusterName testnewkustocluster -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken
+Update-AzKustoScript -DatabaseName mykustodatabase -Name newkustoscript -ClusterName testnewkustocluster -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken -PrincipalPermissionsAction RemovePermissionOnScriptCompletion -ScriptLevel Database
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13659,6 +14570,8 @@ PARAMETER <IScript>: Class representing a database script.
   [Content <String>]: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
   [ContinueOnError <Boolean?>]: Flag that indicates whether to continue if one of the command fails.
   [ForceUpdateTag <String>]: A unique string. If changed the script will be applied again.
+  [Level <ScriptLevel?>]: Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+  [PrincipalPermissionsAction <PrincipalPermissionsAction?>]: Indicates if the permissions for the script caller are kept following completion of the script.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
@@ -13671,7 +14584,7 @@ PARAMETER <IScript>: Class representing a database script.
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustoscript
 #>
 function Update-AzKustoScript {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -13723,7 +14636,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript]
     # Class representing a database script.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -13745,12 +14658,29 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction]
+    # Indicates if the permissions for the script caller are kept following completion of the script.
+    ${PrincipalPermissionsAction},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The script content.
     # This property should be used when the script is provide inline and not through file in a SA.
     # Must not be used together with scriptUrl and scriptUrlSasToken properties.
     ${ScriptContent},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel]
+    # Differentiates between the type of script commands included - Database or Cluster.
+    # The default is Database.
+    ${ScriptLevel},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -13925,25 +14855,25 @@ Checks that the data connection parameters are valid.
 .Description
 Checks that the data connection parameters are valid.
 .Example
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" 
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase"
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" 
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidationResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13969,7 +14899,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidationResult])]
 [CmdletBinding(DefaultParameterSetName='DataExpandedEventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='DataExpandedEventHub', Mandatory)]
@@ -14309,12 +15239,12 @@ Creates or updates a database.
 New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -14553,19 +15483,19 @@ Creates or updates a data connection.
 .Description
 Creates or updates a data connection.
 .Example
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "EventsMapping"
 .Example
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 .Example
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpandedEventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -14919,7 +15849,7 @@ Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCacheP
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14945,7 +15875,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -15192,25 +16122,25 @@ Updates a data connection.
 .Description
 Updates a data connection.
 .Example
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 .Example
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -15236,7 +16166,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
 #>
 function Update-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpandedEventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpandedEventHub', Mandatory)]

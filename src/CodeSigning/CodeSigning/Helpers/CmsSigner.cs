@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.CodeSigning.Client.CryptoProvider;
+using Azure.Developer.TrustedSigning.CryptoProvider;
 using Azure.Core;
 using System;
 using System.IO;
@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
             {
                 try
                 {
-                    var context = new AzCodeSignContext(tokenCred, accountName, certProfile, endpointUrl);
+                    var context = new AzSignContext(tokenCred, accountName, certProfile, new Uri(endpointUrl));
 
-                    var cert = context.InitializeChainAsync().Result;
-                    RSA rsa = new RSAAzCodeSign(context);
+                    var cert = context.GetSigningCertificate();
+                    RSA rsa = new RSAAzSign(context);
 
                     var cipolicy = File.ReadAllBytes(unsignedCIFilePath);
                     var cmscontent = new ContentInfo(new Oid("1.3.6.1.4.1.311.79.1"), cipolicy);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
                     retry--;
                     if (retry == 0 || ex.Message == "Input TimeStamperUrl is not valid Uri. Please check.")
                     {
-                        throw ex;
+                        throw;
                     }
                 }
             }

@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.DataShare",
-  "ModuleVersion": "1.0.2",
+  "ModuleVersion": "1.1.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -291,7 +291,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "Identity": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSIdentity",
@@ -542,7 +542,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DataSetId": "System.String",
               "ResourceGroup": "System.String",
@@ -839,7 +839,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DataSetId": "System.String",
               "ResourceGroup": "System.String",
@@ -1137,7 +1137,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -1436,7 +1436,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "SharedAt": "System.Nullable`1[System.DateTime]",
@@ -1751,7 +1751,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -1947,7 +1947,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSourceDataSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSourceDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSourceDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DataSetId": "System.String",
               "DataSetName": "System.String",
@@ -2219,7 +2219,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -2500,7 +2500,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndTime": "System.Nullable`1[System.DateTime]",
               "StartTime": "System.Nullable`1[System.DateTime]",
@@ -2772,7 +2772,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationDetail",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationDetail, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationDetail, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndTime": "System.Nullable`1[System.DateTime]",
               "StartTime": "System.Nullable`1[System.DateTime]",
@@ -3089,7 +3089,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronization, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronization, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndTime": "System.Nullable`1[System.DateTime]",
               "StartTime": "System.Nullable`1[System.DateTime]",
@@ -3362,7 +3362,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationDetail",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationDetail, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationDetail, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndTime": "System.Nullable`1[System.DateTime]",
               "StartTime": "System.Nullable`1[System.DateTime]",
@@ -3679,7 +3679,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "SynchronizationTime": "System.Nullable`1[System.DateTime]",
@@ -3977,7 +3977,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -4277,7 +4277,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "SharedAt": "System.Nullable`1[System.DateTime]",
@@ -4592,7 +4592,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -4860,7 +4860,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "Identity": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSIdentity",
@@ -4949,7 +4949,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5044,7 +5044,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5097,7 +5097,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DataSetId": "System.String",
               "ResourceGroup": "System.String",
@@ -5749,7 +5749,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DataSetId": "System.String",
               "ResourceGroup": "System.String",
@@ -6287,7 +6287,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SentAt": "System.Nullable`1[System.DateTime]",
               "InvitationId": "System.String",
@@ -6695,7 +6695,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -6963,7 +6963,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "SynchronizationTime": "System.Nullable`1[System.DateTime]",
@@ -7254,7 +7254,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SentAt": "System.Nullable`1[System.DateTime]",
               "InvitationId": "System.String",
@@ -7362,7 +7362,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7487,7 +7487,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7533,7 +7533,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7635,7 +7635,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -7655,7 +7655,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7664,7 +7664,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7744,7 +7744,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7759,7 +7759,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7820,7 +7820,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7835,7 +7835,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7881,7 +7881,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -7907,7 +7907,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7922,7 +7922,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7968,7 +7968,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7983,7 +7983,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8076,7 +8076,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "Identity": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSIdentity",
@@ -8096,7 +8096,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8105,7 +8105,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8114,7 +8114,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8179,7 +8179,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8194,7 +8194,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8209,7 +8209,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8270,7 +8270,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8285,7 +8285,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8300,7 +8300,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8346,7 +8346,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
                     "Identity": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSIdentity",
@@ -8372,7 +8372,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8387,7 +8387,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8402,7 +8402,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8448,7 +8448,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8463,7 +8463,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8478,7 +8478,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8589,7 +8589,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DataSetId": "System.String",
               "ResourceGroup": "System.String",
@@ -8607,7 +8607,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8702,7 +8702,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8763,7 +8763,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8809,7 +8809,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSet, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DataSetId": "System.String",
                     "ResourceGroup": "System.String",
@@ -8833,7 +8833,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8879,7 +8879,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8990,7 +8990,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DataSetId": "System.String",
               "ResourceGroup": "System.String",
@@ -9009,7 +9009,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9104,7 +9104,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9165,7 +9165,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9211,7 +9211,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DataSetId": "System.String",
                     "ResourceGroup": "System.String",
@@ -9236,7 +9236,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9282,7 +9282,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9393,7 +9393,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SentAt": "System.Nullable`1[System.DateTime]",
               "InvitationId": "System.String",
@@ -9414,7 +9414,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9509,7 +9509,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9570,7 +9570,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9616,7 +9616,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SentAt": "System.Nullable`1[System.DateTime]",
                     "InvitationId": "System.String",
@@ -9643,7 +9643,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9689,7 +9689,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9791,7 +9791,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -9817,7 +9817,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9826,7 +9826,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9906,7 +9906,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9921,7 +9921,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9982,7 +9982,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9997,7 +9997,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10043,7 +10043,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -10075,7 +10075,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10090,7 +10090,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10136,7 +10136,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10151,7 +10151,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10262,7 +10262,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "SynchronizationTime": "System.Nullable`1[System.DateTime]",
@@ -10281,7 +10281,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -10290,7 +10290,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -10385,7 +10385,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10400,7 +10400,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10461,7 +10461,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10476,7 +10476,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10522,7 +10522,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
                     "SynchronizationTime": "System.Nullable`1[System.DateTime]",
@@ -10547,7 +10547,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10562,7 +10562,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10608,7 +10608,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10623,7 +10623,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10734,7 +10734,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -10755,7 +10755,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -10764,7 +10764,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -10859,7 +10859,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10874,7 +10874,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10935,7 +10935,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10950,7 +10950,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10996,7 +10996,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -11023,7 +11023,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11038,7 +11038,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11084,7 +11084,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11099,7 +11099,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11152,7 +11152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "SharedAt": "System.Nullable`1[System.DateTime]",
@@ -11251,7 +11251,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -11346,7 +11346,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11422,7 +11422,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11468,7 +11468,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11521,7 +11521,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -11610,7 +11610,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -11856,7 +11856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -12011,7 +12011,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndTime": "System.Nullable`1[System.DateTime]",
               "StartTime": "System.Nullable`1[System.DateTime]",
@@ -12106,7 +12106,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -12132,7 +12132,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -12227,7 +12227,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12303,7 +12303,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12349,7 +12349,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -12381,7 +12381,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12427,7 +12427,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12480,7 +12480,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndTime": "System.Nullable`1[System.DateTime]",
               "StartTime": "System.Nullable`1[System.DateTime]",
@@ -12575,7 +12575,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -12601,7 +12601,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -12696,7 +12696,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12772,7 +12772,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12818,7 +12818,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -12850,7 +12850,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12896,7 +12896,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -12982,7 +12982,7 @@
     "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState": {
       "Namespace": "Microsoft.Azure.Commands.DataShare.Models",
       "Name": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataShare.Models.PSProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -13230,7 +13230,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSIdentity": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataShare, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "TenantId": "System.String",

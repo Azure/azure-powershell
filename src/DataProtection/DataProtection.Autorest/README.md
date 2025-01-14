@@ -31,7 +31,7 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-commit: 72f52bc8847a889488da885f40d6871a89e0470b
+commit: 4aad50a36767f7c36673f2c7982bb4055dbf5ed4
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -450,6 +450,9 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRecoveryPoint Property');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.INamespacedNameResource ResourceModifierReference');
 ```
 
 ## Alternate settings

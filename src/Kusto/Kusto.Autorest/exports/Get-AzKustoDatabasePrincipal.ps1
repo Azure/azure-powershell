@@ -23,12 +23,12 @@ Returns a list of database principals of the given Kusto cluster and database.
 Get-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipal
 #>
 function Get-AzKustoDatabasePrincipal {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

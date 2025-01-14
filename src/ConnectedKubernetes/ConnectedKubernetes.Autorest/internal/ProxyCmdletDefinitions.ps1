@@ -660,8 +660,31 @@ API to register a new Kubernetes cluster and create a tracked resource in Azure 
 .Example
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 .Example
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId gatewayResourceId
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId $gatewayResourceId
 
+.Example
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Enable gateway and set gateway resource Id 
+$inputObject.GatewayEnabled=$true
+$inputObject.GatewayResourceId=$gatewayResourceId
+Set-AzConnectedKubernetes -InputObject $inputObject     
+
+.Example
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Enable workload identity and OIDC issuer profile
+$inputObject.WorkloadIdentityEnabled=$true
+$inputObject.OidcIssuerProfileEnabled=$true
+Set-AzConnectedKubernetes -InputObject $inputObject 
+.Example
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Disable workload identity 
+$inputObject.WorkloadIdentityEnabled=$falue
+Set-AzConnectedKubernetes -InputObject $inputObject 
+.Example
+Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId | Set-AzConnectedKubernetes -WorkloadIdentityEnabled:$false
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster

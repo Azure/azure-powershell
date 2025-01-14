@@ -165,20 +165,14 @@ namespace VersionController
             {
                 powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
                 powershell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
-                powershell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
                 powershell.AddScript("Get-PSRepository");
                 var repositories = powershell.Invoke();
                 string psgallery = null;
-                string testgallery = null;
                 foreach (var repo in repositories)
                 {
                     if ("https://www.powershellgallery.com/api/v2".Equals(repo.Properties["SourceLocation"]?.Value))
                     {
                         psgallery = repo.Properties["Name"]?.Value?.ToString();
-                    }
-                    if ("https://www.poshtestgallery.com/api/v2".Equals(repo.Properties["SourceLocation"]?.Value))
-                    {
-                        testgallery = repo.Properties["Name"]?.Value?.ToString();
                     }
                 }
                 if (psgallery == null)
@@ -186,15 +180,6 @@ namespace VersionController
                     throw new Exception("Cannot calculate module version because PSGallery is not available.");
                 }
                 targetRepositories = psgallery;
-                if (testgallery == null)
-                {
-                    Console.WriteLine("Warning: Cannot calculate module version precisely because TestGallery is not available.");
-                }
-                else
-                {
-                    targetRepositories += $",{testgallery}";
-                }
-
             }
 
             var changedModules = new List<string>();
@@ -264,7 +249,7 @@ namespace VersionController
                 }
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
-                if (!string.IsNullOrEmpty(_moduleNameFilter)) {
+                if (!string.IsNullOrEmpty(_assignedVersion)) {
                     _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules,new AzurePSVersion(_assignedVersion), _releaseType);
                 } else {
                     _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules, _releaseType);

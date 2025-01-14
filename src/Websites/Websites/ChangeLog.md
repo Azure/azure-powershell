@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.3.0
+* Fixd the source app retrival from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
+* Upgraded nuget package to signed package.
+
 ## Version 3.2.2
 * Fix bug where parameters could not be set to false for `Publish-AzWebApp`
 

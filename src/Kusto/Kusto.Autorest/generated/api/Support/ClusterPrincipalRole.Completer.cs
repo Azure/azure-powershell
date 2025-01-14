@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'AllDatabasesViewer'", "AllDatabasesViewer", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllDatabasesViewer");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllDatabasesMonitor".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AllDatabasesMonitor'", "AllDatabasesMonitor", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllDatabasesMonitor");
+            }
         }
     }
 }

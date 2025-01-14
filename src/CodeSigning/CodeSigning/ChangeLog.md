@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.1
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+* Upgraded to rebranded package Azure.Developer.TrustedSigning.CryptoProvider.
+* Upgraded to updated Azure.Codesigning.Sdk.
+
 ## Version 0.2.0
 * Added `Get-AzCodeSigningCertChain` cmdlet to retrieve the certificate chain for a certificate profile.
 * Added System.Formats.Asn1 dependency to the module to address a security vulnerability.

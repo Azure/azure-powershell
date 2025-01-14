@@ -23,7 +23,7 @@ Create or update a tag rule set for a given monitor resource.
 New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
 https://learn.microsoft.com/powershell/module/az.elastic/new-azelastictagrule
 #>
 function New-AzElasticTagRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -49,22 +49,22 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [System.String]
-    # The name of the resource group to which the Elastic resource belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IFilteringTag[]]
     # List of filtering tags to be used for capturing logs.
     # This only takes effect if SendActivityLogs flag is enabled.
     # If empty, all resources will be captured.

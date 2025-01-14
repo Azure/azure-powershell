@@ -42,7 +42,7 @@ Update-AzNetworkCloudBareMetalMachineKeySet -ResourceGroupName resourceGroupName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBareMetalMachineKeySet
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,6 +57,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [ClusterManagerName <String>]: The name of the cluster manager.
   [ClusterName <String>]: The name of the cluster.
   [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
   [Id <String>]: Resource identity path
   [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
   [L2NetworkName <String>]: The name of the L2 network.
@@ -75,11 +76,12 @@ USERLIST <IKeySetUser[]>: The unique list of permitted users.
   AzureUserName <String>: The user name that will be used for access.
   SshPublicKeyData <String>: The SSH public key data.
   [Description <String>]: The free-form description for this user.
+  [UserPrincipalName <String>]: The user principal name (email format) used to validate this user's group membership.
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/update-aznetworkcloudbaremetalmachinekeyset
 #>
 function Update-AzNetworkCloudBareMetalMachineKeySet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBareMetalMachineKeySet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -132,7 +134,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBareMetalMachineKeySetPatchParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySetPatchParametersTags]))]
     [System.Collections.Hashtable]
     # The Azure resource tags that will replace the existing ones.
     ${Tag},
@@ -140,7 +142,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKeySetUser[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[]]
     # The unique list of permitted users.
     # To construct, see NOTES section for USERLIST properties and create a hash table.
     ${UserList},

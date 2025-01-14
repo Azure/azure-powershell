@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update storage for a connectedEnvironment.</summary>
+    /// <summary>update storage for a connectedEnvironment.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerAppConnectedEnvStorage_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConnectedEnvironmentStorage))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Update storage for a connectedEnvironment.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"update storage for a connectedEnvironment.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     public partial class UpdateAzContainerAppConnectedEnvStorage_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener,

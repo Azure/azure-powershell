@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "df1a7e78-483d-4196-ac1c-a08525d8e6fb" ],
+        "x-ms-client-request-id": [ "0454f568-5dde-4b55-b13d-66d0d80f7697" ],
         "CommandName": [ "Remove-AzDataCollectionEndpoint" ],
         "FullCommandName": [ "Remove-AzDataCollectionEndpoint_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataCollectionRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,16 +23,18 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "19f57cd6-8966-4311-aac2-957abd6db976" ],
-        "x-ms-client-request-id": [ "df1a7e78-483d-4196-ac1c-a08525d8e6fb" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064116Z:19f57cd6-8966-4311-aac2-957abd6db976" ],
-        "x-ms-request-id": [ "166dc12d-04a5-4977-8dcd-fcbfb1c26702" ],
-        "api-supported-versions": [ "2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "f247b3f4-75b9-4211-9b84-043e0c2877aa" ],
+        "x-ms-client-request-id": [ "0454f568-5dde-4b55-b13d-66d0d80f7697" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20241101T081146Z:f247b3f4-75b9-4211-9b84-043e0c2877aa" ],
+        "x-ms-request-id": [ "843b895d-d04a-474e-8a7b-413bd0443e52" ],
+        "api-supported-versions": [ "2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11, 2024-03-11" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "800" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "12000" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 09 Nov 2023 06:41:24 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 31223E156E9743AEB4731F092352A98F Ref B: TYO01EDGE2306 Ref C: 2024-11-01T08:11:44Z" ],
+        "Date": [ "Fri, 01 Nov 2024 08:11:53 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -46,13 +48,13 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint2?api-version=2022-06-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"networkAcls\": {\r\n      \"publicNetworkAccess\": \"Enabled\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"networkAcls\": {\r\n      \"publicNetworkAccess\": \"Enabled\"\r\n    }\r\n  },\r\n  \"location\": \"westus2\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "122" ]
+        "Content-Length": [ "123" ]
       }
     },
     "Response": {
@@ -61,24 +63,25 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "57" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "59" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "73ce68b9-9174-47f5-8395-98ee81dcf84d" ],
-        "x-ms-client-request-id": [ "84b3e19c-d3ca-49a0-bce8-89f8e4736224" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064125Z:73ce68b9-9174-47f5-8395-98ee81dcf84d" ],
-        "x-ms-request-id": [ "ca068dfd-4986-4a9a-b838-7463abc53a83" ],
-        "api-supported-versions": [ "2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "eab72fd6-c15d-4e6c-96c8-803adbf2e402" ],
+        "x-ms-client-request-id": [ "a7102392-f094-49d2-92e1-06219b576460" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20241101T081155Z:eab72fd6-c15d-4e6c-96c8-803adbf2e402" ],
+        "x-ms-request-id": [ "ec8eae1a-18a6-4c11-85dc-3c17cad0e240" ],
+        "api-supported-versions": [ "2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11, 2024-03-11" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 09 Nov 2023 06:41:26 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8C9AA689A8B3462FBB4FBCC34781645E Ref B: TYO01EDGE2306 Ref C: 2024-11-01T08:11:54Z" ],
+        "Date": [ "Fri, 01 Nov 2024 08:11:58 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1032" ],
+        "Content-Length": [ "1038" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"immutableId\":\"dce-197d99a9b7f1431998f8b529204adff4\",\"configurationAccess\":{\"endpoint\":\"https://testcollectionendpoint2-9sxy.eastus-1.handler.control.monitor.azure.com\"},\"logsIngestion\":{\"endpoint\":\"https://testcollectionendpoint2-9sxy.eastus-1.ingest.monitor.azure.com\"},\"metricsIngestion\":{\"endpoint\":\"https://testcollectionendpoint2-9sxy.eastus-1.metrics.ingest.monitor.azure.com\"},\"networkAcls\":{\"publicNetworkAccess\":\"Enabled\"},\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint2\",\"name\":\"testCollectionEndpoint2\",\"type\":\"Microsoft.Insights/dataCollectionEndpoints\",\"etag\":\"\\\"9200bce1-0000-0100-0000-654c7f160000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:41:25.2149571Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:25.2149571Z\"}}",
+      "Content": "{\"properties\":{\"immutableId\":\"dce-30e5f2a7db8f4794840d88370cfc2416\",\"configurationAccess\":{\"endpoint\":\"https://testcollectionendpoint2-gl4p.westus2-1.handler.control.monitor.azure.com\"},\"logsIngestion\":{\"endpoint\":\"https://testcollectionendpoint2-gl4p.westus2-1.ingest.monitor.azure.com\"},\"metricsIngestion\":{\"endpoint\":\"https://testcollectionendpoint2-gl4p.westus2-1.metrics.ingest.monitor.azure.com\"},\"networkAcls\":{\"publicNetworkAccess\":\"Enabled\"},\"provisioningState\":\"Succeeded\"},\"location\":\"westus2\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint2\",\"name\":\"testCollectionEndpoint2\",\"type\":\"Microsoft.Insights/dataCollectionEndpoints\",\"etag\":\"\\\"fa0091e2-0000-0800-0000-67248d4c0000\\\"\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-01T08:11:55.7030584Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-01T08:11:55.7030584Z\"}}",
       "isContentBase64": false
     }
   },
@@ -90,11 +93,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "fe59f8d6-5e4c-4fc8-9981-ae05f5fa8ccb" ],
+        "x-ms-client-request-id": [ "f1cb0ddd-8e09-4259-b4d2-fd000915401e" ],
         "CommandName": [ "Remove-AzDataCollectionEndpoint" ],
         "FullCommandName": [ "Remove-AzDataCollectionEndpoint_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataCollectionRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -106,16 +109,18 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "643ad6fc-e194-47db-a0c9-8ef150e95e36" ],
-        "x-ms-client-request-id": [ "fe59f8d6-5e4c-4fc8-9981-ae05f5fa8ccb" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064127Z:643ad6fc-e194-47db-a0c9-8ef150e95e36" ],
-        "x-ms-request-id": [ "e7bc4a5d-0ef7-48cc-992d-9afbac5f38f1" ],
-        "api-supported-versions": [ "2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "38e35e20-1350-42f1-9f97-8f5634464fbb" ],
+        "x-ms-client-request-id": [ "f1cb0ddd-8e09-4259-b4d2-fd000915401e" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20241101T081200Z:38e35e20-1350-42f1-9f97-8f5634464fbb" ],
+        "x-ms-request-id": [ "dd7e67a5-921c-4053-aa89-13cb88042cf7" ],
+        "api-supported-versions": [ "2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11, 2024-03-11" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "800" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "12000" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 09 Nov 2023 06:41:31 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6FC65695EEBE413CBFECEED66642E10A Ref B: TYO01EDGE2306 Ref C: 2024-11-01T08:11:58Z" ],
+        "Date": [ "Fri, 01 Nov 2024 08:12:06 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

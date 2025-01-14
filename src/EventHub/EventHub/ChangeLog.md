@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 5.1.0
+* Upgraded nuget package to signed package.
+
+## Version 5.0.1
+* Migrated EventHub SDK to generated SDK
+  - Removed "Microsoft.Azure.Management.EventHub" Version "5.0.0" PackageReference
+  - Added EventHub.Management.Sdk ProjectReference
+
 ## Version 5.0.0
 * Moved cmdlets to V4
 

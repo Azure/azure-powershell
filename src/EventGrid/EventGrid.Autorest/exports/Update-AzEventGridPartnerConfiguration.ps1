@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Synchronously updates a partner configuration with the specified parameters.
+Synchronously update a partner configuration with the specified parameters.
 .Description
-Synchronously updates a partner configuration with the specified parameters.
+Synchronously update a partner configuration with the specified parameters.
 .Example
 Update-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid -DefaultMaximumExpirationTimeInDay 1 -Tag @{"abc"="123"}
 

@@ -54,7 +54,6 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
@@ -72,9 +71,9 @@ OSPROFILE <IOSProfile>: Specifies the operating system settings for the hybrid m
 PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
   [Tags <IResourceUpdateTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
-  [AgentUpgradeCorrelationId <String>]: The correlation ID passed in from RSM per upgrade.
+  [AgentUpgradeCorrelationId <String>]: The correlation ID associated with an agent upgrade operation.
   [AgentUpgradeDesiredVersion <String>]: Specifies the version info w.r.t AgentUpgrade for the machine.
-  [AgentUpgradeEnableAutomaticUpgrade <Boolean?>]: Specifies if RSM should try to upgrade this machine
+  [AgentUpgradeEnableAutomaticUpgrade <Boolean?>]: Specifies if the machine's agent should be upgraded
   [IdentityType <String>]: The identity type.
   [Kind <String>]: Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
   [LocationDataCity <String>]: The city or locality where the resource is located.
@@ -146,7 +145,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
-    # The correlation ID passed in from RSM per upgrade.
+    # The correlation ID associated with an agent upgrade operation.
     ${AgentUpgradeCorrelationId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -160,7 +159,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Specifies if RSM should try to upgrade this machine
+    # Specifies if the machine's agent should be upgraded
     ${AgentUpgradeEnableAutomatic},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

@@ -1,3 +1,951 @@
+## 13.1.0 - January 2025
+#### Az.Accounts 4.0.1
+* Upgraded nuget package to signed package.
+* Fixed the Managed Identity parameter set description of 'AccountId' in 'Connect-AzAccount'.
+* Made the breaking change warnings about 'Get-AzAccessToken' not appear when '-AsSecureString' is used.
+* Fixed an issue that cmdlets may report warnings of 'KeyNotFoundException'. #26624
+* Fixed an issue that the '-AppliesTo' parameter of 'Update-AzConfig' does not work as expected.
+* Upgraded Azure.Core to 1.44.1 and Azure.Identity to 1.13.0.
+* Updated Azure PowerShell intercept survey prompt.
+
+#### Az.ADDomainServices 0.2.3
+* Upgraded nuget package to signed package.
+
+#### Az.Advisor 2.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Aks 6.1.0
+* Upgraded nuget package to signed package.
+* Fixed the issue that HTTP request body contains empty userAssignedIdentities object when identity type is 'SystemAssigned'.
+
+#### Az.AksArc 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.Alb 0.1.4
+* Upgraded nuget package to signed package.
+
+#### Az.AlertsManagement 0.6.3
+* Upgraded nuget package to signed package.
+
+#### Az.AnalysisServices 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.ApiManagement 4.1.0
+* Upgraded nuget package to signed package.
+* Fixed model creation parameters of ApiCreateOrUpdateParameter, ProductContract, SubscriptionCreateParameters, GroupCreateParameters, OpenidConnectProviderContract, IdentityProviderCreateContract, BackendContract, CacheContract and DiagnosticContract with [#26672].
+
+#### Az.App 2.0.1
+* Upgraded nuget package to signed package.
+
+#### Az.AppComplianceAutomation 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.AppConfiguration 1.4.0
+* Upgraded nuget package to signed package.
+
+#### Az.ApplicationInsights 2.3.0
+* Upgraded nuget package to signed package.
+
+#### Az.ArcGateway 0.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.ArcResourceBridge 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Astro 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.Attestation 2.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Automanage 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Automation 1.11.0
+* Upgraded nuget package to signed package.
+
+#### Az.BareMetal 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.Batch 3.7.0
+* Upgraded nuget package to signed package.
+* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job 'CommonEnvironmentSettings' property. 
+
+#### Az.Billing 2.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.BillingBenefits 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.Blueprint 0.4.5
+* Upgraded nuget package to signed package.
+
+#### Az.BotService 0.5.2
+* Upgraded nuget package to signed package.
+
+#### Az.Cdn 3.3.0
+* Upgraded nuget package to signed package.
+
+#### Az.ChangeAnalysis 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.Chaos 0.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.CloudService 2.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.CodeSigning 0.2.1
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+* Upgraded to rebranded package Azure.Developer.TrustedSigning.CryptoProvider.
+* Upgraded to updated Azure.Codesigning.Sdk.
+
+#### Az.CognitiveServices 1.15.0
+* Upgraded nuget package to signed package.
+
+#### Az.Communication 0.4.2
+* Upgraded nuget package to signed package.
+
+#### Az.Compute 9.0.1
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+* Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
+
+#### Az.ComputeFleet 0.1.0
+* First preview release for module Az.ComputeFleet
+
+#### Az.ComputeSchedule 0.1.0
+* First preview release for module Az.ComputeSchedule
+
+#### Az.ConfidentialLedger 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Confluent 0.2.2
+* Upgraded nuget package to signed package.
+
+#### Az.ConnectedKubernetes 0.14.0
+* Upgraded nuget package to signed package.
+
+#### Az.ConnectedMachine 1.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.ConnectedNetwork 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.ConnectedVMware 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.ContainerInstance 4.1.1
+* Upgraded nuget package to signed package.
+* Added breaking change warning for removing default value for OsType 'New-AzContainerGroup'
+
+#### Az.ContainerRegistry 4.3.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.CosmosDB 1.16.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.CostManagement 0.3.4
+* Upgraded nuget package to signed package.
+* Fixed bug tags in query filter cannot be properly serialized [#22326]
+
+#### Az.CustomLocation 0.2.1
+* Upgraded nuget package to signed package.
+
+#### Az.CustomProviders 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.Dashboard 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.DataBox 0.3.3
+* Upgraded nuget package to signed package.
+
+#### Az.DataBoxEdge 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.Databricks 1.10.0
+* Upgraded nuget package to signed package.
+* Updated Az.Databricks to use more intuitive parameter names for the ESC feature.
+
+#### Az.Datadog 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.DataFactory 1.19.0
+* Upgraded nuget package to signed package.
+* Added support for additional MySQL connection properties.
+* Added support for Azure PostgreSQL v2, updated connection strings, and corrected Linked JSON configurations.
+
+#### Az.DataLakeAnalytics 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.DataLakeStore 1.4.0
+* Upgraded nuget package to signed package.
+
+#### Az.DataMigration 0.14.9
+* Upgraded nuget package to signed package.
+* Updated the URL to download the SQL Assessment Zip to 'https://aka.ms/sqlassessmentpackage'
+
+#### Az.DataProtection 2.6.0
+* Upgraded nuget package to signed package.
+* Added support for UAMI in Backup Instance
+
+#### Az.DataShare 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.DedicatedHsm 0.3.2
+* Upgraded nuget package to signed package.
+
+#### Az.DesktopVirtualization 5.4.1
+* Upgraded nuget package to signed package.
+
+#### Az.DevCenter 2.0.1
+* Upgraded nuget package to signed package.
+
+#### Az.DeviceProvisioningServices 0.10.4
+* Upgraded nuget package to signed package.
+
+#### Az.DeviceRegistry 0.1.0
+* First preview release for module Az.DeviceRegistry
+
+#### Az.DeviceUpdate 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.DevTestLabs 1.1.0
+* Upgraded nuget package to signed package.
+* Removed 'Microsoft.Azure.Management.DevTestLabs' Version '1.0.0' PackageReference
+
+#### Az.DigitalTwins 0.2.2
+* Upgraded nuget package to signed package.
+
+#### Az.DiskPool 0.3.2
+* Upgraded nuget package to signed package.
+
+#### Az.Dns 1.3.1
+* Upgraded nuget package to signed package.
+
+#### Az.DnsResolver 1.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.DynatraceObservability 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.EdgeOrder 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.EdgeZones 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.Elastic 0.2.1
+* Upgraded nuget package to signed package.
+
+#### Az.ElasticSan 1.2.1
+* Upgraded nuget package to signed package.
+
+#### Az.EventGrid 2.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.EventHub 5.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Fabric 0.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.FirmwareAnalysis 0.1.4
+* Upgraded nuget package to signed package.
+
+#### Az.Fleet 0.2.2
+* Upgraded nuget package to signed package.
+
+#### Az.FluidRelay 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.FrontDoor 1.12.0
+* Upgraded nuget package to signed package.
+
+#### Az.Functions 4.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.GraphServices 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.GuestConfiguration 0.11.2
+* Upgraded nuget package to signed package.
+
+#### Az.HanaOnAzure 0.3.3
+* Upgraded nuget package to signed package.
+
+#### Az.HDInsight 6.3.1
+* Upgraded nuget package to signed package.
+
+#### Az.HdInsightOnAks 0.2.1
+* Upgraded nuget package to signed package.
+
+#### Az.HealthBot 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.HealthcareApis 2.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.HealthDataAIServices 1.0.0
+* General availability for module Az.HealthDataAIServices
+* Upgraded nuget package to signed package.
+* Upgraded API version to 2024-09-20
+
+#### Az.HPCCache 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.ImageBuilder 0.4.2
+* Upgraded nuget package to signed package.
+
+#### Az.ImportExport 0.2.2
+* Upgraded nuget package to signed package.
+
+#### Az.Informatica 0.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.IotCentral 0.10.3
+* Upgraded nuget package to signed package.
+
+#### Az.IotHub 2.8.0
+* Upgraded nuget package to signed package.
+* Removed 'Microsoft.Azure.Management.IotHub' Version '4.2.0' PackageReference
+
+#### Az.KeyVault 6.3.1
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.KubernetesConfiguration 0.7.3
+* Upgraded nuget package to signed package.
+
+#### Az.KubernetesRuntime 0.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.Kusto 2.4.0
+* Upgraded nuget package to signed package.
+* Added new cmdlets
+    - 'Add-AzKustoClusterCalloutPolicy'
+    - 'Get-AzKustoClusterCalloutPolicy'
+    - 'Remove-AzKustoClusterCalloutPolicy'
+    - 'Get-AzKustoClusterFollowerDatabaseGet'
+
+#### Az.LabServices 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.LoadTesting 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.LogicApp 1.6.0
+* Upgraded nuget package to signed package.
+* Removed 'Microsoft.Azure.Management.Logic' Version '4.1.0' PackageReference
+
+#### Az.Logz 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.MachineLearning 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.MachineLearningServices 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.Maintenance 1.5.0
+* Upgraded nuget package to signed package.
+* Added list of allowed classifications in description for Maintenance Configuration
+* Fixed incorrect parameter mapping in Get-AzApplyUpdate
+
+#### Az.ManagedNetworkFabric 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.ManagedServiceIdentity 1.3.0
+* Upgraded nuget package to signed package.
+
+#### Az.ManagedServices 3.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.ManagementPartner 0.7.5
+* Upgraded nuget package to signed package.
+
+#### Az.Maps 0.8.2
+* Upgraded nuget package to signed package.
+
+#### Az.MariaDb 0.2.3
+* Upgraded nuget package to signed package.
+
+#### Az.Marketplace 0.5.2
+* Upgraded nuget package to signed package.
+
+#### Az.MarketplaceOrdering 2.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Mdp 0.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.Media 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.Migrate 2.6.0
+* Upgraded nuget package to signed package.
+* Added support for PremiumV2 disk type.
+* Added SBM support.
+
+#### Az.MixedReality 0.2.2
+* Upgraded nuget package to signed package.
+
+#### Az.MobileNetwork 0.4.2
+* Upgraded nuget package to signed package.
+
+#### Az.Monitor 6.0.1
+* Upgraded nuget package to signed package.
+
+#### Az.MonitoringSolutions 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.MySql 1.3.0
+* Upgraded nuget package to signed package.
+
+#### Az.NeonPostgres 0.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.NetAppFiles 0.20.1
+* Upgraded nuget package to signed package.
+
+#### Az.Network 7.12.0
+* Onboarded 'Microsoft.HeathDataAIServices/deidServices' to private link cmdlets
+* Upgraded nuget package to signed package.
+* Updated 'Remove-AzNetworkWatcherFlowLog' command to return boolean value
+* Updated vnv and ipam cmdlets
+* Allowed TA interval to be set as 0 incase TA is disabled
+* Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
+    - 'Get-AzNetworkManagerAssociatedResourcesList'
+    - 'Get-AzNetworkManagerIpamPool'
+    - 'Get-AzNetworkManagerIpamPoolStaticCidr'
+    - 'Get-AzNetworkManagerIpamPoolUsage'
+    - 'New-AzNetworkManagerIpamPool'
+    - 'New-AzNetworkManagerIpamPoolStaticCidr'
+    - 'Remove-AzNetworkManagerIpamPool'
+    - 'Remove-AzNetworkManagerIpamPoolStaticCidr'
+    - 'Set-AzNetworkManagerIpamPool'
+* Onboarded Azure Virtual Network Manager Cmdlets for VnetVerifier
+    - 'New-AzNetworkManagerSecurityGroupItem'
+    - 'New-AzNetworkManagerVerifierWorkspace'
+    - 'Get-AzNetworkManagerVerifierWorkspace'
+    - 'Set-AzNetworkManagerVerifierWorkspace'
+    - 'Remove-AzNetworkManagerVerifierWorkspace'
+    - 'New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    - 'Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    - 'Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    - 'New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+    - 'Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+    - 'Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+* Updated cmdlet to add the property of 'NetworkGroupAddressSpaceAggregationOption', and updated corresponding cmdlets.
+    - 'New-AzNetworkManagerSecurityAdminConfiguration'
+    - 'New-AzNetworkManagerAddressPrefixItemCommand'
+* Added 'DefaultOutboundConnectivityEnabled' property in PSNetworkInterface
+* Added support for 'AutoscaleConfiguration' property in 'AzureFirewall' model for 'New-AzFirewall' and 'Set-AzFirewall' commands
+* Added support for 'ResiliencyModel' property in 'New-AzVirtualNetworkGateway' and 'Set-AzVirtualNetworkGateway' command for ExpressRoute
+
+#### Az.NetworkAnalytics 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.NetworkCloud 1.1.0
+* Upgraded nuget package to signed package.
+* Upgraded API version to 2024-07-01
+
+#### Az.NetworkFunction 0.1.5
+* Upgraded nuget package to signed package.
+
+#### Az.NewRelic 0.2.1
+* Upgraded nuget package to signed package.
+
+#### Az.Nginx 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.NotificationHubs 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.OperationalInsights 3.3.0
+* Upgraded nuget package to signed package.
+
+#### Az.Oracle 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Orbital 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.PaloAltoNetworks 0.3.1
+* Upgraded nuget package to signed package.
+
+#### Az.Peering 0.4.2
+* Upgraded nuget package to signed package.
+
+#### Az.PolicyInsights 1.7.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.Portal 0.2.1
+* Upgraded nuget package to signed package.
+
+#### Az.PostgreSql 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.PowerBIEmbedded 2.1.0
+* Upgraded nuget package to signed package.
+* Removed 'Microsoft.Azure.Management.PowerBIEmbedded' Version '1.1.1-preview' PackageReference
+* Removed 'Microsoft.Azure.Management.PowerBIDedicated' Version '0.11.0-preview' PackageReference
+
+#### Az.PrivateDns 1.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.ProviderHub 0.3.1
+* Upgraded nuget package to signed package.
+
+#### Az.Purview 0.2.2
+* Upgraded nuget package to signed package.
+
+#### Az.Quantum 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.Qumulo 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.Quota 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.RecoveryServices 7.4.0
+* Upgraded nuget package to signed package.
+* Updated the policy, protection commands to support AFS Vault Tier.
+
+#### Az.RedisCache 1.11.0
+* Upgraded nuget package to signed package.
+* Added support for choosing Zonal Allocation Policy
+
+#### Az.RedisEnterpriseCache 1.4.1
+* Upgraded nuget package to signed package.
+
+#### Az.Relay 2.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Reservations 0.13.1
+* Upgraded nuget package to signed package.
+
+#### Az.ResourceGraph 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.ResourceMover 1.3.0
+* Upgraded nuget package to signed package.
+
+#### Az.Resources 7.8.0
+* Upgraded nuget package to signed package.
+* Added DefaultApiVersion to the returned properties of the 'Get-AzResourceProvider' cmdlet's Resource Type array
+* Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
+* Fixed bug unexpected type issue: [#26752]
+* Added parameter 'RequestedAccessTokenVersion' for 'New-AzADApplication' and 'Update-AzADApplication'
+
+#### Az.Search 0.10.1
+* Upgraded nuget package to signed package.
+
+#### Az.Security 1.8.0
+* Upgraded nuget package to signed package.
+
+#### Az.SecurityInsights 3.2.0
+* Upgraded nuget package to signed package.
+
+#### Az.SelfHelp 0.2.1
+* Upgraded nuget package to signed package.
+
+#### Az.ServiceBus 4.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.ServiceFabric 3.5.0
+* Upgraded nuget package to signed package.
+
+#### Az.ServiceLinker 0.2.3
+* Upgraded nuget package to signed package.
+
+#### Az.SignalR 2.1.0
+* Upgraded nuget package to signed package.
+* Removed 'Microsoft.Azure.Management.SignalR' Version '1.1.2-preview' PackageReference
+
+#### Az.Sphere 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.SpringCloud 0.3.2
+* Upgraded nuget package to signed package.
+
+#### Az.Sql 6.0.1
+* Upgraded nuget package to signed package.
+* Updated 'New-AzSqlDatabaseExport' with support for Managed Identity
+ 	- Added 'ManagedIdentity' to 'StorageKeyType' auth list
+   	- Added 'ManagedIdentity' to 'AuthenticationType' auth list
+* Updated 'New-AzSqlDatabaseImport' with support for Managed Identity
+  	- Added 'ManagedIdentity' to 'StorageKeyType' auth list
+	- Added 'ManagedIdentity' to 'AuthenticationType' auth list
+
+#### Az.SqlVirtualMachine 2.4.0
+* Upgraded nuget package to signed package.
+
+#### Az.Ssh 0.2.2
+* Upgraded nuget package to signed package.
+
+#### Az.StackHCI 2.5.0
+* Upgraded nuget package to signed package.
+
+#### Az.StackHCIVM 1.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.StandbyPool 0.2.1
+* Upgraded nuget package to signed package.
+
+#### Az.Storage 8.1.0
+* Upgraded nuget package to signed package.
+* Added warning message for account migration cmdlet.
+    - 'Start-AzStorageAccountMigration'
+* Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
+    - 'New-AzStorageContext'
+* Upgraded Azure.Storage.Blobs to 12.23.0
+* Upgraded Azure.Storage.Files.Shares to 12.21.0
+* Upgraded Azure.Storage.Files.DataLake to 12.21.0
+* Upgraded Azure.Storage.Queues to 12.21.0
+* Supported ClientName property when listing file handles 
+    - 'Get-AzStorageFileHandle'
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.StorageAction 0.1.1
+* Upgraded nuget package to signed package.
+
+#### Az.StorageCache 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.StorageMover 1.5.0
+* Upgraded nuget package to signed package.
+
+#### Az.StorageSync 2.4.0
+* Upgraded nuget package to signed package.
+
+#### Az.StreamAnalytics 2.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Subscription 0.11.2
+* Upgraded nuget package to signed package.
+
+#### Az.Support 2.1.0
+* Upgraded nuget package to signed package.
+
+#### Az.Synapse 3.1.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.Terraform 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.TimeSeriesInsights 0.2.3
+* Upgraded nuget package to signed package.
+
+#### Az.TrafficManager 1.3.0
+* Upgraded nuget package to signed package.
+
+#### Az.VMware 0.7.2
+* Upgraded nuget package to signed package.
+
+#### Az.VoiceServices 0.1.3
+* Upgraded nuget package to signed package.
+
+#### Az.Websites 3.3.0
+* Fixd the source app retrival from Microsoft.Web RP instead of ARM cache for 'RestoreAzureWebAppSnapshot'
+* Upgraded nuget package to signed package.
+
+#### Az.WindowsIotServices 0.1.2
+* Upgraded nuget package to signed package.
+
+#### Az.Workloads 0.4.0
+* Upgraded nuget package to signed package.
+
+## 13.0.0 - November 2024
+#### Az.Accounts 4.0.0
+* [Breaking Change] Removed alias 'Resolve-Error' for the cmdlet 'Resolve-AzError'.
+* Updated the 'Get-AzAccessToken' breaking change warning message.
+* Added Long Running Operation Support for Invoke-AzRest command.
+
+#### Az.App 2.0.0
+* The parameters of the 'New-AzContainerApp', 'New-AzContainerAppJob', 'Update-AzContainerApp', 'Update-AzContainerAppJob' commands have changed.
+  * 'IdentityType' has been removed. 'EnableSystemAssignedIdentity' is used to enable/disable system-assigned identities.
+  * The type of 'UserAssignedIdentity' is simplified to an array of strings that is used to specify the user's assigned identity.
+
+#### Az.Astro 0.1.1
+* Fixed the failure issue when deleting or replacing UserAssignedIdentity.
+
+#### Az.Compute 9.0.0
+* Made '-PublicIpSku' parameter Standard by default in 'New-AzVM'
+
+#### Az.ConnectedKubernetes 0.12.0
+* Corrected function that only worked on Windows.
+* Prevented unexpected value changes where parameters that were never set are unchanged but replayed back as part of Set-AzConnectedKubernetes processing.
+
+#### Az.ConnectedMachine 1.1.0
+* Updated preview version api of HybridCompute to 2024-07-31
+
+#### Az.ContainerInstance 4.1.0
+* Added ContainerGroupProfileId ContainerGroupProfileRevision StandbyPoolProfileFailContainerGroupCreateOnReuseFailure StandbyPoolProfileId to Container Group properties.
+* Added ConfigMapKeyValuePair to Container object properties.
+* Added new cmdlet to define container without using the preset default properties New-AzContainerInstanceNoDefaultObject
+* Added new cmdlets for Container Group Profile - Get-AzContainerInstanceContainerGroupProfile, New-AzContainerInstanceContainerGroupProfile, Remove-AzContainerInstanceContainerGroupProfile, Update-AzContainerInstanceContainerGroupProfile, Get-AzContainerInstanceContainerGroupProfileRevision
+
+#### Az.DesktopVirtualization 5.4.0
+* Added top level arm object for app attach packages
+
+#### Az.DevCenter 2.0.0
+* Updated data plane to 2024-05-01-preview and removed deprecation warnings.
+
+#### Az.Dns 1.3.0
+* Added 'NAPTR' record type support in cmdlets.
+
+#### Az.DnsResolver 1.1.0
+* Added 4 new DNS Resolver Policy (DNS Security Policy) resources into the cmdlets
+    - DNS Resolver Policy (DNS Security Policy)
+    - DNS Security Rule
+    - DNS Resolver Policy Link (DNS Security Policy Link)
+    - DNS Resolver Domain List
+
+#### Az.ElasticSan 1.2.0
+* Removed breaking change warnings for MI best practices 
+    - 'New-AzElasticSanVolumeGroup'
+    - 'Update-AzElasticSanVolumeGroup'
+
+#### Az.HDInsight 6.3.0
+* Changed the type of parameter '-IdentityId' in command 'Update-AzHDInsightCluster' from 'string'  to 'string[]'.
+
+#### Az.KeyVault 6.3.0
+* Added Secret URI Parameter to Key Vault Secret Cmdlets [#23053]
+
+#### Az.Mdp 0.1.0
+* First preview release for module Az.Mdp
+
+#### Az.Monitor 6.0.0
+* The parameters of the 'New-AzDataCollectionEndpoint', 'New-AzDataCollectionRule', 'Update-AzDataCollectionEndpoint', 'Update-AzDataCollectionRule' commands have changed.
+  * 'IdentityType' has been removed. 'EnableSystemAssignedIdentity' is used to enable/disable system-assigned identities.
+  * The type of 'UserAssignedIdentity' is simplified to an array of strings that is used to specify the user's assigned identity.
+
+#### Az.NeonPostgres 0.1.0
+* First preview release for module Az.NeonPostgres
+
+#### Az.NetAppFiles 0.20.0
+* Removed parameters 'Location', 'PoolName', 'VolumeName' from 'Get-AzNetAppFilesBackup', 'New-AzNetAppFilesBackup', 'Update-AzNetAppFilesBackup', 'Remove-AzNetAppFilesBackup' and 'Restore-AzNetAppFilesBackupFile'
+
+#### Az.Network 7.11.0
+* Updated Device Update Private Link provider configuration
+    - Updated Microsoft.DeviceUpdate/accounts API version to 2023-07-01
+
+#### Az.RecoveryServices 7.3.0
+* Added CRR support for southeastus, westus3 regions.
+* Added support for enabling Disk access settings for managed VM restores.
+
+#### Az.Resources 7.7.0
+* Updated Resources SDK to 2024-07-01.
+
+#### Az.Sql 6.0.0
+* Added 'Start-AzSqlInstanceLinkFailover' cmdlet for Managed Instance Link.
+* Updated 'New-AzSqlInstanceLink' with new input parameters
+	- Added 'DistributedAvailabilityGroupName', 'FailoverMode', 'InstanceLinkRole', 'SeedingMode'
+	- Renamed 'SecondaryAvailabilityGroupName' -> 'InstanceAvailabilityGroupName'
+			  'SourceEndpoint' -> 'PartnerEndpoint'
+			  'PrimaryAvailabilityGroupName' -> 'PartnerAvailabilityGroupName'
+	- 'TargetDatabase' -> 'Database', parameter type is changed from string to string[].
+* Updated 'AzureSqlManagedInstanceLinkModel' that is a return type of 'New-AzSqlInstanceLink', 'Get-AzSqlInstanceLink', 'Update-AzSqlInstanceLink' ,'Remove-AzSqlInstanceLink'
+* Added new optional parameter for 'New-AzSqlDatabaseSecondary' to support cross-subscription geo-replication.
+
+#### Az.Storage 8.0.0
+* When downloading blob with parameter AbsoluteUri (alias Uri, BlobUri), not allow input parameter Context together.
+    - 'Get-AzStorageBlobContent'
+* Migrated following Azure Storage File dataplane cmdlets from 'Microsoft.Azure.Storage.File' to 'Azure.Storage.Files.Shares'
+    - 'Close-AzStorageFileHandle'
+    - 'Get-AzStorageFile'
+    - 'Get-AzStorageFileContent'
+    - 'Get-AzStorageFileCopyState'
+    - 'Get-AzStorageFileHandle'
+    - 'Get-AzStorageShare'
+    - 'Get-AzStorageShareStoredAccessPolicy'
+    - 'New-AzStorageDirectory'
+    - 'New-AzStorageShare'
+    - 'New-AzStorageFileSASToken'
+    - 'New-AzStorageShareSASToken'
+    - 'New-AzStorageShareStoredAccessPolicy'
+    - 'Remove-AzStorageDirectory'
+    - 'Remove-AzStorageFile'
+    - 'Remove-AzStorageShare'
+    - 'Remove-AzStorageShareStoredAccessPolicy'
+    - 'Rename-AzStorageDirectory'
+    - 'Rename-AzStorageFile'
+    - 'Set-AzStorageFileContent'
+    - 'Set-AzStorageShareQuota'
+    - 'Set-AzStorageShareStoredAccessPolicy'
+    - 'Start-AzStorageFileCopy'
+    - 'Stop-AzStorageFileCopy'
+
+## 12.5.0 - October 2024
+#### Az.Accounts 3.0.5
+* Fixed the issue that 'Export-AzSshConfig' and 'Enter-AzVM' from Az.Ssh are not able to use when WAM is enabled.
+* Added breaking change preannouncement for the removal of alias 'Resolve-Error'. #26189
+* Integrated new detection library to expand the scope of secrets.
+
+#### Az.AksArc 0.1.2
+* Fixed bug where Remove-AzAksArcCluster would take a very long time to complete.
+* Fixed issue where Update-AzAksArcCluster would error out when passing AdminGroupObjectID parameter.
+
+#### Az.AnalysisServices 1.1.6
+* Migrated AnalysisServices SDK to generated SDK
+    - Removed 'Microsoft.Azure.Management.Analysis' Version '2.0.4' PackageReference
+    - Added AnalysisServices.Management.Sdk ProjectReference
+
+#### Az.ApiManagement 4.0.5
+* Removed Microsoft.Azure.Management.ApiManagement 8.0.0.0-preview
+* Added ApiManagement.Management.Sdk
+
+#### Az.AppComplianceAutomation 0.1.2
+* Used 'Get-AzAccessToken -AsSecureString' inside the 'AppComplianceAutomation' for the plain text version is going to be deprecate in the next release.
+
+#### Az.ArcGateway 0.1.0
+* First preview release for module Az.ArcGateway
+
+#### Az.Attestation 2.0.3
+* Migrated Attestation SDK to generated SDK
+    - Removed 'Microsoft.Azure.Management.Attestation' Version '0.12.0-preview' PackageReference
+    - Added Attestation.Management.Sdk ProjectReference
+
+#### Az.Batch 3.6.4
+* Migrate Batch SDK to generated SDK
+  - Removed 'Microsoft.Azure.Management.Batch' Version='15.0.0' PackageReference
+  - Added Batch.Management.Sdk ProjectReference
+
+#### Az.Communication 0.4.1
+* Added support for inline attachments in the send mail operation.
+    - This update introduced a new property in the EmailAttachment object called contentId, which serves as a unique identifier in the HTML content.
+    - The contentId property should be referenced in the HTML body of the email for inline rendering.
+
+#### Az.Compute 8.5.0
+* Added optional parameters '-SecurityPostureId' and '-SecurityPostureExcludeExtension' to cmdlets 'New-AzVmss' and 'New-AzVmssConfig'.
+* Updated image aliases to be up-to-date in the azure-powershell\src\Compute\Strategies\ComputeRp\Images.json file.
+* Added 'NvmeDisk' argument completer to 'DiffDiskPlacement' parameter for 'Set-AzVMOSDisk' and 'Set-AzVmssStorageProfile' cmdlets, allowing options for disk placement as 'CacheDisk', 'ResourceDisk', or 'NvmeDisk'.
+
+#### Az.ConnectedKubernetes 0.11.1
+* Fixed environment variable usage
+* Got rid of deprecated module and improved logging
+
+#### Az.ConnectedMachine 1.0.0
+* General availability for module Az.ConnectedMachine
+
+#### Az.DataFactory 1.18.9
+* Added pageSize support to Salesforce V2 Source.
+* Added pageSize support to ServiceNow V2 Source.
+* Added host property to Snowflake linked service.
+* Fixed missing authenticationType in PostgreSQL V2 linked service.
+
+#### Az.DataProtection 2.5.0
+* Added support for vault tier backup and restore for AzureKubernetesService
+* Added support for resource modifier reference
+* Added a fix for Update-AzDataProtectionBackupInstance
+
+#### Az.DesktopVirtualization 4.3.2
+* Preannounced the breaking changes for Az.DesktopVirtualization 6.0.0
+
+#### Az.DeviceProvisioningServices 0.10.3
+* Removed Microsoft.Azure.Management.DeviceProvisioningServices 0.10.0-preview dependencies
+* Added Microsoft.Azure.PowerShell.DeviceProvisioningServices.Management.Sdk
+
+#### Az.Elastic 0.2.0
+* Updated the api version to '2024-03-01' (Stable Version)
+
+#### Az.EventGrid 2.1.0
+* Fixed an issue that caused some commands ending in 'Object' to not work properly.
+
+#### Az.EventHub 5.0.1
+* Migrated EventHub SDK to generated SDK
+  - Removed 'Microsoft.Azure.Management.EventHub' Version '5.0.0' PackageReference
+  - Added EventHub.Management.Sdk ProjectReference
+
+#### Az.Functions 4.1.1
+* Used 'Get-AzAccessToken -AsSecureString' inside the 'Functions' for the plain text version is going to be deprecate in the next release.
+
+#### Az.HealthDataAIServices 0.1.0
+* First preview release for module Az.HealthDataAIServices
+
+#### Az.Migrate 2.5.0
+* Validated user login with Microsoft Managed System Identity (MSI) in 'Initialize-AzMigrateHCIReplicationInfrastructure'
+* Passed appropriate Hyper-V Generation value based on source VMware firmware type in 'New-AzMigrateHCIServerReplication'
+* Added support for LinuxLicenseType in Az.Migrate module.
+
+#### Az.Monitor 5.3.0
+* Added new cmdlet for Azure Monitor Pipeline Groups
+  * 'Get-AzPipelineGroup'
+  * 'New-AzPipelineGroup'
+  * 'Update-AzPipelineGroup'
+  * 'Remove-AzPipelineGroup'
+
+#### Az.NetAppFiles 0.19.0
+* Added new cmdLets for on-prem volume migration 'Start-AnfPeerExternalCluster', 'Start-AnfFinalizeExternalReplication', 'Start-AnfPerformExternalReplication', 'Start-AnfAuthorizeExternalReplication'
+* Added new cmdLets 'Get-AzNetAppFilesQuotaAvailability', 'Get-AzNetAppFilesNameAvailability' and 'Get-AzNetAppFilesFileNameAvailability'
+* Added 'RemotePath' to 'PSNetAppFilesReplicationObject'
+* Added 'EffectiveNetworkFeatures' to 'PSNetAppFilesVolume'
+
+#### Az.Network 7.10.0
+* Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
+    - 'New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration'
+    - 'New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection'
+    - 'New/Get/Remove/Set-AzNetworkManagerRoutingRule'
+    - 'New-AzNetworkManagerRoutingGroupItem'
+    - 'New-AzNetworkManagerRoutingRuleDestination'
+    - 'New-AzNetworkManagerRoutingRuleNextHop'
+    - 'New/Get/Remove/Set-AzNetworkManagerSecurityUserConfiguration'
+    - 'New/Get/Remove/Set-AzNetworkManagerSecurityUserRuleCollection'
+    - 'New/Get/Remove/Set-AzNetworkManagerSecurityUserRule'
+    - 'New-AzNetworkManagerSecurityUserGroupItem'
+* Added support for 'MemberType' property in 'New-AzNetworkManagerSecurityUserGroupItem' command
+
+#### Az.PrivateDns 1.1.0
+* Updated new property ResolutionPolicy to Get, New and Set virtual network link cmdlets.
+* Created autorest generated sdk in PrivateDns.Management.Sdk folder
+
+#### Az.RecoveryServices 7.2.1
+* Fixed bug in 'Set-ASRReplicationProtectedItem' cmdlet of H2A for replication to MD scenario.
+
+#### Az.RedisEnterpriseCache 1.4.0
+* Added support for using Microsoft Entra token-based authentication.
+* Added the new properties of Cluster: highAvailability and redundancyMode.
+* Added new product SKUs.
+* Added the new properties of Database: accessKeysAuthentication.
+* Added Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup to force link geo replicated caches.
+* Added Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion to upgrade the redis database version directly.
+
+#### Az.ResourceGraph 1.0.1
+* Migrated ResourceGraph SDK to generated SDK
+  - Removed 'Microsoft.Azure.Management.ResourceGraph' Version '2.1.0' PackageReference
+  - Added ResourceGraph.Management.Sdk ProjectReference
+
+#### Az.Resources 7.6.0
+* Fixed customer-reported 'Remove-AzPolicyAssignment' behavior.
+* Added new cmdlets of DataBoundary
+
+#### Az.ServiceBus 4.0.1
+* Migrated ServiceBus SDK to generated SDK
+    - Removed 'Microsoft.Azure.Management.ServiceBus' Version '5.0.0' PackageReference
+    - Added ServiceBus.Management.Sdk ProjectReference 
+
+#### Az.ServiceLinker 0.2.2
+* Used 'Get-AzAccessToken -AsSecureString' inside the 'ServiceLinker' for the plain text version is going to be deprecate in the next release.
+
+#### Az.StackHCI 2.4.1
+* added support for new environment
+
+#### Az.Storage 7.5.0
+* Added a warning for an upcoming breaking change for download blob will block input parameter -AbsoluteUri and -Context together.
+    - 'Get-AzStorageBlobContent'
+* Revised AzureStorageBlob construct logic to make it more stable.
+
+#### Az.Terraform 0.1.1
+* Fixed descrption for this module
+
 ## 12.4.0 - October 2024
 #### Az.App 1.1.0
 * Added breaking change messages:
@@ -99,14 +1047,6 @@
 
 #### Az.RecoveryServices 7.2.0
 * Fixed bug for making RecoveryAzureStorageAccountId parameter optional in 'New-ASRReplicationProtectedItem' cmdlet of H2A.
-
-#### Az.RedisEnterpriseCache 1.3.0
-* Added support for using Microsoft Entra token-based authentication.
-* Added the new properties of Cluster: highAvailability and redundancyMode.
-* Added new product SKUs.
-* Added the new properties of Database: accessKeysAuthentication.
-* Added Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup to force link geo replicated caches.
-* Added Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion to upgrade the redis database version directly.
 
 #### Az.Resources 7.5.0
 * Added 'ResourceSelector' and 'Override' parameters to 'New/Update-AzPolicyAssignment'.

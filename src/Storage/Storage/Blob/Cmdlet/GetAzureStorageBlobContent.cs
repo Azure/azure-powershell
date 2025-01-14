@@ -30,6 +30,8 @@ using System.Globalization;
 using Track2Models = global::Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs;
 using Azure.Storage;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -116,6 +118,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Blob uri to download from.", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = UriParameterSet)]
         public string AbsoluteUri { get; set; }
+
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ManualParameterSet)]
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ContainerParameterSet)]
+        public override IStorageContext Context { get; set; }
 
         private BlobToFileSystemNameResolver fileNameResolver;
         private bool skipSourceChannelInit;

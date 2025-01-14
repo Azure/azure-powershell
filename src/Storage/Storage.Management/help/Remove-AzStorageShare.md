@@ -23,8 +23,8 @@ Remove-AzStorageShare [-Name] <String> [-IncludeAllSnapshot] [-SnapshotTime <Dat
 
 ### Share
 ```
-Remove-AzStorageShare [-Share] <CloudFileShare> [[-ShareClient] <ShareClient>] [-IncludeAllSnapshot] [-Force]
- [-PassThru] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzStorageShare [-ShareClient] <ShareClient> [-IncludeAllSnapshot] [-Force] [-PassThru]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -194,25 +194,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Share
-Specifies a **CloudFileShare** object.
-This cmdlet removes the object that this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
-This object contains the storage context.
-If you specify this parameter, do not specify the *Context* parameter.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileShare
-Parameter Sets: Share
-Aliases: CloudFileShare
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -ShareClient
 File share Client to be removed.
 
@@ -221,7 +202,7 @@ Type: Azure.Storage.Files.Shares.ShareClient
 Parameter Sets: Share
 Aliases:
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
@@ -281,7 +262,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Azure.Storage.Files.Shares.ShareClient
+
+### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates or updates a new domain with the specified parameters.
+Asynchronously update a new domain with the specified parameters.
 .Description
-Asynchronously creates or updates a new domain with the specified parameters.
+Asynchronously update a new domain with the specified parameters.
 .Example
 $inboundIpRule = New-AzEventGridInboundIPRuleObject -Action Allow -IPMask "12.18.176.1"
 Update-AzEventGridDomain -Name azps-domain -ResourceGroupName azps_test_group_eventgrid -PublicNetworkAccess Enabled -InboundIPRule $inboundIpRule

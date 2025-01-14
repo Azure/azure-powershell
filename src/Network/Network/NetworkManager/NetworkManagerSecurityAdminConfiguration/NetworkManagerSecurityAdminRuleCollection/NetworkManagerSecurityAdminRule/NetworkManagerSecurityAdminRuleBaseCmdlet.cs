@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Network;
 using System.Net;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -37,15 +38,34 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.NetworkManagerSecurityAdminRuleOperationClient.Get(resourceGroupName, networkManagerName, configName, ruleCollectionName, name);
             }
-            catch (Microsoft.Rest.Azure.CloudException exception)
+            catch (CommonErrorResponseException commonException)
             {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound || exception.Response.StatusCode == HttpStatusCode.BadRequest)
+                if (commonException.Response.StatusCode == HttpStatusCode.NotFound || commonException.Response.StatusCode == HttpStatusCode.BadRequest)
                 {
                     // Resource is not present
                     return false;
                 }
 
                 throw;
+            }
+            catch (Exception ex)
+            {
+                // Check if the unknown exception has a property named "StatusCode"
+                var statusCodeProperty = ex.GetType().GetProperty("StatusCode");
+
+                if (statusCodeProperty != null)
+                {
+                    var statusCode = (HttpStatusCode)statusCodeProperty.GetValue(ex);
+
+                    if (statusCode == HttpStatusCode.NotFound || statusCode == HttpStatusCode.BadRequest)
+                    {
+                        // Resource is not present
+                        return false;
+                    }
+                }
+
+                // If no matching status code, rethrow the exception
+                throw new ApplicationException("An unexpected error occurred while checking for the network manager security admin rule.", ex);
             }
 
             return true;

@@ -15,8 +15,10 @@ Creates an Azure RouteServer.
 ```
 New-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> -HostedSubnet <String>
  [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
- [-HubRoutingPreference <String>] [-AllowBranchToBranchTraffic] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HubRoutingPreference <String>] [-AllowBranchToBranchTraffic]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +26,7 @@ The **New-AzRouteServer** cmdlet creates an Azure RouteServer
 
 ## EXAMPLES
 
-### Example 1: Create a new router server
+### Example 1
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location eastus
 
@@ -35,6 +37,23 @@ $publicIpAddress = New-AzPublicIpAddress -Name myRouteServerIP -ResourceGroupNam
 
 New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName myResourceGroup -Location eastus -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress
 ```
+The above will create a resource group "myResourceGroup", a Virtual Network with a RouteServerSubnet, a Public IP Address, and a Route Server in East US in that resource group in Azure. The Route Server will be created with the default settings.
+
+### Example 2
+```powershell
+New-AzResourceGroup -Name myResourceGroup -Location eastus
+
+$subnet = New-AzVirtualNetworkSubnetConfig -Name RouteServerSubnet -AddressPrefix 10.0.0.0/24
+$vnet = New-AzVirtualNetwork -Name myVNet -ResourceGroupName myResourceGroup -Location eastus -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+$subnetId = (Get-AzVirtualNetworkSubnetConfig -Name RouteServerSubnet -VirtualNetwork $vnet).Id
+$publicIpAddress = New-AzPublicIpAddress -Name myRouteServerIP -ResourceGroupName myResourceGroup -AllocationMethod Static -Location eastus -Sku Standard -Tier Regional
+
+$autoscale = New-AzVirtualRouterAutoScaleConfiguration -MinCapacity 3
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName myResourceGroup -Location eastus -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress -VirtualRouterAutoScaleConfiguration $autoscale
+```
+The above will create a resource group "myResourceGroup", a Virtual Network with a RouteServerSubnet, a Public IP Address, and a Route Server in East US in that resource group in Azure. 
+
+This example is similar to Example 2, but the Route Server will be created with a minCapacity of 3 meaning that it will have 3 Routing Infrastructure Units.
 
 ## PARAMETERS
 
@@ -201,6 +220,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualRouterAutoScaleConfiguration
+Autoscale configuration for route server.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterAutoScaleConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

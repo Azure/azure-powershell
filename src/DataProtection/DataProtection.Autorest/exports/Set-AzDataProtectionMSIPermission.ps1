@@ -29,6 +29,10 @@ Set-AzDataProtectionMSIPermission -KeyVaultId "/subscriptions/xxxxxxxx-xxxx-xxxx
 
 .Example
 Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup"
+.Example
+$backupinstance = Get-AzDataProtectionBackupInstance -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -SubscriptionId "SubscriptionId"
+
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "ResourceGroupName" -VaultName "VaultName" -PermissionsScope "ResourceGroup" -BackupInstance $backupinstance[0] -UserAssignedIdentityARMId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RGName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedIdentityName"
 
 .Outputs
 System.Object
@@ -123,6 +127,13 @@ param(
     [System.String]
     # ID of the keyvault
     ${KeyVaultId},
+
+    [Parameter()]
+    [Alias('AssignUserIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # User Assigned Identity ARM ID of the backup vault to be used for assigning permissions
+    ${UserAssignedIdentityARMId},
 
     [Parameter(ParameterSetName='SetPermissionsForRestore', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]

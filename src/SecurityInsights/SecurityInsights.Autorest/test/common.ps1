@@ -519,7 +519,7 @@ Function Create-ThreatIntelligenceIndicator{
     #    $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorId'), $threatIntelligenceIndicatorId)
     #    $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorIP'), $IP)
     #}
-    $tiToken = (Get-AzAccessToken).Token
+    $tiToken = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
     $tiHeaders = @{
         Authorization="Bearer $tiToken"
         Content='application/json'

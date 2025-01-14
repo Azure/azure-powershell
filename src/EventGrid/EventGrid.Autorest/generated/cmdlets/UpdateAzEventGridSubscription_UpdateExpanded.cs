@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Asynchronously updates an existing event subscription.</summary>
+    /// <summary>Asynchronously update an existing event subscription.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEventGridSubscription_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Asynchronously updates an existing event subscription.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Asynchronously update an existing event subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.HttpPath(Path = "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}", ApiVersion = "2023-06-01-preview")]
     public partial class UpdateAzEventGridSubscription_UpdateExpanded : global::System.Management.Automation.PSCmdlet,

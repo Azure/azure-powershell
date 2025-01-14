@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates a new partner destination with the specified parameters.
+Asynchronously create a new partner destination with the specified parameters.
 .Description
-Asynchronously creates a new partner destination with the specified parameters.
+Asynchronously create a new partner destination with the specified parameters.
 .Example
 New-AzEventGridPartnerDestination -Name azps-destin -ResourceGroupName azps_test_group_eventgrid -Location eastus -Tag @{"1"="a"}
 
