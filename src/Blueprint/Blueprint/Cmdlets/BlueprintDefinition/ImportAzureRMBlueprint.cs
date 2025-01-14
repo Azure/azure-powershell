@@ -20,7 +20,7 @@ using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets are being deprecated with an encouraged migration to Deployments Stacks.", "", "")]
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.", "", "")]
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.ImportBlueprintParameterSet), OutputType(typeof(bool))]
     public class ImportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
