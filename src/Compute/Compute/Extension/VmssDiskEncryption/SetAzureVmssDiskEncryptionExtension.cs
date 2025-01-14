@@ -71,7 +71,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
             HelpMessage = "ResourceID of the managed identity with access to keyvault for Azure Disk Encryption operations.")]
         [ValidateNotNullOrEmpty]
         public string EncryptionIdentity { get; set; }
@@ -306,10 +305,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 if (updateEncryptionIdentity != null && updateEncryptionIdentity.Response != null && 
                     updateEncryptionIdentity.Response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    this.WriteObject(updateEncryptionIdentity.Response.Content);
-                    this.WriteObject(updateEncryptionIdentity.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
                     return true;
-
                 }
                 else
                 {

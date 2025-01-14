@@ -168,7 +168,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     }
                                 }
                             }
-                            this.WriteObject(parameters.VirtualMachineProfile.SecurityProfile);
                             // END: For Cross-tenant RBAC sharing
 
                             // Standard securityType is currently not supported in API, jsut used on client side for now,
@@ -187,7 +186,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     parameters.VirtualMachineProfile.SecurityProfile.SecurityType = null;
                                 }
                             }
-                            this.WriteObject(parameters.VirtualMachineProfile.SecurityProfile);
                             VirtualMachineScaleSet result;
                             if (auxAuthHeader != null)
                             {
