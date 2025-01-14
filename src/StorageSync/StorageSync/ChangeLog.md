@@ -23,9 +23,7 @@
 * Added RoleAssignmentExists check
 * Added AssignIdentity to Set-AzStorageSyncServer
 * Added a default behavior of system assigned identity to StorageSyncService provisioning
-
-## Version 2.4.0
-* Upgraded nuget package to signed package.
+* Removed "Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization" Version "2.13.0-preview" package reference
 
 ## Version 2.3.1
 * Fixed the bug in server registration
