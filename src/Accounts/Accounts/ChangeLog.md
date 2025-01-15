@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed unsigned dll:
+    - `System.Buffers.dll`
+    - `System.Memory.dll`
 
 ## Version 4.0.1
 * Upgraded nuget package to signed package.
