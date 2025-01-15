@@ -5626,3 +5626,56 @@ function Test-AddEncryptionIdentityInAzureVmssConfig{
         clean-ResourceGroup $rgName;
     }
 }
+
+<#
+.SYNOPSIS
+Test Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm Throw Exceptions if the EncryptionIdentity
+is not a part of assignedIdentities in a VM.
+#>
+function Test-EncryptionIdentityNotPartOfAzureVmssConfig{
+    $rgName = Get-ComputeTestResourceName;
+    try {
+        # create virtual machine
+        $loc = "centraluseuap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmssName = "vmss" + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";         
+        $osVersion = "latest"
+        $vmssSize = 'Standard_D4s_v3'; 
+        $assignedIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/anshademsitest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/anshjainmsitestuserassignedmanagedidentity"
+        $instances = 2
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity $instances -SkuName $vmssSize -UpgradePolicyMode Automatic -IdentityType UserAssigned -IdentityId $assignedIdentity -EncryptionIdentity $encIdentity -OrchestrationMode Uniform
+
+        Set-AzVmssStorageProfile $vmssConfig -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion $osVersion -OsDiskCreateOption "FromImage" -OsDiskCaching ReadWrite
+        $adminUserName = "bootuser"
+        $adminPassword = "BootUser@1234"
+
+        Set-AzVmssOsProfile $vmssConfig -AdminUsername $adminUserName -AdminPassword $adminPassword
+
+        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest"
+
+        $subnetName = 'default'
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnetName = ('{0}-vnet' -f $vmSSName)
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $loc -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        $subnetId = $vnet.Subnets[0].Id
+        $vmssConfigPublicIpName = ('{0}ip' -f $vmSSName)
+
+        $IPCfg = New-AzVmssIPConfig -Name $vmssConfigPublicIpName -SubnetId $subnetId
+        $vmssNetworkConfigName = ('{0}netconfig' -f $vmSSName)
+
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name $vmssNetworkConfigName -Primary $True -IPConfiguration $IPCfg
+
+        Assert-ThrowsContains {
+            New-AzVmss -ResourceGroupName $rgName -Name $vmssName -VirtualMachineScaleSet $vmssConfig } `
+            "Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource"
+    }
+    finally {
+        clean-ResourceGroup $rgName;
+    }
+}

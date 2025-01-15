@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             {
                                 // TL defaulting for default param set, config object.
                                 // if security type not set, 
+
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)

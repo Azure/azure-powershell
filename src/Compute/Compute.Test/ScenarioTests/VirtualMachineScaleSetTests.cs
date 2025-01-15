@@ -451,5 +451,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AddEncryptionIdentityInAzureVmssConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionIdentityNotPartOfAzureVmssConfig()
+        {
+            TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAzureVmssConfig");
+        }
     }
 }
