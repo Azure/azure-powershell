@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 * Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
     - `New-AzVirtualNetworkGatewayMigrationParameter`
     - `Invoke-AzVirtualNetworkGatewayPrepareMigration`
@@ -93,7 +94,6 @@
 * Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
 * Added support for `AutoscaleConfiguration` property in `AzureFirewall` model for `New-AzFirewall` and `Set-AzFirewall` commands
 * Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` command for ExpressRoute
-* Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 
 ## Version 7.11.0
 * Updated Device Update Private Link provider configuration
