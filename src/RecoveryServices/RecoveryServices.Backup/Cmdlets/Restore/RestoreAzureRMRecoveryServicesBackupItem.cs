@@ -242,7 +242,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetZone)]
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetZone)]
-        public int? TargetZoneNumber { get; set; }
+        [ValidateSet("1", "2", "3", "NoZone", IgnoreCase = false)]
+        public string TargetZoneNumber { get; set; }
 
         /// <summary>
         /// Switch param to restore a backed up unmanaged vm as managed disks.
