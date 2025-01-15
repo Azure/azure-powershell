@@ -249,11 +249,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     throw new PSArgumentException("This server is not configured properly to use managed identities. Follow the steps in the Azure File Sync documentation (https://aka.ms/AFS/ManagedIdentities) to enable a system-assigned managed identity for this server.");
                 }
                 createParameters.ApplicationId = serverRegistrationData.ApplicationId.ToString();
-                RegisteredServer clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverRegistrationData.ClusterId.ToString());
-                var clusterNameResourceId = clusterNameServer.Id;
 
+                // Handle role assignment for cluster nodes
                 if (serverRegistrationData.ServerRole == InternalObjects.ServerRoleType.ClusterNode)
                 {
+                    RegisteredServer clusterNameServer = default;
+                    if (serverRegistrationData.ClusterId.GetValueOrDefault(Guid.Empty) != Guid.Empty)
+                    {
+                        try
+                        {
+                            clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverRegistrationData.ClusterId.ToString());
+                        }
+                        catch (StorageSyncErrorException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            // Cluster is not registered yet. Continue with clusterNameServer as null.
+                        }
+                    }
+                    var clusterNameResourceId = clusterNameServer?.Id;
                     var endpoints = new List<Tuple<ServerEndpoint, StorageSyncModels.CloudEndpoint>>();
                     StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, storageSyncServiceName).ForEach(syncGroup =>
                     {
