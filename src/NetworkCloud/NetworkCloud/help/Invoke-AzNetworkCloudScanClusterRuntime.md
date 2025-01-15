@@ -16,7 +16,7 @@ Triggers the execution of a runtime protection scan to detect and remediate dete
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ScanActivity <ClusterScanRuntimeParametersScanActivity>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ClusterScanRuntimeParameter <IClusterScanRuntimeParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,14 +32,14 @@ Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity>
  [-ScanActivity <ClusterScanRuntimeParametersScanActivity>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ScanViaIdentity
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity>
  -ClusterScanRuntimeParameter <IClusterScanRuntimeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,21 +156,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.AksArc",
-  "ModuleVersion": "0.1.2",
+  "ModuleVersion": "0.1.3",
   "Cmdlets": [
     {
       "VerbName": "Get",
