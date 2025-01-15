@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Restore-AzRecoveryServicesBackupItem to support NoZone as a valid TargetZone and restricted the input for TargetZoneNumber to 1, 2, 3, and NoZone.
 
 ## Version 7.4.0
 * Upgraded nuget package to signed package.
