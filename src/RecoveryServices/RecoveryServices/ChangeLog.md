@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 7.4.0
+* Upgraded nuget package to signed package.
 * Updated the policy, protection commands to support AFS Vault Tier.
 
 ## Version 7.3.0

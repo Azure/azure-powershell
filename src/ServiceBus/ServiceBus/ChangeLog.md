@@ -19,7 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 4.1.0
+* Upgraded nuget package to signed package.
 
 ## Version 4.0.1
 * Migrated ServiceBus SDK to generated SDK

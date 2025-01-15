@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 0.4.2
+* Upgraded nuget package to signed package.
 
 ## Version 0.4.1
 * Added support for inline attachments in the send mail operation.

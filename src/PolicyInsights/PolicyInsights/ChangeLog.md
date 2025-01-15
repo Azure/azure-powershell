@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 1.7.0
+* Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 
 ## Version 1.6.5

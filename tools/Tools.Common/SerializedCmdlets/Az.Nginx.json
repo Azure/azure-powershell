@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Nginx",
-  "ModuleVersion": "1.1.0",
+  "ModuleVersion": "1.2.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType]",
@@ -85,7 +85,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateName": "System.String",
               "ConfigurationName": "System.String",
@@ -124,7 +124,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -134,7 +134,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -257,7 +257,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -273,7 +273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -437,7 +437,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -453,7 +453,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -519,7 +519,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -576,7 +576,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -592,7 +592,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -692,7 +692,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -708,7 +708,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -781,7 +781,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "File": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
               "ProtectedFile": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
@@ -852,7 +852,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateName": "System.String",
               "ConfigurationName": "System.String",
@@ -891,7 +891,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -901,7 +901,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1024,7 +1024,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1040,7 +1040,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1204,7 +1204,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1220,7 +1220,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1286,7 +1286,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -1343,7 +1343,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1359,7 +1359,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1459,7 +1459,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1475,7 +1475,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1548,7 +1548,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentTags",
@@ -1621,7 +1621,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateName": "System.String",
               "ConfigurationName": "System.String",
@@ -1660,7 +1660,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1670,7 +1670,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1796,7 +1796,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1812,7 +1812,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1943,7 +1943,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1959,7 +1959,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2075,7 +2075,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2091,7 +2091,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2157,7 +2157,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -2214,7 +2214,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2230,7 +2230,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2330,7 +2330,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2346,7 +2346,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2419,7 +2419,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DataError": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic[]",
               "Status": "System.String"
@@ -2472,7 +2472,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateName": "System.String",
               "ConfigurationName": "System.String",
@@ -2489,7 +2489,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ConfigFile": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
               "ConfigProtectedFile": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
@@ -2505,7 +2505,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
           },
           "ValidateNotNullOrEmpty": false
@@ -2515,7 +2515,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
           },
           "ValidateNotNullOrEmpty": false
@@ -2575,7 +2575,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2585,7 +2585,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2688,7 +2688,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2704,7 +2704,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2800,7 +2800,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2816,7 +2816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2942,7 +2942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ConfigFile": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
                     "ConfigProtectedFile": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
@@ -2998,7 +2998,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3014,7 +3014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3080,7 +3080,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -3103,7 +3103,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3119,7 +3119,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3215,7 +3215,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3231,7 +3231,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3297,7 +3297,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -3320,7 +3320,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ConfigFile": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
                     "ConfigProtectedFile": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
@@ -3376,7 +3376,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3392,7 +3392,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3492,7 +3492,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3508,7 +3508,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3581,7 +3581,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType]",
@@ -3716,7 +3716,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3726,7 +3726,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3950,7 +3950,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3966,7 +3966,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4054,7 +4054,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "File": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
               "ProtectedFile": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
@@ -4124,7 +4124,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
           },
           "ValidateNotNullOrEmpty": false
@@ -4162,7 +4162,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
           },
           "ValidateNotNullOrEmpty": false
@@ -4212,7 +4212,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4222,7 +4222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4337,7 +4337,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4399,7 +4399,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4479,7 +4479,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4495,7 +4495,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4583,7 +4583,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Content": "System.String",
               "VirtualPath": "System.String"
@@ -4753,7 +4753,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentTags",
@@ -4834,7 +4834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FrontEndIPConfiguration": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration",
               "NetworkInterfaceConfiguration": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration"
@@ -4856,7 +4856,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile"
           },
           "ValidateNotNullOrEmpty": false
@@ -4875,7 +4875,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4978,7 +4978,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4988,7 +4988,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5103,7 +5103,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "FrontEndIPConfiguration": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration",
                     "NetworkInterfaceConfiguration": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration"
@@ -5137,7 +5137,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5168,7 +5168,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5337,7 +5337,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5353,7 +5353,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5441,7 +5441,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FrontEndIPConfiguration": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration",
               "NetworkInterfaceConfiguration": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration"
@@ -5545,7 +5545,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateIPAddress": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress[]",
               "PublicIPAddress": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress[]"
@@ -5558,7 +5558,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SubnetId": "System.String"
             }
@@ -5576,7 +5576,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "PrivateIPAddress": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress[]",
                     "PublicIPAddress": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress[]"
@@ -5595,7 +5595,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SubnetId": "System.String"
                   }
@@ -5625,7 +5625,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateIPAllocationMethod": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod]",
               "PrivateIPAddress": "System.String",
@@ -5739,7 +5739,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5778,7 +5778,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5820,7 +5820,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String"
             },
@@ -6017,7 +6017,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateName": "System.String",
               "ConfigurationName": "System.String",
@@ -6065,7 +6065,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6075,7 +6075,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6248,7 +6248,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6264,7 +6264,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6360,7 +6360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -6432,7 +6432,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6448,7 +6448,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6593,7 +6593,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6609,7 +6609,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6764,7 +6764,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateName": "System.String",
               "ConfigurationName": "System.String",
@@ -6812,7 +6812,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6822,7 +6822,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6995,7 +6995,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7011,7 +7011,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7107,7 +7107,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -7179,7 +7179,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7195,7 +7195,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7340,7 +7340,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7356,7 +7356,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7502,7 +7502,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateName": "System.String",
               "ConfigurationName": "System.String",
@@ -7550,7 +7550,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7560,7 +7560,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7718,7 +7718,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7734,7 +7734,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7830,7 +7830,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -7902,7 +7902,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7918,7 +7918,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8063,7 +8063,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8079,7 +8079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8182,7 +8182,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentTags",
@@ -8254,7 +8254,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateName": "System.String",
               "ConfigurationName": "System.String",
@@ -8271,7 +8271,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile"
           },
           "ValidateNotNullOrEmpty": false
@@ -8299,7 +8299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8411,7 +8411,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8421,7 +8421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8521,7 +8521,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8567,7 +8567,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8751,7 +8751,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8767,7 +8767,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8848,7 +8848,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CertificateName": "System.String",
                     "ConfigurationName": "System.String",
@@ -8871,7 +8871,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8917,7 +8917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9101,7 +9101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9117,7 +9117,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9198,7 +9198,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9244,7 +9244,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9428,7 +9428,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9444,7 +9444,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9565,7 +9565,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType"
       ]
@@ -9573,7 +9573,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -9656,7 +9656,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState"
       ]
@@ -9664,7 +9664,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.ProvisioningState, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -9742,7 +9742,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -9920,13 +9920,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Content": "System.String",
         "VirtualPath": "System.String"
@@ -9941,17 +9941,17 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentTags": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentTags",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentTags, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentTags, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "FrontEndIPConfiguration": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration",
         "NetworkInterfaceConfiguration": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration"
@@ -9960,7 +9960,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrivateIPAddress": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress[]",
         "PublicIPAddress": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress[]"
@@ -9969,13 +9969,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPrivateIPAddress, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrivateIPAllocationMethod": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod]",
         "PrivateIPAddress": "System.String",
@@ -9985,7 +9985,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod"
       ]
@@ -9993,7 +9993,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -10058,13 +10058,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       }
@@ -10072,7 +10072,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "SubnetId": "System.String"
       }
@@ -10080,13 +10080,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CapacityMax": "System.Int32",
         "CapacityMin": "System.Int32",
@@ -10096,7 +10096,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType"
       ]
@@ -10104,7 +10104,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -10185,13 +10185,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic[], Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic[], Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisDiagnostic, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Line": "System.Single",
         "Description": "System.String",
@@ -10205,7 +10205,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode, Az.Nginx.private, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode, Az.Nginx.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Item": "Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode"
       },

@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 3.5.0
+* Upgraded nuget package to signed package.
 
 ## Version 3.3.4
 * Fixed secrets exposure in example documentation.

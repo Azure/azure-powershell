@@ -19,7 +19,7 @@ Get-AzStorageBlobQueryResult [-Blob] <String> [-Container] <String> [-SnapshotTi
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Get-AzStorageBlobQueryResult -BlobBaseClient <BlobBaseClient> -QueryString <Stri
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Get-AzStorageBlobQueryResult -BlobContainerClient <BlobContainerClient> [-Blob] 
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -277,21 +277,6 @@ Return whether the specified blob is successfully queried.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

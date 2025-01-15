@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 1.1.0
+* Upgraded nuget package to signed package.
 
 ## Version 1.0.1
 * Migrated ResourceGraph SDK to generated SDK
