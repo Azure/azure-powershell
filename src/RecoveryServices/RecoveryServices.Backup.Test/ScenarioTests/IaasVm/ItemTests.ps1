@@ -212,6 +212,7 @@ function Test-AzureCrossZonalRestore
 	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagaNZP"
 	$saName = "hiagaeussa"
 	$targetVMName = "czr-pstest-vm"
+	$targetVMName1 = "czr-pstest-nozone-vm"
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
@@ -231,6 +232,11 @@ function Test-AzureCrossZonalRestore
 		
 		Assert-True { $restoreJobCZR.Status -eq "Completed" }
 
+		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName1 -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber NoZone | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJobCZR.Status -eq "Completed" }
+
 		# Snapshot CZR
 		# $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
 		
@@ -241,6 +247,7 @@ function Test-AzureCrossZonalRestore
 	finally
 	{
 		Delete-VM $resourceGroupName $targetVMName
+		Delete-VM $resourceGroupName $targetVMName1
 	}
 }
 
