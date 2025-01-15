@@ -127,7 +127,6 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
             const byte cmsVersionTag = 0x02; // ASN.1 INTEGER tag for cmsVersion
             const byte cmsVersionLength = 0x01; // CMS version value length
             const byte cmsVersionV1 = 0x01; // cmsVersion 1
-            const byte cmsVersionV3 = 0x03; // cmsVersion 3
 
             // Iterate over the specified range in the data
             for (int i = startOffset; i < endOffset; i++)
@@ -145,18 +144,16 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 
                     // Verify that the structure matches the expected pattern
                     if (signedData[i + 2 + sequenceLength] == cmsVersionTag && // tag for cmsVersion
-                        signedData[i + 3 + sequenceLength] == cmsVersionLength && // CMS version value length
-                        signedData[cmsVersionIndex] == cmsVersionV3) // Version is 3, needs to be updated
+                        signedData[i + 3 + sequenceLength] == cmsVersionLength // CMS version value length
+                        )
                     {
                         // Update cmsVersion to 1
                         signedData[cmsVersionIndex] = cmsVersionV1;
-                        return signedData; // Return the updated data
                     }
                 }
             }
 
-            // Throw an exception if cmsVersion 3 was not found or could not be updated
-            throw new Exception("Did not find cmsVersion 3 to update.");
+            return signedData;
         }
     }
 }
