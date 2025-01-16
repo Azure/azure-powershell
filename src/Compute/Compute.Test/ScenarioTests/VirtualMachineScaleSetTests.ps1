@@ -5585,12 +5585,12 @@ function Test-AddEncryptionIdentityInAzureVmssConfig{
         $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity $instances -SkuName $vmssSize -UpgradePolicyMode Automatic -IdentityType UserAssigned -IdentityId $encIdentity -EncryptionIdentity $encIdentity -OrchestrationMode Uniform
 
         Set-AzVmssStorageProfile $vmssConfig -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion $osVersion -OsDiskCreateOption "FromImage" -OsDiskCaching ReadWrite
-        $adminUserName = "bootuser"
-        $adminPassword = "BootUser@1234"
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
-        Set-AzVmssOsProfile $vmssConfig -AdminUsername $adminUserName -AdminPassword $adminPassword
-
-        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest"
+        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest" -AdminUsername $adminUserName -AdminPassword $adminPassword
 
         $subnetName = 'default'
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
@@ -5651,12 +5651,12 @@ function Test-EncryptionIdentityNotPartOfAzureVmssConfig{
         $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity $instances -SkuName $vmssSize -UpgradePolicyMode Automatic -IdentityType UserAssigned -IdentityId $assignedIdentity -EncryptionIdentity $encIdentity -OrchestrationMode Uniform
 
         Set-AzVmssStorageProfile $vmssConfig -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion $osVersion -OsDiskCreateOption "FromImage" -OsDiskCaching ReadWrite
-        $adminUserName = "bootuser"
-        $adminPassword = "BootUser@1234"
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
-        Set-AzVmssOsProfile $vmssConfig -AdminUsername $adminUserName -AdminPassword $adminPassword
-
-        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest"
+        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest" -AdminUsername $adminUserName -AdminPassword $adminPassword
 
         $subnetName = 'default'
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
