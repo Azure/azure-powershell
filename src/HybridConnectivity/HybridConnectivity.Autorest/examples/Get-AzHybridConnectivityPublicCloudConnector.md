@@ -1,22 +1,33 @@
-### Example 1: {{ Add title here }}
+### Example 1: {{ Retrieve Details of a Public Cloud Connector }}
 ```powershell
-{{ Add code here }}
+Get-AzHybridConnectivityPublicCloudConnector `
+    -PublicCloudConnector "MyTestConnector" `
+    -ResourceGroupName "MyResourceGroup"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 : MyTestConnector
+Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/MyResourceGroup/providers/Microsoft.HybridConnectivity/publicCloudConnectors/MyTestConnector
+Location             : eastus
+ProvisioningState    : Succeeded
+AwsCloudProfile      : @{accountId=123456789012; isOrganizationalAccount=False}
 ```
 
-{{ Add description here }}
+This command retrieves details of the Public Cloud Connector named MyTestConnector in the MyResourceGroup.
 
-### Example 2: {{ Add title here }}
+### Example 2: {{ List All Public Cloud Connectors in a Resource Group }}
 ```powershell
-{{ Add code here }}
+Get-AzHybridConnectivityPublicCloudConnector -ResourceGroupName "MyResourceGroup"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 : MyTestConnector
+Location             : eastus
+ProvisioningState    : Succeeded
+Name                 : MyTaggedConnector
+Location             : eastus
+ProvisioningState    : Succeeded
 ```
 
-{{ Add description here }}
+This command lists all Public Cloud Connectors in the MyResourceGroup.
 

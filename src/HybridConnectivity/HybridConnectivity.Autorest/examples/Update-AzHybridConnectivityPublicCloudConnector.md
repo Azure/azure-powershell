@@ -1,22 +1,32 @@
-### Example 1: {{ Add title here }}
+### Example 1: {{ Update Tags for a Public Cloud Connector }}
 ```powershell
-{{ Add code here }}
+Update-AzHybridConnectivityPublicCloudConnector `
+    -PublicCloudConnector "MyTestConnector" `
+    -ResourceGroupName "MyResourceGroup" `
+    -Tag @{ "Environment" = "Staging"; "Updated" = "True" }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 : MyTestConnector
+Tags                 : @{Environment=Staging; Updated=True}
+ProvisioningState    : Succeeded
 ```
 
-{{ Add description here }}
+This command updates the tags for the MyTestConnector to include Staging and Updated.
 
-### Example 2: {{ Add title here }}
+### Example 2: {{ Update a Public Cloud Connector’s Organizational Account }}
 ```powershell
-{{ Add code here }}
+Update-AzHybridConnectivityPublicCloudConnector `
+    -PublicCloudConnector "MyTestConnector" `
+    -ResourceGroupName "MyResourceGroup" `
+    -AwCloudProfileIsOrganizationalAccount $true
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 : MyTestConnector
+AwsCloudProfile      : @{accountId=123456789012; isOrganizationalAccount=True}
+ProvisioningState    : Succeeded
 ```
 
-{{ Add description here }}
+This command updates the MyTestConnector to set the AWS Cloud Profile as an organizational account.
 
