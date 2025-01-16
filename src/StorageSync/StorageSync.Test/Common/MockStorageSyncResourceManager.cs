@@ -103,7 +103,7 @@ namespace StorageSync.Test.Common
         /// Creates the Sync Server Registration management.
         /// </summary>
         /// <returns>IEcsManagement.</returns>
-        public ISyncServerRegistration CreateSyncServerManagement() => IsPlaybackMode ? new MockSyncServerRegistrationClient(CreateEcsManagement()) as ISyncServerRegistration :
+        public ISyncServerRegistration CreateSyncServerManagement() => IsPlaybackMode ? new MockSyncServerRegistrationClient(TestName,CreateEcsManagement()) as ISyncServerRegistration :
             new SyncServerRegistrationClient(CreateEcsManagement(),CreateServerManagedIdentityProvider());
 
         /// <summary>

@@ -298,9 +298,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
             catch (Exception ex) 
             {
-                VerboseLogger.Invoke($"Failed to create role assignment for Service Principal with exception {ex.Message} {(ex as ErrorResponseException).Body?.Error?.Message}. Please create role assignment using troubleshooting documents.");
+                VerboseLogger.Invoke($"Failed to create role assignment for Service Principal with exception {ex.Message} {(ex as ErrorResponseException)?.Body?.Error?.Message}. Please create role assignment using troubleshooting documents.");
 
-                if ((ex as ErrorResponseException).Body?.Error?.Code != RoleAssignmentAlreadyExists)
+                if ((ex as ErrorResponseException)?.Body?.Error?.Code != RoleAssignmentAlreadyExists)
                 {
                     throw;
                 }
@@ -476,9 +476,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
             catch (Exception ex)
             {
-                VerboseLogger.Invoke($"Failed to create role assignment for Service Principal with exception {ex.Message} {(ex as ErrorResponseException).Body?.Error?.Message}. Please create role assignment using troubleshooting documents.");
+                VerboseLogger.Invoke($"Failed to create role assignment for Service Principal with exception {ex.Message} {(ex as ErrorResponseException)?.Body?.Error?.Message}. Please create role assignment using troubleshooting documents.");
 
-                if ((ex as ErrorResponseException).Body?.Error?.Code != RoleAssignmentAlreadyExists)
+                if ((ex as ErrorResponseException)?.Body?.Error?.Code != RoleAssignmentAlreadyExists)
                 {
                     throw;
                 }
