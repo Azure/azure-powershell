@@ -8,7 +8,14 @@ parameters:
   type: boolean
   default: false
 
+resources:
+  repositories:
+  - repository: azure-powershell-devops
+    type: git
+    name: azure-powershell-devops
+
 variables:
+  Working_Directory: $(Build.SourcesDirectory)/azure-powershell
   WindowsName: windows
   WindowsAgentPoolName: pool-windows-2019
   WindowsAgentPoolVMImage: ''
@@ -27,9 +34,10 @@ variables:
   TestTimeoutInMinutes: 180
   BuildAzPredictor: false
   EnableTestCoverage: true
-  TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
+  TestCoverageLocation: $(Working_Directory)/artifacts
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
+  
 
 trigger:
   batch: true
@@ -46,7 +54,26 @@ jobs:
 
   steps:
   - checkout: self
-  - template: util/get-github-pat-steps.yml
+    workspaceRepo: true
+  - checkout: azure-powershell-devops
+    path: "azure-powershell-devops"
+  - task: PowerShell@2
+    displayName: 'Get Github Access Token'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
+        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+
+        $httpConfigs = (git config --get-regexp "http" )
+        $httpConfigs | Foreach-Object {
+          Write-Warning "##########Config: $_##########"
+        }
+        $authConfig = $httpConfigs | Where-Object {$_ -like "*AUTHORIZATION*"}
+        $authConfig | Foreach-Object {
+          Write-Warning "##########Auth Config: $_##########"
+        }
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
@@ -78,22 +105,22 @@ jobs:
         }
 
         Write-Host "`n##[group]Filter changed files"
-        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+        $filesChangedOutputPath = Join-Path "$(Working_Directory)" 'artifacts' 'FilesChanged.txt'
         New-Item -Type File -Path $filesChangedOutputPath -Force
-        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+        $filesChangedScriptPath = Join-Path "$(Working_Directory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
         $filesChanged = @()
         if ("$(Build.reason)" -eq 'IndividualCI') {
-          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId "$(Build.SourceVersion)" -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
+          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId "$(Build.SourceVersion)" -AccessToken '$(GithubToken)' | Foreach-Object { $filesChanged += $_ }
         } elseif ("$(Build.reason)" -eq 'BatchedCI') {
           $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)'
           $batchedCommits | ForEach-Object {
-            Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId $_ -AccessToken $(GithubToken) | Foreach-Object { $filesChanged += $_ }
+            Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId $_ -AccessToken '$(GithubToken)' | Foreach-Object { $filesChanged += $_ }
           }
         } elseif ("$(Build.reason)" -eq 'Manual') {
-          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
         } elseif ("$(Build.reason)" -eq 'Schedule') {
-          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
         } else {
           Write-Host "##vso[task.logissue type=error]Invalid trigger: $(Build.reason)."
           exit 1
@@ -122,27 +149,27 @@ jobs:
         git checkout -b $tmpBranchName $baseBranchName
 
         Write-Host "`n##[group]build steps"
-        $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
-        & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -ForceRegenerate $forceRegenerate -BuildReason $(Build.Reason) -Trigger $trigger
+        $buildStepsPath = Join-Path "$(Working_Directory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
+        & $buildStepsPath -RepoRoot "$(Working_Directory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -ForceRegenerate $forceRegenerate -BuildReason $(Build.Reason) -Trigger $trigger
 
         Write-Host "`n##[group]create PR"
-        $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
+        $generatedPath = Join-Path "$(Working_Directory)" 'generated'
         $diff = ( git status --short --untracked-files $generatedPath)
         if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
           return
         }
         #TODO: add better PR description
         $prDescription = ""
-        $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
+        $prScriptPath = Join-Path "$(Working_Directory)" 'tools' 'Github' 'CreatePR.ps1'
 
         git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
         git config user.name "azure-powershell-bot";
-        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
+        git remote set-url origin 'https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git';
         git add $generatedPath
         git commit -m $prTitle
         git push origin $tmpBranchName --force
         
-        & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken $(GithubToken) -Description $prDescription
+        & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken '$(GithubToken)' -Description $prDescription
 
         <#
           this commidId will be useful when we push directly to target branch in the future
@@ -185,8 +212,8 @@ jobs:
     inputs:
       targetType: inline
       pwsh: true
-      workingDirectory: $(Build.SourcesDirectory)
-      script: .azure-pipelines/PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
+      workingDirectory: $(Working_Directory)
+      script: .azure-pipelines/PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Working_Directory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: analyze-${{ variables.testFramework }}-$(System.JobAttempt)
@@ -226,9 +253,9 @@ jobs:
     displayName: 'Test'
     inputs:
       targetType: inline
-      workingDirectory: $(Build.SourcesDirectory)
+      workingDirectory: $(Working_Directory)
       pwsh: true
-      script: .azure-pipelines/PipelineSteps/test-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -TestFramework "${{ variables.testFramework }}"
+      script: .azure-pipelines/PipelineSteps/test-steps.ps1 -RepoRoot "$(Working_Directory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -TestFramework "${{ variables.testFramework }}"
   - task: PublishTestResults@2
     inputs:
       testRunner: VSTest

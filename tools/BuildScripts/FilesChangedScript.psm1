@@ -96,8 +96,8 @@ function Get-FilesChangedFromCommit {
         [string]$AccessToken
     )
     $uri = "https://api.github.com/repos/$Owner/$Repository/commits/$CommitId"
-    $Headers = @{ "Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $AccessToken"; "X-GitHub-Api-Version" = "2022-11-28" }
-    $response = Invoke-WebRequest -Uri $uri -Headers $Headers -Method GET
+    $headers = @{ "Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $AccessToken"; "X-GitHub-Api-Version" = "2022-11-28" }
+    $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
     $diff =  $response | ConvertFrom-Json | Select-Object -ExpandProperty files | Select-Object -ExpandProperty filename
     Write-Host "********************************Files changed in commit: $CommitId********************************"
     $diff | Write-Host
