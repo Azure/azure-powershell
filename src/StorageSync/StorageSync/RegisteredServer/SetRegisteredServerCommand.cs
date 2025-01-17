@@ -181,13 +181,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 // 2. RBAC permission set for Server Endpoints
                 var serverResourceId = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, ServerId).Id;
 
-                IEnumerable <StorageSyncModels.SyncGroup> syncGroups = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, resourceName);
+                IEnumerable <StorageSyncModels.SyncGroup> syncGroups = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, storageSyncServiceName);
                 Exception syncGroupFirstException = null;
                 foreach (var syncGroup in syncGroups)
                 {
                     try
                     {
-                        IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
+                        IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
                         StorageSyncModels.CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
 
                         if (cloudEndpoint == null)
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                         }
                         var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
 
-                        IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
+                        IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
                         Exception serverEndpointFirstException = null;
                         foreach (var serverEndpoint in serverEndpoints)
                         {
