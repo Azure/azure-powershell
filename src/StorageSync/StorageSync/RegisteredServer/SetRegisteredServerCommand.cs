@@ -159,6 +159,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     identity = Identity;
                 }
 
+                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, ServerId);
+                if (registeredServer == null)
+                {
+                    throw new PSArgumentException($"Server {ServerId} not found.");
+                }
+                if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterName.ToString())
+                {
+                    throw new PSArgumentException($"Please provide the current server resource id with ServerType as ClusterNode");
+                }
+                if(!identity.GetValueOrDefault())
+                {
+                    throw new NotSupportedException(ActionMessage + " requires Identity parameter to be set to true.");
+
+                }
+
                 // 1. Get the server's latest applicationId
                 var serverManagedIdentityProvider = new ServerManagedIdentityProvider
                 {
@@ -179,16 +194,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
 
                 // 2. RBAC permission set for Server Endpoints
-                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, ServerId);
-                if (registeredServer == null)
-                {
-                    throw new PSArgumentException($"Server {ServerId} not found.");
-                }
-                if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterName.ToString())
-                {
-                    throw new PSArgumentException($"Please provide the current server resource id with ServerType as ClusterNode");
-                }
-
                 string serverResourceId;
 
                 if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterNode.ToString())

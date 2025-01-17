@@ -186,13 +186,23 @@ namespace StorageSyncTests
         }
 
         /// <summary>
-        /// Defines the test method TestRemoveRegisteredServer.
+        /// Defines the test method TestPatchRegisteredServer.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPatchRegisteredServer()
         {
             TestRunner.RunTestScript("Test-PatchRegisteredServer");
+        }
+
+        /// <summary>
+        /// Defines the test method TestPatchRegisteredServerWithServerEndpoint.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPatchRegisteredServerWithServerEndpoint()
+        {
+            //TestRunner.RunTestScript("Test-PatchRegisteredServerWithServerEndpoint");
         }
     }
 }

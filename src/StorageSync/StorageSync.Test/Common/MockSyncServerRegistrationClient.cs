@@ -378,6 +378,10 @@ namespace Commands.StorageSync.Interop.Clients
             {
                 return null;
             }
+            if(TestName == "TestPatchRegisteredServer")
+            {
+                return new Guid("3b990c8b-9607-4c2a-8b04-1d41985facca");
+            }
             return Guid.NewGuid();
         }
     }

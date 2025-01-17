@@ -98,7 +98,7 @@ namespace StorageSync.Test.Common
         /// Create Server Managed Identity Provider
         /// </summary>
         /// <returns>ServerManagedIdentityProvider interface</returns>
-        public IServerManagedIdentityProvider CreateServerManagedIdentityProvider() => IsPlaybackMode ? new MockServerManagedIdentityProvider() : new ServerManagedIdentityProvider();
+        public IServerManagedIdentityProvider CreateServerManagedIdentityProvider() => IsPlaybackMode ? new MockServerManagedIdentityProvider(TestName) : new ServerManagedIdentityProvider();
 
         /// <summary>
         /// Creates the Sync Server Registration management.
@@ -176,6 +176,10 @@ namespace StorageSync.Test.Common
 
         LocalServerType IStorageSyncResourceManager.GetServerTypeFromRegistry()
         {
+            if (TestName == "TestPatchRegisteredServer")
+            {
+                return LocalServerType.ArcEnabledHybridServer;
+            }
             return LocalServerType.HybridServer;
         }
     }
