@@ -24,11 +24,9 @@ Get Cognitive Services Model Capacity in all the regions or single region
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesModelCapacity -Format "OpenAI" -Name "gpt-4" -Version "0125-Preview"
+C:\> Get-AzCognitiveServicesModelCapacity -Format "OpenAI" -Name "gpt-4" -Version "0125-Preview"
         Get-AzCognitiveServicesModelCapacity -Format "OpenAI" -Name "gpt-4" -Version "0125-Preview" -Location "West US"
 ```
-
-Get Cognitive Services Model Capacity
 
 ## PARAMETERS
 

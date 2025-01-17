@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
-    /// Get or list Cognitive Services Account RaiContentFilters.
+    /// Get or list Cognitive Services Account RaiContentFilter.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesRaiContentFilters", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(RaiContentFilter))]
-    public class GetAzureCognitiveServicesRaiContentFiltersCommand : CognitiveServicesAccountBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesRaiContentFilter", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(RaiContentFilter))]
+    public class GetAzureCognitiveServicesRaiContentFilterCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string DefaultParameterSet = "DefaultParameterSet";
 

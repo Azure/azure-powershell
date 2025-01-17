@@ -38,7 +38,7 @@ Remove Cognitive Services Account Rai Policy.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName "rgname" -AccountName "accountname" -Name "policyname"
+Remove-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName "rgname" -AccountName "accountname" -Name "policyname"
 ```
 
 Remove Cognitive Services Account Rai Policy.
