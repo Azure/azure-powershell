@@ -1,34 +1,32 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesraicontentfilters
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesraicontentfilter
 schema: 2.0.0
 ---
 
-# Get-AzCognitiveServicesRaiContentFilters
+# Get-AzCognitiveServicesRaiContentFilter
 
 ## SYNOPSIS
-Get Cognitive Services RAI Content Filters
+Get Cognitive Services RAI Content Filter
 
 ## SYNTAX
 
 ```
-Get-AzCognitiveServicesRaiContentFilters [-Location] <String> [[-Name] <String>]
+Get-AzCognitiveServicesRaiContentFilter [-Location] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get Cognitive Services RAI Content Filters
+Get Cognitive Services RAI Content Filter
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesRaiContentFilters -Location "eastus"
-        Get-AzCognitiveServicesRaiContentFilters -Location "eastus" -Name "IndirectAttack"
+C:\> Get-AzCognitiveServicesRaiContentFilter -Location "eastus"
+        Get-AzCognitiveServicesRaiContentFilter -Location "eastus" -Name "IndirectAttack"
 ```
-
-Get Cognitive Services RAI Content Filters
 
 ## PARAMETERS
 

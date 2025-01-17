@@ -25,8 +25,8 @@ Create Cognitive Services Account Rai Block List.
 
 ### Example 1
 ```powershell
-PS C:\> $properties = New-AzCognitiveServicesObject -Type RaiBlocklistProperties
-PS C:\> New-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name -Properties $properties
+$properties = New-AzCognitiveServicesObject -Type RaiBlocklistProperties
+New-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name -Properties $properties
 ```
 
 Create Cognitive Services Account Rai Block List.

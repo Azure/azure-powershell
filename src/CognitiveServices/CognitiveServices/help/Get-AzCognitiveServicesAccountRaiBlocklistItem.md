@@ -31,10 +31,8 @@ Get Cognitive Services Account Rai Block List Item.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName "rgname" -AccountName "accountname" -RaiBlocklistName "blocklistname"
+C:\> Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName "rgname" -AccountName "accountname" -RaiBlocklistName "blocklistname"
 ```
-
-Get Cognitive Services Account Rai Block List Item.
 
 ## PARAMETERS
 

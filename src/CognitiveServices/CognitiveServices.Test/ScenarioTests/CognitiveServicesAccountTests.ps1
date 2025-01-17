@@ -1819,9 +1819,9 @@ function Test-Rai
         $loc = "eastus";
 
         # Test RAI Content Filter
-        Get-AzCognitiveServicesRaiContentFilters -Location $loc
+        Get-AzCognitiveServicesRaiContentFilter -Location $loc
 
-        Get-AzCognitiveServicesRaiContentFilters -Location $loc -Name "IndirectAttack"
+        Get-AzCognitiveServicesRaiContentFilter -Location $loc -Name "IndirectAttack"
 
         # generate a account
         New-AzResourceGroup -Name $rgname -Location $loc;

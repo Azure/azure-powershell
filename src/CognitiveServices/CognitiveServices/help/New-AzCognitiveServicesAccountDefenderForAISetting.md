@@ -25,7 +25,7 @@ Create Defender For AI Setting of a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzCognitiveServicesAccountDefenderForAISetting -ResourceGroupName "rgname" -AccountName "accountname" -Name "Default" -State "Enabled"
+New-AzCognitiveServicesAccountDefenderForAISetting -ResourceGroupName "rgname" -AccountName "accountname" -Name "Default" -State "Enabled"
 ```
 
 Create Defender For AI Setting of a Cognitive Services account

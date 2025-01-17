@@ -38,7 +38,7 @@ Remove Cognitive Services Account Rai Block List.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name
+Remove-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name
 ```
 
 Remove Cognitive Services Account Rai Block List.

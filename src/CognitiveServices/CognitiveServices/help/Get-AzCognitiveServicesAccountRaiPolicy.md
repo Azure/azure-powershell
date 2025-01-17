@@ -31,10 +31,8 @@ Get Cognitive Services Account Rai Policy.
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName "rgname" -AccountName "accountname"
+C:\>  Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName "rgname" -AccountName "accountname"
 ```
-
-List Cognitive Services Account Rai Policys.
 
 ### Example 2
 ```powershell
