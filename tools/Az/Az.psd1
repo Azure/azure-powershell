@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.1'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.2'; }, 
                @{ModuleName = 'Az.Advisor'; RequiredVersion = '2.1.0'; }, 
                @{ModuleName = 'Az.Aks'; RequiredVersion = '6.1.0'; }, 
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.2.0'; }, 
@@ -122,7 +122,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.1'; },
                @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '7.4.0'; }, 
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.11.0'; }, 
-               @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.2.1'; }, 
+               @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.4.1'; }, 
                @{ModuleName = 'Az.Relay'; RequiredVersion = '2.1.0'; }, 
                @{ModuleName = 'Az.ResourceGraph'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.ResourceMover'; RequiredVersion = '1.3.0'; }, 

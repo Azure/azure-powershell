@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 4.0.2
+* Fixed unsigned dll:
+    - `System.Buffers.dll`
+    - `System.Memory.dll`
+
 ## Version 4.0.1
 * Upgraded nuget package to signed package.
 * Fixed the Managed Identity parameter set description of `AccountId` in `Connect-AzAccount`.
