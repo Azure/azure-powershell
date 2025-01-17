@@ -764,7 +764,7 @@ function Test-PatchRegisteredServer
         $expectedRegisteredServer = get-job -Id $job.Id | receive-job -Keep
 
         Write-Verbose "Patch Server: $($expectedRegisteredServer.ServerId)"
-        Set-AzStorageSyncServer -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -ServerId $expectedRegisteredServer.ServerId -Identity -AsJob | Wait-Job
+        Set-AzStorageSyncServer -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -ServerId $expectedRegisteredServer.ServerId -Identity -AsJob | Wait-Job
 
         Write-Verbose "Unregister Server: $($expectedRegisteredServer.ServerId)"
         Unregister-AzStorageSyncServer -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -ServerId $expectedRegisteredServer.ServerId -AsJob | Wait-Job
