@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Management.Resources.Models;
+    using Management.ResourceManager.Models;
     using Newtonsoft.Json.Linq;
 
     public class PSWhatIfOperationResult
