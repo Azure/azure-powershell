@@ -165,8 +165,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     EnableMIChecking = true
                 };
 
-                var serverTypeFromRegistry = StorageSyncClientWrapper.StorageSyncResourceManager.GetServerTypeFromRegistry();
-                var applicationId = serverManagedIdentityProvider.GetServerApplicationId(serverTypeFromRegistry, throwIfNotFound: false);
+                LocalServerType serverTypeFromRegistry = StorageSyncClientWrapper.StorageSyncResourceManager.GetServerTypeFromRegistry();
+                Guid applicationId = serverManagedIdentityProvider.GetServerApplicationId(serverTypeFromRegistry, throwIfNotFound: false);
 
                 if (applicationId == Guid.Empty)
                 {
@@ -179,64 +179,101 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
 
                 // 2. RBAC permission set for Server Endpoints
-                var serverResourceId = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, ServerId).Id;
+                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, ServerId);
+                if (registeredServer == null)
+                {
+                    throw new PSArgumentException($"Server {ServerId} not found.");
+                }
+                if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterName.ToString())
+                {
+                    throw new PSArgumentException($"Please provide the current server resource id with ServerType as ClusterNode");
+                }
+
+                string serverResourceId;
+
+                if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterNode.ToString())
+                {
+                    // this is unexpected scenario but can happen if the server is not registered properly
+                    if (string.IsNullOrEmpty(registeredServer.ClusterId) || Guid.Parse(registeredServer.ClusterId) == Guid.Empty)
+                    {
+                        throw new PSArgumentException($"Cluster Id is not available for cluster node server {registeredServer.Id}. Please contact administrator for further troubleshooting.");
+                    }
+
+                    RegisteredServer clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, registeredServer.ClusterId.ToString());
+                    if (clusterNameServer == null)
+                    {
+                        throw new PSArgumentException($"Cluster  {registeredServer.ClusterName} not found.");
+                    }
+                    serverResourceId = clusterNameServer?.Id;
+                }
+                else
+                {
+                    serverResourceId = registeredServer.Id;
+                }
 
                 IEnumerable <StorageSyncModels.SyncGroup> syncGroups = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, storageSyncServiceName);
                 Exception syncGroupFirstException = null;
-                foreach (var syncGroup in syncGroups)
+                if (syncGroups != null)
                 {
-                    try
+                    foreach (StorageSyncModels.SyncGroup syncGroup in syncGroups)
                     {
-                        IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
-                        StorageSyncModels.CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
-
-                        if (cloudEndpoint == null)
+                        try
                         {
-                            StorageSyncClientWrapper.VerboseLogger.Invoke($"Skipping SyncGroup. No cloud Endpoint found for sync group {syncGroup.Name}");
-                            continue;
-                        }
-                        var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                            IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
+                            StorageSyncModels.CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
 
-                        IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
-                        Exception serverEndpointFirstException = null;
-                        foreach (var serverEndpoint in serverEndpoints)
-                        {
-                            try
+                            if (cloudEndpoint == null)
                             {
-                                // if we found a matching ServerEndpoint for this server, create a role assignment for this file share/cep
-                                if (serverEndpoint.ServerResourceId.Equals(serverResourceId))
+                                StorageSyncClientWrapper.VerboseLogger.Invoke($"Skipping SyncGroup. No cloud Endpoint found for sync group {syncGroup.Name}");
+                                continue;
+                            }
+                            var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+
+                            IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
+                            Exception serverEndpointFirstException = null;
+                            foreach (StorageSyncModels.ServerEndpoint serverEndpoint in serverEndpoints)
+                            {
+                                try
                                 {
-                                    // Identity, RoleDef, Scope
-                                    var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
-                                    var identityRoleAssignmentForFileShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
-                                        applicationId,
-                                        Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
-                                        scope);
+                                    // if we found a matching ServerEndpoint for this server, create a role assignment for this file share/cep
+                                    if (serverEndpoint.ServerResourceId.Equals(serverResourceId))
+                                    {
+                                        // Identity, RoleDef, Scope
+                                        var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                                        var identityRoleAssignmentForFileShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                                            applicationId,
+                                            Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                                            scope);
 
-                                    // break because a given server (as an sep) can only participate once in each sync group/cep
-                                    break;
-                                }                                
-                            }
-                            catch (Exception ex)
+                                        // break because a given server (as an sep) can only participate once in each sync group/cep
+                                        break;
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    StorageSyncClientWrapper.ErrorLogger.Invoke($"RBAC creation for ServerEndpoint {serverEndpoint.Name} has failed with an exception {ex.Message}.");
+                                    serverEndpointFirstException = serverEndpointFirstException ?? ex;
+                                }
+                            } // Iterating server endpoints
+                            if (serverEndpointFirstException != null)
                             {
-                                StorageSyncClientWrapper.ErrorLogger.Invoke($"RBAC creation for ServerEndpoint {serverEndpoint.Name} has failed with an exception {ex.Message}.");
-                                serverEndpointFirstException = serverEndpointFirstException ?? ex;
+                                throw serverEndpointFirstException;
                             }
-                        } // Iterating server endpoints
-                        if (serverEndpointFirstException != null)
-                        {
-                            throw serverEndpointFirstException;
                         }
-                    }
-                    catch (Exception ex)
+                        catch (Exception ex)
+                        {
+                            StorageSyncClientWrapper.ErrorLogger.Invoke($"SyncGroup {syncGroup.Name} has failed with an exception {ex.Message}.");
+                            syncGroupFirstException = syncGroupFirstException ?? ex;
+                        }
+                    } // Iterating sync groups
+                    if (syncGroupFirstException != null)
                     {
-                        StorageSyncClientWrapper.ErrorLogger.Invoke($"SyncGroup {syncGroup.Name} has failed with an exception {ex.Message}.");
-                        syncGroupFirstException = syncGroupFirstException ?? ex;
+                        throw syncGroupFirstException;
                     }
-                } // Iterating sync groups
-                if (syncGroupFirstException != null)
+                }
+                else
                 {
-                    throw syncGroupFirstException;
+                    StorageSyncClientWrapper.VerboseLogger.Invoke($"No SyncGroups found for StorageSyncService {storageSyncServiceName}");
                 }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, resourceName);
