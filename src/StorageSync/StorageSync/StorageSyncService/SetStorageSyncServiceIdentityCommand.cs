@@ -317,12 +317,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     {
                         if (serverKvp.Value.ServerRole != ServerRoleType.ClusterName.ToString())
                         {
-                            var updateParams = new RegisteredServerUpdateParameters()
-                            {
-                                Identity = true
-                            };
-
-                            StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(resourceGroupName, resourceName, serverKvp.Value.ServerId, parameters: updateParams);
+                            StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(resourceGroupName, resourceName, serverKvp.Value.ServerId,
+                                new RegisteredServerUpdateParameters()
+                                {
+                                    Identity = true
+                                });
                             if (!registeredServer.Identity.GetValueOrDefault(false))
                             {
                                 throw new PSArgumentException($"Not able to set Identity on to server {serverKvp.Key}. Please reach out to administrator for further troubleshooting");

@@ -242,17 +242,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, resourceName);
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    var updateParameters = new RegisteredServerUpdateParameters()
-                    {
-                        Identity = identity,
-                        ApplicationId = applicationId.ToString()
-                    };
-
                     RegisteredServer resource = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(
                         resourceGroupName,
                         storageSyncServiceName,
                         resourceName,
-                        updateParameters
+                        new RegisteredServerUpdateParameters()
+                        {
+                            Identity = identity,
+                            ApplicationId = applicationId.ToString()
+                        }
                         );
 
                     WriteObject(resource);

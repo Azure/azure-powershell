@@ -37,13 +37,19 @@ namespace Commands.StorageSync.Interop.Clients
     /// <seealso cref="Commands.StorageSync.Interop.Clients.SyncServerRegistrationClientBase" />
     public class MockSyncServerRegistrationClient : MockSyncServerRegistrationClientBase
     {
+        /// <summary>
+        /// Gets the name of the test.
+        /// </summary>
+        /// <value>The name of the test.</value>
+        protected string TestName;
 
         /// <summary>
-        /// Parameterzed constructor for Sync Server Registration Client
+        /// Parameterized constructor for Sync Server Registration Client
         /// </summary>
         /// <param name="ecsManagementInteropClient">The ecs management interop client.</param>
-        public MockSyncServerRegistrationClient(IEcsManagement ecsManagementInteropClient) : base(ecsManagementInteropClient)
+        public MockSyncServerRegistrationClient(string testName, IEcsManagement ecsManagementInteropClient) : base(ecsManagementInteropClient)
         {
+            this.TestName = testName;
         }
 
         /// <summary>
@@ -368,7 +374,11 @@ namespace Commands.StorageSync.Interop.Clients
 
         public override Guid? GetApplicationIdOrNull()
         {
-            return null;
+            if(TestName == "TestNewRegisteredServerWithIdentityError")
+            {
+                return null;
+            }
+            return Guid.NewGuid();
         }
     }
 }

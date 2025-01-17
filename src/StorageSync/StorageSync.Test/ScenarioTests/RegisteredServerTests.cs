@@ -76,6 +76,7 @@ namespace StorageSyncTests
 
         /// <summary>
         /// Defines the test method TestNewRegisteredServerWithIdentity.
+        /// Storage Sync Service is created with identity and registered server is created with identity.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
