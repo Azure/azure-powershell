@@ -157,7 +157,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                         resourceGroupName,
                         storageSyncServiceName,
                         resourceName,
-                        identity
+                        new RegisteredServerUpdateParameters()
+                        { 
+                            Identity = identity 
+                        }
                         );
 
                     WriteObject(resource);

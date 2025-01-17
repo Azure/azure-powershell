@@ -65,6 +65,27 @@ namespace StorageSyncTests
         }
 
         /// <summary>
+        /// Defines the test method TestNewRegisteredServerWithIdentityError.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewRegisteredServerWithIdentityError()
+        {
+            TestRunner.RunTestScript("Test-NewRegisteredServerWithIdentityError"); 
+        }
+
+        /// <summary>
+        /// Defines the test method TestNewRegisteredServerWithIdentity.
+        /// Storage Sync Service is created with identity and registered server is created with identity.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewRegisteredServerWithIdentity()
+        {
+            TestRunner.RunTestScript("Test-NewRegisteredServerWithIdentity");
+        }
+
+        /// <summary>
         /// Defines the test method TestNewRegisteredServer.
         /// </summary>
         [Fact]
