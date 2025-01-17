@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 * Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
     - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`

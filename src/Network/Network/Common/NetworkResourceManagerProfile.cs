@@ -863,6 +863,22 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.InboundNatRulePortMapping, CNM.PSInboundNatRulePortMapping>();
 
+                // LoadBalancerHealthPerRule
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSLoadBalancerHealthPerRule, MNM.LoadBalancerHealthPerRule>();
+
+                // LoadBalancerHealthPerRule
+                // MNM to CNM
+                cfg.CreateMap<MNM.LoadBalancerHealthPerRule, CNM.PSLoadBalancerHealthPerRule>();
+
+                // LoadBalancerHealthPerRulePerBackendAddress
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSLoadBalancerHealthPerRulePerBackendAddress, MNM.LoadBalancerHealthPerRulePerBackendAddress>();
+
+                // LoadBalancerHealthPerRulePerBackendAddress
+                // MNM to CNM
+                cfg.CreateMap<MNM.LoadBalancerHealthPerRulePerBackendAddress, CNM.PSLoadBalancerHealthPerRulePerBackendAddress>();
+
                 // NatRulePortMapping
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNatRulePortMapping, MNM.NatRulePortMapping>();
