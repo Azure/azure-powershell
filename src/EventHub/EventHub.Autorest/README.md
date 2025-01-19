@@ -64,6 +64,11 @@ disable-transform-identity-type: true
 flatten-userassignedidentity : false
 
 directive:
+  - from: swagger-document
+    where: $.definitions.AccessKeys.properties.primaryKey
+    transform: >
+      $["x-ms-client-name"] = "primaryKeySecure";
+      $["format"] = "password";
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaJsonFilePath$|^CreateViaJsonString$
     remove: true
