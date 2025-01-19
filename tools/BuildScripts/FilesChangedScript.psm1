@@ -90,15 +90,12 @@ function Get-FilesChangedFromPR {
 
 function Get-FilesChangedFromCommit {
     param (
-        [string]$Owner = "Azure",
-        [string]$Repository = "azure-powershell",
-        [string]$CommitId,
-        [string]$AccessToken
+        [string]$CommitId
     )
-    $uri = "https://api.github.com/repos/$Owner/$Repository/commits/$CommitId"
-    $headers = @{ "Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $AccessToken"; "X-GitHub-Api-Version" = "2022-11-28" }
-    $response = Invoke-WebRequest -Uri $uri -Headers $headers -Method GET
-    $diff =  $response | ConvertFrom-Json | Select-Object -ExpandProperty files | Select-Object -ExpandProperty filename
+    $diff = @()
+    git show $CommitId --name-only | Where-Object {(-not $_.StartsWith('commit')) -and (-not $_.StartsWith('Author')) -and (-not $_.StartsWith('Date')) -and (-not $_.StartsWith(' ')) -and ($_.Length -ne 0)} | Foreach-Object {
+        $diff += $_
+    }
     Write-Host "********************************Files changed in commit: $CommitId********************************"
     $diff | Write-Host
     return $diff

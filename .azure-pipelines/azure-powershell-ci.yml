@@ -57,23 +57,24 @@ jobs:
     workspaceRepo: true
   - checkout: azure-powershell-devops
     path: "azure-powershell-devops"
-  - task: PowerShell@2
-    displayName: 'Get Github Access Token'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+  # - task: PowerShell@2
+  #   displayName: 'Get Github Access Token'
+  #   inputs:
+  #     targetType: inline
+  #     pwsh: true
+  #     script: |
+  #       $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
+  #       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
 
-        $httpConfigs = (git config --get-regexp "http" )
-        $httpConfigs | Foreach-Object {
-          Write-Warning "##########Config: $_##########"
-        }
-        $authConfig = $httpConfigs | Where-Object {$_ -like "*AUTHORIZATION*"}
-        $authConfig | Foreach-Object {
-          Write-Warning "##########Auth Config: $_##########"
-        }
+  #       $httpConfigs = (git config --get-regexp "http" )
+  #       $httpConfigs | Foreach-Object {
+  #         Write-Warning "##########Config: $_##########"
+  #       }
+  #       $authConfig = $httpConfigs | Where-Object {$_ -like "*AUTHORIZATION*"}
+  #       $authConfig | Foreach-Object {
+  #         Write-Warning "##########Auth Config: $_##########"
+  #       }
+  - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
@@ -111,11 +112,11 @@ jobs:
         Import-Module $filesChangedScriptPath
         $filesChanged = @()
         if ("$(Build.reason)" -eq 'IndividualCI') {
-          Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId "$(Build.SourceVersion)" -AccessToken '$(GithubToken)' | Foreach-Object { $filesChanged += $_ }
+          Get-FilesChangedFromCommit -CommitId "$(Build.SourceVersion)" | Foreach-Object { $filesChanged += $_ }
         } elseif ("$(Build.reason)" -eq 'BatchedCI') {
-          $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)'
+          $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)' -BranchName "Build.SourceBranchName"
           $batchedCommits | ForEach-Object {
-            Get-FilesChangedFromCommit -Owner "Azure" -Repository "azure-powershell" -BranchName "Build.SourceBranchName" -CommitId $_ -AccessToken '$(GithubToken)' | Foreach-Object { $filesChanged += $_ }
+            Get-FilesChangedFromCommit -CommitId $_ | Foreach-Object { $filesChanged += $_ }
           }
         } elseif ("$(Build.reason)" -eq 'Manual') {
           $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
