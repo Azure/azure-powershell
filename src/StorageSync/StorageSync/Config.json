@@ -13,7 +13,8 @@
   ],
   "ValidOSSkus": [
     "7",
-    "8"
+    "8",
+    "407"
   ],
   "InvalidFilenames": [
     "AUX",
