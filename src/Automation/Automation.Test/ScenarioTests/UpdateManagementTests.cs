@@ -96,7 +96,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-DeleteSoftwareUpdateConfiguration");
         }
 
-        [Fact(Skip = "Test needs to be re-recorded after issue https://github.com/Azure/azure-powershell/issues/7705 is fixed.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRuns()
@@ -104,7 +104,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-GetAllSoftwareUpdateRuns");
         }
 
-        [Fact(Skip = "Test needs to be re-recorded after issue https://github.com/Azure/azure-powershell/issues/7705 is fixed.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFilters()
@@ -112,7 +112,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-GetAllSoftwareUpdateRunsWithFilters");
         }
 
-        [Fact(Skip = "Will be re-recorded by Dec 5th")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFiltersNoResults()
@@ -120,7 +120,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-GetAllSoftwareUpdateRunsWithFiltersNoResults");
         }
 
-        [Fact(Skip = "Will be re-recorded by Dec 5th.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRuns()
@@ -128,7 +128,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-GetAllSoftwareUpdateMachineRuns");
         }
 
-        [Fact(Skip = "Will be re-recorded by Dec 5th")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRunsWithFilters()
@@ -136,7 +136,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-GetAllSoftwareUpdateMachineRunsWithFilters");
         }
 
-        [Fact(Skip = "Will be re-recorded by Dec 5th")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRunsWithFiltersNoResults()
