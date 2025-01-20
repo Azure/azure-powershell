@@ -116,17 +116,21 @@ function Get-LatestBatchedCommits {
     $apiVersion = "7.1"
     $listBuildsUri = "$Org$Project/_apis/build/builds?definitions=$PipelineDefinitionId&reasonFilter=batchedCI&repositoryType=$RepositoryType&repositoryId=$RepositoryId&branchName=$BranchName&api-version=$apiVersion"
     $builds = Invoke-WebRequest -Uri $listBuildsUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
+    
     $currentBuildId = $builds[0]
-    $lastBuildId = $builds[1]
-    Write-Host "Last batched CI build: $lastBuildId"
     Write-Host "Current batched CI build: $currentBuildId"
     $currentChangesUri = "$Org$Project/_apis/build/builds/$currentBuildId/changes?api-version=$apiVersion"
-    $lastChangesUri = "$Org$Project/_apis/build/builds/$lastBuildId/changes?api-version=$apiVersion"
-    
     $currentChanges = Invoke-WebRequest -Uri $currentChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
-    $lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
+    $lastChanges = @()
+    if ($builds.Length -gt 1) {
+        $lastBuildId = $builds[1]
+        Write-Host "Last batched CI build: $lastBuildId"  
+        $lastChangesUri = "$Org$Project/_apis/build/builds/$lastBuildId/changes?api-version=$apiVersion"
+        $lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
+    }
+    
     $currentChanges = $currentChanges | Where-Object { $_ -NotIn $lastChanges }
-    Write-Host "********************************Batched commits between $lastBuildId and $currentBuildId********************************"
+    Write-Host "********************************Batched commits between $lastBuildId $currentBuildId********************************"
     $currentChanges | Write-Host
     return $currentChanges
 }
