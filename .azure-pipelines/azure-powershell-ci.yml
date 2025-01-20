@@ -54,7 +54,6 @@ jobs:
 
   steps:
   - checkout: self
-    path: azure-powershell
     workspaceRepo: true
   - checkout: azure-powershell-devops
     path: "azure-powershell-devops"
