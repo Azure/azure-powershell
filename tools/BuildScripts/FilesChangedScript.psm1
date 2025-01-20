@@ -106,13 +106,14 @@ function Get-LatestBatchedCommits {
         [string]$Org,
         [string]$Project,
         [string]$PipelineDefinitionId,
+        [string]$RepositoryId
         [string]$BranchName,
         [string]$AccessToken
     )
     $headers = @{ "Authorization" = "Bearer $AccessToken" }
 
     $apiVersion = "7.1"
-    $listBuildsUri = "$Org$Project/_apis/build/builds?definitions=$PipelineDefinitionId&reasonFilter=batchedCI&branchName=$BranchName&api-version=$apiVersion"
+    $listBuildsUri = "$Org$Project/_apis/build/builds?definitions=$PipelineDefinitionId&reasonFilter=batchedCI&repositoryId=$RepositoryId&branchName=$BranchName&api-version=$apiVersion"
     $builds = Invoke-WebRequest -Uri $listBuildsUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
     $currentBuildId = $builds[0]
     $lastBuildId = $builds[1]
