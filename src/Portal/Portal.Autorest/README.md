@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Portal service.
 
 ---
-## Status
-[![Az.Portal](https://img.shields.io/powershellgallery/v/Az.Portal.svg?style=flat-square&label=Az.Portal "Az.Portal")](https://www.powershellgallery.com/packages/Az.Portal/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the Portal service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -35,11 +32,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 0dd49a444195fef7f3555cad038cb7665cbd928c
+commit: 570ea717eb84ecf725399353d2b52a590353e589
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/portal/resource-manager/Microsoft.Portal/preview/2019-01-01-preview/portal.json
+  - $(repo)/specification/portal/resource-manager/Microsoft.Portal/preview/2022-12-01-preview/portal.json
 
 metadata:
   authors: Microsoft Corporation
@@ -53,7 +50,7 @@ metadata:
   projectUri: https://github.com/Azure/azure-powershell
   releaseNotes: Initial release of Portal Dashboard cmdlets.
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: Portal
 subject-prefix: $(service-name)
 
