@@ -58,24 +58,24 @@ jobs:
     workspaceRepo: true
   - checkout: azure-powershell-devops
     path: "azure-powershell-devops"
-  - task: PowerShell@2
-    displayName: 'Get Github Access Token'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+  # - task: PowerShell@2
+  #   displayName: 'Get Github Access Token'
+  #   inputs:
+  #     targetType: inline
+  #     pwsh: true
+  #     script: |
+  #       $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
+  #       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
 
-        $httpConfigs = (git config --get-regexp "http" )
-        $httpConfigs | Foreach-Object {
-          Write-Warning "##########Config: $_##########"
-        }
-        $authConfig = $httpConfigs | Where-Object {$_ -like "*AUTHORIZATION*"}
-        $authConfig | Foreach-Object {
-          Write-Warning "##########Auth Config: $_##########"
-        }
-  # - template: util/get-github-pat-steps.yml
+  #       $httpConfigs = (git config --get-regexp "http" )
+  #       $httpConfigs | Foreach-Object {
+  #         Write-Warning "##########Config: $_##########"
+  #       }
+  #       $authConfig = $httpConfigs | Where-Object {$_ -like "*AUTHORIZATION*"}
+  #       $authConfig | Foreach-Object {
+  #         Write-Warning "##########Auth Config: $_##########"
+  #       }
+  - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
