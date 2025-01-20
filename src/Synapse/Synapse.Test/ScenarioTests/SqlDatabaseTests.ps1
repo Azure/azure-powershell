@@ -94,7 +94,7 @@ function Get-SqlPoolV3TestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "sqlcmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-              location = "eastus2euap";
+              location = "eastus";
 		}
 }
 
