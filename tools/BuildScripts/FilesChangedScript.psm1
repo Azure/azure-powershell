@@ -90,15 +90,12 @@ function Get-FilesChangedFromPR {
 
 function Get-FilesChangedFromCommit {
     param (
-        [string]$Owner = "Azure",
-        [string]$Repository = "azure-powershell",
-        [string]$CommitId,
-        [string]$AccessToken
+        [string]$CommitId
     )
-    $uri = "https://api.github.com/repos/$Owner/$Repository/commits/$CommitId"
-    $Headers = @{ "Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $AccessToken"; "X-GitHub-Api-Version" = "2022-11-28" }
-    $response = Invoke-WebRequest -Uri $uri -Headers $Headers -Method GET
-    $diff =  $response | ConvertFrom-Json | Select-Object -ExpandProperty files | Select-Object -ExpandProperty filename
+    $diff = @()
+    git show $CommitId --name-only | Where-Object {(-not $_.StartsWith('commit')) -and (-not $_.StartsWith('Author')) -and (-not $_.StartsWith('Date')) -and (-not $_.StartsWith(' ')) -and ($_.Length -ne 0)} | Foreach-Object {
+        $diff += $_
+    }
     Write-Host "********************************Files changed in commit: $CommitId********************************"
     $diff | Write-Host
     return $diff
@@ -109,25 +106,31 @@ function Get-LatestBatchedCommits {
         [string]$Org,
         [string]$Project,
         [string]$PipelineDefinitionId,
+        [string]$RepositoryType,
+        [string]$RepositoryId,
         [string]$BranchName,
         [string]$AccessToken
     )
     $headers = @{ "Authorization" = "Bearer $AccessToken" }
 
     $apiVersion = "7.1"
-    $listBuildsUri = "$Org$Project/_apis/build/builds?definitions=$PipelineDefinitionId&branchName=$BranchName&reasonFilter=batchedCI&api-version=$apiVersion"
+    $listBuildsUri = "$Org$Project/_apis/build/builds?definitions=$PipelineDefinitionId&reasonFilter=batchedCI&repositoryType=$RepositoryType&repositoryId=$RepositoryId&branchName=$BranchName&api-version=$apiVersion"
     $builds = Invoke-WebRequest -Uri $listBuildsUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
+    
     $currentBuildId = $builds[0]
-    $lastBuildId = $builds[1]
-    Write-Host "Last batched CI build: $lastBuildId"
     Write-Host "Current batched CI build: $currentBuildId"
     $currentChangesUri = "$Org$Project/_apis/build/builds/$currentBuildId/changes?api-version=$apiVersion"
-    $lastChangesUri = "$Org$Project/_apis/build/builds/$lastBuildId/changes?api-version=$apiVersion"
-    
     $currentChanges = Invoke-WebRequest -Uri $currentChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
-    $lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
+    $lastChanges = @()
+    if ($builds.Length -gt 1) {
+        $lastBuildId = $builds[1]
+        Write-Host "Last batched CI build: $lastBuildId"  
+        $lastChangesUri = "$Org$Project/_apis/build/builds/$lastBuildId/changes?api-version=$apiVersion"
+        $lastChanges = Invoke-WebRequest -Uri $lastChangesUri -Headers $headers -Method GET | ConvertFrom-Json | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
+    }
+    
     $currentChanges = $currentChanges | Where-Object { $_ -NotIn $lastChanges }
-    Write-Host "********************************Batched commits between $lastBuildId and $currentBuildId********************************"
+    Write-Host "********************************Batched commits between $lastBuildId $currentBuildId********************************"
     $currentChanges | Write-Host
     return $currentChanges
 }
