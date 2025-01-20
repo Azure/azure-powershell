@@ -170,6 +170,9 @@ function Test-SynapseSqlPool-Security
         # Remove SQL Pool Auditing
         Assert-True {Remove-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
 
+        # Wait for 3 minutes for the update completion
+		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)
+
         # Verify that SQL Pool Auditing was deleted
         $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 

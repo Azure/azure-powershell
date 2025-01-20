@@ -17,7 +17,7 @@ function Test-SynapseSparkPool
     $sparkAutoScaleMinNodeCount = 3
     $sparkAutoScaleMaxNodeCount = 6
     $sparkPoolNodeSize = "Small"
-    $sparkVersion = 2.4
+    $sparkVersion = 3.4
 
     try
     {
