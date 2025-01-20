@@ -91,6 +91,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateDns.Management.Sdk",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{794AED8B-5574-477B-B332-0730A0DF4DA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NetworkSecurityPerimeter", "NetworkSecurityPerimeter.Autorest\Az.NetworkSecurityPerimeter.csproj", "{97A87FEF-7931-4800-BFBC-C7CA86DC80D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -261,6 +263,10 @@ Global
 		{794AED8B-5574-477B-B332-0730A0DF4DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{794AED8B-5574-477B-B332-0730A0DF4DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{794AED8B-5574-477B-B332-0730A0DF4DA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97A87FEF-7931-4800-BFBC-C7CA86DC80D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97A87FEF-7931-4800-BFBC-C7CA86DC80D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97A87FEF-7931-4800-BFBC-C7CA86DC80D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97A87FEF-7931-4800-BFBC-C7CA86DC80D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
