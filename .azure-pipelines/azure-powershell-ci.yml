@@ -114,7 +114,7 @@ jobs:
         if ("$(Build.reason)" -eq 'IndividualCI') {
           Get-FilesChangedFromCommit -CommitId "$(Build.SourceVersion)" | Foreach-Object { $filesChanged += $_ }
         } elseif ("$(Build.reason)" -eq 'BatchedCI') {
-          $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)' -RepositoryType "$(Build.Repository.Provider)" -RepositoryId "$(Build.Repository.ID)" -BranchName "$(Build.SourceBranchName)"
+          $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)' -RepositoryType "$(Build.Repository.Provider)" -RepositoryId "$(Build.Repository.ID)" -BranchName "$(Build.SourceBranch)"
           $batchedCommits | ForEach-Object {
             Get-FilesChangedFromCommit -CommitId $_ | Foreach-Object { $filesChanged += $_ }
           }
