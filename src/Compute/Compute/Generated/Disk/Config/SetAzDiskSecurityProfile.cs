@@ -94,6 +94,15 @@ namespace Microsoft.Azure.Commands.Compute
                 this.Disk.SecurityProfile.SecureVMDiskEncryptionSetId = this.SecureVMDiskEncryptionSet;
             }
 
+            if (this.IsParameterBound(c => c.TestParamNotHere))
+            {
+                if (this.Disk.SecurityProfile == null)
+                {
+                    this.Disk.SecurityProfile = new DiskSecurityProfile();
+                }
+                this.Disk.SecurityProfile.SecureVMDiskEncryptionSetId = this.SecureVMDiskEncryptionSet;
+            }
+
             WriteObject(this.Disk);
         }
     }
