@@ -16,21 +16,22 @@ Updates an EventHub Entity
 ```
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
- [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>]
- [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
- [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-MinCompactionLagInMin <Int64>]
+ [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
+ [-Status <String>] [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
+ [-UserAssignedIdentityId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-CaptureEnabled] [-DestinationName <String>] [-Encoding <String>] [-IdentityType <String>]
- [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>]
- [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>] [-StorageAccountResourceId <String>]
- [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IntervalInSeconds <Int32>] [-MinCompactionLagInMin <Int64>] [-PartitionCount <Int64>]
+ [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
+ [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
+ [-UserAssignedIdentityId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -281,6 +282,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MinCompactionLagInMin
+The minimum time a message will remain ineligible for compaction in the log.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of EventHub Entity.
 
@@ -469,6 +485,21 @@ Accept wildcard characters: False
 
 ### -UserAssignedIdentityId
 Properties for User Assigned Identities
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserMetadata
+Gets and Sets Metadata of User.
 
 ```yaml
 Type: System.String
