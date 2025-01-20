@@ -106,7 +106,7 @@ function Get-LatestBatchedCommits {
         [string]$Org,
         [string]$Project,
         [string]$PipelineDefinitionId,
-        [string]$RepositoryId
+        [string]$RepositoryId,
         [string]$BranchName,
         [string]$AccessToken
     )
