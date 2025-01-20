@@ -58,7 +58,14 @@ directive:
 #  - where:
 #      variant: ^Create$|^CreateViaIdentityExpanded$
 #    remove: true
-# Remove the set-* cmdlet
+  # Hide Reconcile apis
+  - where:
+      subject: NspAccessRulesReconcile
+    remove: true
+  - where:
+      subject: NspAssociationReconcile
+    remove: true
+  # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
