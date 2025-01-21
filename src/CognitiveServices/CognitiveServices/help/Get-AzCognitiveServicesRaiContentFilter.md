@@ -24,8 +24,8 @@ Get Cognitive Services RAI Content Filter
 
 ### Example 1
 ```powershell
-C:\> Get-AzCognitiveServicesRaiContentFilter -Location "eastus"
-        Get-AzCognitiveServicesRaiContentFilter -Location "eastus" -Name "IndirectAttack"
+Get-AzCognitiveServicesRaiContentFilter -Location "eastus"
+Get-AzCognitiveServicesRaiContentFilter -Location "eastus" -Name "IndirectAttack"
 ```
 
 ## PARAMETERS
