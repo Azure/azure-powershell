@@ -177,7 +177,7 @@ function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
 			  storageAccountName = "wsstorage" + $testSuffix;
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
-			  pwd = "testp@ssMakingIt1007Longer";
+			  pwd = Get-TestPassword;
               location = "eastus";
               sparkPoolName = "spool" + $testSuffix;
 		}
