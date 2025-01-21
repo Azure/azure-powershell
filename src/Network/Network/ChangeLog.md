@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added cmdlets for Logging Configuration CRUD operations
+    - `New-AzNetworkSecurityPerimeterLoggingConfiguration`
+    - `Get-AzNetworkSecurityPerimeterLoggingConfiguration`
+    - `Update-AzNetworkSecurityPerimeterLoggingConfiguration`
+    - `Remove-AzNetworkSecurityPerimeterLoggingConfiguration`
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
 
 ## Version 7.12.0
