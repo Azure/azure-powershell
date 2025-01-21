@@ -303,7 +303,7 @@ function Get-SqlPoolBackupTestEnvironmentParameters ($testSuffix)
 			  storageAccountName = "sqlbkstorage" + $testSuffix;
 			  fileSystemName = "sqlbkcmdletfs" + $testSuffix;
 			  loginName = "testlogin";
-			  pwd = "testp@ssMakingIt1007Longer";
+			  pwd = Get-TestPassword;
 			  perfLevel = 'DW200c';
               location = "northeurope";
               restoredSqlPoolName = "dwrestore" + $testSuffix;

@@ -522,7 +522,7 @@
           "409"
         ]
       },
-      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps659.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps659\"\r\n    },\r\n    \"sqlAdministratorLoginPassword\": \"testp@ssMakingIt1007Longer\",\r\n    \"managedResourceGroupName\": \"mrgps659\",\r\n    \"sqlAdministratorLogin\": \"testlogin\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps659.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps659\"\r\n    },\r\n    \"sqlAdministratorLoginPassword\": \"password\",\r\n    \"managedResourceGroupName\": \"mrgps659\",\r\n    \"sqlAdministratorLogin\": \"testlogin\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"

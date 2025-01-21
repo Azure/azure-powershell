@@ -522,7 +522,7 @@
           "366"
         ]
       },
-      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps3460.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps3460\"\r\n    },\r\n    \"sqlAdministratorLoginPassword\": \"testp@ssMakingIt1007Longer\",\r\n    \"sqlAdministratorLogin\": \"testlogin\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps3460.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps3460\"\r\n    },\r\n    \"sqlAdministratorLoginPassword\": \"password\",\r\n    \"sqlAdministratorLogin\": \"testlogin\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -1397,7 +1397,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"authKey1\": \"IR@b311713a-fac2-4081-bd38-45cf909c3cbf@wsps3460@eu@om+Xal6YtjHtVj71ZVgFg07EmegdhbNTg3qi3kEKU08=\",\r\n  \"authKey2\": \"IR@b311713a-fac2-4081-bd38-45cf909c3cbf@wsps3460@eu@n+ZgkI3TbyeDpvJfRxM/iztbsbZSOmyQ/LALW6heBwk=\"\r\n}",
+      "ResponseBody": "{\r\n  \"authKey1\": \"secret\",\r\n  \"authKey2\": \"secret\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1472,7 +1472,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"authKey1\": \"IR@b311713a-fac2-4081-bd38-45cf909c3cbf@wsps3460@eu@mbd5+9kZLSqTTjGsyfZ8SkTc9rg2STwaiVC9NpRnq/Q=\"\r\n}",
+      "ResponseBody": "{\r\n  \"authKey1\": \"secret\"\r\n}",
       "StatusCode": 200
     },
     {
