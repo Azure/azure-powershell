@@ -16,7 +16,8 @@ Creates a new Azure Firewall Policy Intrusion Detection to associate with Firewa
 New-AzFirewallPolicyIntrusionDetection -Mode <String> [-Profile <String>]
  [-SignatureOverride <PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]>]
  [-BypassTraffic <PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]>] [-PrivateRange <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,6 +139,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: For newly created policy the default IDPS profile is �Standard� and for existing policy without IDPS profile setting,  the default is �Advanced�
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
