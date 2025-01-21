@@ -16,20 +16,20 @@ Updates an EventHub Entity
 ```
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
- [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-MinCompactionLagInMin <Int64>]
+ [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-MinCompactionLagInMins <Int64>]
  [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
- [-Status <String>] [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Status <String>] [-StorageAccountResourceId <String>] [-TimestampType <String>]
+ [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>] [-UserMetadata <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-CaptureEnabled] [-DestinationName <String>] [-Encoding <String>] [-IdentityType <String>]
- [-IntervalInSeconds <Int32>] [-MinCompactionLagInMin <Int64>] [-PartitionCount <Int64>]
+ [-IntervalInSeconds <Int32>] [-MinCompactionLagInMins <Int64>] [-PartitionCount <Int64>]
  [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
- [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
+ [-StorageAccountResourceId <String>] [-TimestampType <String>] [-TombstoneRetentionTimeInHour <Int32>]
  [-UserAssignedIdentityId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -282,7 +282,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinCompactionLagInMin
+### -MinCompactionLagInMins
 The minimum time a message will remain ineligible for compaction in the log.
 
 ```yaml
@@ -462,6 +462,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TimestampType
+Denotes the type of timestamp the message will hold.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

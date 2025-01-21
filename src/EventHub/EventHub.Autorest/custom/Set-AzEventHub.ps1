@@ -113,7 +113,12 @@ function Set-AzEventHub{
         [Parameter(HelpMessage = "The minimum time a message will remain ineligible for compaction in the log.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
 		[System.Int64]
-        ${MinCompactionLagInMin},
+        ${MinCompactionLagInMins},
+
+        [Parameter(HelpMessage = "Denotes the type of timestamp the message will hold.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${TimestampType},
 
         [Parameter(HelpMessage = "Name for capture destination")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -232,7 +237,8 @@ function Set-AzEventHub{
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $hasPartitionCount = $PSBoundParameters.Remove('PartitionCount')
             $hasUserMetadata = $PSBoundParameters.Remove('UserMetadata')
-            $hasMinCompactionLagInMin = $PSBoundParameters.Remove('MinCompactionLagInMin')
+            $hasMinCompactionLagInMins = $PSBoundParameters.Remove('MinCompactionLagInMins')
+            $hasTimestampType = $PSBoundParameters.Remove('TimestampType')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
@@ -310,8 +316,13 @@ function Set-AzEventHub{
                 $hasProperty = $true
             }
 
-            if($hasMinCompactionLagInMin) {
-                $eventHub.MinCompactionLagInMin = $MinCompactionLagInMin
+            if($hasMinCompactionLagInMins) {
+                $eventHub.MinCompactionLagInMins = $MinCompactionLagInMins
+                $hasProperty = $true
+            }
+
+            if($hasTimestampType) {
+                $eventHub.TimestampType = $TimestampType
                 $hasProperty = $true
             }
 
