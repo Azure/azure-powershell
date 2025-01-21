@@ -7,10 +7,19 @@ Describe 'PolicySetDefinitionCRUD' {
         # setup
         $policySetDefName = Get-ResourceName
         $policyDefName = Get-ResourceName
+        $policyDefinitionReferenceId = "Definition-Reference-1"
 
         # make a policy definition and policy set definition that references it, get the policy set definition back and validate
         $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
-        $policySet = "[{""policyDefinitionId"":""" + $policyDefinition.Id + """}]"
+        $policySet = 
+@"
+[
+  {
+    "policyDefinitionId": "$($policyDefinition.Id)",
+    "policydefinitionreferenceid": "$($policyDefinitionReferenceId)"
+  }
+]
+"@
         $expected = New-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Metadata $metadata
     }
 
@@ -18,10 +27,16 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName
         $expected.Name | Should -Be $actual.Name
         $expected.Id | Should -Be $actual.Id
+        $expected.PolicyDefinition | Should -Not -BeNullOrEmpty
+        $expected.PolicyDefinition.policyDefinitionId | Should -Be $policyDefinition.Id
+        $expected.PolicyDefinition.policyDefinitionReferenceId | Should -Be $policyDefinitionReferenceId
         $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
         $actual.Metadata | Should -Not -BeNullOrEmpty
         $actual.PolicyDefinitionGroup | Should -BeNull
         $actual.Metadata.$metadataName | Should -Be $metadataValue
+        $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
+        $actual.PolicyDefinition.policyDefinitionId | Should -Be $expected.PolicyDefinition.policyDefinitionId
+        $actual.PolicyDefinition.policyDefinitionReferenceId | Should -Be $expected.PolicyDefinition.policyDefinitionReferenceId
     }
 
     It 'Update policy set definition' {
@@ -44,6 +59,25 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual.Metadata | Should -Not -BeNullOrEmpty
         $actual.PolicyDefinitionGroup | Should -BeNull
         $actual.Metadata.$metadataName | Should -Be $metadataValue
+    }
+
+    It 'Validate parameter round-trip' {
+        # get the set definition, do an update with no changes, validate nothing is changed in response or backend
+        $expected = Get-AzPolicySetDefinition -Name $policySetDefName
+        $response = Update-AzPolicySetDefinition -Name $policySetDefName
+        $response.DisplayName | Should -Be $expected.DisplayName
+        $response.Description | Should -Be $expected.Description
+        $response.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $response.PolicyRule | Should -BeLike $expected.PolicyRule
+        $response.Parameter | Should -BeLike $expected.Parameter
+        $response.PolicyDefinitionGroup | Should -BeLike $expected.PolicyDefinitionGroup
+        $actual = Get-AzPolicySetDefinition -Name $policySetDefName
+        $actual.DisplayName | Should -Be $expected.DisplayName
+        $actual.Description | Should -Be $expected.Description
+        $actual.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $actual.PolicyRule | Should -BeLike $expected.PolicyRule
+        $actual.Parameter | Should -BeLike $expected.Parameter
+        $actual.PolicyDefinitionGroup | Should -BeLike $expected.PolicyDefinitionGroup
     }
 
     It 'List builtin and custom' {

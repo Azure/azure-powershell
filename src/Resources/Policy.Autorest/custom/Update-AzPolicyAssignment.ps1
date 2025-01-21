@@ -124,6 +124,7 @@ param(
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [ValidateSet('Default', 'DoNotEnforce')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotEnforce')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
@@ -132,6 +133,7 @@ param(
 
     [Parameter()]
     [ValidateSet('None', 'SystemAssigned', 'UserAssigned')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('None', 'SystemAssigned', 'UserAssigned')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The identity type.
@@ -157,6 +159,20 @@ param(
     [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment]
     ${InputObject},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
@@ -277,7 +293,7 @@ process {
     if ($InputObject) {
         foreach ($parameterName in $InputObject.Keys) {
             $value = $InputObject.($parameterName)
-            if ($value -or ($value -is [array])) {
+            if ($value -or ($value -is [array]) -or ($value -is [switch])) {
                 $calledParameters.($parameterName) = $value
             }
         }
@@ -286,14 +302,14 @@ process {
     # skip $null and empty values to avoid validation failures on pipeline input
     foreach ($parameterName in $PSBoundParameters.Keys) {
         $value = $PSBoundParameters.($parameterName)
-        if ($value -or ($value -is [array])) {
+        if ($value -or ($value -is [array]) -or ($value -is [switch])) {
             $calledParameters.($parameterName) = $value
         }
     }
 
     # supply required parameters and remove custom parameters
     $calledParameters.Name = $resolved.Name
-    $calledParameters.Scope = $resolved.FullScope
+    $calledParameters.Scope = $resolved.Scope
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('InputObject')
 
@@ -319,13 +335,8 @@ process {
         }
     }
 
-    if (!$NotScope) {
-        if ($_.NotScope) {
-            $calledParameters.NotScope = $_.NotScope
-        }
-        elseif ($existing.NotScope) {
-            $calledParameters.NotScope = $existing.NotScope
-        }
+    if (!$NotScope -and !($NotScope -is [array])) {
+        $calledParameters.NotScope = $existing.NotScope
     }
 
     if (!$Location) {
@@ -335,6 +346,22 @@ process {
         elseif ($existing.Location) {
             $calledParameters.Location = $existing.Location
         }
+    }
+
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
+    }
+
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
+    }
+
+    if (!$calledParameters.EnforcementMode -and $calledParameters.EnforcementMode) {
+        $calledParameters.EnforcementMode = $existing.EnforcementMode
     }
 
     if ($BackwardCompatible) {

@@ -14,14 +14,14 @@ if (($null -eq $TestName) -or ($TestName -contains 'AzDatabricksVNetPeering')) {
 }
 
 Describe 'AzDatabricksVNetPeering' {
-    It 'CreateExpanded' -Skip {
+    It 'CreateExpanded' {
         {
             $config = New-AzDatabricksVNetPeering -Name $env.vNetName1 -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -RemoteVirtualNetworkId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.vNetName)"
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'List' -Skip {
+    It 'List' {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup
             $config.Count | Should -BeGreaterThan 0

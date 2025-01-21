@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceOnlineEndpointToken+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-portal91/token?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceOnlineEndpointToken+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/token?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-portal91/token?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/token?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "91673775-c96f-43a5-964c-2f7cb99ef1f8" ],
+        "x-ms-unique-id": [ "110" ],
+        "x-ms-client-request-id": [ "c9ce8233-d70a-45fb-a1cd-482479b2f35e" ],
         "CommandName": [ "Get-AzMLWorkspaceOnlineEndpointToken" ],
         "FullCommandName": [ "Get-AzMLWorkspaceOnlineEndpointToken_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,24 +23,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "7c5570ab-6eda-43a7-8148-7a7f97e50abb" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-request-id": [ "fa37e835-4c9b-40c6-ae89-39d4904d5791" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.247" ],
-        "x-ms-correlation-request-id": [ "7c5570ab-6eda-43a7-8148-7a7f97e50abb" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094118Z:7c5570ab-6eda-43a7-8148-7a7f97e50abb" ],
-        "Date": [ "Sun, 05 Jun 2022 09:41:18 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.389" ],
+        "x-ms-correlation-request-id": [ "fa37e835-4c9b-40c6-ae89-39d4904d5791" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085142Z:fa37e835-4c9b-40c6-ae89-39d4904d5791" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C9C7596B02F54E6B8BDD532C76013225 Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:41Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1054" ],
+        "Content-Length": [ "1049" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"accessToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc3NzQ2QzI0NjRBODE1QzlCNUQwMUFBRDVCNThEREJBQTUwQ0VDRkQiLCJ0eXAiOiJKV1QifQ.eyJjYW5SZWZyZXNoIjoiRmFsc2UiLCJ3b3Jrc3BhY2VJZCI6Ijg1YjllN2YwLThlYTQtNGUzZC1hNzQyLTA2ZWU0MGJhNGIwMyIsInRpZCI6IjMzZTAxOTIxLTRkNjQtNGY4Yy1hMDU1LTViZGFmZmQ1ZTMzZCIsIm9pZCI6ImU2MDc0NjdmLTJiZjktNDgyMi1hYWVjLTcyMTJmYjRhNTQxZCIsImFjdGlvbnMiOiJbXCJNaWNyb3NvZnQuTWFjaGluZUxlYXJuaW5nU2VydmljZXMvd29ya3NwYWNlcy9vbmxpbmVFbmRwb2ludHMvc2NvcmUvYWN0aW9uXCJdIiwiZW5kcG9pbnROYW1lIjoib25saW5lLXBvcnRhbDkxIiwic2VydmljZUlkIjoib25saW5lLXBvcnRhbDkxIiwiZXhwIjoxNjU0NTA4NDc4LCJpc3MiOiJhenVyZW1sIiwiYXVkIjoiYXp1cmVtbCJ9.aVBfooMbSYEcsISyGo7fOQBVQ9tFnhl38OsyRP5uUk6Pq0Dq0H92clb0VAhrKCIeM0RctGi_eicYl_-VCgH7l0VGkKgIixkq1w1g5tR7_WEQ-ldJ2shn2jrRqhAPOwJ6uUwQpwHRSI2uEFQRlUJEVv_6jtxeTqdYIBM4-NK3t42x1x97CXsdFJSpDiaj17v5SDAy6xiM9RvnIukszA5cLel5eP89Zd5nf48dkHdP7T7pIHoemmOa_bSLRkqt2mXG3v0MvJuhdPgLATZdtDWTjiwV53r3-UEzvZVg1ilAn1p-qYrT_qbCAAa_2ptaNal9IeUgQM7sxanjHcSIbQy2Ww\",\n  \"tokenType\": \"Bearer\",\n  \"expiryTimeUtc\": 1654508478,\n  \"refreshAfterTimeUtc\": 1654465278\n}",
+      "Content": "{\n  \"accessToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDRTBDRjdBNzFBNjU5NEJGMUM5Q0U2NERFMTMzNzJCRUVCOTcyOTYiLCJ0eXAiOiJKV1QifQ.eyJjYW5SZWZyZXNoIjoiRmFsc2UiLCJ3b3Jrc3BhY2VJZCI6IjkxYmE5NzgzLTEzYjQtNGUxNi1iMzcwLWQ3MGI1YTNlZGRhYyIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsIm9pZCI6IjYyMDVmNzU5LTEyMzQtNDUzYy05NzEyLTM0ZDc2NzFiY2VmZiIsImFjdGlvbnMiOiJbXCJNaWNyb3NvZnQuTWFjaGluZUxlYXJuaW5nU2VydmljZXMvd29ya3NwYWNlcy9vbmxpbmVFbmRwb2ludHMvc2NvcmUvYWN0aW9uXCJdIiwiZW5kcG9pbnROYW1lIjoib25saW5lLXB3c2gwMSIsInNlcnZpY2VJZCI6Im9ubGluZS1wd3NoMDEiLCJleHAiOjE3MjE4OTc0NDIsImlzcyI6ImF6dXJlbWwiLCJhdWQiOiJhenVyZW1sIn0.E39Y3HZ4gvyXFH71xWR0efraFoy0OFCgZ4pwwce_1XDdMTo9JiE6F4AhsvPuL3YA_gUX6tn06JgGtTlpNmMhcmO0282-4_xrNGzif88dL02br-MXKhYGeaKu2wADqzrk7rgjT8A_2yj4_5kiH3aY71G2OPCpm12elT4I9OdxX3xAK8NJTZyxGVCTOHFxxypTfgbGovVHQPuCvMgoBZJSw7aParMlB-EYjjWwgtyaVaj6MoNR19bk280OdRFM3L8OjwzvlfbKoLPZcZbw90iVMpkn3J2xRWv0rkTLeGyCdMYr6ZPvaOBo2BBfNOdkGUcUBjQ1eCNQqmEKX8s8iAbWcQ\",\n  \"tokenType\": \"Bearer\",\n  \"expiryTimeUtc\": 1721897442,\n  \"refreshAfterTimeUtc\": 1721854272\n}",
       "isContentBase64": false
     }
   }

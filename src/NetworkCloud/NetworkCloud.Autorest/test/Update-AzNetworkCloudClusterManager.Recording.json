@@ -1,9 +1,9 @@
 {
-  "Update-AzNetworkCloudClusterManager+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rglvf4zh/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager?api-version=2023-07-01+1": {
+  "Update-AzNetworkCloudClusterManager+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg0zqix2/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager?api-version=2024-07-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rglvf4zh/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager?api-version=2023-07-01",
-      "Content": "{\n  \"tags\": {\n    \"EnableNexusRelay\": \"false\",\n    \"DisableFabricIntegration\": \"true\",\n    \"TagsUpdate\": \"NewTags\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg0zqix2/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager?api-version=2024-07-01",
+      "Content": "{\n  \"tags\": {\n    \"DisableFabricIntegration\": \"true\",\n    \"EnableNexusRelay\": \"false\",\n    \"TagsUpdate\": \"NewTags\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,22 +17,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"6904be07-0000-0100-0000-64c9b04e0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "ETag": [ "\"0b0018db-0000-1100-0000-671bf1430000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "5a8be893-3f1a-46e7-8483-2b0331922bd8" ],
-        "x-ms-correlation-request-id": [ "7ee53212-da9a-486c-b282-8d5f37a5398c" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230802T012431Z:7ee53212-da9a-486c-b282-8d5f37a5398c" ],
+        "x-azure-ref": [ "20241025T192802Z-16465dc7448kzdz55qafrvv4aw00000001dg00000000pc3k" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "5f0448a2-4c4a-4bbc-a4de-fefc8ce95caa" ],
+        "x-ms-correlation-request-id": [ "d8e322e2-2fd9-45fd-8987-9c0a4d2b4247" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20241025T192804Z:d8e322e2-2fd9-45fd-8987-9c0a4d2b4247" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 02 Aug 2023 01:24:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B2A84E5632BF4A739670FE22308DDE29 Ref B: AMS231032609053 Ref C: 2024-10-25T19:28:01Z" ],
+        "Date": [ "Fri, 25 Oct 2024 19:28:04 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1531" ],
+        "Content-Length": [ "2109" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rglvf4zh/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager\",\"name\":\"testClusterManager\",\"type\":\"microsoft.networkcloud/clustermanagers\",\"location\":\"eastus\",\"tags\":{\"EnableNexusRelay\":\"false\",\"DisableFabricIntegration\":\"true\",\"TagsUpdate\":\"NewTags\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-02T01:08:57.4911506Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-02T01:24:30.8190702Z\"},\"properties\":{\"analyticsWorkspaceId\":\"\",\"fabricControllerId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/cli-test-ps/providers/Microsoft.Network/virtualNetworks/cmres/subnets/ClusterManagerSubnet\",\"managedResourceGroupConfiguration\":{\"location\":\"eastus\",\"name\":\"testClusterManager-HostedResources-121FD7C7\"},\"provisioningState\":\"Succeeded\",\"availabilityZones\":[\"1\",\"2\",\"3\"],\"vmSize\":\"Standard_D4_v2\",\"clusterVersions\":[{\"supportExpiryDate\":\"2023-07-15 00:00:00 +0000 UTC\",\"targetClusterVersion\":\"3.2.2\"},{\"supportExpiryDate\":\"2024-04-30 00:00:00 +0000 UTC\",\"targetClusterVersion\":\"3.3.0\"},{\"supportExpiryDate\":\"2024-04-30 00:00:00 +0000 UTC\",\"targetClusterVersion\":\"3.4.0\"}],\"managerExtendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/testclustermanager-hostedresources-121fd7c7/providers/microsoft.extendedlocation/customlocations/testclustermanager-cl\",\"type\":\"CustomLocation\"}}}",
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg0zqix2/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager\",\"name\":\"testClusterManager\",\"type\":\"microsoft.networkcloud/clustermanagers\",\"location\":\"uksouth\",\"tags\":{\"DisableFabricIntegration\":\"true\",\"EnableNexusRelay\":\"false\",\"TagsUpdate\":\"NewTags\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-25T18:37:09.9143179Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-25T19:28:02.8460656Z\"},\"identity\":{\"principalId\":\"734161f2-f763-4917-98b1-2dc1330020a0\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned, UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/powershell-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai\":{\"clientId\":\"c6526299-f570-45c0-9262-9dac851d3e49\",\"principalId\":\"785b5be7-2651-4f78-a96e-4ca92cd38c3d\"}}},\"properties\":{\"analyticsWorkspaceId\":\"/subscriptions/sub/resourceGroups/rg/providers/Microsoft.operationalinsights/workspaces/AnalyticsWorkspaceID-update\",\"availabilityZones\":[\"1\",\"2\",\"3\"],\"clusterVersions\":[{\"supportExpiryDate\":\"2025-03-31\",\"targetClusterVersion\":\"3.11.4\"},{\"supportExpiryDate\":\"2025-03-31\",\"targetClusterVersion\":\"3.11.5\"},{\"supportExpiryDate\":\"2025-06-30\",\"targetClusterVersion\":\"3.14.1\"},{\"supportExpiryDate\":\"2025-06-30\",\"targetClusterVersion\":\"3.15.0\"}],\"fabricControllerId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-test_id-simdev-2714007/providers/Microsoft.Network/virtualNetworks/CM_vNet/subnets/default3\",\"provisioningState\":\"Succeeded\",\"managedResourceGroupConfiguration\":{\"location\":\"uksouth\",\"name\":\"testClusterManager-HostedResources-562B8553\"},\"managerExtendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/testClusterManager-HostedResources-562B8553/providers/Microsoft.ExtendedLocation/customLocations/testclustermanager-cl\",\"type\":\"CustomLocation\"},\"vmSize\":\"Standard_D4_v2\"}}",
       "isContentBase64": false
     }
   }

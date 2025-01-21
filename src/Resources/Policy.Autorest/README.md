@@ -28,7 +28,7 @@ For information on how to develop for `Az.Policy`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 33da947dfea91e16a4e62c663a13de4f0fa72251
+commit: 412364b282e52b50eadc3cd88d56d283b6c8712a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -174,6 +174,29 @@ directive:
     where: $.definitions.PolicySetDefinitionProperties.properties.policyDefinition.groupNames
     transform: $['additionalProperties'] = true;
 
+  # versioning serialization
+  - from: swagger-document
+    where: $.definitions.PolicyDefinitionVersionProperties.properties.policyRule
+    transform: $['additionalProperties'] = true
+  - from: swagger-document
+    where: $.definitions.PolicyDefinitionVersionProperties.properties.metadata
+    transform: $['additionalProperties'] = true
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.metadata
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.policyDefinition.policyDefinitionId
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.policyDefinition.parameters
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.policyDefinition.policyDefinitionReferenceId
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.policyDefinition.groupNames
+    transform: $['additionalProperties'] = true;
+
   # previous approach that partially supported "any type" serialization
   - from: swagger-document
     where: $.definitions.ParameterDefinitionsValue.properties.allowedValues.items
@@ -259,12 +282,10 @@ directive:
           - DisplayName
 
 # Hide parameters that aren't supported.
-# For some reason these can't be hidden by hiding them in
-# the custom folder so we have to do it here.
   - where:
       verb: New|Update
       subject: PolicyAssignment|PolicyExemption
-      parameter-name: PolicyDefinitionId|ResourceSelector|Override
+      parameter-name: PolicyDefinitionId
     hide: true
   - where:
       verb: New

@@ -14,63 +14,58 @@ if(($null -eq $TestName) -or ($TestName -contains 'NewRelicObservability'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-DEscribe 'NewRelicObservability' {
-    # New monitor
-    It 'MonitorCreateExpanded' {
-        {
-            New-AzNewRelicMonitor -Name $env.NewMonitorName -ResourceGroupName $env.resourceGroup -Location $env.region -PlanDataPlanDetail $env.planDetails -PlanDataBillingCycle $env.billingCycle -PlanDataUsageType $env.usageType -PlanDataEffectiveDate (Get-Date -DisplayHint DateTime) -UserInfoEmailAddress $env.testerEmail -UserInfoFirstName "Joyer" -UserInfoLastName "Jin"
-        } | Should -Not -Throw
-    }
+Describe 'NewRelicObservability' {
+
     # New monitor tag rule
     It 'MonitorTagRuleCreateExpanded' {
         {
-            New-AzNewRelicMonitorTagRule -MonitorName $env.NewMonitorName -ResourceGroupName $env.resourceGroup -RuleSetName default -LogRuleSendAadLog 'Enabled' -LogRuleSendActivityLog 'Enabled' -LogRuleSendSubscriptionLog 'Enabled' -MetricRuleSendMetric 'Enabled' -MetricRuleUserEmail $env.testerEmail
+            $tagrule = New-AzNewRelicMonitorTagRule -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -RuleSetName 'default' -LogRuleSendAadLog 'Enabled' -LogRuleSendActivityLog 'Enabled' -LogRuleSendSubscriptionLog 'Enabled' -MetricRuleSendMetric 'Enabled' -MetricRuleUserEmail $env.testerEmail
+            $tagrule.Name | Should -Be 'default'
+            $tagrule.LogRuleSendActivityLog | Should -Be 'Enabled'
+            $tagrule.LogRuleSendAadLog | Should -Be 'Enabled'
+            $tagrule.LogRuleSendSubscriptionLog | Should -Be 'Enabled'
+            $tagrule.MetricRuleSendMetric | Should -Be 'Enabled'
         } | Should -Not -Throw
     }
 
     It 'MonitorTagRuleList' {
         {
-            Get-AzNewRelicMonitorTagRule -MonitorName $env.NewMonitorName -ResourceGroupName $env.resourceGroup
-        } | Should -Not -Throw
-    }
-
-    It 'MonitorListSub' {
-        {
-            $result = Get-AzNewRelicMonitor
-            $result.Count | Should -BeGreaterThan 5
+            $MonitorTagRuleList = Get-AzNewRelicMonitorTagRule -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
+            $MonitorTagRuleList.Count | Should -BeGreaterOrEqual 1
         } | Should -Not -Throw
     }
 
     It 'MonitorListGp' {
         {
             $result = Get-AzNewRelicMonitor -ResourceGroupName $env.resourceGroup
-            $result.Count | Should -BeGreaterThan 1
+            $result.Count | Should -BeGreaterOrEqual 1
         } | Should -Not -Throw
     }
 
     It 'MonitorGet' {
         {
-            $result = Get-AzNewRelicMonitor -Name $env.NewMonitorName -ResourceGroupName $env.resourceGroup
-            $result.Name | Should -Be $env.NewMonitorName
+            $result = Get-AzNewRelicMonitor -Name $env.testMonitorName -ResourceGroupName $env.resourceGroup
+            $result.Name | Should -Be $env.testMonitorName
         } | Should -Not -Throw
     }
 
     # available test
     It 'AppServiceList' {
         {
-            Get-AzNewRelicMonitorAppService -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail -AzureResourceId $env.testApp
+            Get-AzNewRelicMonitoredAppService -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail -AzureResourceId $env.testApp
         } | Should -Not -Throw
     }
 
     It 'HostList' {
         {
-            Get-AzNewRelicMonitorHost -MonitorName $env.NewMonitorName -ResourceGroupName $env.resourceGroup -VMId saurg-vm-01 -UserEmail $env.testerEmail
+            Get-AzNewRelicMonitoredHost -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -VMId $env.testVMName -UserEmail $env.testerEmail
         } | Should -Not -Throw
     }
 
     It 'MetricRuleList' {
         {
-            Get-AzNewRelicMonitorMetricRule -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail
+            $MetricRuleList = Get-AzNewRelicMonitorMetricRule -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail
+            $MetricRuleList.Count | Should -BeGreaterOrEqual 1
         } | Should -Not -Throw
     }
 
@@ -79,18 +74,21 @@ DEscribe 'NewRelicObservability' {
             Get-AzNewRelicMonitorMetricStatus -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail -AzureResourceId $env.testApp
         } | Should -Not -Throw
     }
+    
     It 'MonitoredResource' {
         {
             Get-AzNewRelicMonitorMonitoredResource -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
-
+    
     It 'AccountPlanList' {
         {
             # AccountList
             $accountlist = Get-AzNewRelicAccount -Location eastus -UserEmail $env.testerEmail
+            $accountlist.Count | Should -BeGreaterThan 1
             # PlanList
-            Get-AzNewRelicPlan -OrganizationId $accountlist[0].OrganizationId
+            $plan = Get-AzNewRelicPlan -OrganizationId $accountlist[0].OrganizationId
+            $plan | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
@@ -100,16 +98,67 @@ DEscribe 'NewRelicObservability' {
         } | Should -Not -Throw
     }
 
-    It 'InvokeHost' -skip {
+    It 'ListMonitorLinkedResource' {
         {
-            Invoke-AzNewRelicHostMonitor -MonitorName $env.NewMonitorName -ResourceGroupName $env.resourceGroup
+            $LinkedResource = Get-AzNewRelicMonitor -ListLinkedResource -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
+            $LinkedResource.Count | Should -Be 1
+        } | Should -Not -Throw
+    }
+
+    It 'BillingInfoGet' {
+        {
+            $billing = Get-AzNewRelicBillingInfo -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
+            $billing.Count | Should -Be 1
+        } | Should -Not -Throw
+    }
+    It 'GetConnectedPartnerResource' {
+        {
+            $ConnectedPartnerResource = Get-AzNewRelicConnectedPartnerResource -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
+            $ConnectedPartnerResource.Count | Should -BeGreaterOrEqual 1
+        } | Should -Not -Throw
+    }
+
+    It 'InvokeHost' -skip { # secret
+        {
+            Invoke-AzNewRelicHostMonitor -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
+        } | Should -Not -Throw
+    }
+
+    # Owner Subscription
+    It 'NewMonitoredSubscription' -skip {
+        {
+            $testSub = '00000000-0000-0000-0000-000000000000'
+            $includeFT = New-AzNewRelicFilteringTagObject -Action Include -Name testLogRule1 -Value filteringTag1
+            $sub1 = New-AzNewRelicMonitoredSubscriptionObject -LogRuleFilteringTag $includeFT -LogRuleSendAadLog Enabled -LogRuleSendActivityLog Enabled -LogRuleSendSubscriptionLog Enabled -MetricRuleFilteringTag $includeFT -MetricRuleUserEmail $env.testerEmail -Status InProgress -SubscriptionId $testSub
+            New-AzNewRelicMonitoredSubscription -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -MonitoredSubscriptionList $sub1 -PatchOperation AddBegin
+        } | Should -Not -Throw
+    }
+    It 'UpdateMonitoredSubscription' -skip {
+        {
+            $sub1 = New-AzNewRelicMonitoredSubscriptionObject -Status Active -SubscriptionId 00000000-0000-0000-0000-000000000000
+            Update-AzNewRelicMonitoredSubscription -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -MonitoredSubscriptionList $sub1 -PatchOperation AddComplete
+        } | Should -Not -Throw
+    }
+    It 'GetMonitoredSubscription' -skip {
+        {
+            Get-AzNewRelicMonitoredSubscription -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
+        } | Should -Not -Throw
+    }
+    It 'GetMonitoredSubscriptionList' -skip {
+        {
+            Get-AzNewRelicMonitoredSubscription
+        } | Should -Not -Throw
+    }
+    It 'DeleteMonitoredSubscription' -skip {
+        {
+            Remove-AzNewRelicMonitoredSubscription -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 
     # Update monitor tag rule
     It 'MonitorTagRuleUpdateExpanded'{
         {
-            $rule = Update-AzNewRelicMonitorTagRule -MonitorName $env.NewMonitorName -ResourceGroupName $env.resourceGroup -RuleSetName default -LogRuleSendActivityLog 'Disabled'
+            $rule = Update-AzNewRelicMonitorTagRule -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -RuleSetName default -LogRuleSendActivityLog 'Disabled'
             $rule.LogRuleSendActivityLog | Should -Be 'Disabled'
         } | Should -Not -Throw
     }
@@ -117,13 +166,7 @@ DEscribe 'NewRelicObservability' {
     # Remove monitor tag rule
     It 'MonitorTagRuleDelete' {
         {
-            Remove-AzNewRelicMonitorTagRule -MonitorName $env.NewMonitorName -ResourceGroupName $env.resourceGroup -RuleSetName default
-        } | Should -Not -Throw
-    }
-    # Remove monitor
-    It 'MonitorDelete' {
-        {
-            Remove-AzNewRelicMonitor -Name test-01 -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail
+            Remove-AzNewRelicMonitorTagRule -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -RuleSetName default -PassThru | Should -Be $true
         } | Should -Not -Throw
     }
 }

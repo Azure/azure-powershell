@@ -184,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 
 ## NOTES
 

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.29.47.4906",
+      "templateHash": "12120592592691520016"
+    }
+  },
+  "parameters": {
+    "capacityName": {
+      "type": "string",
+      "metadata": {
+        "description": "The capacity resource name."
+      }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "The location of the resource."
+      }
+    },
+    "skuTier": {
+      "type": "string",
+      "metadata": {
+        "description": "The Sku tier of the resource."
+      }
+    },
+    "skuName": {
+      "type": "string",
+      "metadata": {
+        "description": "The Sku name of the resource."
+      }
+    },
+    "administrationMembers": {
+      "type": "array",
+      "metadata": {
+        "description": "The administration members of the resource."
+      }
+    },
+    "tags": {
+      "type": "object",
+      "metadata": {
+        "description": "The dictionary of tags"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Fabric/capacities",
+      "apiVersion": "2023-11-01",
+      "name": "[parameters('capacityName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('skuName')]",
+        "tier": "[parameters('skuTier')]"
+      },
+      "properties": {
+        "administration": {
+          "members": "[parameters('administrationMembers')]"
+        }
+      },
+      "tags": "[parameters('tags')]"
+    }
+  ],
+  "outputs": {
+    "CAPACITY_ID": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Fabric/capacities', parameters('capacityName'))]"
+    }
+  }
+}

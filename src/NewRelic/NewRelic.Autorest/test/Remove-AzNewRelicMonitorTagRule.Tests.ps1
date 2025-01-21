@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNewRelicMonitorTagRu
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzNewRelicMonitorTagRule' {
-    It 'Delete' -skip {
+Describe 'Remove-AzNewRelicMonitorTagRule' { #Scenario Test
+    It 'DeleteViaIdentityMonitor' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

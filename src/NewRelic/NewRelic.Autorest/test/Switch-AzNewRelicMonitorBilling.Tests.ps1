@@ -14,8 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Switch-AzNewRelicMonitorBilli
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Switch-AzNewRelicMonitorBilling' {
+Describe 'Switch-AzNewRelicMonitorBilling' { # Skip to test
     It 'SwitchExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'SwitchViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'SwitchViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

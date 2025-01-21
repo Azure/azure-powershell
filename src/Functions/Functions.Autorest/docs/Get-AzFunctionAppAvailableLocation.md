@@ -217,7 +217,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
 
 ## NOTES
 

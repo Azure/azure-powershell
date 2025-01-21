@@ -78,6 +78,29 @@ Describe 'PolicyExemptionCRUD' {
         $exemption.Metadata.$metadataName | Should -BeNull
     }
 
+    It 'Validate parameter round-trip' {
+        # get the definition, do an update with no changes, validate nothing is changed in response or backend
+        $expected = Get-AzPolicyExemption -Name $testExemption -Scope $rgScope
+        $response = Update-AzPolicyExemption -Name $testExemption -Scope $rgScope
+        $response.DisplayName | Should -Be $expected.DisplayName
+        $response.Description | Should -Be $expected.Description
+        $response.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $response.ExemptionCategory | Should -BeLike $expected.ExemptionCategory
+        $response.Parameter | Should -BeLike $expected.Parameter
+        $response.PolicyDefinitionReferenceId | Should -BeLike $expected.PolicyDefinitionReferenceId
+        $response.ExpiresOn | Should -BeLike $expected.ExpiresOn
+        $response.AssignmentScopeValidation | Should -BeLike $expected.AssignmentScopeValidation
+        $actual = Get-AzPolicyExemption -Name $testExemption -Scope $rgScope
+        $actual.DisplayName | Should -Be $expected.DisplayName
+        $actual.Description | Should -Be $expected.Description
+        $actual.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $actual.ExemptionCategory | Should -BeLike $expected.ExemptionCategory
+        $actual.Parameter | Should -BeLike $expected.Parameter
+        $actual.PolicyDefinitionReferenceId | Should -BeLike $expected.PolicyDefinitionReferenceId
+        $actual.ExpiresOn | Should -BeLike $expected.ExpiresOn
+        $actual.AssignmentScopeValidation | Should -BeLike $expected.AssignmentScopeValidation
+    }
+
     It 'Update policy exemption by clearing the expiration' {
         # get the exemption by name first
         $exemption = Get-AzPolicyExemption -Name $testExemption -Scope $rgScope

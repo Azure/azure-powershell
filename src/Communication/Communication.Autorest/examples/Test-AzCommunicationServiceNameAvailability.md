@@ -4,9 +4,9 @@ Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource1
 ```
 
 ```output
-Message                               NameAvailable Reason
--------                               ------------- ------
-Requested name is unavailable for the requested type False         AlreadyExists
+Message                      NameAvailable Reason
+-------                      ------------- ------
+Resource name already exists False         AlreadyExists
 ```
 
 Verified that the CommunicationService name is valid and is not already in use.
@@ -17,9 +17,9 @@ Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource2
 ```
 
 ```output
-Message                               NameAvailable Reason
--------                               ------------- ------
-Requested name is available for the requested type True         NameAvailable
+Message NameAvailable Reason
+------- ------------- ------
+        True
 ```
 
 Verified that the requested CommunicationService name already in use.

@@ -14,11 +14,14 @@ Microsoft Azure PowerShell: StandbyPool cmdlets
 ### [Get-AzStandbyContainerGroupPool](Get-AzStandbyContainerGroupPool.md)
 Get a StandbyContainerGroupPoolResource
 
+### [Get-AzStandbyContainerGroupPoolStatus](Get-AzStandbyContainerGroupPoolStatus.md)
+Get a StandbyContainerGroupPoolRuntimeViewResource
+
 ### [Get-AzStandbyVMPool](Get-AzStandbyVMPool.md)
 Get a StandbyVirtualMachinePoolResource
 
-### [Get-AzStandbyVMPoolVM](Get-AzStandbyVMPoolVM.md)
-Get a StandbyVirtualMachineResource
+### [Get-AzStandbyVMPoolStatus](Get-AzStandbyVMPoolStatus.md)
+Get a StandbyVirtualMachinePoolRuntimeViewResource
 
 ### [New-AzStandbyContainerGroupPool](New-AzStandbyContainerGroupPool.md)
 Create a StandbyContainerGroupPoolResource

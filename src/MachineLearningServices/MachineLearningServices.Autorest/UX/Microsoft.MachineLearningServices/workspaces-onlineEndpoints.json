@@ -1,13 +1,13 @@
 {
   "resourceType": "workspaces/onlineEndpoints",
-  "apiVersion": "2022-05-01",
+  "apiVersion": "2024-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.machinelearningservices"
   },
   "commands": [
     {
       "name": "Get-AzMLWorkspaceOnlineEndpointToken",
-      "description": "Retrieve a valid AAD token for an Endpoint using AMLToken-based authentication.",
+      "description": "Retrieve a valid AML token for an Endpoint using AMLToken-based authentication.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/token",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Retrieve a valid AAD token for an Endpoint using AMLToken-based authentication.",
+          "description": "Retrieve a valid AML token for an Endpoint using AMLToken-based authentication.",
           "parameters": [
             {
               "name": "-Name",

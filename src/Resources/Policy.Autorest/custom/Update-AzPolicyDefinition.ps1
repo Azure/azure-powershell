@@ -220,7 +220,7 @@ process {
     if ($InputObject) {
         foreach ($parameterName in $InputObject.Keys) {
             $value = $InputObject.($parameterName)
-            if ($value -or ($value -is [array])) {
+            if ($value -or ($value -is [array]) -or ($value -is [switch])) {
                 $calledParameters.($parameterName) = $value
             }
         }
@@ -229,7 +229,7 @@ process {
     # skip $null and empty values to avoid validation failures on pipeline input
     foreach ($parameterName in $PSBoundParameters.Keys) {
         $value = $PSBoundParameters.($parameterName)
-        if ($value -or ($value -is [array])) {
+        if ($value -or ($value -is [array]) -or ($value -is [switch])) {
             $calledParameters.($parameterName) = $value
         }
     }
@@ -284,6 +284,18 @@ process {
 
     if (!$calledParameters.Parameter -and $existing.Parameter) {
         $calledParameters.Parameter = ConvertTo-Json $existing.Parameter -Depth 100
+    }
+
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
+    }
+
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
     }
 
     if ($BackwardCompatible) {

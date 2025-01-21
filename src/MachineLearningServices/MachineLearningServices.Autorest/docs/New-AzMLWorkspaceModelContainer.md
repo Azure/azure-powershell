@@ -31,7 +31,7 @@ New-AzMLWorkspaceModelContainer -ResourceGroupName ml-rg-test -WorkspaceName mlw
 ```output
 Name                 SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ----                 ------------------- -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-modelcontainerpwsh01 6/1/2022 4:04:12 PM Lucas Yao (Wicresoft North America) User                    6/1/2022 4:04:12 PM      Lucas Yao (Wicresoft North America) User                         ml-rg-test
+modelcontainerpwsh01 6/1/2022 4:04:12 PM UserName (Example)         User                    6/1/2022 4:04:12 PM      UserName (Example)         User                         ml-rg-test
 ```
 
 Create or update model container
@@ -39,7 +39,8 @@ Create or update model container
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -214,11 +215,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelContainer
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelContainer
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

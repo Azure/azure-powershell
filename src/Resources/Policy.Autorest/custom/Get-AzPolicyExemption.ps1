@@ -68,7 +68,7 @@ param(
     [Parameter(ParameterSetName='IncludeDescendent', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.Management.Automation.SwitchParameter]
-    # Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.
+    # Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes. If not provided, only exemptions at and above the given scope are included.
     ${IncludeDescendent},
 
     [Parameter()]
@@ -217,14 +217,11 @@ process {
                     $calledParameters.ResourceGroupName = $resolved.ResourceGroupName
                 }
                 'resource' {
-                    $resourceId = $resolved.Scope
-                    $parts = ($resourceId -split '/')
-                    $first = 1
-                    $last = $parts.Length - 2
                     $calledParameterSet = 'List2'
-                    $calledParameters.ResourceProviderNamespace = $parts[0]
-                    $calledParameters.ResourceName = $parts[$parts.Length-1]
-                    $calledParameters.ResourceType = [System.String]::Join('/', $parts[$first..$last])
+                    $calledParameters.ResourceProviderNamespace = $resolved.ResourceNamespace
+                    $calledParameters.ResourceName = $resolved.ResourceName
+                    $calledParameters.ResourceType = $resolved.ResourceType
+                    $calledParameters.ParentResourcePath = '.'
                     $calledParameters.SubscriptionId = @($resolved.SubscriptionId)
                     $calledParameters.ResourceGroupName = $resolved.ResourceGroupName
                 }

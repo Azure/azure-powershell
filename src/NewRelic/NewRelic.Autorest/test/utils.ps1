@@ -48,25 +48,42 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    $resourceGroup = 'ps-test'
+    $resourceGroup = 'testgroup-joyer'
     $env.Add('resourceGroup', $resourceGroup)
 
     $region = 'eastus'
     $env.Add('region', $region)
 
     $testerEmail = 'v-jiaji@microsoft.com'
-    $env.Add('testerEmail', $testerEmail)
+    $testerFirstName = 'Joyer'
+    $testerLastName = 'Jin'
 
-    $testMonitorName = 'test-03'
+    $env.Add('testerEmail', $testerEmail)
+    $env.Add('testerFirstName', $testerFirstName)
+    $env.Add('testerLastName', $testerLastName)
+
+    $testMonitorName = 'testMonitor-01'
     $env.Add('testMonitorName', $testMonitorName)
 
-    $NewMonitorName = 'test-01'
+    $NewMonitorName = 'test-01' + (RandomString -allChars $false -len 6)
     $env.Add('NewMonitorName', $NewMonitorName)
 
-    $testApp = '/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/Microsoft.Web/sites/joyertest'
-    $env.Add('testApp', $testApp)
-
-    #Plan Data
+    $testAppPlanName = 'joyertestplan'
+    $testAppName = 'joyertestapp'
+    $testVMName = 'joyertestmachine01'
+    $env.Add('testVMName', $testVMName)
+    #Plan Data $env.SubscriptionId = 272c26cb-7026-4b37-b190-7cb7b2abecb0
+    # Step 1: Create test group
+    Write-Host 'Start to create test resource group' $resourceGroup
+    try {
+        $null = Get-AzResourceGroup -Name $resourceGroup -ErrorAction Stop
+        Write-Host 'Get created group, go ahead'
+    } catch {
+        # New-AzResourceGroup -Name $env.resourceGroup -Location $env.region
+        Write-Error 'Please create related resources'
+        throw
+    }
+    # Step 2: Create monitor
     $planDetails = "newrelic-pay-as-you-go-free-live@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg"
     $env.Add('planDetails', $planDetails)
     $billingCycle = "MONTHLY"
@@ -74,8 +91,30 @@ function setupEnv() {
     $usageType = 'PAYG'
     $env.Add('usageType', $usageType)
 
-    #create test group
-    #create app service
+    # New-AzNewRelicMonitor -Name $env.testMonitorName -ResourceGroupName $env.resourceGroup -Location $env.region -PlanDataPlanDetail $env.planDetails -PlanDataBillingCycle $env.billingCycle -PlanDataUsageType $env.usageType -PlanDataEffectiveDate (Get-Date -DisplayHint DateTime) -UserInfoEmailAddress $env.testerEmail -UserInfoFirstName $env.testerFirstName -UserInfoLastName $env.testerLastName
+    try {
+        $null = Get-AzNewRelicMonitor -Name $env.testMonitorName -ResourceGroupName $env.resourceGroup -ErrorAction Stop
+    }
+    catch {
+        Write-Error 'Please create a monitor firstly.'
+        throw
+    }
+    
+    # Write-Host 'create app service'
+    # Step 2: Create an App Service plan
+    # $null = New-AzAppServicePlan -ResourceGroupName $env.resourceGroup -Name $testAppPlanName -Location $env.region -Tier "Free"
+    # Step 3: Create the web app
+    # $testApp = New-AzWebApp -Name $testAppName -ResourceGroupName $env.resourceGroup -AppServicePlan $testAppPlanName
+    # Step 4: Install extension New Relic .NET Agent
+    try {
+        $testApp = Get-AzWebApp -Name $testAppName -ResourceGroupName $env.resourceGroup -ErrorAction Stop
+    }
+    catch {
+        Write-Error 'Please create a web app firstly.'
+        throw
+    }
+
+    $env.Add('testApp', $testApp.Id)
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

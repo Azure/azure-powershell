@@ -1,9 +1,6 @@
-### Example 1: Remove a run-command for a machine
+### Example 1: Remove a run command
 ```powershell
-Remove-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine"
+Remove-AzConnectedMachineRunCommand -ResourceGroupName "ytongtest" -RunCommandName "myRunCommand" -MachineName "testmachine"
 ```
 
-```output
-```
-
-Remove a run-command for a machine
+Remove a run command

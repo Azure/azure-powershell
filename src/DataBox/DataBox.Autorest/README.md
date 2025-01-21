@@ -166,7 +166,7 @@ directive:
 ```
 ``` yaml
 directive:
-  no-inline:  # the name of the model schema in the swagger file
+  - no-inline:  # the name of the model schema in the swagger file
     - KeyEncryptionKey
     - JobDetails
     - ShippingAddress

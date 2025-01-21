@@ -6,7 +6,7 @@ Get-AzNewRelicMonitorTagRule -MonitorName test-03 -ResourceGroupName ps-test
 ```output
 Name    SystemDataCreatedAt  SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName RetryAfter
 ----    -------------------  -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----------------- ----------
-default 6/28/2023 6:03:14 AM v-jiaji@outlook.com User                    6/28/2023 6:03:14 AM     v-jiaji@outlook.com    User                         ps-test
+default 6/28/2023 6:03:14 AM user1@outlook.com User                    6/28/2023 6:03:14 AM     user1@outlook.com    User                         ps-test
 ```
 
 Get tag rule with specified monitor and resource group

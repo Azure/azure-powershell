@@ -32,7 +32,7 @@ New-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 ```output
 Name                 SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                 ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-datacontainer-pwsh01 6/1/2022 3:03:56 PM Lucas Yao (Wicresoft North America) User                    6/1/2022 3:03:56 PM                                                            ml-rg-test
+datacontainer-pwsh01 6/1/2022 3:03:56 PM UserName (Example)         User                    6/1/2022 3:03:56 PM                                                            ml-rg-test
 ```
 
 Create or update data container
@@ -55,7 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -229,11 +230,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataContainer
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataContainer
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

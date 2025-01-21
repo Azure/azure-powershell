@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceEnvironmentV
 Describe 'New-AzMLWorkspaceEnvironmentVersion' {
     It 'CreateExpanded' {
         { 
-            New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name commandjobenv -Version 1 -Image "library/python:latest" 
-            Remove-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name commandjobenv -Version 1 
+            New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name commandjobenv -Version 1 -Image "library/python:latest" 
+            Remove-AzMLWorkspaceEnvironmentVersion -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name commandjobenv -Version 1 
         } | Should -Not -Throw
     }
 }

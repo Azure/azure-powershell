@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Nginx.private.dll'
   FormatsToProcess = './Az.Nginx.format.ps1xml'
-  FunctionsToExport = 'Get-AzNginxCertificate', 'Get-AzNginxConfiguration', 'Get-AzNginxDeployment', 'New-AzNginxCertificate', 'New-AzNginxConfiguration', 'New-AzNginxConfigurationFileObject', 'New-AzNginxDeployment', 'New-AzNginxNetworkProfileObject', 'New-AzNginxPrivateIPAddressObject', 'New-AzNginxPublicIPAddressObject', 'Remove-AzNginxCertificate', 'Remove-AzNginxConfiguration', 'Remove-AzNginxDeployment', 'Update-AzNginxDeployment', '*'
+  FunctionsToExport = 'Get-AzNginxCertificate', 'Get-AzNginxConfiguration', 'Get-AzNginxDeployment', 'Invoke-AzNginxAnalysisConfiguration', 'New-AzNginxCertificate', 'New-AzNginxConfiguration', 'New-AzNginxConfigurationFileObject', 'New-AzNginxDeployment', 'New-AzNginxNetworkProfileObject', 'New-AzNginxPrivateIPAddressObject', 'New-AzNginxPublicIPAddressObject', 'Remove-AzNginxCertificate', 'Remove-AzNginxConfiguration', 'Remove-AzNginxDeployment', 'Update-AzNginxDeployment', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

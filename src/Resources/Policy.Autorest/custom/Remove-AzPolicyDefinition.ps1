@@ -223,12 +223,12 @@ process {
             switch ($resolved.ScopeType) {
                 'mgName' {
                     $calledParameterSet = 'Delete1'
-                    $PSBoundParameters['ManagementGroupId'] = $resolved.Scope
+                    $PSBoundParameters['ManagementGroupId'] = $resolved.ManagementGroupName
                     $null = $PSBoundParameters.Remove('ManagementGroupName')
                 }
                 default {
                     $calledParameterSet = 'Delete'
-                    $PSBoundParameters['SubscriptionId'] = $resolved.Scope
+                    $PSBoundParameters['SubscriptionId'] = $resolved.SubscriptionId
                 }
             }
         }

@@ -1,14 +1,14 @@
 ### Example 1: ### Example 1: Create a catalog
 ```powershell
-New-AzSphereCatalog -name test2024 -ResourceGroupName joyer-test -Location global
+New-AzSphereCatalog -name test2024 -ResourceGroupName group-test -Location global
 ```
 
 ```output
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789103/resourceGroups/group-test/providers/Microsoft.AzureSphere/catalogs/test2024
 Location                     : global
 Name                         : test2024
 ProvisioningState            : Succeeded
-ResourceGroupName            : joyer-test
+ResourceGroupName            : group-test
 RetryAfter                   : 
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
@@ -18,7 +18,7 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType : 
 Tag                          : {
                                }
-TenantId                     : 7de8a199-bb33-4eda-9600-583103317243
+TenantId                     : 11111111-2222-3333-4444-123456789123
 Type                         : microsoft.azuresphere/catalogs
 ```
 

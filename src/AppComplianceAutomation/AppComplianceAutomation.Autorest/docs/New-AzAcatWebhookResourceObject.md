@@ -25,7 +25,7 @@ Create an in-memory object for WebhookResource.
 
 ### Example 1: Create a WebhookResource object with default values.
 ```powershell
-$secret = ConvertTo-SecureString "testSecret" -AsPlainText
+$secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzAcatWebhookResourceObject -TriggerMode "all" -PayloadUrl "https://example.com" -Secret $secret
 ```
 
@@ -39,7 +39,7 @@ Create a WebhookResource object with default values.
 
 ### Example 2: Create a WebhookResource object.
 ```powershell
-$secret = ConvertTo-SecureString "testSecret" -AsPlainText
+$secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzAcatWebhookResourceObject -EnableSslVerification "true"  -Disable -TriggerMode "all" -PayloadUrl "https://example.com" -ContentType "application/json" -Secret $secret
 ```
 

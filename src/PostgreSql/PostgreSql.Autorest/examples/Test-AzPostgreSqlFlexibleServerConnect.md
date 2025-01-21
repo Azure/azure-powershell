@@ -1,6 +1,6 @@
 ### Example 1: Test connection by name
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
 ```
 
@@ -12,7 +12,7 @@ Test connection by the resource group and the server name
 
 ### Example 2: Test connection by identity
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
 ```
 
@@ -24,7 +24,7 @@ Test connection by the identity
 
 ### Example 3: Test query by name
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -QueryText "SELECT * FROM test"
 ```
 

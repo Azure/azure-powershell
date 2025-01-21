@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ConnectedKubernetes
-Module Guid: d3467834-8989-4142-8c05-ab93c4bfa6eb
+Module Guid: efbb1325-5081-4947-8508-ab47abbf6e76
 Download Help Link: https://learn.microsoft.com/powershell/module/az.connectedkubernetes
 Help Version: 1.0.0.0
 Locale: en-US
@@ -22,6 +22,9 @@ API to register a new Kubernetes cluster and create a tracked resource in Azure 
 
 ### [Remove-AzConnectedKubernetes](Remove-AzConnectedKubernetes.md)
 Delete a connected cluster, removing the tracked resource in Azure Resource Manager (ARM).
+
+### [Set-AzConnectedKubernetes](Set-AzConnectedKubernetes.md)
+API to set properties of the connected cluster resource
 
 ### [Update-AzConnectedKubernetes](Update-AzConnectedKubernetes.md)
 API to update certain properties of the connected cluster resource

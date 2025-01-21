@@ -12,19 +12,32 @@ Create a NewRelicMonitorResource
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzNewRelicMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AccountCreationSource <AccountCreationSource>] [-AccountInfoAccountId <String>]
- [-AccountInfoIngestionKey <SecureString>] [-AccountInfoRegion <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-NewRelicAccountPropertyUserId <String>]
- [-OrganizationInfoOrganizationId <String>] [-OrgCreationSource <OrgCreationSource>]
- [-PlanDataBillingCycle <BillingCycle>] [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>]
- [-PlanDataUsageType <UsageType>] [-SingleSignOnPropertyEnterpriseAppId <String>]
- [-SingleSignOnPropertyProvisioningState <ProvisioningState>]
- [-SingleSignOnPropertySingleSignOnState <SingleSignOnStates>] [-SingleSignOnPropertySingleSignOnUrl <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-UserInfoCountry <String>]
- [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>] [-UserInfoLastName <String>]
- [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-AccountCreationSource <String>] [-AccountInfoAccountId <String>] [-AccountInfoIngestionKey <SecureString>]
+ [-AccountInfoRegion <String>] [-EnableSystemAssignedIdentity] [-NewRelicAccountPropertyUserId <String>]
+ [-OrganizationInfoOrganizationId <String>] [-OrgCreationSource <String>] [-PlanDataBillingCycle <String>]
+ [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>] [-PlanDataUsageType <String>]
+ [-SaaSAzureSubscriptionStatus <String>] [-SingleSignOnPropertyEnterpriseAppId <String>]
+ [-SingleSignOnPropertyProvisioningState <String>] [-SingleSignOnPropertySingleSignOnState <String>]
+ [-SingleSignOnPropertySingleSignOnUrl <String>] [-SubscriptionState <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-UserInfoCountry <String>] [-UserInfoEmailAddress <String>]
+ [-UserInfoFirstName <String>] [-UserInfoLastName <String>] [-UserInfoPhoneNumber <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNewRelicMonitor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNewRelicMonitor -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -35,13 +48,13 @@ Create a NewRelicMonitorResource
 
 ### Example 1: Create monitor
 ```powershell
-New-AzNewRelicMonitor -Name test-01 -ResourceGroupName ps-test -Location eastus -PlanDataPlanDetail "newrelic-pay-as-you-go-free-live@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg"-PlanDataBillingCycle 'MONTHLY' -PlanDataUsageType 'PAYG' -PlanDataEffectiveDate (Get-Date -DisplayHint DateTime) -UserInfoEmailAddress v-jiaji@outlook.com -UserInfoFirstName "Joyer" -UserInfoLastName "Jin"
+New-AzNewRelicMonitor -Name test-01 -ResourceGroupName ps-test -Location eastus -PlanDataPlanDetail "newrelicpaygtestplan2@123456789123456@PUBIDnewrelicinc1234567891234.newrelic_liftr_payg"-PlanDataBillingCycle 'MONTHLY' -PlanDataUsageType 'PAYG' -PlanDataEffectiveDate (Get-Date -DisplayHint DateTime) -UserInfoEmailAddress user1@outlook.com -UserInfoFirstName "group" -UserInfoLastName "test"
 ```
 
 ```output
 Location Name    SystemDataCreatedAt  SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName RetryAfter
 -------- ----    -------------------  -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----------------- ----------
-eastus   test-01 6/27/2023 8:30:45 AM v-jiaji@outlook.com User                    6/27/2023 8:30:45 AM     v-jiaji@outlook.com    User                         ps-test
+eastus   test-01 6/27/2023 8:30:45 AM user1@outlook.com User                    6/27/2023 8:30:45 AM     user1@outlook.com    User                         ps-test
 ```
 
 Create NewRelic monitor with Plan data and User information
@@ -52,8 +65,8 @@ Create NewRelic monitor with Plan data and User information
 Source of account creation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.AccountCreationSource
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -68,7 +81,7 @@ Account id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -83,7 +96,7 @@ ingestion key of account
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -94,11 +107,11 @@ Accept wildcard characters: False
 ```
 
 ### -AccountInfoRegion
-NewRelic account region
+Region where New Relic account is present
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -139,15 +152,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -159,7 +202,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -189,7 +232,7 @@ User id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -219,7 +262,7 @@ Organization id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -233,8 +276,8 @@ Accept wildcard characters: False
 Source of org creation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.OrgCreationSource
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -249,8 +292,8 @@ Different billing cycles like MONTHLY/WEEKLY.
 this could be enum
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.BillingCycle
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -265,7 +308,7 @@ date when plan was applied
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -280,7 +323,7 @@ plan id as published by NewRelic
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -295,8 +338,8 @@ Different usage type like PAYG/COMMITTED.
 this could be enum
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -322,12 +365,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SaaSAzureSubscriptionStatus
+Status of Azure Subscription where Marketplace SaaS is located.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SingleSignOnPropertyEnterpriseAppId
 The Id of the Enterprise App used for Single sign-on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -341,8 +399,8 @@ Accept wildcard characters: False
 Provisioning state
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ProvisioningState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -356,8 +414,8 @@ Accept wildcard characters: False
 Single sign-on state
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SingleSignOnStates
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -372,7 +430,7 @@ The login URL specific to this NewRelic Organization
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -397,12 +455,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionState
+State of the Azure Subscription containing the monitor resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -413,13 +486,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -434,7 +506,7 @@ country if user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -449,7 +521,7 @@ User Email
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -464,7 +536,7 @@ First name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -479,7 +551,7 @@ Last name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -494,7 +566,7 @@ Contact phone number
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -542,11 +614,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

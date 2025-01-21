@@ -1,13 +1,13 @@
 {
   "resourceType": "accessConnectors",
-  "apiVersion": "2023-05-01",
+  "apiVersion": "2024-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.databricks"
   },
   "commands": [
     {
       "name": "Get-AzDatabricksAccessConnector",
-      "description": "Gets an azure databricks accessConnector.",
+      "description": "Gets an Azure Databricks Access Connector.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Gets an azure databricks accessConnector.",
+          "description": "Gets an Azure Databricks Access Connector.",
           "parameters": [
             {
               "name": "-Name",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Remove-AzDatabricksAccessConnector",
-      "description": "Deletes the azure databricks accessConnector.",
+      "description": "Deletes the Azure Databricks Access Connector.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Deletes the azure databricks accessConnector.",
+          "description": "Deletes the Azure Databricks Access Connector.",
           "parameters": [
             {
               "name": "-Name",

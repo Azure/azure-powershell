@@ -69,20 +69,6 @@ Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_te
 
 Update aad admin GUIDS. 
 
-### Example 11: Upgrade kubernetes version to latest possible
-```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Upgrade
-```
-
-Upgrade cluster to latest kubernetes version. 
-
-### Example 12: Upgrade kubernetes version to specified version
-```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -KubernetesVersion "1.28.5"
-```
-
-Upgrade cluster to the specified kubernetes version. 
-
 
 
 

@@ -1,0 +1,91 @@
+{
+  "Get-AzAstroOrganization+[NoContext]+List+$GET+https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/astro-joyer/providers/Astronomer.Astro/organizations?api-version=2023-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/astro-joyer/providers/Astronomer.Astro/organizations?api-version=2023-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "e742aa43-2228-4469-87f7-89d5db437b41" ],
+        "CommandName": [ "Get-AzAstroOrganization" ],
+        "FullCommandName": [ "Get-AzAstroOrganization_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.4.4", "Az.Astro/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f6bedb1d-2459-409c-b5b2-287fac48fff3" ],
+        "x-ms-correlation-request-id": [ "4c6b4f7c-9816-447b-976b-410f67bb49ca" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240806T065035Z:4c6b4f7c-9816-447b-976b-410f67bb49ca" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3B89B5694176481AA7B782D021D59617 Ref B: MAA201060514011 Ref C: 2024-08-06T06:50:34Z" ],
+        "Date": [ "Tue, 06 Aug 2024 06:50:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2680" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/astro-joyer/providers/Astronomer.Astro/organizations/UT.1.test\",\"name\":\"UT.1.test\",\"type\":\"astronomer.astro/organizations\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-05T09:37:41.0597914Z\",\"lastModifiedBy\":\"5facb70c-0718-4412-96a1-6de2eae4976e\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-08-05T09:40:46.7130699Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"05bf2822-87af-473d-d832-10affb6b6551\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"astronomer1591719760654\",\"offerId\":\"astro\",\"planId\":\"astro-paygo\",\"planName\":\"Monthly Pay-As-You-Go\",\"termUnit\":\"Monthly\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"joyer\",\"lastName\":\"Jin\",\"emailAddress\":\"v-jiaji@micrsoft.com\",\"upn\":\"v-jiaji@micrsoft.com\"},\"provisioningState\":\"Succeeded\",\"partnerOrganizationProperties\":{\"organizationId\":\"clzgswo7g0twr01kbfd49l6ls\",\"workspaceId\":\"clzgswp260tx101kbxybz7xb9\",\"organizationName\":\"sa24\",\"workspaceName\":\"as24\",\"singleSignOnProperties\":{\"singleSignOnState\":\"Enable\",\"singleSignOnUrl\":\"https://account.astronomer.io/login?connection=waad-liftr-clzgswo7g0twr01kbfd49l6ls\u0026org-id=clzgswo7g0twr01kbfd49l6ls\",\"aadDomains\":[\"MicrosoftCustomerLed.onmicrosoft.com\"]}}}},{\"id\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/astro-joyer/providers/Astronomer.Astro/organizations/astro.Test\",\"name\":\"astro.Test\",\"type\":\"astronomer.astro/organizations\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-06T06:27:50.2805363Z\",\"lastModifiedBy\":\"5facb70c-0718-4412-96a1-6de2eae4976e\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-08-06T06:30:52.5185402Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"d4c1ef80-d62e-4220-c1bc-0e9ada978591\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"astronomer1591719760654\",\"offerId\":\"astro\",\"planId\":\"astro-paygo\",\"planName\":\"Monthly Pay-As-You-Go\",\"termUnit\":\"Monthly\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Joyer\",\"lastName\":\"Jin\",\"emailAddress\":\"v-jiaji@microsoft.com\",\"upn\":\"v-jiaji@microsoft.com\"},\"provisioningState\":\"Failed\",\"partnerOrganizationProperties\":{\"organizationId\":\"clzi1h901116t01jt93r5scbk\",\"workspaceId\":\"clzi1h9z1117301jt5a6ogceo\",\"organizationName\":\"bbb\",\"workspaceName\":\"aaa\",\"singleSignOnProperties\":{\"singleSignOnState\":\"Enable\",\"singleSignOnUrl\":\"https://account.astronomer.io/login?connection=waad-liftr-clzi1h901116t01jt93r5scbk\u0026org-id=clzi1h901116t01jt93r5scbk\",\"aadDomains\":[\"MicrosoftCustomerLed.onmicrosoft.com\"]}}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAstroOrganization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/astro-joyer/providers/Astronomer.Astro/organizations/UT.1.test?api-version=2023-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/astro-joyer/providers/Astronomer.Astro/organizations/UT.1.test?api-version=2023-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "edc33f6f-3ad7-415c-8170-7cf1b07611e1" ],
+        "CommandName": [ "Get-AzAstroOrganization" ],
+        "FullCommandName": [ "Get-AzAstroOrganization_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.4.4", "Az.Astro/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0e008d64-0000-0100-0000-66b09e1e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c64ef832-4f2e-4002-bd43-e2581ce2a2f1" ],
+        "x-ms-correlation-request-id": [ "1f92669d-e9ba-454c-ba1d-a80f297cd737" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240806T065038Z:1f92669d-e9ba-454c-ba1d-a80f297cd737" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E2C8DBB445F64A73B251C3A91DF50A6C Ref B: MAA201060514011 Ref C: 2024-08-06T06:50:37Z" ],
+        "Date": [ "Tue, 06 Aug 2024 06:50:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1334" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/astro-joyer/providers/Astronomer.Astro/organizations/UT.1.test\",\"name\":\"UT.1.test\",\"type\":\"astronomer.astro/organizations\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-05T09:37:41.0597914Z\",\"lastModifiedBy\":\"5facb70c-0718-4412-96a1-6de2eae4976e\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-08-05T09:40:46.7130699Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"05bf2822-87af-473d-d832-10affb6b6551\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"astronomer1591719760654\",\"offerId\":\"astro\",\"planId\":\"astro-paygo\",\"planName\":\"Monthly Pay-As-You-Go\",\"termUnit\":\"Monthly\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"joyer\",\"lastName\":\"Jin\",\"emailAddress\":\"v-jiaji@micrsoft.com\",\"upn\":\"v-jiaji@micrsoft.com\"},\"provisioningState\":\"Succeeded\",\"partnerOrganizationProperties\":{\"organizationId\":\"clzgswo7g0twr01kbfd49l6ls\",\"workspaceId\":\"clzgswp260tx101kbxybz7xb9\",\"organizationName\":\"sa24\",\"workspaceName\":\"as24\",\"singleSignOnProperties\":{\"singleSignOnState\":\"Enable\",\"singleSignOnUrl\":\"https://account.astronomer.io/login?connection=waad-liftr-clzgswo7g0twr01kbfd49l6ls\u0026org-id=clzgswo7g0twr01kbfd49l6ls\",\"aadDomains\":[\"MicrosoftCustomerLed.onmicrosoft.com\"]}}}}",
+      "isContentBase64": false
+    }
+  }
+}

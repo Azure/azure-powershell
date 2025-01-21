@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceJob'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceJob' {
-    It 'CommandJob' {
-        { 
+Describe 'New-AzMLWorkspaceJob' { #Moved
+    It 'CommandJob' -skip {
+        {
             New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name commandjobenv02 -Version 1 -Image "library/python:latest"
             $commandJob = New-AzMLWorkspaceCommandJobObject -Command "echo `"hello world`"" `
             -ComputeId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/computes/cpu-cluster' `

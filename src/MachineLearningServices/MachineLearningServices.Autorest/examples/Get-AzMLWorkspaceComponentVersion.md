@@ -6,7 +6,7 @@ Get-AzMLWorkspaceComponentVersion -ResourceGroupName ml-rg-test -WorkspaceName m
 ```output
 Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    5/24/2022 7:23:25 AM Lucas Yao (Wicresoft North America) User                    5/24/2022 7:23:25 AM     Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    5/24/2022 7:23:25 AM UserName (Example)         User                    5/24/2022 7:23:25 AM     UserName (Example)         User                         ml-rg-test
 ```
 
 Lists all component versions
@@ -19,7 +19,7 @@ Get-AzMLWorkspaceComponentVersion -ResourceGroupName ml-rg-test -WorkspaceName m
 ```output
 Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    5/24/2022 7:23:25 AM Lucas Yao (Wicresoft North America) User                    5/24/2022 7:23:25 AM     Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    5/24/2022 7:23:25 AM UserName (Example)         User                    5/24/2022 7:23:25 AM     UserName (Example)         User                         ml-rg-test
 ```
 
  Gets a component versions

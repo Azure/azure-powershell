@@ -2042,6 +2042,10 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.requiredResourceAccess'
               description: 'Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).'
+            serviceManagementReference:
+              type: string
+              description: References application or service contact information from a Service or Asset Management database. Nullable.
+              nullable: true
             signInAudience:
               type: string
               description: 'Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).'

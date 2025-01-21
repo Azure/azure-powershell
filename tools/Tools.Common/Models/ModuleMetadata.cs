@@ -87,12 +87,15 @@ namespace Tools.Common.Models
                 var otherCmdlet = other.Cmdlets.Find(c => thisCmdletNames.ContainsKey(c.Name) || c.AliasList.Find(a => thisCmdletNames.ContainsKey(a)) != null);
                 if (otherCmdlet == null)
                 {
+                    // Console.WriteLine($"Cannot find cmdlet {thisCmdletNames} in new version.");
                     return false;
                 }
-
                 modulesEqual &= thisCmdlet.Equals(otherCmdlet);
             }
-
+            /*if(this.Cmdlets.Count != other.Cmdlets.Count)
+            {
+                Console.WriteLine($"The number of cmdlets is unmatched in old and new module");
+            }*/
             modulesEqual &= this.Cmdlets.Count == other.Cmdlets.Count;
             return modulesEqual;
         }

@@ -14,12 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNewRelicMonitorTagRule'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzNewRelicMonitorTagRule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
+Describe 'Get-AzNewRelicMonitorTagRule' { #Scenario Test
+    It 'GetViaIdentityMonitor' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

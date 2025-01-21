@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.AksArc.private.dll'
   FormatsToProcess = './Az.AksArc.format.ps1xml'
-  FunctionsToExport = 'Get-AzAksArcCluster', 'Get-AzAksArcClusterAdminKubeconfig', 'Get-AzAksArcClusterUpgrade', 'Get-AzAksArcClusterUserKubeconfig', 'Get-AzAksArcKubernetesVersion', 'Get-AzAksArcLog', 'Get-AzAksArcNodepool', 'Get-AzAksArcVMSku', 'New-AzAksArcCluster', 'New-AzAksArcNodepool', 'Remove-AzAksArcCluster', 'Remove-AzAksArcNodepool', 'Update-AzAksArcCluster', 'Update-AzAksArcNodepool'
+  FunctionsToExport = 'Get-AzAksArcCluster', 'Get-AzAksArcClusterAdminKubeconfig', 'Get-AzAksArcClusterUpgrade', 'Get-AzAksArcClusterUserKubeconfig', 'Get-AzAksArcKubernetesVersion', 'Get-AzAksArcLog', 'Get-AzAksArcNodepool', 'Get-AzAksArcVirtualNetwork', 'Get-AzAksArcVMSku', 'Invoke-AzAksArcClusterUpgrade', 'New-AzAksArcCluster', 'New-AzAksArcNodepool', 'New-AzAksArcVirtualNetwork', 'Remove-AzAksArcCluster', 'Remove-AzAksArcNodepool', 'Remove-AzAksArcVirtualNetwork', 'Update-AzAksArcCluster', 'Update-AzAksArcNodepool'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'AksArc'

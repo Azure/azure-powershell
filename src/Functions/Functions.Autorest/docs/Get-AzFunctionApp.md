@@ -205,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## NOTES
 

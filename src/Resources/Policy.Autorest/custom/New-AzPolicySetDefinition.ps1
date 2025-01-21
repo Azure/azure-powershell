@@ -185,7 +185,7 @@ process {
 
     # rename [hashtable] PolicyDefinition parameter to [hashtable] PolicyDefinitionTable parameter
     if ($calledParameters.PolicyDefinition) {
-        $calledParameters.PolicyDefinitionTable = (ConvertFrom-Json $calledParameters.PolicyDefinition -Depth 100 -AsHashtable)
+        $calledParameters.PolicyDefinitionTable = (ConvertFrom-JsonSafe $calledParameters.PolicyDefinition -AsHashtable)
         $null = $calledParameters.Remove('PolicyDefinition')
     }
 
@@ -206,8 +206,7 @@ process {
 
     # rename [string] 'parameter' parameter to 'parametertable' (needs to be string to construct properly)
     if ($calledParameters.Parameter) {
-        $calledParameters.ParameterTable = (ConvertFrom-Json $calledParameters.Parameter -Depth 100 -AsHashtable)
-        #$calledParameters.ParameterTable = $calledParameters.Parameter
+        $calledParameters.ParameterTable = (ConvertFrom-JsonSafe $calledParameters.Parameter -AsHashtable)
         $null = $calledParameters.Remove('Parameter')
     }
 
@@ -218,7 +217,7 @@ process {
 
     # rename [hashtable] 'PolicyDefinitionGroup' parameter to [hashtable] 'PolicyDefinitionGroupTable' parameter
     if ($calledParameters.PolicyDefinitionGroup) {
-        $calledParameters.PolicyDefinitionGroupTable = (ConvertFrom-Json $calledParameters.PolicyDefinitionGroup -Depth 100 -AsHashtable)
+        $calledParameters.PolicyDefinitionGroupTable = (ConvertFrom-JsonSafe $calledParameters.PolicyDefinitionGroup -AsHashtable)
         $null = $calledParameters.Remove('PolicyDefinitionGroup')
     }
 
@@ -255,10 +254,10 @@ process {
         $propertyBag = @{
             Description = $item.Description;
             DisplayName = $item.DisplayName;
-            Metadata = (ConvertObjectToPSObject $item.Metadata);  # (ConvertFrom-Json $item.Metadata.ToJsonString() -Depth 100);
-            Parameters = (ConvertObjectToPSObject $item.Parameter);  # (ConvertFrom-Json $item.Parameter.ToJsonString() -Depth 100);
-            PolicyDefinitions = (ConvertObjectToPSObject $item.PolicyDefinition);  # (ConvertFrom-Json $item.PolicyDefinition.ToJsonString() -Depth 100);
-            PolicyDefinitionGroups = (ConvertObjectToPSObject $item.PolicyDefinitionGroup)  # (ConvertFrom-Json $item.PolicyDefinitionGroup.ToJsonString() -Depth 100);
+            Metadata = (ConvertObjectToPSObject $item.Metadata);
+            Parameters = (ConvertObjectToPSObject $item.Parameter);
+            PolicyDefinitions = (ConvertObjectToPSObject $item.PolicyDefinition);
+            PolicyDefinitionGroups = (ConvertObjectToPSObject $item.PolicyDefinitionGroup)
         }
 
         $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
@@ -272,6 +271,7 @@ process {
     $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinition' -Value (ConvertObjectToPSObject $item.PolicyDefinition) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionGroup' -Value (ConvertObjectToPSObject $item.PolicyDefinitionGroup) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'Versions' -Value ([array]($item.Versions)) -Force
     $PSCmdlet.WriteObject($item)
 }
 

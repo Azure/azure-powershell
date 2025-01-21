@@ -94,3 +94,27 @@ function GetStorageAccountEndpointSuffix
         default { '' }
     }
 }
+
+function GetRandomStringValue
+{
+    param
+    (
+        [Int]
+        $Length = 8
+    )
+
+    # Create char array from 'a' to 'z'
+    $letters = 97..122 | ForEach-Object { [char]$_ }
+    $numbers = 0..9
+    $alphanumericLowerCase = $letters + $numbers
+
+    $suffix = [System.Text.StringBuilder]::new()
+
+    for ($index = 0; $index -lt $Length; $index++)
+    {
+        $value = $alphanumericLowerCase | Get-Random
+        $suffix.Append($value) | Out-Null
+    }
+
+    $suffix.ToString()
+}

@@ -54,6 +54,7 @@ jobs:
       buildVersionToDownload: 'latest'
       artifactName: $(ArtifactName)
       targetPath: $(Pipeline.Workspace)
+      itemPattern: '**/artifacts/**'
 
   - task: DownloadPipelineArtifact@2
     condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'), ne(variables['PipelineId'], ''))
@@ -66,6 +67,7 @@ jobs:
       pipelineId: $(PipelineId)
       artifactName: '$(ArtifactName)'
       targetPath: '$(Pipeline.Workspace)'
+      itemPattern: '**/artifacts/**'
 
   - task: PowerShell@2
     condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
@@ -74,7 +76,8 @@ jobs:
       targetType: 'inline'
       script: |
        New-Item -Path "$(Pipeline.Workspace)" -Name "LocalRepo" -ItemType "directory"
-       Copy-Item -Path "$(Pipeline.Workspace)\\*.nupkg" -Destination "$(Pipeline.Workspace)\\LocalRepo\\"
+       $fileList = Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg" 
+       $fileList | ForEach-Object { Copy-Item -Path $_.FullName -Destination "$(Pipeline.Workspace)\LocalRepo\" -Force }
        Write-Host "List artifacts..."
        Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
 

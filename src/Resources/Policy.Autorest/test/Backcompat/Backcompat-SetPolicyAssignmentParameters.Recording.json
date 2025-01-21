@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "369" ],
-        "x-ms-client-request-id": [ "b355768d-2c71-45ac-b59d-92c4430e6db0" ],
+        "x-ms-unique-id": [ "337" ],
+        "x-ms-client-request-id": [ "b2a37698-e078-4c8b-b45a-fb5e18aaf5d5" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,16 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "33cd9e49-0e1e-4965-b433-a07fa3073369" ],
-        "x-ms-correlation-request-id": [ "33cd9e49-0e1e-4965-b433-a07fa3073369" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223035Z:33cd9e49-0e1e-4965-b433-a07fa3073369" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "0d2a4d35-1cc3-4cb5-98c5-011e1dc1e227" ],
+        "x-ms-correlation-request-id": [ "0d2a4d35-1cc3-4cb5-98c5-011e1dc1e227" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001619Z:0d2a4d35-1cc3-4cb5-98c5-011e1dc1e227" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1CC20B0F14BA451784010B586A1D471D Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:35Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9D4856457DFD4BC8B72ABC70B0BC0F73 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -49,12 +48,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "370" ],
-        "x-ms-client-request-id": [ "7d85cef2-fb4a-4cdf-85bd-2a642ab32246" ],
+        "x-ms-unique-id": [ "338" ],
+        "x-ms-client-request-id": [ "ad17bad8-dc45-4350-9856-eb36bc710165" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -65,16 +64,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "766ddf34-a789-4e62-bba7-16889b3d9873" ],
-        "x-ms-correlation-request-id": [ "766ddf34-a789-4e62-bba7-16889b3d9873" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223035Z:766ddf34-a789-4e62-bba7-16889b3d9873" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "2949132b-14cc-4b6a-a45d-58e5c5c5a6d5" ],
+        "x-ms-correlation-request-id": [ "2949132b-14cc-4b6a-a45d-58e5c5c5a6d5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001619Z:2949132b-14cc-4b6a-a45d-58e5c5c5a6d5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3D5B0FE9B01F447CA45A18DF35ADFE94 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:35Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2D326ECA3C154922A31801C0A245862A Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -92,12 +90,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "371" ],
-        "x-ms-client-request-id": [ "8f0abd29-8c3e-4e3a-9cf6-4975c3fea0a7" ],
+        "x-ms-unique-id": [ "339" ],
+        "x-ms-client-request-id": [ "84f3091f-d0b5-4b18-ab63-409982c9530d" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -108,16 +106,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "87985d47-fc6d-42cc-acf3-58d8490fee01" ],
-        "x-ms-correlation-request-id": [ "87985d47-fc6d-42cc-acf3-58d8490fee01" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223036Z:87985d47-fc6d-42cc-acf3-58d8490fee01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "47020f95-abe4-417e-929c-e0b56beafde3" ],
+        "x-ms-correlation-request-id": [ "47020f95-abe4-417e-929c-e0b56beafde3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001619Z:47020f95-abe4-417e-929c-e0b56beafde3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 360D8F0EC798479BBCA05A684433E846 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:36Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FDAAE2F761134F8E9C09967631F193A0 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -135,12 +132,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "372" ],
-        "x-ms-client-request-id": [ "1d30ad47-3658-450c-915f-8abc7ccb6cd0" ],
+        "x-ms-unique-id": [ "340" ],
+        "x-ms-client-request-id": [ "8795f51b-ce51-4410-ad01-4b3d7fd71dd5" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -151,16 +148,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "baa5f8d2-739d-4944-8fa2-376cdb8822a1" ],
-        "x-ms-correlation-request-id": [ "baa5f8d2-739d-4944-8fa2-376cdb8822a1" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223036Z:baa5f8d2-739d-4944-8fa2-376cdb8822a1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "13110096-68e3-429c-93be-fae79c803d71" ],
+        "x-ms-correlation-request-id": [ "13110096-68e3-429c-93be-fae79c803d71" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001619Z:13110096-68e3-429c-93be-fae79c803d71" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7345E3998F064C97B1D53E64E198AC97 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:36Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E52199D391CE43EFA29D21E70BA0C26E Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -178,12 +174,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "373" ],
-        "x-ms-client-request-id": [ "e59c0af9-c39f-4184-95a3-7c211c7fd355" ],
+        "x-ms-unique-id": [ "341" ],
+        "x-ms-client-request-id": [ "8835764e-1b2a-485c-a1b6-f4787358fd34" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -194,16 +190,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "bb1c7143-c0bb-4418-802d-8de8a971a607" ],
-        "x-ms-correlation-request-id": [ "bb1c7143-c0bb-4418-802d-8de8a971a607" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223036Z:bb1c7143-c0bb-4418-802d-8de8a971a607" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "91c310b5-4138-42ce-a21f-68abbe879d70" ],
+        "x-ms-correlation-request-id": [ "91c310b5-4138-42ce-a21f-68abbe879d70" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001619Z:91c310b5-4138-42ce-a21f-68abbe879d70" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8038D2FC2F6B4418919787004040934F Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:36Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DA2D24F0173F4333BD5C8F6293CDC7EE Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -221,12 +216,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "374" ],
-        "x-ms-client-request-id": [ "7a212766-016b-4680-a501-1e57443abe18" ],
+        "x-ms-unique-id": [ "342" ],
+        "x-ms-client-request-id": [ "b5cc6f23-6880-4758-bb82-9aeb7957a23b" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -237,16 +232,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "ee763f2d-1b5f-4d88-9eee-f8444473b8ae" ],
-        "x-ms-correlation-request-id": [ "ee763f2d-1b5f-4d88-9eee-f8444473b8ae" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223036Z:ee763f2d-1b5f-4d88-9eee-f8444473b8ae" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "e8a54be0-4131-4526-b8b1-da55a3b68da3" ],
+        "x-ms-correlation-request-id": [ "e8a54be0-4131-4526-b8b1-da55a3b68da3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:e8a54be0-4131-4526-b8b1-da55a3b68da3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E1456512C08A4D158512E4A21C5B0AF9 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:36Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F8146761203341A7AA0729E69588E277 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -264,12 +258,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "375" ],
-        "x-ms-client-request-id": [ "113efb10-ba8d-4035-b0f4-d8de2ccfe865" ],
+        "x-ms-unique-id": [ "343" ],
+        "x-ms-client-request-id": [ "3d7f87a9-2f34-4f86-81d0-cc67af766beb" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -280,16 +274,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-request-id": [ "ad028339-b6ed-4b8c-abec-733e157f5eff" ],
-        "x-ms-correlation-request-id": [ "ad028339-b6ed-4b8c-abec-733e157f5eff" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223036Z:ad028339-b6ed-4b8c-abec-733e157f5eff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "640ee85f-fab9-4b09-961b-88e445c8fcec" ],
+        "x-ms-correlation-request-id": [ "640ee85f-fab9-4b09-961b-88e445c8fcec" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:640ee85f-fab9-4b09-961b-88e445c8fcec" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6F3DB6857E524E31AF3CAD0C953FE05C Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:36Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3FC7E4D5940F47FC9C3830EE3A4ED1AF Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -307,12 +300,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "376" ],
-        "x-ms-client-request-id": [ "36abf146-be08-42f0-858e-be239fbe3336" ],
+        "x-ms-unique-id": [ "344" ],
+        "x-ms-client-request-id": [ "9a2cbaea-b413-4260-8194-be4a775ff7fc" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -323,16 +316,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "300dad6c-cd56-49ad-8b84-13c73bdac1d4" ],
-        "x-ms-correlation-request-id": [ "300dad6c-cd56-49ad-8b84-13c73bdac1d4" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223036Z:300dad6c-cd56-49ad-8b84-13c73bdac1d4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "e935cfdb-6c62-4c77-976a-8a2aab90a62c" ],
+        "x-ms-correlation-request-id": [ "e935cfdb-6c62-4c77-976a-8a2aab90a62c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:e935cfdb-6c62-4c77-976a-8a2aab90a62c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BD080DED71BF49CBAB90B35C0B1E75CC Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:36Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DC030B9C72EE490AB1853683B8194858 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -350,12 +342,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "377" ],
-        "x-ms-client-request-id": [ "cc07e075-6fc0-485f-af49-24410b09cd4f" ],
+        "x-ms-unique-id": [ "345" ],
+        "x-ms-client-request-id": [ "564f7bf5-6d32-46fb-972e-4008d08a5394" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -366,16 +358,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "64a91d87-5418-46f9-9c02-89ad18304b21" ],
-        "x-ms-correlation-request-id": [ "64a91d87-5418-46f9-9c02-89ad18304b21" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223036Z:64a91d87-5418-46f9-9c02-89ad18304b21" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "84710718-1783-4987-a674-851134e4d3c7" ],
+        "x-ms-correlation-request-id": [ "84710718-1783-4987-a674-851134e4d3c7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:84710718-1783-4987-a674-851134e4d3c7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 49553C4598E34E2F8819516546E3F247 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:36Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6ABE78BC79D0481E985BC0FCDDA52CC8 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -393,12 +384,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "378" ],
-        "x-ms-client-request-id": [ "683dc68c-8962-478d-a516-51337ef137b1" ],
+        "x-ms-unique-id": [ "346" ],
+        "x-ms-client-request-id": [ "83c9fcbb-f4ec-4654-9647-4cb825134db5" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -409,16 +400,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-request-id": [ "33430700-1846-45e8-bd6f-85ad6cff8ac0" ],
-        "x-ms-correlation-request-id": [ "33430700-1846-45e8-bd6f-85ad6cff8ac0" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223036Z:33430700-1846-45e8-bd6f-85ad6cff8ac0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "6c54d854-d3c2-4b4a-8c4a-2bc1efd11020" ],
+        "x-ms-correlation-request-id": [ "6c54d854-d3c2-4b4a-8c4a-2bc1efd11020" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:6c54d854-d3c2-4b4a-8c4a-2bc1efd11020" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8032ED70DEDF410CABFDD8493B7876D7 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:36Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3C7849E417484B418EC22A6AD1C54339 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -436,12 +426,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "379" ],
-        "x-ms-client-request-id": [ "43ab32b3-a20a-4117-8ee1-aa8879a3c82a" ],
+        "x-ms-unique-id": [ "347" ],
+        "x-ms-client-request-id": [ "5c2951f7-0f38-4d26-bd81-a2a06c8b5574" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -452,16 +442,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "44d4625e-ae4b-47a6-b1c2-965d93d2128a" ],
-        "x-ms-correlation-request-id": [ "44d4625e-ae4b-47a6-b1c2-965d93d2128a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:44d4625e-ae4b-47a6-b1c2-965d93d2128a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "b8616b2c-1b2d-48ae-b8b6-92f7b80ae6e0" ],
+        "x-ms-correlation-request-id": [ "b8616b2c-1b2d-48ae-b8b6-92f7b80ae6e0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:b8616b2c-1b2d-48ae-b8b6-92f7b80ae6e0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 561CF1765E4B43BCA48511AAD553CECD Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3320838DB0B54DE4B7F58DBF96CAE107 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -479,12 +468,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "380" ],
-        "x-ms-client-request-id": [ "72db1148-5684-4f83-9167-cf704df0b240" ],
+        "x-ms-unique-id": [ "348" ],
+        "x-ms-client-request-id": [ "41281ab2-ad0d-4cff-b6b3-1db555c59148" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -496,14 +485,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "82cb1f18-e9da-48db-844d-6ffe5ee164e2" ],
-        "x-ms-correlation-request-id": [ "82cb1f18-e9da-48db-844d-6ffe5ee164e2" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:82cb1f18-e9da-48db-844d-6ffe5ee164e2" ],
+        "x-ms-request-id": [ "32821031-149d-4ac5-b5b5-bae24695a0b2" ],
+        "x-ms-correlation-request-id": [ "32821031-149d-4ac5-b5b5-bae24695a0b2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:32821031-149d-4ac5-b5b5-bae24695a0b2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7A5388FD39554998B6B18E364DFC0660 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2DB47ADD89824075AF9E751AFFFD8F41 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -521,12 +510,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "381" ],
-        "x-ms-client-request-id": [ "5b21b674-e1c1-4cd5-a15a-9fdecffd1965" ],
+        "x-ms-unique-id": [ "349" ],
+        "x-ms-client-request-id": [ "5d61edd9-7197-450f-9b21-82dfbc0cf308" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -538,14 +527,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "bc9764df-1528-42f5-bae4-97bf9d8c4e01" ],
-        "x-ms-correlation-request-id": [ "bc9764df-1528-42f5-bae4-97bf9d8c4e01" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:bc9764df-1528-42f5-bae4-97bf9d8c4e01" ],
+        "x-ms-request-id": [ "5c3b1d9c-48d1-4d2a-821e-998efcf95490" ],
+        "x-ms-correlation-request-id": [ "5c3b1d9c-48d1-4d2a-821e-998efcf95490" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:5c3b1d9c-48d1-4d2a-821e-998efcf95490" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CFCDAAF3D425444DB43775E3646A205A Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F9AE113E4F814DADB6FE2688D35D98B6 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -563,12 +552,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "382" ],
-        "x-ms-client-request-id": [ "82d827d1-0ab6-47e5-a54b-4c7d9ecad12d" ],
+        "x-ms-unique-id": [ "350" ],
+        "x-ms-client-request-id": [ "384ff2cc-a6fa-4f19-b19b-dc8e88cfe718" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -580,14 +569,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "0d55140c-9fcf-4855-9dbb-a1536717f458" ],
-        "x-ms-correlation-request-id": [ "0d55140c-9fcf-4855-9dbb-a1536717f458" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:0d55140c-9fcf-4855-9dbb-a1536717f458" ],
+        "x-ms-request-id": [ "4447096e-dc46-4c7c-a696-6edc96abf459" ],
+        "x-ms-correlation-request-id": [ "4447096e-dc46-4c7c-a696-6edc96abf459" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001620Z:4447096e-dc46-4c7c-a696-6edc96abf459" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 37A5DC0BE7C64EB390205BD415A7F40E Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B5B0A5D96DB942C79E11FA8EB7365EE1 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -605,12 +594,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "383" ],
-        "x-ms-client-request-id": [ "024565d3-79e2-4e1a-9c1d-26012e87abbf" ],
+        "x-ms-unique-id": [ "351" ],
+        "x-ms-client-request-id": [ "3d2802b1-429b-4d51-a4cd-bb3feb7b9168" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -622,14 +611,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "835745dc-36c2-4101-937a-b44814fec747" ],
-        "x-ms-correlation-request-id": [ "835745dc-36c2-4101-937a-b44814fec747" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:835745dc-36c2-4101-937a-b44814fec747" ],
+        "x-ms-request-id": [ "7a2d0fe2-52dd-4e74-9bda-c89c629f1443" ],
+        "x-ms-correlation-request-id": [ "7a2d0fe2-52dd-4e74-9bda-c89c629f1443" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:7a2d0fe2-52dd-4e74-9bda-c89c629f1443" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1C45077876ED495DAC089447511EAAA8 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 83A2546DD5904618B4B7806F30B55723 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -647,12 +636,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "384" ],
-        "x-ms-client-request-id": [ "c31676a1-3791-4738-8d9a-210ad055ed7b" ],
+        "x-ms-unique-id": [ "352" ],
+        "x-ms-client-request-id": [ "d57af754-517f-4210-b29b-812a8540c057" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -664,14 +653,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "4bac2a08-d945-443a-9342-c3b6f9d05d26" ],
-        "x-ms-correlation-request-id": [ "4bac2a08-d945-443a-9342-c3b6f9d05d26" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:4bac2a08-d945-443a-9342-c3b6f9d05d26" ],
+        "x-ms-request-id": [ "87e0d945-a070-4874-a27b-ce4f346eedca" ],
+        "x-ms-correlation-request-id": [ "87e0d945-a070-4874-a27b-ce4f346eedca" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:87e0d945-a070-4874-a27b-ce4f346eedca" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4FD579D447D3428B9A3461FE53B31CAB Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 544B34F3E3EC41878994245A827ECF86 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -689,12 +678,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "385" ],
-        "x-ms-client-request-id": [ "a5239d77-a885-412a-9376-423bdbe194a1" ],
+        "x-ms-unique-id": [ "353" ],
+        "x-ms-client-request-id": [ "d4b42d1f-ebd8-4248-b727-190b164cea4c" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -706,14 +695,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "de912919-72bf-4191-88b5-6c7a1766efd4" ],
-        "x-ms-correlation-request-id": [ "de912919-72bf-4191-88b5-6c7a1766efd4" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:de912919-72bf-4191-88b5-6c7a1766efd4" ],
+        "x-ms-request-id": [ "d9f0aa9a-7c1f-4444-b8ca-6d248f03b4b8" ],
+        "x-ms-correlation-request-id": [ "d9f0aa9a-7c1f-4444-b8ca-6d248f03b4b8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:d9f0aa9a-7c1f-4444-b8ca-6d248f03b4b8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 47C3D58631B8435F98C332570DDBC738 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 172CD7E8083D4FC196EE71A19F9638CA Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -731,12 +720,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "386" ],
-        "x-ms-client-request-id": [ "ffaeb1ec-92c3-4945-9495-714d47b8c05d" ],
+        "x-ms-unique-id": [ "354" ],
+        "x-ms-client-request-id": [ "5996e39e-d82a-4bc8-abf7-723bd75a9990" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -748,14 +737,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "7f38b6b9-9aaf-41bf-b84a-367d42746d92" ],
-        "x-ms-correlation-request-id": [ "7f38b6b9-9aaf-41bf-b84a-367d42746d92" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:7f38b6b9-9aaf-41bf-b84a-367d42746d92" ],
+        "x-ms-request-id": [ "436db454-a038-455b-8cb0-18a0fca06d90" ],
+        "x-ms-correlation-request-id": [ "436db454-a038-455b-8cb0-18a0fca06d90" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:436db454-a038-455b-8cb0-18a0fca06d90" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3935F62A2C8540B386EDA672CE6FEA64 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EC9D23AB4715445BA5953B3916ED4BAD Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -773,12 +762,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "387" ],
-        "x-ms-client-request-id": [ "efaeb0cf-ee6f-41b7-8af0-3a008c098b3f" ],
+        "x-ms-unique-id": [ "355" ],
+        "x-ms-client-request-id": [ "30558b00-7b01-4cf3-8c6e-054858d72216" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -790,14 +779,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "8a786c89-3b03-49fc-b4b8-7e8eaa96a6e3" ],
-        "x-ms-correlation-request-id": [ "8a786c89-3b03-49fc-b4b8-7e8eaa96a6e3" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:8a786c89-3b03-49fc-b4b8-7e8eaa96a6e3" ],
+        "x-ms-request-id": [ "5829f3e7-35c2-409a-92f6-92789771d9c1" ],
+        "x-ms-correlation-request-id": [ "5829f3e7-35c2-409a-92f6-92789771d9c1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:5829f3e7-35c2-409a-92f6-92789771d9c1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 12025D627E8744C9974A91B427D94331 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 42FC26E927FE4D6D9A4EA20A6A982E7A Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -815,12 +804,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "388" ],
-        "x-ms-client-request-id": [ "bcae07c3-eeb8-436d-924a-a29b45479f30" ],
+        "x-ms-unique-id": [ "356" ],
+        "x-ms-client-request-id": [ "61fb8e40-415e-4fc9-928e-c3d87f286e7f" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -832,14 +821,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "b558179b-c5c4-43dc-86b1-05d26a03aaad" ],
-        "x-ms-correlation-request-id": [ "b558179b-c5c4-43dc-86b1-05d26a03aaad" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:b558179b-c5c4-43dc-86b1-05d26a03aaad" ],
+        "x-ms-request-id": [ "83539ef9-16a3-4d5b-9068-47cb20b2dfda" ],
+        "x-ms-correlation-request-id": [ "83539ef9-16a3-4d5b-9068-47cb20b2dfda" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:83539ef9-16a3-4d5b-9068-47cb20b2dfda" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 32646BEE2EB94170A512E67C8B21E9A5 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 255FC21666AD4D6B9AA4B3F57C2311C7 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -857,12 +846,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "389" ],
-        "x-ms-client-request-id": [ "ea915ca2-55b8-4819-bfde-eca1bc4d93ce" ],
+        "x-ms-unique-id": [ "357" ],
+        "x-ms-client-request-id": [ "f08e1d75-7afc-4c4b-bc35-6d9f232309b0" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -874,14 +863,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "9bebf476-798a-45ac-930b-b7eb349d837f" ],
-        "x-ms-correlation-request-id": [ "9bebf476-798a-45ac-930b-b7eb349d837f" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223037Z:9bebf476-798a-45ac-930b-b7eb349d837f" ],
+        "x-ms-request-id": [ "6b60e654-dd10-46a7-b0f7-dc39cb068e57" ],
+        "x-ms-correlation-request-id": [ "6b60e654-dd10-46a7-b0f7-dc39cb068e57" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:6b60e654-dd10-46a7-b0f7-dc39cb068e57" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D2B86A51296140B0BF1B7A96241CDC40 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:37Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 97E491BDE29244C7BE186EE0A78B2558 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -899,12 +888,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "390" ],
-        "x-ms-client-request-id": [ "397c685a-9e68-4f8d-95c0-1dd317dcc989" ],
+        "x-ms-unique-id": [ "358" ],
+        "x-ms-client-request-id": [ "c8988097-a069-4577-8a2d-a65d73f55a35" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -916,14 +905,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "804b08bd-eb26-49fd-9ad9-f410a832b11a" ],
-        "x-ms-correlation-request-id": [ "804b08bd-eb26-49fd-9ad9-f410a832b11a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223038Z:804b08bd-eb26-49fd-9ad9-f410a832b11a" ],
+        "x-ms-request-id": [ "3376f064-0a86-4c32-8627-521c4bab80dc" ],
+        "x-ms-correlation-request-id": [ "3376f064-0a86-4c32-8627-521c4bab80dc" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:3376f064-0a86-4c32-8627-521c4bab80dc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9FDD2ABF86F241D4AE113F86D6481833 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:38Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F3D00BBB37AC42399417526D2A05B7D4 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -941,12 +930,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "391" ],
-        "x-ms-client-request-id": [ "e280955b-49e2-46f4-8f19-3cd318c5d030" ],
+        "x-ms-unique-id": [ "359" ],
+        "x-ms-client-request-id": [ "a5e87b2c-cabb-47b6-b10b-6e6407bd6207" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -958,14 +947,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "2210e48e-4abe-4133-ba52-f887cf785e33" ],
-        "x-ms-correlation-request-id": [ "2210e48e-4abe-4133-ba52-f887cf785e33" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223038Z:2210e48e-4abe-4133-ba52-f887cf785e33" ],
+        "x-ms-request-id": [ "48c3260e-be67-4e15-9f3a-4683b52ee582" ],
+        "x-ms-correlation-request-id": [ "48c3260e-be67-4e15-9f3a-4683b52ee582" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:48c3260e-be67-4e15-9f3a-4683b52ee582" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D6C5BDB71B2E42AD892A64831BC176EE Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:38Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4101C66D017C4E96981468E80E888ADE Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -983,12 +972,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "392" ],
-        "x-ms-client-request-id": [ "0eee7b52-cc99-4eb1-9545-5bc4b049dc72" ],
+        "x-ms-unique-id": [ "360" ],
+        "x-ms-client-request-id": [ "7ccbfdca-dc51-48b0-a867-2ac820c6b88c" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1000,14 +989,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "19d23355-b55f-4c98-80c5-a4c8bcb75252" ],
-        "x-ms-correlation-request-id": [ "19d23355-b55f-4c98-80c5-a4c8bcb75252" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223039Z:19d23355-b55f-4c98-80c5-a4c8bcb75252" ],
+        "x-ms-request-id": [ "8ac9309a-2d31-4fbf-9e11-521937b04e28" ],
+        "x-ms-correlation-request-id": [ "8ac9309a-2d31-4fbf-9e11-521937b04e28" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001621Z:8ac9309a-2d31-4fbf-9e11-521937b04e28" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C842269632D642E0A7F0F4D3535D83C0 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:39Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:39 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 257AF46F27AA49D2B74059FF542C0836 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1025,12 +1014,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "393" ],
-        "x-ms-client-request-id": [ "9a2fae76-9dfa-4ee2-add4-5382aaa78146" ],
+        "x-ms-unique-id": [ "361" ],
+        "x-ms-client-request-id": [ "ab7f2081-9bad-4baf-a774-83f730b45fc7" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1042,14 +1031,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "fbdc3a61-80ba-48f3-ad35-115b8e446f84" ],
-        "x-ms-correlation-request-id": [ "fbdc3a61-80ba-48f3-ad35-115b8e446f84" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223040Z:fbdc3a61-80ba-48f3-ad35-115b8e446f84" ],
+        "x-ms-request-id": [ "0f087f4a-2fd7-4f90-8ee7-3f8181d99a9d" ],
+        "x-ms-correlation-request-id": [ "0f087f4a-2fd7-4f90-8ee7-3f8181d99a9d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001622Z:0f087f4a-2fd7-4f90-8ee7-3f8181d99a9d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A541AFB3938E44F89C2A211B4D9E4E19 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:40Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:40 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 73D6FB40CE33424E9CF98082B6DF4D23 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:22Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1067,12 +1056,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "394" ],
-        "x-ms-client-request-id": [ "b53294a0-b436-4b72-bce2-a94904ab3145" ],
+        "x-ms-unique-id": [ "362" ],
+        "x-ms-client-request-id": [ "cc61dffd-b795-4c6c-a29e-d23804b0e13c" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1084,14 +1073,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "6f7d73c0-9bbf-48c8-8482-686b940ee7cf" ],
-        "x-ms-correlation-request-id": [ "6f7d73c0-9bbf-48c8-8482-686b940ee7cf" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223041Z:6f7d73c0-9bbf-48c8-8482-686b940ee7cf" ],
+        "x-ms-request-id": [ "7712b2fa-2c83-4abf-8303-5df6f179b6e0" ],
+        "x-ms-correlation-request-id": [ "7712b2fa-2c83-4abf-8303-5df6f179b6e0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001623Z:7712b2fa-2c83-4abf-8303-5df6f179b6e0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7362836AFCBE42BEAE52B19AC987C504 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:41Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 66879F7C3F1441F0A3C837AA61A529CA Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:23Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1109,12 +1098,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "395" ],
-        "x-ms-client-request-id": [ "3b1cff1b-8319-4237-b3fa-539abc845e2e" ],
+        "x-ms-unique-id": [ "363" ],
+        "x-ms-client-request-id": [ "23c4712e-2544-4316-bebf-f25d67362221" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1126,14 +1115,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "e34b08b0-2b57-4c66-9206-991673f169cc" ],
-        "x-ms-correlation-request-id": [ "e34b08b0-2b57-4c66-9206-991673f169cc" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223042Z:e34b08b0-2b57-4c66-9206-991673f169cc" ],
+        "x-ms-request-id": [ "a0b3fa3f-8c4e-4b0c-ae38-41dc3e732e07" ],
+        "x-ms-correlation-request-id": [ "a0b3fa3f-8c4e-4b0c-ae38-41dc3e732e07" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001624Z:a0b3fa3f-8c4e-4b0c-ae38-41dc3e732e07" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BF5FAAF9B22C4A3CBCD073B93B7D89F2 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:42Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BE8F892637BF42E7995A10F94C79E750 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:24Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1151,12 +1140,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "396" ],
-        "x-ms-client-request-id": [ "4d1cb9d1-de95-4a79-9965-a09eec53eb70" ],
+        "x-ms-unique-id": [ "364" ],
+        "x-ms-client-request-id": [ "24359294-7287-48b6-a7e0-0e660e7099f7" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1168,14 +1157,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "96732e85-7d23-40f4-8c71-0cc81c469dfe" ],
-        "x-ms-correlation-request-id": [ "96732e85-7d23-40f4-8c71-0cc81c469dfe" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223043Z:96732e85-7d23-40f4-8c71-0cc81c469dfe" ],
+        "x-ms-request-id": [ "2f540129-2fa1-4a85-be38-84342df27d6e" ],
+        "x-ms-correlation-request-id": [ "2f540129-2fa1-4a85-be38-84342df27d6e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001625Z:2f540129-2fa1-4a85-be38-84342df27d6e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BDC2229893964325844EE87D41ADF02C Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:43Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 793CC0AA201C4E9C8D0EE2ED8278C4C7 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:25Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:25 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1193,12 +1182,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "397" ],
-        "x-ms-client-request-id": [ "3a2ade12-9b92-468f-8745-2b88c5ac3eb6" ],
+        "x-ms-unique-id": [ "365" ],
+        "x-ms-client-request-id": [ "6fb11e83-49ae-488d-8a7e-bdafa10c4ad8" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1210,14 +1199,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "f7c2bc0c-411c-428c-a2e5-6f0e59b58db2" ],
-        "x-ms-correlation-request-id": [ "f7c2bc0c-411c-428c-a2e5-6f0e59b58db2" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223044Z:f7c2bc0c-411c-428c-a2e5-6f0e59b58db2" ],
+        "x-ms-request-id": [ "4418a509-61ae-4da2-b1cb-55303cb00a5a" ],
+        "x-ms-correlation-request-id": [ "4418a509-61ae-4da2-b1cb-55303cb00a5a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001626Z:4418a509-61ae-4da2-b1cb-55303cb00a5a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 37DD48AE398D4B78BDB73CBB99BF65A1 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:44Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C6ACE5119ED540EFAB2D39DC131D6379 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:26Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1235,12 +1224,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "398" ],
-        "x-ms-client-request-id": [ "f82c99b0-7aef-4c7c-8385-360c0aa2bde8" ],
+        "x-ms-unique-id": [ "366" ],
+        "x-ms-client-request-id": [ "952e49ec-a453-4b93-adbc-02e0f3b56cbf" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1252,14 +1241,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "4e94a262-475c-4134-9a19-051b162996ee" ],
-        "x-ms-correlation-request-id": [ "4e94a262-475c-4134-9a19-051b162996ee" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223045Z:4e94a262-475c-4134-9a19-051b162996ee" ],
+        "x-ms-request-id": [ "7bfd2df3-cc07-4ac1-a12a-dfe708ee07c6" ],
+        "x-ms-correlation-request-id": [ "7bfd2df3-cc07-4ac1-a12a-dfe708ee07c6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001627Z:7bfd2df3-cc07-4ac1-a12a-dfe708ee07c6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 714D899079E3444AA8701FF31FF05FFB Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:45Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:45 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BBEEC0B33BD74A83953F71F1D35EE2DE Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:27Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:27 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1277,12 +1266,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "399" ],
-        "x-ms-client-request-id": [ "bb153224-9453-4a25-914f-7ed2245c808a" ],
+        "x-ms-unique-id": [ "367" ],
+        "x-ms-client-request-id": [ "99e9e51e-9341-49c6-b784-9119063dabdc" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1294,14 +1283,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "8028366d-7a3f-4442-a91d-0526451206d7" ],
-        "x-ms-correlation-request-id": [ "8028366d-7a3f-4442-a91d-0526451206d7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223046Z:8028366d-7a3f-4442-a91d-0526451206d7" ],
+        "x-ms-request-id": [ "2976c696-0378-4670-948b-a9b483bd8343" ],
+        "x-ms-correlation-request-id": [ "2976c696-0378-4670-948b-a9b483bd8343" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001628Z:2976c696-0378-4670-948b-a9b483bd8343" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 87D8A152E01B4A1B829C7BB216EAF985 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:46Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:46 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2DCB227B2F1F419D9A86C6BA34466AB2 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:28Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1319,12 +1308,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "400" ],
-        "x-ms-client-request-id": [ "448ae5b7-62c8-4c66-9216-2c301c7a32bb" ],
+        "x-ms-unique-id": [ "368" ],
+        "x-ms-client-request-id": [ "a2cfb978-5456-48d4-8827-f3475334d0fb" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1336,14 +1325,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "159bc18e-90a5-43f1-943b-1a3d1090f307" ],
-        "x-ms-correlation-request-id": [ "159bc18e-90a5-43f1-943b-1a3d1090f307" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223047Z:159bc18e-90a5-43f1-943b-1a3d1090f307" ],
+        "x-ms-request-id": [ "74ab7be5-16a2-42df-9ac4-e8ff43ab39a8" ],
+        "x-ms-correlation-request-id": [ "74ab7be5-16a2-42df-9ac4-e8ff43ab39a8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001630Z:74ab7be5-16a2-42df-9ac4-e8ff43ab39a8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B49E33E07924475CA4D724A94D5B6190 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:47Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9C984E326ED14C70B4703381E99D5E8A Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:29Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1361,12 +1350,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "401" ],
-        "x-ms-client-request-id": [ "c15bbc1d-edc8-40f0-a25d-3985fccf7393" ],
+        "x-ms-unique-id": [ "369" ],
+        "x-ms-client-request-id": [ "dbadc67a-0f50-4063-98f9-4e2afafec6c6" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1378,14 +1367,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "d51f7a1a-8c47-4a3c-a293-e3f38b9e3553" ],
-        "x-ms-correlation-request-id": [ "d51f7a1a-8c47-4a3c-a293-e3f38b9e3553" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223049Z:d51f7a1a-8c47-4a3c-a293-e3f38b9e3553" ],
+        "x-ms-request-id": [ "ddac083c-617f-43b7-80e6-fb27b480e288" ],
+        "x-ms-correlation-request-id": [ "ddac083c-617f-43b7-80e6-fb27b480e288" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001631Z:ddac083c-617f-43b7-80e6-fb27b480e288" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6204239EF61B43EBA8EBB33B630EFBEB Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:49Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CB81A69C92AC46E2AF2C280FD86A650E Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:30Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1403,12 +1392,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "402" ],
-        "x-ms-client-request-id": [ "a7f3144c-f58e-42a4-9a07-37aa0f01eed3" ],
+        "x-ms-unique-id": [ "370" ],
+        "x-ms-client-request-id": [ "cc460c47-1ff6-465c-b3de-867e7e914654" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1420,14 +1409,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "0e211bca-1b06-4e7f-91ee-6f3b459b8182" ],
-        "x-ms-correlation-request-id": [ "0e211bca-1b06-4e7f-91ee-6f3b459b8182" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223050Z:0e211bca-1b06-4e7f-91ee-6f3b459b8182" ],
+        "x-ms-request-id": [ "2a413c7a-1ce6-4f80-ac3d-6d3a63bec609" ],
+        "x-ms-correlation-request-id": [ "2a413c7a-1ce6-4f80-ac3d-6d3a63bec609" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001632Z:2a413c7a-1ce6-4f80-ac3d-6d3a63bec609" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A35C5D57F3F14D7689B3AF5CADEFD681 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:50Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7C5DD0CAFE7340C692662CBAD64D9EC9 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:31Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1445,12 +1434,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "403" ],
-        "x-ms-client-request-id": [ "63591490-25bf-4587-bb77-3c52a5396df4" ],
+        "x-ms-unique-id": [ "371" ],
+        "x-ms-client-request-id": [ "442092fb-01ab-4c4a-8857-8c421ac576a6" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1462,14 +1451,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "be95311b-0786-41d0-bc98-daf6e8697033" ],
-        "x-ms-correlation-request-id": [ "be95311b-0786-41d0-bc98-daf6e8697033" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223051Z:be95311b-0786-41d0-bc98-daf6e8697033" ],
+        "x-ms-request-id": [ "5c1cdbf2-439d-46ef-be81-76821bfc8df9" ],
+        "x-ms-correlation-request-id": [ "5c1cdbf2-439d-46ef-be81-76821bfc8df9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001632Z:5c1cdbf2-439d-46ef-be81-76821bfc8df9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0FA4BCEA6DEF44C9A4B9B4850D4E101C Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:51Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6A1C1788B3A3432AA3C0F2514A8BCACA Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:32Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1487,12 +1476,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "404" ],
-        "x-ms-client-request-id": [ "ced0538a-5458-4555-870f-044bea942987" ],
+        "x-ms-unique-id": [ "372" ],
+        "x-ms-client-request-id": [ "be8db364-5bd1-4e2a-a259-c919337b9227" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1504,14 +1493,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "54bb5add-3a24-4b80-b4a1-903bd5a0be89" ],
-        "x-ms-correlation-request-id": [ "54bb5add-3a24-4b80-b4a1-903bd5a0be89" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223052Z:54bb5add-3a24-4b80-b4a1-903bd5a0be89" ],
+        "x-ms-request-id": [ "0122aabd-ca98-4193-87e0-dd3bf6e9e134" ],
+        "x-ms-correlation-request-id": [ "0122aabd-ca98-4193-87e0-dd3bf6e9e134" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001634Z:0122aabd-ca98-4193-87e0-dd3bf6e9e134" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 16E3201002174E5A97C098E4947BBF39 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:52Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C203EA5C0E5049F1A23F8220A1A248E8 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:33Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1529,12 +1518,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "405" ],
-        "x-ms-client-request-id": [ "c3f0d184-cbad-43bf-afd6-241a11dd1610" ],
+        "x-ms-unique-id": [ "373" ],
+        "x-ms-client-request-id": [ "8d5d8845-bd3a-4331-a4e3-4cd17d66c330" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1546,14 +1535,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "350a2112-699b-4dac-b4c5-265f90c83e1f" ],
-        "x-ms-correlation-request-id": [ "350a2112-699b-4dac-b4c5-265f90c83e1f" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223053Z:350a2112-699b-4dac-b4c5-265f90c83e1f" ],
+        "x-ms-request-id": [ "a49265a5-178e-403e-bc68-47dc46247eac" ],
+        "x-ms-correlation-request-id": [ "a49265a5-178e-403e-bc68-47dc46247eac" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001635Z:a49265a5-178e-403e-bc68-47dc46247eac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 915D379061F64B19BBFA25936B5DAC32 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:53Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F4B97D505DED48549447B34EF2A3CAAA Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:35Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1571,12 +1560,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "406" ],
-        "x-ms-client-request-id": [ "c26bd387-e6f3-4072-b230-141571be3b38" ],
+        "x-ms-unique-id": [ "374" ],
+        "x-ms-client-request-id": [ "865ddb19-908b-40a7-9fcc-c690bfaa1bd3" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1588,14 +1577,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "a3e7e8e9-4d9f-4b35-9c33-4f45941fde46" ],
-        "x-ms-correlation-request-id": [ "a3e7e8e9-4d9f-4b35-9c33-4f45941fde46" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223054Z:a3e7e8e9-4d9f-4b35-9c33-4f45941fde46" ],
+        "x-ms-request-id": [ "9f97f2e7-27ce-4ea5-8e80-c5f19168f06e" ],
+        "x-ms-correlation-request-id": [ "9f97f2e7-27ce-4ea5-8e80-c5f19168f06e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001636Z:9f97f2e7-27ce-4ea5-8e80-c5f19168f06e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A6233ABC019A416F9AC45C4297B87F8E Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:54Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:53 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4A3FB0E7B44943AD9AEF68BA9E2A0E02 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:36Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1613,12 +1602,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "407" ],
-        "x-ms-client-request-id": [ "681e1104-1b83-4504-b743-2fbf02261e8a" ],
+        "x-ms-unique-id": [ "375" ],
+        "x-ms-client-request-id": [ "f69cd414-499f-40a2-b3f3-469a929b10cf" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1630,14 +1619,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "77c4e610-73bc-4132-8245-467b2c43ee09" ],
-        "x-ms-correlation-request-id": [ "77c4e610-73bc-4132-8245-467b2c43ee09" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223055Z:77c4e610-73bc-4132-8245-467b2c43ee09" ],
+        "x-ms-request-id": [ "84cc1776-d53d-48e3-963e-3d8aabea8e12" ],
+        "x-ms-correlation-request-id": [ "84cc1776-d53d-48e3-963e-3d8aabea8e12" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001637Z:84cc1776-d53d-48e3-963e-3d8aabea8e12" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 22D133D94F264A068E0BB6D51939C803 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:55Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:54 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 61BAB3B7FB964AB289AAF061DEC36158 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:37Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1655,12 +1644,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "408" ],
-        "x-ms-client-request-id": [ "04aa74d0-7f32-4a62-8e79-b206aa670572" ],
+        "x-ms-unique-id": [ "376" ],
+        "x-ms-client-request-id": [ "b937763f-7fc9-41aa-bc24-3e0d739a475d" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1671,16 +1660,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "206bf01b-4eab-4e89-9ed0-6088e7280b9e" ],
-        "x-ms-correlation-request-id": [ "206bf01b-4eab-4e89-9ed0-6088e7280b9e" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223056Z:206bf01b-4eab-4e89-9ed0-6088e7280b9e" ],
+        "x-ms-request-id": [ "3036faf1-75b5-4d3f-9981-9297e5acd463" ],
+        "x-ms-correlation-request-id": [ "3036faf1-75b5-4d3f-9981-9297e5acd463" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001638Z:3036faf1-75b5-4d3f-9981-9297e5acd463" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8A76E1B2E77F4783BC7C26186FDE80D5 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:56Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8A48FFF174994D27A12393595C3BBA44 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:38Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "104" ],
@@ -1698,12 +1686,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "409" ],
-        "x-ms-client-request-id": [ "ce6213f2-cd9c-48d8-bea1-531d9a3b8ea9" ],
+        "x-ms-unique-id": [ "377" ],
+        "x-ms-client-request-id": [ "89a5c582-a477-4d0a-98d8-6af172481287" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1715,14 +1703,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "9154cc42-897b-425b-a6b7-970397a3eaad" ],
-        "x-ms-correlation-request-id": [ "9154cc42-897b-425b-a6b7-970397a3eaad" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223057Z:9154cc42-897b-425b-a6b7-970397a3eaad" ],
+        "x-ms-request-id": [ "fffe9863-18f9-4e66-ac12-01a0687cae71" ],
+        "x-ms-correlation-request-id": [ "fffe9863-18f9-4e66-ac12-01a0687cae71" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001639Z:fffe9863-18f9-4e66-ac12-01a0687cae71" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 96711BC79C784FC6BEC9B8A1F4A07E53 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:57Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:56 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0AF5086F602D4BADB7B2AF9111EDE2DA Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:39Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:38 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1740,12 +1728,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "410" ],
-        "x-ms-client-request-id": [ "e102acb0-4462-477b-a61f-aa9a3c3c5d8c" ],
+        "x-ms-unique-id": [ "378" ],
+        "x-ms-client-request-id": [ "d2a00291-699d-4e30-9228-97c3ed2e66fb" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1757,14 +1745,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "a955f3bc-cf22-4da6-9ed9-eec29cf17a3b" ],
-        "x-ms-correlation-request-id": [ "a955f3bc-cf22-4da6-9ed9-eec29cf17a3b" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223058Z:a955f3bc-cf22-4da6-9ed9-eec29cf17a3b" ],
+        "x-ms-request-id": [ "f430e33e-d73d-426a-af4c-6f3e9ccfb095" ],
+        "x-ms-correlation-request-id": [ "f430e33e-d73d-426a-af4c-6f3e9ccfb095" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001640Z:f430e33e-d73d-426a-af4c-6f3e9ccfb095" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 85CADF9C95DF418687C19FAA14A4448A Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:58Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0AE9019EAB364AD28D8775AF59806B8D Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:40Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1782,12 +1770,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "411" ],
-        "x-ms-client-request-id": [ "9058e1ab-48fa-4ed9-853f-19d22cc155af" ],
+        "x-ms-unique-id": [ "379" ],
+        "x-ms-client-request-id": [ "36e4902c-7ffb-48c8-a816-0328cd81dbcc" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1799,14 +1787,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "3680e063-57d1-4c61-a3d8-24ab5d65ddbc" ],
-        "x-ms-correlation-request-id": [ "3680e063-57d1-4c61-a3d8-24ab5d65ddbc" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223059Z:3680e063-57d1-4c61-a3d8-24ab5d65ddbc" ],
+        "x-ms-request-id": [ "de2191f3-36cb-4220-986d-4caaa21e6a80" ],
+        "x-ms-correlation-request-id": [ "de2191f3-36cb-4220-986d-4caaa21e6a80" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001641Z:de2191f3-36cb-4220-986d-4caaa21e6a80" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D36C45D752C94E9495CCA446964C1080 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:30:59Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C6FAC32D0D454A949BC978D3546BA4D0 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:41Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1824,12 +1812,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "412" ],
-        "x-ms-client-request-id": [ "410995e2-2b97-4c55-b4f1-280c8dafd0af" ],
+        "x-ms-unique-id": [ "380" ],
+        "x-ms-client-request-id": [ "7d859d88-c2ce-4af1-8c3d-bb3b115ffd5c" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1841,14 +1829,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "f9ff11ff-0439-465a-b3d9-b2b4dc80cafb" ],
-        "x-ms-correlation-request-id": [ "f9ff11ff-0439-465a-b3d9-b2b4dc80cafb" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223100Z:f9ff11ff-0439-465a-b3d9-b2b4dc80cafb" ],
+        "x-ms-request-id": [ "93962a7b-4230-4cc2-a325-f3e08879a71a" ],
+        "x-ms-correlation-request-id": [ "93962a7b-4230-4cc2-a325-f3e08879a71a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001642Z:93962a7b-4230-4cc2-a325-f3e08879a71a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CFB87839A01A4E6DBA26CFE28E755E5A Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:00Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:30:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E6208E73C7CA40AAB17E5CE7D5428BEC Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:42Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:41 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1866,12 +1854,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "413" ],
-        "x-ms-client-request-id": [ "8a921a01-1a8a-4e4d-89f1-ebc74f7dc07f" ],
+        "x-ms-unique-id": [ "381" ],
+        "x-ms-client-request-id": [ "a28d1c9b-e11b-4c61-ab1c-c222b2d75561" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1883,14 +1871,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "18281cc8-61d1-4c4c-a244-10f7552313be" ],
-        "x-ms-correlation-request-id": [ "18281cc8-61d1-4c4c-a244-10f7552313be" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223101Z:18281cc8-61d1-4c4c-a244-10f7552313be" ],
+        "x-ms-request-id": [ "30f0fd41-08c3-443b-9cd1-30c2011b15a4" ],
+        "x-ms-correlation-request-id": [ "30f0fd41-08c3-443b-9cd1-30c2011b15a4" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001643Z:30f0fd41-08c3-443b-9cd1-30c2011b15a4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 23828F93DA784762B27228787586ABD0 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:01Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7E5480820CF14A21850053AB4799F7BD Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:43Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1908,12 +1896,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "414" ],
-        "x-ms-client-request-id": [ "0880b10e-29b7-4825-b391-3da3c3f953e0" ],
+        "x-ms-unique-id": [ "382" ],
+        "x-ms-client-request-id": [ "9050f753-e0f0-4be9-9887-5ffb945ed91d" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1925,14 +1913,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "9e41114f-4d05-4a75-9c9c-3d866789e8de" ],
-        "x-ms-correlation-request-id": [ "9e41114f-4d05-4a75-9c9c-3d866789e8de" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223102Z:9e41114f-4d05-4a75-9c9c-3d866789e8de" ],
+        "x-ms-request-id": [ "798aea75-5812-4419-b4d2-b18ceba3ffa9" ],
+        "x-ms-correlation-request-id": [ "798aea75-5812-4419-b4d2-b18ceba3ffa9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001644Z:798aea75-5812-4419-b4d2-b18ceba3ffa9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6765B6F548604E3E94E39EC24E10A514 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:02Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A525EEA2AE28452B8E854F7A7FE528AC Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:44Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1950,12 +1938,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "415" ],
-        "x-ms-client-request-id": [ "7655d90b-4869-44aa-b479-8bc79a3d45f4" ],
+        "x-ms-unique-id": [ "383" ],
+        "x-ms-client-request-id": [ "86c5c0fc-e879-4b80-923e-2cccd44679ea" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1967,14 +1955,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "8e695132-29ee-4636-b8c6-d10dce84374b" ],
-        "x-ms-correlation-request-id": [ "8e695132-29ee-4636-b8c6-d10dce84374b" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223103Z:8e695132-29ee-4636-b8c6-d10dce84374b" ],
+        "x-ms-request-id": [ "e0b45d5f-2572-4f1d-b238-475a8b57c058" ],
+        "x-ms-correlation-request-id": [ "e0b45d5f-2572-4f1d-b238-475a8b57c058" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001645Z:e0b45d5f-2572-4f1d-b238-475a8b57c058" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E646E9E670064874BCA232E58D8EE3AB Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:03Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F7DAE49AF54B414F9165FD65F0644229 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:45Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -1992,12 +1980,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "416" ],
-        "x-ms-client-request-id": [ "d0da9a38-549f-4c50-91d0-16923238301a" ],
+        "x-ms-unique-id": [ "384" ],
+        "x-ms-client-request-id": [ "a90f800b-7c4c-43b1-beb5-ff98b80b8efb" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2009,14 +1997,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "1da9f058-0398-4d00-9b7e-0dd28d10404a" ],
-        "x-ms-correlation-request-id": [ "1da9f058-0398-4d00-9b7e-0dd28d10404a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223104Z:1da9f058-0398-4d00-9b7e-0dd28d10404a" ],
+        "x-ms-request-id": [ "e7ed3039-aa14-4cbe-91fc-4f86e126b658" ],
+        "x-ms-correlation-request-id": [ "e7ed3039-aa14-4cbe-91fc-4f86e126b658" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001646Z:e7ed3039-aa14-4cbe-91fc-4f86e126b658" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8DB0D8CEC8A84149935060747A24E18F Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:04Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 51550BA3DB1443A69E3A1B757949D4E6 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:46Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2034,12 +2022,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "417" ],
-        "x-ms-client-request-id": [ "b97c102e-cd30-4feb-ae41-a30f671b0d23" ],
+        "x-ms-unique-id": [ "385" ],
+        "x-ms-client-request-id": [ "151024da-6bec-4d07-8e54-c9f5bcf11abf" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2051,14 +2039,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "7aab7092-033e-4231-a1bc-c30e6991bdb5" ],
-        "x-ms-correlation-request-id": [ "7aab7092-033e-4231-a1bc-c30e6991bdb5" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223105Z:7aab7092-033e-4231-a1bc-c30e6991bdb5" ],
+        "x-ms-request-id": [ "4b9d78e3-733e-4c2b-bfe0-e848863d5eb7" ],
+        "x-ms-correlation-request-id": [ "4b9d78e3-733e-4c2b-bfe0-e848863d5eb7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001647Z:4b9d78e3-733e-4c2b-bfe0-e848863d5eb7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6B17FB392F27456BAFF7D43B30DC58E8 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:05Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6C4D2B5D29844DEBB2421083819AB057 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:47Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2076,12 +2064,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "418" ],
-        "x-ms-client-request-id": [ "6744d551-8e53-4fce-9ab6-9871e47c9b1c" ],
+        "x-ms-unique-id": [ "386" ],
+        "x-ms-client-request-id": [ "8244535e-26a4-44f0-b916-ba054f2032ce" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2093,14 +2081,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "753959bd-ae74-4d93-a24c-ffdd344e1979" ],
-        "x-ms-correlation-request-id": [ "753959bd-ae74-4d93-a24c-ffdd344e1979" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223106Z:753959bd-ae74-4d93-a24c-ffdd344e1979" ],
+        "x-ms-request-id": [ "3157dc51-81c7-47df-8541-38a7b927a36e" ],
+        "x-ms-correlation-request-id": [ "3157dc51-81c7-47df-8541-38a7b927a36e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001648Z:3157dc51-81c7-47df-8541-38a7b927a36e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3EB71C8EB8094F6C8F7E5DA259AF9557 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:06Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:05 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FD11E83D0B104682A0657211CB06E2C1 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:48Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2118,12 +2106,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "419" ],
-        "x-ms-client-request-id": [ "92c1fff9-8744-4f3a-b3c9-fa970e0fa63c" ],
+        "x-ms-unique-id": [ "387" ],
+        "x-ms-client-request-id": [ "d32f85d0-0d11-4ae6-ad62-da005308fd85" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2135,14 +2123,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "14b8ceee-685d-4897-b147-8b2d190d9e66" ],
-        "x-ms-correlation-request-id": [ "14b8ceee-685d-4897-b147-8b2d190d9e66" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223107Z:14b8ceee-685d-4897-b147-8b2d190d9e66" ],
+        "x-ms-request-id": [ "d364b3e6-a9ff-478f-bf92-76435d7a9e8a" ],
+        "x-ms-correlation-request-id": [ "d364b3e6-a9ff-478f-bf92-76435d7a9e8a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001649Z:d364b3e6-a9ff-478f-bf92-76435d7a9e8a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1903A65DFD21415EA9EBFF710FF840C5 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:07Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:07 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7ABFBD3344AE4838B024D9F7F0611030 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:49Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2160,12 +2148,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "420" ],
-        "x-ms-client-request-id": [ "341f0367-c1d9-414d-97cf-9aa9a67b0207" ],
+        "x-ms-unique-id": [ "388" ],
+        "x-ms-client-request-id": [ "a5631176-e9ab-4cda-8d9d-febbb9c498e1" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2177,14 +2165,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "e681a403-2169-4785-bae0-702169edb8e8" ],
-        "x-ms-correlation-request-id": [ "e681a403-2169-4785-bae0-702169edb8e8" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223108Z:e681a403-2169-4785-bae0-702169edb8e8" ],
+        "x-ms-request-id": [ "8eda11ef-5445-4607-aae3-4b77731da62f" ],
+        "x-ms-correlation-request-id": [ "8eda11ef-5445-4607-aae3-4b77731da62f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001650Z:8eda11ef-5445-4607-aae3-4b77731da62f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 340CDF0DFD3047919E5BF0EF3905AFAA Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:08Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 994D41F9AA7C4FFEAB916DC8B2B87CCD Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:50Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2202,12 +2190,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "421" ],
-        "x-ms-client-request-id": [ "df92a5d1-bd6a-4a19-b6ef-e78fd6d5c8b8" ],
+        "x-ms-unique-id": [ "389" ],
+        "x-ms-client-request-id": [ "e5035bcc-400b-4f3e-945b-c5499846a0e2" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2219,14 +2207,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "124ae7fc-3c7f-4040-b758-bfd03f959dff" ],
-        "x-ms-correlation-request-id": [ "124ae7fc-3c7f-4040-b758-bfd03f959dff" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223109Z:124ae7fc-3c7f-4040-b758-bfd03f959dff" ],
+        "x-ms-request-id": [ "1a3f7a23-adcd-4c69-9883-cdd8d2cd974c" ],
+        "x-ms-correlation-request-id": [ "1a3f7a23-adcd-4c69-9883-cdd8d2cd974c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001652Z:1a3f7a23-adcd-4c69-9883-cdd8d2cd974c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 86D97A52B3264A7280179638F67A4174 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:09Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 78BE242D188A4722865BA0888FD55AA9 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:52Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2244,12 +2232,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "422" ],
-        "x-ms-client-request-id": [ "d4f8348c-c70b-40a5-94d3-3577dec1c7f9" ],
+        "x-ms-unique-id": [ "390" ],
+        "x-ms-client-request-id": [ "6e1443a8-0063-482d-b8e7-d9d7c06a4e17" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2261,14 +2249,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "772a1907-0e51-4814-906b-057bd9130e76" ],
-        "x-ms-correlation-request-id": [ "772a1907-0e51-4814-906b-057bd9130e76" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223110Z:772a1907-0e51-4814-906b-057bd9130e76" ],
+        "x-ms-request-id": [ "df0a96f0-1618-4557-8850-6fa3cc11365a" ],
+        "x-ms-correlation-request-id": [ "df0a96f0-1618-4557-8850-6fa3cc11365a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001653Z:df0a96f0-1618-4557-8850-6fa3cc11365a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 320D50D045524E6889157B7AEFF29BA7 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:10Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2727ACC6D4764621BA6F6E1D4EEFB55E Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:53Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2286,12 +2274,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "423" ],
-        "x-ms-client-request-id": [ "13ea8894-91cc-4415-889b-16a45fa83ca1" ],
+        "x-ms-unique-id": [ "391" ],
+        "x-ms-client-request-id": [ "6628375e-172f-4967-b6bc-b8d82e3254f5" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2303,14 +2291,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "e39bda88-21ae-490c-9ced-2cb3c8e94f53" ],
-        "x-ms-correlation-request-id": [ "e39bda88-21ae-490c-9ced-2cb3c8e94f53" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223111Z:e39bda88-21ae-490c-9ced-2cb3c8e94f53" ],
+        "x-ms-request-id": [ "e029cdfe-1d3b-4b7e-9bae-b73c3e52ba92" ],
+        "x-ms-correlation-request-id": [ "e029cdfe-1d3b-4b7e-9bae-b73c3e52ba92" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001655Z:e029cdfe-1d3b-4b7e-9bae-b73c3e52ba92" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0F3F41CA3D5D429894898FD0120EEDFD Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:11Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FE271483F41A40B3A6AC04D5C289F30A Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:55Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2328,12 +2316,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "424" ],
-        "x-ms-client-request-id": [ "1226429e-a021-497b-90e2-27154d95dd42" ],
+        "x-ms-unique-id": [ "392" ],
+        "x-ms-client-request-id": [ "8cdabde9-102f-418d-a781-16c9fa5e144e" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2345,14 +2333,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "002e3d7c-fc28-494f-8ec5-72c4627ec7f6" ],
-        "x-ms-correlation-request-id": [ "002e3d7c-fc28-494f-8ec5-72c4627ec7f6" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223112Z:002e3d7c-fc28-494f-8ec5-72c4627ec7f6" ],
+        "x-ms-request-id": [ "f040ee83-6d88-48e4-b07b-9d5b5a49cf55" ],
+        "x-ms-correlation-request-id": [ "f040ee83-6d88-48e4-b07b-9d5b5a49cf55" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001656Z:f040ee83-6d88-48e4-b07b-9d5b5a49cf55" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2964678862F54258B21580DCB26E742B Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:12Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 184005C386FE4CDEB8ECB75D41AFDC4E Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:56Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2370,12 +2358,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "425" ],
-        "x-ms-client-request-id": [ "eaaff34b-9a1e-4ed0-83e6-3b54de0ba556" ],
+        "x-ms-unique-id": [ "393" ],
+        "x-ms-client-request-id": [ "9e52572a-d1ab-41c7-8df2-d1f9e62b3c48" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2387,14 +2375,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "6035913f-50e9-4269-b7ef-b8f09b98935f" ],
-        "x-ms-correlation-request-id": [ "6035913f-50e9-4269-b7ef-b8f09b98935f" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223113Z:6035913f-50e9-4269-b7ef-b8f09b98935f" ],
+        "x-ms-request-id": [ "d2205ccc-12b1-4824-85bd-f2c167b7b93a" ],
+        "x-ms-correlation-request-id": [ "d2205ccc-12b1-4824-85bd-f2c167b7b93a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001657Z:d2205ccc-12b1-4824-85bd-f2c167b7b93a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C8AA4E78A7F24560BDFA6E70DCEF009F Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:13Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 312A77A11E874C40AA31A9B061E7F2CC Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:57Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2412,12 +2400,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "426" ],
-        "x-ms-client-request-id": [ "24154a8b-876c-4907-98f6-8cf251014ce2" ],
+        "x-ms-unique-id": [ "394" ],
+        "x-ms-client-request-id": [ "127713c2-10db-45e2-8f6a-4f69447b4ac9" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2429,14 +2417,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "de9e1f86-d16a-45dd-9ab1-a64ef42795ba" ],
-        "x-ms-correlation-request-id": [ "de9e1f86-d16a-45dd-9ab1-a64ef42795ba" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223114Z:de9e1f86-d16a-45dd-9ab1-a64ef42795ba" ],
+        "x-ms-request-id": [ "59278a47-8b59-413e-8a6d-72a6b6d66780" ],
+        "x-ms-correlation-request-id": [ "59278a47-8b59-413e-8a6d-72a6b6d66780" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001658Z:59278a47-8b59-413e-8a6d-72a6b6d66780" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F2D8D546426844CC92D584E81C710E96 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:14Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:14 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FB4C38DD5D6E4BB59A7B63742A14D75E Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:58Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2454,12 +2442,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "427" ],
-        "x-ms-client-request-id": [ "f4f6852e-bb77-41f9-a259-5c6dba233cb5" ],
+        "x-ms-unique-id": [ "395" ],
+        "x-ms-client-request-id": [ "fe37bb1f-3a48-428d-9f82-ef0caf8c5518" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2471,14 +2459,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "d61ecc71-116d-48ad-9e97-37e51723c791" ],
-        "x-ms-correlation-request-id": [ "d61ecc71-116d-48ad-9e97-37e51723c791" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223115Z:d61ecc71-116d-48ad-9e97-37e51723c791" ],
+        "x-ms-request-id": [ "5038987d-28df-474f-9f3c-51e48969ac23" ],
+        "x-ms-correlation-request-id": [ "5038987d-28df-474f-9f3c-51e48969ac23" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001659Z:5038987d-28df-474f-9f3c-51e48969ac23" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 936CDBEE24634CA7A07A6DDF68E2A81E Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:15Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:15 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3D15D4A1575449CAB865D7EEDBF731B5 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:16:59Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2496,12 +2484,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "428" ],
-        "x-ms-client-request-id": [ "40854653-418f-41c5-a23a-abebacc5b48b" ],
+        "x-ms-unique-id": [ "396" ],
+        "x-ms-client-request-id": [ "9af5d02a-2cf1-4c08-9f7c-2c1ed0e3d881" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2513,14 +2501,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "8e37bf9b-1f58-43bc-b117-5816c409011a" ],
-        "x-ms-correlation-request-id": [ "8e37bf9b-1f58-43bc-b117-5816c409011a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223116Z:8e37bf9b-1f58-43bc-b117-5816c409011a" ],
+        "x-ms-request-id": [ "dd1b6dc2-eefe-431c-b227-bc15126aa448" ],
+        "x-ms-correlation-request-id": [ "dd1b6dc2-eefe-431c-b227-bc15126aa448" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001700Z:dd1b6dc2-eefe-431c-b227-bc15126aa448" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B75CFBC09A4343B1AD050A422C7BFE44 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:16Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DCF41E36CC9F4FE48726F0DB9E8D6A04 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:00Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:16:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2538,12 +2526,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "429" ],
-        "x-ms-client-request-id": [ "a0cfa377-f16f-419e-8ca4-f5da2a04f191" ],
+        "x-ms-unique-id": [ "397" ],
+        "x-ms-client-request-id": [ "4916ffb4-631e-4719-bf18-8d4da2fcbdba" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2555,14 +2543,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "7bf1b47b-a40e-4ad0-8d43-13604215742c" ],
-        "x-ms-correlation-request-id": [ "7bf1b47b-a40e-4ad0-8d43-13604215742c" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223117Z:7bf1b47b-a40e-4ad0-8d43-13604215742c" ],
+        "x-ms-request-id": [ "d289476e-d7d5-4663-b4ca-9aaa774baa3b" ],
+        "x-ms-correlation-request-id": [ "d289476e-d7d5-4663-b4ca-9aaa774baa3b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001701Z:d289476e-d7d5-4663-b4ca-9aaa774baa3b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D0B574986E564D02BF1C3AC587288115 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:17Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:17 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3BBE5C66FE9C4B14A392D94844EE1793 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:01Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:17:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2580,12 +2568,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "430" ],
-        "x-ms-client-request-id": [ "f115eb75-a16a-4339-bcd0-bdf0ea8a232f" ],
+        "x-ms-unique-id": [ "398" ],
+        "x-ms-client-request-id": [ "e2d220a8-9715-483a-b411-da7d45612755" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2597,14 +2585,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "d1bc397a-7080-4007-8e82-796f523e47b3" ],
-        "x-ms-correlation-request-id": [ "d1bc397a-7080-4007-8e82-796f523e47b3" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223118Z:d1bc397a-7080-4007-8e82-796f523e47b3" ],
+        "x-ms-request-id": [ "ed038920-1536-44c9-b6bc-835481ee1105" ],
+        "x-ms-correlation-request-id": [ "ed038920-1536-44c9-b6bc-835481ee1105" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001702Z:ed038920-1536-44c9-b6bc-835481ee1105" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 18B33340F206470E9608100C369B5D2B Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:18Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:18 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 452C3E34B7E2414BBF6EDD3B9B315465 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:02Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:17:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2622,12 +2610,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "431" ],
-        "x-ms-client-request-id": [ "4595947a-0e55-438e-865e-104b87a89b4e" ],
+        "x-ms-unique-id": [ "399" ],
+        "x-ms-client-request-id": [ "82209ba2-dd0c-4a43-8328-5154fd9178f3" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2639,14 +2627,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "dcc50113-bf01-4808-85a7-b6f2c773735a" ],
-        "x-ms-correlation-request-id": [ "dcc50113-bf01-4808-85a7-b6f2c773735a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223119Z:dcc50113-bf01-4808-85a7-b6f2c773735a" ],
+        "x-ms-request-id": [ "341fd9d3-f798-40e0-99ab-3c14e7ac8467" ],
+        "x-ms-correlation-request-id": [ "341fd9d3-f798-40e0-99ab-3c14e7ac8467" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001703Z:341fd9d3-f798-40e0-99ab-3c14e7ac8467" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0504729C778F49D39F279070300DFBEB Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:19Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CEFE202BD1E8467595F8C687F9627156 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:03Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:17:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2664,12 +2652,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "432" ],
-        "x-ms-client-request-id": [ "ee1da344-3388-48ee-b790-297198b5bf00" ],
+        "x-ms-unique-id": [ "400" ],
+        "x-ms-client-request-id": [ "16ce2ffb-b270-4167-896e-18177cf4d5d7" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2681,14 +2669,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "41f9e404-73c5-4a07-9a22-dc5d0be194bc" ],
-        "x-ms-correlation-request-id": [ "41f9e404-73c5-4a07-9a22-dc5d0be194bc" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223120Z:41f9e404-73c5-4a07-9a22-dc5d0be194bc" ],
+        "x-ms-request-id": [ "c4353a40-877c-49ac-8e52-7dd332cbfe4b" ],
+        "x-ms-correlation-request-id": [ "c4353a40-877c-49ac-8e52-7dd332cbfe4b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001704Z:c4353a40-877c-49ac-8e52-7dd332cbfe4b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A82625B333AF4075A7D6D8DA31486E9B Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:20Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5B13EAB983BA49F6BDBD3148FDCBB1C1 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:04Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:17:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2706,12 +2694,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "433" ],
-        "x-ms-client-request-id": [ "be91fb48-36ac-4124-8d79-3b96c5c07e33" ],
+        "x-ms-unique-id": [ "401" ],
+        "x-ms-client-request-id": [ "6e04c226-6e92-41d9-aa60-bb779984e4dd" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2723,14 +2711,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "95172cf8-81e8-467b-bafa-b7afb1112ff7" ],
-        "x-ms-correlation-request-id": [ "95172cf8-81e8-467b-bafa-b7afb1112ff7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223121Z:95172cf8-81e8-467b-bafa-b7afb1112ff7" ],
+        "x-ms-request-id": [ "1c52204b-16a7-40be-a0d1-320d55bf708f" ],
+        "x-ms-correlation-request-id": [ "1c52204b-16a7-40be-a0d1-320d55bf708f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001705Z:1c52204b-16a7-40be-a0d1-320d55bf708f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 632F06B70F674202BB233A524E0E5DAD Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:21Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 49217129D26546859F01C3BDACEBF5B7 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:05Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:17:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2748,12 +2736,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "434" ],
-        "x-ms-client-request-id": [ "d672eb40-da4e-4c9e-b732-70782b48a9dc" ],
+        "x-ms-unique-id": [ "402" ],
+        "x-ms-client-request-id": [ "50851b9e-024e-47ef-b68f-14402fd2908b" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2765,14 +2753,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "c36153a3-e747-4290-b297-acef266ab037" ],
-        "x-ms-correlation-request-id": [ "c36153a3-e747-4290-b297-acef266ab037" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223122Z:c36153a3-e747-4290-b297-acef266ab037" ],
+        "x-ms-request-id": [ "ca2a07ab-77de-4617-8c8b-223335852831" ],
+        "x-ms-correlation-request-id": [ "ca2a07ab-77de-4617-8c8b-223335852831" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001706Z:ca2a07ab-77de-4617-8c8b-223335852831" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C7AF188E562249239D80E0605683F481 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:22Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 67A424AFB89142EDA1045F7BD6A2ED6F Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:06Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:17:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2790,12 +2778,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "435" ],
-        "x-ms-client-request-id": [ "264f3990-4230-4769-b46b-d4bc066e1c21" ],
+        "x-ms-unique-id": [ "403" ],
+        "x-ms-client-request-id": [ "e2012f60-a640-4d6d-abf4-7d1598f2afb0" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2807,14 +2795,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "600a6255-952d-4877-bffe-ca5ac1c55d10" ],
-        "x-ms-correlation-request-id": [ "600a6255-952d-4877-bffe-ca5ac1c55d10" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223123Z:600a6255-952d-4877-bffe-ca5ac1c55d10" ],
+        "x-ms-request-id": [ "f5586f30-de16-4475-84cd-e3800ef83601" ],
+        "x-ms-correlation-request-id": [ "f5586f30-de16-4475-84cd-e3800ef83601" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001707Z:f5586f30-de16-4475-84cd-e3800ef83601" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 24517C4FD984424EADB77A0CA595C943 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:23Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B68D9FD07C144952B692F291F733207E Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:07Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:17:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -2832,12 +2820,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "436" ],
-        "x-ms-client-request-id": [ "fab16e99-d591-4d16-82fa-f584a4b02c3e" ],
+        "x-ms-unique-id": [ "404" ],
+        "x-ms-client-request-id": [ "eb0cfe6e-9282-41bd-bf1d-c9ede1ac405d" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -2849,14 +2837,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "c0457729-182c-47a2-a2b1-374b584df133" ],
-        "x-ms-correlation-request-id": [ "c0457729-182c-47a2-a2b1-374b584df133" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240606T223124Z:c0457729-182c-47a2-a2b1-374b584df133" ],
+        "x-ms-request-id": [ "91a20051-bd59-4ecd-bd13-def1061f6df5" ],
+        "x-ms-correlation-request-id": [ "91a20051-bd59-4ecd-bd13-def1061f6df5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001708Z:91a20051-bd59-4ecd-bd13-def1061f6df5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 24BE455FC75B4D78AD3754097BC51598 Ref B: CO6AA3150219021 Ref C: 2024-06-06T22:31:24Z" ],
-        "Date": [ "Thu, 06 Jun 2024 22:31:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 60C6D6D8BE8F47E3AFE93E4B0F1019B2 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:08Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:17:07 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],

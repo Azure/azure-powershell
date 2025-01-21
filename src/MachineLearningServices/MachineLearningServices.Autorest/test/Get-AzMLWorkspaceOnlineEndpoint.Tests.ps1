@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceOnlineEndpoi
 
 Describe 'Get-AzMLWorkspaceOnlineEndpoint' {
     It 'List' {
-        { Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01} | Should -Not -Throw
+        { Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace} | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-cli01 } | Should -Not -Throw
+        { Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name $env.onlineEndpoint } | Should -Not -Throw
     }
 }

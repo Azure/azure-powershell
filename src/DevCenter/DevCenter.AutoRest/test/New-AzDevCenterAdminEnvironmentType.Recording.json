@@ -1,8 +1,8 @@
 {
-  "New-AzDevCenterAdminEnvironmentType+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/6d9ia?api-version=2023-10-01-preview+1": {
+  "New-AzDevCenterAdminEnvironmentType+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/6d9ia?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/6d9ia?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/6d9ia?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"tags\": {\r\n    \"dev\": \"test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDevCenterAdminEnvironmentType+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/qnw9?api-version=2023-10-01-preview+1": {
+  "New-AzDevCenterAdminEnvironmentType+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/qnw9?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/qnw9?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/qnw9?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"tags\": {\r\n    \"dev\": \"test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {

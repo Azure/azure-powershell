@@ -1,6 +1,6 @@
 {
   "resourceType": "workspaces",
-  "apiVersion": "2022-05-01",
+  "apiVersion": "2024-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.machinelearningservices"
   },
@@ -76,44 +76,6 @@
             {
               "name": "-WorkspaceName",
               "value": "[Path.workspaceName]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Remove-AzMLWorkspace",
-      "description": "Deletes a machine learning workspace.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspace"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Deletes a machine learning workspace.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.workspaceName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
             }
           ]
         }

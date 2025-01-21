@@ -14,8 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNewRelicMonitorTagRu
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzNewRelicMonitorTagRule' {
-    It 'UpdateExpanded' -skip {
+Describe 'Update-AzNewRelicMonitorTagRule' { #Scenario Test
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityMonitorExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

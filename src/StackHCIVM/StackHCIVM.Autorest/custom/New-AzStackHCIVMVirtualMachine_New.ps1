@@ -551,7 +551,7 @@ function New-AzStackHCIVMVirtualMachine {
     }
     if (-not $ProvisionVMConfigAgent){
       $null = $PSBoundParameters.Remove("WindowConfigurationProvisionVMConfigAgent")
-      $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $true)
+      $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $false)
     }
     $null = $PSBoundParameters.Remove("ProvisionVMAgent")
     $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")

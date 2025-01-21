@@ -130,9 +130,6 @@ namespace Microsoft.Azure.Commands.TestFx
 
             AzureSession.Instance.DataStore = datastore;
 
-            // Ignore SSL errors
-            System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
-
             if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName, "testcredentials.json")))
             {
                 SetEnvironmentVariableFromCredentialFile();
@@ -538,9 +535,14 @@ namespace Microsoft.Azure.Commands.TestFx
                 output = powershell.Invoke();
                 watch.Stop();
 
-                var resultFormatting = watch.ElapsedMilliseconds < 5000 ? "##[section]" : "##[warning]";
-
-                Console.WriteLine($"{resultFormatting}Test {testName} completed in {watch.ElapsedMilliseconds}ms");
+                if (watch.ElapsedMilliseconds < 5000)
+                {
+                    Console.WriteLine($"INFO : Test {testName} completed in {watch.ElapsedMilliseconds}ms");
+                }
+                else
+                {
+                    Console.WriteLine($"##[warning]WARNING : Test {testName} completed in {watch.ElapsedMilliseconds}ms");
+                }
 
                 if (powershell.Streams.Error.Count > 0)
                 {

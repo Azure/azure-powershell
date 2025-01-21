@@ -16,21 +16,23 @@ Update the agent pool in the provisioned cluster
 ```
 Update-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-Tag <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
 Update-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String> -EnableAutoScaling
  -MaxCount <Int32> -MinCount <Int32> [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-Tag <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NodeTaint <String[]>] [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 Update-AzAksArcNodepool -ClusterName <String> -InputObject <IAksArcIdentity> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-Tag <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NodeTaint <String[]>] [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -265,6 +267,21 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMSize
+The VM sku size of the agent pool node VMs.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

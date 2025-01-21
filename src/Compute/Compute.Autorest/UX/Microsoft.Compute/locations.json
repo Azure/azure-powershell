@@ -1,17 +1,17 @@
 {
   "resourceType": "locations",
-  "apiVersion": "2021-06-01-preview",
+  "apiVersion": "2024-06-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.compute"
   },
   "commands": [
     {
-      "name": "Invoke-AzSpotPlacementRecommender",
+      "name": "Invoke-AzSpotPlacementScore",
       "description": "Generates placement scores for Spot VM skus.",
-      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/diagnostics/spotPlacementRecommender/generate",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementrecommender"
+          "url": "https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementscore"
         },
         "parameterSets": [
           {

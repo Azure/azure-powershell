@@ -14,9 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNewRelicMonitor'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzNewRelicMonitor' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Remove-AzNewRelicMonitor' -Tag 'LiveOnly' {
+    # Remove monitor
+    It 'MonitorDelete' {
+        {
+            Remove-AzNewRelicMonitor -Name $env.NewMonitorName -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceOnlineDeploy
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceOnlineDeployment' {
-    It 'CreateExpanded' {
+Describe 'New-AzMLWorkspaceOnlineDeployment' { #Moved
+    It 'CreateExpanded' -Skip {
         { 
             New-AzMLWorkspaceOnlineDeployment -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName online-pwsh01 -Name pwshblue01 -Location "eastus" -EndpointComputeType 'Managed' `
             -CodeId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/787fc793-1ac7-414e-a035-7248767b7b23/versions/1" -CodeScoringScript "score.py" `

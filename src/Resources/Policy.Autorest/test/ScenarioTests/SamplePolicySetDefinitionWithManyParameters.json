@@ -1,0 +1,167 @@
+[
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/35f9c03a-cc27-418e-9c0c-539ff999d010",
+        "policyDefinitionReferenceId": "Deny-Nsg-GW-subnet",
+        "groupNames": [
+        ],
+        "parameters": {
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/21a6bc25-125e-4d13-b82d-2e19b7208ab7",
+        "policyDefinitionReferenceId": "Deny-VPN-AzureAD",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('vpnAzureAD')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/055aa869-bc98-4af8-bafc-23f1ab6ffe2c",
+        "policyDefinitionReferenceId": "Deny-Waf-Afd-Enabled",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('wafAfdEnabled')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6484db87-a62d-4327-9f07-80a2cbdf333a",
+        "policyDefinitionReferenceId": "Deny-Waf-IDPS",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('afwEnableIDPS')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/610b6183-5f00-4d68-86d2-4ab4cb3a67a5",
+        "policyDefinitionReferenceId": "Deny-FW-AllIDPSS",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('afwEnableAllIDPSSignatureRules')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f516dc7a-4543-4d40-aad6-98f76a706b50",
+        "policyDefinitionReferenceId": "Deny-FW-EmpIDPSBypass",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('afwEmptyIDPSBypassList')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/711c24bb-7f18-4578-b192-81a6161e1f17",
+        "policyDefinitionReferenceId": "Deny-FW-TLS-Inspection",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('afwEnableTlsInspection')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a58ac66d-92cb-409c-94b8-8e48d7a96596",
+        "policyDefinitionReferenceId": "Deny-FW-TLS-AllApp",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('afwEnbaleTlsForAllAppRules')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/12430be1-6cc8-4527-a9a8-e3d38f250096",
+        "policyDefinitionReferenceId": "Deny-Waf-AppGw-mode",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('wafModeAppGw')]"
+            },
+            "modeRequirement": {
+                "value": "[parameters('wafModeAppGwRequirement')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/632d3993-e2c0-44ea-a7db-2eca131f356d",
+        "policyDefinitionReferenceId": "Deny-Waf-Fw-rules",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('wafFwRules')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/425bea59-a659-4cbb-8d31-34499bd030b8",
+        "policyDefinitionReferenceId": "Deny-Waf-mode",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('wafMode')]"
+            },
+            "modeRequirement": {
+                "value": "[parameters('wafModeRequirement')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d",
+        "policyDefinitionReferenceId": "Modify-vNet-DDoS",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('vnetModifyDdos')]"
+            },
+            "ddosPlan": {
+                "value": "[parameters('ddosPlanResourceId')]"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/88c0b9da-ce96-4b03-9635-f29a937e2900",
+        "policyDefinitionReferenceId": "Deny-Ip-Forwarding",
+        "groupNames": [
+        ],
+        "parameters": {
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/83a86a26-fd1f-447c-b59d-e51f44264114",
+        "policyDefinitionReferenceId": "Deny-vNic-Pip",
+        "groupNames": [
+        ],
+        "parameters": {
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/564feb30-bf6a-4854-b4bb-0d2d2d1e6c66",
+        "policyDefinitionReferenceId": "Deny-AppGw-Without-Waf",
+        "groupNames": [
+        ],
+        "parameters": {
+            "effect": {
+                "value": "[parameters('appGwWaf')]"
+            }
+        }
+    }
+]

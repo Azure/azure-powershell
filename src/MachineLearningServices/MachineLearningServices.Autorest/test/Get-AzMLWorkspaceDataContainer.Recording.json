@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceDataContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceDataContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/data?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/data?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "d1a920bf-7373-47f4-9249-d20c846b69a1" ],
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "35b68a92-1c6a-4f0b-93c4-bb53fa05ccad" ],
         "CommandName": [ "Get-AzMLWorkspaceDataContainer" ],
         "FullCommandName": [ "Get-AzMLWorkspaceDataContainer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,40 +23,42 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "8a0e8783-78c2-432b-ab12-92713e7659f5" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-request-id": [ "a86d4946-6bec-436c-9b0a-fe1f5415e40b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.126" ],
-        "x-ms-correlation-request-id": [ "8a0e8783-78c2-432b-ab12-92713e7659f5" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094030Z:8a0e8783-78c2-432b-ab12-92713e7659f5" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:30 GMT" ]
+        "x-request-time": [ "0.349" ],
+        "x-ms-correlation-request-id": [ "a86d4946-6bec-436c-9b0a-fe1f5415e40b" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085113Z:a86d4946-6bec-436c-9b0a-fe1f5415e40b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 91F4B28D75724BC4ABCF3A1B93050B43 Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:12Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3132" ],
+        "Content-Length": [ "1613" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data/iris-data\",\n      \"name\": \"iris-data\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/data\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isArchived\": false,\n        \"latestVersion\": \"2\",\n        \"nextVersion\": \"2022-06-05-09-40-30-8603625\",\n        \"dataType\": \"uri_file\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-05T02:58:50.2406219Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-06-01T15:11:06.2500754Z\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data/pwshdata01\",\n      \"name\": \"pwshdata01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/data\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2022-06-05-09-40-30-8603793\",\n        \"dataType\": \"uri_file\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-17T07:11:05.3440139Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-17T07:11:05.4693008Z\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data/dtpwsh01\",\n      \"name\": \"dtpwsh01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/data\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isArchived\": false,\n        \"latestVersion\": null,\n        \"nextVersion\": \"2022-06-05-09-40-30-8603841\",\n        \"dataType\": \"uri_folder\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-24T06:12:06.0135003Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-24T06:12:06.0136095Z\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data/dtpwsh02\",\n      \"name\": \"dtpwsh02\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/data\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2022-06-05-09-40-30-8603884\",\n        \"dataType\": \"uri_file\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-24T06:21:34.9615204Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-24T06:21:35.0413793Z\"\n      }\n    }\n  ]\n}",
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/data/dataset001-work2\",\n      \"name\": \"dataset001-work2\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/data\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isArchived\": false,\n        \"latestVersion\": null,\n        \"nextVersion\": \"2024-07-24-08-51-13-5697697\",\n        \"dataType\": \"uri_file\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2024-07-24T08:34:10.4323913+00:00\",\n        \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2024-07-24T08:34:10.4326191+00:00\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/data/iris-data\",\n      \"name\": \"iris-data\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/data\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isArchived\": false,\n        \"latestVersion\": \"1\",\n        \"nextVersion\": \"2024-07-24-08-51-13-5700572\",\n        \"dataType\": \"uri_file\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2024-07-24T08:34:15.4289909+00:00\",\n        \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2024-07-24T08:34:15.505174+00:00\"\n      }\n    }\n  ]\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzMLWorkspaceDataContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data/iris-data?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceDataContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/data/dataset001-work2?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data/iris-data?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/data/dataset001-work2?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "13ce78c1-7a0a-4e58-8b7e-29ff5a57e5d0" ],
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "6a6588de-3ac8-4660-bf19-8cf0432a3806" ],
         "CommandName": [ "Get-AzMLWorkspaceDataContainer" ],
         "FullCommandName": [ "Get-AzMLWorkspaceDataContainer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -68,24 +70,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "0bb4ad4e-291c-45f5-965c-df2a25907491" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-request-id": [ "27cc35ba-b3db-4126-bc33-35abd6417035" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.234" ],
-        "x-ms-correlation-request-id": [ "0bb4ad4e-291c-45f5-965c-df2a25907491" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094032Z:0bb4ad4e-291c-45f5-965c-df2a25907491" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:31 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.088" ],
+        "x-ms-correlation-request-id": [ "27cc35ba-b3db-4126-bc33-35abd6417035" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085114Z:27cc35ba-b3db-4126-bc33-35abd6417035" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DFE8D780A6EF42E4937E1D5EF93DC0C9 Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:13Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "670" ],
+        "Content-Length": [ "697" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/data/iris-data\",\n  \"name\": \"iris-data\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/data\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": null,\n    \"properties\": null,\n    \"isArchived\": false,\n    \"latestVersion\": \"2\",\n    \"nextVersion\": \"3\",\n    \"dataType\": \"uri_file\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-05-05T02:58:50.2406219Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-06-01T15:11:06.2500754Z\"\n  }\n}",
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/data/dataset001-work2\",\n  \"name\": \"dataset001-work2\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/data\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": null,\n    \"properties\": null,\n    \"isArchived\": false,\n    \"latestVersion\": null,\n    \"nextVersion\": \"1\",\n    \"dataType\": \"uri_file\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2024-07-24T08:34:10.4323913+00:00\",\n    \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2024-07-24T08:34:10.4326191+00:00\"\n  }\n}",
       "isContentBase64": false
     }
   }

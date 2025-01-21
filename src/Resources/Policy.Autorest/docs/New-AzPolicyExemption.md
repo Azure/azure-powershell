@@ -16,7 +16,8 @@ Creates or updates a policy exemption.
 New-AzPolicyExemption -ExemptionCategory <String> -Name <String> -PolicyAssignment <PSObject>
  [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
  [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
- [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +46,39 @@ New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
 The second command gets the policy assignment named VirtualMachinePolicyAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
 The final command exempts the policy assignment in $Assignment at the level of the resource group identified by the **ResourceId** property of $ResourceGroup.
+
+### Example 3: Policy exemption at management group level
+```powershell
+$ManagementGroup = Get-AzManagementGroup -GroupName 'AManagementGroup'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ManagementGroup.Id -ExemptionCategory Mitigated
+```
+
+The first command gets a management group named AManagementGroup by using the Get-AzManagementGroup cmdlet and stores it in the $ManagementGroup variable.
+The second command gets the policy assignment named VirtualMachinePolicyAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
+The final command exempts the policy assignment in $Assignment at the level of the management group identified by the **Id** property of $ManagementGroup.
+
+### Example 4: Policy exemption at resource level
+```powershell
+$VM = Get-AzVM -Name 'SpecialVM'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+```
+
+The first command gets a VM named SpecialVM by using the Get-AzVM cmdlet and stores it in the $VM variable.
+The second command gets the policy assignment named VirtualMachinePolicyAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
+The final command exempts the resource identified by the **Id** property of $VM from the policy assignment in $Assignment.
+
+### Example 5: Policy exemption with resource selector
+```powershell
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachineAssignment'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $Assignment -ResourceSelector $ResourceSelector
+```
+
+The first command gets the policy assignment named VirtualMachineAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
+The second command creates a resource selector object that will be used to specify the exemption should only apply to resources located in East US or East US 2 and stores it in the $ResourceSelector variable.
+The final command creates a policy exemption for the assignment $Assignment with the resource selector specified by $ResourceSelector.
 
 ## PARAMETERS
 
@@ -212,6 +246,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceSelector
+The resource selector list to filter policies by resource properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

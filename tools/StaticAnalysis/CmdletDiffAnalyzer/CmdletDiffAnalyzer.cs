@@ -117,7 +117,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                     string moduleName = psd1FileName.Replace(".psd1", "");
                     Directory.SetCurrentDirectory(directory);
 
-                    Console.WriteLine("Analyzing module: {0}", moduleName);
+                    Console.WriteLine($"[{nameof(CmdletDiffAnalyzer)}] Analyzing module: {0}", moduleName);
                     processedHelpFiles.Add(moduleName);
 
                     var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);

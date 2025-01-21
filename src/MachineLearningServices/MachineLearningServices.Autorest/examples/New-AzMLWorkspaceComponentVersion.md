@@ -16,7 +16,7 @@ New-AzMLWorkspaceComponentVersion -ResourceGroupName ml-rg-test -WorkspaceName m
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- ------------------- -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    6/5/2022 2:06:37 PM Lucas Yao (Wicresoft North America) User                    6/5/2022 2:06:37 PM      Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    6/5/2022 2:06:37 PM UserName (Example)         User                    6/5/2022 2:06:37 PM      UserName (Example)         User                         ml-rg-test
 ```
 
 Create or update component version
