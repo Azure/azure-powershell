@@ -459,7 +459,7 @@ Creates the basic test environment needed to perform the Sql data security tests
 function Create-WorkspaceEncryptionTestEnvironmentWithParams ($params, $location)
 {
 	New-AzResourceGroup -Name $params.rgname -Location $location
-    New-AzStorageAccount -ResourceGroupName $params.rgname -Name $params.storageAccountName -Location $location -SkuName Standard_GRS -Kind StorageV2 -EnableHierarchicalNamespace $true # -NetworkRuleSet (@{bypass="AzureServices";defaultAction="Deny"})
+    New-AzStorageAccount -ResourceGroupName $params.rgname -Name $params.storageAccountName -Location $location -SkuName Standard_GRS -Kind StorageV2 -EnableHierarchicalNamespace $true
 	$workspaceName = $params.workspaceName
 	$workspaceLogin = $params.loginName
 	$workspacePassword = $params.pwd
@@ -494,7 +494,7 @@ Creates the test environment needed to perform the Sql auditing tests
 function Create-WorkspaceTestEnvironmentWithParams ($params, $location, $denyAsNetworkRuleDefaultAction = $False)
 {
 	New-AzResourceGroup -Name $params.rgname -Location $location
-    New-AzStorageAccount -ResourceGroupName $params.rgname -Name $params.storageAccountName -Location $location -SkuName Standard_GRS -Kind StorageV2 -EnableHierarchicalNamespace $true # -NetworkRuleSet (@{bypass="AzureServices";defaultAction="Deny"})
+    New-AzStorageAccount -ResourceGroupName $params.rgname -Name $params.storageAccountName -Location $location -SkuName Standard_GRS -Kind StorageV2 -EnableHierarchicalNamespace $true
 	$workspaceName = $params.workspaceName
 	$workspaceLogin = $params.loginName
 	$workspacePassword = $params.pwd
