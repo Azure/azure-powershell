@@ -446,7 +446,7 @@ function Get-WorkspaceEncryptionTestEnvironmentParameters ($testSuffix)
 			  storageAccountName = "wsstorage" + $testSuffix;
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
-			  pwd = Get-TestPassword;
+			  pwd = "testp@ssMakingIt1007Longer";
               location = "eastus";
               encryptionKeyIdentifier = "<your-encryptionKeyIdentifier>";
 		}
@@ -515,7 +515,7 @@ function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
 			  storageAccountName = "wsstorage" + $testSuffix;
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
-			  pwd = Get-TestPassword;
+			  pwd = "testp@ssMakingIt1007Longer";
               location = "eastus";
 		}
 }
