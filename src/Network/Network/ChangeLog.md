@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.13.0
 * Added cmdlets for Logging Configuration CRUD operations
     - `New-AzNetworkSecurityPerimeterLoggingConfiguration`
     - `Get-AzNetworkSecurityPerimeterLoggingConfiguration`
