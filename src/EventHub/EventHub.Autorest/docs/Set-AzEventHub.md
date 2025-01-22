@@ -16,7 +16,7 @@ Updates an EventHub Entity
 ```
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
- [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-MinCompactionLagInMins <Int64>]
+ [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-MinCompactionLagInMin <Int64>]
  [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
  [-Status <String>] [-StorageAccountResourceId <String>] [-TimestampType <String>]
  [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>] [-UserMetadata <String>]
@@ -27,7 +27,7 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-CaptureEnabled] [-DestinationName <String>] [-Encoding <String>] [-IdentityType <String>]
- [-IntervalInSeconds <Int32>] [-MinCompactionLagInMins <Int64>] [-PartitionCount <Int64>]
+ [-IntervalInSeconds <Int32>] [-MinCompactionLagInMin <Int64>] [-PartitionCount <Int64>]
  [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
  [-StorageAccountResourceId <String>] [-TimestampType <String>] [-TombstoneRetentionTimeInHour <Int32>]
  [-UserAssignedIdentityId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -282,7 +282,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinCompactionLagInMins
+### -MinCompactionLagInMin
 The minimum time a message will remain ineligible for compaction in the log.
 
 ```yaml
