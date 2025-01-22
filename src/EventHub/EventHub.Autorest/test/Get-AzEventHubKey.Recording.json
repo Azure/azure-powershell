@@ -41,7 +41,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename42kzga.servicebus.windows.net/;SharedAccessKeyName=auth-rulevc2hn9;SharedAccessKey=n/Oc06D0Od0goXaLAAy0o+O3cp9iVNR4z+AEhBbLXBg=\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename42kzga.servicebus.windows.net/;SharedAccessKeyName=auth-rulevc2hn9;SharedAccessKey=06dqHF3B4HwWwGG+EsKO8iIfHFj55Cy57+AEhFVmSog=\",\"primaryKey\":\"n/Oc06D0Od0goXaLAAy0o+O3cp9iVNR4z+AEhBbLXBg=\",\"secondaryKey\":\"06dqHF3B4HwWwGG+EsKO8iIfHFj55Cy57+AEhFVmSog=\",\"keyName\":\"auth-rulevc2hn9\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename42kzga.servicebus.windows.net/;SharedAccessKeyName=auth-rulevc2hn9;SharedAccessKey=sanitizer1\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename42kzga.servicebus.windows.net/;SharedAccessKeyName=auth-rulevc2hn9;SharedAccessKey=sanitizer2\",\"primaryKey\":\"sanitizer1\",\"secondaryKey\":\"sanitizer2\",\"keyName\":\"auth-rulevc2hn9\"}",
       "isContentBase64": false
     }
   },
@@ -87,7 +87,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename42kzga.servicebus.windows.net/;SharedAccessKeyName=auth-rulebc97lg;SharedAccessKey=rYWNQolCh93hp9W5CyMWEIDh4fFVFfy8J+AEhFvJH/A=;EntityPath=eventHubkunz3v\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename42kzga.servicebus.windows.net/;SharedAccessKeyName=auth-rulebc97lg;SharedAccessKey=kyL/RoTGBEh1P7glBduXMm7eEWfMV/H1y+AEhMstvoM=;EntityPath=eventHubkunz3v\",\"primaryKey\":\"rYWNQolCh93hp9W5CyMWEIDh4fFVFfy8J+AEhFvJH/A=\",\"secondaryKey\":\"kyL/RoTGBEh1P7glBduXMm7eEWfMV/H1y+AEhMstvoM=\",\"keyName\":\"auth-rulebc97lg\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename42kzga.servicebus.windows.net/;SharedAccessKeyName=auth-rulebc97lg;SharedAccessKey=sanitizer3;EntityPath=eventHubkunz3v\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename42kzga.servicebus.windows.net/;SharedAccessKeyName=auth-rulebc97lg;SharedAccessKey=sanitizer4;EntityPath=eventHubkunz3v\",\"primaryKey\":\"sanitizer3\",\"secondaryKey\":\"sanitizer4\",\"keyName\":\"auth-rulebc97lg\"}",
       "isContentBase64": false
     }
   }
