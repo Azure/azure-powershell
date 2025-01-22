@@ -344,3 +344,26 @@ function Test-AzureVMPolicy
 		Cleanup-ResourceGroup $resourceGroupName
 	}
 }
+
+function Test-AzureVMEnhancedPolicyAsDefault
+{
+	$schedulePolicy1 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
+    Assert-NotNull $schedulePolicy1
+
+	Assert-True {$schedulePolicy1.PSObject.Properties.Name -contains "HourlySchedule" -and $schedulePolicy1.PSObject.Properties.Name -contains "DailySchedule"}
+
+	$schedulePolicy2 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM  -PolicySubType Standard
+    Assert-NotNull $schedulePolicy2
+
+	Assert-True {$schedulePolicy2.PSObject.Properties.Name -contains "ScheduleRunDays" -and $schedulePolicy2.PSObject.Properties.Name -contains "ScheduleRunTimes"}
+
+	$schedulePolicy3 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -PolicySubType Enhanced
+    Assert-NotNull $schedulePolicy3
+
+	Assert-True {$schedulePolicy3.PSObject.Properties.Name -contains "HourlySchedule" -and $schedulePolicy3.PSObject.Properties.Name -contains "DailySchedule"}
+
+	$schedulePolicy2 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+    Assert-NotNull $schedulePolicy2
+
+	Assert-True {$schedulePolicy2.PSObject.Properties.Name -contains "ScheduleRunDays" -and $schedulePolicy2.PSObject.Properties.Name -contains "ScheduleRunTimes"}
+}

@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, Position = 3,
             HelpMessage = ParamHelpMsgs.Policy.SchedulePolicySubType)]
-        public PSPolicyType PolicySubType = PSPolicyType.Standard;
+        public PSPolicyType? PolicySubType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -77,6 +77,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
                 providerParameters.Add(PolicyParams.ScheduleRunFrequency, ScheduleRunFrequency);
+
+                if(PolicySubType == null)
+                {
+                    if(WorkloadType == WorkloadType.AzureVM)
+                    {
+                        PolicySubType = PSPolicyType.Enhanced;
+                    }
+                    else
+                    {
+                        PolicySubType = PSPolicyType.Standard;
+                    }
+                }
+
                 providerParameters.Add(PolicyParams.PolicySubType, PolicySubType);
 
                 if (ScheduleRunFrequency != ScheduleRunType.Daily && WorkloadType != WorkloadType.AzureVM && WorkloadType != WorkloadType.AzureFiles)
