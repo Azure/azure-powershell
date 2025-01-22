@@ -305,8 +305,8 @@ function Get-SqlPoolBackupTestEnvironmentParameters ($testSuffix)
 			  loginName = "testlogin";
 			  pwd = Get-TestPassword;
 			  perfLevel = 'DW200c';
-              location = "northeurope";
-              restoredSqlPoolName = "dwrestore" + $testSuffix;
+			  location = "northeurope";
+			  restoredSqlPoolName = "dwrestore" + $testSuffix;
 		}
 }
 

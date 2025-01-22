@@ -52,7 +52,7 @@ function Test-SynapseSqlPool
  
 		# Wait for 3 minutes for the update completion
 		# Without this, the test will pass non-deterministically
-		Wait-Seconds(180)
+		Wait-Seconds 180
         $sqlPoolUpdated = Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 
         Assert-AreEqual $sqlPoolName $sqlPoolUpdated.Name
@@ -171,7 +171,7 @@ function Test-SynapseSqlPool-Security
         Assert-True {Remove-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
 
         # Wait for 3 minutes for the update completion
-		Wait-Seconds(180)
+		Wait-Seconds 180
 
         # Verify that SQL Pool Auditing was deleted
         $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
@@ -219,9 +219,9 @@ function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
 			  loginName = "testlogin";
 			  pwd = Get-TestPassword;
 			  perfLevel = 'DW200c';
-              location = "eastus";
-              tags = @{"NewSqlPoolTag" = "TestTagToNewCommand"}
-              storageAccountType = "LRS" 
+			  location = "eastus";
+			  tags = @{"NewSqlPoolTag" = "TestTagToNewCommand"}
+			  storageAccountType = "LRS" 
 	}
 }
 

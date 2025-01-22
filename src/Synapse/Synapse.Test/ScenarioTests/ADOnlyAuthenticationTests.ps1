@@ -112,7 +112,7 @@ function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = Get-TestPassword;
-              location = "eastus";
+			  location = "eastus";
 		}
 }
 

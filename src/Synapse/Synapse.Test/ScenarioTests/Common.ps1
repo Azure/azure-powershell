@@ -19,11 +19,8 @@ Gets a passwrod
 function Get-TestPassword
 {
     $passwordLength = 26
-
     $charSet = 'tesMakingItLor0123456789!@#$%^&*()'
-
     $password = -join ((1..$passwordLength) | ForEach-Object { $charSet[(Get-Random -Maximum $charSet.Length)] })
-
     return $password
 }
 

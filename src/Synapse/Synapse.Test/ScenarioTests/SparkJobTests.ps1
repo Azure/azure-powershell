@@ -38,8 +38,6 @@ function Test-SynapseSparkJob
             -ExecutorCount 2 `
             -ExecutorSize Small
 
-
-
         Assert-NotNull {$jobInfo}
         Assert-AreEqual WordCount_Java $jobInfo.Name
         Assert-AreEqual SparkBatch $jobInfo.JobType
