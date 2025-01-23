@@ -328,6 +328,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))) // Change this.
                 {
 
+                    VerifyParameters();
+
                     VirtualMachineScaleSet vmssResponse = this.VirtualMachineScaleSetClient.Get(
                         this.ResourceGroupName, VMScaleSetName);
 
@@ -353,16 +355,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         vmssResponse.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
                     }
 
-                    if (this.EncryptionIdentity != null)
-                    {
-                        bool updateEncryptionIdentity = UpdateVmssEncryptionIdentity();
-                        if (updateEncryptionIdentity)
-                        {
-                            this.WriteObject("Encryption identity updated successfully on VM.");
-                        }
-                    }
-                    VerifyParameters();
-
                     vmssResponse.VirtualMachineProfile.ExtensionProfile.Extensions.Add(parameters);
 
                     VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
@@ -387,6 +379,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             if (this.KeyEncryptionKeyVaultId != null)
             {
                 VerifyKeyVault(this.KeyEncryptionKeyVaultId);
+            }
+        }
+
+        private void UpdateVmssEncryptionIdentityBeforeVerifyKeyVaultOperation()
+        {
+            bool updateEncryptionIdentity = UpdateVmssEncryptionIdentity();
+            if (updateEncryptionIdentity)
+            {
+                this.WriteObject("Encryption identity updated successfully on VMSS.");
             }
         }
 
@@ -428,6 +429,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         ThrowInvalidArgumentError("The location of key vault ID, {0}, does not match with the VM scale set.", keyVaultId);
 
                     }
+                    if (this.EncryptionIdentity != null)
+                    {
+                        UpdateVmssEncryptionIdentityBeforeVerifyKeyVaultOperation();
+                    }
+                    
                     VirtualMachineScaleSet vmssResponse = this.VirtualMachineScaleSetClient.Get(this.ResourceGroupName, VMScaleSetName);
                     if (vmssResponse != null && vmssResponse.VirtualMachineProfile != null && vmssResponse.VirtualMachineProfile.SecurityProfile != null && 
                         vmssResponse.VirtualMachineProfile.SecurityProfile.EncryptionIdentity != null && 
