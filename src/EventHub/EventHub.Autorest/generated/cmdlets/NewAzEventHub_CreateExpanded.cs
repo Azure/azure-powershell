@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new Event Hub as a nested resource within a Namespace.</summary>
+    /// <summary>create a new Event Hub as a nested resource within a Namespace.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHub_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create a new Event Hub as a nested resource within a Namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create a new Event Hub as a nested resource within a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}", ApiVersion = "2023-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}", ApiVersion = "2024-05-01-preview")]
     public partial class NewAzEventHub_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"Enumerates the possible values for cleanup policy",
         SerializedName = @"cleanupPolicy",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Delete", "Compact")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Delete", "Compact", "DeleteOrCompact")]
         public string CleanupPolicy { get => _parametersBody.CleanupPolicy ?? null; set => _parametersBody.CleanupPolicy = value; }
 
         /// <summary>The reference to the client API class.</summary>
@@ -249,6 +249,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>
+        /// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is
+        /// Compact or DeleteOrCompact.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.",
+        SerializedName = @"minCompactionLagInMins",
+        PossibleTypes = new [] { typeof(long) })]
+        public long MinCompactionLagInMin { get => _parametersBody.MinCompactionLagInMin ?? default(long); set => _parametersBody.MinCompactionLagInMin = value; }
+
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
@@ -327,15 +341,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
         /// <summary>
-        /// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy
-        /// is Compact the returned value of this property is Long.MaxValue
+        /// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a
+        /// special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace
+        /// SKU type.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue ",
+        Description = @"Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.",
         SerializedName = @"retentionTimeInHours",
         PossibleTypes = new [] { typeof(long) })]
         public long RetentionTimeInHour { get => _parametersBody.RetentionTimeInHour ?? default(long); set => _parametersBody.RetentionTimeInHour = value; }
@@ -411,17 +426,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>
-        /// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is
-        /// Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from
-        /// starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the
-        /// compacted Event Hub
+        /// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime
+        /// refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was
+        /// generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime.
+        /// If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Denotes the type of timestamp the message will hold.Two types of timestamp types - \"AppendTime\" and \"CreateTime\". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub",
+        Description = @"Denotes the type of timestamp the message will hold.Two types of timestamp types - ""AppendTime"" and ""CreateTime"". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.",
+        SerializedName = @"timestampType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("LogAppend", "Create")]
+        public string TimestampType { get => _parametersBody.TimestampType ?? null; set => _parametersBody.TimestampType = value; }
+
+        /// <summary>
+        /// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact
+        /// or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer
+        /// begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker
+        /// within the compacted Event Hub
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub",
         SerializedName = @"tombstoneRetentionTimeInHours",
         PossibleTypes = new [] { typeof(int) })]
         public int TombstoneRetentionTimeInHour { get => _parametersBody.TombstoneRetentionTimeInHour ?? default(int); set => _parametersBody.TombstoneRetentionTimeInHour = value; }
@@ -439,6 +471,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         SerializedName = @"userAssignedIdentity",
         PossibleTypes = new [] { typeof(string) })]
         public string UserAssignedIdentityId { get => _parametersBody.UserAssignedIdentityId ?? null; set => _parametersBody.UserAssignedIdentityId = value; }
+
+        /// <summary>Gets and Sets Metadata of User.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets and Sets Metadata of User.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets and Sets Metadata of User.",
+        SerializedName = @"userMetadata",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserMetadata { get => _parametersBody.UserMetadata ?? null; set => _parametersBody.UserMetadata = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
