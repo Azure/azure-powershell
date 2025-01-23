@@ -62,12 +62,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("Daily", "Hourly", "Weekly")]
         public ScheduleRunType ScheduleRunFrequency = ScheduleRunType.Daily;
 
+        private PSPolicyType? _policySubType;
         /// <summary>
         /// Schedule policy subtype. 
         /// </summary>
         [Parameter(Mandatory = false, Position = 3,
             HelpMessage = ParamHelpMsgs.Policy.SchedulePolicySubType)]
-        public PSPolicyType? PolicySubType { get; set; }
+        public PSPolicyType PolicySubType
+        {
+            get
+            {
+                if(_policySubType == null)
+                {
+                    if(WorkloadType == WorkloadType.AzureVM)
+                    {
+                        return PSPolicyType.Enhanced;
+                    }
+                    else
+                    {
+                        return PSPolicyType.Standard;
+                    }
+                }
+                return (PSPolicyType)_policySubType;
+            }
+            set
+            {
+                _policySubType = value;
+            }
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -77,19 +99,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
                 providerParameters.Add(PolicyParams.ScheduleRunFrequency, ScheduleRunFrequency);
-
-                if(PolicySubType == null)
-                {
-                    if(WorkloadType == WorkloadType.AzureVM)
-                    {
-                        PolicySubType = PSPolicyType.Enhanced;
-                    }
-                    else
-                    {
-                        PolicySubType = PSPolicyType.Standard;
-                    }
-                }
-
                 providerParameters.Add(PolicyParams.PolicySubType, PolicySubType);
 
                 if (ScheduleRunFrequency != ScheduleRunType.Daily && WorkloadType != WorkloadType.AzureVM && WorkloadType != WorkloadType.AzureFiles)

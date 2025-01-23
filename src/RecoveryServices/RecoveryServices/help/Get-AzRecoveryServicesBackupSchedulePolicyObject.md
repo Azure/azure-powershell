@@ -41,8 +41,8 @@ The last command creates a backup protection policy with the updated schedule.
 
 ### Example 2: Set the backup time
 ```powershell
-$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
-$SchPol.ScheduleRunTimes.RemoveAll()
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -PolicySubType Standard
+$SchPol.ScheduleRunTimes.clear()
 $DT = Get-Date
 $SchPol.ScheduleRunTimes.Add($DT.ToUniversalTime())
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
@@ -77,9 +77,9 @@ $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType
 $timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "India" }
 $schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
 $windowStartTime = (Get-Date -Date "2022-04-14T08:00:00.00+00:00").ToUniversalTime()
-$schPol.HourlySchedule.WindowStartTime = $windowStartTime
-$schedulePolicy.HourlySchedule.ScheduleInterval = 4
-$schedulePolicy.HourlySchedule.ScheduleWindowDuration = 23
+$schedulePolicy.HourlySchedule.WindowStartTime = $windowStartTime
+$schedulePolicy.HourlySchedule.Interval = 4
+$schedulePolicy.HourlySchedule.WindowDuration = 23
 ```
 
 The first command gets a base enhanced hourly **SchedulePolicyObject** for WorkloadType AzureVM, and then stores it in the $schedulePolicy variable.

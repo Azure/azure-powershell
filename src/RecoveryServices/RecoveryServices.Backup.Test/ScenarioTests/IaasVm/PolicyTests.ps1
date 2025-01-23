@@ -346,30 +346,51 @@ function Test-AzureVMPolicy
 }
 
 function Test-AzureVMEnhancedPolicyAsDefault
-{
-	$resourceGroupName = "sgholapCZRTesting"
-	$vaultName = "sgholapZRSTestingVault"
-	$owner = "sgholap"
+{ 
+	try
+    {
+		$resourceGroupName = "sgholapCZRTesting"
+		$vaultName = "sgholapZRSTestingVault"
+		$owner = "sgholap"
+		$AzureVMPolicyName = "AzureVMPolicy"
+		$AzureFilesPolicyName = "AzureFilesPolicy"
 
-	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
-	$schedulePolicy1 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
-    Assert-NotNull $schedulePolicy1
+		$azureVMSchedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		Assert-NotNull $azureVMSchedulePolicy
 
-	Assert-True {$schedulePolicy1.PSObject.Properties.Name -contains "HourlySchedule" -and $schedulePolicy1.PSObject.Properties.Name -contains "DailySchedule"}
+		$azureVMRetentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		Assert-NotNull $azureVMRetentionPolicy
 
-	$schedulePolicy2 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM  -PolicySubType Standard
-    Assert-NotNull $schedulePolicy2
+		$azureVMPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name $AzureVMPolicyName -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $azureVMRetentionPolicy -SchedulePolicy $azureVMSchedulePolicy -VaultId $vault.ID
 
-	Assert-True {$schedulePolicy2.PSObject.Properties.Name -contains "ScheduleRunDays" -and $schedulePolicy2.PSObject.Properties.Name -contains "ScheduleRunTimes"}
+		Assert-NotNull $azureVMPolicy
+		Assert-AreEqual $azureVMPolicy.Name $AzureVMPolicyName
+		# Default policy type for AzureVM should be Enhanced
+		Assert-AreEqual $azureVMPolicy.PolicySubType "Enhanced"
 
-	$schedulePolicy3 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -PolicySubType Enhanced
-    Assert-NotNull $schedulePolicy3
+		$azureFilesSchedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles 
+		Assert-NotNull $azureVMSchedulePolicy
 
-	Assert-True {$schedulePolicy3.PSObject.Properties.Name -contains "HourlySchedule" -and $schedulePolicy3.PSObject.Properties.Name -contains "DailySchedule"}
+		$azureFilesRetentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+		Assert-NotNull $azureVMRetentionPolicy
 
-	$schedulePolicy2 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
-    Assert-NotNull $schedulePolicy2
+		$azureFilesPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name $AzureFilesPolicyName -WorkloadType AzureFiles -RetentionPolicy $azureFilesRetentionPolicy -SchedulePolicy $azureFilesSchedulePolicy -VaultId $vault.ID
 
-	Assert-True {$schedulePolicy2.PSObject.Properties.Name -contains "ScheduleRunDays" -and $schedulePolicy2.PSObject.Properties.Name -contains "ScheduleRunTimes"}
+		Assert-NotNull $azureFilesPolicy
+		Assert-AreEqual $azureFilesPolicy.Name $AzureFilesPolicyName
+		# Default policy type for AzureFiles should be Standard
+		Assert-AreNotEqual $azureFilesPolicy.PolicySubType "Enhanced"
+    }
+	finally
+	{
+		# Cleanup		
+		# Delete policy
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $AzureVMPolicyName
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $AzureFilesPolicyName
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+	}
 }
