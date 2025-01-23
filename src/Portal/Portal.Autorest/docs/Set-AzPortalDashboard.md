@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Portal-help.xml
 Module Name: Az.Portal
 online version: https://learn.microsoft.com/powershell/module/az.portal/set-azportaldashboard
 schema: 2.0.0
@@ -13,8 +13,10 @@ Creates or updates a Dashboard.
 ## SYNTAX
 
 ```
-Set-AzPortalDashboard -Name <String> -ResourceGroupName <String> -DashboardPath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -DashboardPath <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +39,21 @@ Update a dashboard definition using a dashbaord template file.
 
 ## PARAMETERS
 
+### -Break
+{{ Fill Break Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DashboardPath
 The Path to an existing dashboard template.
 Dashboard templates may be downloaded from the portal.
@@ -55,7 +72,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -68,8 +84,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -HttpPipelineAppend
+{{ Fill HttpPipelineAppend Description }}
 
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+{{ Fill HttpPipelinePrepend Description }}
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
 
 ```yaml
 Type: System.String
@@ -83,8 +128,67 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+{{ Fill Proxy Description }}
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+{{ Fill ProxyCredential Description }}
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+{{ Fill ProxyUseDefaultCredentials Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
 
 ```yaml
 Type: System.String
@@ -99,7 +203,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 
 ```yaml
 Type: System.String
@@ -156,4 +259,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

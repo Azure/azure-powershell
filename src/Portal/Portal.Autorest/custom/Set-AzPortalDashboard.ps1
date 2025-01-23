@@ -114,7 +114,7 @@ begin {
             $content = (Get-content -Path $dashboardPath)
             $deserializedContent = [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.Dashboard]::FromJsonString($content)
             $PSBoundParameters.Remove('DashboardPath') | Out-Null
-            $PSBoundParameters.Add('Dashboard', $deserializedContent) | Out-Null
+            $PSBoundParameters.Add('Resource', $deserializedContent) | Out-Null
             $scriptCmd = {& $wrappedCmd @PSBoundParameters}
             $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
             $steppablePipeline.Begin($PSCmdlet)
