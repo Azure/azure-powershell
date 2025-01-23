@@ -347,6 +347,12 @@ function Test-AzureVMPolicy
 
 function Test-AzureVMEnhancedPolicyAsDefault
 {
+	$resourceGroupName = "sgholapCZRTesting"
+	$vaultName = "sgholapZRSTestingVault"
+	$owner = "sgholap"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
 	$schedulePolicy1 = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
     Assert-NotNull $schedulePolicy1
 
