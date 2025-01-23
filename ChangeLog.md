@@ -8,6 +8,9 @@
 * Added support for Python 2 runbooks in Az.Automation
 * Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
 
+#### Az.Portal
+* Updated Az.Portal to latest api v2022-12-01 [#27035]
+
 #### Az.Automation
 * Azure automation update management change to support the following new features :
     * Dynamic grouping
