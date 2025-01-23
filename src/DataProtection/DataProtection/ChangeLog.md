@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Help Doc of Get-AzAccessToken Usage in DataProtection
 
 ## Version 2.6.0
 * Upgraded nuget package to signed package.

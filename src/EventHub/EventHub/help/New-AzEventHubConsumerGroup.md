@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubConsumerGroup
 
 ## SYNOPSIS
-Create an Event Hubs consumer group as a nested resource within a Namespace.
+create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## SYNTAX
 
@@ -16,37 +16,37 @@ Create an Event Hubs consumer group as a nested resource within a Namespace.
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceInputObject <IEventHubIdentity>
- [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceInputObject <IEventHubIdentity>
- -Parameter <IConsumerGroup> [-DefaultProfile <PSObject>] [-WhatIf]
+ -Parameter <IConsumerGroup> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEventhubExpanded
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventhubInputObject <IEventHubIdentity> [-UserMetadata <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEventhub
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventhubInputObject <IEventHubIdentity> -Parameter <IConsumerGroup>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an Event Hubs consumer group as a nested resource within a Namespace.
+create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## EXAMPLES
 
@@ -173,6 +173,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
