@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-Create an EventHub schema group.
+create an EventHub schema group.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzEventHubSchemaGroup -Name <String> -NamespaceInputObject <IEventHubIdentit
 ```
 
 ## DESCRIPTION
-Create an EventHub schema group.
+create an EventHub schema group.
 
 ## EXAMPLES
 

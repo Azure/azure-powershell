@@ -7,8 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    [System.ComponentModel.TypeConverter(typeof(FailOverTypeConverter))]
-    public partial class FailOver
+    /// <summary>Properties of MessageTimestamp Description</summary>
+    [System.ComponentModel.TypeConverter(typeof(MessageTimestampDescriptionTypeConverter))]
+    public partial class MessageTimestampDescription
     {
 
         /// <summary>
@@ -62,37 +63,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.FailOver"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.MessageTimestampDescription"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOver" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOver DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new FailOver(content);
+            return new MessageTimestampDescription(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.FailOver"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.MessageTimestampDescription"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOver" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOver DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new FailOver(content);
+            return new MessageTimestampDescription(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.FailOver"
+        /// Creates a new instance of <see cref="MessageTimestampDescription" />, deserializing the content from a json string.
+        /// </summary>
+        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
+        /// <returns>an instance of the <see cref="MessageTimestampDescription" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.MessageTimestampDescription"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal FailOver(global::System.Collections.IDictionary content)
+        internal MessageTimestampDescription(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -101,27 +109,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
+            if (content.Contains("TimestampType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.FailOverPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PrimaryLocation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).PrimaryLocation = (string) content.GetValueForProperty("PrimaryLocation",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).PrimaryLocation, global::System.Convert.ToString);
-            }
-            if (content.Contains("Force"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).Force = (bool?) content.GetValueForProperty("Force",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).Force, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescriptionInternal)this).TimestampType = (string) content.GetValueForProperty("TimestampType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescriptionInternal)this).TimestampType, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.FailOver"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.MessageTimestampDescription"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal FailOver(global::System.Management.Automation.PSObject content)
+        internal MessageTimestampDescription(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -130,27 +130,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
+            if (content.Contains("TimestampType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.FailOverPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PrimaryLocation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).PrimaryLocation = (string) content.GetValueForProperty("PrimaryLocation",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).PrimaryLocation, global::System.Convert.ToString);
-            }
-            if (content.Contains("Force"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).Force = (bool?) content.GetValueForProperty("Force",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal)this).Force, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescriptionInternal)this).TimestampType = (string) content.GetValueForProperty("TimestampType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescriptionInternal)this).TimestampType, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="FailOver" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="FailOver" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOver FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -169,8 +154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    [System.ComponentModel.TypeConverter(typeof(FailOverTypeConverter))]
-    public partial interface IFailOver
+    /// Properties of MessageTimestamp Description
+    [System.ComponentModel.TypeConverter(typeof(MessageTimestampDescriptionTypeConverter))]
+    public partial interface IMessageTimestampDescription
 
     {
 

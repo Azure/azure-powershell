@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>Properties to configure retention settings for the eventhub</summary>
-    public partial class RetentionDescription
+    /// <summary>Properties of MessageTimestamp Description</summary>
+    public partial class MessageTimestampDescription
     {
 
         /// <summary>
@@ -54,22 +54,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescription.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescription.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescription FromJson(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription FromJson(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject json ? new RetentionDescription(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject json ? new MessageTimestampDescription(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject into a new instance of <see cref="RetentionDescription" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject into a new instance of <see cref="MessageTimestampDescription" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal RetentionDescription(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject json)
+        internal MessageTimestampDescription(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -77,21 +77,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 return;
             }
-            {_cleanupPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("cleanupPolicy"), out var __jsonCleanupPolicy) ? (string)__jsonCleanupPolicy : (string)_cleanupPolicy;}
-            {_retentionTimeInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("retentionTimeInHours"), out var __jsonRetentionTimeInHours) ? (long?)__jsonRetentionTimeInHours : _retentionTimeInHour;}
-            {_minCompactionLagInMin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("minCompactionLagInMins"), out var __jsonMinCompactionLagInMins) ? (long?)__jsonMinCompactionLagInMins : _minCompactionLagInMin;}
-            {_tombstoneRetentionTimeInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("tombstoneRetentionTimeInHours"), out var __jsonTombstoneRetentionTimeInHours) ? (int?)__jsonTombstoneRetentionTimeInHours : _tombstoneRetentionTimeInHour;}
+            {_timestampType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("timestampType"), out var __jsonTimestampType) ? (string)__jsonTimestampType : (string)_timestampType;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="RetentionDescription" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="MessageTimestampDescription" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="RetentionDescription" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="MessageTimestampDescription" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode serializationMode)
         {
@@ -103,10 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._cleanupPolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._cleanupPolicy.ToString()) : null, "cleanupPolicy" ,container.Add );
-            AddIf( null != this._retentionTimeInHour ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((long)this._retentionTimeInHour) : null, "retentionTimeInHours" ,container.Add );
-            AddIf( null != this._minCompactionLagInMin ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((long)this._minCompactionLagInMin) : null, "minCompactionLagInMins" ,container.Add );
-            AddIf( null != this._tombstoneRetentionTimeInHour ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((int)this._tombstoneRetentionTimeInHour) : null, "tombstoneRetentionTimeInHours" ,container.Add );
+            AddIf( null != (((object)this._timestampType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._timestampType.ToString()) : null, "timestampType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
