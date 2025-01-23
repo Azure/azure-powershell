@@ -67,12 +67,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             {_captureDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject>("captureDescription"), out var __jsonCaptureDescription) ? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.CaptureDescription.FromJson(__jsonCaptureDescription) : _captureDescription;}
             {_retentionDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject>("retentionDescription"), out var __jsonRetentionDescription) ? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.RetentionDescription.FromJson(__jsonRetentionDescription) : _retentionDescription;}
+            {_messageTimestampDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject>("messageTimestampDescription"), out var __jsonMessageTimestampDescription) ? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.MessageTimestampDescription.FromJson(__jsonMessageTimestampDescription) : _messageTimestampDescription;}
             {_partitionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonArray>("partitionIds"), out var __jsonPartitionIds) ? If( __jsonPartitionIds as Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _partitionId;}
             {_createdAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("createdAt"), out var __jsonCreatedAt) ? global::System.DateTime.TryParse((string)__jsonCreatedAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedAtValue) ? __jsonCreatedAtValue : _createdAt : _createdAt;}
             {_updatedAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("updatedAt"), out var __jsonUpdatedAt) ? global::System.DateTime.TryParse((string)__jsonUpdatedAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonUpdatedAtValue) ? __jsonUpdatedAtValue : _updatedAt : _updatedAt;}
             {_messageRetentionInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("messageRetentionInDays"), out var __jsonMessageRetentionInDays) ? (long?)__jsonMessageRetentionInDays : _messageRetentionInDay;}
             {_partitionCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("partitionCount"), out var __jsonPartitionCount) ? (long?)__jsonPartitionCount : _partitionCount;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
+            {_identifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("identifier"), out var __jsonIdentifier) ? (string)__jsonIdentifier : (string)_identifier;}
+            {_userMetadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("userMetadata"), out var __jsonUserMetadata) ? (string)__jsonUserMetadata : (string)_userMetadata;}
             AfterFromJson(json);
         }
 
@@ -109,6 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             AddIf( null != this._captureDescription ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._captureDescription.ToJson(null,serializationMode) : null, "captureDescription" ,container.Add );
             AddIf( null != this._retentionDescription ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._retentionDescription.ToJson(null,serializationMode) : null, "retentionDescription" ,container.Add );
+            AddIf( null != this._messageTimestampDescription ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._messageTimestampDescription.ToJson(null,serializationMode) : null, "messageTimestampDescription" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._partitionId)
@@ -132,6 +136,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             AddIf( null != this._messageRetentionInDay ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((long)this._messageRetentionInDay) : null, "messageRetentionInDays" ,container.Add );
             AddIf( null != this._partitionCount ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((long)this._partitionCount) : null, "partitionCount" ,container.Add );
             AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._identifier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._identifier.ToString()) : null, "identifier" ,container.Add );
+            }
+            AddIf( null != (((object)this._userMetadata)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._userMetadata.ToString()) : null, "userMetadata" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
