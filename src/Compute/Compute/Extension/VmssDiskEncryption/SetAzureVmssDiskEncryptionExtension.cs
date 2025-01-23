@@ -327,7 +327,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 && (this.Force.IsPresent ||
                 this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))) // Change this.
                 {
-
                     VerifyParameters();
 
                     VirtualMachineScaleSet vmssResponse = this.VirtualMachineScaleSetClient.Get(
