@@ -42,16 +42,18 @@ The last command creates a backup protection policy with the updated schedule.
 ### Example 2: Set the backup time
 ```powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -PolicySubType Standard
+$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 $SchPol.ScheduleRunTimes.clear()
-$DT = Get-Date
+$DT = Get-Date -Date "2025-01-24 14:30"
 $SchPol.ScheduleRunTimes.Add($DT.ToUniversalTime())
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
 ```
 
 The first command gets the schedule policy object, and then stores it in the $SchPol variable.
-The second command removes all scheduled run times from $SchPol.
-The third command gets the current date and time, and then stores it in the $DT variable.
-The fourth command replaces the scheduled run times with the current time.
+The second command gets the retention policy object, and then stores it in the $RetPol variable.
+The third command removes all scheduled run times from $SchPol.
+The fourth command gets the date and time, and then stores it in the $DT variable.
+The fifth command replaces the scheduled run times with the time in fourth command.
 You can only backup AzureVM once per day, so to reset the backup time you must replace the original schedule.
 The last command creates a backup protection policy using the new schedule.
 
