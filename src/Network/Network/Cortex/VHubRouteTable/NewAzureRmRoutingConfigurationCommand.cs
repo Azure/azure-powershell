@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Should we propagate static routes in the spoke vnet? Default is true.")]
+        public bool? PropagateStaticRoutes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The hub inbound route map in this routing configuration.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs/routeMaps")]
         public string InboundRouteMap { get; set; }
@@ -112,7 +117,8 @@ namespace Microsoft.Azure.Commands.Network
 
             var staticRoutesConfig = new PSStaticRoutesConfig
             {
-                VnetLocalRouteOverrideCriteria = string.IsNullOrEmpty(VnetLocalRouteOverrideCriteria) ? "Contains" : VnetLocalRouteOverrideCriteria
+                VnetLocalRouteOverrideCriteria = string.IsNullOrEmpty(VnetLocalRouteOverrideCriteria) ? "Contains" : VnetLocalRouteOverrideCriteria,
+                PropagateStaticRoutes = this.PropagateStaticRoutes ?? true
             };
 
             // Resolve the provided Associated RouteTable
