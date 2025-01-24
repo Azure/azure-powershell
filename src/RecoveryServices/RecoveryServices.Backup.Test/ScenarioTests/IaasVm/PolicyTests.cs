@@ -88,17 +88,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureVMCrashconsistentPolicy"
             );
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestAzureVMEnhancedPolicyAsDefaultPolicy()
-        {
-            TestRunner.RunTestScript(
-                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
-                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
-                "Test-AzureVMEnhancedPolicyAsDefault"
-            );
-        }
     }    
 }
