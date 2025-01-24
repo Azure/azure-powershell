@@ -15,13 +15,13 @@ Updates an existing Dashboard.
 ### UpdateExpanded (Default)
 ```
 Update-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Lens <IDashboardLens[]>] [-Metadata <IAny>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-Lens <IDashboardLens[]>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzPortalDashboard -InputObject <IPortalIdentity> [-Lens <IDashboardLens[]>] [-Metadata <IAny>]
+Update-AzPortalDashboard -InputObject <IPortalIdentity> [-Lens <IDashboardLens[]>] [-Metadata <Hashtable>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The dashboard metadata.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

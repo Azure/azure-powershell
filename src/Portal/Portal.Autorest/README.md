@@ -81,5 +81,13 @@ directive:
           "additionalProperties": {"type": "object"},
           "description": "The dashboard metadata."
       }
+  - from: swagger-document 
+    where: $.definitions.DashboardProperties.properties.metadata
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": {"type": "object"},
+          "description": "The dashboard metadata."
+      }
 
 ```
