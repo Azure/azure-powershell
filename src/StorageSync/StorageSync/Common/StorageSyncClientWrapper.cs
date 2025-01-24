@@ -289,16 +289,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                         PrincipalId = serverPrincipalId,
                         RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
                     };
-                    try
+
+                    int retry = 4;
+                    int waitTime = 30 * 1000;
+
+                    while (roleAssignment == null && retry-- > 0)
                     {
-                        roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
-                    }
-                    catch (ErrorResponseException ex) when (ex.Body?.Error?.Code == PrincipalNotFound)
-                    {
-                        VerboseLogger.Invoke($"Retrying to create role assignment for Service Principal as it failed with exception {ex.Message} {ex.Body.Error.Message}. Will retry.");
+                        System.Threading.Thread.Sleep(waitTime);
+                        try
+                        {
+                            roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
+                        }
+                        catch (ErrorResponseException ex) when (ex.Body?.Error?.Code == PrincipalNotFound)
+                        {
+                            VerboseLogger.Invoke($"Failed to create role assignment for Service Principal with exception {ex.Message} {ex.Body.Error.Message}. Retrying in {waitTime} ms.");
+                            roleAssignment = null;
+                        }
                     }
                     StorageSyncResourceManager.Wait();
-
                 }
 
                 return roleAssignment;
