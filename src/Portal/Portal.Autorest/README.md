@@ -73,6 +73,13 @@ directive:
       subject: Dashboard
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
-      
+  - from: swagger-document 
+    where: $.definitions.DashboardPropertiesWithProvisioningState.properties.metadata
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": {"type": "object"},
+          "description": "The dashboard metadata."
+      }
 
 ```

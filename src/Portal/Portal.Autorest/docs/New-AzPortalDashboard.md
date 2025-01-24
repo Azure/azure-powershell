@@ -15,7 +15,7 @@ Creates or updates a Dashboard.
 ### CreateExpanded (Default)
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-Lens <IDashboardLens[]>] [-Metadata <IAny>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-Lens <IDashboardLens[]>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The dashboard metadata.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
