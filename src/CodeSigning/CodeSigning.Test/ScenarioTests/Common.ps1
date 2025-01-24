@@ -128,3 +128,12 @@ function Clean-ResourceGroup($rgname)
         Remove-AzResourceGroup -Name $rgname -Force
     }
 }
+
+<#
+.SYNOPSIS
+Gets random resource name
+#>
+function getRandomItemName {
+    param([string] $prefix = 'ps')
+    return $prefix + [guid]::NewGuid().ToString('N').Substring(0,10);
+}
