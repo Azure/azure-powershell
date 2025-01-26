@@ -1,0 +1,349 @@
+{
+  "AzHybridConnectivityPublicCloudConnector+[NoContext]+Create, Get, Update, and Remove a Public Cloud Connector+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01",
+      "Content": "{\n  \"tags\": {\n    \"Purpose\": \"Testing\"\n  },\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"awsCloudProfile\": {\n      \"accountId\": \"123456789012\"\n    },\n    \"hostType\": \"AWS\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "179" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1d0475ee-0000-0100-0000-67890bde0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "88e54b81-47d3-4a46-999c-e8a99f164529" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B5C6C8808B244591A9E6D60595503AA4 Ref B: SYD03EDGE1016 Ref C: 2025-01-16T13:38:35Z" ],
+        "x-ms-request-id": [ "907f4a0a-99c6-4696-8573-fef84214312e" ],
+        "x-ms-correlation-request-id": [ "b0ec4c75-0b37-4475-a84b-21729f2f868c" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250116T133839Z:b0ec4c75-0b37-4475-a84b-21729f2f868c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 16 Jan 2025 13:38:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "769" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector\",\"name\":\"yashTestPublicCloudConnector\",\"type\":\"microsoft.hybridconnectivity/publiccloudconnectors\",\"location\":\"eastus\",\"tags\":{\"Purpose\":\"Testing\"},\"systemData\":{\"createdBy\":\"patilyash@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-01-16T13:38:37.2373718Z\",\"lastModifiedBy\":\"patilyash@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-01-16T13:38:37.2373718Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostType\":\"AWS\",\"connectorPrimaryIdentifier\":\"f0b793d0-2247-4883-8d8d-60155b3b67bd\",\"awsCloudProfile\":{\"accountId\":\"123456789012\",\"isOrganizationalAccount\":false}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHybridConnectivityPublicCloudConnector+[NoContext]+Create, Get, Update, and Remove a Public Cloud Connector+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "8a372cde-dda3-4d90-b08f-f36fac25358c" ],
+        "CommandName": [ "New-AzHybridConnectivityPublicCloudConnector" ],
+        "FullCommandName": [ "New-AzHybridConnectivityPublicCloudConnector_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.HybridConnectivity/0.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1d0475ee-0000-0100-0000-67890bde0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "cf7e1b10-c2d8-4009-8e7f-fd10958a8f59" ],
+        "x-ms-correlation-request-id": [ "edc51ef0-330a-4cff-8705-dcce76ce913e" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250116T133910Z:edc51ef0-330a-4cff-8705-dcce76ce913e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DFA046FD2FE84E45B9549026DA50C284 Ref B: SYD03EDGE1016 Ref C: 2025-01-16T13:39:09Z" ],
+        "Date": [ "Thu, 16 Jan 2025 13:39:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "769" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector\",\"name\":\"yashTestPublicCloudConnector\",\"type\":\"microsoft.hybridconnectivity/publiccloudconnectors\",\"location\":\"eastus\",\"tags\":{\"Purpose\":\"Testing\"},\"systemData\":{\"createdBy\":\"patilyash@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-01-16T13:38:37.2373718Z\",\"lastModifiedBy\":\"patilyash@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-01-16T13:38:37.2373718Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostType\":\"AWS\",\"connectorPrimaryIdentifier\":\"f0b793d0-2247-4883-8d8d-60155b3b67bd\",\"awsCloudProfile\":{\"accountId\":\"123456789012\",\"isOrganizationalAccount\":false}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHybridConnectivityPublicCloudConnector+[NoContext]+Create, Get, Update, and Remove a Public Cloud Connector+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "8a372cde-dda3-4d90-b08f-f36fac25358c" ],
+        "CommandName": [ "New-AzHybridConnectivityPublicCloudConnector" ],
+        "FullCommandName": [ "New-AzHybridConnectivityPublicCloudConnector_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.HybridConnectivity/0.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1d0475ee-0000-0100-0000-67890bde0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ced8bd14-31ec-422e-b9f5-f5d1b7b8b3c5" ],
+        "x-ms-correlation-request-id": [ "6b3af74b-b228-4875-9b19-603145c05bf2" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250116T133911Z:6b3af74b-b228-4875-9b19-603145c05bf2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CFAC34556DAC4D2590B986FF3D8389BE Ref B: SYD03EDGE1016 Ref C: 2025-01-16T13:39:10Z" ],
+        "Date": [ "Thu, 16 Jan 2025 13:39:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "769" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector\",\"name\":\"yashTestPublicCloudConnector\",\"type\":\"microsoft.hybridconnectivity/publiccloudconnectors\",\"location\":\"eastus\",\"tags\":{\"Purpose\":\"Testing\"},\"systemData\":{\"createdBy\":\"patilyash@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-01-16T13:38:37.2373718Z\",\"lastModifiedBy\":\"patilyash@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-01-16T13:38:37.2373718Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostType\":\"AWS\",\"connectorPrimaryIdentifier\":\"f0b793d0-2247-4883-8d8d-60155b3b67bd\",\"awsCloudProfile\":{\"accountId\":\"123456789012\",\"isOrganizationalAccount\":false}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHybridConnectivityPublicCloudConnector+[NoContext]+Create, Get, Update, and Remove a Public Cloud Connector+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "c802dee3-2bfe-4789-9eeb-f286d60d2bd7" ],
+        "CommandName": [ "Get-AzHybridConnectivityPublicCloudConnector" ],
+        "FullCommandName": [ "Get-AzHybridConnectivityPublicCloudConnector_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.HybridConnectivity/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1d0475ee-0000-0100-0000-67890bde0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2f5e2918-15a1-4195-8856-6253ee5d8b03" ],
+        "x-ms-correlation-request-id": [ "263f7524-687c-4154-81f3-04ebd159d04a" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250116T133912Z:263f7524-687c-4154-81f3-04ebd159d04a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 97CBE04728E1432E8ABCEE40733CC48F Ref B: SYD03EDGE1016 Ref C: 2025-01-16T13:39:11Z" ],
+        "Date": [ "Thu, 16 Jan 2025 13:39:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "769" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector\",\"name\":\"yashTestPublicCloudConnector\",\"type\":\"microsoft.hybridconnectivity/publiccloudconnectors\",\"location\":\"eastus\",\"tags\":{\"Purpose\":\"Testing\"},\"systemData\":{\"createdBy\":\"patilyash@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-01-16T13:38:37.2373718Z\",\"lastModifiedBy\":\"patilyash@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-01-16T13:38:37.2373718Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostType\":\"AWS\",\"connectorPrimaryIdentifier\":\"f0b793d0-2247-4883-8d8d-60155b3b67bd\",\"awsCloudProfile\":{\"accountId\":\"123456789012\",\"isOrganizationalAccount\":false}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHybridConnectivityPublicCloudConnector+[NoContext]+Create, Get, Update, and Remove a Public Cloud Connector+$PATCH+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01+5": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01",
+      "Content": "{\n  \"tags\": {\n    \"Purpose\": \"Testing\",\n    \"Environment\": \"Production\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "77" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1e049205-0000-0100-0000-67890c020000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2bca2754-c7f2-4926-98c0-f745801d7216" ],
+        "x-ms-correlation-request-id": [ "f090b605-5730-4a5c-ba49-b74f8db96091" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250116T133916Z:f090b605-5730-4a5c-ba49-b74f8db96091" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D57C0074DA16483AB92CE1B8455A7E46 Ref B: SYD03EDGE1016 Ref C: 2025-01-16T13:39:12Z" ],
+        "Date": [ "Thu, 16 Jan 2025 13:39:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "796" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector\",\"name\":\"yashTestPublicCloudConnector\",\"type\":\"microsoft.hybridconnectivity/publiccloudconnectors\",\"location\":\"eastus\",\"tags\":{\"Purpose\":\"Testing\",\"Environment\":\"Production\"},\"systemData\":{\"createdBy\":\"patilyash@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-01-16T13:38:37.2373718Z\",\"lastModifiedBy\":\"patilyash@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-01-16T13:39:14.1638618Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostType\":\"AWS\",\"connectorPrimaryIdentifier\":\"f0b793d0-2247-4883-8d8d-60155b3b67bd\",\"awsCloudProfile\":{\"accountId\":\"123456789012\",\"isOrganizationalAccount\":false}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHybridConnectivityPublicCloudConnector+[NoContext]+Create, Get, Update, and Remove a Public Cloud Connector+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "d6bde267-6e44-4464-9299-171c301a9e5e" ],
+        "CommandName": [ "Get-AzHybridConnectivityPublicCloudConnector" ],
+        "FullCommandName": [ "Get-AzHybridConnectivityPublicCloudConnector_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.HybridConnectivity/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1e049205-0000-0100-0000-67890c020000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8b60b61c-95cd-448a-a097-0d55e7458006" ],
+        "x-ms-correlation-request-id": [ "b6ab4012-c2af-4d2d-941a-21787b93c632" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250116T133916Z:b6ab4012-c2af-4d2d-941a-21787b93c632" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FB31C2E0B3F4495AB455C7D3D11233C0 Ref B: SYD03EDGE1016 Ref C: 2025-01-16T13:39:16Z" ],
+        "Date": [ "Thu, 16 Jan 2025 13:39:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "796" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector\",\"name\":\"yashTestPublicCloudConnector\",\"type\":\"microsoft.hybridconnectivity/publiccloudconnectors\",\"location\":\"eastus\",\"tags\":{\"Purpose\":\"Testing\",\"Environment\":\"Production\"},\"systemData\":{\"createdBy\":\"patilyash@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-01-16T13:38:37.2373718Z\",\"lastModifiedBy\":\"patilyash@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-01-16T13:39:14.1638618Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostType\":\"AWS\",\"connectorPrimaryIdentifier\":\"f0b793d0-2247-4883-8d8d-60155b3b67bd\",\"awsCloudProfile\":{\"accountId\":\"123456789012\",\"isOrganizationalAccount\":false}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzHybridConnectivityPublicCloudConnector+[NoContext]+Create, Get, Update, and Remove a Public Cloud Connector+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01+7": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "5b6abfc5-c0b6-4052-8208-657fddfe4a3d" ],
+        "CommandName": [ "Remove-AzHybridConnectivityPublicCloudConnector" ],
+        "FullCommandName": [ "Remove-AzHybridConnectivityPublicCloudConnector_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.HybridConnectivity/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "74090417-2ade-4433-828e-714f5c926c8b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 407166AAEB5B4D6AA8056EE3F76C6508 Ref B: SYD03EDGE1016 Ref C: 2025-01-16T13:39:16Z" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "ee23cc92-4c6c-453b-ab23-3439589180b0" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250116T133922Z:ee23cc92-4c6c-453b-ab23-3439589180b0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 16 Jan 2025 13:39:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzHybridConnectivityPublicCloudConnector+[NoContext]+Create, Get, Update, and Remove a Public Cloud Connector+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yash-rg/providers/Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector?api-version=2024-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "32ac5b70-9b18-47ec-85cd-728802401a5a" ],
+        "CommandName": [ "Get-AzHybridConnectivityPublicCloudConnector" ],
+        "FullCommandName": [ "Get-AzHybridConnectivityPublicCloudConnector_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.HybridConnectivity/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "289da50a-4060-48ab-ac6c-96ee83db5f0e" ],
+        "x-ms-correlation-request-id": [ "289da50a-4060-48ab-ac6c-96ee83db5f0e" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250116T133922Z:289da50a-4060-48ab-ac6c-96ee83db5f0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F18720FDC1A44E77A59A23D44DFF41C5 Ref B: SYD03EDGE1016 Ref C: 2025-01-16T13:39:22Z" ],
+        "Date": [ "Thu, 16 Jan 2025 13:39:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "258" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridConnectivity/publicCloudConnectors/yashTestPublicCloudConnector\u0027 under resource group \u0027yash-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}
