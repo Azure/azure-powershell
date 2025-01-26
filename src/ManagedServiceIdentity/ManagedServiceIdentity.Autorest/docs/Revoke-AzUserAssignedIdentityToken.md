@@ -1,59 +1,55 @@
 ---
 external help file:
 Module Name: Az.ManagedServiceIdentity
-online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/remove-azfederatedidentitycredential
+online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/revoke-azuserassignedidentitytoken
 schema: 2.0.0
 ---
 
-# Remove-AzFederatedIdentityCredential
+# Revoke-AzUserAssignedIdentityToken
 
 ## SYNOPSIS
-Deletes the federated identity credential.
+Revoke all tokens issued in the past for a specified user assigned identity.
 
 ## SYNTAX
 
-### Delete (Default)
+### Revoke (Default)
 ```
-Remove-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
+Revoke-AzUserAssignedIdentityToken -ResourceGroupName <String> -RevokeTokenResourceName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Delete2
+### RevokeViaIdentity
 ```
-Remove-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzFederatedIdentityCredential -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity2
-```
-Remove-AzFederatedIdentityCredential -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
+Revoke-AzUserAssignedIdentityToken -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the federated identity credential.
+Revoke all tokens issued in the past for a specified user assigned identity.
 
 ## EXAMPLES
 
-### Example 1: Delete federated identity credential
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01
+{{ Add code here }}
 ```
 
-This command deletes a federated identity credential.
-
-### Example 2: Delete federated identity credential by pipeline
-```powershell
-Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01 | Remove-AzFederatedIdentityCredential
+```output
+{{ Add output here }}
 ```
 
-This command deletes a federated identity credential by pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -73,49 +69,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityName
-The name of the identity resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, Delete2
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
-Parameter Sets: DeleteViaIdentity, DeleteViaIdentity2
+Parameter Sets: RevokeViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the federated identity credential resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, Delete2
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -140,7 +106,22 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete2
+Parameter Sets: Revoke
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RevokeTokenResourceName
+The name of the identity resource for revoking token
+
+```yaml
+Type: System.String
+Parameter Sets: Revoke
 Aliases:
 
 Required: True
@@ -155,7 +136,7 @@ The Id of the Subscription to which the identity belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete2
+Parameter Sets: Revoke
 Aliases:
 
 Required: False
@@ -208,10 +189,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-Remove-AzFederatedIdentityCredentials
 
 ## RELATED LINKS
 
