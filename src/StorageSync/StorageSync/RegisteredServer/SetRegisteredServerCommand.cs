@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                                 try
                                 {
                                     // if we found a matching ServerEndpoint for this server, create a role assignment for this file share/cep
-                                    if (serverEndpoint.ServerResourceId.Equals(serverResourceId))
+                                    if (serverEndpoint.ServerResourceId.Equals(serverResourceId, StringComparison.OrdinalIgnoreCase))
                                     {
                                         // Identity, RoleDef, Scope
                                         var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
