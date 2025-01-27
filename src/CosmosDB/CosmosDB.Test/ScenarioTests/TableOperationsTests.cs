@@ -64,5 +64,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-TableInAccountRestoreOperationsCmdlets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTableRoleCmdlets()
+        {
+            TestRunner.RunTestScript("Test-TableRoleCmdlets");
+        }
     }
 }

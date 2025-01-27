@@ -2561,5 +2561,1107 @@ namespace Microsoft.Azure.Management.CosmosDB
 
 
         }
+
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role Definition
+        /// with the given Id.
+        /// </summary>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionGetResults>> GetTableRoleDefinitionWithHttpMessagesAsync(string roleDefinitionId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+
+            if (roleDefinitionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "roleDefinitionId");
+            }
+
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (accountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("roleDefinitionId", roleDefinitionId);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "GetTableRoleDefinition", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}").ToString();
+            _url = _url.Replace("{roleDefinitionId}", System.Uri.EscapeDataString(roleDefinitionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach (var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionGetResults>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<TableRoleDefinitionGetResults>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='createUpdateTableRoleDefinitionParameters'>
+        /// The properties required to create or update a Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionGetResults>> CreateUpdateTableRoleDefinitionWithHttpMessagesAsync(string roleDefinitionId, string resourceGroupName, string accountName, TableRoleDefinitionCreateUpdateParameters createUpdateTableRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // Send Request
+            Microsoft.Rest.Azure.AzureOperationResponse<TableRoleDefinitionGetResults> _response = await BeginCreateUpdateTableRoleDefinitionWithHttpMessagesAsync(roleDefinitionId, resourceGroupName, accountName, createUpdateTableRoleDefinitionParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteTableRoleDefinitionWithHttpMessagesAsync(string roleDefinitionId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // Send Request
+            Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteTableRoleDefinitionWithHttpMessagesAsync(roleDefinitionId, resourceGroupName, accountName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<TableRoleDefinitionGetResults>>> ListTableRoleDefinitionsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (accountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListTableRoleDefinitions", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach (var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<TableRoleDefinitionGetResults>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<TableRoleDefinitionGetResults>>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role Assignment
+        /// with the given Id.
+        /// </summary>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentGetResults>> GetTableRoleAssignmentWithHttpMessagesAsync(string roleAssignmentId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+
+            if (roleAssignmentId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "roleAssignmentId");
+            }
+
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (accountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("roleAssignmentId", roleAssignmentId);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "GetTableRoleAssignment", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}").ToString();
+            _url = _url.Replace("{roleAssignmentId}", System.Uri.EscapeDataString(roleAssignmentId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach (var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentGetResults>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<TableRoleAssignmentGetResults>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
+        /// </summary>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='createUpdateTableRoleAssignmentParameters'>
+        /// The properties required to create or update a Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentGetResults>> CreateUpdateTableRoleAssignmentWithHttpMessagesAsync(string roleAssignmentId, string resourceGroupName, string accountName, TableRoleAssignmentCreateUpdateParameters createUpdateTableRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // Send Request
+            Microsoft.Rest.Azure.AzureOperationResponse<TableRoleAssignmentGetResults> _response = await BeginCreateUpdateTableRoleAssignmentWithHttpMessagesAsync(roleAssignmentId, resourceGroupName, accountName, createUpdateTableRoleAssignmentParameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
+        /// </summary>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteTableRoleAssignmentWithHttpMessagesAsync(string roleAssignmentId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // Send Request
+            Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteTableRoleAssignmentWithHttpMessagesAsync(roleAssignmentId, resourceGroupName, accountName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<TableRoleAssignmentGetResults>>> ListTableRoleAssignmentsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (accountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 50)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 50);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+(-[a-z0-9]+)*"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+(-[a-z0-9]+)*");
+                }
+            }
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListTableRoleAssignments", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach (var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<TableRoleAssignmentGetResults>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<TableRoleAssignmentGetResults>>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
     }
 }
