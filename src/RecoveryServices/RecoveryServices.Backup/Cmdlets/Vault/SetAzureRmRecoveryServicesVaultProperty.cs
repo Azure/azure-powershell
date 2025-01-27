@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         param.Properties.SoftDeleteFeatureState = ((SoftDeleteFeatureState != null) && SoftDeleteFeatureState.ToLower() == "alwayson") ? "AlwaysON" : ((SoftDeleteFeatureState != null) ? SoftDeleteFeatureState + "d" : currentConfig.Properties.SoftDeleteFeatureState);
 
-                        param.Properties.SoftDeleteRetentionPeriodInDays = SoftDeleteRetentionPeriodInDays ?? currentConfig.Properties.SoftDeleteRetentionPeriodInDays; // to: Nov24 - should we get from vault API / MUA angle ?
+                        param.Properties.SoftDeleteRetentionPeriodInDays = SoftDeleteRetentionPeriodInDays ?? currentConfig.Properties.SoftDeleteRetentionPeriodInDays; // chck - should we get from vault API / MUA angle ?
 
                         if(SoftDeleteFeatureState !=null && SoftDeleteFeatureState.ToLower() == "alwayson")
                         {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         bool isMUAProtected = checkMUAForSoftDelete(currentConfig, param);
 
-                        BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param, Token, isMUAProtected); // todo: Nov24 - should call vault API ?
+                        BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param, Token, isMUAProtected); // chck - should call vault API ?
                         WriteObject(result.Properties);
                     }
                     else if (EncryptionKeyId != null)
