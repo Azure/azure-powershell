@@ -29,7 +29,7 @@ function Test-AzureVmWorkloadUnDeleteContainer
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
 		# get soft deleted container 
-		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | where-object { $_.Name -match $containerName}
+		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | Where-Object { $_.Name -match $containerName}
 
 		# verify isDeferredDelete - currently not supported
 
@@ -47,7 +47,7 @@ function Test-AzureVmWorkloadUnDeleteContainer
 	{						
 		# soft delete container
 		Unregister-AzRecoveryServicesBackupContainer -Container $reregisteredContainer -VaultId $vault.ID -Force -Confirm:$false
-		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | where-object { $_.Name -match $containerName}
+		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | Where-Object { $_.Name -match $containerName}
 
 		Assert-True {$container.Status -eq "SoftDeleted"}
 	}
