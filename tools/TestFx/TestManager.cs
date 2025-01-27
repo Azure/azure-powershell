@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
         public ITestRunner Build()
         {
-            SetupSessionAndProfile();
+            SetupAzureSession();
             SetupMockServer();
             Helper.SetupModules(AzureModule.AzureResourceManager, BuildModulesList());
             return this;
@@ -290,11 +290,9 @@ namespace Microsoft.Azure.Commands.TestFx
             return allModules.ToArray();
         }
 
-        protected void SetupSessionAndProfile()
+        protected void SetupAzureSession()
         {
             AzureSessionInitializer.InitializeAzureSession();
-            AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             if (!(AzureSession.Instance?.DataStore is MemoryDataStore))
             {
                 AzureSession.Instance.DataStore = new MemoryDataStore();

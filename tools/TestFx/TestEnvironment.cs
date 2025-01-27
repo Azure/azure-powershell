@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 GraphUri = new Uri(ConnectionString.GetValue(ConnectionStringKeys.GraphUriKey));
             }
 
-            SetupTokenDictionary();
+            //SetupTokenDictionary();
         }
 
         private void InitTestEndPoints()

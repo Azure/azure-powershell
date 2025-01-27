@@ -14,11 +14,15 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -110,25 +114,6 @@ namespace Microsoft.Azure.Commands.TestFx
             module = GetModuleManifest(RmDirectory, "Az.KeyVault");
             LogIfNotNull($"KeyVault Module path: {module}");
             RMKeyVaultModule = module;
-
-            TestExecutionHelpers.SetUpSessionAndProfile();
-            IDataStore datastore = new MemoryDataStore();
-            if (AzureSession.Instance.DataStore != null && (AzureSession.Instance.DataStore is MemoryDataStore))
-            {
-                datastore = AzureSession.Instance.DataStore;
-            }
-
-            AzureSession.Instance.DataStore = datastore;
-            var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
-            rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
-            rmprofile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.EnvironmentTable["foo"], new AzureTenant());
-            rmprofile.DefaultContext.Subscription.SetEnvironment("foo");
-            if (AzureRmProfileProvider.Instance.Profile == null)
-            {
-                AzureRmProfileProvider.Instance.Profile = rmprofile;
-            }
-
-            AzureSession.Instance.DataStore = datastore;
 
             if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName, "testcredentials.json")))
             {
@@ -381,8 +366,6 @@ namespace Microsoft.Azure.Commands.TestFx
                 throw new NotSupportedException("RDFE environment is not supported in .Net Core");
             }
 
-            SetAuthenticationFactory(currentEnvironment);
-
             AzureEnvironment testEnvironment = new AzureEnvironment
             {
                 Name = TestFxEnvironmentName,
@@ -442,21 +425,6 @@ namespace Microsoft.Azure.Commands.TestFx
             testAccount.SetTenants(currentEnvironment.TenantId);
 
             AzureRmProfileProvider.Instance.Profile.DefaultContext = new AzureContext(testSubscription, testAccount, testEnvironment, testTenant);
-        }
-
-        private void SetAuthenticationFactory(TestEnvironment environment)
-        {
-            if (environment.TokenInfo.ContainsKey(TokenAudience.Management))
-            {
-                var httpMessage = new HttpRequestMessage();
-                environment.TokenInfo[TokenAudience.Management]
-                    .ProcessHttpRequestAsync(httpMessage, CancellationToken.None)
-                    .ConfigureAwait(false)
-                    .GetAwaiter()
-                    .GetResult();
-
-                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(environment.UserId, httpMessage.Headers.Authorization.Parameter);
-            }
         }
 
         public void SetupModules(AzureModule mode, params string[] modules)

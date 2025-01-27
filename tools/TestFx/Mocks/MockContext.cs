@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Commands.TestFx.DelegatingHandlers;
 using Microsoft.Azure.Commands.TestFx.Recorder;
@@ -102,14 +104,12 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <returns></returns>
         public T GetServiceClient<T>(TestEnvironment currentEnvironment, bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
         {
-            if (!currentEnvironment.TokenInfo.ContainsKey(TokenAudience.Management))
-            {
-                throw new ArgumentNullException(
-                    "currentEnvironment.TokenInfo[TokenAudience.Management]",
-                    $"Unable to create Service Client because {nameof(T)} authentication token was not acquired during Login.");
-            }
-
-            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.BaseUri, currentEnvironment.TokenInfo[TokenAudience.Management], internalBaseUri, handlers);
+            object credentials = HttpMockServer.Mode == HttpRecorderMode.Record ?
+                AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(
+                AzureRmProfileProvider.Instance.Profile.DefaultContext,
+                currentEnvironment.BaseUri.AbsoluteUri) :
+                new TokenCredentials("RawAccessToken");
+            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.BaseUri, credentials, internalBaseUri, handlers);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             }
         }
 
-        public DelegatingHandler[] AddHandlers(TestEnvironment currentEnvironment, params DelegatingHandler[] existingHandlers)
+        public DelegatingHandler[] AddHandlers(TestEnvironment azureEnvironment, params DelegatingHandler[] existingHandlers)
         {
             HttpMockServer server;
 
@@ -257,10 +257,6 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             {
                 handlers.Add(server);
             }
-
-            ResourceCleanerDelegatingHandler cleaner = new ResourceCleanerDelegatingHandler(currentEnvironment.TokenInfo[TokenAudience.Management]);
-            handlers.Add(cleaner);
-            _undoHandlers.Add(cleaner);
 
             return handlers.ToArray();
         }
