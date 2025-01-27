@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             databaseAccountCreateUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
             databaseAccountCreateUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
-            databaseAccountCreateUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
+            databaseAccountCreateUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale.ToBool();
 
             if (IpRule != null && IpRule.Length > 0)
             {

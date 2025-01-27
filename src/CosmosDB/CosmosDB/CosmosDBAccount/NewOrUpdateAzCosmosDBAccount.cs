@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string MinimalTlsVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.EnablePerRegionPerPartitionAutoscaleHelpMessage)]
-        public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
+        public SwitchParameter EnablePerRegionPerPartitionAutoscale { get; set; }
 
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {
