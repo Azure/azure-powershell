@@ -202,6 +202,15 @@ function Test-AzureFSProtection
 {
 	try
 	{
+		$resourceGroupName = "iannea-rg"
+		$vaultName = "iannea-rsv"
+		$policyName = "afspolicy3"
+		$newPolicyName = "afspolicy4"
+		$fileShareFriendlyName = "afs0"
+		$saName = "iannafstest1"
+		$targetSaName = "iannafstest2"
+		$targetFileShareName = "afs0"
+
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
@@ -412,6 +421,100 @@ function Test-AzureFSFullRestore
 				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob4.Status -eq "Completed" }
+	}
+	finally
+	{
+		Cleanup-Vault $vault $item $container
+	}
+}
+
+function Test-AzureFSVaultRestore
+{
+	try
+	{
+		$resourceGroupName = "iannea-rg"
+		$vaultName = "iannea-rsv"
+		$policyName = "afspolicy1"
+		$newPolicyName = "afsvaultpolicy1"
+		$fileShareFriendlyName = "afs0"
+		$saName = "iannafstest"
+		$targetSaName = "iannafstest1"
+		$targetFileShareName = "afs0"
+
+		# Get Vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		# Get default schedule policy object
+		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+		Assert-NotNull $schedulePolicy
+
+		# Create retention policy with VaultStandard backup tier 
+		$vaultRetentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject `
+			-WorkloadType AzureFiles `
+			-BackupTier VaultStandard 
+
+		# Create retention policy with Snapshot backup tier 
+		$snapshotRetentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject `
+			-WorkloadType AzureFiles `
+			-BackupTier Snapshot
+
+		# Create policy 
+		$snapshotPolicy = New-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName `
+			-WorkloadType AzureFiles `
+			-RetentionPolicy $snapshotRetentionPolicy `
+			-SchedulePolicy $schedulePolicy
+		
+		$vaultPolicy = New-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $newPolicyName `
+			-WorkloadType AzureFiles `
+			-RetentionPolicy $vaultRetentionPolicy `
+			-SchedulePolicy $schedulePolicy
+		
+		# Enable protection with VaultStandard policy
+		Enable-AzRecoveryServicesBackupProtection `
+									-VaultId $vault.ID `
+									-Policy $vaultPolicy `
+									-Name $fileShareFriendlyName `
+									-storageAccountName $saName | Out-Null
+
+		# Modify protection with Snapshot policy
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureStorage `
+			-FriendlyName $saName
+
+		$item = Get-AzRecoveryServicesBackupItem `
+					-VaultId $vault.ID `
+					-Container $container `
+					-WorkloadType AzureFiles
+
+		Assert-ThrowsContains { Enable-AzRecoveryServicesBackupProtection `
+									-VaultId $vault.ID `
+									-Policy $snapshotPolicy `
+									-Item $item
+		} "Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups."
+
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureStorage -WorkloadType AzureFiles
+		
+		# Adhoc Backup
+		$backupJob = Backup-Item $vault $item
+
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+
+		# Perform restore with VaultStandard RP	
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item;
+		
+		$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location -TargetStorageAccountName $targetSaName -TargetFileShareName $targetFileShareName | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
 	}
 	finally
 	{

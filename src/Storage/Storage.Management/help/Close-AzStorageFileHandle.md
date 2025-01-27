@@ -24,24 +24,24 @@ Close-AzStorageFileHandle [-ShareName] <String> [[-Path] <String>] [-Recursive] 
 ```
 Close-AzStorageFileHandle [-ShareName] <String> -FileHandle <PSFileHandle> [-DisAllowTrailingDot] [-PassThru]
  [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareCloseAll
 ```
 Close-AzStorageFileHandle [-ShareClient] <ShareClient> [[-Path] <String>] [-Recursive] [-CloseAll] [-PassThru]
  [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareCloseSingle
 ```
 Close-AzStorageFileHandle [-ShareClient] <ShareClient> -FileHandle <PSFileHandle> [-PassThru] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DirectoryCloseAll
@@ -56,8 +56,8 @@ Close-AzStorageFileHandle [-ShareDirectoryClient] <ShareDirectoryClient> [[-Path
 ```
 Close-AzStorageFileHandle [-ShareFileClient] <ShareFileClient> [-CloseAll] [-PassThru] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

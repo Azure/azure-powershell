@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionbackupvaultinazgraph
 schema: 2.0.0
 ---
@@ -14,7 +14,7 @@ Searches for Backup vaults in Azure Resource Graph and retrieves the expected en
 
 ```
 Search-AzDataProtectionBackupVaultInAzGraph -Subscription <String[]> [-ResourceGroup <String[]>]
- [-Vault <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Vault <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,21 @@ This command gets a specific vault by given vault name from ARG (Azure Resource 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

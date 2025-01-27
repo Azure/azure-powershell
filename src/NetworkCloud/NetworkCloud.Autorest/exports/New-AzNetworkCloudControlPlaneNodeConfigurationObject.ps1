@@ -27,7 +27,7 @@ $sshPublicKey=@{
 New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count 1 -VMSkuName vmSkuName -AdministratorConfigurationAdminUsername userName -AdministratorConfigurationSshPublicKey $sshPublicKey -AvailabilityZone @("1","2","3")
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ControlPlaneNodeConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,7 +39,7 @@ ADMINISTRATORCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>: The SSH configuration 
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudControlPlaneNodeConfigurationObject
 #>
 function New-AzNetworkCloudControlPlaneNodeConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ControlPlaneNodeConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -63,7 +63,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
     # The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
     # In some cases, specification of public keys may be required to produce a working environment.
     # To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.

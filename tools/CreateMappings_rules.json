@@ -943,5 +943,13 @@
   {
     "module": "ComputeFleet",
     "alias": "ComputeFleet"
+  },
+  {
+    "module": "ComputeSchedule",
+    "alias": "ComputeSchedule"
+  },
+  {
+    "module": "DeviceRegistry",
+    "alias": "DeviceRegistry"
   }
 ]

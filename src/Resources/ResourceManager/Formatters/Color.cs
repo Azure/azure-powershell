@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public static Color Reset { get; } = new Color($"{Esc}[0m");
 
+        public static Color Red { get; } = new Color($"{Esc}[38;5;196m");
+
+        public static Color DarkYellow { get; } = new Color($"{Esc}[38;5;136m");
+
         private Color(string colorCode)
         {
             this.colorCode = colorCode;

@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionbackupinstanceinazgraph
 schema: 2.0.0
 ---
@@ -15,7 +15,7 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 ```
 Search-AzDataProtectionBackupInstanceInAzGraph -Subscription <String[]> -DatasourceType <DatasourceTypes>
  [-ResourceGroup <String[]>] [-Vault <String[]>] [-ProtectionStatus <ProtectionStatus[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +97,21 @@ Accept wildcard characters: False
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

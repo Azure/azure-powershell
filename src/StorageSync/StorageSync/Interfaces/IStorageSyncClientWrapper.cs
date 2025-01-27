@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization;
+using Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.StorageSync;
 using System;

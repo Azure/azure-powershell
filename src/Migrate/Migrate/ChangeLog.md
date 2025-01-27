@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 2.6.0
+* Upgraded nuget package to signed package.
+* Added support for PremiumV2 disk type.
+* Added SBM support.
+
 ## Version 2.5.0
 * Validated user login with Microsoft Managed System Identity (MSI) in `Initialize-AzMigrateHCIReplicationInfrastructure`
 * Passed appropriate Hyper-V Generation value based on source VMware firmware type in `New-AzMigrateHCIServerReplication`

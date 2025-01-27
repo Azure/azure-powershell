@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 4.1.1
+* Upgraded nuget package to signed package.
+* Added breaking change warning for removing default value for OsType `New-AzContainerGroup`
+
 ## Version 4.1.0
 * Added ContainerGroupProfileId ContainerGroupProfileRevision StandbyPoolProfileFailContainerGroupCreateOnReuseFailure StandbyPoolProfileId to Container Group properties.
 * Added ConfigMapKeyValuePair to Container object properties.

@@ -19,10 +19,13 @@
 -->
 
 ## Upcoming Release
-    * Upgraded Azure.Core to 1.44.1.
     * Added Vector Indexing properties to Sql container APIs.
     * GAd Per Partition Automatic Failover
     * GAd Per Region Per Partition Autoscale
+
+## Version 1.16.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
 
 ## Version 1.15.0
 * Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.

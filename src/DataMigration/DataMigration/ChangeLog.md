@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.14.9
+* Upgraded nuget package to signed package.
+* Updated the URL to download the SQL Assessment Zip to `https://aka.ms/sqlassessmentpackage`
+
 ## Version 0.14.8
 * Removed Microsoft.Azure.Management.DataMigration 0.7.0-preview dependencies
 * Added Microsoft.Azure.PowerShell.DataMigration.Management.Sdk
