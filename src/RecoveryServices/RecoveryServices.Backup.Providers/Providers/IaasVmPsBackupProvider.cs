@@ -1510,12 +1510,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        public void UndeleteContainer()
+        {
+            throw new NotImplementedException();
+        }
+
         #region private
-
-
         private void ValidateProtectedItemCount(AzureVmPolicy azureVmPolicy)
         {
-            if (azureVmPolicy.ProtectedItemsCount > 100)
+            if (azureVmPolicy.ProtectedItemsCount > 1000)
             {
                 throw new ArgumentException(Resources.ProtectedItemsCountExceededException);
             }
