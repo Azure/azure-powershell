@@ -617,7 +617,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Please provide a vaild target storage account</value>
   </data>
   <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
-    <value>Please ensure that the given RP recovery type is 'VaultStandard' or remove TargetZone</value>
+    <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>
   </data>
   <data name="RecoveryPointZonePinnedException" xml:space="preserve">
     <value>Please ensure that the Recovery point is Zone pinned or remove TargetZone</value>
