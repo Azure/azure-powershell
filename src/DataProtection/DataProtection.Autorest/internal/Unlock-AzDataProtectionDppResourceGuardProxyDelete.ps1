@@ -57,8 +57,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Header')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]

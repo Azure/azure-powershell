@@ -6,43 +6,43 @@
       "value": "southcentralus"
     },
     "namespace_name": {
-      "value": "namespaceNameeqpx5w"
+      "value": "namespaceName42kzga"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceName8avljz"
+      "value": "namespaceNamexjh32e"
     },
     "primary_namespace_name": {
-      "value": "namespaceNameil6w7t"
+      "value": "namespaceNamem7lfwt"
     },
     "secondary_namespace_name": {
-      "value": "namespaceName7pzlta"
+      "value": "namespaceNamean3wzx"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-ruleudhoej"
+      "value": "auth-rulevc2hn9"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-rulevanqub"
+      "value": "auth-rulebc97lg"
     },
     "eventhub_name": {
-      "value": "eventHub789hmt"
+      "value": "eventHubkunz3v"
     },
     "schema_group_name": {
-      "value": "schemaGroup3yt1fv"
+      "value": "schemaGroupsjnof2"
     },
     "appgroup_name": {
-      "value": "appGroup3iw8s2"
+      "value": "appGrouprc074h"
     },
     "subnet1Id": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.Network/virtualNetworks/eh-ps-vgt87w-vnet/subnets/default"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-rci2wp/providers/Microsoft.Network/virtualNetworks/eh-ps-b8tfc1-vnet/subnets/default"
     },
     "peName1": {
-      "value": "privateEndpoint-i4bc1n"
+      "value": "privateEndpoint-2bajxi"
     },
     "peName2": {
-      "value": "privateEndpoint-2upkxh"
+      "value": "privateEndpoint-maliy0"
     },
     "namespaceResourceId": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-rci2wp/providers/Microsoft.EventHub/namespaces/namespaceName42kzga"
     },
     "useZoneRedundancy": {
       "value": true
