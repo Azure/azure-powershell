@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using System;
 
     /// <summary>
-    /// Create a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+    /// create a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubNamespace_CreateViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubNamespace_CreateViaIdentity : global::System.Management.Automation.PSCmdlet,

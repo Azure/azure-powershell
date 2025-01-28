@@ -145,6 +145,24 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
+    # Gets and Sets Metadata of User.
+    ${UserMetadata},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Int64]
+    # The minimum time a message will remain ineligible for compaction in the log.
+    ${MinCompactionLagInMin},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Denotes the type of timestamp the message will hold.
+    ${TimestampType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
     # Name for capture destination
     ${DestinationName},
 

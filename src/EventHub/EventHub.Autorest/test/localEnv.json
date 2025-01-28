@@ -40,7 +40,7 @@
   "namespaceV1": "namespaceV1zp2bux",
   "cluster2": "clusterlfxiyn",
   "eventHub5": "eventHubgepi53",
-  "eventHubSecondaryKey": "DWZd3tltfI1gN090ObXuQyWTjtMpOR/jPMYLsd3cj3c=",
+  "eventHubSecondaryKey": "sanitizer17",
   "namespaceV8": "namespaceV8r6bz72",
   "msi2": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-6aqx82/providers/Microsoft.ManagedIdentity/userAssignedIdentities/eh-ps-wxs3p0-msi2",
   "keyVaultUri": "https://eh-ps-wxs3p0-kv1.vault.azure.net/",
@@ -51,14 +51,14 @@
   "resourceGroup": "Autorest-PS-EventHub-6aqx82",
   "authRule": "auth-ruletax9iq",
   "namespaceV2": "namespaceV2mnz1xv",
-  "namespacePrimaryKey": "DWZd3tltfI1gN090ObXuQyWTjtMpOR/jPMYLsd3cj3c=",
+  "namespacePrimaryKey": "sanitizer17",
   "subnetId1": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-6aqx82/providers/Microsoft.Network/virtualNetworks/eh-ps-wxs3p0-vnet/subnets/default",
   "namespace": "namespaceNameecy9af",
   "createdCluster": "TestClusterAutomatic",
   "namespaceV5": "namespaceV5yol8ph",
-  "eventHubPrimaryKey": "DWZd3tltfI1gN090ObXuQyWTjtMpOR/jPMYLsd3cj3c=",
+  "eventHubPrimaryKey": "sanitizer17",
   "namespaceV6": "namespaceV6alicqd",
   "location": "eastus",
   "secondaryLocation": "southcentralus",
-  "namespaceSecondaryKey": "DWZd3tltfI1gN090ObXuQyWTjtMpOR/jPMYLsd3cj3c="
+  "namespaceSecondaryKey": "sanitizer17"
 }

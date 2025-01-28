@@ -247,7 +247,16 @@ function New-MetadataForParameterSet()
     $cmdletName = Get-MappedCmdletFromFunctionName $ParameterSetInfo.Name
     $description = (Get-CmdletAttribute -CmdletInfo $ParameterSetInfo -AttributeName "DescriptionAttribute").Description
     [object[]]$example = New-ExampleForParameterSet $ParameterSetInfo
+    if ($Null -eq $example)
+    {
+        $example = @()
+    }
+    
     [string[]]$signature = New-ParameterArrayInParameterSet $ParameterSetInfo
+    if ($Null -eq $signature)
+    {
+        $signature = @()
+    }
 
     return @{
         Path = $httpPath
