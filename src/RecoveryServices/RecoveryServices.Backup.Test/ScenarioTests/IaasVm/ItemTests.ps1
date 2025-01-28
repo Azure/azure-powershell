@@ -244,6 +244,38 @@ function Test-AzureCrossZonalRestore
 	}
 }
 
+function Test-AzureCrossZonalRestoreToNoZone
+{
+	$location = "eastus2euap"
+	$resourceGroupName = "sgholapCZRTesting"
+	$vaultName = "sgholapZRSTestingVault"
+	$vmName = "CZRTtestingVM"
+	$saName = "sgholapecysa"
+	$targetVMName = "CZRTtestingNoZoneVM"
+	$targetVNetName = "CZRTtestingVM-vnet"
+	$targetVNetRG = "sgholapCZRTesting"
+	$targetSubnetName = "default"
+	$owner = "sgholap"
+	$subscriptionId = "f2edfd5d-5496-4683-b94f-b3588c579009"
+	$recoveryPointId = "656339447820742" # latest vaultStandard recovery point	
+	try
+	{	
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -FriendlyName $vmName -VaultId $vault.ID
+		$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -VaultId $vault.ID -RecoveryPointId $recoveryPointId
+		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 0 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJobCZR.Status -eq "Completed" }
+	}
+	finally
+	{
+		Delete-VM $resourceGroupName $targetVMName
+	}
+}
+
 function Test-AzureMonitorAlerts
 {
 	$location = "centraluseuap"
