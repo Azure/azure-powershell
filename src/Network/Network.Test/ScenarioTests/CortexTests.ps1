@@ -367,7 +367,7 @@ function Test-StaticRoutesConfigCRUD
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 
 		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
-		$RoutingConfig1 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id) -VnetLocalRouteOverrideCriteria "Equal"
+		$RoutingConfig1 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id) -VnetLocalRouteOverrideCriteria "Equal" -PropagateStaticRoutes 0
 		$RoutingConfig2 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id)
 
 		Assert-AreEqual ($RoutingConfig1.PropagatedRouteTables.Labels.Count -gt 0) $true
@@ -375,6 +375,9 @@ function Test-StaticRoutesConfigCRUD
 		
 		Assert-AreEqual $RoutingConfig1.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Equal"
 		Assert-AreEqual $RoutingConfig2.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Contains"
+
+		Assert-AreEqual $RoutingConfig1.VnetRoutes.StaticRoutesConfig.PropagateStaticRoutes $false
+		Assert-AreEqual $RoutingConfig2.VnetRoutes.StaticRoutesConfig.PropagateStaticRoutes $true
 
 		$besubnet = New-AzVirtualNetworkSubnetConfig -Name 'default' -AddressPrefix '10.1.0.0/16'
 		$vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'MyVnet' -AddressPrefix '10.1.0.0/16' `
@@ -385,7 +388,7 @@ function Test-StaticRoutesConfigCRUD
 
 		# check if the specified value is programmed on connection
 		Assert-AreEqual $hubVnetConn.RoutingConfiguration.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Equal"
-
+		Assert-AreEqual $hubVnetConn.RoutingConfiguration.VnetRoutes.StaticRoutesConfig.PropagateStaticRoutes $false
 	}
 
 	finally

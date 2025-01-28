@@ -14,8 +14,9 @@ Creates a RoutingConfiguration object.
 
 ```
 New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]>
- [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>] [-InboundRouteMap <String>]
- [-OutboundRouteMap <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>] [-PropagateStaticRoutes <Boolean>]
+ [-InboundRouteMap <String>] [-OutboundRouteMap <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,6 +156,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PropagateStaticRoutes
+Should we propagate static routes in the spoke vnet? Default is true.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StaticRoute
 List of routes that control routing from VirtualHub into a virtual network connection.
 
@@ -190,9 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Network.Models.PSStaticRoute
+### None
 
 ## OUTPUTS
 
