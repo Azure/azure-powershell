@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
+* Added support for `PropagateStaticRoutes` property in `New-AzRoutingConfiguration`
+* Fixed a bug that caused the `PropagateStaticRoutes` property on RoutingConfigurations to always return as true when running the `Get-AzVirtualHubVnetConnection` command
 
 ## Version 7.12.0
 * Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
