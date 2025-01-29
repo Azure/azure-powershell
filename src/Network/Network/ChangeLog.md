@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
+    - `Get-AzNetworkVirtualApplianceBootDiagnostics`
 * Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
     - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
