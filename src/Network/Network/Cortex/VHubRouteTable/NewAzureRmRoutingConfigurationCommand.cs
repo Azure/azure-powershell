@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Should we propagate static routes in the spoke vnet? Default is true.")]
-        public bool? PropagateStaticRoutes { get; set; }
+        public bool? PropagateStaticRoute { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
             var staticRoutesConfig = new PSStaticRoutesConfig
             {
                 VnetLocalRouteOverrideCriteria = string.IsNullOrEmpty(VnetLocalRouteOverrideCriteria) ? "Contains" : VnetLocalRouteOverrideCriteria,
-                PropagateStaticRoutes = this.PropagateStaticRoutes ?? true
+                PropagateStaticRoutes = this.PropagateStaticRoute ?? true
             };
 
             // Resolve the provided Associated RouteTable

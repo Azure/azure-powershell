@@ -367,7 +367,7 @@ function Test-StaticRoutesConfigCRUD
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 
 		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
-		$RoutingConfig1 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id) -VnetLocalRouteOverrideCriteria "Equal" -PropagateStaticRoutes 0
+		$RoutingConfig1 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id) -VnetLocalRouteOverrideCriteria "Equal" -PropagateStaticRoute 0
 		$RoutingConfig2 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id)
 
 		Assert-AreEqual ($RoutingConfig1.PropagatedRouteTables.Labels.Count -gt 0) $true

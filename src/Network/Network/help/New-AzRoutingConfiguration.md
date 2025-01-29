@@ -14,7 +14,7 @@ Creates a RoutingConfiguration object.
 
 ```
 New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]>
- [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>] [-PropagateStaticRoutes <Boolean>]
+ [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>] [-PropagateStaticRoute <Boolean>]
  [-InboundRouteMap <String>] [-OutboundRouteMap <String>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
@@ -171,7 +171,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropagateStaticRoutes
+### -PropagateStaticRoute
 Should we propagate static routes in the spoke vnet? Default is true.
 
 ```yaml
