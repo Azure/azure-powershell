@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "propagateStaticRoutes")]
-        public bool? PropagateStaticRoutes {get; set; }
+        public bool? PropagateStaticRoutes {get; private set; }
 
         /// <summary>
         /// Gets or sets parameter determining whether NVA in spoke vnet is bypassed
