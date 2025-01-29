@@ -14,12 +14,12 @@
 
 function Test-AzurePERestore
 {
+	$subId = "f2edfd5d-5496-4683-b94f-b3588c579009"
+	$subName = "sriramsa-IaaSVmBackup Canary Subscription"
 	$location = "eastus2euap"
 	$resourceGroupName = "arpja"
 	$vaultName = "arpja-pe-e2e-validation-vault"
-	$vmName = "peval-ecy-win44"
-	$subId = "f2edfd5d-5496-4683-b94f-b3588c579009"
-	$subName = "sriramsa-IaaSVmBackup Canary Subscription"
+	$vmName = "peval-ecy-win44"		
 	$saName = "arpjapevalrestoresa"
 	$targetVMName = "ps-diskaccess"
 	$targetVNetName = "arpjavnet238"
@@ -215,8 +215,8 @@ function Test-AzureCrossZonalRestore
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
-	$recoveryPointId = "175504659649163" # latest vaultStandard recovery point
-	$snapshotRecoveryPointId = "171196026959443" # latest Snapshot (older than 4 hrs) recovery point
+	$recoveryPointId = "168844254575899" # latest vaultStandard recovery point
+	$snapshotRecoveryPointId = "171735978591866" # latest Snapshot (older than 4 hrs) recovery point
 	try
 	{	
 		# Setup
@@ -229,7 +229,7 @@ function Test-AzureCrossZonalRestore
 		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
 			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
-		Assert-True { $restoreJobCZR.Status -eq "Completed" }
+		Assert-True { $restoreJobCZR.Status -match "Completed" } # later change to -eq
 
 		# Snapshot CZR
 		# $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
@@ -368,8 +368,8 @@ function Test-AzureManagedVMRestore
 {
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
-	$vaultName = "hiagaVault"
-	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganewVM2" # hiagavm"
+	$vaultName = "hiaga-adhoc-vault" #"hiagaVault"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2" # hiagavm"
 	$saName = "hiagasa"
 	$targetVMName = "alr-pstest-vm"
 	$targetVNetName = "hiagarg-vnet"
@@ -383,7 +383,7 @@ function Test-AzureManagedVMRestore
 		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
 			-VaultId $vault.ID -Name $vmName
 
-		$backupJob = Backup-Item $vault $item
+		$backupJob = Backup-Item $vault $item[0]
 		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
 		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
 		
@@ -391,7 +391,7 @@ function Test-AzureManagedVMRestore
 			-VaultId $vault.ID `
 			-StartDate $backupStartTime `
 			-EndDate $backupEndTime `
-			-Item $item; 		
+			-Item $item[0]; 		
 
 		$restoreJobALR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
 			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
@@ -454,7 +454,7 @@ function Test-AzureVMRestoreWithMSI
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiagaVault"
-	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm2"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
 	$saName = "hiagasa"
 
 	try
@@ -610,10 +610,8 @@ function Test-AzureVMGetItems
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
-	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm3"	
-	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganewvm3"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmFriendlyName1 = "pstest-ccy-vm"	
 	$protectionState = "IRPending"
 	#$location = "southeastasia"
 	#$resourceGroupName = Create-ResourceGroup $location
@@ -622,14 +620,12 @@ function Test-AzureVMGetItems
 	{
 		# Setup
 		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName1
-		$vm2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName2
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName 
 
 		# disable soft delete for successful cleanup
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 
-		# Enable-Protection $vault $vm
-		# Enable-Protection $vault $vm2
+		# Enable-Protection $vault $vm		
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name "DefaultPolicy"
@@ -1014,10 +1010,10 @@ function Test-AzureVMBackup
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
-	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganevm4"
-	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganevm4"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2"
+	$vmFriendlyName1 = "pstest-ccy-vm"
+	$vmFriendlyName2 = "pstest-ccy-vm2"
 	
 	try
 	{

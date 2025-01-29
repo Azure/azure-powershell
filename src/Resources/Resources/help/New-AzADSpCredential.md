@@ -15,78 +15,78 @@ Creates key credentials or password credentials for an service principal.
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
 New-AzADSpCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpObjectIdWithCertValueParameterSet
 ```
 New-AzADSpCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>] -CertValue <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpObjectIdWithKeyCredentialParameterSet
 ```
 New-AzADSpCredential -ObjectId <String> -KeyCredentials <MicrosoftGraphKeyCredential[]>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpObjectIdWithPasswordCredentialParameterSet
 ```
 New-AzADSpCredential -ObjectId <String> -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithCertValueParameterSet
 ```
 New-AzADSpCredential [-StartDate <DateTime>] [-EndDate <DateTime>] -CertValue <String>
  -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithPasswordParameterSet
 ```
 New-AzADSpCredential [-StartDate <DateTime>] [-EndDate <DateTime>]
  -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithCertValueParameterSet
 ```
 New-AzADSpCredential [-StartDate <DateTime>] [-EndDate <DateTime>] -CertValue <String>
- -ServicePrincipalName <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ -ServicePrincipalName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithPasswordParameterSet
 ```
 New-AzADSpCredential [-StartDate <DateTime>] [-EndDate <DateTime>] -ServicePrincipalName <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithPasswordCredentialParameterSet
 ```
 New-AzADSpCredential -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
  -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithPasswordCredentialParameterSet
 ```
 New-AzADSpCredential -PasswordCredentials <MicrosoftGraphPasswordCredential[]> -ServicePrincipalName <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithKeyCredentialParameterSet
 ```
 New-AzADSpCredential -KeyCredentials <MicrosoftGraphKeyCredential[]>
  -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithKeyCredentialParameterSet
 ```
 New-AzADSpCredential -KeyCredentials <MicrosoftGraphKeyCredential[]> -ServicePrincipalName <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,6 +202,21 @@ Parameter Sets: SpObjectIdWithPasswordCredentialParameterSet, ServicePrincipalOb
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
