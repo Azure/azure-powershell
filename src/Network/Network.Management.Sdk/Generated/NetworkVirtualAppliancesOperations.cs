@@ -591,9 +591,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance.
         /// </param>
-        /// <param name='instanceId'>
-        /// Specifies a virtual machine instance ID from the Network Virtual Appliance
-        /// VM instances.
+        /// <param name='request'>
+        /// Parameters supplied to retrieve boot diagnostic logs for a NVA VM instance
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -601,10 +600,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> GetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters instanceId = default(NetworkVirtualApplianceBootDiagnosticParameters), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> GetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders> _response = await BeginGetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, instanceId, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders> _response = await BeginGetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, request, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1946,9 +1945,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance.
         /// </param>
-        /// <param name='instanceId'>
-        /// Specifies a virtual machine instance ID from the Network Virtual Appliance
-        /// VM instances.
+        /// <param name='request'>
+        /// Parameters supplied to retrieve boot diagnostic logs for a NVA VM instance
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1971,12 +1969,16 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> BeginGetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters instanceId = default(NetworkVirtualApplianceBootDiagnosticParameters), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> BeginGetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (request == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "request");
+            }
 
             if (resourceGroupName == null)
             {
@@ -2011,7 +2013,7 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("networkVirtualApplianceName", networkVirtualApplianceName);
                 tracingParameters.Add("apiVersion", apiVersion);
 
-                tracingParameters.Add("instanceId", instanceId);
+                tracingParameters.Add("request", request);
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginGetBootDiagnosticLogs", tracingParameters);
@@ -2065,9 +2067,9 @@ namespace Microsoft.Azure.Management.Network
             }
             // Serialize Request
             string _requestContent = null;
-            if(instanceId != null)
+            if(request != null)
             {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(instanceId, this.Client.SerializationSettings);
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(request, this.Client.SerializationSettings);
                 _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
