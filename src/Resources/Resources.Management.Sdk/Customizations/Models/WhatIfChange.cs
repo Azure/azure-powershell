@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// <param name="delta">The predicted changes to resource
         /// properties.</param>
         public WhatIfChange(string resourceId, ChangeType changeType, object before = default(object), object after = default(object), IList<WhatIfPropertyChange> delta = default(IList<WhatIfPropertyChange>))
-            : this(resourceId, changeType, default(string), before, after, delta)
+            : this(resourceId, changeType, default(string), default(string), default(string), default(string), before, after, delta)
         {
         }
     }

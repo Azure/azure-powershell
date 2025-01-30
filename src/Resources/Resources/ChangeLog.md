@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
+* Updated Resources SDK to 2024-11-01.
 
 ## Version 7.8.0
 * Upgraded nuget package to signed package.
