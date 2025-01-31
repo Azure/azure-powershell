@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "The app SPN.")]
         [ValidateNotNullOrEmpty]
-        [Alias("SPN", "ServicePrincipalName")]
-        public string ApplicationId { get; set; }
+        [Alias("SPN", "ApplicationId")]
+        public string ServicePrincipalName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
             HelpMessage = "Resource group to assign the role to.")]
