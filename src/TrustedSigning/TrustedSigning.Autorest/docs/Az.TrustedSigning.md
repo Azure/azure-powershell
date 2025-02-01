@@ -11,33 +11,27 @@ Locale: en-US
 Microsoft Azure PowerShell: TrustedSigning cmdlets
 
 ## Az.TrustedSigning Cmdlets
+### [Get-AzTrustedSigningAccount](Get-AzTrustedSigningAccount.md)
+Get a trusted Signing Account.
+
 ### [Get-AzTrustedSigningCertificateProfile](Get-AzTrustedSigningCertificateProfile.md)
 Get details of a certificate profile.
 
-### [Get-AzTrustedSigningCodeSigningAccount](Get-AzTrustedSigningCodeSigningAccount.md)
-Get a trusted Signing Account.
+### [New-AzTrustedSigningAccount](New-AzTrustedSigningAccount.md)
+create a trusted Signing Account.
 
 ### [New-AzTrustedSigningCertificateProfile](New-AzTrustedSigningCertificateProfile.md)
 create a certificate profile.
 
-### [New-AzTrustedSigningCodeSigningAccount](New-AzTrustedSigningCodeSigningAccount.md)
-create a trusted Signing Account.
+### [Remove-AzTrustedSigningAccount](Remove-AzTrustedSigningAccount.md)
+Delete a trusted signing account.
 
 ### [Remove-AzTrustedSigningCertificateProfile](Remove-AzTrustedSigningCertificateProfile.md)
 Delete a certificate profile.
 
-### [Remove-AzTrustedSigningCodeSigningAccount](Remove-AzTrustedSigningCodeSigningAccount.md)
-Delete a trusted signing account.
-
-### [Revoke-AzTrustedSigningCertificateProfileCertificate](Revoke-AzTrustedSigningCertificateProfileCertificate.md)
-Revoke a certificate under a certificate profile.
-
-### [Test-AzTrustedSigningCodeSigningAccountNameAvailability](Test-AzTrustedSigningCodeSigningAccountNameAvailability.md)
+### [Test-AzTrustedSigningAccountNameAvailability](Test-AzTrustedSigningAccountNameAvailability.md)
 Checks that the trusted signing account name is valid and is not already in use.
 
-### [Update-AzTrustedSigningCertificateProfile](Update-AzTrustedSigningCertificateProfile.md)
-update a certificate profile.
-
-### [Update-AzTrustedSigningCodeSigningAccount](Update-AzTrustedSigningCodeSigningAccount.md)
+### [Update-AzTrustedSigningAccount](Update-AzTrustedSigningAccount.md)
 update a trusted signing account.
 

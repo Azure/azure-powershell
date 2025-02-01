@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.TrustedSigning.private.dll'
   FormatsToProcess = './Az.TrustedSigning.format.ps1xml'
-  FunctionsToExport = 'Get-AzTrustedSigningCertificateProfile', 'Get-AzTrustedSigningCodeSigningAccount', 'New-AzTrustedSigningCertificateProfile', 'New-AzTrustedSigningCodeSigningAccount', 'Remove-AzTrustedSigningCertificateProfile', 'Remove-AzTrustedSigningCodeSigningAccount', 'Revoke-AzTrustedSigningCertificateProfileCertificate', 'Test-AzTrustedSigningCodeSigningAccountNameAvailability', 'Update-AzTrustedSigningCertificateProfile', 'Update-AzTrustedSigningCodeSigningAccount'
+  FunctionsToExport = 'Get-AzTrustedSigningAccount', 'Get-AzTrustedSigningCertificateProfile', 'New-AzTrustedSigningAccount', 'New-AzTrustedSigningCertificateProfile', 'Remove-AzTrustedSigningAccount', 'Remove-AzTrustedSigningCertificateProfile', 'Test-AzTrustedSigningAccountNameAvailability', 'Update-AzTrustedSigningAccount'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'TrustedSigning'

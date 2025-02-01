@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzTrustedSigningCodeSigningAccount",
+      "name": "Get-AzTrustedSigningAccount",
       "description": "Get a trusted Signing Account.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.trustedsigning/get-aztrustedsigningcodesigningaccount"
+          "url": "https://learn.microsoft.com/powershell/module/az.trustedsigning/get-aztrustedsigningaccount"
         },
         "parameterSets": [
           {
@@ -44,12 +44,12 @@
       ]
     },
     {
-      "name": "Remove-AzTrustedSigningCodeSigningAccount",
+      "name": "Remove-AzTrustedSigningAccount",
       "description": "Delete a trusted signing account.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.trustedsigning/remove-aztrustedsigningcodesigningaccount"
+          "url": "https://learn.microsoft.com/powershell/module/az.trustedsigning/remove-aztrustedsigningaccount"
         },
         "parameterSets": [
           {

@@ -8,6 +8,207 @@
 
 <#
 .Synopsis
+Get a trusted Signing Account.
+.Description
+Get a trusted Signing Account.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccount
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
+  [AccountName <String>]: Trusted Signing account name.
+  [Id <String>]: Resource identity path
+  [ProfileName <String>]: Certificate profile name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.trustedsigning/get-aztrustedsigningaccount
+#>
+function Get-AzTrustedSigningAccount {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccount])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
+    [System.String]
+    # Trusted Signing account name.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.TrustedSigning.private\Get-AzTrustedSigningAccount_Get';
+            GetViaIdentity = 'Az.TrustedSigning.private\Get-AzTrustedSigningAccount_GetViaIdentity';
+            List = 'Az.TrustedSigning.private\Get-AzTrustedSigningAccount_List';
+            List1 = 'Az.TrustedSigning.private\Get-AzTrustedSigningAccount_List1';
+        }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Get details of a certificate profile.
 .Description
 Get details of a certificate profile.
@@ -229,65 +430,75 @@ end {
 
 <#
 .Synopsis
-Get a trusted Signing Account.
+create a trusted Signing Account.
 .Description
-Get a trusted Signing Account.
+create a trusted Signing Account.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccount
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
-  [Id <String>]: Resource identity path
-  [ProfileName <String>]: Certificate profile name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/az.trustedsigning/get-aztrustedsigningcodesigningaccount
+https://learn.microsoft.com/powershell/module/az.trustedsigning/new-aztrustedsigningaccount
 #>
-function Get-AzTrustedSigningCodeSigningAccount {
+function New-AzTrustedSigningAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccount])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
     [System.String]
     # Trusted Signing account name.
     ${AccountName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
+    [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity]
-    # Identity Parameter
-    ${InputObject},
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.PSArgumentCompleterAttribute("Basic", "Premium")]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
+    [System.String]
+    # Name of the SKU.
+    ${SkuName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -297,6 +508,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
@@ -317,6 +534,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
@@ -364,12 +587,11 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.TrustedSigning.private\Get-AzTrustedSigningCodeSigningAccount_Get';
-            GetViaIdentity = 'Az.TrustedSigning.private\Get-AzTrustedSigningCodeSigningAccount_GetViaIdentity';
-            List = 'Az.TrustedSigning.private\Get-AzTrustedSigningCodeSigningAccount_List';
-            List1 = 'Az.TrustedSigning.private\Get-AzTrustedSigningCodeSigningAccount_List1';
+            CreateExpanded = 'Az.TrustedSigning.private\New-AzTrustedSigningAccount_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.TrustedSigning.private\New-AzTrustedSigningAccount_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.TrustedSigning.private\New-AzTrustedSigningAccount_CreateViaJsonString';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -684,37 +906,50 @@ end {
 
 <#
 .Synopsis
-create a trusted Signing Account.
+Delete a trusted signing account.
 .Description
-create a trusted Signing Account.
+Delete a trusted signing account.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccount
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
+  [AccountName <String>]: Trusted Signing account name.
+  [Id <String>]: Resource identity path
+  [ProfileName <String>]: Certificate profile name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/az.trustedsigning/new-aztrustedsigningcodesigningaccount
+https://learn.microsoft.com/powershell/module/az.trustedsigning/remove-aztrustedsigningaccount
 #>
-function New-AzTrustedSigningCodeSigningAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccount])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Remove-AzTrustedSigningAccount {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
     [System.String]
     # Trusted Signing account name.
     ${AccountName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -722,37 +957,11 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.PSArgumentCompleterAttribute("Basic", "Premium")]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Name of the SKU.
-    ${SkuName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity]
+    # Identity Parameter
+    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -794,6 +1003,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
@@ -841,11 +1056,10 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.TrustedSigning.private\New-AzTrustedSigningCodeSigningAccount_CreateExpanded';
-            CreateViaJsonFilePath = 'Az.TrustedSigning.private\New-AzTrustedSigningCodeSigningAccount_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.TrustedSigning.private\New-AzTrustedSigningCodeSigningAccount_CreateViaJsonString';
+            Delete = 'Az.TrustedSigning.private\Remove-AzTrustedSigningAccount_Delete';
+            DeleteViaIdentity = 'Az.TrustedSigning.private\Remove-AzTrustedSigningAccount_DeleteViaIdentity';
         }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -1141,532 +1355,6 @@ end {
 
 <#
 .Synopsis
-Delete a trusted signing account.
-.Description
-Delete a trusted signing account.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
-  [Id <String>]: Resource identity path
-  [ProfileName <String>]: Certificate profile name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.trustedsigning/remove-aztrustedsigningcodesigningaccount
-#>
-function Remove-AzTrustedSigningCodeSigningAccount {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [System.String]
-    # Trusted Signing account name.
-    ${AccountName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.TrustedSigning.private\Remove-AzTrustedSigningCodeSigningAccount_Delete';
-            DeleteViaIdentity = 'Az.TrustedSigning.private\Remove-AzTrustedSigningCodeSigningAccount_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Revoke a certificate under a certificate profile.
-.Description
-Revoke a certificate under a certificate profile.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IRevokeCertificate
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IRevokeCertificate>: Defines the certificate revocation properties.
-  EffectiveAt <DateTime>: The timestamp when the revocation is effective.
-  Reason <String>: Reason for the revocation.
-  SerialNumber <String>: Serial number of the certificate.
-  Thumbprint <String>: Thumbprint of the certificate.
-  [Remark <String>]: Remarks for the revocation.
-
-CODESIGNINGACCOUNTINPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
-  [Id <String>]: Resource identity path
-  [ProfileName <String>]: Certificate profile name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-INPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
-  [Id <String>]: Resource identity path
-  [ProfileName <String>]: Certificate profile name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.trustedsigning/revoke-aztrustedsigningcertificateprofilecertificate
-#>
-function Revoke-AzTrustedSigningCertificateProfileCertificate {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='RevokeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Revoke', Mandatory)]
-    [Parameter(ParameterSetName='RevokeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [System.String]
-    # Trusted Signing account name.
-    ${AccountName},
-
-    [Parameter(ParameterSetName='Revoke', Mandatory)]
-    [Parameter(ParameterSetName='RevokeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccount', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccountExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [System.String]
-    # Certificate profile name.
-    ${ProfileName},
-
-    [Parameter(ParameterSetName='Revoke', Mandatory)]
-    [Parameter(ParameterSetName='RevokeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Revoke')]
-    [Parameter(ParameterSetName='RevokeExpanded')]
-    [Parameter(ParameterSetName='RevokeViaJsonFilePath')]
-    [Parameter(ParameterSetName='RevokeViaJsonString')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='RevokeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RevokeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccount', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccountExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity]
-    # Identity Parameter
-    ${CodeSigningAccountInputObject},
-
-    [Parameter(ParameterSetName='Revoke', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RevokeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccount', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IRevokeCertificate]
-    # Defines the certificate revocation properties.
-    ${Body},
-
-    [Parameter(ParameterSetName='RevokeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccountExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.DateTime]
-    # The timestamp when the revocation is effective.
-    ${EffectiveAt},
-
-    [Parameter(ParameterSetName='RevokeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccountExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Reason for the revocation.
-    ${Reason},
-
-    [Parameter(ParameterSetName='RevokeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccountExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Serial number of the certificate.
-    ${SerialNumber},
-
-    [Parameter(ParameterSetName='RevokeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccountExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RevokeViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Thumbprint of the certificate.
-    ${Thumbprint},
-
-    [Parameter(ParameterSetName='RevokeExpanded')]
-    [Parameter(ParameterSetName='RevokeViaIdentityCodeSigningAccountExpanded')]
-    [Parameter(ParameterSetName='RevokeViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Remarks for the revocation.
-    ${Remark},
-
-    [Parameter(ParameterSetName='RevokeViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Revoke operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='RevokeViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Json string supplied to the Revoke operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Revoke = 'Az.TrustedSigning.private\Revoke-AzTrustedSigningCertificateProfileCertificate_Revoke';
-            RevokeExpanded = 'Az.TrustedSigning.private\Revoke-AzTrustedSigningCertificateProfileCertificate_RevokeExpanded';
-            RevokeViaIdentity = 'Az.TrustedSigning.private\Revoke-AzTrustedSigningCertificateProfileCertificate_RevokeViaIdentity';
-            RevokeViaIdentityCodeSigningAccount = 'Az.TrustedSigning.private\Revoke-AzTrustedSigningCertificateProfileCertificate_RevokeViaIdentityCodeSigningAccount';
-            RevokeViaIdentityCodeSigningAccountExpanded = 'Az.TrustedSigning.private\Revoke-AzTrustedSigningCertificateProfileCertificate_RevokeViaIdentityCodeSigningAccountExpanded';
-            RevokeViaIdentityExpanded = 'Az.TrustedSigning.private\Revoke-AzTrustedSigningCertificateProfileCertificate_RevokeViaIdentityExpanded';
-            RevokeViaJsonFilePath = 'Az.TrustedSigning.private\Revoke-AzTrustedSigningCertificateProfileCertificate_RevokeViaJsonFilePath';
-            RevokeViaJsonString = 'Az.TrustedSigning.private\Revoke-AzTrustedSigningCertificateProfileCertificate_RevokeViaJsonString';
-        }
-        if (('Revoke', 'RevokeExpanded', 'RevokeViaJsonFilePath', 'RevokeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Checks that the trusted signing account name is valid and is not already in use.
 .Description
 Checks that the trusted signing account name is valid and is not already in use.
@@ -1687,9 +1375,9 @@ To create the parameters described below, construct a hash table containing the 
 BODY <ICheckNameAvailability>: The parameters used to check the availability of the trusted signing account name.
   Name <String>: Trusted signing account name.
 .Link
-https://learn.microsoft.com/powershell/module/az.trustedsigning/test-aztrustedsigningcodesigningaccountnameavailability
+https://learn.microsoft.com/powershell/module/az.trustedsigning/test-aztrustedsigningaccountnameavailability
 #>
-function Test-AzTrustedSigningCodeSigningAccountNameAvailability {
+function Test-AzTrustedSigningAccountNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1800,287 +1488,12 @@ begin {
         }
 
         $mapping = @{
-            Check = 'Az.TrustedSigning.private\Test-AzTrustedSigningCodeSigningAccountNameAvailability_Check';
-            CheckExpanded = 'Az.TrustedSigning.private\Test-AzTrustedSigningCodeSigningAccountNameAvailability_CheckExpanded';
-            CheckViaJsonFilePath = 'Az.TrustedSigning.private\Test-AzTrustedSigningCodeSigningAccountNameAvailability_CheckViaJsonFilePath';
-            CheckViaJsonString = 'Az.TrustedSigning.private\Test-AzTrustedSigningCodeSigningAccountNameAvailability_CheckViaJsonString';
+            Check = 'Az.TrustedSigning.private\Test-AzTrustedSigningAccountNameAvailability_Check';
+            CheckExpanded = 'Az.TrustedSigning.private\Test-AzTrustedSigningAccountNameAvailability_CheckExpanded';
+            CheckViaJsonFilePath = 'Az.TrustedSigning.private\Test-AzTrustedSigningAccountNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.TrustedSigning.private\Test-AzTrustedSigningAccountNameAvailability_CheckViaJsonString';
         }
         if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-update a certificate profile.
-.Description
-update a certificate profile.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICertificateProfile
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-CODESIGNINGACCOUNTINPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
-  [Id <String>]: Resource identity path
-  [ProfileName <String>]: Certificate profile name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-INPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
-  [Id <String>]: Resource identity path
-  [ProfileName <String>]: Certificate profile name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.trustedsigning/update-aztrustedsigningcertificateprofile
-#>
-function Update-AzTrustedSigningCertificateProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICertificateProfile])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [System.String]
-    # Trusted Signing account name.
-    ${AccountName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityCodeSigningAccountExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [System.String]
-    # Certificate profile name.
-    ${ProfileName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityCodeSigningAccountExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity]
-    # Identity Parameter
-    ${CodeSigningAccountInputObject},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ITrustedSigningIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Identity validation id used for the certificate subject name.
-    ${IdentityValidationId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to include L in the certificate subject name.
-    # Applicable only for private trust, private trust ci profile types
-    ${IncludeCity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to include C in the certificate subject name.
-    # Applicable only for private trust, private trust ci profile types
-    ${IncludeCountry},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to include PC in the certificate subject name.
-    ${IncludePostalCode},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to include S in the certificate subject name.
-    # Applicable only for private trust, private trust ci profile types
-    ${IncludeState},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to include STREET in the certificate subject name.
-    ${IncludeStreetAddress},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.PSArgumentCompleterAttribute("PublicTrust", "PrivateTrust", "PrivateTrustCIPolicy", "VBSEnclave", "PublicTrustTest")]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Body')]
-    [System.String]
-    # Profile type of the certificate.
-    ${ProfileType},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.TrustedSigning.private\Update-AzTrustedSigningCertificateProfile_UpdateExpanded';
-            UpdateViaIdentityCodeSigningAccountExpanded = 'Az.TrustedSigning.private\Update-AzTrustedSigningCertificateProfile_UpdateViaIdentityCodeSigningAccountExpanded';
-            UpdateViaIdentityExpanded = 'Az.TrustedSigning.private\Update-AzTrustedSigningCertificateProfile_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -2165,9 +1578,9 @@ INPUTOBJECT <ITrustedSigningIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/az.trustedsigning/update-aztrustedsigningcodesigningaccount
+https://learn.microsoft.com/powershell/module/az.trustedsigning/update-aztrustedsigningaccount
 #>
-function Update-AzTrustedSigningCodeSigningAccount {
+function Update-AzTrustedSigningAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccount])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -2319,10 +1732,10 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.TrustedSigning.private\Update-AzTrustedSigningCodeSigningAccount_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.TrustedSigning.private\Update-AzTrustedSigningCodeSigningAccount_UpdateViaIdentityExpanded';
-            UpdateViaJsonFilePath = 'Az.TrustedSigning.private\Update-AzTrustedSigningCodeSigningAccount_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.TrustedSigning.private\Update-AzTrustedSigningCodeSigningAccount_UpdateViaJsonString';
+            UpdateExpanded = 'Az.TrustedSigning.private\Update-AzTrustedSigningAccount_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.TrustedSigning.private\Update-AzTrustedSigningAccount_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.TrustedSigning.private\Update-AzTrustedSigningAccount_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.TrustedSigning.private\Update-AzTrustedSigningAccount_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false

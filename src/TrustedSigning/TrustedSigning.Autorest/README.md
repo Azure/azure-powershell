@@ -60,4 +60,21 @@ directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      verb: Revoke
+    remove: true
+  - where:
+      verb: New|Update|Get|Remove
+      subject: CodesigningAccount
+    set:
+      subject: Account
+  - where:
+      verb: Test
+      subject: CodeSigningAccountNameAvailability
+    set:
+      subject: AccountNameAvailability
+  - where:
+      verb: Update
+      subject: CertificateProfile
+    remove: true
 ```
