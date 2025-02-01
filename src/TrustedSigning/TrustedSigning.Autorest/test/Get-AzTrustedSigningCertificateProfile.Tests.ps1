@@ -16,7 +16,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzTrustedSigningCertific
 Describe 'Get-AzTrustedSigningCertificateProfile' {
     BeforeAll {
         $accountName = 'azpstestprofileget'
-        New-AzTrustedSigningCodeSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Premium'
+        New-AzTrustedSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Premium'
     }
     It 'Get' {
         $profileName = 'azpstestprofile0'

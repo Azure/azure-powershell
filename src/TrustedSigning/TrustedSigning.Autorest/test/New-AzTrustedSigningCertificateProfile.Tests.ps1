@@ -17,7 +17,7 @@ Describe 'New-AzTrustedSigningCertificateProfile' {
     It 'CreateExpanded' {
         $accountName = $profileName = 'azpstestprofile'
         
-        New-AzTrustedSigningCodeSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Basic'
+        New-AzTrustedSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Basic'
         
         $sut = New-AzTrustedSigningCertificateProfile -AccountName $accountName -ResourceGroupName $env.rg -ProfileName $profileName `
             -IdentityValidationId $env.IdentityValidationId -ProfileType:PublicTrustTest

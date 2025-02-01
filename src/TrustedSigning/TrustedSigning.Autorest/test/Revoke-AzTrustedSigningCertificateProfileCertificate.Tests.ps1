@@ -17,7 +17,7 @@ Describe 'Revoke-AzTrustedSigningCertificateProfileCertificate' {
     It 'Revoke' {
         $accountName = $profileName = 'azpstestprofilerevoke'
 
-        New-AzTrustedSigningCodeSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Basic'
+        New-AzTrustedSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Basic'
         $cp = New-AzTrustedSigningCertificateProfile -AccountName $accountName -ResourceGroupName $env.rg -ProfileName $profileName -IdentityValidationId $env.IdentityValidationId -ProfileType:PublicTrustTest
 
         { Revoke-AzTrustedSigningCertificateProfileCertificate -AccountName $accountName -ProfileName $profileName -ResourceGroupName $env.rg -EffectiveAt (Get-Date) -Reason 'Unspecified' -Thumbprint $cp.Certificate.Thumbprint -SerialNumber $cp.Certificate.SerialNumber } | Should -Throw "The operation for resource '*' is invalid as certificate revocation can only be triggered from azure portal."

@@ -16,7 +16,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzTrustedSigningCerti
 Describe 'Remove-AzTrustedSigningCertificateProfile' {
     It 'Delete' {
         $accountName = $profileName = 'azpstestprofiledelete'
-        New-AzTrustedSigningCodeSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Basic'
+        New-AzTrustedSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Basic'
         New-AzTrustedSigningCertificateProfile -AccountName $accountName -ResourceGroupName $env.rg -ProfileName $profileName `
             -IdentityValidationId $env.IdentityValidationId -ProfileType:PublicTrustTest
         { Get-AzTrustedSigningCertificateProfile -ResourceGroupName $env.rg -AccountName $accountName -ProfileName $profileName } | Should -Not -Throw
