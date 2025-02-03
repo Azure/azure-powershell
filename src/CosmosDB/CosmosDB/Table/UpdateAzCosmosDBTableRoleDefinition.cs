@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 permissions = new List<Permission>(Permission.Select(p => new Permission(p.DataActions)));
             }
 
-            Id = RoleHelper.ParseToRoleDefinitionId(Id);
+            Id = TableRoleHelper.ParseToRoleDefinitionId(Id);
 
             TableRoleDefinitionGetResults readTableRoleDefinitionGetResults = null;
             try
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             AssignableScope = AssignableScope ?? new List<string>(readTableRoleDefinitionGetResults.AssignableScopes);
-            AssignableScope = new List<string>(AssignableScope.Select(s => RoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
+            AssignableScope = new List<string>(AssignableScope.Select(s => TableRoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
 
             TableRoleDefinitionCreateUpdateParameters tableRoleDefinitionCreateUpdateParameters = new TableRoleDefinitionCreateUpdateParameters
             {

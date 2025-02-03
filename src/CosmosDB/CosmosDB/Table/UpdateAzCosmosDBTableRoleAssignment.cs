@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 RoleDefinitionId = tableRoleDefinitions.FirstOrDefault().Id;
             }
 
-            Id = RoleHelper.ParseToRoleAssignmentId(Id);
+            Id = TableRoleHelper.ParseToRoleAssignmentId(Id);
 
             TableRoleAssignmentGetResults readTableRoleAssignmentGetResults = null;
             try
@@ -130,14 +130,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             TableRoleAssignmentCreateUpdateParameters tableRoleAssignmentCreateUpdateParameters = new TableRoleAssignmentCreateUpdateParameters
             {
-                RoleDefinitionId = RoleHelper.ParseToFullyQualifiedRoleDefinitionId(RoleDefinitionId ?? readTableRoleAssignmentGetResults.RoleDefinitionId, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName),
-                Scope = RoleHelper.ParseToFullyQualifiedScope(Scope ?? readTableRoleAssignmentGetResults.Scope, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName),
+                RoleDefinitionId = TableRoleHelper.ParseToFullyQualifiedRoleDefinitionId(RoleDefinitionId ?? readTableRoleAssignmentGetResults.RoleDefinitionId, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName),
+                Scope = TableRoleHelper.ParseToFullyQualifiedScope(Scope ?? readTableRoleAssignmentGetResults.Scope, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName),
                 PrincipalId = PrincipalId ?? readTableRoleAssignmentGetResults.PrincipalId,
             };
 
             if (ShouldProcess(Id, "Updating an existing CosmosDB Table Role Definition"))
             {
-                TableRoleAssignmentGetResults tableRoleAssignmentGetResults = CosmosDBManagementClient.TableResources.CreateUpdateTableRoleAssignmentWithHttpMessagesAsync(RoleHelper.ParseToRoleAssignmentId(Id), ResourceGroupName, AccountName, tableRoleAssignmentCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                TableRoleAssignmentGetResults tableRoleAssignmentGetResults = CosmosDBManagementClient.TableResources.CreateUpdateTableRoleAssignmentWithHttpMessagesAsync(TableRoleHelper.ParseToRoleAssignmentId(Id), ResourceGroupName, AccountName, tableRoleAssignmentCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSTableRoleAssignmentGetResults(tableRoleAssignmentGetResults));
             }
 

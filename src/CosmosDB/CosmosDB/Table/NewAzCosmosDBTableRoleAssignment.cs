@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 RoleDefinitionId = tableRoleDefinitions.FirstOrDefault().Id;
             }
 
-            Id = string.IsNullOrWhiteSpace(Id) ? Guid.NewGuid().ToString() : RoleHelper.ParseToRoleAssignmentId(Id);
+            Id = string.IsNullOrWhiteSpace(Id) ? Guid.NewGuid().ToString() : TableRoleHelper.ParseToRoleAssignmentId(Id);
 
             TableRoleAssignmentGetResults readTableRoleAssignmentGetResults = null;
             try
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             TableRoleAssignmentCreateUpdateParameters tableRoleAssignmentCreateUpdateParameters = new TableRoleAssignmentCreateUpdateParameters
             {
-                RoleDefinitionId = RoleHelper.ParseToFullyQualifiedRoleDefinitionId(RoleDefinitionId, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName),
-                Scope = RoleHelper.ParseToFullyQualifiedScope(Scope, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName),
+                RoleDefinitionId = TableRoleHelper.ParseToFullyQualifiedRoleDefinitionId(RoleDefinitionId, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName),
+                Scope = TableRoleHelper.ParseToFullyQualifiedScope(Scope, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName),
                 PrincipalId = PrincipalId
             };
 

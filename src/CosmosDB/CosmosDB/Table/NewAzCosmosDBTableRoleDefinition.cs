@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 permissions = new List<Permission>(Permission.Select(p => new Permission(p.DataActions)));
             }
 
-            Id = string.IsNullOrWhiteSpace(Id) ? Guid.NewGuid().ToString() : RoleHelper.ParseToRoleDefinitionId(Id);
+            Id = string.IsNullOrWhiteSpace(Id) ? Guid.NewGuid().ToString() : TableRoleHelper.ParseToRoleDefinitionId(Id);
 
             TableRoleDefinitionGetResults readTableRoleDefinitionGetResults = null;
             try
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 throw new ConflictingResourceException(message: string.Format(ExceptionMessage.ConflictTableRoleResourceId, "Definition", Id));
             }
 
-            AssignableScope = new List<string>(AssignableScope.Select(s => RoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
+            AssignableScope = new List<string>(AssignableScope.Select(s => TableRoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
 
             TableRoleDefinitionCreateUpdateParameters tableRoleDefinitionCreateUpdateParameters = new TableRoleDefinitionCreateUpdateParameters
             {
