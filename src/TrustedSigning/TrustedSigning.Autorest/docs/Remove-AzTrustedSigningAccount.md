@@ -29,27 +29,12 @@ Delete a trusted signing account.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete Trusted Signing Account
 ```powershell
-{{ Add code here }}
+Remove-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command deletes a trusted signing account.
 
 ## PARAMETERS
 
