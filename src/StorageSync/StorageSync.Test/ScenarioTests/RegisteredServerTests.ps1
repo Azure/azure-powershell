@@ -806,7 +806,7 @@ function Test-PatchRegisteredServerWithServerEndpoint
         $storageAccountName = Get-ResourceName("sa")
         $storageAccountTenantId = Get-TenantId
         # NOTE: Check the local server drives where we are performing registration.
-        $serverLocalPath = "E:\syncdir"
+        $serverLocalPath = "E:\" + $serverEndpointName
         $tierFilesOlderThanDays = 10
         $volumeFreeSpacePercent = 60
         $volumeFreeSpacePercent2 = 80
