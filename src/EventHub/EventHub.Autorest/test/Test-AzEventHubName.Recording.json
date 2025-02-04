@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/Microsoft.EventHub/checkNameAvailability?api-version=2023-01-01-preview",
-      "Content": "{\n  \"name\": \"namespaceV14e6stf\"\n}",
+      "Content": "{\n  \"name\": \"namespaceV1bw7rl3\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,32 +17,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "38643da1-2007-4d2e-9a7e-6dc4d26afee1_M8CH3_M8CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "8ac78117-791d-483d-8c58-7d91da726a14" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240429T134041Z:8ac78117-791d-483d-8c58-7d91da726a14" ],
+        "x-ms-correlation-request-id": [ "fb9a97c3-2d91-4d7f-bfec-dedfde43d57d" ],
+        "x-ms-client-request-id": [ "64bf3cb2-d4b4-4348-af03-05f06577ce00_RP" ],
+        "x-ms-messaging-activity-id": [ "aaeadb43-0a35-4c0f-a9af-7a6553f57c86" ],
+        "x-ms-messaging-routing-id": [ "WESTINDIA|WESTINDIA|G4|2025-01-21T14:21:11" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "fb9a97c3-2d91-4d7f-bfec-dedfde43d57d" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250121T142111Z:fb9a97c3-2d91-4d7f-bfec-dedfde43d57d" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2112324E223845A8857529FD5D8E5D3B Ref B: SEL221051504023 Ref C: 2024-04-29T13:40:41Z" ],
-        "Date": [ "Mon, 29 Apr 2024 13:40:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AF718DEEEA2949528E25A263BB897374 Ref B: MAA201060513009 Ref C: 2025-01-21T14:21:10Z" ],
+        "Date": [ "Tue, 21 Jan 2025 14:21:10 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "159" ],
+        "Content-Length": [ "76" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"nameAvailable\":false,\"reason\":\"NameInUse\",\"message\":\"The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.\"}",
+      "Content": "{\"nameAvailable\":false,\"reason\":\"NameInUse\",\"message\":\"Name already in use\"}",
       "isContentBase64": false
     }
   },
-  "Test-AzEventHubName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/disasterRecoveryConfigs/checkNameAvailability?api-version=2023-01-01-preview+1": {
+  "Test-AzEventHubName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-rci2wp/providers/Microsoft.EventHub/namespaces/namespaceName42kzga/disasterRecoveryConfigs/checkNameAvailability?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/disasterRecoveryConfigs/checkNameAvailability?api-version=2023-01-01-preview",
-      "Content": "{\n  \"name\": \"aliasp8gxof\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-rci2wp/providers/Microsoft.EventHub/namespaces/namespaceName42kzga/disasterRecoveryConfigs/checkNameAvailability?api-version=2023-01-01-preview",
+      "Content": "{\n  \"name\": \"alias6l79mx\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -56,24 +58,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "ac06dae0-7a82-402b-b3dc-dac7c7cf63df_M5CH3_M5CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "59f531d9-924f-4aa5-97e2-11224cc7eacb" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240429T134043Z:59f531d9-924f-4aa5-97e2-11224cc7eacb" ],
+        "x-ms-correlation-request-id": [ "6ed36d7a-3cb5-4c88-97fd-4681fc2dc917" ],
+        "x-ms-client-request-id": [ "e4aab619-4ff3-42f5-8b38-24512c2d9e02_RP" ],
+        "x-ms-messaging-activity-id": [ "068a82cf-0c14-4ce9-a005-e2b4c5901cfc" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G2|2025-01-21T14:21:12" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "6ed36d7a-3cb5-4c88-97fd-4681fc2dc917" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250121T142112Z:6ed36d7a-3cb5-4c88-97fd-4681fc2dc917" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F5936A8093AB499482AE019E78FBA18B Ref B: SEL221051504023 Ref C: 2024-04-29T13:40:41Z" ],
-        "Date": [ "Mon, 29 Apr 2024 13:40:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CBD4D085471A4226B473D0FC74D93979 Ref B: MAA201060513009 Ref C: 2025-01-21T14:21:11Z" ],
+        "Date": [ "Tue, 21 Jan 2025 14:21:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "38" ],
+        "Content-Length": [ "75" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"nameAvailable\":true,\"reason\":\"None\"}",
+      "Content": "{\"nameAvailable\":true,\"reason\":\"None\",\"message\":\"Namespace name available\"}",
       "isContentBase64": false
     }
   }

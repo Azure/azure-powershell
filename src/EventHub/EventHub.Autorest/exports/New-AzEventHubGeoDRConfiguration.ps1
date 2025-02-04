@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new Alias(Disaster Recovery configuration)
+create a new Alias(Disaster Recovery configuration)
 .Description
-Create a new Alias(Disaster Recovery configuration)
+create a new Alias(Disaster Recovery configuration)
 .Example
 New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 

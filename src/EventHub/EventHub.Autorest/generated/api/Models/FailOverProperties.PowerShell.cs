@@ -105,9 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).PrimaryLocation = (string) content.GetValueForProperty("PrimaryLocation",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).PrimaryLocation, global::System.Convert.ToString);
             }
-            if (content.Contains("MaximumGracePeriodInMin"))
+            if (content.Contains("Force"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).MaximumGracePeriodInMin = (int?) content.GetValueForProperty("MaximumGracePeriodInMin",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).MaximumGracePeriodInMin, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).Force = (bool?) content.GetValueForProperty("Force",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).Force, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -130,9 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).PrimaryLocation = (string) content.GetValueForProperty("PrimaryLocation",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).PrimaryLocation, global::System.Convert.ToString);
             }
-            if (content.Contains("MaximumGracePeriodInMin"))
+            if (content.Contains("Force"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).MaximumGracePeriodInMin = (int?) content.GetValueForProperty("MaximumGracePeriodInMin",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).MaximumGracePeriodInMin, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).Force = (bool?) content.GetValueForProperty("Force",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)this).Force, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

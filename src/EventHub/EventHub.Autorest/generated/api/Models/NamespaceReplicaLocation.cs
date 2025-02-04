@@ -31,6 +31,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public string LocationName { get => this._locationName; set => this._locationName = value; }
 
+        /// <summary>Internal Acessors for ReplicaState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal.ReplicaState { get => this._replicaState; set { {_replicaState = value;} } }
+
+        /// <summary>Backing field for <see cref="ReplicaState" /> property.</summary>
+        private string _replicaState;
+
+        /// <summary>state of Namespace replica.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
+        public string ReplicaState { get => this._replicaState; }
+
         /// <summary>Backing field for <see cref="RoleType" /> property.</summary>
         private string _roleType;
 
@@ -73,6 +83,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         SerializedName = @"locationName",
         PossibleTypes = new [] { typeof(string) })]
         string LocationName { get; set; }
+        /// <summary>state of Namespace replica.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"state of Namespace replica.",
+        SerializedName = @"replicaState",
+        PossibleTypes = new [] { typeof(string) })]
+        string ReplicaState { get;  }
         /// <summary>GeoDR Role Types</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -98,6 +119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string ClusterArmId { get; set; }
         /// <summary>Azure regions where a replica of the namespace is maintained</summary>
         string LocationName { get; set; }
+        /// <summary>state of Namespace replica.</summary>
+        string ReplicaState { get; set; }
         /// <summary>GeoDR Role Types</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Primary", "Secondary")]
         string RoleType { get; set; }

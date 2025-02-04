@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-Create an ApplicationGroup for a Namespace.
+create an ApplicationGroup for a Namespace.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Create an ApplicationGroup for a Namespace.
 ```
 New-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClientAppGroupIdentifier <String>] [-IsEnabled]
- [-Policy <IApplicationGroupPolicy[]>] [-DefaultProfile <PSObject>]
+ [-Policy <IApplicationGroupPolicy[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,18 +24,18 @@ New-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceG
 ```
 New-AzEventHubApplicationGroup -Name <String> -NamespaceInputObject <IEventHubIdentity>
  [-ClientAppGroupIdentifier <String>] [-IsEnabled] [-Policy <IApplicationGroupPolicy[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzEventHubApplicationGroup -Name <String> -NamespaceInputObject <IEventHubIdentity>
- -Parameter <IApplicationGroup> [-DefaultProfile <PSObject>] [-WhatIf]
+ -Parameter <IApplicationGroup> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an ApplicationGroup for a Namespace.
+create an ApplicationGroup for a Namespace.
 
 ## EXAMPLES
 
@@ -186,6 +186,21 @@ The policies can support resource governance scenarios such as limiting ingress 
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicy[]
 Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

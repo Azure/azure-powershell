@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubGeoDRConfiguration
 
 ## SYNOPSIS
-Create a new Alias(Disaster Recovery configuration)
+create a new Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
@@ -16,25 +16,25 @@ Create a new Alias(Disaster Recovery configuration)
 ```
 New-AzEventHubGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AlternateName <String>] [-PartnerNamespace <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
 ```
 New-AzEventHubGeoDRConfiguration -Name <String> -NamespaceInputObject <IEventHubIdentity>
  [-AlternateName <String>] [-PartnerNamespace <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzEventHubGeoDRConfiguration -Name <String> -NamespaceInputObject <IEventHubIdentity>
- -Parameter <IArmDisasterRecovery> [-DefaultProfile <PSObject>] [-WhatIf]
+ -Parameter <IArmDisasterRecovery> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new Alias(Disaster Recovery configuration)
+create a new Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 
@@ -158,6 +158,21 @@ ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create an EventHub schema group.
+create an EventHub schema group.
 .Description
-Create an EventHub schema group.
+create an EventHub schema group.
 .Example
 $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup -SchemaCompatibility Backward -SchemaType Avro
 

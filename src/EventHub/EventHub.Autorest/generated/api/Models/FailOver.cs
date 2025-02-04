@@ -14,14 +14,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
     {
 
         /// <summary>
-        /// Maximum time duration allowed complete data replication from primary to secondary. Use maximumGracePeriodInMins = 0: For
-        /// Unplanned Geo-Failover, which switches the role between primary and secondary immediately. The data that is not being
-        /// replicated yet will be discarded. Use maximumGracePeriodInMins > 0: For Planned Geo-Failover/DR Drill, continue replicating
-        /// data until grace period expires. Any data that is not replicated during the grace period will be discarded. During the
-        /// replication the namespace stops accepting any new publishing requests
+        /// If Force is false then graceful failover is attempted after ensuring no data loss. If Force flag is set to true, Forced
+        /// failover is attempted with possible data loss.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public int? MaximumGracePeriodInMin { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)Property).MaximumGracePeriodInMin; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)Property).MaximumGracePeriodInMin = value ?? default(int); }
+        public bool? Force { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)Property).Force; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverPropertiesInternal)Property).Force = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFailOverInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.FailOverProperties()); set { {_property = value;} } }
@@ -46,11 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// Maximum time duration allowed complete data replication from primary to secondary. Use maximumGracePeriodInMins = 0: For
-        /// Unplanned Geo-Failover, which switches the role between primary and secondary immediately. The data that is not being
-        /// replicated yet will be discarded. Use maximumGracePeriodInMins > 0: For Planned Geo-Failover/DR Drill, continue replicating
-        /// data until grace period expires. Any data that is not replicated during the grace period will be discarded. During the
-        /// replication the namespace stops accepting any new publishing requests
+        /// If Force is false then graceful failover is attempted after ensuring no data loss. If Force flag is set to true, Forced
+        /// failover is attempted with possible data loss.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -58,10 +52,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Maximum time duration allowed complete data replication from primary to secondary. Use maximumGracePeriodInMins = 0: For Unplanned Geo-Failover, which switches the role between primary and secondary immediately. The data that is not being replicated yet will be discarded. Use maximumGracePeriodInMins > 0: For Planned Geo-Failover/DR Drill, continue replicating data until grace period expires.  Any data that is not replicated during the grace period will be discarded. During the replication the namespace stops accepting any new publishing requests",
-        SerializedName = @"maximumGracePeriodInMins",
-        PossibleTypes = new [] { typeof(int) })]
-        int? MaximumGracePeriodInMin { get; set; }
+        Description = @"If Force is false then graceful failover is attempted after ensuring no data loss. If Force flag is set to true, Forced failover is attempted with possible data loss.",
+        SerializedName = @"force",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? Force { get; set; }
         /// <summary>Query parameter for the new primary location after failover.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -79,13 +73,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
     {
         /// <summary>
-        /// Maximum time duration allowed complete data replication from primary to secondary. Use maximumGracePeriodInMins = 0: For
-        /// Unplanned Geo-Failover, which switches the role between primary and secondary immediately. The data that is not being
-        /// replicated yet will be discarded. Use maximumGracePeriodInMins > 0: For Planned Geo-Failover/DR Drill, continue replicating
-        /// data until grace period expires. Any data that is not replicated during the grace period will be discarded. During the
-        /// replication the namespace stops accepting any new publishing requests
+        /// If Force is false then graceful failover is attempted after ensuring no data loss. If Force flag is set to true, Forced
+        /// failover is attempted with possible data loss.
         /// </summary>
-        int? MaximumGracePeriodInMin { get; set; }
+        bool? Force { get; set; }
         /// <summary>Query parameter for the new primary location after failover.</summary>
         string PrimaryLocation { get; set; }
 

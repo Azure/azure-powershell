@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-Create an EventHub schema group.
+create an EventHub schema group.
 
 ## SYNTAX
 
@@ -16,24 +16,24 @@ Create an EventHub schema group.
 ```
 New-AzEventHubSchemaGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-GroupProperty <Hashtable>] [-SchemaCompatibility <String>] [-SchemaType <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
 ```
 New-AzEventHubSchemaGroup -Name <String> -NamespaceInputObject <IEventHubIdentity> [-GroupProperty <Hashtable>]
  [-SchemaCompatibility <String>] [-SchemaType <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzEventHubSchemaGroup -Name <String> -NamespaceInputObject <IEventHubIdentity> -Parameter <ISchemaGroup>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an EventHub schema group.
+create an EventHub schema group.
 
 ## EXAMPLES
 
@@ -147,6 +147,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

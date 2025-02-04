@@ -806,11 +806,11 @@ function Test-PatchRegisteredServerWithServerEndpoint
         $storageAccountName = Get-ResourceName("sa")
         $storageAccountTenantId = Get-TenantId
         # NOTE: Check the local server drives where we are performing registration.
-        $serverLocalPath = "D:\" + $serverEndpointName
+        $serverLocalPath = "E:\syncdir"
         $tierFilesOlderThanDays = 10
         $volumeFreeSpacePercent = 60
         $volumeFreeSpacePercent2 = 80
-        $initialUploadPolicy = "ServerAuthoritative"
+        $initialUploadPolicy = "Merge"
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
@@ -839,7 +839,7 @@ function Test-PatchRegisteredServerWithServerEndpoint
         $job | Wait-Job
         $cloudEndpoint = get-job -Id $job.Id | receive-job -Keep
 
-        Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
+        Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation | Type : ServerEndpoint"
         $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $expectedRegisteredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -VolumeFreeSpacePercent $volumeFreeSpacePercent -TierFilesOlderThanDays $tierFilesOlderThanDays -InitialUploadPolicy $initialUploadPolicy -Verbose -AsJob 
 
         $job | Wait-Job

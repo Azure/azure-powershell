@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             {_locationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("locationName"), out var __jsonLocationName) ? (string)__jsonLocationName : (string)_locationName;}
             {_roleType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("roleType"), out var __jsonRoleType) ? (string)__jsonRoleType : (string)_roleType;}
+            {_replicaState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("replicaState"), out var __jsonReplicaState) ? (string)__jsonReplicaState : (string)_replicaState;}
             {_clusterArmId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("clusterArmId"), out var __jsonClusterArmId) ? (string)__jsonClusterArmId : (string)_clusterArmId;}
             AfterFromJson(json);
         }
@@ -104,6 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             AddIf( null != (((object)this._locationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._locationName.ToString()) : null, "locationName" ,container.Add );
             AddIf( null != (((object)this._roleType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._roleType.ToString()) : null, "roleType" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._replicaState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._replicaState.ToString()) : null, "replicaState" ,container.Add );
+            }
             AddIf( null != (((object)this._clusterArmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._clusterArmId.ToString()) : null, "clusterArmId" ,container.Add );
             AfterToJson(ref container);
             return container;
