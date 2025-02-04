@@ -41,7 +41,7 @@ Get details of a certificate profile.
 
 ## EXAMPLES
 
-### Example 1: Get trusted signing certificate profile
+### Example 1: Get Trusted Signing Certificate Profile
 ```powershell
 Get-AzTrustedSigningCertificateProfile -AccountName test -ResourceGroupName rg-test -ProfileName test
 ```
@@ -54,7 +54,7 @@ Barstow Contoso News(TEST ONLY) US      1.3.6.1.4.1.311.97.1.2.100309390.8669616
 
 This command gets a trusted signing certificate profile
 
-### Example 2: List trusted signing certificate profiles
+### Example 2: List Trusted Signing Certificate Profiles
 ```powershell
 Get-AzTrustedSigningCertificateProfile -AccountName test -ResourceGroupName rg-test
 

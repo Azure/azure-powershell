@@ -1,4 +1,4 @@
-### Example 1: Get a trusted signing account by name
+### Example 1: Get A Trusted Signing Account By Name
 ```powershell
 Get-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test
 ```
@@ -11,7 +11,7 @@ https://eus.codesigning.azure.net/ /subscriptions/66dc869d-771b-4f60-84c1-4964b5
 
 This command get a trusted signing account by name.
 
-### Example 2: List trusted signing accounts in a resource group
+### Example 2: List Trusted Signing Accounts In A Resource Group
 ```powershell
 Get-AzTrustedSigningAccount -ResourceGroupName rg-test
 ```

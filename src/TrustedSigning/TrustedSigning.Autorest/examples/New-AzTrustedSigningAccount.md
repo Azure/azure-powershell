@@ -1,4 +1,4 @@
-### Example 1: Create a new trusted signing account with a Basic SKU
+### Example 1: Create A New Trusted Signing Account With A Basic Sku
 ```powershell
 New-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Basic
 ```
@@ -11,7 +11,7 @@ https://eus.codesigning.azure.net/ /subscriptions/66dc869d-771b-4f60-84c1-4964b5
 
 This command creates a new trusted signing account with a Basic SKU
 
-### Example 2: Create a new trusted signing account with a Premium SKU
+### Example 2: Create A New Trusted Signing Account With A Premium Sku
 ```powershell
 New-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Premium
 ```

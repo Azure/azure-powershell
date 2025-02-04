@@ -41,7 +41,7 @@ Checks that the trusted signing account name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: Test the availability of an used trusted signing account name
+### Example 1: Test the availability of an used trusted signing account Name
 ```powershell
 Test-AzTrustedSigningAccountNameAvailability -Name unavaliable
 ```
@@ -55,7 +55,7 @@ Resource name already exists         False AlreadyExists
 This commands tests the availability of trusted signing account name `unavaliable`.
 The results shows `unavaliable` is occupied.
 
-### Example 2: Test the availability of an unused trusted signing account name
+### Example 2: Test the availability of an unused trusted signing account Name
 ```powershell
 Test-AzTrustedSigningAccountNameAvailability -Name available
 ```

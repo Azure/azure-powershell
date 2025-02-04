@@ -44,7 +44,7 @@ update a trusted signing account.
 
 ## EXAMPLES
 
-### Example 1: Update Trusted Signing Account SKU
+### Example 1: Update Trusted Signing Account Sku
 ```powershell
 Update-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test -SkuName Premium
 ```
@@ -57,7 +57,7 @@ Id                                                                              
 
 This command updates a Trusted Signing Account SKU from Basic to Premium
 
-### Example 2: Update Trusted Signing Account SKU
+### Example 2: Update Trusted Signing Account Sku
 ```powershell
 Update-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test -SkuName Basic
 ```
