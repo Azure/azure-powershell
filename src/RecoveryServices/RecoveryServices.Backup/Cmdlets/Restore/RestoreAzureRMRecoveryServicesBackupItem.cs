@@ -502,10 +502,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||                     
                         (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
                     {
-                        // eliminate Archive tier RPs. Snapshot RPs are supported for RPCv2/Enhanced policy
+                        // eliminate Archive tier and Snapshot RPs.
                         // service would throw the appropriate error for Standard policy
                         if (rp.RecoveryPointTier != 0 
-                            && rp.RecoveryPointTier != RecoveryPointTier.VaultArchive 
+                            && rp.RecoveryPointTier != RecoveryPointTier.VaultArchive
                             && rp.RecoveryPointTier != RecoveryPointTier.SnapshotAndVaultArchive
                             && rp.RecoveryPointTier != RecoveryPointTier.Snapshot) 
                         {

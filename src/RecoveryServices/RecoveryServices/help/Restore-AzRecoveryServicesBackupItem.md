@@ -319,7 +319,7 @@ $restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLoca
 
 Here we filter the recovery points present in the VaultStandard tier and trigger a cross zonal restore for non-ZonePinned VM in a ZRS vault. For CZR we pass -TargetZoneNumber parameter. For Non-ZonedPinned VM, CZR is supported only for ZRS vaults. For ZonePinned VMs CZR is supported for ZRS vaults and cross region restore to secondary region for CRR enabled vaults.
 
-### Example 11: Cross zonal restore for to non-ZonePinned VM to NoZone
+### Example 11: Cross zonal restore for non-ZonePinned VM to NoZone
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
