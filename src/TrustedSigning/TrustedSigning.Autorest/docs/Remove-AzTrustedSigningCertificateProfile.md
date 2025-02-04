@@ -37,27 +37,12 @@ Delete a certificate profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete Trusted Signing Certificate Profile
 ```powershell
-{{ Add code here }}
+Remove-AzTrustedSigningCertificateProfile -AccountName test -ResourceGroupName test -ProfileName test
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command deletes a trusted signing certificate profile.
 
 ## PARAMETERS
 
