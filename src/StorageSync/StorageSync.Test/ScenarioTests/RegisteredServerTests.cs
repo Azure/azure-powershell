@@ -202,7 +202,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPatchRegisteredServerWithServerEndpoint()
         {
-            //TestRunner.RunTestScript("Test-PatchRegisteredServerWithServerEndpoint");
+            TestRunner.RunTestScript("Test-PatchRegisteredServerWithServerEndpoint");
         }
     }
 }
