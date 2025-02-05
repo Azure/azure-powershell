@@ -17,7 +17,7 @@ New-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> -HostedS
  [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
  [-HubRoutingPreference <String>] [-AllowBranchToBranchTraffic]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
