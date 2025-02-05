@@ -54,8 +54,9 @@ The second command gets the policy exemption named PolicyExemption07 for the sco
 
 ### Example 3: Get all policy exemptions associated with a policy assignment
 ```powershell
-$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07'
-Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.ResourceId
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.Id
 ```
 
 The first command gets a policy assignment named PolicyAssignment07.

@@ -19,7 +19,11 @@
 --->
 
 ## Upcoming Release
-* upgraded nuget package to signed package.
+* Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
+
+## Version 7.12.0
+* Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
+* Upgraded nuget package to signed package.
 * Updated `Remove-AzNetworkWatcherFlowLog` command to return boolean value
 * Updated vnv and ipam cmdlets
 * Allowed TA interval to be set as 0 incase TA is disabled

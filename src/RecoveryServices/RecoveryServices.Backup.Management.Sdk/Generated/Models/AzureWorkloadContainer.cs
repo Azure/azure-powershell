@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
 
         /// <param name="operationType">Re-Do Operation
-        /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;, &#39;Rehydrate&#39;</param>
         public AzureWorkloadContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceResourceId = default(string), System.DateTime? lastUpdatedTime = default(System.DateTime?), AzureWorkloadContainerExtendedInfo extendedInfo = default(AzureWorkloadContainerExtendedInfo), string workloadType = default(string), string operationType = default(string))
 
         : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType)
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string WorkloadType {get; set; }
 
         /// <summary>
-        /// Gets or sets re-Do Operation Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;
+        /// Gets or sets re-Do Operation Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;, &#39;Rehydrate&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "operationType")]
         public string OperationType {get; set; }

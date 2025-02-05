@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "This feature is in a limited preview, initially accessible only to certain subscriptions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseSqlDatabase()
         {

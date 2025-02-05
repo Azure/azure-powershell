@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an EventHub schema group.</summary>
+    /// <summary>create an EventHub schema group.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubSchemaGroup_CreateViaIdentityNamespaceExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create an EventHub schema group.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create an EventHub schema group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubSchemaGroup_CreateViaIdentityNamespaceExpanded : global::System.Management.Automation.PSCmdlet,

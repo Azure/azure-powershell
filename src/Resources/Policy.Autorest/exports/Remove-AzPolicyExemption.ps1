@@ -27,10 +27,10 @@ Remove-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.Resourc
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Confirm
+Remove-AzPolicyExemption -Id $PolicyExemption.Id -Confirm
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
 Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Force -BackwardCompatible
 True
 

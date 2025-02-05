@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 0.3.4
+* Upgraded nuget package to signed package.
 * Fixed bug tags in query filter cannot be properly serialized [#22326]
 
 ## Version 0.3.3

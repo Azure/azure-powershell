@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 2.2.0
+* Upgraded nuget package to signed package.
 
 ## Version 2.1.0
 * Fixed an issue that caused some commands ending in `Object` to not work properly.

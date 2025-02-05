@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 2.0.1
+* Upgraded nuget package to signed package.
 
 ## Version 2.0.0
 * The parameters of the `New-AzContainerApp`, `New-AzContainerAppJob`, `Update-AzContainerApp`, `Update-AzContainerAppJob` commands have changed.
