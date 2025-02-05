@@ -53,111 +53,126 @@ INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resourcegraph/update-azresourcegraphquery
 #>
 function Update-AzResourceGraphQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
-    [System.String]
-    # The name of the Graph Query resource.
-    ${Name},
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource])]
+    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    param(
+        [Parameter(ParameterSetName='Update', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
+        [System.String]
+        # The name of the Graph Query resource.
+        ${Name},
+    
+        [Parameter(ParameterSetName='Update', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
+        [System.String]
+        # The name of the resource group.
+        ${ResourceGroupName},
+    
+        [Parameter(ParameterSetName='Update')]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # The Azure subscription Id.
+        ${SubscriptionId},
+    
+        [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity]
+        # Identity Parameter
+        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+        ${InputObject},
+    
+        [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryUpdateParameters]
+        # The parameters that can be provided when updating workbook properties properties.
+        # To construct, see NOTES section for BODY properties and create a hash table.
+        ${Body},
+    
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
+        [System.String]
+        # The description of a graph query.
+        ${Description},
+    
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
+        [System.String]
+        # KQL query that will be graph.
+        ${Query},
+    
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryUpdateParametersTags]))]
+        [System.Collections.Hashtable]
+        # Resource tags
+        ${Tag},
+    
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+        ${DefaultProfile},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    ${ResourceGroupName},
+        [Parameter(ParameterSetName='UpdateExpanded', HelpMessage="The content of the file will be passed to the query parameter.")]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', HelpMessage="The content of the file will be passed to the query parameter.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
+        [System.String]
+        # KQL query that will be graph.
+        ${File},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The Azure subscription Id.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # The description of a graph query.
-    ${Description},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # KQL query that will be graph.
-    ${Query},
-
-    [Parameter(ParameterSetName='UpdateExpanded', HelpMessage="The content of the file will be passed to the query parameter.")]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', HelpMessage="The content of the file will be passed to the query parameter.")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # KQL query that will be graph.
-    ${File},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryUpdateParametersTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+        
+    )
 
 begin {
     try {
