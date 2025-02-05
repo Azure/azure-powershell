@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(Id))
             {
-                TableRoleAssignmentResource tableRoleAssignmentGetResults = CosmosDBManagementClient.TableResources.GetTableRoleAssignmentWithHttpMessagesAsync(TableRoleHelper.ParseToRoleAssignmentId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                TableRoleAssignmentResource tableRoleAssignmentGetResults = CosmosDBManagementClient.TableResources.GetTableRoleAssignmentWithHttpMessagesAsync(ResourceGroupName, AccountName, TableRoleHelper.ParseToRoleAssignmentId(Id)).GetAwaiter().GetResult().Body;
                 WriteObject(new PSTableRoleAssignmentGetResults(tableRoleAssignmentGetResults));
             }
             else

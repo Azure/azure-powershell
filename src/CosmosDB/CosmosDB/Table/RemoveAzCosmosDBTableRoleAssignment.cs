@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id, "Deleting CosmosDB Table Role Assignment"))
             {
-                CosmosDBManagementClient.TableResources.DeleteTableRoleAssignmentWithHttpMessagesAsync(TableRoleHelper.ParseToRoleAssignmentId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult();
+                CosmosDBManagementClient.TableResources.DeleteTableRoleAssignmentWithHttpMessagesAsync(ResourceGroupName, AccountName, TableRoleHelper.ParseToRoleAssignmentId(Id)).GetAwaiter().GetResult();
 
                 if (PassThru)
                 {

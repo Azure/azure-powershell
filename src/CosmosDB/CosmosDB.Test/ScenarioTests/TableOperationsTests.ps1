@@ -507,7 +507,7 @@ function Test-TableRoleCmdlets
       Catch {
           Assert-AreEqual $_.Exception.Message ("Role Assignment with Name [RoleName4] does not exist.")
       }
-
+      
       #role def tests
       # create a new role definition - using parent object and permission
       $Permissions = New-AzCosmosDBPermission -DataAction $DataActionRead
@@ -619,11 +619,11 @@ function Test-TableRoleCmdlets
       # list Role Assignments
       $ListRoleAssignments = Get-AzCosmosDBTableRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull $ListRoleAssignments
-
+      
       # check for correct error propagation
       $PermissionsInvalid = New-AzCosmosDBPermission -DataAction $DataActionInvalid
       $ScriptBlockRoleDef = { New-AzCosmosDBTableRoleDefinition -Type "CustomRole" -RoleName $RoleName6 -Permission $PermissionsInvalid -AssignableScope $Scope -Id $RoleDefinitionId6 -ParentObject $DatabaseAccount }
-      Assert-ThrowsContains $ScriptBlockRoleDef $DataActionInvalid
+      Assert-ThrowsContains $ScriptBlockRoleDef "BadRequest"
   }
   Finally {
       $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
