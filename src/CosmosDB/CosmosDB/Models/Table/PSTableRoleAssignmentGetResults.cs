@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
         }
 
-        public PSTableRoleAssignmentGetResults(TableRoleAssignmentGetResults tableRoleAssignmentGetResults)
+        public PSTableRoleAssignmentGetResults(TableRoleAssignmentResource tableRoleAssignmentGetResults)
         {
             if (tableRoleAssignmentGetResults == null)
             {

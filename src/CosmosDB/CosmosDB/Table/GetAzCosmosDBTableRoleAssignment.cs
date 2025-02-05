@@ -54,14 +54,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(Id))
             {
-                TableRoleAssignmentGetResults tableRoleAssignmentGetResults = CosmosDBManagementClient.TableResources.GetTableRoleAssignmentWithHttpMessagesAsync(TableRoleHelper.ParseToRoleAssignmentId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                TableRoleAssignmentResource tableRoleAssignmentGetResults = CosmosDBManagementClient.TableResources.GetTableRoleAssignmentWithHttpMessagesAsync(TableRoleHelper.ParseToRoleAssignmentId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
                 WriteObject(new PSTableRoleAssignmentGetResults(tableRoleAssignmentGetResults));
             }
             else
             {
-                IEnumerable<TableRoleAssignmentGetResults> tableRoleAssignments = CosmosDBManagementClient.TableResources.ListTableRoleAssignmentsWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                IEnumerable<TableRoleAssignmentResource> tableRoleAssignments = CosmosDBManagementClient.TableResources.ListTableRoleAssignmentsWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
 
-                foreach (TableRoleAssignmentGetResults tableRoleAssignment in tableRoleAssignments)
+                foreach (TableRoleAssignmentResource tableRoleAssignment in tableRoleAssignments)
                 {
                     WriteObject(new PSTableRoleAssignmentGetResults(tableRoleAssignment));
                 }

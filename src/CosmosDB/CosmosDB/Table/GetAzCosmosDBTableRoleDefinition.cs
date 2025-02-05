@@ -54,14 +54,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(Id))
             {
-                TableRoleDefinitionGetResults tableRoleDefinitionGetResults = CosmosDBManagementClient.TableResources.GetTableRoleDefinitionWithHttpMessagesAsync(TableRoleHelper.ParseToRoleDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                TableRoleDefinitionResource tableRoleDefinitionGetResults = CosmosDBManagementClient.TableResources.GetTableRoleDefinitionWithHttpMessagesAsync(TableRoleHelper.ParseToRoleDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
                 WriteObject(new PSTableRoleDefinitionGetResults(tableRoleDefinitionGetResults));
             }
             else
             {
-                IEnumerable<TableRoleDefinitionGetResults> tableRoleDefinitions = CosmosDBManagementClient.TableResources.ListTableRoleDefinitionsWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                IEnumerable<TableRoleDefinitionResource> tableRoleDefinitions = CosmosDBManagementClient.TableResources.ListTableRoleDefinitionsWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
 
-                foreach (TableRoleDefinitionGetResults tableRoleDefinition in tableRoleDefinitions)
+                foreach (TableRoleDefinitionResource tableRoleDefinition in tableRoleDefinitions)
                 {
                     WriteObject(new PSTableRoleDefinitionGetResults(tableRoleDefinition));
                 }
