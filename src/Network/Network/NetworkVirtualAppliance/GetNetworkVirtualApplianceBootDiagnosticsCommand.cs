@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualApplianceBootDiagnositcs", DefaultParameterSetName = ResourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSNetworkVirtualApplianceBootDiagnosticsOperationStatusResponse))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualApplianceBootDiagnostics", DefaultParameterSetName = ResourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSNetworkVirtualApplianceBootDiagnosticsOperationStatusResponse))]
     public class GetNetworkVirtualApplianceBootDiagnosticsCommand : NetworkVirtualApplianceBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";
