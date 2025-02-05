@@ -14,13 +14,10 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
 using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
@@ -114,6 +111,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if(MinimalTlsVersion != null)
             {
                 databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            }
+            if (EnablePerRegionPerPartitionAutoscale != null)
+            {
+                databaseAccountUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale.ToBool();
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
