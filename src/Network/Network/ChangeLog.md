@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
+    - `Add-AzLoadBalancerRuleConfig`
+    - `New-AzLoadBalancerRuleConfig`
+    - `Set-AzLoadBalancerRuleConfig`
 * Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
     - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
