@@ -18,19 +18,25 @@ Test getting the boot diagnostic logs for an existing NetworkVirtualAppliance VM
 #>
 function Test-NetworkVirtualApplianceBootDiagnostics
 {
+    # Resource details
     $rgname = Get-ResourceGroupName
-
-    # The commands are not supported in all regions yet.
-    $location = "eastus2"
+    $location = "australiaeast"
     $nvaname = Get-ResourceName
     $wanname = Get-ResourceName
     $hubname = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/networkVirtualAppliance"
-    $vendor = "ciscosdwan"
-    $scaleunit = 20
+    # NVA sku details
+    $vendor = "checkpoint"
+    $scaleunit = 2
     $version = 'latest'
-    $asn = 65222
-    $prefix = "10.0.0.0/16"
+    $asn = 64512
+    $prefix = "10.1.0.0/16"
+    # Storage account details where logs will be copied
+    $storetype = 'Standard_GRS'
+    $containerName = "testcontainer"
+    $serialConsoleLogsblobName = "example.txt"
+    $consoleScreenshotblobName = "screenshot.png"
+    $storeName = "nvabootdiagstorage";
     try{
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
         $sku = New-AzVirtualApplianceSkuProperty -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
@@ -47,30 +53,34 @@ function Test-NetworkVirtualApplianceBootDiagnostics
         }
         Assert-AreEqual $hub.RoutingState "Provisioned"
 
-
         $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo hi" 
         Assert-NotNull $nva
 
-        #create SAS URL
-	    $storetype = 'Standard_GRS'
-        $containerName = "testcontainer"
-        $blobName = "example"
-        $storeName = 'sto' + $rgname;
+        # Create a new storage account
         New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
         $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
         $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+        # Create container within the storage
         New-AzStorageContainer -Name $containerName -Context $context
         $container = Get-AzStorageContainer -Name $containerName -Context $context
-        # Upload an empty blob to the container
-        $blob = Set-AzStorageBlobContent -Container $containerName -Blob $blobName -Context $context
-        $now=get-date
-        # Generate SAS token with read and write permissions for the blob
-        $sasToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Context $context -Permission "rw" -ExpiryTime $now.AddDays(1) -StartTime $now.AddHours(-1) -FullUri
+        # Upload an empty blob for storing serial console logs 
+        $serialLogsBlob = Set-AzStorageBlobContent -Container $containerName -Blob $serialConsoleLogsblobName -Context $context
+        # Upload an empty blob for storing console screen shot 
+        $consoleScreenshotblob = Set-AzStorageBlobContent -Container $containerName -Blob $consoleScreenshotblobName -Context $context
 
-        $nvabootdiagnostics = Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName $rgname -Name $nvaname -InstanceId 0 -SerialConsoleStorageSasUrl $sasToken
+        #Generate a sas url for both the blobs created above
+        $serialConsoleLogsSasUrl = New-AzStorageBlobSASToken -Container $containerName -Blob $serialConsoleLogsblobName -Context $context -Permission "rw" -ExpiryTime ([System.DateTime]::UtcNow).AddDays(1) -StartTime ([System.DateTime]::UtcNow).AddHours(-1) -FullUri
+        Assert-NotNull $serialConsoleLogsSasUrl
+        $consoleScreenshotSasUrl = New-AzStorageBlobSASToken -Container $containerName -Blob $consoleScreenshotblobName -Context $context -Permission "rw" -ExpiryTime ([System.DateTime]::UtcNow).AddDays(1) -StartTime ([System.DateTime]::UtcNow).AddHours(-1) -FullUri
+        Assert-NotNull $consoleScreenshotSasUrl
+
+        # Call PS cmdlet to retrieve boot diagnostic logs for this NVA for VM instance 0
+        $nvabootdiagnostics = Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName $rgname -Name $nvaname -InstanceId 0 -SerialConsoleStorageSasUrl $serialConsoleLogsSasUrl -ConsoleScreenshotStorageSasUrl $consoleScreenshotSasUrl
         Assert-AreEqual $nvabootdiagnostics.Status "Succeeded"
-   	}   
+   	} 
     finally{
         # Clean up.
-	}
+        Clean-ResourceGroup $rgname
+	} 
+
 }
