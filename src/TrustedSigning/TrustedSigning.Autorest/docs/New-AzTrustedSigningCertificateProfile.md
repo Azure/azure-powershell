@@ -41,7 +41,7 @@ create a certificate profile.
 
 ### Example 1: Create new trusted signing certificate Profile
 ```powershell
-New-AzTrustedSigningCertificateProfile -AccountName test -ResourceGroupName reg-test -ProfileName test -IdentityValidationId 5ab4583e-d027-4998-9d65-a2e88981829f -ProfileType:PublicTrustTest
+New-AzTrustedSigningCertificateProfile -AccountName test -ResourceGroupName rg-test -ProfileName test -IdentityValidationId 5ab4583e-d027-4998-9d65-a2e88981829f -ProfileType PublicTrustTest
 ```
 
 ```output
