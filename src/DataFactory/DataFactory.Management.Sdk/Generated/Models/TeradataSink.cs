@@ -8,21 +8,21 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// A copy activity Parquet sink.
+    /// A copy activity Teradata sink.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ParquetSink")]
-    public partial class ParquetSink : CopySink
+    [Newtonsoft.Json.JsonObject("TeradataSink")]
+    public partial class TeradataSink : CopySink
     {
         /// <summary>
-        /// Initializes a new instance of the ParquetSink class.
+        /// Initializes a new instance of the TeradataSink class.
         /// </summary>
-        public ParquetSink()
+        public TeradataSink()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ParquetSink class.
+        /// Initializes a new instance of the TeradataSink class.
         /// </summary>
 
         /// <param name="additionalProperties">A copy activity sink.
@@ -51,17 +51,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// boolean (or Expression with resultType boolean).
         /// </param>
 
-        /// <param name="storeSettings">Parquet store settings.
+        /// <param name="importSettings">Teradata import settings.
         /// </param>
-
-        /// <param name="formatSettings">Parquet format settings.
-        /// </param>
-        public ParquetSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), StoreWriteSettings storeSettings = default(StoreWriteSettings), ParquetWriteSettings formatSettings = default(ParquetWriteSettings))
+        public TeradataSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), TeradataImportCommand importSettings = default(TeradataImportCommand))
 
         : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
-            this.StoreSettings = storeSettings;
-            this.FormatSettings = formatSettings;
+            this.ImportSettings = importSettings;
             CustomInit();
         }
 
@@ -72,15 +68,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
-        /// Gets or sets parquet store settings.
+        /// Gets or sets teradata import settings.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "storeSettings")]
-        public StoreWriteSettings StoreSettings {get; set; }
-
-        /// <summary>
-        /// Gets or sets parquet format settings.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "formatSettings")]
-        public ParquetWriteSettings FormatSettings {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "importSettings")]
+        public TeradataImportCommand ImportSettings {get; set; }
     }
 }
