@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Account>> GetWithHttpMessagesAsync(string location, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <remarks>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </remarks>
         /// <param name='location'>
         /// Resource location.
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Account>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <remarks>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </remarks>
         /// <param name='location'>
         /// Resource location.
