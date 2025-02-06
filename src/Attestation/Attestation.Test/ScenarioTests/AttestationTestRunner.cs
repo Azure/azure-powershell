@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Attestation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Management.Attestation;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -74,15 +75,8 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 
         private static AttestationClient GetAttestationClient(MockContext context)
         {
-            string accessToken = "fakefakefake";
-
-            // When recording, we should have a connection string passed into the code from the environment
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(new[] { "https://attest.azure.net/.default" });
-            }
-
-            return new AttestationClient(new AttestationCredentials(accessToken), HttpMockServer.CreateInstance());
+            var creds = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId);
+            return new AttestationClient(creds, HttpMockServer.CreateInstance());
         }
     }
 }
