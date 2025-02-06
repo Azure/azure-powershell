@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added new parameter `-ReplicationMode` to `New-AzGalleryImageVersion` cmdlet.
 * Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVmssDiskEncryptionExtension`
 * Added new parameter `EncryptionIdentity` to cmdlet `New-VmssConfig`
 * Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVMDiskEncryptionExtension`
