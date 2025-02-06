@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         {
             this.Operations = new Operations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2021-03-01";
+            this.ApiVersion = "2024-04-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

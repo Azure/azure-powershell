@@ -35,9 +35,9 @@ message-format: json
 
 ###
 ``` yaml
-commit: 413612b5f24da120e83eac227264f2e0b262ed8a
+commit: cb843b318ece878394d127733abe5da858466daf
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2021-03-01/resourcegraph.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2024-04-01/resourcegraph.json
 
 output-folder: Generated
 

@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         [System.Runtime.Serialization.EnumMember(Value = "boolean")]
         Boolean,
         [System.Runtime.Serialization.EnumMember(Value = "object")]
-        Object
+        Object,
+        [System.Runtime.Serialization.EnumMember(Value = "datetime")]
+        Datetime
     }
     internal static class ColumnDataTypeEnumExtension
     {
@@ -45,6 +47,8 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
                     return "boolean";
                 case ColumnDataType.Object:
                     return "object";
+                case ColumnDataType.Datetime:
+                    return "datetime";
             }
             return null;
         }
@@ -62,6 +66,8 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
                     return ColumnDataType.Boolean;
                 case "object":
                     return ColumnDataType.Object;
+                case "datetime":
+                    return ColumnDataType.Datetime;
             }
             return null;
         }

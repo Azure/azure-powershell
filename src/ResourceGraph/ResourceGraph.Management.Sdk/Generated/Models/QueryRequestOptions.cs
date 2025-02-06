@@ -43,7 +43,12 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         /// whether to allow partial scopes for result in case the number of
         /// subscriptions exceed allowed limits.
         /// </param>
-        public QueryRequestOptions(string skipToken = default(string), int? top = default(int?), int? skip = default(int?), ResultFormat? resultFormat = default(ResultFormat?), bool? allowPartialScopes = default(bool?))
+
+        /// <param name="authorizationScopeFilter">Defines what level of authorization resources should be returned based on
+        /// the which subscriptions and management groups are passed as scopes.
+        /// Possible values include: &#39;AtScopeAndBelow&#39;, &#39;AtScopeAndAbove&#39;,
+        /// &#39;AtScopeExact&#39;, &#39;AtScopeAboveAndBelow&#39;</param>
+        public QueryRequestOptions(string skipToken = default(string), int? top = default(int?), int? skip = default(int?), ResultFormat? resultFormat = default(ResultFormat?), bool? allowPartialScopes = default(bool?), AuthorizationScopeFilter? authorizationScopeFilter = default(AuthorizationScopeFilter?))
 
         {
             this.SkipToken = skipToken;
@@ -51,6 +56,7 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
             this.Skip = skip;
             this.ResultFormat = resultFormat;
             this.AllowPartialScopes = allowPartialScopes;
+            this.AuthorizationScopeFilter = authorizationScopeFilter;
             CustomInit();
         }
 
@@ -94,6 +100,14 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allowPartialScopes")]
         public bool? AllowPartialScopes {get; set; }
+
+        /// <summary>
+        /// Gets or sets defines what level of authorization resources should be
+        /// returned based on the which subscriptions and management groups are passed
+        /// as scopes. Possible values include: &#39;AtScopeAndBelow&#39;, &#39;AtScopeAndAbove&#39;, &#39;AtScopeExact&#39;, &#39;AtScopeAboveAndBelow&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "authorizationScopeFilter")]
+        public AuthorizationScopeFilter? AuthorizationScopeFilter {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -121,6 +135,7 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "Skip", 0);
                 }
             }
+
 
         }
     }

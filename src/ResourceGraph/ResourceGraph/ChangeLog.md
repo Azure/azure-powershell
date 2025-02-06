@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* We are going to use a new api version 2024-04-01 to make it to GA.
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.
