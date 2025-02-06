@@ -1,3 +1,28 @@
+## 13.2.0 - February 2025
+#### Az.Compute 9.1.0 
+* Modified cmdlet `New-AzVMConfig`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `Set-AzVMDiskEncryptionExtension`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `Set-AzVmssDiskEncryptionExtension`
+   - Added parameter `-EncryptionIdentity`
+#### Az.EventHub 5.2.0 
+* Modified cmdlet `New-AzEventHub`
+   - Added parameters `-MinCompactionLagInMin`, `-TimestampType`, `-UserMetadata`
+* Modified cmdlet `Set-AzEventHub`
+   - Added parameters `-UserMetadata`, `-MinCompactionLagInMin`, `-TimestampType`
+#### Az.Network 7.14.0 
+* Modified cmdlet `New-AzRouteServer`
+   - Added parameter `-VirtualRouterAutoScaleConfiguration`
+* Modified cmdlet `Update-AzRouteServer`
+   - Added parameter `-VirtualRouterAutoScaleConfiguration`
+#### Az.RecoveryServices 7.5.0 
+* Modified cmdlet `Set-AzRecoveryServicesVaultProperty`
+   - Added parameter `-SoftDeleteRetentionPeriodInDays`
+* Added cmdlet `Undo-AzRecoveryServicesBackupContainerDeletion`
+
 ## 13.1.0 - January 2025
 #### Az.Databricks 1.10.0 
 * Modified cmdlet `New-AzDatabricksWorkspace`
@@ -381,6 +406,7 @@
    - Added parameter alias `DestFile` to parameter `-DestShareFileClient`
 * Modified cmdlet `Stop-AzStorageFileCopy`
    - Removed parameter `-File`
+
 
 
 

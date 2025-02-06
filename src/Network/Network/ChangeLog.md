@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.14.0
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
 
 ## Version 7.12.0

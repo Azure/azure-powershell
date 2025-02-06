@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.2.0
 *  Added parameter `MinCompactionLagInMin`, `TimestampType` and `UserMetadata` to cmdlets `New-AzEventHub` and `Set-AzEventHub`
 *  Supported `DelectorCompact` policy in parameter `Cleanup-policy` of cmdlet `new-AzEventhub`
 
