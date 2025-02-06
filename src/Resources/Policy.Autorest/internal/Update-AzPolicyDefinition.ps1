@@ -21,7 +21,7 @@ This operation update a policy definition in the given management group with the
 This operation update a policy definition in the given management group with the given name.
 .Example
 $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
-Update-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+Update-AzPolicyDefinition -Id $PolicyDefinition.Id -Description 'Updated policy to not allow virtual machine creation'
 .Example
 Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 .Example

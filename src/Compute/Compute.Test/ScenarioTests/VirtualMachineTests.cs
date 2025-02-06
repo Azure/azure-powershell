@@ -675,5 +675,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMSetAzOSCredentialNullRef");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddEncryptionIdentityInAzureVmConfig()
+        {
+            TestRunner.RunTestScript("Test-AddEncryptionIdentityInAzureVmConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm()
+        {
+            TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm");
+        }
     }
 }

@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new Event Hub as a nested resource within a Namespace.</summary>
+    /// <summary>create a new Event Hub as a nested resource within a Namespace.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHub_CreateViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create a new Event Hub as a nested resource within a Namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create a new Event Hub as a nested resource within a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}", ApiVersion = "2023-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}", ApiVersion = "2024-05-01-preview")]
     public partial class NewAzEventHub_CreateViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext

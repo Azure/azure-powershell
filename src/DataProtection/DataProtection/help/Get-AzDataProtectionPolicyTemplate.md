@@ -13,7 +13,7 @@ Gets default policy template for a selected datasource type.
 ## SYNTAX
 
 ```
-Get-AzDataProtectionPolicyTemplate -DatasourceType <DatasourceTypes> [-ProgressAction <ActionPreference>]
+Get-AzDataProtectionPolicyTemplate -DatasourceType <DatasourceTypes>
  [<CommonParameters>]
 ```
 
@@ -48,21 +48,6 @@ Aliases:
 Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

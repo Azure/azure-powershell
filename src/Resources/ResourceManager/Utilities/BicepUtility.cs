@@ -62,6 +62,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private const string MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides = "0.22.6";
 
+        private const string MinimalVersionRequirementForBicepPublishWithNewDocumentationUriParameter = "0.24.24";
+
         public delegate void OutputCallback(string msg);
 
         private readonly IProcessInvoker processInvoker;
@@ -153,7 +155,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             if (!string.IsNullOrWhiteSpace(documentationUri))
             {
                 CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter);
-                bicepPublishCommand += $" --documentationUri {GetQuotedFilePath(documentationUri)}";
+
+                if (IsBicepMinimalVersion(MinimalVersionRequirementForBicepPublishWithNewDocumentationUriParameter)) {
+                    bicepPublishCommand += $" --documentation-uri {GetQuotedFilePath(documentationUri)}";
+                } else {
+                    bicepPublishCommand += $" --documentationUri {GetQuotedFilePath(documentationUri)}";
+                }
             }
 
             if (withSource)
@@ -195,6 +202,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
             return BicepVersion;
         }
+
+        private bool IsBicepMinimalVersion(string minimalVersionRequirement) =>
+            Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(BicepVersion)) > 0;
 
         /// <summary>
         /// Runs a bicep command, and returns stdout as a string.
