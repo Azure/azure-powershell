@@ -75,7 +75,45 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public AzurePostgreSqlLinkedServiceTypeProperties(object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object timeout = default(object), object commandTimeout = default(object), object trustServerCertificate = default(object), object readBufferSize = default(object), object timezone = default(object), object encoding = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+
+        /// <param name="servicePrincipalId">The ID of the service principal used to authenticate against Azure Database
+        /// for PostgreSQL Flexible server. Type: string (or Expression with resultType
+        /// string).
+        /// </param>
+
+        /// <param name="servicePrincipalKey">The key of the service principal used to authenticate against Azure
+        /// Database for PostgreSQL Flexible server.
+        /// </param>
+
+        /// <param name="servicePrincipalCredentialType">The service principal credential type to use in Server-To-Server
+        /// authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="servicePrincipalEmbeddedCert">Specify the base64 encoded certificate of your application registered in
+        /// Azure Active Directory. Type: string (or Expression with resultType
+        /// string).
+        /// </param>
+
+        /// <param name="servicePrincipalEmbeddedCertPassword">Specify the password of your certificate if your certificate has a password
+        /// and you are using AadServicePrincipal authentication. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
+        /// <param name="tenant">The name or ID of the tenant to which the service principal belongs. Type:
+        /// string (or Expression with resultType string).
+        /// </param>
+
+        /// <param name="azureCloudType">Indicates the azure cloud type of the service principle auth. Allowed
+        /// values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany.
+        /// Default value is the data factory regions’ cloud type. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
+        /// <param name="credential">The credential reference containing authentication information.
+        /// </param>
+        public AzurePostgreSqlLinkedServiceTypeProperties(object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object timeout = default(object), object commandTimeout = default(object), object trustServerCertificate = default(object), object readBufferSize = default(object), object timezone = default(object), object encoding = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalEmbeddedCert = default(SecretBase), SecretBase servicePrincipalEmbeddedCertPassword = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), CredentialReference credential = default(CredentialReference))
 
         {
             this.ConnectionString = connectionString;
@@ -92,6 +130,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Encoding = encoding;
             this.Password = password;
             this.EncryptedCredential = encryptedCredential;
+            this.ServicePrincipalId = servicePrincipalId;
+            this.ServicePrincipalKey = servicePrincipalKey;
+            this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
+            this.ServicePrincipalEmbeddedCert = servicePrincipalEmbeddedCert;
+            this.ServicePrincipalEmbeddedCertPassword = servicePrincipalEmbeddedCertPassword;
+            this.Tenant = tenant;
+            this.AzureCloudType = azureCloudType;
+            this.Credential = credential;
             CustomInit();
         }
 
@@ -197,6 +243,69 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "encryptedCredential")]
         public string EncryptedCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the service principal used to authenticate against
+        /// Azure Database for PostgreSQL Flexible server. Type: string (or Expression
+        /// with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalId")]
+        public object ServicePrincipalId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the key of the service principal used to authenticate against
+        /// Azure Database for PostgreSQL Flexible server.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalKey")]
+        public SecretBase ServicePrincipalKey {get; set; }
+
+        /// <summary>
+        /// Gets or sets the service principal credential type to use in
+        /// Server-To-Server authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalCredentialType")]
+        public object ServicePrincipalCredentialType {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the base64 encoded certificate of your application
+        /// registered in Azure Active Directory. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalEmbeddedCert")]
+        public SecretBase ServicePrincipalEmbeddedCert {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the password of your certificate if your certificate
+        /// has a password and you are using AadServicePrincipal authentication. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalEmbeddedCertPassword")]
+        public SecretBase ServicePrincipalEmbeddedCertPassword {get; set; }
+
+        /// <summary>
+        /// Gets or sets the name or ID of the tenant to which the service principal
+        /// belongs. Type: string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tenant")]
+        public object Tenant {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates the azure cloud type of the service principle auth.
+        /// Allowed values are AzurePublic, AzureChina, AzureUsGovernment,
+        /// AzureGermany. Default value is the data factory regions’ cloud type. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "azureCloudType")]
+        public object AzureCloudType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "credential")]
+        public CredentialReference Credential {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -222,6 +331,17 @@ namespace Microsoft.Azure.Management.DataFactory.Models
                 this.Password.Validate();
             }
 
+
+
+
+
+
+
+
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
+            }
         }
     }
 }
