@@ -19,7 +19,7 @@ New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-IdentityType <String>] [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate]
  [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-SkuName <String>]
  [-PublicNetworkAccess <String>] [-SkuCapacity <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -358,21 +358,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
