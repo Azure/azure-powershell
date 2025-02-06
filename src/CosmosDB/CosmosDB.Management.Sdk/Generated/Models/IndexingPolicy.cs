@@ -41,10 +41,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="spatialIndexes">List of spatial specifics
         /// </param>
-
-        /// <param name="vectorIndexes">List of paths to include in the vector indexing
-        /// </param>
-        public IndexingPolicy(bool? automatic = default(bool?), string indexingMode = default(string), System.Collections.Generic.IList<IncludedPath> includedPaths = default(System.Collections.Generic.IList<IncludedPath>), System.Collections.Generic.IList<ExcludedPath> excludedPaths = default(System.Collections.Generic.IList<ExcludedPath>), System.Collections.Generic.IList<System.Collections.Generic.IList<CompositePath>> compositeIndexes = default(System.Collections.Generic.IList<System.Collections.Generic.IList<CompositePath>>), System.Collections.Generic.IList<SpatialSpec> spatialIndexes = default(System.Collections.Generic.IList<SpatialSpec>), System.Collections.Generic.IList<VectorIndex> vectorIndexes = default(System.Collections.Generic.IList<VectorIndex>))
+        public IndexingPolicy(bool? automatic = default(bool?), string indexingMode = default(string), System.Collections.Generic.IList<IncludedPath> includedPaths = default(System.Collections.Generic.IList<IncludedPath>), System.Collections.Generic.IList<ExcludedPath> excludedPaths = default(System.Collections.Generic.IList<ExcludedPath>), System.Collections.Generic.IList<System.Collections.Generic.IList<CompositePath>> compositeIndexes = default(System.Collections.Generic.IList<System.Collections.Generic.IList<CompositePath>>), System.Collections.Generic.IList<SpatialSpec> spatialIndexes = default(System.Collections.Generic.IList<SpatialSpec>))
 
         {
             this.Automatic = automatic;
@@ -53,7 +50,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.ExcludedPaths = excludedPaths;
             this.CompositeIndexes = compositeIndexes;
             this.SpatialIndexes = spatialIndexes;
-            this.VectorIndexes = vectorIndexes;
             CustomInit();
         }
 
@@ -98,11 +94,5 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "spatialIndexes")]
         public System.Collections.Generic.IList<SpatialSpec> SpatialIndexes {get; set; }
-
-        /// <summary>
-        /// Gets or sets list of paths to include in the vector indexing
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "vectorIndexes")]
-        public System.Collections.Generic.IList<VectorIndex> VectorIndexes {get; set; }
     }
 }
