@@ -50,6 +50,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 
                     var signedData = cms.Encode();
 
+                    UpdateCMSVersion(signedData);
+
                     if (!string.IsNullOrWhiteSpace(timeStamperUrl))
                     {
                         var timestampingUri = new Uri("http://www.microsoft.com");
@@ -88,6 +90,70 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
                     }
                 }
             }
+        }
+
+        private byte[] UpdateCMSVersion(byte[] signedData)
+        {
+
+            /* Find and update CMSVersion to 1 if current version is 3.
+             *
+             * Ref: https://datatracker.ietf.org/doc/html/rfc2315
+             *
+             *
+             * ContentInfo ::= SEQUENCE {
+             *      ContentType ::= OBJECT IDENTIFIER,
+             *      Content ([0] EXPLICIT ANY DEFINED BY contentType OPTIONAL)
+             *          SignedData ::= SEQUENCE {
+                             version Version ::= INTEGER, // https://datatracker.ietf.org/doc/html/rfc2315#section-6.9
+                             digestAlgorithms DigestAlgorithmIdentifiers,
+                             contentInfo ContentInfo,
+                             certificates
+                                [0] IMPLICIT ExtendedCertificatesAndCertificates
+                                  OPTIONAL,
+                             crls
+                               [1] IMPLICIT CertificateRevocationLists OPTIONAL,
+                             signerInfos SignerInfos } }
+             *
+             * The OID takes 11 bytes. Each other constructed element has a minimum of 2 bytes
+             * for tag and length, so start looking at offset 15 for a SEQUENCE followed
+             * immediately by INTEGER 3 (02 01 03).
+             *
+             */
+
+            const int startOffset = 15; // Start checking from this index
+            const int endOffset = 100; // Stop checking at this index
+            const byte asn1SequenceTag = 0x30; // ASN.1 SEQUENCE tag
+            const byte asn1LengthBit = 0x80; // Bit indicating a constructed ASN.1 length
+            const byte cmsVersionTag = 0x02; // ASN.1 INTEGER tag for cmsVersion
+            const byte cmsVersionLength = 0x01; // CMS version value length
+            const byte cmsVersionV1 = 0x01; // cmsVersion 1
+
+            // Iterate over the specified range in the data
+            for (int i = startOffset; i < endOffset; i++)
+            {
+                // Check if the current byte marks the start of an ASN.1 SEQUENCE
+                if (signedData[i] == asn1SequenceTag && (signedData[i + 1] & asn1LengthBit) == asn1LengthBit)
+                {
+                    // Extract the length of the SEQUENCE
+                    int sequenceLength = signedData[i + 1] & ~asn1LengthBit; // 0x7F
+
+                    // Calculate the index of the cmsVersion value
+                    int cmsVersionIndex = i + 4 + sequenceLength;
+
+                    if (cmsVersionIndex >= signedData.Length) continue;
+
+                    // Verify that the structure matches the expected pattern
+                    if (signedData[i + 2 + sequenceLength] == cmsVersionTag && // tag for cmsVersion
+                        signedData[i + 3 + sequenceLength] == cmsVersionLength // CMS version value length
+                        )
+                    {
+                        // Update cmsVersion to 1
+                        signedData[cmsVersionIndex] = cmsVersionV1;
+                    }
+                }
+            }
+
+            return signedData;
         }
     }
 }
