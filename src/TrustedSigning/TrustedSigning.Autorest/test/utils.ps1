@@ -44,13 +44,19 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $env.Location = 'eastus'
+    $env.IdentityValidationId = '4931b0b1-c1d4-43a5-800e-259f7937220b'
+    $env.rg = 'azpssdktest'
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    New-AzResourceGroup -Name $env.rg -Location $env.Location | Out-Null
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.rg | Out-Null
 }
 
