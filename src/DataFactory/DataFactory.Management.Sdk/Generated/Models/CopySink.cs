@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the CopySink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -47,9 +50,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="disableMetricsCollection">If true, disable data store metrics collection. Default is false. Type:
         /// boolean (or Expression with resultType boolean).
         /// </param>
-        public CopySink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object))
+        public CopySink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object))
 
         {
+            this.AdditionalProperties = additionalProperties;
             this.WriteBatchSize = writeBatchSize;
             this.WriteBatchTimeout = writeBatchTimeout;
             this.SinkRetryCount = sinkRetryCount;
@@ -64,6 +68,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets a copy activity sink.
+        /// </summary>
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
 
         /// <summary>
         /// Gets or sets write batch size. Type: integer (or Expression with resultType

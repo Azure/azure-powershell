@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Portal",
-  "ModuleVersion": "0.2.1",
+  "ModuleVersion": "0.3.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -10,21 +10,17 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 0,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "List1",
+      "DefaultParameterSetName": "List",
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses",
-              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata",
-              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Type": "System.String"
+              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState]"
             }
           },
           "ParameterSets": [
@@ -69,7 +65,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DashboardName": "System.String",
               "Id": "System.String",
@@ -106,7 +102,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -116,17 +112,8 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "PassThru",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -213,21 +200,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "PassThru",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRMContext",
@@ -266,7 +238,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -282,7 +254,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -340,7 +312,7 @@
           ]
         },
         {
-          "Name": "List",
+          "Name": "List1",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -413,7 +385,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -429,7 +401,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -487,7 +459,7 @@
           ]
         },
         {
-          "Name": "List1",
+          "Name": "List",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -545,7 +517,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -561,7 +533,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -627,7 +599,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DashboardName": "System.String",
                     "Id": "System.String",
@@ -640,21 +612,6 @@
               "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": true,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "PassThru",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
             {
@@ -697,7 +654,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -713,7 +670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -813,7 +770,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -829,7 +786,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -900,17 +857,13 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses",
-              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata",
-              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Type": "System.String"
+              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState]"
             }
           },
           "ParameterSets": [
@@ -950,19 +903,15 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "Dashboard",
+          "Name": "Resource",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses",
-              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata",
-              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Type": "System.String"
+              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState]"
             }
           },
           "ValidateNotNullOrEmpty": false
@@ -979,9 +928,10 @@
         {
           "Name": "Lens",
           "Type": {
-            "Namespace": "System.Collections",
-            "Name": "System.Collections.Hashtable",
-            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1039,7 +989,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1049,7 +999,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1174,7 +1124,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1190,7 +1140,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1252,19 +1202,15 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Dashboard",
+                "Name": "Resource",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses",
-                    "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata",
-                    "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "Type": "System.String"
+                    "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+                    "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata",
+                    "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState]"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1362,7 +1308,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1378,7 +1324,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1457,9 +1403,10 @@
               "ParameterMetadata": {
                 "Name": "Lens",
                 "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1586,7 +1533,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1602,7 +1549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1765,7 +1712,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1781,7 +1728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1897,7 +1844,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DashboardName": "System.String",
               "Id": "System.String",
@@ -1934,7 +1881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1944,7 +1891,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2078,7 +2025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2094,7 +2041,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2175,7 +2122,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DashboardName": "System.String",
                     "Id": "System.String",
@@ -2230,7 +2177,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2246,7 +2193,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2361,7 +2308,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2377,7 +2324,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2463,17 +2410,13 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses",
-              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata",
-              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Type": "System.String"
+              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState]"
             }
           },
           "ParameterSets": [
@@ -2548,7 +2491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2558,7 +2501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2698,7 +2641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2714,7 +2657,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2785,17 +2728,13 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses",
-              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata",
-              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "Type": "System.String"
+              "Lens": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+              "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState]"
             }
           },
           "ParameterSets": [
@@ -2839,7 +2778,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DashboardName": "System.String",
               "Id": "System.String",
@@ -2852,9 +2791,10 @@
         {
           "Name": "Lens",
           "Type": {
-            "Namespace": "System.Collections",
-            "Name": "System.Collections.Hashtable",
-            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2903,7 +2843,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2913,17 +2853,8 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "PassThru",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3011,9 +2942,10 @@
               "ParameterMetadata": {
                 "Name": "Lens",
                 "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3092,7 +3024,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3108,23 +3040,8 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "PassThru",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3189,7 +3106,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DashboardName": "System.String",
                     "Id": "System.String",
@@ -3208,9 +3125,10 @@
               "ParameterMetadata": {
                 "Name": "Lens",
                 "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3289,7 +3207,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3305,23 +3223,8 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "PassThru",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3384,9 +3287,10 @@
               "ParameterMetadata": {
                 "Name": "Lens",
                 "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3465,7 +3369,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3481,23 +3385,8 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "PassThru",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3599,25 +3488,146 @@
     "System.Char": {
       "Name": "System.Char"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Part": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardParts[]",
+        "Metadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IAny",
+        "Order": "System.Int32"
+      }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardParts[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardParts[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardParts[], Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardParts"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardParts": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardParts",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardParts, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "PositionMetadata": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IAny",
+        "PositionColSpan": "System.Int32",
+        "PositionRowSpan": "System.Int32",
+        "PositionX": "System.Int32",
+        "PositionY": "System.Int32",
+        "MetadataType": "System.String"
+      }
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IAny": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IAny",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IAny, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Support.ResourceProvisioningState"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Management.Automation.CompletionResult"
+      ]
+    },
+    "System.Management.Automation.CompletionResult": {
+      "Namespace": "System.Management.Automation",
+      "Name": "System.Management.Automation.CompletionResult",
+      "AssemblyQualifiedName": "System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep, Az.Portal.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep, Az.Portal.private, Version=0.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -3791,11 +3801,6 @@
       "Namespace": "System",
       "Name": "System.Delegate",
       "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-    },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     }
   }
 }

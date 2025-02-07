@@ -16,12 +16,12 @@ pac14,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac15,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Astro.0.1.2.zip;sourceType=sa]Az.Astro,0.1.2
 pac16,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Attestation.2.1.0.zip;sourceType=sa]Az.Attestation,2.1.0
 pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automanage.1.1.0.zip;sourceType=sa]Az.Automanage,1.1.0
-pac18,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automation.1.11.0.zip;sourceType=sa]Az.Automation,1.11.0
+pac18,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automation.1.11.1.zip;sourceType=sa]Az.Automation,1.11.1
 pac19,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BareMetal.0.1.2.zip;sourceType=sa]Az.BareMetal,0.1.2
 pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Batch.3.7.0.zip;sourceType=sa]Az.Batch,3.7.0
 pac21,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Billing.2.2.0.zip;sourceType=sa]Az.Billing,2.2.0
 pac22,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BillingBenefits.0.1.2.zip;sourceType=sa]Az.BillingBenefits,0.1.2
-pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Blueprint.0.4.5.zip;sourceType=sa]Az.Blueprint,0.4.5
+pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Blueprint.0.4.6.zip;sourceType=sa]Az.Blueprint,0.4.6
 pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BotService.0.5.2.zip;sourceType=sa]Az.BotService,0.5.2
 pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Cdn.3.3.0.zip;sourceType=sa]Az.Cdn,3.3.0
 pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ChangeAnalysis.0.1.2.zip;sourceType=sa]Az.ChangeAnalysis,0.1.2
@@ -30,7 +30,7 @@ pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CodeSigning.0.2.1.zip;sourceType=sa]Az.CodeSigning,0.2.1
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CognitiveServices.1.15.0.zip;sourceType=sa]Az.CognitiveServices,1.15.0
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Communication.0.4.2.zip;sourceType=sa]Az.Communication,0.4.2
-pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.9.0.1.zip;sourceType=sa]Az.Compute,9.0.1
+pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.9.1.0.zip;sourceType=sa]Az.Compute,9.1.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeFleet.0.1.0.zip;sourceType=sa]Az.ComputeFleet,0.1.0
 pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeSchedule.0.1.0.zip;sourceType=sa]Az.ComputeSchedule,0.1.0
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.1.0.zip;sourceType=sa]Az.ConfidentialLedger,1.1.0
@@ -54,7 +54,7 @@ pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeAnalytics.1.1.0.zip;sourceType=sa]Az.DataLakeAnalytics,1.1.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeStore.1.4.0.zip;sourceType=sa]Az.DataLakeStore,1.4.0
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataMigration.0.14.9.zip;sourceType=sa]Az.DataMigration,0.14.9
-pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.6.0.zip;sourceType=sa]Az.DataProtection,2.6.0
+pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.6.1.zip;sourceType=sa]Az.DataProtection,2.6.1
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.1.0.zip;sourceType=sa]Az.DataShare,1.1.0
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.3.2.zip;sourceType=sa]Az.DedicatedHsm,0.3.2
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.5.4.1.zip;sourceType=sa]Az.DesktopVirtualization,5.4.1
@@ -73,7 +73,7 @@ pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Elastic.0.2.1.zip;sourceType=sa]Az.Elastic,0.2.1
 pac73,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ElasticSan.1.2.1.zip;sourceType=sa]Az.ElasticSan,1.2.1
 pac74,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventGrid.2.2.0.zip;sourceType=sa]Az.EventGrid,2.2.0
-pac75,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventHub.5.1.0.zip;sourceType=sa]Az.EventHub,5.1.0
+pac75,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventHub.5.2.0.zip;sourceType=sa]Az.EventHub,5.2.0
 pac76,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fabric.0.1.1.zip;sourceType=sa]Az.Fabric,0.1.1
 pac77,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FirmwareAnalysis.0.1.4.zip;sourceType=sa]Az.FirmwareAnalysis,0.1.4
 pac78,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fleet.0.2.2.zip;sourceType=sa]Az.Fleet,0.2.2

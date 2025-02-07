@@ -15,7 +15,7 @@ Undeletes a previously soft-deleted backup container in a recovery services vaul
 ```
 Undo-AzRecoveryServicesBackupContainerDeletion [-Container] <ContainerBase>
  [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
