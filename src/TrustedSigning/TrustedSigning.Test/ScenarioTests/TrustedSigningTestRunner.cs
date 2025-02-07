@@ -17,11 +17,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
 {
-    public class CodeSigningTestRunner
+    public class TrustedSigningTestRunner
     {
         protected readonly ITestRunner TestRunner;
 
-        protected CodeSigningTestRunner(ITestOutputHelper output)
+        protected TrustedSigningTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("Az.CodeSigning.psd1"),
+                    helper.GetRMModulePath("Az.TrustedSigning.psd1"),
                 })
                 .Build();
         }

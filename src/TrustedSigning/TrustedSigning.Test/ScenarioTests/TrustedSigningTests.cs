@@ -17,9 +17,9 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
 {
-    public class CodeSigningTests: CodeSigningTestRunner
+    public class TrustedSigningTests: TrustedSigningTestRunner
     {
-        public CodeSigningTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
+        public TrustedSigningTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
         }
 

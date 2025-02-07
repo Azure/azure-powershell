@@ -25,7 +25,7 @@ function Test-CodeSigningEku {
 
     try {
         # Test Get CodeSigning Eku
-        $eku = Get-AzCodeSigningCustomerEku -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl
+        $eku = Get-AzTrustedSigningCertificateProfileEku -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl
         Assert-AreEqual $eku $expectedEku
     }
 
@@ -46,7 +46,7 @@ function Test-GetCodeSigningRootCert {
 
     try {
         # Test Get CodeSigning Root Cert
-        $cert = Get-AzCodeSigningRootCert -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl -Destination $destination
+        $cert = Get-AzTrustedSigningCertificateProfileCertificateRoot -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl -Destination $destination
         Assert-NotNullOrEmpty $cert
     }
 
@@ -67,7 +67,7 @@ function Test-GetCodeSigningCertChain {
 
     try {
         # Test Get CodeSigning Certificate Chain
-        $chain = Get-AzCodeSigningCertChain -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl -Destination $destination
+        $chain = Get-AzTrustedSigningCertificateProfileCertificateChain -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl -Destination $destination
         Assert-NotNullOrEmpty $chain
     }
 
