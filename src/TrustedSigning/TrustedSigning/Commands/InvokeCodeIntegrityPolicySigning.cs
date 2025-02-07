@@ -21,9 +21,10 @@ using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
-    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
+    [Alias("Invoke-AzCodeSigningCIPolicySigning", "Invoke-AzTrustedSigningCIPolicySigning")]
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCodeIntegrityPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
     [OutputType(typeof(string))]
-    public class InvokeCIPolicySigning : CodeSigningCmdletBase
+    public class InvokeCodeIntegrityPolicySigning : CodeSigningCmdletBase
     {
         #region Parameter Set Names
 

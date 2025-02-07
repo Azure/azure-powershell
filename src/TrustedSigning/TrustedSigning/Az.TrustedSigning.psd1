@@ -73,8 +73,8 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzCodeSigningCustomerEku', 'Get-AzCodeSigningRootCert', 
-               'Get-AzCodeSigningCertChain', 'Invoke-AzCodeSigningCIPolicySigning'
+CmdletsToExport = 'Get-AzTrustedSigningCertificateProfileEku', 'Get-AzTrustedSigningCertificateProfileCertificateRoot', 
+               'Get-AzTrustedSigningCertificateProfileCertificateChain', 'Invoke-AzTrustedSigningCodeIntegrityPolicySigning'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -109,10 +109,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgraded nuget package to signed package.
-* Upgraded Azure.Core to 1.44.1.
-* Upgraded to rebranded package Azure.Developer.TrustedSigning.CryptoProvider.
-* Upgraded to updated Azure.Codesigning.Sdk.'
+        ReleaseNotes = ''
 
         # Prerelease string of this module
         # Prerelease = ''

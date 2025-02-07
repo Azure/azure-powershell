@@ -13,15 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.CodeSigning.Models;
-using System.IO;
+using System;
 using System.Management.Automation;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningRootCert", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
-    [OutputType(typeof(PSSigningCertificate))]
-    public class GetAzureCodeSigningRootCert : CodeSigningCmdletBase
+    [Alias("Get-AzCodeSigningCustomerEku")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCertificateProfileEku", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
+    [OutputType(typeof(string[]))]
+    public class GetAzureTrustedSigningCertificateProfileEku : CodeSigningCmdletBase
     {
         #region Parameter Set Names
 
@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
             HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
         [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
+
         [Parameter(Mandatory = true,
             Position = 2,
             ParameterSetName = ByAccountProfileNameParameterSet,
@@ -69,57 +70,22 @@ namespace Microsoft.Azure.Commands.CodeSigning
         [ValidateNotNullOrEmpty]
         public string MetadataFilePath { get; set; }
 
-        [Parameter(Mandatory = true,
-          Position = 3,
-          ParameterSetName = ByAccountProfileNameParameterSet,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Downloaded Root Cert file full path, including file name")]
-        [Parameter(Mandatory = true,
-          Position = 1,
-          ParameterSetName = ByMetadataFileParameterSet,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Downloaded Root Cert file full path, including file name")]
-        [ValidateNotNullOrEmpty]
-        public string Destination { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            Stream rootcert;
+            string[] eku = Array.Empty<string>();
 
             if (!string.IsNullOrEmpty(AccountName))
             {
-                rootcert = CodeSigningServiceClient.GetCodeSigningRootCert(AccountName, ProfileName, EndpointUrl);
-                WriteRootCert(rootcert);
+                eku = CodeSigningServiceClient.GetCodeSigningEku(AccountName, ProfileName, EndpointUrl);
             }
             else if (!string.IsNullOrEmpty(MetadataFilePath))
             {
-                rootcert = CodeSigningServiceClient.GetCodeSigningRootCert(MetadataFilePath);
-                WriteRootCert(rootcert);
+                eku = CodeSigningServiceClient.GetCodeSigningEku(MetadataFilePath);
             }
-        }
-        private void WriteRootCert(Stream rootcert)
-        {
-            var downloadPath = ResolvePath(Destination);
 
-            var fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write);
-            rootcert.CopyTo(fileStream);
-            fileStream.Dispose();
-
-            //read thumbprint and subject namme
-            byte[] rawData = File.ReadAllBytes(downloadPath);
-            X509Certificate2 x509 = new X509Certificate2(rawData);
-
-            WriteObject(downloadPath.Replace("\\", @"\"));
-
-            PSSigningCertificate pscert = new PSSigningCertificate
-            {
-                Subject = x509.Subject,
-                Thumbprint = x509.Thumbprint,
-                Issuer = x509.Issuer
-            };
-
-            WriteObject(pscert, false);
+            WriteObject(eku);
         }
     }
 }

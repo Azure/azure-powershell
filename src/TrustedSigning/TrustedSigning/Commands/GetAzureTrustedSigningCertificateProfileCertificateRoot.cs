@@ -13,16 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.CodeSigning.Models;
-using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCertChain", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
-    [OutputType(typeof(IEnumerable<PSSigningCertificate>))]
-    public class GetAzureCodeSigningCertChain : CodeSigningCmdletBase
+    [Alias("Get-AzCodeSigningRootCert")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCertificateProfileCertificateRoot", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
+    [OutputType(typeof(PSSigningCertificate))]
+    public class GetAzureTrustedSigningCertificateProfileCertificateRoot : CodeSigningCmdletBase
     {
         #region Parameter Set Names
 
@@ -86,50 +86,41 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
         public override void ExecuteCmdlet()
         {
-            Stream certchain;
+            Stream rootcert;
 
             if (!string.IsNullOrEmpty(AccountName))
             {
-                certchain = CodeSigningServiceClient.GetCodeSigningCertChain(AccountName, ProfileName, EndpointUrl);
-                WriteCertChain(certchain);
+                rootcert = CodeSigningServiceClient.GetCodeSigningRootCert(AccountName, ProfileName, EndpointUrl);
+                WriteRootCert(rootcert);
             }
             else if (!string.IsNullOrEmpty(MetadataFilePath))
             {
-                certchain = CodeSigningServiceClient.GetCodeSigningCertChain(MetadataFilePath);
-                WriteCertChain(certchain);
+                rootcert = CodeSigningServiceClient.GetCodeSigningRootCert(MetadataFilePath);
+                WriteRootCert(rootcert);
             }
         }
-
-        private void WriteCertChain(Stream certchain)
+        private void WriteRootCert(Stream rootcert)
         {
             var downloadPath = ResolvePath(Destination);
 
             var fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write);
-            certchain.CopyTo(fileStream);
+            rootcert.CopyTo(fileStream);
             fileStream.Dispose();
 
+            //read thumbprint and subject namme
             byte[] rawData = File.ReadAllBytes(downloadPath);
-
-            var chain = new X509Certificate2Collection();
-            chain.Import(rawData);
+            X509Certificate2 x509 = new X509Certificate2(rawData);
 
             WriteObject(downloadPath.Replace("\\", @"\"));
 
-            var pschain = new List<PSSigningCertificate>();
-
-            foreach (var cert in chain)
+            PSSigningCertificate pscert = new PSSigningCertificate
             {
-                var pscert = new PSSigningCertificate()
-                {
-                    Issuer = cert.Issuer,
-                    Subject = cert.Subject,
-                    Thumbprint = cert.Thumbprint
-                };
+                Subject = x509.Subject,
+                Thumbprint = x509.Thumbprint,
+                Issuer = x509.Issuer
+            };
 
-                pschain.Add(pscert);
-            }
-
-            WriteObject(pschain);
+            WriteObject(pscert, false);
         }
     }
 }

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 * Added support for CI policy signing for OS versions older than Nickel.
+* Rename the `Get-AzCodeSigningCustomerEku` cmdlet to `Get-AzTrustedSigningCertificateProfileEku`
+* Rename the `Get-AzCodeSigningRootCert` cmdlet to `Get-AzTrustedSigningCertificateProfileCertificateRoot`
+* Rename the `Get-AzCodeSigningCertChain` cmdlet to `Get-AzTrustedSigningCertificateProfileCertificateChain`
+* Rename the `Invoke-AzCodeSigningCIPolicySigning` cmdlet to `Invoke-AzTrustedSigningCodeIntegrityPolicySigning`
 
 ## Version 0.2.1
 * Upgraded nuget package to signed package.
