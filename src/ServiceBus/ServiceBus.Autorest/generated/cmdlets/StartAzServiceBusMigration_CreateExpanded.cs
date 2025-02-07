@@ -11,14 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     using System;
 
     /// <summary>
-    /// Create Migration configuration and starts migration of entities from Standard to Premium namespace
+    /// create Migration configuration and starts migration of entities from Standard to Premium namespace
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateAndStartMigration=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzServiceBusMigration_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Create Migration configuration and starts migration of entities from Standard to Premium namespace")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"create Migration configuration and starts migration of entities from Standard to Premium namespace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}", ApiVersion = "2022-10-01-preview")]
     public partial class StartAzServiceBusMigration_CreateExpanded : global::System.Management.Automation.PSCmdlet,
