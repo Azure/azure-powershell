@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the BinarySink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -50,9 +53,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="storeSettings">Binary store settings.
         /// </param>
-        public BinarySink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), StoreWriteSettings storeSettings = default(StoreWriteSettings))
+        public BinarySink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), StoreWriteSettings storeSettings = default(StoreWriteSettings))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.StoreSettings = storeSettings;
             CustomInit();

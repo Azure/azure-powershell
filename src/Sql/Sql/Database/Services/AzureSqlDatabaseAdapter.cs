@@ -134,6 +134,23 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
+        /// Gets a list of Azure Sql Databases.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="elasticPoolName">The name of the Azure Sql Elastic Pool</param>
+        /// <returns>A list of database objects</returns>
+        internal ICollection<AzureSqlDatabaseModel> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName)
+        {
+            var resp = ElasticPoolCommunicator.ListDatabases(resourceGroupName, serverName, elasticPoolName);
+
+            return resp.Select((db) =>
+            {
+                return CreateDatabaseModelFromResponse(resourceGroupName, serverName, db);
+            }).ToList();
+        }
+
+        /// <summary>
         /// Gets a list of Azure Sql Databases with additional information.
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
