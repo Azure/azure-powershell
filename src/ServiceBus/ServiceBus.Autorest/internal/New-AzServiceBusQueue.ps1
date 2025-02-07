@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Create a Service Bus queue.
+create a Service Bus queue.
 This operation is idempotent.
 .Description
-Create a Service Bus queue.
+create a Service Bus queue.
 This operation is idempotent.
 .Example
 New-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 5) -EnablePartitioning
