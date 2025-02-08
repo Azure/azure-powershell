@@ -318,14 +318,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled")]
-        [ValidateSet(
-            "Enabled",
-            "Disabled",
-            IgnoreCase = true)]
         [PSArgumentCompleter(
             "Enabled",
             "Disabled")]
         public string AdminState  { get; set; }
+
+		[Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Property to indicate the resiliency model of Express Route Gateway: SingleHomed / MultiHomed")]
+        [PSArgumentCompleter(
+            "SingleHomed",
+            "MultiHomed")]
+        public string ResiliencyModel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Set min scale units for scalable gateways")]
         public Int32 MinScaleUnit { get; set; }
@@ -647,6 +652,16 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.AdminState = this.AdminState;
             }
 
+			if (this.ResiliencyModel != null)
+            {
+                if (!GatewayType.Equals(MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new ArgumentException("ResiliencyModel parameter is only supported for Express Route gateways.");
+                }
+
+                vnetGateway.ResiliencyModel = this.ResiliencyModel;
+            }
+
             if (!string.IsNullOrEmpty(this.GatewaySku) && this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale))
             {
                 if (this.MaxScaleUnit > 0 && this.MinScaleUnit > this.MaxScaleUnit)
@@ -676,6 +691,14 @@ namespace Microsoft.Azure.Commands.Network
 
             var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
 
+            if (getVirtualNetworkGateway != null && getVirtualNetworkGateway.GatewayType == MNM.VirtualNetworkGatewayType.ExpressRoute.ToString())
+            {
+                if (getVirtualNetworkGateway.ResiliencyModel != null && getVirtualNetworkGateway.ResiliencyModel.Equals("MultiHomed", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    WriteWarning("The ExpressRoute Virtual Network Gateway with Resiliency Model as Multi-Homed is required to have connections from two ExpressRoute circuits in different peering locations or " +
+                        "a single connection with a circuit in metro location. Connectivity on the Virtual Network Gateway will be disabled until the required number of connections are created.");
+                }
+            }
             return getVirtualNetworkGateway;
         }
     }

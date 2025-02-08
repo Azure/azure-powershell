@@ -483,8 +483,8 @@ Accept wildcard characters: False
 ```
 
 ### -Token
-Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+Parameter deprecate.
+Please use SecureToken instead.
 
 ```yaml
 Type: System.String

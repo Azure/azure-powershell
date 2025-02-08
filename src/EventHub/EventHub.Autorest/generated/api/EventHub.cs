@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
     public partial class EventHub
     {
 
-        /// <summary>Update an ApplicationGroup for a Namespace.</summary>
+        /// <summary>update an ApplicationGroup for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an ApplicationGroup for a Namespace.</summary>
+        /// <summary>update an ApplicationGroup for a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The ApplicationGroup.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an ApplicationGroup for a Namespace.</summary>
+        /// <summary>update an ApplicationGroup for a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The ApplicationGroup.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an ApplicationGroup for a Namespace.</summary>
+        /// <summary>update an ApplicationGroup for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an ApplicationGroup for a Namespace.</summary>
+        /// <summary>update an ApplicationGroup for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an ApplicationGroup for a Namespace.</summary>
+        /// <summary>update an ApplicationGroup for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -1359,7 +1359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an instance of an Event Hubs Cluster.</summary>
+        /// <summary>update an instance of an Event Hubs Cluster.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -1409,7 +1409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an instance of an Event Hubs Cluster.</summary>
+        /// <summary>update an instance of an Event Hubs Cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for creating a eventhub cluster resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1468,7 +1468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an instance of an Event Hubs Cluster.</summary>
+        /// <summary>update an instance of an Event Hubs Cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for creating a eventhub cluster resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1525,7 +1525,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an instance of an Event Hubs Cluster.</summary>
+        /// <summary>update an instance of an Event Hubs Cluster.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -1574,7 +1574,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an instance of an Event Hubs Cluster.</summary>
+        /// <summary>update an instance of an Event Hubs Cluster.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -1621,7 +1621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an instance of an Event Hubs Cluster.</summary>
+        /// <summary>update an instance of an Event Hubs Cluster.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -1694,6 +1694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1706,7 +1707,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1847,6 +1851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1859,7 +1864,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2118,6 +2126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2130,7 +2139,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4191,6 +4203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4203,7 +4216,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4344,6 +4360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4356,7 +4373,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4487,7 +4507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
+        /// <summary>update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -4543,7 +4563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
+        /// <summary>update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create or update a consumer group resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4608,7 +4628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
+        /// <summary>update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create or update a consumer group resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4671,7 +4691,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
+        /// <summary>update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -4726,7 +4746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
+        /// <summary>update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -4779,7 +4799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
+        /// <summary>update an Event Hubs consumer group as a nested resource within a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -6593,7 +6613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -6647,7 +6667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6710,7 +6730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6770,7 +6790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -6823,7 +6843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -6873,7 +6893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -9231,7 +9251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Event Hub as a nested resource within a Namespace.</summary>
+        /// <summary>update a new Event Hub as a nested resource within a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -9249,7 +9269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string eventHubName, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9285,7 +9305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
+        /// update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
         /// to take effect.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
@@ -9344,7 +9364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
+        /// update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
         /// to take effect.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -9412,7 +9432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
+        /// update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
         /// to take effect.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -9478,7 +9498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
+        /// update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
         /// to take effect.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
@@ -9536,7 +9556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
+        /// update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
         /// to take effect.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
@@ -9592,7 +9612,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
+        /// update an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
         /// to take effect.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
@@ -9799,7 +9819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Event Hub as a nested resource within a Namespace.</summary>
+        /// <summary>update a new Event Hub as a nested resource within a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create an Event Hub resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9813,7 +9833,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9861,7 +9881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Event Hub as a nested resource within a Namespace.</summary>
+        /// <summary>update a new Event Hub as a nested resource within a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create an Event Hub resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9873,7 +9893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> EventHubsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub body, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9921,7 +9941,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Event Hub as a nested resource within a Namespace.</summary>
+        /// <summary>update a new Event Hub as a nested resource within a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -9938,7 +9958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string eventHubName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9973,7 +9993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Event Hub as a nested resource within a Namespace.</summary>
+        /// <summary>update a new Event Hub as a nested resource within a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -9988,7 +10008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> EventHubsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string eventHubName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10023,7 +10043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update a new Event Hub as a nested resource within a Namespace.</summary>
+        /// <summary>update a new Event Hub as a nested resource within a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -10039,7 +10059,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> EventHubsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string eventHubName, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub body, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10235,7 +10255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string eventHubName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10481,7 +10501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10629,7 +10649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsGet(string subscriptionId, string resourceGroupName, string namespaceName, string eventHubName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11032,7 +11052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11086,7 +11106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> EventHubsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11144,7 +11164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> EventHubsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string eventHubName, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11684,7 +11704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsListByNamespace(string subscriptionId, string resourceGroupName, string namespaceName, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11734,7 +11754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task EventHubsListByNamespaceViaIdentity(global::System.String viaIdentity, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11794,7 +11814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubListResult> EventHubsListByNamespaceViaIdentityWithResult(global::System.String viaIdentity, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11857,7 +11877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubListResult> EventHubsListByNamespaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13310,7 +13330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -13361,7 +13381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an AuthorizationRule for a Namespace.</summary>
+        /// <summary>update an AuthorizationRule for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -13414,7 +13434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an AuthorizationRule for a Namespace.</summary>
+        /// <summary>update an AuthorizationRule for a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The shared access AuthorizationRule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13476,7 +13496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an AuthorizationRule for a Namespace.</summary>
+        /// <summary>update an AuthorizationRule for a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The shared access AuthorizationRule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13536,7 +13556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an AuthorizationRule for a Namespace.</summary>
+        /// <summary>update an AuthorizationRule for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -13588,7 +13608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an AuthorizationRule for a Namespace.</summary>
+        /// <summary>update an AuthorizationRule for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -13638,7 +13658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an AuthorizationRule for a Namespace.</summary>
+        /// <summary>update an AuthorizationRule for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -13836,7 +13856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -13887,7 +13907,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13947,7 +13967,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14005,7 +14025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -14055,7 +14075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -14103,7 +14123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -14297,7 +14317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for creating a namespace resource.</param>
@@ -14358,7 +14378,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for creating a namespace resource.</param>
@@ -14417,7 +14437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -14468,7 +14488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -14517,7 +14537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -14591,6 +14611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -14603,7 +14624,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -14744,6 +14768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -14756,7 +14781,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15212,6 +15240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15224,7 +15253,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15544,6 +15576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15556,7 +15589,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -18810,7 +18846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -18864,7 +18900,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for updating a namespace resource.</param>
@@ -18927,7 +18963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for updating a namespace resource.</param>
@@ -18986,7 +19022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -19039,7 +19075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -19088,7 +19124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         }
 
         /// <summary>
-        /// Update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -19772,6 +19808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -19784,7 +19821,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -20197,7 +20237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -20252,7 +20292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20316,7 +20356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -20376,7 +20416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -20430,7 +20470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -20480,7 +20520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -20841,6 +20881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -20853,7 +20894,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -21997,7 +22041,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an EventHub schema group.</summary>
+        /// <summary>update an EventHub schema group.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -22050,7 +22094,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an EventHub schema group.</summary>
+        /// <summary>update an EventHub schema group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create an Event Hub resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -22112,7 +22156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an EventHub schema group.</summary>
+        /// <summary>update an EventHub schema group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create an Event Hub resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22172,7 +22216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an EventHub schema group.</summary>
+        /// <summary>update an EventHub schema group.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -22224,7 +22268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an EventHub schema group.</summary>
+        /// <summary>update an EventHub schema group.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
@@ -22274,7 +22318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>Update an EventHub schema group.</summary>
+        /// <summary>update an EventHub schema group.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
