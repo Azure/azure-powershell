@@ -16,7 +16,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Xml;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Helpers
+namespace Microsoft.Azure.Commands.TrustedSigning.Helpers
 {
     internal static class XmlUtil
     {

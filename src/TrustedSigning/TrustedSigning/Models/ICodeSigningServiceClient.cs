@@ -14,7 +14,7 @@
 
 using System.IO;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Models
+namespace Microsoft.Azure.Commands.TrustedSigning.Models
 {
     public interface ICodeSigningServiceClient
     {

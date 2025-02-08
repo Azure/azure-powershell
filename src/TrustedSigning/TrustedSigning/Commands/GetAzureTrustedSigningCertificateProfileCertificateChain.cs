@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CodeSigning.Models;
+using Microsoft.Azure.Commands.TrustedSigning.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Microsoft.Azure.Commands.CodeSigning
+namespace Microsoft.Azure.Commands.TrustedSigning
 {
     [Alias("Get-AzCodeSigningCertChain")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCertificateProfileCertificateChain", DefaultParameterSetName = ByAccountProfileNameParameterSet)]

@@ -20,7 +20,7 @@ using System.Security.Cryptography;
 using System.Security;
 using System.Runtime.CompilerServices;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Helpers
+namespace Microsoft.Azure.Commands.TrustedSigning.Helpers
 {
     [SuppressUnmanagedCodeSecurity]
     internal unsafe static class NativeMethod

@@ -19,7 +19,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Pkcs;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Helpers
+namespace Microsoft.Azure.Commands.TrustedSigning.Helpers
 {
     internal class CmsSigner
     {

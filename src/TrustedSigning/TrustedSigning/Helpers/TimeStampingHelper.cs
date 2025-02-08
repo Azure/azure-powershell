@@ -16,10 +16,10 @@ using System;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using Microsoft.Win32.SafeHandles;
-using static Microsoft.Azure.Commands.CodeSigning.Helpers.NativeMethod;
-using static Microsoft.Azure.Commands.CodeSigning.Helpers.CapiUtil;
+using static Microsoft.Azure.Commands.TrustedSigning.Helpers.NativeMethod;
+using static Microsoft.Azure.Commands.TrustedSigning.Helpers.CapiUtil;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Helpers
+namespace Microsoft.Azure.Commands.TrustedSigning.Helpers
 {
     public unsafe static class TimeStampingHelper
     {

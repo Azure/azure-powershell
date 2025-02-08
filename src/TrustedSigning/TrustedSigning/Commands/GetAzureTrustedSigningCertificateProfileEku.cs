@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CodeSigning.Models;
+using Microsoft.Azure.Commands.TrustedSigning.Models;
 using System;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.CodeSigning
+namespace Microsoft.Azure.Commands.TrustedSigning
 {
     [Alias("Get-AzCodeSigningCustomerEku")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCertificateProfileEku", DefaultParameterSetName = ByAccountProfileNameParameterSet)]

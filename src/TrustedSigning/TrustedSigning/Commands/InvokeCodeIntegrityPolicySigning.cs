@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CodeSigning.Helpers;
-using Microsoft.Azure.Commands.CodeSigning.Models;
+using Microsoft.Azure.Commands.TrustedSigning.Helpers;
+using Microsoft.Azure.Commands.TrustedSigning.Models;
 using System;
 using System.IO;
 using System.Management.Automation;
 using System.Xml.Linq;
 
-namespace Microsoft.Azure.Commands.CodeSigning
+namespace Microsoft.Azure.Commands.TrustedSigning
 {
     [Alias("Invoke-AzCodeSigningCIPolicySigning", "Invoke-AzTrustedSigningCIPolicySigning")]
     [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCodeIntegrityPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]

@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.TrustedSigning.Test.ScenarioTests
 {
     public class TrustedSigningTestRunner
     {

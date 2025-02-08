@@ -18,7 +18,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Models
+namespace Microsoft.Azure.Commands.TrustedSigning.Models
 {
     internal class CodeSigningServiceCredential
     {

@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added support for CI policy signing for OS versions older than Nickel.
+* Rebrand `Az.Codesigning` module to `Az.TrustedSigning`
 * Rename the `Get-AzCodeSigningCustomerEku` cmdlet to `Get-AzTrustedSigningCertificateProfileEku`
 * Rename the `Get-AzCodeSigningRootCert` cmdlet to `Get-AzTrustedSigningCertificateProfileCertificateRoot`
 * Rename the `Get-AzCodeSigningCertChain` cmdlet to `Get-AzTrustedSigningCertificateProfileCertificateChain`

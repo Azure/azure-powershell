@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CodeSigning.Models;
+using Microsoft.Azure.Commands.TrustedSigning.Models;
 using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Microsoft.Azure.Commands.CodeSigning
+namespace Microsoft.Azure.Commands.TrustedSigning
 {
     [Alias("Get-AzCodeSigningRootCert")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCertificateProfileCertificateRoot", DefaultParameterSetName = ByAccountProfileNameParameterSet)]

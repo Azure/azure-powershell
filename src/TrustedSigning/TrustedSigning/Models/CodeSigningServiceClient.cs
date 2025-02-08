@@ -14,14 +14,14 @@
 
 using Azure.CodeSigning;
 using Azure.Core;
-using Microsoft.Azure.Commands.CodeSigning.Helpers;
+using Microsoft.Azure.Commands.TrustedSigning.Helpers;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Models
+namespace Microsoft.Azure.Commands.TrustedSigning.Models
 {
     internal class CodeSigningServiceClient : ICodeSigningServiceClient
     {
