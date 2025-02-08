@@ -2,25 +2,25 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.dll-Help.xml
 Module Name: Az.CodeSigning
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://learn.microsoft.com/powershell/module/az.codesigning/get-azcodesigningcertchain
+online version: https://learn.microsoft.com/powershell/module/az.codesigning/Get-AzTrustedSigningCertificateProfileCertificateChain
 schema: 2.0.0
 ---
 
-# Get-AzCodeSigningCertChain
+# Get-AzTrustedSigningCertificateProfileCertificateChain
 
 ## SYNOPSIS
-Retrieve Azure.CodeSigning Certificate Chain
+Retrieve Azure.TrustedSigning Certificate Chain
 
 ## SYNTAX
 
 ### InteractiveSubmit (Default)
 ```
-Get-AzCodeSigningCertChain [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
+Get-AzTrustedSigningCertificateProfileCertificateChain [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
 -MetadataFilePath <String> 
 ```
 
 ## DESCRIPTION
-The **Get-AzCodeSigningCertChain** cmdlet retrieves Azure CodeSigning Cert Chain.
+The **Get-AzTrustedSigningCertificateProfileCertificateChain** cmdlet retrieves Azure CodeSigning Cert Chain.
 Use this cmdlet to retrieve Azure CodeSigning Cert Chain.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
@@ -29,7 +29,7 @@ Destination is the downloaded cert chain file path, which incldues the file name
 
 ### Example 1: Retrieve a cert chain by account and profile name
 ```powershell
-Get-AzCodeSigningCertChain -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Destination 'c:\acs\certchain.der'
+Get-AzTrustedSigningCertificateProfileCertificateChain -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Destination 'c:\acs\certchain.der'
 ```
 
 ```output
@@ -46,7 +46,7 @@ This command retrieves a certificate chain that is currently in use for signing 
 ### Example 2: Retrieve a cert chain using the metadata file path configuration
 
 ```powershell
-Get-AzCodeSigningCertChain -MetadataFilePath 'c:\cisigning\metadata_input.json' -Destination 'c:\acs\certchain.der'
+Get-AzTrustedSigningCertificateProfileCertificateChain -MetadataFilePath 'c:\cisigning\metadata_input.json' -Destination 'c:\acs\certchain.der'
 ```
 
 ```output

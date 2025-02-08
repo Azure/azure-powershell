@@ -2,27 +2,27 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.dll-Help.xml
 Module Name: Az.CodeSigning
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://learn.microsoft.com/powershell/module/az.codesigning/invoke-azcodesigningcipolicysigning
+online version: https://learn.microsoft.com/powershell/module/az.codesigning/Invoke-AzTrustedSigningCodeIntegrityPolicySigning
 schema: 2.0.0
 ---
 
-# Invoke-AzCodeSigningCIPolicySigning
+# Invoke-AzTrustedSigningCodeIntegrityPolicySigning
 
 ## SYNOPSIS
-Invoke CI Policy signing to Azure.CodeSigning
+Invoke CI Policy signing to Azure.TrustedSigning
 
 ## SYNTAX
 
 ### InteractiveSubmit (Default)
 ```
-Invoke-AzCodeSigningCIPolicySigning [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
+Invoke-AzTrustedSigningCodeIntegrityPolicySigning [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
 -MetadataFilePath <String> 
 -Path <String> -Destination <String> -TimeStamperUrl <String> 
 ```
 
 
 ## DESCRIPTION
-The **Invoke-AzCodeSigningCIPolicySigning** cmdlet signs the CI Policy bin file.
+The **Invoke-AzTrustedSigningCodeIntegrityPolicySigning** cmdlet signs the CI Policy bin file.
 Use this cmdlet to sign a CI Policy bin file.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
@@ -35,7 +35,7 @@ TimeStamperUrl is optional, but it's strongly recommended to do TimeStamping alo
 ### Example 1: Sign a CI Policy .bin file by account and profile name
 
 ```powershell
-Invoke-AzCodeSigningCIPolicySigning -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
+Invoke-AzTrustedSigningCodeIntegrityPolicySigning -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
 ```
 
 ```output
@@ -47,7 +47,7 @@ This command signs a CI policy by account and profile, it also timestamps the si
 ### Example 2: Sign a CI Policy .bin file by metadata file configuration
 
 ```powershell
-Invoke-AzCodeSigningCIPolicySigning  -MetadataFilePath 'c:\cisigning\metadata_input.json' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
+Invoke-AzTrustedSigningCodeIntegrityPolicySigning  -MetadataFilePath 'c:\cisigning\metadata_input.json' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
 ```
 
 ```output

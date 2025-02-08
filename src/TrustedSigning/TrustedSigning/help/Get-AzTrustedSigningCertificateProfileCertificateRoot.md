@@ -2,53 +2,58 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.dll-Help.xml
 Module Name: Az.CodeSigning
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://learn.microsoft.com/powershell/module/az.codesigning/get-azcodesigningcustomereku
+online version: https://learn.microsoft.com/powershell/module/az.codesigning/Get-AzTrustedSigningCertificateProfileCertificateRoot
 schema: 2.0.0
 ---
 
-# Get-AzCodeSigningCustomerEku
+# Get-AzTrustedSigningCertificateProfileCertificateRoot
 
 ## SYNOPSIS
-Retrieve Azure.CodeSigning customer Eku
+Retrieve Azure.TrustedSigning Root Cert
 
 ## SYNTAX
 
 ### InteractiveSubmit (Default)
 ```
-Get-AzCodeSigningCustomerEku [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> -MetadataFilePath <String>
+Get-AzTrustedSigningCertificateProfileCertificateRoot [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
+-MetadataFilePath <String> 
 ```
 
 
 ## DESCRIPTION
-The **Get-AzCodeSigningCustomerEku ** cmdlet retrieves customer Eku.
-Use this cmdlet to retrieve customer Eku.
+The **Get-AzTrustedSigningCertificateProfileCertificateRoot** cmdlet retrieves Azure CodeSigning Root Cert.
+Use this cmdlet to retrieve Azure CodeSigning Root Cert.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
-
+Destination is the downloaded root cert file path, which incldues the file name and extension .cer.
 ## EXAMPLES
 
-### Example 1: Retrieve customer Eku by account and profile name
+### Example 1: Retrieve a root cert by account and profile name
 ```powershell
-Get-AzCodeSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' 
+Get-AzTrustedSigningCertificateProfileCertificateRoot -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Destination 'c:\acs\rootcert.cer'
 ```
 
 ```output
-1.3.6.1.5.5.7.3.0
+Thumbprint                               Subject
+----------                               -------
+3A7B1F8C2E9D5A0B4F6E2C1D9F4B8A3E         CN=Microsoft Identity Verification Root Certificate Authority 2020, O=Microsoft
 ```
 
-This command retrieves the customer eku by account and profile name.
+This command retrieves a root certificate that is currently in use for signing by the account and profile.
 
-### Example 2: Retrieve customer Eku by metadata file path
+### Example 2: Retrieve a root cert using the metadata file path configuration
 
 ```powershell
-Get-AzCodeSigningCustomerEku -MetadataFilePath 'c:\cisigning\metadata_input.json'
+Get-AzTrustedSigningCertificateProfileCertificateRoot -MetadataFilePath 'c:\cisigning\metadata_input.json' -Destination 'c:\acs\rootcert.cer'
 ```
 
 ```output
-1.3.6.1.5.5.7.3.0
+Thumbprint                               Subject
+----------                               -------
+3A7B1F8C2E9D5A0B4F6E2C1D9F4B8A3E         CN=Microsoft Identity Verification Root Certificate Authority 2020, O=Microsoft
 ```
 
-This command retrieves the customer eku by the metadata file configuration.
+This command retrieves a root certificate that is currently in use for signing by the metadata configuration.
 
 ## PARAMETERS
 
@@ -113,6 +118,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Destination
+Specifies the downloaed root cert file path. 
+
+```yaml
+Type: System.String
+Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -138,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzCodeSigningRootCert](./Get-AzCodeSigningRootCert.md)
+[Get-AzCodeSigningCustomerEku](./Get-AzCodeSigningCustomerEku.md)
 
 [Get-AzCodeSigningCertChain](./Get-AzCodeSigningCertChain.md)
 
