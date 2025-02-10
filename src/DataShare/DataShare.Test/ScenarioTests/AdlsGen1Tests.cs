@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.DataShare.Test.ScenarioTests.ScenarioTest
         public AdlsGen1Tests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
         }
-
-        [Fact]
+        //Retir Azure Data Lake Storage Gen1 on 29 February 2024. https://azure.microsoft.com/en-us/updates?id=action-required-switch-to-azure-data-lake-storage-gen2-by-29-february-2024
+        [Fact(Skip = "The Gen1 was retired.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsGen1Crud()
         {
