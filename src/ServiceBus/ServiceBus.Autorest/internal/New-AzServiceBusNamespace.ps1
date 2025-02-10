@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-Create a service namespace.
+create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-Create a service namespace.
+create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example

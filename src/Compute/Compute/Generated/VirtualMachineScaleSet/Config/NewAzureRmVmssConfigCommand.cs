@@ -266,6 +266,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            ValueFromPipelineByPropertyName = true)]
+        public string EncryptionIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public SwitchParameter EncryptionAtHost { get; set; }
 
@@ -851,6 +857,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 foreach (var id in this.IdentityId)
                 {
                     vIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionIdentity))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+
+                if (vVirtualMachineProfile.SecurityProfile.EncryptionIdentity == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.EncryptionIdentity = new EncryptionIdentity();
+                }
+
+                if (String.IsNullOrEmpty(vVirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId) ||
+                    !vVirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId.Equals(
+                        this.EncryptionIdentity, StringComparison.OrdinalIgnoreCase))
+                {
+                    vVirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
                 }
             }
 

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a topic in the specified namespace.</summary>
+    /// <summary>create a topic in the specified namespace.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzServiceBusTopic_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Create a topic in the specified namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"create a topic in the specified namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ExternalDocs(@"https://msdn.microsoft.com/en-us/library/azure/mt639409.aspx", @"")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}", ApiVersion = "2022-10-01-preview")]

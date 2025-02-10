@@ -664,7 +664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -781,7 +781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -841,7 +841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -944,7 +944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new Alias(Disaster Recovery configuration)</summary>
+        /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -3555,7 +3555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update Migration configuration and starts migration of entities from Standard to Premium namespace
+        /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -3610,7 +3610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update Migration configuration and starts migration of entities from Standard to Premium namespace
+        /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters required to create Migration Configuration</param>
@@ -3674,7 +3674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update Migration configuration and starts migration of entities from Standard to Premium namespace
+        /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters required to create Migration Configuration</param>
@@ -3736,7 +3736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update Migration configuration and starts migration of entities from Standard to Premium namespace
+        /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -3790,7 +3790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update Migration configuration and starts migration of entities from Standard to Premium namespace
+        /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -3842,7 +3842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update Migration configuration and starts migration of entities from Standard to Premium namespace
+        /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -3921,6 +3921,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3933,7 +3934,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4076,6 +4080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4088,7 +4093,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5670,7 +5678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5721,7 +5729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a namespace.</summary>
+        /// <summary>update an authorization rule for a namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -5774,7 +5782,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a namespace.</summary>
+        /// <summary>update an authorization rule for a namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The shared access authorization rule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5836,7 +5844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a namespace.</summary>
+        /// <summary>update an authorization rule for a namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The shared access authorization rule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5896,7 +5904,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a namespace.</summary>
+        /// <summary>update an authorization rule for a namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -5948,7 +5956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a namespace.</summary>
+        /// <summary>update an authorization rule for a namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -5998,7 +6006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a namespace.</summary>
+        /// <summary>update an authorization rule for a namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -6196,7 +6204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -6247,7 +6255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6307,7 +6315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6365,7 +6373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -6415,7 +6423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -6463,7 +6471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update NetworkRuleSet for a Namespace.</summary>
+        /// <summary>update NetworkRuleSet for a Namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -6656,7 +6664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create a namespace resource.</param>
@@ -6717,7 +6725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create a namespace resource.</param>
@@ -6776,7 +6784,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -6827,7 +6835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -6876,7 +6884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -6950,6 +6958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6962,7 +6971,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7103,6 +7115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -7115,7 +7128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7568,6 +7584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -7580,7 +7597,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10826,7 +10846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -10880,7 +10900,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to update a namespace resource.</param>
@@ -10943,7 +10963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to update a namespace resource.</param>
@@ -11002,7 +11022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -11055,7 +11075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -11104,7 +11124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>
-        /// Update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+        /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -11599,7 +11619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -11654,7 +11674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11718,7 +11738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11778,7 +11798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -11832,7 +11852,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -11882,7 +11902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update PrivateEndpointConnections of service namespace.</summary>
+        /// <summary>update PrivateEndpointConnections of service namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -12238,6 +12258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -12250,7 +12271,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -13390,7 +13414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a Service Bus queue. This operation is idempotent.</summary>
+        /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -13443,7 +13467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a queue.</summary>
+        /// <summary>update an authorization rule for a queue.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -13499,7 +13523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a queue.</summary>
+        /// <summary>update an authorization rule for a queue.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The shared access authorization rule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13564,7 +13588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a queue.</summary>
+        /// <summary>update an authorization rule for a queue.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The shared access authorization rule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13627,7 +13651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a queue.</summary>
+        /// <summary>update an authorization rule for a queue.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -13682,7 +13706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a queue.</summary>
+        /// <summary>update an authorization rule for a queue.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -13735,7 +13759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for a queue.</summary>
+        /// <summary>update an authorization rule for a queue.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -13939,7 +13963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a Service Bus queue. This operation is idempotent.</summary>
+        /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create or update a queue resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14001,7 +14025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a Service Bus queue. This operation is idempotent.</summary>
+        /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create or update a queue resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14061,7 +14085,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a Service Bus queue. This operation is idempotent.</summary>
+        /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -14113,7 +14137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a Service Bus queue. This operation is idempotent.</summary>
+        /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -14163,7 +14187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a Service Bus queue. This operation is idempotent.</summary>
+        /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -17023,7 +17047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new rule and updates an existing rule</summary>
+        /// <summary>update a new rule and update an existing rule</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -17082,7 +17106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new rule and updates an existing rule</summary>
+        /// <summary>update a new rule and update an existing rule</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create a rule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17150,7 +17174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new rule and updates an existing rule</summary>
+        /// <summary>update a new rule and update an existing rule</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create a rule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17216,7 +17240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new rule and updates an existing rule</summary>
+        /// <summary>update a new rule and update an existing rule</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -17274,7 +17298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new rule and updates an existing rule</summary>
+        /// <summary>update a new rule and update an existing rule</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -17330,7 +17354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a new rule and updates an existing rule</summary>
+        /// <summary>update a new rule and update an existing rule</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -18521,7 +18545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic subscription.</summary>
+        /// <summary>update a topic subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -18577,7 +18601,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic subscription.</summary>
+        /// <summary>update a topic subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create a subscription resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -18642,7 +18666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic subscription.</summary>
+        /// <summary>update a topic subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create a subscription resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18705,7 +18729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic subscription.</summary>
+        /// <summary>update a topic subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -18760,7 +18784,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic subscription.</summary>
+        /// <summary>update a topic subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -18813,7 +18837,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic subscription.</summary>
+        /// <summary>update a topic subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -19957,7 +19981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic in the specified namespace.</summary>
+        /// <summary>update a topic in the specified namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -20010,7 +20034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for the specified topic.</summary>
+        /// <summary>update an authorization rule for the specified topic.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -20066,7 +20090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for the specified topic.</summary>
+        /// <summary>update an authorization rule for the specified topic.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The shared access authorization rule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20131,7 +20155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for the specified topic.</summary>
+        /// <summary>update an authorization rule for the specified topic.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The shared access authorization rule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -20194,7 +20218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for the specified topic.</summary>
+        /// <summary>update an authorization rule for the specified topic.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -20249,7 +20273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for the specified topic.</summary>
+        /// <summary>update an authorization rule for the specified topic.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -20302,7 +20326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update an authorization rule for the specified topic.</summary>
+        /// <summary>update an authorization rule for the specified topic.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -20506,7 +20530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic in the specified namespace.</summary>
+        /// <summary>update a topic in the specified namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create a topic resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20568,7 +20592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic in the specified namespace.</summary>
+        /// <summary>update a topic in the specified namespace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create a topic resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -20628,7 +20652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic in the specified namespace.</summary>
+        /// <summary>update a topic in the specified namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -20680,7 +20704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic in the specified namespace.</summary>
+        /// <summary>update a topic in the specified namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
@@ -20730,7 +20754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Update a topic in the specified namespace.</summary>
+        /// <summary>update a topic in the specified namespace.</summary>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>

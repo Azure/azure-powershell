@@ -467,18 +467,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                 (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
                 
-                if (retentionPolicy is CmdletModel.VaultRetentionPolicy)
+                if (((AzureFileSharePolicy)policy).RetentionPolicy is CmdletModel.VaultRetentionPolicy)
                 {
-                    int SnapshotRetentionInDays = ((CmdletModel.VaultRetentionPolicy)retentionPolicy).SnapshotRetentionInDays;
+                    int SnapshotRetentionInDays = ((CmdletModel.VaultRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy).SnapshotRetentionInDays;
                     ServiceClientModel.RetentionPolicy retPol = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
+                                                    (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy);
                     azureFileShareProtectionPolicy.VaultRetentionPolicy = new ServiceClientModel.VaultRetentionPolicy(retPol, SnapshotRetentionInDays);
                     azureFileShareProtectionPolicy.RetentionPolicy = null;
                 }
                 else
                 {
                     azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
+                                                    (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy);
                     azureFileShareProtectionPolicy.VaultRetentionPolicy = null;
                 }
 
@@ -995,6 +995,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public void RegisterContainer()
         {
             throw new NotImplementedException();
+        }
+        public void UndeleteContainer()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            string containerName = (string)ProviderData[ContainerParams.Name];
+            string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
+            string workloadType = (string)ProviderData[ContainerParams.ContainerType];
+
+            AzureFileShareContainer container = (AzureFileShareContainer)ProviderData[ContainerParams.Container];
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(container.Id),
+                container.Id);
+
+            ProtectionContainerResource protectionContainerResource = null;
+            protectionContainerResource = new ProtectionContainerResource(container.Id, containerUri);
+
+            AzureStorageContainer storageContainer = new AzureStorageContainer(
+                backupManagementType: backupManagementType,
+                sourceResourceId: container.SourceResourceId,
+                operationType: "Rehydrate");
+
+            protectionContainerResource.Properties = storageContainer;
+
+            AzureWorkloadProviderHelper.UndeleteContainer(containerUri,
+            protectionContainerResource,
+            vaultName,
+            vaultResourceGroupName);
         }
 
         public static void CopyProperties<TSource, TTarget>(TSource source, TTarget target)

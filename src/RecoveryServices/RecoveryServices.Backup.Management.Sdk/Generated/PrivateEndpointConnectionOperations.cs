@@ -258,7 +258,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Approve or Reject Private Endpoint requests. This call is made by Backup Admin.
+        /// Approve or Reject Private Endpoint requests. This call is made by Backup
+        /// Admin.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
