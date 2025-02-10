@@ -6,7 +6,7 @@
     using System.IO;
     using System.Linq;
     using Commands.Common.Authentication.Abstractions;
-    using Management.Resources.Models;
+    using Management.ResourceManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Microsoft.WindowsAzure.Commands.Common;
