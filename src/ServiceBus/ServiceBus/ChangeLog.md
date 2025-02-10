@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a bug when invoke `Set-AzServiceBusNamespace` with parameter `NoWait` [#26998]
 
 ## Version 4.1.0
 * Upgraded nuget package to signed package.

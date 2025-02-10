@@ -17,7 +17,7 @@ Update an Azure RouteServer.
 Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String>
  [-AllowBranchToBranchTraffic <Boolean>] [-HubRoutingPreference <String>]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String>
 Update-AzRouteServer [-AllowBranchToBranchTraffic <Boolean>] -ResourceId <String>
  [-HubRoutingPreference <String>]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

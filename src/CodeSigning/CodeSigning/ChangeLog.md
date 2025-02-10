@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for CI policy signing for OS versions older than Nickel.
 
 ## Version 0.2.1
 * Upgraded nuget package to signed package.
