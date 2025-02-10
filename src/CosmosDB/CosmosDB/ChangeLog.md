@@ -20,8 +20,6 @@
 
 ## Upcoming Release
 * Upgraded Azure.Core to 1.44.1.
-
-## Version 1.16.0
 * Added support for Cosmos DB Table role definition and role assignment related cmdlets.
 
 ## Version 1.15.0
