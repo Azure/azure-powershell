@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPortalDashboard_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Description(@"Creates or updates a Dashboard.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}", ApiVersion = "2019-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}", ApiVersion = "2022-12-01-preview")]
     public partial class NewAzPortalDashboard_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>The shared dashboard resource definition.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard _dashboardBody = new Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.Dashboard();
+        private Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.Dashboard();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>The dashboard lenses.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The dashboard lenses.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(
@@ -79,19 +79,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         ReadOnly = false,
         Description = @"The dashboard lenses.",
         SerializedName = @"lenses",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses Lens { get => _dashboardBody.Lens ?? null /* object */; set => _dashboardBody.Lens = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[] Lens { get => _resourceBody.Lens ?? null /* arrayOf */; set => _resourceBody.Lens = value; }
 
-        /// <summary>Resource location</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource location")]
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Resource location",
+        Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _dashboardBody.Location ?? null; set => _dashboardBody.Location = value; }
+        public string Location { get => _resourceBody.Location ?? null; set => _resourceBody.Location = value; }
 
         /// <summary>The dashboard metadata.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -102,8 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         ReadOnly = false,
         Description = @"The dashboard metadata.",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata Metadata { get => _dashboardBody.Metadata ?? null /* object */; set => _dashboardBody.Metadata = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata Metadata { get => _resourceBody.Metadata ?? null /* object */; set => _resourceBody.Metadata = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -152,12 +152,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the resource group.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ParameterCategory.Path)]
@@ -166,14 +166,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.DefaultInfo(
@@ -183,53 +181,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Resource tags</summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource tags",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags Tag { get => _dashboardBody.Tag ?? null /* object */; set => _dashboardBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -394,12 +392,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.DashboardsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _dashboardBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.DashboardsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _resourceBody, onOk, onCreated, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_dashboardBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_resourceBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -435,12 +433,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard> response)
         {
             using( NoSynchronizationContext )
             {
@@ -452,7 +450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
                 WriteObject((await response));
             }
         }
@@ -461,12 +459,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -483,15 +481,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_dashboardBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_resourceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_dashboardBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_resourceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -501,12 +499,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard> response)
         {
             using( NoSynchronizationContext )
             {
@@ -518,7 +516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
                 WriteObject((await response));
             }
         }

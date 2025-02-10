@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusQueue
 
 ## SYNOPSIS
-Create a Service Bus queue.
+create a Service Bus queue.
 This operation is idempotent.
 
 ## SYNTAX
@@ -42,7 +42,7 @@ New-AzServiceBusQueue -Name <String> -NamespaceInputObject <IServiceBusIdentity>
 ```
 
 ## DESCRIPTION
-Create a Service Bus queue.
+create a Service Bus queue.
 This operation is idempotent.
 
 ## EXAMPLES

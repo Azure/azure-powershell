@@ -274,7 +274,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Registers the container with Recovery Services vault. This is an asynchronous operation. To track the operation status, use location header to call get latest status of the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
