@@ -25,6 +25,7 @@ variables:
   dotnet_sdk_6: 6.0.x
   dotnet_sdk_7: 7.0.x
   dotnet_sdk_8: 8.0.x
+  dotnet_sdk_9: 9.0.x
   ArtifactsName: LiveTestArtifacts
   DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
   SuppressAzurePowerShellBreakingChangeWarnings: true
@@ -100,7 +101,7 @@ stages:
       vmImage: ${{ variables.os_windows_2019 }}
       osType: 'Windows'
       psVersion: ${{ variables.ps_latest }}
-      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -140,7 +141,7 @@ stages:
       vmImage: ${{ variables.os_windows_2022 }}
       osType: 'Windows'
       psVersion: ${{ variables.ps_latest }}
-      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -180,7 +181,7 @@ stages:
       vmImage: ${{ variables.os_linux }}
       osType: 'Linux'
       psVersion: ${{ variables.ps_latest }}
-      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -214,7 +215,7 @@ stages:
   #     vmImage: ${{ variables.os_macos }}
   #     osType: 'MacOS'
   #     psVersion: ${{ variables.ps_latest }}
-  #     dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+  #     dotnetVersion: ${{ variables.dotnet_sdk_9 }}
 
 - stage: Report
   displayName: Send Report
