@@ -21,7 +21,8 @@ New-AzCosmosDBSqlContainer -ResourceGroupName <String> -AccountName <String> -Da
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
  [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-AnalyticalStorageTtl <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-DefaultProfile <IAzureContextContainer>] 
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -32,7 +33,8 @@ New-AzCosmosDBSqlContainer -Name <String> [-IndexingPolicy <PSSqlIndexingPolicy>
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
  [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-AnalyticalStorageTtl <Int32>]
- -ParentObject <PSSqlDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] -ParentObject <PSSqlDatabaseGetResults> 
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -128,6 +130,20 @@ ClientEncryptionPolicy Object of type PSSqlClientEncryptionPolicy, when provided
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+### -VectorEmbeddingPolicy
+VectorEmbeddingPolicy Object of type PSSqlVectorEmbeddingPolicy, when provided this is set as the VectorEmbeddingPolicy of the container.
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -428,6 +444,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlConflictResolutionPolicy
 
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
+
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 
 ## OUTPUTS
 
