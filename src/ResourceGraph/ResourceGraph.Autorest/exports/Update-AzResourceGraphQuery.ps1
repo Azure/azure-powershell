@@ -28,7 +28,7 @@ Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,14 +36,14 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the Graph Query resource.
-  [SubscriptionId <String>]: The Azure subscription Id.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcegraph/update-azresourcegraphquery
 #>
 function Update-AzResourceGraphQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -92,7 +92,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},

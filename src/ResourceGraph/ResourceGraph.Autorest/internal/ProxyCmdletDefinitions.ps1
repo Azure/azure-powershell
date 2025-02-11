@@ -25,11 +25,11 @@ New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Locat
 New-AzResourceGraphQuery -Name query-t04 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -File 'D:\azure-service\ResourceGraph.Autorest\azure-powershell\src\ResourceGraph\ResourceGraph.Autorest\test\Query.kql'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,21 +37,28 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the Graph Query resource.
-  [SubscriptionId <String>]: The Azure subscription Id.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 PROPERTY <IGraphQueryResource>: Graph Query entity definition.
+  [Etag <String>]: This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   [Location <String>]: The location of the resource
   [Tag <IResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
   [Description <String>]: The description of a graph query.
   [Query <String>]: KQL query that will be graph.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcegraph/new-azresourcegraphquery
 #>
 function New-AzResourceGraphQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -66,6 +73,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create')]
@@ -73,7 +81,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription Id.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -87,7 +96,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource]
     # Graph Query entity definition.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
@@ -98,6 +107,14 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
+    [System.String]
+    # This will be used to handle Optimistic Concurrency.
+    # If not present, it will always overwrite the existing resource without checking conflict.
+    ${Etag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -116,7 +133,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
@@ -236,11 +253,11 @@ $query =  Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-
 Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -248,20 +265,21 @@ To create the parameters described below, construct a hash table containing the 
 
 BODY <IGraphQueryUpdateParameters>: The parameters that can be provided when updating workbook properties properties.
   [Description <String>]: The description of a graph query.
+  [Etag <String>]: This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   [Query <String>]: KQL query that will be graph.
   [Tag <IGraphQueryUpdateParametersTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 
 INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the Graph Query resource.
-  [SubscriptionId <String>]: The Azure subscription Id.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcegraph/update-azresourcegraphquery
 #>
 function Update-AzResourceGraphQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -276,6 +294,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update')]
@@ -283,7 +302,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription Id.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -297,7 +317,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryUpdateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryUpdateParameters]
     # The parameters that can be provided when updating workbook properties properties.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -313,13 +333,21 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
     [System.String]
+    # This will be used to handle Optimistic Concurrency.
+    # If not present, it will always overwrite the existing resource without checking conflict.
+    ${Etag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
+    [System.String]
     # KQL query that will be graph.
     ${Query},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
