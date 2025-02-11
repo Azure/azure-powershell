@@ -13,7 +13,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
     public static class ModelLifecycleStatus
     {
-        public const string GenerallyAvailable = "GenerallyAvailable";
+        public const string Stable = "Stable";
         public const string Preview = "Preview";
+        public const string GenerallyAvailable = "GenerallyAvailable";
+        public const string Deprecating = "Deprecating";
+        public const string Deprecated = "Deprecated";
     }
 }
