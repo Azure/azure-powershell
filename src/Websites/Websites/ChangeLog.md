@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.Websites" Version "3.1.2" PackageReference
 
 ## Version 3.3.0
 * Fixd the source app retrival from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
