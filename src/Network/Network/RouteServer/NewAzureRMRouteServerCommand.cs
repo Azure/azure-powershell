@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.Network
         [PSDefaultValue(Value=false)]
         public SwitchParameter AllowBranchToBranchTraffic { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Autoscale configuration for route server.")]
+        public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -133,7 +138,8 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         ResourceGroupName = this.ResourceGroupName,
                         Name = this.RouteServerName,
-                        Location = this.Location
+                        Location = this.Location,
+                        VirtualRouterAutoScaleConfiguration = this.VirtualRouterAutoScaleConfiguration
                     };
 
                     if (string.IsNullOrWhiteSpace(this.HubRoutingPreference))

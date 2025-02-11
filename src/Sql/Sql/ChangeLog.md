@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed GitHub issue #12417 "Get-AzSqlElasticPoolDatabase doesn't enumerate output."
+    - fixed the output to enumerate the results.
+
+## Version 6.0.1
 * Upgraded nuget package to signed package.
 * Updated `New-AzSqlDatabaseExport` with support for Managed Identity
  	- Added `ManagedIdentity` to `StorageKeyType` auth list

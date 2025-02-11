@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.3.0
 * Upgraded nuget package to signed package.
 
 ## Version 3.2.2

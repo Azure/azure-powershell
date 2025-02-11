@@ -19,7 +19,15 @@
 --->
 
 ## Upcoming Release
+<<<<<<< HEAD
 * Updated cmdlet `AddAzureVirtualNetworkPeering` to add support for subnet peering
+=======
+
+## Version 7.14.0
+* Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
+
+## Version 7.12.0
+>>>>>>> 5a3bad4b0b334eb01a836460196aec8cc1b81f78
 * Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
 * Upgraded nuget package to signed package.
 * Updated `Remove-AzNetworkWatcherFlowLog` command to return boolean value

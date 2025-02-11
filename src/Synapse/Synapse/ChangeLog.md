@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.1
+* Removed "Microsoft.Azure.Management.Synapse" Version "2.6.0-preview" package reference 
+
+## Version 3.1.0
 * Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 

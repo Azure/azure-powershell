@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.6
+* Deprecation of Blueprint cmdlets.
+
+## Version 0.4.5
 * Upgraded nuget package to signed package.
 
 ## Version 0.4.4

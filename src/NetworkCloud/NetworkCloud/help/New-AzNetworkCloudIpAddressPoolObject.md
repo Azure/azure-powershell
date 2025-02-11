@@ -14,7 +14,7 @@ Create an in-memory object for IpAddressPool.
 
 ```
 New-AzNetworkCloudIpAddressPoolObject -Address <String[]> -Name <String> [-AutoAssign <BfdEnabled>]
- [-OnlyUseHostIP <BfdEnabled>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-OnlyUseHostIP <BfdEnabled>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,21 +92,6 @@ Enabling this option will only use IP addresses between .1 and .254 inclusive.
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

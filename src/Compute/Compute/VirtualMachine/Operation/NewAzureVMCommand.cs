@@ -1723,6 +1723,22 @@ namespace Microsoft.Azure.Commands.Compute
                     throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
                 }
             }
+
+            if (this.IsParameterBound(c => c.VM))
+            {
+                if (this.ParameterSetName == "DefaultParameterSet")
+                {
+                    if (VM.SecurityProfile != null && VM.SecurityProfile.EncryptionIdentity != null && 
+                        VM.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
+                    {
+                        if (VM.Identity == null || VM.Identity.UserAssignedIdentities == null || 
+                            !VM.Identity.UserAssignedIdentities.ContainsKey(VM.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId))
+                        {
+                            throw new Exception("Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource");
+                        }
+                    }
+                }
+            }
         }
     }
 }
