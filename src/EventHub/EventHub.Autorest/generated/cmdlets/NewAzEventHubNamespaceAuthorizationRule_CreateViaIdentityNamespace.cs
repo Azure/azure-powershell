@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an AuthorizationRule for a Namespace.</summary>
+    /// <summary>create an AuthorizationRule for a Namespace.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdateAuthorizationRule=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubNamespaceAuthorizationRule_CreateViaIdentityNamespace", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create an AuthorizationRule for a Namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create an AuthorizationRule for a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubNamespaceAuthorizationRule_CreateViaIdentityNamespace : global::System.Management.Automation.PSCmdlet,

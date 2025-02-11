@@ -947,5 +947,9 @@
   {
     "module": "ComputeSchedule",
     "alias": "ComputeSchedule"
+  },
+  {
+    "module": "DeviceRegistry",
+    "alias": "DeviceRegistry"
   }
 ]
