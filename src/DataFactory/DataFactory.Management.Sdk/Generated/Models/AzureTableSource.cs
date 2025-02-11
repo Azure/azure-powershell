@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureTableSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -56,9 +59,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="azureTableSourceIgnoreTableNotFound">Azure Table source ignore table not found. Type: boolean (or Expression
         /// with resultType boolean).
         /// </param>
-        public AzureTableSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object azureTableSourceQuery = default(object), object azureTableSourceIgnoreTableNotFound = default(object))
+        public AzureTableSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object azureTableSourceQuery = default(object), object azureTableSourceIgnoreTableNotFound = default(object))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.AzureTableSourceQuery = azureTableSourceQuery;
             this.AzureTableSourceIgnoreTableNotFound = azureTableSourceIgnoreTableNotFound;

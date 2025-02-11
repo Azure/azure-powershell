@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the StoreWriteSettings class.
         /// </summary>
 
+        /// <param name="additionalProperties">Connector write settings.
+        /// </param>
+
         /// <param name="maxConcurrentConnections">The maximum concurrent connection count for the source data store. Type:
         /// integer (or Expression with resultType integer).
         /// </param>
@@ -39,9 +42,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="metadata">Specify the custom metadata to be added to sink data. Type: array of
         /// objects (or Expression with resultType array of objects).
         /// </param>
-        public StoreWriteSettings(object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>))
+        public StoreWriteSettings(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>))
 
         {
+            this.AdditionalProperties = additionalProperties;
             this.MaxConcurrentConnections = maxConcurrentConnections;
             this.DisableMetricsCollection = disableMetricsCollection;
             this.CopyBehavior = copyBehavior;
@@ -54,6 +58,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets connector write settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
 
         /// <summary>
         /// Gets or sets the maximum concurrent connection count for the source data
