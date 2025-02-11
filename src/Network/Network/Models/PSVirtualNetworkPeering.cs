@@ -77,7 +77,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         
         [JsonProperty(Order = 1)]
         public bool? EnableOnlyIPv6Peering { get; set; }
-        
+
+        [JsonProperty(Order = 1)]
+        public string[] LocalSubnetNames { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] RemoteSubnetNames { get; set; }
+
         [JsonIgnore]
         public string LocalSubnetNamesText
         {
