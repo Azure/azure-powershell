@@ -12,18 +12,18 @@ namespace Microsoft.Azure.Management.DataShare.Models
     /// </summary>
     [Newtonsoft.Json.JsonObject("AdlsGen2FileSystem")]
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ADLSGen2FileSystemDataSet : DataSet
+    public partial class AdlsGen2FileSystemDataSet : DataSet
     {
         /// <summary>
-        /// Initializes a new instance of the ADLSGen2FileSystemDataSet class.
+        /// Initializes a new instance of the AdlsGen2FileSystemDataSet class.
         /// </summary>
-        public ADLSGen2FileSystemDataSet()
+        public AdlsGen2FileSystemDataSet()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ADLSGen2FileSystemDataSet class.
+        /// Initializes a new instance of the AdlsGen2FileSystemDataSet class.
         /// </summary>
 
         /// <param name="id">The resource id of the azure resource
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
 
         /// <param name="subscriptionId">Subscription id of storage account
         /// </param>
-        public ADLSGen2FileSystemDataSet(string fileSystem, string resourceGroup, string storageAccountName, string subscriptionId, string id = default(string), string name = default(string), string type = default(string), string dataSetId = default(string))
+        public AdlsGen2FileSystemDataSet(string fileSystem, string resourceGroup, string storageAccountName, string subscriptionId, string id = default(string), string name = default(string), string type = default(string), string dataSetId = default(string))
 
         : base(id, name, type)
         {

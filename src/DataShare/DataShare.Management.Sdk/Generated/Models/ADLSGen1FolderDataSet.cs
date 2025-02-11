@@ -12,18 +12,18 @@ namespace Microsoft.Azure.Management.DataShare.Models
     /// </summary>
     [Newtonsoft.Json.JsonObject("AdlsGen1Folder")]
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ADLSGen1FolderDataSet : DataSet
+    public partial class AdlsGen1FolderDataSet : DataSet
     {
         /// <summary>
-        /// Initializes a new instance of the ADLSGen1FolderDataSet class.
+        /// Initializes a new instance of the AdlsGen1FolderDataSet class.
         /// </summary>
-        public ADLSGen1FolderDataSet()
+        public AdlsGen1FolderDataSet()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ADLSGen1FolderDataSet class.
+        /// Initializes a new instance of the AdlsGen1FolderDataSet class.
         /// </summary>
 
         /// <param name="id">The resource id of the azure resource
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
 
         /// <param name="subscriptionId">Subscription id of ADLS account.
         /// </param>
-        public ADLSGen1FolderDataSet(string accountName, string folderPath, string resourceGroup, string subscriptionId, string id = default(string), string name = default(string), string type = default(string), string dataSetId = default(string))
+        public AdlsGen1FolderDataSet(string accountName, string folderPath, string resourceGroup, string subscriptionId, string id = default(string), string name = default(string), string type = default(string), string dataSetId = default(string))
 
         : base(id, name, type)
         {

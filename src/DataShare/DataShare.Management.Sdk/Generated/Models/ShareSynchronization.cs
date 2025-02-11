@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
             this.ConsumerEmail = consumerEmail;
             this.ConsumerName = consumerName;
             this.ConsumerTenantName = consumerTenantName;
-            this.DurationMs = durationMS;
+            this.DurationMS = durationMS;
             this.EndTime = endTime;
             this.Message = message;
             this.StartTime = startTime;
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
         /// Gets or sets synchronization duration
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "durationMs")]
-        public int? DurationMs {get; set; }
+        public int? DurationMS {get; set; }
 
         /// <summary>
         /// Gets or sets end time of synchronization

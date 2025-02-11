@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
         {
             this.DataSetId = dataSetId;
             this.DataSetType = dataSetType;
-            this.DurationMs = durationMS;
+            this.DurationMS = durationMS;
             this.EndTime = endTime;
             this.FilesRead = filesRead;
             this.FilesWritten = filesWritten;
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
         /// Gets duration of data set level copy
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "durationMs")]
-        public int? DurationMs {get; private set; }
+        public int? DurationMS {get; private set; }
 
         /// <summary>
         /// Gets end time of data set level copy

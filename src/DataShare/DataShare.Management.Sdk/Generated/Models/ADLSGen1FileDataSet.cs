@@ -12,18 +12,18 @@ namespace Microsoft.Azure.Management.DataShare.Models
     /// </summary>
     [Newtonsoft.Json.JsonObject("AdlsGen1File")]
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ADLSGen1FileDataSet : DataSet
+    public partial class AdlsGen1FileDataSet : DataSet
     {
         /// <summary>
-        /// Initializes a new instance of the ADLSGen1FileDataSet class.
+        /// Initializes a new instance of the AdlsGen1FileDataSet class.
         /// </summary>
-        public ADLSGen1FileDataSet()
+        public AdlsGen1FileDataSet()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ADLSGen1FileDataSet class.
+        /// Initializes a new instance of the AdlsGen1FileDataSet class.
         /// </summary>
 
         /// <param name="id">The resource id of the azure resource
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
 
         /// <param name="subscriptionId">Subscription id of ADLS account.
         /// </param>
-        public ADLSGen1FileDataSet(string accountName, string fileName, string folderPath, string resourceGroup, string subscriptionId, string id = default(string), string name = default(string), string type = default(string), string dataSetId = default(string))
+        public AdlsGen1FileDataSet(string accountName, string fileName, string folderPath, string resourceGroup, string subscriptionId, string id = default(string), string name = default(string), string type = default(string), string dataSetId = default(string))
 
         : base(id, name, type)
         {

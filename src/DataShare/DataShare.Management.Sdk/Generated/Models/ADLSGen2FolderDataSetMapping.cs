@@ -12,18 +12,18 @@ namespace Microsoft.Azure.Management.DataShare.Models
     /// </summary>
     [Newtonsoft.Json.JsonObject("AdlsGen2Folder")]
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ADLSGen2FolderDataSetMapping : DataSetMapping
+    public partial class AdlsGen2FolderDataSetMapping : DataSetMapping
     {
         /// <summary>
-        /// Initializes a new instance of the ADLSGen2FolderDataSetMapping class.
+        /// Initializes a new instance of the AdlsGen2FolderDataSetMapping class.
         /// </summary>
-        public ADLSGen2FolderDataSetMapping()
+        public AdlsGen2FolderDataSetMapping()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ADLSGen2FolderDataSetMapping class.
+        /// Initializes a new instance of the AdlsGen2FolderDataSetMapping class.
         /// </summary>
 
         /// <param name="id">The resource id of the azure resource
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
 
         /// <param name="subscriptionId">Subscription id of storage account.
         /// </param>
-        public ADLSGen2FolderDataSetMapping(string dataSetId, string fileSystem, string folderPath, string resourceGroup, string storageAccountName, string subscriptionId, string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), string dataSetMappingStatus = default(string))
+        public AdlsGen2FolderDataSetMapping(string dataSetId, string fileSystem, string folderPath, string resourceGroup, string storageAccountName, string subscriptionId, string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), string dataSetMappingStatus = default(string))
 
         : base(id, name, type)
         {

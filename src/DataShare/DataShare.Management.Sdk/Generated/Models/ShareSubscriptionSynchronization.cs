@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
         public ShareSubscriptionSynchronization(string synchronizationId, int? durationMS = default(int?), System.DateTime? endTime = default(System.DateTime?), string message = default(string), System.DateTime? startTime = default(System.DateTime?), string status = default(string), string synchronizationMode = default(string))
 
         {
-            this.DurationMs = durationMS;
+            this.DurationMS = durationMS;
             this.EndTime = endTime;
             this.Message = message;
             this.StartTime = startTime;
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.DataShare.Models
         /// Gets synchronization duration
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "durationMs")]
-        public int? DurationMs {get; private set; }
+        public int? DurationMS {get; private set; }
 
         /// <summary>
         /// Gets end time of synchronization

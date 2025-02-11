@@ -30,41 +30,4 @@ output-folder: Generated
 
 namespace: Microsoft.Azure.Management.DataShare
 
-directive:
-  - where:
-      model-name: AdlsGen1FileDataSet
-    set:
-      model-name: ADLSGen1FileDataSet
-  - where:
-      model-name: AdlsGen1FolderDataSet
-    set:
-      model-name: ADLSGen1FolderDataSet
-  - where:
-      model-name: AdlsGen2FileDataSet
-    set:
-      model-name: ADLSGen2FileDataSet
-  - where:
-      model-name: AdlsGen2FileDataSetMapping
-    set:
-      model-name: ADLSGen2FileDataSetMapping
-  - where:
-      model-name: AdlsGen2FileSystemDataSet
-    set:
-      model-name: ADLSGen2FileSystemDataSet
-  - where:
-      model-name: AdlsGen2FolderDataSet
-    set:
-      model-name: ADLSGen2FolderDataSet
-  - where:
-      model-name: AdlsGen2FileSystemDataSetMapping
-    set:
-      model-name: ADLSGen2FileSystemDataSetMapping
-  - where:
-      model-name: AdlsGen2FolderDataSetMapping
-    set:
-      model-name: ADLSGen2FolderDataSetMapping
-  - where:
-      property-name: (.*)DurationMS
-    set:
-      property-name: DurationMs
 ```
