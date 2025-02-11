@@ -56,10 +56,10 @@ This cmdlet enables you to generate a credentials file (located in `C:/Users/<cu
 
 #### Use user account to record test cases (Recommended)
 
-Using a user account is the preferred method for recording test cases as it avoids storing secret in the local file with plain text. You can obtain the object ID of the user account either from the Azure portal or through Azure PowerShell.
+Using a user account is the preferred method for recording test cases as it avoids storing secret in the local file with plain text. The value of the UserId is your **email account** in the tenant where you plan to record the test.
 
 ```powershell
-Set-TestFxEnvironment -UserId <UserId> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
+Set-TestFxEnvironment -UserId <EmailAccount> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
 #### Create New Service Principal (Not Recommended)
@@ -108,7 +108,7 @@ You can use either a user account (Recommended) or a Service Principal to record
 With user account, you may set the following environment variables:
 
 ```
-TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;UserId=<UserId>;
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;UserId=<EmailAccount>;
 AZURE_TEST_MODE=Record
 ```
 

@@ -1,6 +1,6 @@
 {
   "resourceType": "queries",
-  "apiVersion": "2018-09-01-preview",
+  "apiVersion": "2024-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.resourcegraph"
   },
