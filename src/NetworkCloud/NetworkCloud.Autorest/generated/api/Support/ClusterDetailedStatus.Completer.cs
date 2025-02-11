@@ -42,6 +42,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Updating'", "Updating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Updating");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "UpdatePaused".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'UpdatePaused'", "UpdatePaused", global::System.Management.Automation.CompletionResultType.ParameterValue, "UpdatePaused");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Degraded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Degraded'", "Degraded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Degraded");

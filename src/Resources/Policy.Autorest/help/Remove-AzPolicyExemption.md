@@ -52,7 +52,7 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Confirm
+Remove-AzPolicyExemption -Id $PolicyExemption.Id -Confirm
 ```
 
 The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
@@ -63,7 +63,7 @@ The final command removes the policy exemption that the **ResourceId** property 
 ### Example 3: [Backcompat] Remove policy exemption by ID
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
 Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Force -BackwardCompatible
 True
 ```

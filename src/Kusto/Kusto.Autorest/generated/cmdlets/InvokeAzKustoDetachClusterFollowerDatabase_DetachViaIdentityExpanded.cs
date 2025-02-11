@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Detaches all followers of a database owned by this cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/detachFollowerDatabases", ApiVersion = "2023-08-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/detachFollowerDatabases", ApiVersion = "2024-04-13")]
     public partial class InvokeAzKustoDetachClusterFollowerDatabase_DetachViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>A class representing follower database request.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseDefinition _followerDatabaseToRemoveBody = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.FollowerDatabaseDefinition();
+        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IFollowerDatabaseDefinition _followerDatabaseToRemoveBody = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.FollowerDatabaseDefinition();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

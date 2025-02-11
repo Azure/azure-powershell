@@ -21,11 +21,29 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             CustomInit();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the ExportSettings class.
+        /// </summary>
+
+        /// <param name="additionalProperties">Export command settings.
+        /// </param>
+        public ExportSettings(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>))
+
+        {
+            this.AdditionalProperties = additionalProperties;
+            CustomInit();
+        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets export command settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
     }
 }

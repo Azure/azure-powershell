@@ -21,12 +21,12 @@ Create an in-memory object for RackDefinition.
 Create an in-memory object for RackDefinition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackDefinition
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackDefinition
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudRackDefinitionObject
 #>
 function New-AzNetworkCloudRackDefinitionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackDefinition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackDefinition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,7 +34,7 @@ function New-AzNetworkCloudRackDefinitionObject {
         [string]
         $AvailabilityZone,
         [Parameter(HelpMessage="The unordered list of bare metal machine configuration.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBareMetalMachineConfigurationData[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineConfigurationData[]]
         $BareMetalMachineConfigurationData,
         [Parameter(Mandatory, HelpMessage="The resource ID of the network rack that matches this rack definition.")]
         [string]
@@ -49,12 +49,12 @@ function New-AzNetworkCloudRackDefinitionObject {
         [string]
         $RackSkuId,
         [Parameter(HelpMessage="The list of storage appliance configuration data for this rack.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IStorageApplianceConfigurationData[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStorageApplianceConfigurationData[]]
         $StorageApplianceConfigurationData
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.RackDefinition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.RackDefinition]::New()
 
         if ($PSBoundParameters.ContainsKey('AvailabilityZone')) {
             $Object.AvailabilityZone = $AvailabilityZone

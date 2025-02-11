@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the DSCP Configuration resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public DscpConfigurationPropertiesFormat(System.Collections.Generic.IList<int?> markings = default(System.Collections.Generic.IList<int?>), System.Collections.Generic.IList<QosIpRange> sourceIPRanges = default(System.Collections.Generic.IList<QosIpRange>), System.Collections.Generic.IList<QosIpRange> destinationIPRanges = default(System.Collections.Generic.IList<QosIpRange>), System.Collections.Generic.IList<QosPortRange> sourcePortRanges = default(System.Collections.Generic.IList<QosPortRange>), System.Collections.Generic.IList<QosPortRange> destinationPortRanges = default(System.Collections.Generic.IList<QosPortRange>), string protocol = default(string), System.Collections.Generic.IList<QosDefinition> qosDefinitionCollection = default(System.Collections.Generic.IList<QosDefinition>), string qosCollectionId = default(string), System.Collections.Generic.IList<NetworkInterface> associatedNetworkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string resourceGuid = default(string), string provisioningState = default(string))
 
         {
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ResourceGuid {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the DSCP Configuration resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the DSCP Configuration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

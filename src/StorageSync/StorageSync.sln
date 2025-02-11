@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync.Management.Sdk", "StorageSync.Management.Sdk\StorageSync.Management.Sdk.csproj", "{3D256234-F790-4163-8B45-B99A12022585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{9A1A777F-25E1-4352-8347-13E96814A6CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{9A1A777F-25E1-4352-8347-13E96814A6CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync.Helper", "StorageSync.Helpers\StorageSync.Helper.csproj", "{3BD1FC0B-912C-481B-B755-D958E42FA974}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{9A1A777F-25E1-4352-8347-13E96814A6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A1A777F-25E1-4352-8347-13E96814A6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A1A777F-25E1-4352-8347-13E96814A6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD1FC0B-912C-481B-B755-D958E42FA974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD1FC0B-912C-481B-B755-D958E42FA974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD1FC0B-912C-481B-B755-D958E42FA974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD1FC0B-912C-481B-B755-D958E42FA974}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="storageAccountType">Specifies the storage account type
         /// to be used to store the image. This property is not updatable.
         /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
-        /// 'Premium_LRS'</param>
+        /// 'Premium_LRS', 'PremiumV2_LRS'</param>
         /// <param name="replicationMode">Optional parameter which specifies
         /// the mode to be used for replication. This property is not
         /// updatable. Possible values include: 'Full', 'Shallow'</param>

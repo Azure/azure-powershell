@@ -157,6 +157,12 @@
             "metadata": {
                 "description": "<KEY NAME>"
             }
+        },
+        "keyName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KEY NAME>"
+            }
         }
     },
     "resources": [
@@ -174,7 +180,7 @@
             "sku": {
                 "name": "[parameters('kustoSkuName')]",
                 "tier": "[parameters('kustoClusterTier')]",
-                "capacity": 1
+                "capacity": 2
             },
             "identity": {
                 "type": "SystemAssigned, UserAssigned",
@@ -247,7 +253,7 @@
             "sku": {
                 "name": "[parameters('kustoSkuName')]",
                 "tier": "[parameters('kustoClusterTier')]",
-                "capacity": 1
+                "capacity": 2
             },
             "identity": {
                 "type": "SystemAssigned"

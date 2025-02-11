@@ -21,12 +21,12 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 Create an in-memory object for BareMetalMachineConfigurationData.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineConfigurationData
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineConfigurationData
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBareMetalMachineConfigurationDataObject
 #>
 function New-AzNetworkCloudBareMetalMachineConfigurationDataObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineConfigurationData')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineConfigurationData')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -58,7 +58,7 @@ function New-AzNetworkCloudBareMetalMachineConfigurationDataObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineConfigurationData]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BareMetalMachineConfigurationData]::New()
 
         if ($PSBoundParameters.ContainsKey('BmcCredentialsPassword')) {
             $Object.BmcCredentialsPassword = $BmcCredentialsPassword

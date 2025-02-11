@@ -2586,8 +2586,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Header')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]
@@ -3191,9 +3191,9 @@ Deletes the ResourceGuardProxy
 .Description
 Deletes the ResourceGuardProxy
 .Example
-$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
+$token = (Get-AzAccessToken -AsSecureString -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
 $proxy = Get-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId
-$unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName -ResourceGuardOperationRequest DisableMUA -ResourceToBeDeleted $proxy.Id -Token $token
+$unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName -ResourceGuardOperationRequest DisableMUA -ResourceToBeDeleted $proxy.Id -SecureToken $token
 Remove-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
 
 .Inputs
@@ -4726,6 +4726,10 @@ Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxx
 $cmkIdentityId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami"
 
 Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId
+.Example
+$UAMI = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityName"=[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.UserAssignedIdentity]::new()}
+
+$vault = Update-AzDataProtectionBackupVault -AssignUserIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -IdentityType 'SystemAssigned,UserAssigned'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -4777,8 +4781,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Header')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]
@@ -4819,7 +4823,7 @@ param(
     ${IdentityType},
 
     [Parameter()]
-    [Alias('UserAssignedIdentity')]
+    [Alias('UserAssignedIdentity', 'AssignUserIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IDppIdentityDetailsUserAssignedIdentities]))]
     [System.Collections.Hashtable]
@@ -5937,7 +5941,20 @@ param(
     # Backup configuration for backup.
     # Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
     # To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
-    ${BackupConfiguration}
+    ${BackupConfiguration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Use system assigned identity
+    ${UseSystemAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AssignUserIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # User assigned identity ARM Id
+    ${UserAssignedIdentityArmId}
 )
 
 begin {
@@ -7274,7 +7291,7 @@ param(
     ${Tag},
 
     [Parameter()]
-    [Alias('UserAssignedIdentity')]
+    [Alias('UserAssignedIdentity', 'AssignUserIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Collections.Hashtable]
     # Gets or sets the user assigned identities.
@@ -8846,6 +8863,10 @@ Set-AzDataProtectionMSIPermission -KeyVaultId "/subscriptions/xxxxxxxx-xxxx-xxxx
 
 .Example
 Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup"
+.Example
+$backupinstance = Get-AzDataProtectionBackupInstance -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -SubscriptionId "SubscriptionId"
+
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "ResourceGroupName" -VaultName "VaultName" -PermissionsScope "ResourceGroup" -BackupInstance $backupinstance[0] -UserAssignedIdentityARMId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RGName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedIdentityName"
 
 .Outputs
 System.Object
@@ -8940,6 +8961,13 @@ param(
     [System.String]
     # ID of the keyvault
     ${KeyVaultId},
+
+    [Parameter()]
+    [Alias('AssignUserIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # User Assigned Identity ARM ID of the backup vault to be used for assigning permissions
+    ${UserAssignedIdentityARMId},
 
     [Parameter(ParameterSetName='SetPermissionsForRestore', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -9263,8 +9291,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]
@@ -9522,8 +9550,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]
@@ -9751,8 +9779,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]
@@ -10121,26 +10149,26 @@ $proxy = Get-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGr
 $operationRequests = $proxy.ResourceGuardOperationDetail.DefaultResourceRequest
 $resourceGuardOperationRequest = $operationRequests | Where-Object { $_ -match "deleteBackupInstanceRequests" }
 
-$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
+$token = (Get-AzAccessToken -AsSecureString -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
 $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
-$unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest $resourceGuardOperationRequest -ResourceToBeDeleted $instances[0].Id -Token $token
+$unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest $resourceGuardOperationRequest -ResourceToBeDeleted $instances[0].Id -SecureToken $token
 $unlock | fl 
 
 Remove-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName  -Name $instances[0].Name
 .Example
-$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
+$token = (Get-AzAccessToken -AsSecureString -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
 $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
-$unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest DeleteBackupInstance -ResourceToBeDeleted $instances[0].Id -Token $token
+$unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest DeleteBackupInstance -ResourceToBeDeleted $instances[0].Id -SecureToken $token
 $unlock | fl 
 
 Remove-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName  -Name $instances[0].Name
 .Example
-$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
+$token = (Get-AzAccessToken -AsSecureString -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
 $proxy = Get-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId
 
-$unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest DisableMUA -ResourceToBeDeleted $proxy.Id -Token $token
+$unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest DisableMUA -ResourceToBeDeleted $proxy.Id -SecureToken $token
 $unlock | fl 
 
 Remove-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
@@ -10188,8 +10216,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]
@@ -10330,6 +10358,10 @@ $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDataso
 $updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -SubscriptionId $subscriptionId -PolicyId $updatePolicy.Id -VaultedBackupContainer $backedUpContainers[0,2,4]
 $updateBI.Property.PolicyInfo.PolicyId
 $updateBI.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
+.Example
+$bi = Get-AzDataProtectionBackupInstance -ResourceGroupName "myResourceGroup" -VaultName "myBackupVault" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+$updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName "myResourceGroup" -VaultName "myBackupVault" -BackupInstanceName $bi.Name -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -UserAssignedIdentityArmId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUami" -UseSystemAssignedIdentity $false
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
@@ -10372,6 +10404,19 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Use system assigned identity
+    ${UseSystemAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AssignUserIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # User assigned identity ARM Id
+    ${UserAssignedIdentityArmId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
     # List of containers to be backed up inside the VaultStore.
     # Use this parameter for DatasourceType AzureBlob.
@@ -10387,8 +10432,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]
@@ -10587,8 +10632,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
+    # Parameter deprecate.
+    # Please use SecureToken instead.
     ${Token},
 
     [Parameter()]

@@ -21,12 +21,12 @@ Create an in-memory object for NetworkAttachment.
 Create an in-memory object for NetworkAttachment.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkAttachment
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkAttachment
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudNetworkAttachmentObject
 #>
 function New-AzNetworkCloudNetworkAttachmentObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkAttachment')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkAttachment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -74,7 +74,7 @@ function New-AzNetworkCloudNetworkAttachmentObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.NetworkAttachment]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkAttachment]::New()
 
         if ($PSBoundParameters.ContainsKey('AttachedNetworkId')) {
             $Object.AttachedNetworkId = $AttachedNetworkId

@@ -23,7 +23,7 @@ Generates an invitation token that allows attaching a follower database to this 
 Invoke-AzKustoInviteDatabaseFollower -ClusterName "myCluster" -DatabaseName "myDatabase" -ResourceGroupName "myResourceGroup" -InviteeEmail "user@contoso.com"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
@@ -108,7 +108,7 @@ param(
     [Parameter(ParameterSetName='Invite', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='InviteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest]
     # The request to invite a follower to a database.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
