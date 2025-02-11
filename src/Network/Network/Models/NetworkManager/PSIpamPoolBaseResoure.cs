@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         [Ps1Xml(Label = "NetworkManagerName", Target = ViewControl.Table, Position = 1)]
         public string NetworkManagerName { get; set; }
 
+        public string Etag { get; set; }
+
         public string Type { get; set; }
 
         public PSSystemData SystemData { get;  set; }
