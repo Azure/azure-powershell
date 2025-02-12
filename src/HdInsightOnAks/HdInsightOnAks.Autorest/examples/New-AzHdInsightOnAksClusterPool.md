@@ -1,4 +1,4 @@
-### Example 1: Create an Azure HDInsight gen2 cluster pool
+### Example 1: Create an Azure HDInsight cluster pool
 ```powershell
 # Cluster pool configuration info
 $location = "West US 3"
@@ -41,7 +41,7 @@ SystemDataCreatedAt                            :
 
 This command creates a cluster pool in the current subscription.
 
-### Example 2: Create an Azure HDInsight gen2 cluster pool enabled log analytics workspace
+### Example 2: Create an Azure HDInsight cluster pool enabled log analytics workspace
 ```powershell
 # Cluster configuration info
 $location = "East US 2"
@@ -87,4 +87,4 @@ SystemDataCreatedAt                            :
 ...
 ```
 
-Create an Azure HDInsight gen2 cluster pool enabled azure monitor with log analytics workspace.
+Create an Azure HDInsight cluster pool enabled azure monitor with log analytics workspace.

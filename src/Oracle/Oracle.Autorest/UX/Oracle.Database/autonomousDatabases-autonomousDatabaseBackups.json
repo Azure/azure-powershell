@@ -1,0 +1,95 @@
+{
+  "resourceType": "autonomousDatabases/autonomousDatabaseBackups",
+  "apiVersion": "2023-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleAutonomousDatabaseBackup",
+      "description": "Get a AutonomousDatabaseBackup",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}/autonomousDatabaseBackups/{adbbackupid}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleautonomousdatabasebackup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Adbbackupid <String>",
+              "-Autonomousdatabasename <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a AutonomousDatabaseBackup",
+          "parameters": [
+            {
+              "name": "-Adbbackupid",
+              "value": "[Path.adbbackupid]"
+            },
+            {
+              "name": "-Autonomousdatabasename",
+              "value": "[Path.autonomousdatabasename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzOracleAutonomousDatabaseBackup",
+      "description": "Delete a AutonomousDatabaseBackup",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}/autonomousDatabaseBackups/{adbbackupid}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/remove-azoracleautonomousdatabasebackup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Adbbackupid <String>",
+              "-Autonomousdatabasename <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a AutonomousDatabaseBackup",
+          "parameters": [
+            {
+              "name": "-Adbbackupid",
+              "value": "[Path.adbbackupid]"
+            },
+            {
+              "name": "-Autonomousdatabasename",
+              "value": "[Path.autonomousdatabasename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

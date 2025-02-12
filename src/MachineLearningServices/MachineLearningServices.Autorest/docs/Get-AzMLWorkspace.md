@@ -49,9 +49,9 @@ Get-AzMLWorkspace
 ```output
 Name                 SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
 ----                 -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
-mlworkspace-portal01 5/5/2022 1:27:26 AM  v-diya@microsoft.com User                    5/5/2022 1:27:26 AM      v-diya@microsoft.com     User                         eastus   ml-rg-test
-mlworkspace-cli01    5/18/2022 6:33:49 AM v-diya@microsoft.com User                    5/18/2022 6:33:49 AM     v-diya@microsoft.com     User                         eastus   ml-rg-test
-mlworkspace-demo     5/25/2022 3:06:22 AM v-diya@microsoft.com User                    5/25/2022 3:06:22 AM     v-diya@microsoft.com     User                         eastus   ml-rg-test
+mlworkspace-portal01 5/5/2022 1:27:26 AM  user@example.com    User                    5/5/2022 1:27:26 AM      user@example.com        User                         eastus   ml-rg-test
+mlworkspace-cli01    5/18/2022 6:33:49 AM user@example.com    User                    5/18/2022 6:33:49 AM     user@example.com        User                         eastus   ml-rg-test
+mlworkspace-demo     5/25/2022 3:06:22 AM user@example.com    User                    5/25/2022 3:06:22 AM     user@example.com        User                         eastus   ml-rg-test
 ```
 
 List the properties of the specified machine learning workspace under a subscription.
@@ -64,9 +64,9 @@ Get-AzMLWorkspace -ResourceGroupName ml-rg-test
 ```output
 Name                 SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
 ----                 -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
-mlworkspace-portal01 5/5/2022 1:27:26 AM  v-diya@microsoft.com User                    5/5/2022 1:27:26 AM      v-diya@microsoft.com     User                         eastus   ml-rg-test
-mlworkspace-cli01    5/18/2022 6:33:49 AM v-diya@microsoft.com User                    5/18/2022 6:33:49 AM     v-diya@microsoft.com     User                         eastus   ml-rg-test
-mlworkspace-demo     5/25/2022 3:06:22 AM v-diya@microsoft.com User                    5/25/2022 3:06:22 AM     v-diya@microsoft.com     User                         eastus   ml-rg-test
+mlworkspace-portal01 5/5/2022 1:27:26 AM  user@example.com     User                    5/5/2022 1:27:26 AM      user@example.com         User                         eastus   ml-rg-test
+mlworkspace-cli01    5/18/2022 6:33:49 AM user@example.com     User                    5/18/2022 6:33:49 AM     user@example.com         User                         eastus   ml-rg-test
+mlworkspace-demo     5/25/2022 3:06:22 AM user@example.com     User                    5/25/2022 3:06:22 AM     user@example.com         User                         eastus   ml-rg-test
 ```
 
 List the properties of the specified machine learning workspace under a resource group.
@@ -79,7 +79,7 @@ Get-AzMLWorkspace -ResourceGroupName ml-rg-test -Name mlworkspace-cli01
 ```output
 Name              SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
 ----              -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
-mlworkspace-cli01 5/18/2022 6:33:49 AM v-diya@microsoft.com User                    5/18/2022 6:33:49 AM     v-diya@microsoft.com     User                         eastus   ml-rg-test
+mlworkspace-cli01 5/18/2022 6:33:49 AM user@example.com     User                    5/18/2022 6:33:49 AM     user@example.com         User                         eastus   ml-rg-test
 ```
 
 Gets the properties of the specified machine learning workspace.
@@ -87,7 +87,8 @@ Gets the properties of the specified machine learning workspace.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -187,31 +188,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMachineLearningServicesIdentity>`: Identity Parameter
-  - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
-  - `[ConnectionName <String>]`: Friendly name of the workspace connection
-  - `[DeploymentName <String>]`: Inference deployment identifier.
-  - `[EndpointName <String>]`: Inference Endpoint name.
-  - `[Id <String>]`: The name and identifier for the Job. This is case-sensitive.
-  - `[Id1 <String>]`: Resource identity path
-  - `[Location <String>]`: The location for which resource usage is queried.
-  - `[Name <String>]`: Container name. This is case-sensitive.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the workspace
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: Version identifier. This is case-sensitive.
-  - `[WorkspaceName <String>]`: Name of Azure Machine Learning workspace.
 
 ## RELATED LINKS
 

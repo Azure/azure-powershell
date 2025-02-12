@@ -31,7 +31,7 @@ function Start-TestSleep {
 }
 
 $env = @{}
-function setupEnv() {
+function setupEnv() {    
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -66,7 +66,20 @@ function setupEnv() {
     # Create a persistent test resource
     $persistentResourceName = "persistentResourceName" + $rstr1
     $env.Add("persistentResourceName", $persistentResourceName)
-    $persistentResource = New-AzCommunicationService -ResourceGroupName $resourceGroup -Name $persistentResourceName -DataLocation $dataLocation -Location $location
+    $persistentResource = New-AzCommunicationService -ResourceGroupName $resourceGroup -Name $persistentResourceName -DataLocation $dataLocation -Location $location    
+ 
+    write-host "creating a persistent test email resource..."
+    # Create a persistent test resource
+    $persistentECSResourceName = "persistentECSResourceName" + $rstr1
+    $env.Add("persistentECSResourceName", $persistentECSResourceName)
+    $persistentECSResource = New-AzEmailService -ResourceGroupName $resourceGroup -Name $persistentECSResourceName -DataLocation $dataLocation -Location $location
+ 
+    write-host "creating a persistent test domain..."
+    # Create a persistent test domain
+    $persistentResourceDomain = New-AzEmailServiceDomain -ResourceGroupName $resourceGroup -EmailServiceName $persistentECSResourceName -Name AzureManagedDomain -Location $location -DomainManagement AzureManaged    
+ 
+    $linkedDomain = "/subscriptions/"+ $env.SubscriptionId +"/resourceGroups/"+ $resourceGroup +"/providers/Microsoft.Communication/emailServices/"+ $persistentECSResourceName +"/domains/AzureManagedDomain"
+    $env.Add("linkedDomain", $linkedDomain)
 
     $notificationHubConnectionString = "Endpoint=sb://contosonotificationhubnamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx="
     $notificationHubResourceId = "/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub"

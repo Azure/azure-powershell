@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceConnection')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceConnection' {
-    It 'CreateExpanded' {
+Describe 'New-AzMLWorkspaceConnection' { #Moved
+    It 'CreateExpanded' -skip {
         { 
             New-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name test01 -AuthType 'None' -Category 'ContainerRegistry' -Target "www.facebook.com"
             Remove-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name test01

@@ -75,7 +75,7 @@ function setupEnv() {
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "userSess-sh-0")
     #Increment this number for each test run up to 7 successful remove runs.
-    $null = $env.Add("SessionHostNameRemove", "Delete4Test-0")
+    $null = $env.Add("SessionHostNameRemove", "userSess-sh-1")
     $null = $env.Add("PersistentDesktopAppGroup", "alecbUserSessionHP-DAG")
     $null = $env.Add("PersistentRemoteAppGroup", "alecbRemoteAppHP-RAG")
     $null = $env.Add("VnetName", "alecbUserSession-vnet")

@@ -1,6 +1,6 @@
 {
   "resourceType": "Clusters",
-  "apiVersion": "2023-08-15",
+  "apiVersion": "2024-04-13",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.kusto"
   },
@@ -102,6 +102,44 @@
       "examples": [
         {
           "description": "Diagnoses network connectivity status for external resources on which the service is dependent on.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzKustoClusterCalloutPolicy",
+      "description": "Removes callout policy for engine services.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/removeCalloutPolicy",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoclustercalloutpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Removes callout policy for engine services.",
           "parameters": [
             {
               "name": "-ClusterName",

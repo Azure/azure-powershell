@@ -96,6 +96,13 @@ Describe 'AzConnectedKubernetes' {
         } | Should -Not -Throw
     }
 
+    It 'CreateWorkloadIdentityExpanded' -skip {
+        {
+            $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS3 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -OidcIssuerProfileEnabled -WorkloadIdentityEnabled
+            $config.ProvisioningState | Should -Be 'Succeeded'
+        } | Should -Not -Throw
+    }
+
     It 'Delete' -skip {
         {
             Remove-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1

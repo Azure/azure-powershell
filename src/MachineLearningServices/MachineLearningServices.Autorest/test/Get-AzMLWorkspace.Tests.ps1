@@ -16,18 +16,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspace'))
 
 Describe 'Get-AzMLWorkspace' {
     It 'List1' {
-        { Get-AzMLWorkspace } | Should -Not -Throw
+        {
+            $listsub = Get-AzMLWorkspace
+            $listsub.Count | Should -BeGreaterOrEqual 2
+        } | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzMLWorkspace -ResourceGroupName ml-rg-test -Name mlworkspace-cli01 } | Should -Not -Throw
+        {
+            $ws = Get-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.mainWorkspace
+            $ws.Name | Should -Be $env.mainWorkspace
+        } | Should -Not -Throw
     }
 
     It 'List' {
-        { Get-AzMLWorkspace -ResourceGroupName ml-rg-test } | Should -Not -Throw
+        {
+            $listgroup = Get-AzMLWorkspace -ResourceGroupName $env.TestGroupName
+            $listgroup.Count | Should -BeGreaterOrEqual 1
+        } | Should -Not -Throw
     }
-
-    # It 'GetViaIdentity' -skip {
-    #     { throw [System.NotImplementedException] } | Should -Not -Throw
-    # }
 }

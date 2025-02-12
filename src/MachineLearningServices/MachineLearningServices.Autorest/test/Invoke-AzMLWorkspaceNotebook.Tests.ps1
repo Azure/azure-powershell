@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzMLWorkspaceNotebook'
 
 Describe 'Invoke-AzMLWorkspaceNotebook' {
     It 'Prepare' {
-        { Invoke-AzMLWorkspaceNotebook -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01} | Should -Not -Throw
+        { Invoke-AzMLWorkspaceNotebook -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace} | Should -Not -Throw
     }
 }

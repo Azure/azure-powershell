@@ -39,7 +39,7 @@ Counts devices in product.
 
 ### Example 1: Get device number
 ```powershell
-Invoke-AzSphereCountProductDevice -CatalogName test2024 -ResourceGroupName joyer-test -ProductName product2024
+Invoke-AzSphereCountProductDevice -CatalogName test2024 -ResourceGroupName group-test -ProductName product2024
 ```
 
 ```output

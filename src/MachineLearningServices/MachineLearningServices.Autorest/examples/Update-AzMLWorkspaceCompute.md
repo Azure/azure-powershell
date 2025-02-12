@@ -4,9 +4,9 @@ Update-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworks
 ```
 
 ```output
-Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Location ResourceGroupName
-----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- -------- -----------------
-cpu-cluster                                                                                                                                                                    eastus   ml-rg-test
+Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
+----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
+cpu-cluster                                                                                                                                                eastus   ml-rg-test
 ```
 
 Updates properties of a compute
@@ -17,9 +17,9 @@ Get-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspac
 ```
 
 ```output
-Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Location ResourceGroupName
-----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- -------- -----------------
-cpu-cluster                                                                                                                                                                    eastus   ml-rg-test
+Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
+----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
+cpu-cluster                                                                                                                                                eastus   ml-rg-test
 ```
 
 Updates properties of a compute by pipeline

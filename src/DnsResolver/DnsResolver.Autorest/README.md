@@ -5,9 +5,6 @@ v
 This directory contains the PowerShell module for the DnsResolver service.
 
 ---
-## Status
-[![Az.DnsResolver](https://img.shields.io/powershellgallery/v/Az.DnsResolver.svg?style=flat-square&label=Az.DnsResolver "Az.DnsResolver")](https://www.powershellgallery.com/packages/Az.DnsResolver/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -19,7 +16,7 @@ This directory contains the PowerShell module for the DnsResolver service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -70,13 +67,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 37072829f795ce840b8085035e8adf4721602f34
+commit: 6286ea80b3ac7eecfc2f230d65b2034a656f10bf
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2022-07-01/dnsresolver.json
+  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2023-07-01-preview/dnsresolver.json
+  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2023-07-01-preview/dnsresolverpolicy.json
 
-module-version: 0.2.1
+module-version: 0.2.9
 title: DnsResolver
 subject-prefix: DnsResolver
 
@@ -91,7 +89,23 @@ use-extension:
 
 directive:
   - where:
-      subject: ForwardingRule|VirtualNetworkLink
+      subject: DnsResolverPolicyVirtualNetworkLink
+    set:
+      subject-prefix: ''
+  - where:
+      subject: DnsResolverPolicy
+    set:
+      subject-prefix: ''
+  - where:
+      subject: DnsResolverDomainList
+    set:
+      subject-prefix: ''
+  - where:
+      subject: DnsSecurityRule
+    set:
+      subject-prefix: 'DnsResolverPolicy'
+  - where:
+      subject: ^(ForwardingRule|VirtualNetworkLink)$
     set:
       subject-prefix: DnsForwardingRuleset
   - where:

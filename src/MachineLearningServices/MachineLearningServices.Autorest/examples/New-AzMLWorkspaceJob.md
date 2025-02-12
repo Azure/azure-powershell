@@ -17,7 +17,7 @@ New-AzMLWorkspaceJob -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-te
 ```output
 Name                       SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                       -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-commandJob01               5/31/2022 7:58:38 AM Lucas Yao (Wicresoft North America) User                                                                                                   ml-rg-test
+commandJob01               5/31/2022 7:58:38 AM UserName (Example)         User                                                                                                   ml-rg-test
 ```
 
 Creates and executes a Job

@@ -107,7 +107,7 @@ Get Online Endpoint.
 List EndpointAuthKeys for an Endpoint using Key-based authentication.
 
 ### [Get-AzMLWorkspaceOnlineEndpointToken](Get-AzMLWorkspaceOnlineEndpointToken.md)
-Retrieve a valid AAD token for an Endpoint using AMLToken-based authentication.
+Retrieve a valid AML token for an Endpoint using AMLToken-based authentication.
 
 ### [Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint](Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint.md)
 Called by Client (Portal, CLI, etc) to get a list of all external outbound dependencies (FQDNs) programmatically.
@@ -124,11 +124,23 @@ Prepare a notebook.
 ### [New-AzMLWorkspace](New-AzMLWorkspace.md)
 Creates or updates a workspace with the specified parameters.
 
+### [New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for AadAuthTypeWorkspaceConnectionProperties.
+
+### [New-AzMLWorkspaceAccessKeyAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceAccessKeyAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for AccessKeyAuthTypeWorkspaceConnectionProperties.
+
+### [New-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for AccountKeyAuthTypeWorkspaceConnectionProperties.
+
 ### [New-AzMLWorkspaceAksObject](New-AzMLWorkspaceAksObject.md)
 Create an in-memory object for Aks.
 
 ### [New-AzMLWorkspaceAmlComputeObject](New-AzMLWorkspaceAmlComputeObject.md)
 Create an in-memory object for AmlCompute.
+
+### [New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for ApiKeyAuthWorkspaceConnectionProperties.
 
 ### [New-AzMLWorkspaceBatchDeployment](New-AzMLWorkspaceBatchDeployment.md)
 Creates/updates a batch inference deployment (asynchronous).
@@ -163,6 +175,9 @@ Create an in-memory object for ComputeStartStopSchedule.
 ### [New-AzMLWorkspaceConnection](New-AzMLWorkspaceConnection.md)
 Creating or updating a new workspace connection
 
+### [New-AzMLWorkspaceCustomKeysWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceCustomKeysWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for CustomKeysWorkspaceConnectionProperties.
+
 ### [New-AzMLWorkspaceCustomModelJobInputObject](New-AzMLWorkspaceCustomModelJobInputObject.md)
 Create an in-memory object for CustomModelJobInput.
 
@@ -180,6 +195,9 @@ Create an in-memory object for DataFactory.
 
 ### [New-AzMLWorkspaceDataLakeAnalyticsObject](New-AzMLWorkspaceDataLakeAnalyticsObject.md)
 Create an in-memory object for DataLakeAnalytics.
+
+### [New-AzMLWorkspaceDataPathAssetReferenceObject](New-AzMLWorkspaceDataPathAssetReferenceObject.md)
+Create an in-memory object for DataPathAssetReference.
 
 ### [New-AzMLWorkspaceDatastore](New-AzMLWorkspaceDatastore.md)
 Create or update datastore.
@@ -220,8 +238,11 @@ Creates or updates an EnvironmentVersion.
 ### [New-AzMLWorkspaceHDInsightObject](New-AzMLWorkspaceHDInsightObject.md)
 Create an in-memory object for HDInsight.
 
+### [New-AzMLWorkspaceIdAssetReferenceObject](New-AzMLWorkspaceIdAssetReferenceObject.md)
+Create an in-memory object for IdAssetReference.
+
 ### [New-AzMLWorkspaceJob](New-AzMLWorkspaceJob.md)
-Creates and executes a Job.
+Creates and executes a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.
 
 ### [New-AzMLWorkspaceJobServiceObject](New-AzMLWorkspaceJobServiceObject.md)
 Create an in-memory object for JobService.
@@ -231,6 +252,9 @@ Create an in-memory object for Kubernetes.
 
 ### [New-AzMLWorkspaceLiteralJobInputObject](New-AzMLWorkspaceLiteralJobInputObject.md)
 Create an in-memory object for LiteralJobInput.
+
+### [New-AzMLWorkspaceManagedIdentityAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceManagedIdentityAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for ManagedIdentityAuthTypeWorkspaceConnectionProperties.
 
 ### [New-AzMLWorkspaceMLFlowModelJobInputObject](New-AzMLWorkspaceMLFlowModelJobInputObject.md)
 Create an in-memory object for MLFlowModelJobInput.
@@ -250,6 +274,12 @@ Create or update container.
 ### [New-AzMLWorkspaceModelVersion](New-AzMLWorkspaceModelVersion.md)
 Create or update version.
 
+### [New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for NoneAuthTypeWorkspaceConnectionProperties.
+
+### [New-AzMLWorkspaceOAuth2AuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceOAuth2AuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for OAuth2AuthTypeWorkspaceConnectionProperties.
+
 ### [New-AzMLWorkspaceOnlineDeployment](New-AzMLWorkspaceOnlineDeployment.md)
 Create or update Inference Endpoint Deployment (asynchronous).
 
@@ -259,11 +289,23 @@ Create or update Online Endpoint (asynchronous).
 ### [New-AzMLWorkspaceOnlineEndpointKey](New-AzMLWorkspaceOnlineEndpointKey.md)
 Regenerate EndpointAuthKeys for an Endpoint using Key-based authentication (asynchronous).
 
+### [New-AzMLWorkspaceOutputPathAssetReferenceObject](New-AzMLWorkspaceOutputPathAssetReferenceObject.md)
+Create an in-memory object for OutputPathAssetReference.
+
+### [New-AzMLWorkspacePatAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspacePatAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for PatAuthTypeWorkspaceConnectionProperties.
+
 ### [New-AzMLWorkspacePipelineJobObject](New-AzMLWorkspacePipelineJobObject.md)
 Create an in-memory object for PipelineJob.
 
 ### [New-AzMLWorkspaceQuotaPropertiesObject](New-AzMLWorkspaceQuotaPropertiesObject.md)
 Create an in-memory object for QuotaBaseProperties.
+
+### [New-AzMLWorkspaceSasAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceSasAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for SasAuthTypeWorkspaceConnectionProperties.
+
+### [New-AzMLWorkspaceServicePrincipalAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceServicePrincipalAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for ServicePrincipalAuthTypeWorkspaceConnectionProperties.
 
 ### [New-AzMLWorkspaceSharedPrivateLinkResourceObject](New-AzMLWorkspaceSharedPrivateLinkResourceObject.md)
 Create an in-memory object for SharedPrivateLinkResource.
@@ -291,6 +333,9 @@ Create an in-memory object for UriFolderJobInput.
 
 ### [New-AzMLWorkspaceUriFolderJobOutputObject](New-AzMLWorkspaceUriFolderJobOutputObject.md)
 Create an in-memory object for UriFolderJobOutput.
+
+### [New-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject.md)
+Create an in-memory object for UsernamePasswordAuthTypeWorkspaceConnectionProperties.
 
 ### [New-AzMLWorkspaceVirtualMachineObject](New-AzMLWorkspaceVirtualMachineObject.md)
 Create an in-memory object for VirtualMachine.

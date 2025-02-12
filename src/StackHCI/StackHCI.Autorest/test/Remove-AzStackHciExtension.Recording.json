@@ -39,5 +39,46 @@
       "Content": null,
       "isContentBase64": false
     }
+  },
+  "Remove-AzStackHciExtension+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "6909dd0e-8074-4331-abd6-8fa8060beb76" ],
+        "CommandName": [ "Remove-AzStackHciExtension" ],
+        "FullCommandName": [ "Remove-AzStackHciExtension_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.StackHCI/1.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "mise-correlation-id": [ "230eb25f-0d8b-4ff6-b441-1ae07077d2f1" ],
+        "x-ms-request-id": [ "47c3508d-6b33-4dc6-b08b-57406ec70969" ],
+        "x-ms-correlation-request-id": [ "e9474546-bdb2-43e9-b617-4fe4145d8c9e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T052021Z:e9474546-bdb2-43e9-b617-4fe4145d8c9e" ],
+        "Date": [ "Wed, 26 Jul 2023 05:20:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
   }
 }

@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigObject
+online version: https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterserviceconfigobject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksClusterServiceConfigObject
 
 ## SYNOPSIS
-Create a component config.
+Create an in-memory object for ClusterServiceConfig.
 
 ## SYNTAX
 
@@ -18,14 +18,20 @@ New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName <String> -File <IC
 ```
 
 ## DESCRIPTION
-Create a component config.
+Create an in-memory object for ClusterServiceConfig.
 
 ## EXAMPLES
 
 ### Example 1: Create a component config.
 ```powershell
 $coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-$yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+```
+
+```output
+Component   File
+---------   ----
+yarn-config {{…
 ```
 
 This cmdlet create the component config of "yarn-config" based the existing config file $coreSiteConfigFile.
@@ -38,7 +44,7 @@ Name of the component the config files should apply to.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
 
 Required: True
 Position: Named
@@ -67,11 +73,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile[]
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfig
 
 ## NOTES
 

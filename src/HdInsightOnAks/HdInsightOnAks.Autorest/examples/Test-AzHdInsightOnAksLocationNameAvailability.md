@@ -1,7 +1,7 @@
 ### Example 1: Check the availability of the cluster pool name.
 ```powershell
 $location="west us 2"
-$name="testname"
+$name="pool/testname"
 Test-AzHdInsightOnAksLocationNameAvailability -Location $location -Name $name -Type Microsoft.HDInsight/clusterPools/clusters
 ```
 

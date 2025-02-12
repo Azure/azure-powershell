@@ -1,0 +1,22 @@
+artifact_path: pipeline
+flavors:
+  python_function:
+    env: conda.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    python_version: 3.8.5
+  sklearn:
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.1.2
+model_uuid: 04bd660a1b8b4b1e84b9198c46cfd117
+run_id: 22874b7e-b069-43f0-b90c-1c57793c7854
+signature:
+  inputs: '[{"name": "age", "type": "long"}, {"name": "sex", "type": "long"},
+    {"name": "cp", "type": "long"}, {"name": "trestbps", "type": "long"}, {"name":
+    "chol", "type": "long"}, {"name": "fbs", "type": "long"}, {"name": "restecg",
+    "type": "long"}, {"name": "thalach", "type": "long"}, {"name": "exang", "type":
+    "long"}, {"name": "oldpeak", "type": "double"}, {"name": "slope", "type": "long"},
+    {"name": "ca", "type": "long"}, {"name": "thal", "type": "string"}]'
+  outputs: '[{"type": "long"}]'
+utc_time_created: '2022-10-13 00:55:57.543663'

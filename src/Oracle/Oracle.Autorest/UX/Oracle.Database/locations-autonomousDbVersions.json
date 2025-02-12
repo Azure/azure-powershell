@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/autonomousDbVersions",
+  "apiVersion": "2023-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleAutonomousDatabaseVersion",
+      "description": "Get a AutonomousDbVersion",
+      "path": "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/autonomousDbVersions/{autonomousdbversionsname}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleautonomousdatabaseversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Autonomousdbversionsname <String>",
+              "-Location <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a AutonomousDbVersion",
+          "parameters": [
+            {
+              "name": "-Autonomousdbversionsname",
+              "value": "[Path.autonomousdbversionsname]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

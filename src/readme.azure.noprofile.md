@@ -82,3 +82,11 @@ directive:
       default:
         script: '(Get-AzContext).Subscription.Id'
 ```
+
+> AssemblyInfo attributes
+``` yaml
+assemblyInfo-path: "Properties/AssemblyInfo.cs"
+assembly-company: "Microsoft"
+assembly-product: "Microsoft Azure PowerShell"
+assembly-copyright: "Copyright © Microsoft"
+```
