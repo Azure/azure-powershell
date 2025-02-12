@@ -90,6 +90,12 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(RemoteSubnetNames, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        [JsonProperty(Order = 1)]
+        public string[] RemoteSubnetNames { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] LocalSubnetNames { get; set; }
+
         [JsonIgnore]
         public string RemoteVirtualNetworkText
         {
