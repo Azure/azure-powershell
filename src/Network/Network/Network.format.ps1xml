@@ -1519,6 +1519,22 @@
                 <PropertyName>RemoteVirtualNetworkAddressSpaceText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PeerCompleteVnets</Label>
+                <PropertyName>PeerCompleteVnets</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LocalSubnetNames</Label>
+                <PropertyName>LocalSubnetNamesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RemoteSubnetNames</Label>
+                <PropertyName>RemoteSubnetNamesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableOnlyIPv6Peering</Label>
+                <PropertyName>EnableOnlyIPv6Peering</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>RemoteBgpCommunities</Label>
                 <PropertyName>RemoteBgpCommunitiesText</PropertyName>
                 <ItemSelectionCondition>
