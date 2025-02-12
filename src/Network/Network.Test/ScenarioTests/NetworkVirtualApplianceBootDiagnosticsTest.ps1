@@ -60,11 +60,11 @@ function Test-NetworkVirtualApplianceBootDiagnostics
 
         # Generate SAS token for the existing Blob
         #$sasToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Context $storageAccountContext -Permission "rw" -ExpiryTime ([System.DateTime]::UtcNow).AddDays(1) -StartTime ([System.DateTime]::UtcNow).AddHours(-1) -FullUri
-        $sasToken = "https://stonashoktest.blob.core.windows.net/testcontainer/example.txt?sp=rw&st=2025-02-12T05:01:16Z&se=2025-02-14T13:01:16Z&skoid=7f5b7efd-fa3f-4fbd-9430-8cf0f0ca6822&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-02-12T05:01:16Z&ske=2025-02-14T13:01:16Z&sks=b&skv=2022-11-02&spr=https&sv=2022-11-02&sr=b&sig=hunV37f5Mc%2By4Cln6PfzUZzvMFm%2B4eMfGQIWZ6H70ZI%3D"
+        $sasToken = "placeholder"
         Assert-NotNull $sasToken
         Write-Host "SAS uri for the blob '$blobName' is: $sasToken"
 
-        $sasUrlScreenShot = "https://stonashoktest.blob.core.windows.net/testcontainer/pstestscreenshot.png?sp=rw&st=2025-02-12T05:02:57Z&se=2025-02-12T13:02:57Z&skoid=7f5b7efd-fa3f-4fbd-9430-8cf0f0ca6822&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-02-12T05:02:57Z&ske=2025-02-12T13:02:57Z&sks=b&skv=2022-11-02&spr=https&sv=2022-11-02&sr=b&sig=dVMyalbtEwn6ekXs6p4VN6Kmo%2FmklmkbN3Vk6RhEF%2FY%3D"
+        $sasUrlScreenShot = "placeholder"
 
         $nvabootdiagnostics = Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName $rgname -Name $nvaname -InstanceId 0 -SerialConsoleStorageSasUrl $sasToken -ConsoleScreenshotStorageSasUrl $sasUrlScreenShot
         Assert-AreEqual $nvabootdiagnostics.Status "Succeeded"

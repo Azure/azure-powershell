@@ -525,7 +525,7 @@
           "838"
         ]
       },
-      "RequestBody": "{\r\n  \"instanceId\": 0,\r\n  \"serialConsoleStorageSasUrl\": \"https://stonashoktest.blob.core.windows.net/testcontainer/example.txt?sp=rw&st=2025-02-05T21:53:38Z&se=2025-02-08T05:53:38Z&skoid=7f5b7efd-fa3f-4fbd-9430-8cf0f0ca6822&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-02-05T21:53:38Z&ske=2025-02-08T05:53:38Z&sks=b&skv=2022-11-02&spr=https&sv=2022-11-02&sr=b&sig=s4OOxeimjtI664PrfUNUBSSlYG%2BFo3MWf%2FYrI2YMBGs%3D\",\r\n  \"consoleScreenshotStorageSasUrl\": \"https://stonashoktest.blob.core.windows.net/testcontainer/pstestscreenshot.png?sp=rw&st=2025-02-05T21:47:43Z&se=2025-02-08T05:47:43Z&skoid=7f5b7efd-fa3f-4fbd-9430-8cf0f0ca6822&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-02-05T21:47:43Z&ske=2025-02-08T05:47:43Z&sks=b&skv=2022-11-02&spr=https&sv=2022-11-02&sr=b&sig=JkTM6%2BAtB1SpjHtK6Jn8Pdfcm45Y%2FTgn2UxKgWUc84M%3D\"\r\n}",
+      "RequestBody": "{\r\n  \"instanceId\": 0,\r\n  \"serialConsoleStorageSasUrl\": \"placeholder\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
