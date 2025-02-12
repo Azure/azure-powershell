@@ -23,7 +23,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Warning output]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSize", DefaultParameterSetName = ListVirtualMachineSizeParamSet)]
     [OutputType(typeof(PSVirtualMachineSize))]
     public class GetAzureVMSizeCommand : VirtualMachineSizeBaseCmdlet
@@ -80,6 +79,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            WriteInformation("For more accurate output, use \"Get-AzComputeResourceSku\" instead. The REST API call used by Get-AzVMSize: \"Virtual Machine Sizes - List\" is deprecated. \n");
+
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
