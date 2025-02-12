@@ -52,6 +52,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateSet('Default', 'DoNotValidate')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotValidate')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # Whether to validate the exemption is at or under the assignment scope.
@@ -71,6 +72,7 @@ param(
 
     [Parameter(ParameterSetName='Default', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateSet('Waiver', 'Mitigated')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Waiver', 'Mitigated')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The policy exemption category
@@ -102,6 +104,13 @@ param(
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
     ${Metadata},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]

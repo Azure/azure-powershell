@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to Create the extension.
+The operation to create or update the extension.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-The operation to Create the extension.
+The operation to create or update the extension.
 
 ## EXAMPLES
 
@@ -144,7 +144,6 @@ Accept wildcard characters: False
 
 ### -ExtensionParameter
 Describes a Machine Extension.
-To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension

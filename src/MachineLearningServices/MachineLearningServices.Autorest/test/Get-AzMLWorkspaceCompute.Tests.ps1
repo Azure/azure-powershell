@@ -16,10 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceCompute'))
 
 Describe 'Get-AzMLWorkspaceCompute' {
     It 'List' {
-        { Get-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 } | Should -Not -Throw
+        {
+            Get-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace
+        } | Should -Not -Throw
     }
 
     It 'Get' {
-        {  Get-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name cpu-cluster } | Should -Not -Throw
+        {
+            Get-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.computeinstance
+        } | Should -Not -Throw
     }
 }

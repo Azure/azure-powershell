@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceFeature'))
 
 Describe 'Get-AzMLWorkspaceFeature' {
     It 'List' {
-        { Get-AzMLWorkspaceFeature  -ResourceGroupName ml-rg-test -Name mlworkspace-portal01 } | Should -Not -Throw
+        { Get-AzMLWorkspaceFeature  -ResourceGroupName $env.DataGroupName -Name $env.computeWorkspace } | Should -Not -Throw
     }
 }

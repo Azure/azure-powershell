@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridChannel
 
 ## SYNOPSIS
-Synchronously Update a channel with the specified parameters.
+Synchronously update a channel with the specified parameters.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -Resourc
 ```
 
 ## DESCRIPTION
-Synchronously Update a channel with the specified parameters.
+Synchronously update a channel with the specified parameters.
 
 ## EXAMPLES
 

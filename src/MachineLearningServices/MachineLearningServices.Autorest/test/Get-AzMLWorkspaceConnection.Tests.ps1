@@ -16,10 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceConnection')
 
 Describe 'Get-AzMLWorkspaceConnection' {
     It 'List' {
-        { Get-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 } | Should -Not -Throw
+        {
+            Get-AzMLWorkspaceConnection -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace
+        } | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name test } | Should -Not -Throw
+        {
+            Get-AzMLWorkspaceConnection -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name 'test01'
+        } | Should -Not -Throw
     }
 }

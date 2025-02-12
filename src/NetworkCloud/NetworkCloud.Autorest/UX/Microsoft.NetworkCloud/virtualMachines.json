@@ -1,6 +1,6 @@
 {
   "resourceType": "virtualMachines",
-  "apiVersion": "2023-07-01",
+  "apiVersion": "2024-07-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.networkcloud"
   },

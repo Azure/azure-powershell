@@ -63,7 +63,11 @@ Function Export-AllBreakingChangeMessageUnderArtifacts
     $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
     ForEach ($ModuleName In $AllModuleList)
     {
-        $Result += Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $ModuleName
+        if ($ModuleName -ne "Az.Monitor")
+        {
+            $Result += Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $ModuleName
+        }
+
     }
     $Result | Out-File -FilePath $MarkdownPath -Force
 }

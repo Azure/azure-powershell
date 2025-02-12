@@ -8,8 +8,8 @@ schema: 2.0.0
 # New-AzEventGridNamespaceTopicEventSubscription
 
 ## SYNOPSIS
-Asynchronously Create an event subscription of a namespace topic with the specified parameters.
-Existing event subscriptions will be Created with this API.
+Asynchronously create an event subscription of a namespace topic with the specified parameters.
+Existing event subscriptions will be updated with this API.
 
 ## SYNTAX
 
@@ -71,8 +71,8 @@ New-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName <String> -
 ```
 
 ## DESCRIPTION
-Asynchronously Create an event subscription of a namespace topic with the specified parameters.
-Existing event subscriptions will be Created with this API.
+Asynchronously create an event subscription of a namespace topic with the specified parameters.
+Existing event subscriptions will be updated with this API.
 
 ## EXAMPLES
 

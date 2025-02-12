@@ -36,12 +36,12 @@ The operation to delete a run command.
 
 ## EXAMPLES
 
-### Example 1: Remove a run-command for a machine
+### Example 1: Remove a run command
 ```powershell
-Remove-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine"
+Remove-AzConnectedMachineRunCommand -ResourceGroupName "ytongtest" -RunCommandName "myRunCommand" -MachineName "testmachine"
 ```
 
-Remove a run-command for a machine
+Remove a run command
 
 ## PARAMETERS
 
@@ -78,7 +78,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -94,7 +93,6 @@ Accept wildcard characters: False
 
 ### -MachineInputObject
 Identity Parameter
-To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -190,7 +188,7 @@ The ID of the target subscription.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: Subscription
 
 Required: False
 Position: Named

@@ -174,7 +174,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -356,7 +355,6 @@ Accept wildcard characters: False
 
 ### -WorkloadProfile
 Workload profiles configured for the Managed Environment.
-To construct, see NOTES section for WORKLOADPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IWorkloadProfile[]

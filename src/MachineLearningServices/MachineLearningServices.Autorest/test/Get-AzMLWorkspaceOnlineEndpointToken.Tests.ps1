@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceOnlineEndpoi
 
 Describe 'Get-AzMLWorkspaceOnlineEndpointToken' {
     It 'Get' {
-        { Get-AzMLWorkspaceOnlineEndpointToken -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-portal91} | Should -Not -Throw
+        {
+            Get-AzMLWorkspaceOnlineEndpointToken -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -Name $env.onlineEndpoint
+        } | Should -Not -Throw
     }
 }

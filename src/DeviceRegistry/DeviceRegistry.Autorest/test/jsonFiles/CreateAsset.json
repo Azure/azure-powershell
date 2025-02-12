@@ -1,0 +1,60 @@
+{
+  "location": "eastus2",
+  "extendedLocation": {
+      "type": "CustomLocation",
+      "name": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-test-pwsh-rg/providers/Microsoft.ExtendedLocation/customLocations/location-a6n5o"
+  },
+  "properties": {
+      "displayName": "test-asset-displayName",
+      "assetEndpointProfileRef": "myAssetEndpointProfile",
+      "externalAssetId": "test-asset-externalAssetId",
+      "manufacturer": "Contoso123",
+      "manufacturerUri": "https://contoso.com",
+      "model": "ContosoModel",
+      "productCode": "SA34VDG",
+      "softwareRevision": "2.0",
+      "hardwareRevision": "1.0",
+      "documentationUri": "https://www.example.com/manual",
+      "serialNumber": "64-103816-519918-8",
+      "defaultDatasetsConfiguration": "{\"defaultPublishingInterval\": 200, \"defaultSamplingInterval\": 500, \"defaultQueueSize\": 10}",
+      "defaultEventsConfiguration": "{\"defaultPublishingInterval\": 200, \"defaultSamplingInterval\": 500, \"defaultQueueSize\": 10}",
+      "defaultTopic": {
+        "path": "/path/defaultTopic",
+        "retain": "Keep"
+      },
+      "datasets": [
+        {
+          "name": "dataset1Foo",
+          "datasetConfiguration": "{\"defaultPublishingInterval\": 200, \"defaultSamplingInterval\": 500, \"defaultQueueSize\": 10}",
+          "topic": {
+            "path": "/path/dataset1",
+            "retain": "Keep"
+          },
+          "dataPoints": [
+            {
+              "name": "dataPoint1",
+              "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt1",
+              "dataPointConfiguration": "{\"defaultPublishingInterval\": 200, \"defaultSamplingInterval\": 500, \"defaultQueueSize\": 10}"
+            },
+            {
+              "name": "dataPoint2",
+              "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt2",
+              "dataPointConfiguration": "{\"defaultPublishingInterval\": 200, \"defaultSamplingInterval\": 500, \"defaultQueueSize\": 10}"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "event1",
+          "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3",
+          "eventConfiguration": "{\"defaultPublishingInterval\": 200, \"defaultSamplingInterval\": 500, \"defaultQueueSize\": 10}"
+        },
+        {
+          "name": "event2",
+          "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4",
+          "eventConfiguration": "{\"defaultPublishingInterval\": 200, \"defaultSamplingInterval\": 500, \"defaultQueueSize\": 10}"
+        }
+      ]
+  }
+}

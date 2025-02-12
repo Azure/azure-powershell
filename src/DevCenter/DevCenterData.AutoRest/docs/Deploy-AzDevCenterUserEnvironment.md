@@ -195,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpirationDate
-The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+The time the expiration date will be triggered (UTC), after which theenvironment and associated resources will be deleted.
 
 ```yaml
 Type: System.DateTime
@@ -341,7 +341,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 
 ## NOTES
 

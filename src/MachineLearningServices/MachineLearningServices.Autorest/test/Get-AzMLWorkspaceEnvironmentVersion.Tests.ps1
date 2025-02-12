@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceEnvironmentV
 
 Describe 'Get-AzMLWorkspaceEnvironmentVersion' {
     It 'List' {
-        { Get-AzMLWorkspaceEnvironmentVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name pwshenv01 } | Should -Not -Throw
+        { Get-AzMLWorkspaceEnvironmentVersion  -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name batchenv1 } | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzMLWorkspaceEnvironmentVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name pwshenv01 -Version 1 } | Should -Not -Throw
+        { Get-AzMLWorkspaceEnvironmentVersion  -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name batchenv1 -Version 1 } | Should -Not -Throw
     }
 }

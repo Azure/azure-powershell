@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzMLWorkspaceCompute'))
 
 Describe 'Stop-AzMLWorkspaceCompute' {
     It 'ComputeInstance' {
-        { Stop-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name v-diya1 } | Should -Not -Throw
+        { Stop-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.computeinstance } | Should -Not -Throw
     }
 }

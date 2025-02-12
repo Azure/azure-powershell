@@ -22,7 +22,7 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -42,7 +42,7 @@ function New-AzMigrateServerReplication {
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Parameter(ParameterSetName = 'ByInputObjectPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
@@ -61,6 +61,14 @@ function New-AzMigrateServerReplication {
         [System.String]
         # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
         ${SqlServerLicenseType},
+
+        [Parameter()]
+        [ValidateSet( "NotSpecified", "NoLicenseType", "LinuxServer")]
+        [ArgumentCompleter( { "NotSpecified", "NoLicenseType", "LinuxServer" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if Azure Hybrid benefit is applicable for the source linux server to be migrated.
+        ${LinuxLicenseType},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -141,19 +149,19 @@ function New-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetVmtags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags]
         # Specifies the tag to be used for VM creation.
         ${VMTag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetNicTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags]
         # Specifies the tag to be used for NIC creation.
         ${NicTag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetDiskTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags]
         # Specifies the tag to be used for disk creation.
         ${DiskTag},
 
@@ -257,6 +265,7 @@ function New-AzMigrateServerReplication {
         $HasDiskTag = $PSBoundParameters.ContainsKey('DiskTag')
         $HasTag = $PSBoundParameters.ContainsKey('Tag')
         $HasSqlServerLicenseType = $PSBoundParameters.ContainsKey('SqlServerLicenseType')
+        $HasLinuxLicenseType = $PSBoundParameters.ContainsKey('LinuxLicenseType')
         $HasTargetBDStorage = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
         $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
         $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
@@ -284,6 +293,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('DiskType')
         $null = $PSBoundParameters.Remove('OSDiskID')
         $null = $PSBoundParameters.Remove('SqlServerLicenseType')
+        $null = $PSBoundParameters.Remove('LinuxLicenseType')
         $null = $PSBoundParameters.Remove('LicenseType')
         $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
 
@@ -533,7 +543,7 @@ public static int hashForArtifact(String artifact)
         $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
         $null = $PSBoundParameters.Add("PolicyId", $PolicyId)
 
-        $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtEnableMigrationInput]::new()
+        $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtEnableMigrationInput]::new()
         $ProviderSpecificDetails.DataMoverRunAsAccountId = $VMWarerunasaccountID
         $ProviderSpecificDetails.SnapshotRunAsAccountId = $VMWarerunasaccountID
         $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
@@ -554,6 +564,16 @@ public static int hashForArtifact(String artifact)
             }
             $SqlServerLicenseType = $validSqlLicenseSpellings[$SqlServerLicenseType]
             $ProviderSpecificDetails.SqlServerLicenseType = $SqlServerLicenseType
+        }
+
+        if ($HasLinuxLicenseType) {
+            $validLinuxLicenseSpellings = @{ 
+                NotSpecified  = "NotSpecified";
+                NoLicenseType = "NoLicenseType";
+                LinuxServer   = "LinuxServer";
+            }
+            $LinuxLicenseType = $validLinuxLicenseSpellings[$LinuxLicenseType]
+            $ProviderSpecificDetails.LinuxLicenseType = $LinuxLicenseType
         }
 
         $UserProvidedTags = $null
@@ -655,10 +675,10 @@ public static int hashForArtifact(String artifact)
         $uniqueDiskUuids = [System.Collections.Generic.HashSet[String]]::new([StringComparer]::InvariantCultureIgnoreCase)
 
         if ($parameterSet -match 'DefaultUser') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput[]]$DiskToInclude = @()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]]$DiskToInclude = @()
             foreach ($onPremDisk in $InputObject.Disk) {
                 if ($onPremDisk.Uuid -ne $OSDiskID) {
-                    $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtDiskInput]::new()
+                    $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtDiskInput]::new()
                     $DiskObject.DiskId = $onPremDisk.Uuid
                     $DiskObject.DiskType = "Standard_LRS"
                     $DiskObject.IsOSDisk = "false"
@@ -670,7 +690,7 @@ public static int hashForArtifact(String artifact)
                     $DiskToInclude += $DiskObject
                 }
             }
-            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtDiskInput]::new()
+            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtDiskInput]::new()
             $DiskObject.DiskId = $OSDiskID
             $DiskObject.DiskType = $DiskType
             $DiskObject.IsOSDisk = "true"
@@ -692,12 +712,17 @@ public static int hashForArtifact(String artifact)
         }
 
 
-        # Check for duplicate disk UUID in user input/discovered VM.
+        # Check for duplicate disk UUID in user input/discovered VM and Premium V2 disk validations.
         foreach ($disk in $ProviderSpecificDetails.DisksToInclude)
         {
             if ($uniqueDiskUuids.Contains($disk.DiskId)) {
                 throw "The disk uuid '$($disk.DiskId)' is already taken."
             }
+
+            if (-not $HasTargetAVZone -and $disk.DiskType -eq "PremiumV2_LRS") {
+                throw "Premium SSD V2 disk can only be attached to zonal VMs."
+            }
+
             $res = $uniqueDiskUuids.Add($disk.DiskId)
         }
 

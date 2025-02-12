@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceKey'))
 
 Describe 'Get-AzMLWorkspaceKey' {
     It 'List' {
-        { Get-AzMLWorkspaceKey  -ResourceGroupName ml-rg-test -Name mlworkspace-cli01 } | Should -Not -Throw
+        { Get-AzMLWorkspaceKey  -ResourceGroupName $env.TestGroupName -Name $env.mainWorkspace } | Should -Not -Throw
     }
 }

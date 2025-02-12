@@ -1,0 +1,47 @@
+{
+  "resourceType": "standbyVirtualMachinePools/runtimeViews",
+  "apiVersion": "2024-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.standbypool"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStandbyVMPoolStatus",
+      "description": "Get a StandbyVirtualMachinePoolRuntimeViewResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a StandbyVirtualMachinePoolRuntimeViewResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.standbyVirtualMachinePoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

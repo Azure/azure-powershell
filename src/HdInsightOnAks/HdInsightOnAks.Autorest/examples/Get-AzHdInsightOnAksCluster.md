@@ -1,4 +1,4 @@
-### Example 1: lsit all HDInsight gen2 clusters in a pool.
+### Example 1: lsit all HDInsight clusters in a pool.
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
@@ -24,7 +24,7 @@ CoordinatorDebugEnable                      :
 
 List all clusters in a pool.
 
-### Example 2: Get a HDInsight gen2 cluster
+### Example 2: Get a HDInsight cluster
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
@@ -49,4 +49,4 @@ CoordinatorDebugEnable                      :
 ...
 ```
 
-Get a HDInsight gen2 cluster
+Get a HDInsight cluster

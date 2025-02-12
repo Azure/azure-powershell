@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/listKeys?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/listKeys?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/listKeys?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/listKeys?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "e666ad95-362f-4c7e-8f72-a3b408085a90" ],
+        "x-ms-unique-id": [ "98" ],
+        "x-ms-client-request-id": [ "818038d2-61cf-4720-98a3-53ffd8d64b5d" ],
         "CommandName": [ "Get-AzMLWorkspaceKey" ],
         "FullCommandName": [ "Get-AzMLWorkspaceKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,24 +23,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "bf65f952-56cf-4d48-be62-b8400717883b" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "cf26d982-7b40-4264-82d8-5139e403ac83" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.045" ],
-        "x-ms-correlation-request-id": [ "bf65f952-56cf-4d48-be62-b8400717883b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094053Z:bf65f952-56cf-4d48-be62-b8400717883b" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:52 GMT" ]
+        "x-request-time": [ "0.043" ],
+        "x-ms-correlation-request-id": [ "cf26d982-7b40-4264-82d8-5139e403ac83" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085130Z:cf26d982-7b40-4264-82d8-5139e403ac83" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 90C0F3300A9A41EF9553E0F027C48B23 Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:29Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:29 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "915" ],
+        "Content-Length": [ "610" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"userStorageKey\": \"8aw4ioZ/KLrq/sCp/FtKPRW+XzJQ/dl+SNHhTrN1lRYXQZ/YytATUXtzuRpYMh2TqRr9KBQk5OjM+AStCETudQ==\",\n  \"userStorageArmId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.Storage/storageAccounts/mlworkspacecli9058222679\",\n  \"appInsightsInstrumentationKey\": \"721af58c-c33d-408c-9b45-af164cd9b5e2\",\n  \"containerRegistryCredentials\": {\n    \"location\": \"eastus\",\n    \"username\": \"85b9e7f08ea44e3da74206ee40ba4b03\",\n    \"passwords\": [\n      {\n        \"name\": \"password\",\n        \"value\": \"SSHtqAeYW46oUPRcw53BTGeJiO+EWNa5\"\n      },\n      {\n        \"name\": \"password2\",\n        \"value\": \"RiKfhnrwv86uf0Lf1a6b+7CWnrRPs2et\"\n      }\n    ]\n  },\n  \"notebookAccessKeys\": {\n    \"primaryAccessKey\": \"7e1995746d124542aacbabd179c76a660478a992c4794aeb9ccbc9b77e6604c1\",\n    \"secondaryAccessKey\": \"ec24a1d9001b4522a7290eacc9a26207cb2504df15ad4e98bfc74fc4d51dc08c\"\n  }\n}",
+      "Content": "{\n  \"userStorageKey\": \"********\",\n  \"userStorageArmId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.Storage/storageAccounts/storageaccount0722ml\",\n  \"appInsightsInstrumentationKey\": \"c89bea2e-9bc3-4c2d-b035-07fa91682ca3\",\n  \"containerRegistryCredentials\": null,\n  \"notebookAccessKeys\": {\n    \"primaryAccessKey\": \"********\",\n    \"secondaryAccessKey\": \"********\"\n  }\n}",
       "isContentBase64": false
     }
   }

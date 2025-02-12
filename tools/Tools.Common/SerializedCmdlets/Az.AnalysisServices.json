@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.AnalysisServices",
-  "ModuleVersion": "1.1.5",
+  "ModuleVersion": "1.2.0",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
               "Environments": "System.Collections.Hashtable"
@@ -71,7 +71,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -80,7 +80,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -137,7 +137,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -172,7 +172,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -187,7 +187,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -237,7 +237,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -335,7 +335,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -353,7 +353,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -383,7 +383,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -413,7 +413,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -444,7 +444,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -618,7 +618,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EnablePowerBIService": "System.Boolean",
               "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -674,7 +674,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -683,7 +683,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule"
             ]
@@ -721,7 +721,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -736,7 +736,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule"
                   ]
@@ -792,7 +792,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallRuleName": "System.String",
               "RangeStart": "System.String",
@@ -989,7 +989,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -1135,7 +1135,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EnablePowerBIService": "System.Boolean",
               "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -1324,7 +1324,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -1399,7 +1399,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -1476,7 +1476,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1541,7 +1541,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1619,7 +1619,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -1649,7 +1649,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1680,7 +1680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -1757,7 +1757,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1822,7 +1822,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1878,7 +1878,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -1991,7 +1991,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2000,7 +2000,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2033,7 +2033,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EnablePowerBIService": "System.Boolean",
               "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -2055,7 +2055,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2165,7 +2165,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2216,7 +2216,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -2371,7 +2371,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2422,7 +2422,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -2472,7 +2472,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2562,7 +2562,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2613,7 +2613,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -2663,7 +2663,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2753,7 +2753,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2804,7 +2804,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
                   "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "EnablePowerBIService": "System.Boolean",
                     "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -2864,7 +2864,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
               "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
@@ -2941,7 +2941,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3006,7 +3006,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3062,7 +3062,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SyncState": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState",
               "UpdatedAt": "System.DateTime",
@@ -3131,7 +3131,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -3176,7 +3176,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3368,7 +3368,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Account": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
         "Environment": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
@@ -3407,7 +3407,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "UniqueId": "System.String",
@@ -3453,7 +3453,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Endpoints": "System.Collections.Hashtable",
         "Name": "System.String"
@@ -3502,7 +3502,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "EnablePowerBIService": "System.Boolean",
         "FirewallRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]"
@@ -3550,7 +3550,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule"
       ]
@@ -3558,7 +3558,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "FirewallRuleName": "System.String",
         "RangeStart": "System.String",
@@ -3611,7 +3611,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "GatewayResourceId": "System.String",
         "GatewayObjectId": "System.String",
@@ -3650,7 +3650,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Capacity": "System.Int32",
         "Tier": "System.String",
@@ -3829,7 +3829,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",

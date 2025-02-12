@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedLicense
 
 ## SYNOPSIS
-The operation to Create a license.
+The operation to create or update a license.
 
 ## SYNTAX
 
@@ -60,7 +60,7 @@ New-AzConnectedLicense -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-The operation to Create a license.
+The operation to create or update a license.
 
 ## EXAMPLES
 
@@ -134,7 +134,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -256,7 +255,6 @@ Accept wildcard characters: False
 
 ### -LicenseDetailVolumeLicenseDetail
 A list of volume license details.
-To construct, see NOTES section for LICENSEDETAILVOLUMELICENSEDETAIL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails[]
@@ -332,7 +330,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Describes a license in a hybrid machine.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense

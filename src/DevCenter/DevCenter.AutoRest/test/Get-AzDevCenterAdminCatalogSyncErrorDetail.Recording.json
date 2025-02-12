@@ -1,0 +1,50 @@
+{
+  "Get-AzDevCenterAdminCatalogSyncErrorDetail+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/devcenters/test-dev-center/catalogs/test-ado-errors/getSyncErrorDetails?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/devcenters/test-dev-center/catalogs/test-ado-errors/getSyncErrorDetails?api-version=2024-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "6efb5881-ed13-4022-a73e-689e8e4876cb" ],
+        "CommandName": [ "Get-AzDevCenterAdminCatalogSyncErrorDetail" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminCatalogSyncErrorDetail_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.19", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "464748b0-9db6-4a3a-ba0a-2b33bbd1200a" ],
+        "x-ms-client-request-id": [ "6efb5881-ed13-4022-a73e-689e8e4876cb" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2024-08-01T22:54:53.5634741Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "25b4d941-a226-45da-8dd8-6979c8e6ff9c" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240801T225353Z:464748b0-9db6-4a3a-ba0a-2b33bbd1200a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5F6BCB0D7E88408185A3183D25379039 Ref B: CO6AA3150217053 Ref C: 2024-08-01T22:53:52Z" ],
+        "Date": [ "Thu, 01 Aug 2024 22:53:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "497" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"conflicts\":[{\"path\":\"Environments/FunctionAppWorking/manifest.yaml\",\"name\":\"FunctionApp\"}],\"errors\":[{\"path\":\"Environments/FunctionApp/manifest.yaml\",\"errorDetails\":[{\"code\":\"ValidationError\",\"message\":\"Parameter name: Parameter cannot be labeled as default and required\"},{\"code\":\"ValidationError\",\"message\":\"Parameter name1: Parameter cannot be labeled as default and required\"},{\"code\":\"ValidationError\",\"message\":\"Parameter location: Parameter cannot be labeled as default and required\"}]}]}",
+      "isContentBase64": false
+    }
+  }
+}

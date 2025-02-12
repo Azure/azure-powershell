@@ -1,0 +1,52 @@
+{
+  "resourceType": "cloudExadataInfrastructures/dbServers",
+  "apiVersion": "2023-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleDbServer",
+      "description": "Get a DbServer",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}/dbServers/{dbserverocid}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoracledbserver"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Cloudexadatainfrastructurename <String>",
+              "-Ocid <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DbServer",
+          "parameters": [
+            {
+              "name": "-Cloudexadatainfrastructurename",
+              "value": "[Path.cloudexadatainfrastructurename]"
+            },
+            {
+              "name": "-Ocid",
+              "value": "[Path.dbserverocid]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

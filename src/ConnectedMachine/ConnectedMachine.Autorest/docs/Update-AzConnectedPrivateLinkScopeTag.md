@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedPrivateLinkScopeTag
 
 ## SYNOPSIS
-Updates an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrUpdate method.
 
 ## SYNTAX
@@ -52,7 +52,7 @@ Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <St
 ```
 
 ## DESCRIPTION
-Updates an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrUpdate method.
 
 ## EXAMPLES
@@ -91,7 +91,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -137,7 +136,6 @@ Accept wildcard characters: False
 
 ### -PrivateLinkScopeTag
 A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkScope instance.
-To construct, see NOTES section for PRIVATELINKSCOPETAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITagsResource

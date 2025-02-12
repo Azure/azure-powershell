@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceDatastore'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceDatastore' {
-    It 'CreateExpanded' {
+Describe 'New-AzMLWorkspaceDatastore' { #Moved
+    It 'CreateExpanded' -skip {
         { 
             $accountKey = New-AzMLWorkspaceDatastoreKeyCredentialObject -Key "xxxxxxxxxxxxxxxxxxxxxxxx"
             $datastoreBlob = New-AzMLWorkspaceDatastoreBlobObject -AccountName 'mlworkspacekee7404291888' -ContainerName "globaldatasets" -Endpoint "core.windows.net" -Protocol "https" -ServiceDataAccessAuthIdentity 'None' -Credentials $accountKey

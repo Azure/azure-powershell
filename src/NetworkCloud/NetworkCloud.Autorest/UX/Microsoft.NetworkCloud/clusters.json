@@ -1,6 +1,6 @@
 {
   "resourceType": "clusters",
-  "apiVersion": "2023-07-01",
+  "apiVersion": "2024-07-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.networkcloud"
   },
@@ -29,6 +29,82 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkCloudClusterContinueVersionUpdate",
+      "description": "Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/continueUpdateVersion",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networkcloud/invoke-aznetworkcloudclustercontinueversionupdate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkCloudScanClusterRuntime",
+      "description": "Triggers the execution of a runtime protection scan to detect and remediate detected issues, in accordance with the cluster configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/scanRuntime",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networkcloud/invoke-aznetworkcloudscanclusterruntime"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Triggers the execution of a runtime protection scan to detect and remediate detected issues, in accordance with the cluster configuration.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
               "value": "[Path.clusterName]"
             },
             {

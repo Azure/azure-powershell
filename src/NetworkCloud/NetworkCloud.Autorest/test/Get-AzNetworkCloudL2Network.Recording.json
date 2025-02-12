@@ -1,17 +1,17 @@
 {
-  "Get-AzNetworkCloudL2Network+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/l2Networks?api-version=2023-07-01+1": {
+  "Get-AzNetworkCloudL2Network+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/l2Networks?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/l2Networks?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/l2Networks?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "53056b15-4575-41c1-aa11-869c925ce731" ],
+        "x-ms-client-request-id": [ "d99088c1-3cc1-449c-94f9-4bc1c410348d" ],
         "CommandName": [ "Get-AzNetworkCloudL2Network" ],
-        "FullCommandName": [ "Get-AzNetworkCloudL2Network_ListBySubscription" ],
+        "FullCommandName": [ "Get-AzNetworkCloudL2Network_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,37 +22,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "ab40ce5a-48b5-475a-8211-815e5a917cb6", "41badb90-dbe1-484b-aa57-8afa8e1db086", "49cbbf01-e893-4e0b-96be-d15e2240882f" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-request-id": [ "864a44d0-a3a0-4111-b7bd-58fbf02568cd" ],
-        "x-ms-correlation-request-id": [ "864a44d0-a3a0-4111-b7bd-58fbf02568cd" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230622T214906Z:864a44d0-a3a0-4111-b7bd-58fbf02568cd" ],
+        "x-ms-original-request-ids": [ "f11ed439-e5a7-43c3-a6d6-f6ee10e2d47e", "567b34f8-a00f-4a97-9706-2aa28aa62a38" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-request-id": [ "c5f90d90-687c-44f5-ab5d-49b33813156a" ],
+        "x-ms-correlation-request-id": [ "c5f90d90-687c-44f5-ab5d-49b33813156a" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20241022T010658Z:c5f90d90-687c-44f5-ab5d-49b33813156a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Jun 2023 21:49:05 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9358A8F0C4FA44F8BA9692CEA6E05973 Ref B: AMS231020512027 Ref C: 2024-10-22T01:06:57Z" ],
+        "Date": [ "Tue, 22 Oct 2024 01:06:57 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "4250" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "8737" ]
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j25-cluster/providers/Microsoft.NetworkCloud/l2Networks/l2network-569\",\"name\":\"l2network-569\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/j25-77c882e61c36-hostedresources-516cffcc/providers/microsoft.extendedlocation/customlocations/j25-77c882e61c36-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"ResourceType\":\"l2Network\",\"ManagedBy\":\"nc-labs\",\"LabEnvironment\":\"j25\",\"ResourceTest\":\"deployment\"},\"systemData\":{\"createdBy\":\"de975306-d24e-4dec-9d3b-ef05c66f0075\",\"createdByType\":\"Application\",\"createdAt\":\"2023-06-18T20:42:00.1547454Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-18T20:44:09.5349843Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hybridAksPluginType\":\"DPDK\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j25-cluster/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/j25-l2domain-569\",\"associatedResourceIds\":[],\"hybridAksClustersAssociatedIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j25-cluster/providers/Microsoft.HybridContainerService/provisionedClusters/pipelinehaks-EAWovoM6rrznZw\"],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\",\"interfaceName\":\"l2netw-04e99\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j25-cluster/providers/Microsoft.NetworkCloud/clusters/j25-77c882e61c36\"}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-cluster/providers/Microsoft.NetworkCloud/l2Networks/l2network-569\",\"name\":\"l2network-569\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/m16-1-487bb720ddfb-hostedresources-25e56565/providers/microsoft.extendedlocation/customlocations/m16-1-487bb720ddfb-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"ResourceType\":\"l2Network\",\"ManagedBy\":\"nc-labs\",\"LabEnvironment\":\"m16-1\",\"ResourceTest\":\"deployment\"},\"systemData\":{\"createdBy\":\"de975306-d24e-4dec-9d3b-ef05c66f0075\",\"createdByType\":\"Application\",\"createdAt\":\"2023-06-20T09:11:02.677401Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-20T09:13:13.4858971Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hybridAksPluginType\":\"DPDK\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-cluster/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/m16-1-l2domain-569\",\"associatedResourceIds\":[],\"hybridAksClustersAssociatedIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-cluster/providers/Microsoft.HybridContainerService/provisionedClusters/pipelinehaks-VqRe0INyDdBIlQ\"],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\",\"interfaceName\":\"l2netw-18581\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-cluster/providers/Microsoft.NetworkCloud/clusters/m16-1-487bb720ddfb\"}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgqu19zn/providers/Microsoft.NetworkCloud/l2Networks/l2network\",\"name\":\"l2network\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-hostedresources-4ae3464d/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-22T21:48:33.6412659Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-22T21:48:41.8707097Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"l2IsolationDomainId\":\"/subscriptions/fabricsubs/resourceGroups/fabric-rg/providers/Microsoft.NetworkFabric/L2IsolationDomains/l2isolationdomain1\",\"hybridAksPluginType\":\"SRIOV\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/anpankie-sim/providers/Microsoft.NetworkCloud/clusters/simulator\",\"associatedResourceIds\":[],\"hybridAksClustersAssociatedIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/rajeshwari-preflight/providers/Microsoft.NetworkCloud/l2Networks/rgl2testnetwork\",\"name\":\"rgl2testnetwork\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-hostedresources-427177bf/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-04-21T14:13:42.5377154Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-04-21T14:13:42.5377154Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"hybridAksPluginType\":\"DPDK\",\"interfaceName\":\"l2netw-5\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/rajeshwari-preflight/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/rprelight-l2domain-5\"}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j18-cluster/providers/Microsoft.NetworkCloud/l2Networks/l2network-569\",\"name\":\"l2network-569\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/j18-c0d28c8f7cd3-hostedresources-3781ac00/providers/microsoft.extendedlocation/customlocations/j18-c0d28c8f7cd3-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"ResourceType\":\"l2Network\",\"ManagedBy\":\"nc-labs\",\"LabEnvironment\":\"j18\",\"ResourceTest\":\"deployment\"},\"systemData\":{\"createdBy\":\"de975306-d24e-4dec-9d3b-ef05c66f0075\",\"createdByType\":\"Application\",\"createdAt\":\"2023-05-02T06:59:28.3535233Z\",\"lastModifiedBy\":\"de975306-d24e-4dec-9d3b-ef05c66f0075\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-05-22T16:24:47.2099445Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"hybridAksClustersAssociatedIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j18-cluster/providers/Microsoft.HybridContainerService/provisionedClusters/pipelinehaks-HjfxOFWK0XXjvw\"],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j18-cluster/providers/Microsoft.NetworkCloud/clusters/j18-c0d28c8f7cd3\",\"hybridAksPluginType\":\"DPDK\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j18-cluster/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/j18-l2domain-569\",\"associatedResourceIds\":[]}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j18-cluster/providers/Microsoft.NetworkCloud/l2Networks/l2network-570\",\"name\":\"l2network-570\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/j18-c0d28c8f7cd3-hostedresources-3781ac00/providers/microsoft.extendedlocation/customlocations/j18-c0d28c8f7cd3-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"ManagedBy\":\"nc-labs\",\"LabEnvironment\":\"j18\",\"ResourceType\":\"l2Network\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-05-02T17:25:39.9900275Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-16T13:41:41.6332757Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"vlan-570\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j18-cluster/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/j18-l2domain-570\",\"hybridAksPluginType\":\"SRIOV\",\"associatedResourceIds\":[],\"hybridAksClustersAssociatedIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/j18-cluster/providers/Microsoft.NetworkCloud/clusters/j18-c0d28c8f7cd3\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev02-1-cluster/providers/Microsoft.NetworkCloud/l2Networks/l2network-569\",\"name\":\"l2network-569\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev02-1-a94a54922286-HostedResources-66211BA4/providers/Microsoft.ExtendedLocation/customLocations/dev02-1-a94a54922286-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"ResourceType\":\"l2Network\",\"ManagedBy\":\"nc-labs\",\"LabEnvironment\":\"dev02-1\",\"ResourceTest\":\"deployment\"},\"systemData\":{\"createdBy\":\"38f84252-c3f0-4bfd-bc44-06d493055463\",\"createdByType\":\"Application\",\"createdAt\":\"2024-09-26T13:42:19.6645793Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-17T07:13:26.8756832Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev02-1-cluster/providers/Microsoft.NetworkCloud/clusters/dev02-1-a94a54922286\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\",\"interfaceName\":\"vlan-569\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev02-1-cluster/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/dev02-1-l2domain-569\"}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep02-cluster/providers/Microsoft.NetworkCloud/l2Networks/l2network-569\",\"name\":\"l2network-569\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep02-0b9a285dcb85-HostedResources-799C7550/providers/Microsoft.ExtendedLocation/customLocations/aep02-0b9a285dcb85-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"ResourceType\":\"l2Network\",\"ManagedBy\":\"nc-labs\",\"LabEnvironment\":\"aep02\",\"ResourceTest\":\"deployment\"},\"systemData\":{\"createdBy\":\"38f84252-c3f0-4bfd-bc44-06d493055463\",\"createdByType\":\"Application\",\"createdAt\":\"2024-10-20T22:26:43.3924119Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-20T22:26:54.181673Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"vlan-569\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep02-cluster/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/aep02-l2domain-569\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep02-cluster/providers/Microsoft.NetworkCloud/clusters/aep02-0b9a285dcb85\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg50qh6v/providers/Microsoft.NetworkCloud/l2Networks/l2network\",\"name\":\"l2network\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-2681822-cluster-1-HostedResources-51755DE4/providers/Microsoft.ExtendedLocation/customLocations/simdev-2681822-cluster-1-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-22T01:06:25.7816346Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-22T01:06:29.7526476Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pshet_id-simdev-2681822/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2isolationdomain1\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pshet_id-simdev-2681822/providers/Microsoft.NetworkCloud/clusters/simdev-2681822-cluster-1\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudL2Network+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgqu19zn/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2023-07-01+1": {
+  "Get-AzNetworkCloudL2Network+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg50qh6v/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgqu19zn/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg50qh6v/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "7eb46a7c-218c-448a-841b-1b5d6ee436d2" ],
+        "x-ms-client-request-id": [ "4a9aa1b7-4c04-413f-b166-f6e858e932b0" ],
         "CommandName": [ "Get-AzNetworkCloudL2Network" ],
         "FullCommandName": [ "Get-AzNetworkCloudL2Network_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -63,38 +66,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"81101fca-0000-0100-0000-6494c1b90000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "ETag": [ "\"90035701-0000-1100-0000-6716fa950000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "7981e6a9-f516-44be-a9b5-fdd128cf3576" ],
-        "x-ms-correlation-request-id": [ "6110375b-dfb7-4247-b6de-a43c70af5bf2" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230622T214906Z:6110375b-dfb7-4247-b6de-a43c70af5bf2" ],
+        "x-ms-request-id": [ "23dad8ce-29f2-410c-bf98-e1e2d6a35b5f" ],
+        "x-ms-correlation-request-id": [ "87d3b87f-a087-41fa-95eb-8cbacd378061" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16497" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20241022T010658Z:87d3b87f-a087-41fa-95eb-8cbacd378061" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Jun 2023 21:49:06 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 681E020EBBE24A5FB99B5E87064829D9 Ref B: AMS231020512027 Ref C: 2024-10-22T01:06:58Z" ],
+        "Date": [ "Tue, 22 Oct 2024 01:06:58 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1313" ],
+        "Content-Length": [ "1351" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgqu19zn/providers/Microsoft.NetworkCloud/l2Networks/l2network\",\"name\":\"l2network\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-hostedresources-4ae3464d/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-22T21:48:33.6412659Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-22T21:48:41.8707097Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"l2IsolationDomainId\":\"/subscriptions/fabricsubs/resourceGroups/fabric-rg/providers/Microsoft.NetworkFabric/L2IsolationDomains/l2isolationdomain1\",\"hybridAksPluginType\":\"SRIOV\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/anpankie-sim/providers/Microsoft.NetworkCloud/clusters/simulator\",\"associatedResourceIds\":[],\"hybridAksClustersAssociatedIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg50qh6v/providers/Microsoft.NetworkCloud/l2Networks/l2network\",\"name\":\"l2network\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-2681822-cluster-1-HostedResources-51755DE4/providers/Microsoft.ExtendedLocation/customLocations/simdev-2681822-cluster-1-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-22T01:06:25.7816346Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-22T01:06:29.7526476Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pshet_id-simdev-2681822/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2isolationdomain1\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pshet_id-simdev-2681822/providers/Microsoft.NetworkCloud/clusters/simdev-2681822-cluster-1\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudL2Network+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgqu19zn/providers/Microsoft.NetworkCloud/l2Networks?api-version=2023-07-01+1": {
+  "Get-AzNetworkCloudL2Network+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg50qh6v/providers/Microsoft.NetworkCloud/l2Networks?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgqu19zn/providers/Microsoft.NetworkCloud/l2Networks?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg50qh6v/providers/Microsoft.NetworkCloud/l2Networks?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "98c43872-0b57-4ad0-ac7f-7aa45c9c311e" ],
+        "x-ms-client-request-id": [ "106be731-c286-48da-9780-1741babf03e0" ],
         "CommandName": [ "Get-AzNetworkCloudL2Network" ],
-        "FullCommandName": [ "Get-AzNetworkCloudL2Network_ListByResourceGroup" ],
+        "FullCommandName": [ "Get-AzNetworkCloudL2Network_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -105,21 +111,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "4710d9ba-5c78-4fb7-9132-b15c7a68842d", "6d45bfaf-d68b-478d-9fa3-0a124a586fac", "f5c55f37-aa32-44b5-ba55-8b96e900152f" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
-        "x-ms-request-id": [ "4e161028-1afb-4582-8c98-ea3004c5512b" ],
-        "x-ms-correlation-request-id": [ "4e161028-1afb-4582-8c98-ea3004c5512b" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230622T214906Z:4e161028-1afb-4582-8c98-ea3004c5512b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "95dec807-8908-47c8-8b01-73ca1124c9ff" ],
+        "x-ms-correlation-request-id": [ "60b51121-3333-49c5-8d70-224b954ebbea" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20241022T010658Z:60b51121-3333-49c5-8d70-224b954ebbea" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Jun 2023 21:49:06 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 99A5F77B26884D05ABB97E542A906BCC Ref B: AMS231020512027 Ref C: 2024-10-22T01:06:58Z" ],
+        "Date": [ "Tue, 22 Oct 2024 01:06:58 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "1363" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "1325" ]
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgqu19zn/providers/Microsoft.NetworkCloud/l2Networks/l2network\",\"name\":\"l2network\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-hostedresources-4ae3464d/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-22T21:48:33.6412659Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-22T21:48:41.8707097Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"l2IsolationDomainId\":\"/subscriptions/fabricsubs/resourceGroups/fabric-rg/providers/Microsoft.NetworkFabric/L2IsolationDomains/l2isolationdomain1\",\"hybridAksPluginType\":\"SRIOV\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/anpankie-sim/providers/Microsoft.NetworkCloud/clusters/simulator\",\"associatedResourceIds\":[],\"hybridAksClustersAssociatedIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg50qh6v/providers/Microsoft.NetworkCloud/l2Networks/l2network\",\"name\":\"l2network\",\"type\":\"microsoft.networkcloud/l2networks\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-2681822-cluster-1-HostedResources-51755DE4/providers/Microsoft.ExtendedLocation/customLocations/simdev-2681822-cluster-1-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-22T01:06:25.7816346Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-22T01:06:29.7526476Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"l2IsolationDomainId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pshet_id-simdev-2681822/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2isolationdomain1\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pshet_id-simdev-2681822/providers/Microsoft.NetworkCloud/clusters/simdev-2681822-cluster-1\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}]}",
       "isContentBase64": false
     }
   }

@@ -7,7 +7,7 @@ New-AzSphereDeviceGroup -CatalogName anotherCatalog -Name testgroup -ProductName
 AllowCrashDumpsCollection    : Disabled
 Description                  : 
 HasDeployment                : 
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/Sphere-test/providers/Microsoft.AzureSphere/catalogs/anotherCatalog/products/test/deviceGroups/testgroup
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789103/resourceGroups/Sphere-test/providers/Microsoft.AzureSphere/catalogs/anotherCatalog/products/test/deviceGroups/testgroup
 Name                         : testgroup
 OSFeedType                   : Retail
 ProvisioningState            : Succeeded

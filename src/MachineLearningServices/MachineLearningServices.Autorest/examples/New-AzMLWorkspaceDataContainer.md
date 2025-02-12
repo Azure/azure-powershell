@@ -6,7 +6,7 @@ New-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 ```output
 Name                 SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                 ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-datacontainer-pwsh01 6/1/2022 3:03:56 PM Lucas Yao (Wicresoft North America) User                    6/1/2022 3:03:56 PM                                                            ml-rg-test
+datacontainer-pwsh01 6/1/2022 3:03:56 PM UserName (Example)         User                    6/1/2022 3:03:56 PM                                                            ml-rg-test
 ```
 
 Create or update data container

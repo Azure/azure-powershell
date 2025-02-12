@@ -3,7 +3,7 @@ parameters:
   psVersion: ''
   agentPoolName: ''
   agentPoolVMImage: ''
-  netCoreVersion: ''
+  dotnetVersion: ''
   PowerShellPath: '$(Build.SourcesDirectory)/ps_preview'
 
 jobs:
@@ -15,11 +15,11 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    condition: ne(variables['netCoreVersion'], '')
-    displayName: 'Prepare .NET Core ${{ parameters.netCoreVersion }}'
+    condition: ne('${{ parameters.dotnetVersion }}', '')
+    displayName: 'Prepare .NET Core ${{ parameters.dotnetVersion }}'
     inputs:
       packageType: sdk
-      version: ${{ parameters.netCoreVersion }}
+      version: ${{ parameters.dotnetVersion }}
 
   - task: PowerShell@2
     condition: and(succeeded(), eq('${{ parameters.psVersion }}', 'preview'))
@@ -76,7 +76,7 @@ jobs:
       targetType: 'inline'
       script: |
        New-Item -Path "$(Pipeline.Workspace)" -Name "LocalRepo" -ItemType "directory"
-       $fileList = Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg" 
+       $fileList = Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg"
        $fileList | ForEach-Object { Copy-Item -Path $_.FullName -Destination "$(Pipeline.Workspace)\LocalRepo\" -Force }
        Write-Host "List artifacts..."
        Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"

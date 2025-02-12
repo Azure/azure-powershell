@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusTopic
 
 ## SYNOPSIS
-Create a topic in the specified namespace.
+create a topic in the specified namespace.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ New-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity>
 ```
 
 ## DESCRIPTION
-Create a topic in the specified namespace.
+create a topic in the specified namespace.
 
 ## EXAMPLES
 

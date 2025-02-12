@@ -128,7 +128,7 @@ A private endpoint connection
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 Parameter Sets: Create
 Aliases:
 
@@ -236,11 +236,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
 
 ## NOTES
 

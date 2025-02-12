@@ -5,4 +5,4 @@ $yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentN
 $yarnServiceConfigProfile=New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 `````
 
-This cmdlet creates the service config profile of "yarn-service" with the component service config.
+This cmdlet creates the service config profile of "yarn-service" with the ComponentName service config.

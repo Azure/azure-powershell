@@ -132,7 +132,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription
 
 ## NOTES
 

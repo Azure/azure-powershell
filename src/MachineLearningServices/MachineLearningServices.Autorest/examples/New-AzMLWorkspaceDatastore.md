@@ -15,13 +15,13 @@
 
 $accountKey = New-AzMLWorkspaceDatastoreKeyCredentialObject -Key "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 $datastoreBlob = New-AzMLWorkspaceDatastoreBlobObject -AccountName 'mmstorageeastus' -ContainerName "globaldatasets" -Endpoint "core.windows.net" -Protocol "https" -ServiceDataAccessAuthIdentity 'None' -Credentials $accountKey
-New-AzMLWorkspaceDatastore -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-demo -Name blobdatastore -Property $datastoreBlob
+New-AzMLWorkspaceDatastore -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-demo -Name blobdatastore -Datastore $datastoreBlob
 ```
 
 ```output
-Name          SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
-----          -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-blobdatastore 5/27/2022 7:15:04 AM Lucas Yao (Wicresoft North America) User                    5/27/2022 7:15:05 AM     Lucas Yao (Wicresoft North America) User                         ml-rg-test
+Name          SystemDataCreatedAt  SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----          -------------------  ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+blobdatastore 5/27/2022 7:15:04 AM UserName (Example)  User                    5/27/2022 7:15:05 AM     UserName (Example)       User                         ml-rg-test
 ```
 
- Create or update datastore
+These commands create a datastore for specified workspace.

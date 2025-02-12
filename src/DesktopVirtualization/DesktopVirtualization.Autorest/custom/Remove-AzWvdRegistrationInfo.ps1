@@ -69,7 +69,7 @@ function Remove-AzWvdRegistrationInfo {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials},
 
-        [Parameter(Mandatory, HelpMessage='help foo 1')]
+        [Parameter(Mandatory, HelpMessage='Subscription ID')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]

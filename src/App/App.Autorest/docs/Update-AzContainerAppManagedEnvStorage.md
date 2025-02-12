@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Create storage for a managedEnvironment.
+Update storage for a managedEnvironment.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Update-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdent
 ```
 
 ## DESCRIPTION
-Create storage for a managedEnvironment.
+Update storage for a managedEnvironment.
 
 ## EXAMPLES
 
@@ -181,7 +181,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -197,7 +196,6 @@ Accept wildcard characters: False
 
 ### -ManagedEnvironmentInputObject
 Identity Parameter
-To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

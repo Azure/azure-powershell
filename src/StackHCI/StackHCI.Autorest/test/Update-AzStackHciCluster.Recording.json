@@ -36,5 +36,43 @@
       "Content": "{\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod\",\"name\":\"pwsh-Clusteryjod\",\"type\":\"microsoft.azurestackhci/clusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"priyjain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-26T05:14:18.2375631Z\",\"lastModifiedBy\":\"priyjain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-26T05:20:47.8694638Z\"},\"properties\":{\"status\":\"NotYetRegistered\",\"cloudId\":\"da00b8cd-822c-40c7-9fc5-a390ec81e229\",\"softwareAssuranceProperties\":{\"softwareAssuranceStatus\":\"Disabled\",\"softwareAssuranceIntent\":\"Disable\"},\"desiredProperties\":{\"windowsServerSubscription\":\"Disabled\",\"diagnosticLevel\":\"Enhanced\"},\"trialDaysRemaining\":60,\"billingModel\":\"Trial\",\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":\"https://dp.stackhci.azure.com/eastus/\",\"resourceProviderObjectId\":\"591802c0-3aa7-4a85-9c19-3f703f117987\"}}",
       "isContentBase64": false
     }
+  },
+  "Update-AzStackHciCluster+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod?api-version=2024-04-01",
+      "Content": "{\n  \"properties\": {\n    \"desiredProperties\": {\n      \"windowsServerSubscription\": \"Disabled\",\n      \"diagnosticLevel\": \"Enhanced\"\n    }\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "141" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"14004694-0000-0100-0000-64c0ad300000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "mise-correlation-id": [ "fc6d7de0-90af-4b23-a865-0e7072718661" ],
+        "x-ms-request-id": [ "a6a1fcce-6ef8-40a3-88e3-041675daa343" ],
+        "x-ms-correlation-request-id": [ "4e518f1f-932f-4f54-9b73-c06715b944b7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T052048Z:4e518f1f-932f-4f54-9b73-c06715b944b7" ],
+        "Date": [ "Wed, 26 Jul 2023 05:20:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "974" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod\",\"name\":\"pwsh-Clusteryjod\",\"type\":\"microsoft.azurestackhci/clusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"priyjain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-26T05:14:18.2375631Z\",\"lastModifiedBy\":\"priyjain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-26T05:20:47.8694638Z\"},\"properties\":{\"status\":\"NotYetRegistered\",\"cloudId\":\"da00b8cd-822c-40c7-9fc5-a390ec81e229\",\"softwareAssuranceProperties\":{\"softwareAssuranceStatus\":\"Disabled\",\"softwareAssuranceIntent\":\"Disable\"},\"desiredProperties\":{\"windowsServerSubscription\":\"Disabled\",\"diagnosticLevel\":\"Enhanced\"},\"trialDaysRemaining\":60,\"billingModel\":\"Trial\",\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":\"https://dp.stackhci.azure.com/eastus/\",\"resourceProviderObjectId\":\"591802c0-3aa7-4a85-9c19-3f703f117987\"}}",
+      "isContentBase64": false
+    }
   }
 }

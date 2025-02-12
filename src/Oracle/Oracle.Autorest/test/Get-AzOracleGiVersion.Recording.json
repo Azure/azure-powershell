@@ -1,0 +1,47 @@
+{
+  "Get-AzOracleGiVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/giVersions?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/giVersions?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "9dfa029b-363a-41a1-b130-d2b20974f8dc" ],
+        "CommandName": [ "Get-AzOracleGiVersion" ],
+        "FullCommandName": [ "Get-AzOracleGiVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "/723CF61EAC5A257A13F1DED61BD83AD6/0041FDDDBD49384809DEEDF0C1443E44" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1e23a33e-dbaf-472c-8b1d-a4e49e9436bc" ],
+        "x-ms-correlation-request-id": [ "b0553126-a881-47d8-adfc-88d4c4c4e1cd" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "UKWEST:20240705T101019Z:b0553126-a881-47d8-adfc-88d4c4c4e1cd" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 89934651365445DB856FB0DCB4E3ED81 Ref B: AMS231032607031 Ref C: 2024-07-05T10:10:17Z" ],
+        "Date": [ "Fri, 05 Jul 2024 10:10:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "459" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/giVersions/19.0.0.0\",\"name\":\"19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/giVersions/23.0.0.0\",\"name\":\"23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,2 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Informatica","New-AzInformaticaOrganization","1","1","Invalid_Parameter_Name","5011","1","New-AzInformaticaOrganization -BusinessPhoneNumber is not a valid parameter name.","-BusinessPhoneNumber","Check validity of the parameter -BusinessPhoneNumber."

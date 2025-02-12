@@ -1,8 +1,8 @@
 {
-  "Remove-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2023-07-01+1": {
+  "Remove-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2024-07-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,12 +23,12 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"46003897-0000-0100-0000-649c82d10000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "cdcac058-5487-4a33-845b-0921065e5cc8" ],
         "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01" ],
         "x-ms-correlation-request-id": [ "3ab6275e-708c-4f00-8fbd-f24503dfeabc" ],
         "x-ms-routing-request-id": [ "EASTUS:20230628T185825Z:3ab6275e-708c-4f00-8fbd-f24503dfeabc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01+2": {
+  "Remove-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -85,10 +85,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01+3": {
+  "Remove-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/3cc71c73-1645-4763-8c3d-c4c4777e08f8*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

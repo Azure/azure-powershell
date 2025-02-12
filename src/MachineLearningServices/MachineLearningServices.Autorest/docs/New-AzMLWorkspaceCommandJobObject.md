@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceCommandJobObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceCommandJobObject
 schema: 2.0.0
 ---
 
@@ -230,7 +230,7 @@ Mapping of input data bindings used in the job.
 To construct, see NOTES section for JOBINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICommandJobInputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobInputs
 Parameter Sets: (All)
 Aliases:
 
@@ -246,7 +246,7 @@ Mapping of output data bindings used in the job.
 To construct, see NOTES section for JOBOUTPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICommandJobOutputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobOutputs
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +278,7 @@ The asset property dictionary.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -324,7 +324,7 @@ Additional properties bag.
 To construct, see NOTES section for RESOURCEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceConfigurationProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -370,7 +370,7 @@ Additional properties to set on the endpoint.
 To construct, see NOTES section for SERVICEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +402,7 @@ Tags can be added, removed, and updated.
 To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags
 Parameter Sets: (All)
 Aliases:
 
@@ -420,34 +420,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CommandJob
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CommandJob
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`JOBINPUT <ICommandJobInputs>`: Mapping of input data bindings used in the job.
-  - `[(Any) <IJobInput>]`: This indicates any property can be added to this object.
-
-`JOBOUTPUT <ICommandJobOutputs>`: Mapping of output data bindings used in the job.
-  - `[(Any) <IJobOutput>]`: This indicates any property can be added to this object.
-
-`PROPERTY <IResourceBaseProperties>`: The asset property dictionary.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`RESOURCEPROPERTY <IResourceConfigurationProperties>`: Additional properties bag.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-
-`SERVICEPROPERTY <IJobServiceProperties>`: Additional properties to set on the endpoint.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`TAG <IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

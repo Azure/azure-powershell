@@ -20,12 +20,12 @@
     Create a in-memory object for FilteringTag
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag
+    Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag
     .Link
     https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
     #>
     function New-AzElasticFilteringTagObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
@@ -42,7 +42,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag]::New()
     
             $Object.Action = $Action
             $Object.Name = $Name

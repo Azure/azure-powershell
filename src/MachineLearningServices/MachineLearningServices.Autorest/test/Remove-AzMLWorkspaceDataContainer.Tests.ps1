@@ -14,9 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMLWorkspaceDataConta
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzMLWorkspaceDataContainer' {
+Describe 'Remove-AzMLWorkspaceDataContainer' { #DataContainers_Workspace_Delete is not supported
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            Remove-AzMLWorkspaceDataContainer -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name $env.datacontainer
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

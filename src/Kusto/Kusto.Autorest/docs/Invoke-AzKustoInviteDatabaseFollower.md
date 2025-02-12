@@ -148,7 +148,7 @@ The request to invite a follower to a database.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest
 Parameter Sets: Invite, InviteViaIdentity
 Aliases:
 
@@ -346,7 +346,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 

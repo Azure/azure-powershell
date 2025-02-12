@@ -38,7 +38,7 @@ Gets the proof of possession nonce.
 
 ### Example 1: Get a proof Of Possession Nonce
 ```powershell
-Get-AzSphereCertificateProof -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number' -ProofOfPossessionNonce proofOfPossessionNonce
+Get-AzSphereCertificateProof -CatalogName test2024 -ResourceGroupName group-test -SerialNumber 'serial number' -ProofOfPossessionNonce proofOfPossessionNonce
 ```
 
 ```output

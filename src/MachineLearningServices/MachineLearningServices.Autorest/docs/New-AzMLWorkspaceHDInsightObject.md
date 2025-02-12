@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceHDInsightObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceHDInsightObject
 schema: 2.0.0
 ---
 
@@ -175,11 +175,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.HdInsight
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.HdInsight
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

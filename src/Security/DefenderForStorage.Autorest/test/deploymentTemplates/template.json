@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {
+      "location": "[resourceGroup().location]",
+      "storageAccountPrefix": "d4sv2sa"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2023-01-01",
+        "name": "[concat(variables('storageAccountPrefix'), copyIndex())]",
+        "location": "[variables('location')]",
+        "sku": {
+          "name": "Standard_LRS"
+        },
+        "kind": "StorageV2",
+        "properties": {
+          "minimumTlsVersion": "TLS1_2"
+        },
+        "copy": {
+            "name": "storageAccountsDeployment",
+            "count": 4
+        }
+      }
+    ]
+  }

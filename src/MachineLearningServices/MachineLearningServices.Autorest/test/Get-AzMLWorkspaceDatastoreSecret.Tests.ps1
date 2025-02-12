@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceDatastoreSec
 
 Describe 'Get-AzMLWorkspaceDatastoreSecret' {
     It 'List' {
-        { Get-AzMLWorkspaceDatastoreSecret  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name workspaceartifactstore } | Should -Not -Throw
+        { Get-AzMLWorkspaceDatastoreSecret  -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name workspaceartifactstore } | Should -Not -Throw
     }
 }

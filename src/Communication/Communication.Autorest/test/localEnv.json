@@ -1,0 +1,20 @@
+{
+  "exampleKey1": "ExampleKey1",
+  "rstr1": "j49vy5",
+  "linkedDomain": "/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupj49vy5/providers/Microsoft.Communication/emailServices/persistentECSResourceNamej49vy5/domains/AzureManagedDomain",
+  "resourceNameAvailable": "acsResourcefxrjvw",
+  "resourceName": "acsResourcej49vy5",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "dataLocation": "UnitedStates",
+  "rstr2": "fxrjvw",
+  "location": "Global",
+  "persistentResourceName": "persistentResourceNamej49vy5",
+  "resourceGroup": "testgroupj49vy5",
+  "persistentECSResourceName": "persistentECSResourceNamej49vy5",
+  "exampleValue1": "ExampleValue1",
+  "exampleKey2": "ExampleKey2",
+  "exampleValue2": "ExampleValue2",
+  "SubscriptionId": "653983b8-683a-427c-8c27-9e9624ce9176",
+  "notificationHubResourceId": "/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub",
+  "notificationHubConnectionString": "Endpoint=sb://contosonotificationhubnamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx="
+}

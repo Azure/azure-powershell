@@ -36,7 +36,7 @@ Deletes a cluster.
 
 ## EXAMPLES
 
-### Example 1: Remove an Azure HDInsight gen2 cluster
+### Example 1: Remove an Azure HDInsight cluster
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
@@ -47,7 +47,7 @@ Remove-AzHdInsightOnAksCluster `
     -ResourceGroupName $clusterResourceGroupName `
 ```
 
-Remove an Azure HDInsight gen2 cluster.
+Remove an Azure HDInsight cluster.
 
 ## PARAMETERS
 

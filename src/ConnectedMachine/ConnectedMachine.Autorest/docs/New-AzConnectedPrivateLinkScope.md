@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedPrivateLinkScope
 
 ## SYNOPSIS
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Create (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## SYNTAX
@@ -54,7 +54,7 @@ New-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> 
 ```
 
 ## DESCRIPTION
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Create (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## EXAMPLES
@@ -93,7 +93,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -154,7 +153,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 An Azure Arc PrivateLinkScope definition.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope

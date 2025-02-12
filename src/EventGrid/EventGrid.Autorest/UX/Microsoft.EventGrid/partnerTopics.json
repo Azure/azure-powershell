@@ -45,7 +45,7 @@
     },
     {
       "name": "Enable-AzEventGridPartnerTopic",
-      "description": "Activate a newly Activated partner topic.",
+      "description": "Activate a newly created partner topic.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/activate",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Activate a newly Activated partner topic.",
+          "description": "Activate a newly created partner topic.",
           "parameters": [
             {
               "name": "-Name",

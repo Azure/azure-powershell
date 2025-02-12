@@ -40,7 +40,7 @@ Location Name    Type                            Zone Database
 East US  MyCache Microsoft.Cache/redisEnterprise      {}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,7 +54,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
 #>
 function New-AzRedisEnterpriseCache {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.ICluster])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster])]
     [CmdletBinding(DefaultParameterSetName='CreateClusterWithDatabase', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -82,16 +82,17 @@ function New-AzRedisEnterpriseCache {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName]
-        # The type of Redis Enterprise cluster to deploy.
-        # Allowed values: Enterprise_E10, Enterprise_E20, Enterprise_E50, Enterprise_E100, EnterpriseFlash_F300, EnterpriseFlash_F700, EnterpriseFlash_F1500
+        # The type of RedisEnterprise cluster to deploy.
+        # Accepted values: Balanced_B0, Balanced_B1, Balanced_B10, Balanced_B100, Balanced_B1000, Balanced_B150, Balanced_B20, Balanced_B250, Balanced_B3, Balanced_B350, Balanced_B5, Balanced_B50, Balanced_B500, Balanced_B700, ComputeOptimized_X10, ComputeOptimized_X100, ComputeOptimized_X150, ComputeOptimized_X20, ComputeOptimized_X250, ComputeOptimized_X3, ComputeOptimized_X350, ComputeOptimized_X5, ComputeOptimized_X50, ComputeOptimized_X500, ComputeOptimized_X700, EnterpriseFlash_F1500, EnterpriseFlash_F300, EnterpriseFlash_F700, Enterprise_E1, Enterprise_E10, Enterprise_E100, Enterprise_E20, Enterprise_E200, Enterprise_E400, Enterprise_E5, Enterprise_E50, FlashOptimized_A1000, FlashOptimized_A1500, FlashOptimized_A2000, FlashOptimized_A250, FlashOptimized_A4500, FlashOptimized_A500, FlashOptimized_A700, MemoryOptimized_M10, MemoryOptimized_M100, MemoryOptimized_M1000, MemoryOptimized_M150, MemoryOptimized_M1500, MemoryOptimized_M20, MemoryOptimized_M2000, MemoryOptimized_M250, MemoryOptimized_M350, MemoryOptimized_M50, MemoryOptimized_M500, MemoryOptimized_M700
         ${Sku},
 
         [Parameter()]
         [Alias('SkuCapacity')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.Int32]
-        # The size of the Redis Enterprise cluster - defaults to 2 or 3 depending on SKU.
-        # Allowed values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+        # The size of the RedisEnterprise cluster.
+        # Defaults to 2 or 3 or not applicable depending on SKU.Valid values are (2, 4, 6, ...) for Enterprise_* SKUs and (3, 9, 15, ...) for EnterpriseFlash_* SKUs.
+        # For other SKUs capacity argument is not supported.
         ${Capacity},
 
         [Parameter()]
@@ -110,14 +111,14 @@ function New-AzRedisEnterpriseCache {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api30.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Cluster resource tags.
         ${Tag},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IModule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]]
         # Optional set of redis modules to enable in this database - modules can only be added at create time.
         # To construct, see NOTES section for MODULE properties and create a hash table.
         ${Module},
@@ -154,7 +155,7 @@ function New-AzRedisEnterpriseCache {
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.ILinkedDatabase[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]]
         # List of database resources to link with this database
         # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
         ${LinkedDatabase},
@@ -168,11 +169,28 @@ function New-AzRedisEnterpriseCache {
         # Allowed values: EnterpriseCluster, OSSCluster
         ${ClusteringPolicy},
 
+        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication]
+        # This property can be Enabled/Disabled to allow or deny access with the current access keys.
+        # Can be updated even after database is created.
+        ${AccessKeysAuthentication},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
         # Key encryption key Url versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78"
         ${CustomerManagedKeyEncryptionKeyUrl},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.HighAvailability])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.HighAvailability]
+        # Enabled by default. Can only be updated from disabled to enabled.
+        # If highAvailability is disabled, the data set is not replicated.
+        # This affects the availability SLA, and increases the risk of data loss.
+        ${HighAvailability},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType])]
@@ -321,6 +339,7 @@ function New-AzRedisEnterpriseCache {
         $null = $GetPSBoundParameters.Remove("RdbPersistenceFrequency")
         $null = $GetPSBoundParameters.Remove("GroupNickname")
         $null = $GetPSBoundParameters.Remove("LinkedDatabase")
+        $null = $GetPSBoundParameters.Remove("AccessKeysAuthentication")
         $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)
@@ -341,6 +360,7 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Remove("CustomerManagedKeyEncryptionKeyUrl")
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityType")
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityUserAssignedIdentityResourceId")
+        $null = $PSBoundParameters.Remove("HighAvailability")
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
         $cluster.Database = @{$database.Name = $database}

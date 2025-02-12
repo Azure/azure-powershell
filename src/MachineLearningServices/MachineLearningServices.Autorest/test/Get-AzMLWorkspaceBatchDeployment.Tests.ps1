@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceBatchDeploym
 
 Describe 'Get-AzMLWorkspaceBatchDeployment' {
     It 'List' {
-        { Get-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName batch-cli02 } | Should -Not -Throw
+        { Get-AzMLWorkspaceBatchDeployment -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -EndpointName $env.batchEndpoint } | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName batch-cli02 -Name nonmlflowdp } | Should -Not -Throw
+        { Get-AzMLWorkspaceBatchDeployment -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -EndpointName $env.batchEndpoint -Name $env.batchDeployment } | Should -Not -Throw
     }
 }

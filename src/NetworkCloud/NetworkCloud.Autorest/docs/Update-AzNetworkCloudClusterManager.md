@@ -16,12 +16,14 @@ Properties and tag updates can be done independently.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkCloudClusterManager -InputObject <INetworkCloudIdentity> [-Tag <Hashtable>]
+Update-AzNetworkCloudClusterManager -InputObject <INetworkCloudIdentity>
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -59,6 +61,38 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -185,39 +219,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IClusterManager
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterManager
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INetworkCloudIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the Kubernetes cluster agent pool.
-  - `[BareMetalMachineKeySetName <String>]`: The name of the bare metal machine key set.
-  - `[BareMetalMachineName <String>]`: The name of the bare metal machine.
-  - `[BmcKeySetName <String>]`: The name of the baseboard management controller key set.
-  - `[CloudServicesNetworkName <String>]`: The name of the cloud services network.
-  - `[ClusterManagerName <String>]`: The name of the cluster manager.
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[ConsoleName <String>]`: The name of the virtual machine console.
-  - `[Id <String>]`: Resource identity path
-  - `[KubernetesClusterName <String>]`: The name of the Kubernetes cluster.
-  - `[L2NetworkName <String>]`: The name of the L2 network.
-  - `[L3NetworkName <String>]`: The name of the L3 network.
-  - `[MetricsConfigurationName <String>]`: The name of the metrics configuration for the cluster.
-  - `[RackName <String>]`: The name of the rack.
-  - `[RackSkuName <String>]`: The name of the rack SKU.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageApplianceName <String>]`: The name of the storage appliance.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[TrunkedNetworkName <String>]`: The name of the trunked network.
-  - `[VirtualMachineName <String>]`: The name of the virtual machine.
-  - `[VolumeName <String>]`: The name of the volume.
 
 ## RELATED LINKS
 

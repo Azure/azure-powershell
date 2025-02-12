@@ -1,8 +1,8 @@
 {
-  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview+1": {
+  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"tags\": {\r\n    \"dev\": \"test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview+1": {
+  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"tags\": {\r\n    \"dev1\": \"test1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -79,10 +79,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview+1": {
+  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -121,10 +121,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview+2": {
+  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"tags\": {\r\n    \"dev\": \"test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -161,10 +161,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview+1": {
+  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -203,10 +203,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateViaIdentity+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview+2": {
+  "Update-AzDevCenterAdminEnvironmentType+[NoContext]+UpdateViaIdentity+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/environmentTypes/sf2b9c?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"tags\": {\r\n    \"dev1\": \"test1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {

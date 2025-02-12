@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-Asynchronously Update a new partner topic with the specified parameters.
+Asynchronously update a new partner topic with the specified parameters.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Update-AzEventGridPartnerTopic -InputObject <IEventGridIdentity> [-ActivationSta
 ```
 
 ## DESCRIPTION
-Asynchronously Update a new partner topic with the specified parameters.
+Asynchronously update a new partner topic with the specified parameters.
 
 ## EXAMPLES
 

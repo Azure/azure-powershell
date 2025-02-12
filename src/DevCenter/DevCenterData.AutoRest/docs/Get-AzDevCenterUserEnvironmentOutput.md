@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDevCenterUserEnvironmentOutput
 
 ## SYNOPSIS
-Gets Outputs from the environment
+Gets Outputs from the environment.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzDevCenterUserEnvironmentOutput -DevCenterName <String> -InputObject <IDevC
 ```
 
 ## DESCRIPTION
-Gets Outputs from the environment
+Gets Outputs from the environment.
 
 ## EXAMPLES
 
@@ -190,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOutputs
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentOutputs
 
 ## NOTES
 

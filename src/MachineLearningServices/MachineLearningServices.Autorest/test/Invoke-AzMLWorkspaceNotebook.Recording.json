@@ -1,17 +1,17 @@
 {
-  "Invoke-AzMLWorkspaceNotebook+[NoContext]+Prepare+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/prepareNotebook?api-version=2022-05-01+1": {
+  "Invoke-AzMLWorkspaceNotebook+[NoContext]+Prepare+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/prepareNotebook?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/prepareNotebook?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/prepareNotebook?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "b4a4f78c-b7f7-4dfa-8010-8a7a9217285c" ],
+        "x-ms-unique-id": [ "114" ],
+        "x-ms-client-request-id": [ "3e330596-cc1c-42c0-86fc-a4681bf142ba" ],
         "CommandName": [ "Invoke-AzMLWorkspaceNotebook" ],
         "FullCommandName": [ "Invoke-AzMLWorkspaceNotebook_Prepare" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,24 +23,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "ffe9cd80-5262-4611-9ed4-6566e71660df" ],
+        "x-ms-request-id": [ "3e280e40-6d12-4ea1-8f61-b4086f5dbe0c" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.055" ],
-        "x-ms-correlation-request-id": [ "ffe9cd80-5262-4611-9ed4-6566e71660df" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T100008Z:ffe9cd80-5262-4611-9ed4-6566e71660df" ],
-        "Date": [ "Sun, 05 Jun 2022 10:00:07 GMT" ]
+        "x-request-time": [ "0.099" ],
+        "x-ms-correlation-request-id": [ "3e280e40-6d12-4ea1-8f61-b4086f5dbe0c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085216Z:3e280e40-6d12-4ea1-8f61-b4086f5dbe0c" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2C8271D099BE48A8B8BEFA15FB4A881F Ref B: TYO201151005031 Ref C: 2024-07-24T08:52:16Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:52:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2634" ],
+        "Content-Length": [ "2669" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01\",\n  \"name\": \"mlworkspace-cli01\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"etag\": null,\n  \"properties\": {\n    \"friendlyName\": \"mlworkspace-cli01\",\n    \"description\": \"\",\n    \"storageAccount\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.Storage/storageAccounts/mlworkspacecli9058222679\",\n    \"keyVault\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.Keyvault/vaults/mlworkspacecli2310333778\",\n    \"applicationInsights\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.insights/components/mlworkspacecli3073090957\",\n    \"hbiWorkspace\": false,\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n    \"imageBuildCompute\": null,\n    \"provisioningState\": \"Succeeded\",\n    \"v1LegacyMode\": false,\n    \"containerRegistry\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.ContainerRegistry/registries/85b9e7f08ea44e3da74206ee40ba4b03\",\n    \"acrSkuTier\": \"Basic\",\n    \"notebookInfo\": {\n      \"resourceId\": \"770262087db047c88de12c933e679b88\",\n      \"fqdn\": \"ml-mlworkspace-cli0-eastus-85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03.eastus.notebooks.azure.net\",\n      \"isPrivateLinkEnabled\": false,\n      \"notebookPreparationError\": null\n    },\n    \"storageHnsEnabled\": false,\n    \"workspaceId\": \"85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03\",\n    \"linkedModelInventoryArmId\": null,\n    \"privateLinkCount\": 0,\n    \"publicNetworkAccess\": \"Enabled\",\n    \"discoveryUrl\": \"https://eastus.api.azureml.ms/discovery\",\n    \"mlFlowTrackingUri\": \"azureml://eastus.api.azureml.ms/mlflow/v1.0/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01\",\n    \"sdkTelemetryAppInsightsKey\": \"71fa86c2-fe23-49db-bb2e-8537edfb6ead\",\n    \"sasGetterUri\": \"\"\n  },\n  \"identity\": {\n    \"type\": \"SystemAssigned\",\n    \"principalId\": \"cca65743-2e5b-4614-81b9-bfd4c0081622\",\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n  },\n  \"sku\": {\n    \"name\": \"Basic\",\n    \"tier\": \"Basic\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-05-18T06:33:49.1246393Z\",\n    \"createdBy\": \"v-diya@microsoft.com\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-05-18T06:33:49.1246393Z\",\n    \"lastModifiedBy\": \"v-diya@microsoft.com\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1\",\n  \"name\": \"mlworkspace-test1\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces\",\n  \"location\": \"eastus\",\n  \"tags\": {\n    \"key2\": \"value2\"\n  },\n  \"etag\": null,\n  \"properties\": {\n    \"friendlyName\": \"\",\n    \"description\": \"\",\n    \"storageAccount\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.Storage/storageAccounts/storageaccount0722ml\",\n    \"keyVault\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.Keyvault/vaults/key0722ml\",\n    \"applicationInsights\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.insights/components/mlinsights\",\n    \"hbiWorkspace\": false,\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n    \"imageBuildCompute\": null,\n    \"provisioningState\": \"Succeeded\",\n    \"allowRoleAssignmentOnRG\": true,\n    \"v1LegacyMode\": false,\n    \"softDeleteEnabled\": false,\n    \"creationTime\": \"2024-07-24T08:31:43.4527790Z\",\n    \"notebookInfo\": {\n      \"resourceId\": \"bbbdf53e786249abbd0923cdd4efebf1\",\n      \"fqdn\": \"ml-mlworkspace-test-eastus-98a94d74-4acb-42ba-8a95-15f5756ce4b2.eastus.notebooks.azure.net\",\n      \"isPrivateLinkEnabled\": false,\n      \"notebookPreparationError\": null\n    },\n    \"storageHnsEnabled\": false,\n    \"workspaceId\": \"98a94d74-4acb-42ba-8a95-15f5756ce4b2\",\n    \"linkedModelInventoryArmId\": null,\n    \"privateLinkCount\": 0,\n    \"publicNetworkAccess\": \"Enabled\",\n    \"ipAllowlist\": [],\n    \"discoveryUrl\": \"https://eastus.api.azureml.ms/discovery\",\n    \"mlFlowTrackingUri\": \"azureml://eastus.api.azureml.ms/mlflow/v1.0/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1\",\n    \"serverlessComputeSettings\": null,\n    \"EnableSoftwareBillOfMaterials\": false,\n    \"sdkTelemetryAppInsightsKey\": \"71fa86c2-fe23-49db-bb2e-8537edfb6ead\",\n    \"sasGetterUri\": \"\",\n    \"enableDataIsolation\": false\n  },\n  \"identity\": {\n    \"type\": \"SystemAssigned\",\n    \"principalId\": \"2d2b9f28-9492-4d44-af54-dd7462a1e987\",\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n  },\n  \"kind\": \"Default\",\n  \"sku\": {\n    \"name\": \"Basic\",\n    \"tier\": \"Basic\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2024-07-24T08:31:43.452779Z\",\n    \"createdBy\": \"v-jiaji@microsoft.com\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2024-07-24T08:40:02.5770432Z\",\n    \"lastModifiedBy\": \"v-jiaji@microsoft.com\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
       "isContentBase64": false
     }
   }

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ElasticSan service.
 
 ---
-## Status
-[![Az.ElasticSan](https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan "Az.ElasticSan")](https://www.powershellgallery.com/packages/Az.ElasticSan/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,11 +28,11 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 9770615578c920dad8cb6fce33d79c7e112824c0
+commit: 72c69a0cf561d41ae99fe6810c426a874d3a8372
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2023-01-01/elasticsan.json
+  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2024-05-01/elasticsan.json
 
 # Normally, title is the service name
 title: ElasticSan
@@ -146,7 +143,7 @@ directive:
       subject: ^VolumeGroup$
     hide: true
   - where:
-      verb: New
+      verb: ^New$|^Update$
       subject: Volume
       parameter-name: ManagedByResourceId
     hide: true

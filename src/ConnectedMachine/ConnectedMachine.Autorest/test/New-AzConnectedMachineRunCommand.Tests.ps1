@@ -15,20 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedMachineRunComm
 }
 
 Describe 'New-AzConnectedMachineRunCommand' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Create' {
         $runCommand = New-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -Location $env.Location -SourceScript $env.Script -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId
         $runCommand.Count | Should -Not -BeNullOrEmpty
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

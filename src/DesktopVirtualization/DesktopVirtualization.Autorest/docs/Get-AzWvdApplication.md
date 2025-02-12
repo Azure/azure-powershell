@@ -30,6 +30,12 @@ Get-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-DefaultProf
  [<CommonParameters>]
 ```
 
+### GetViaIdentityApplicationGroup
+```
+Get-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get an application.
 
@@ -63,6 +69,21 @@ ApplicationGroupName/ApplicationName2 Microsoft.DesktopVirtualization/applicatio
 This command Lists Windows Virtual Desktop Applications in an applicaton Group.
 
 ## PARAMETERS
+
+### -ApplicationGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: GetViaIdentityApplicationGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -112,7 +133,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -146,7 +166,7 @@ The name of the application within the specified application group
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityApplicationGroup
 Aliases: ApplicationName
 
 Required: True
@@ -189,6 +209,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -211,7 +232,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication
 
 ## NOTES
 

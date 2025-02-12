@@ -159,7 +159,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SOFTWAREASSURANCECHANGEREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ISoftwareAssuranceChangeRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISoftwareAssuranceChangeRequest
 Parameter Sets: Extend, ExtendViaIdentity
 Aliases:
 
@@ -187,6 +187,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -236,15 +237,39 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ISoftwareAssuranceChangeRequest
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISoftwareAssuranceChangeRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IStackHciIdentity>`: Identity Parameter
+  - `[ArcSettingName <String>]`: The name of the proxy resource holding details of HCI ArcSetting information.
+  - `[ClusterName <String>]`: The name of the cluster.
+  - `[DeploymentSettingsName <String>]`: Name of Deployment Setting
+  - `[EdgeDeviceName <String>]`: Name of Device
+  - `[ExtensionName <String>]`: The name of the machine extension.
+  - `[Id <String>]`: Resource identity path
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource.
+  - `[SecuritySettingsName <String>]`: Name of security setting
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+  - `[UpdateName <String>]`: The name of the Update
+  - `[UpdateRunName <String>]`: The name of the Update Run
+
+`SOFTWAREASSURANCECHANGEREQUEST <ISoftwareAssuranceChangeRequest>`: .
+  - `[SoftwareAssuranceIntent <SoftwareAssuranceIntent?>]`: Customer Intent for Software Assurance Benefit.
 
 ## RELATED LINKS
 

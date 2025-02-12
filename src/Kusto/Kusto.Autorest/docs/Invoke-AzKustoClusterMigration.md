@@ -72,7 +72,7 @@ A cluster migrate request.
 To construct, see NOTES section for CLUSTERMIGRATEREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
 Parameter Sets: Migrate, MigrateViaIdentity
 Aliases:
 
@@ -242,7 +242,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 

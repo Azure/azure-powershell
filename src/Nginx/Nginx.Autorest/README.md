@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Nginx service.
 
 ---
-## Status
-[![Az.Nginx](https://img.shields.io/powershellgallery/v/Az.Nginx.svg?style=flat-square&label=Az.Nginx "Az.Nginx")](https://www.powershellgallery.com/packages/Az.Nginx/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -29,15 +26,14 @@ For information on how to develop for `Az.Nginx`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-commit: e38e7dd462571865266d320bd7cec9804c67f70b
-tag: package-2023-04-01
+commit: d1027c6d6d0994ef3a656a561b0cce8378ac58a4
+tag: package-2024-01-01-preview
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2023-04-01/swagger.json
-
+  - $(repo)/specification/nginx/resource-manager/NGINX.NGINXPLUS/preview/2024-01-01-preview/swagger.json
 root-module-name: $(prefix).Nginx
 title: Nginx
 module-version: 0.1.0

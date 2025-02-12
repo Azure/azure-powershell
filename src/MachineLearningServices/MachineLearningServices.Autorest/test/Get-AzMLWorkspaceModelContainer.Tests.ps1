@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceModelContain
 
 Describe 'Get-AzMLWorkspaceModelContainer' {
     It 'List' {
-        { Get-AzMLWorkspaceModelContainer  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01} | Should -Not -Throw
+        { Get-AzMLWorkspaceModelContainer -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace} | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzMLWorkspaceModelContainer  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name azureml_plucky_collar_5x0ds0fgb3_output_mlflow_log_model } | Should -Not -Throw
+        { Get-AzMLWorkspaceModelContainer -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name modelcontainerpwsh01 } | Should -Not -Throw
     }
 }

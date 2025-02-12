@@ -84,7 +84,7 @@ The list of curated data extraction commands to be executed directly against the
 To construct, see NOTES section for COMMAND properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBareMetalMachineCommandSpecification[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineCommandSpecification[]
 Parameter Sets: (All)
 Aliases:
 
@@ -247,40 +247,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`COMMAND <IBareMetalMachineCommandSpecification[]>`: The list of curated data extraction commands to be executed directly against the target machine.
-  - `Command <String>`: The command to execute against the bare metal machine.
-  - `[Argument <String[]>]`: The list of string arguments that will be passed to the script in order as separate arguments.
-
-`INPUTOBJECT <INetworkCloudIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the Kubernetes cluster agent pool.
-  - `[BareMetalMachineKeySetName <String>]`: The name of the bare metal machine key set.
-  - `[BareMetalMachineName <String>]`: The name of the bare metal machine.
-  - `[BmcKeySetName <String>]`: The name of the baseboard management controller key set.
-  - `[CloudServicesNetworkName <String>]`: The name of the cloud services network.
-  - `[ClusterManagerName <String>]`: The name of the cluster manager.
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[ConsoleName <String>]`: The name of the virtual machine console.
-  - `[Id <String>]`: Resource identity path
-  - `[KubernetesClusterName <String>]`: The name of the Kubernetes cluster.
-  - `[L2NetworkName <String>]`: The name of the L2 network.
-  - `[L3NetworkName <String>]`: The name of the L3 network.
-  - `[MetricsConfigurationName <String>]`: The name of the metrics configuration for the cluster.
-  - `[RackName <String>]`: The name of the rack.
-  - `[RackSkuName <String>]`: The name of the rack SKU.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageApplianceName <String>]`: The name of the storage appliance.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[TrunkedNetworkName <String>]`: The name of the trunked network.
-  - `[VirtualMachineName <String>]`: The name of the virtual machine.
-  - `[VolumeName <String>]`: The name of the volume.
 
 ## RELATED LINKS
 

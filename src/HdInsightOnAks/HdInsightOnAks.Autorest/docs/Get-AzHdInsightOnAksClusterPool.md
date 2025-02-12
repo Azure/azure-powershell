@@ -40,7 +40,7 @@ Gets a cluster pool.
 
 ## EXAMPLES
 
-### Example 1: list all HDInsight gen2 cluster pools in current subscription
+### Example 1: list all HDInsight cluster pools in current subscription
 ```powershell
 Get-AzHdInsightOnAksClusterPool
 ```
@@ -70,9 +70,9 @@ SystemDataCreatedAt                            :
 ...
 ```
 
-list all HDInsight gen2 cluster pools in current subscription.
+list all HDInsight cluster pools in current subscription.
 
-### Example 2: list all HDInsight gen2 cluster pools in a resource group
+### Example 2: list all HDInsight cluster pools in a resource group
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 Get-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName
@@ -103,9 +103,9 @@ SystemDataCreatedAt                            :
 ...
 ```
 
-list all HDInsight gen2 cluster pools in a resource group.
+list all HDInsight cluster pools in a resource group.
 
-### Example 3: Get a HDInsight gen2 cluster pool in a resource group
+### Example 3: Get a HDInsight cluster pool in a resource group
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
@@ -137,7 +137,7 @@ SystemDataCreatedAt                            :
 ...
 ```
 
-Get a HDInsight gen2 cluster pool in a resource group.
+Get a HDInsight cluster pool in a resource group.
 
 ## PARAMETERS
 

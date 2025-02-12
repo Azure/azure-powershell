@@ -122,7 +122,7 @@ try {
                     npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
                     npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
                     npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2021-04
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-07
                     npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
                     npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
                 }
@@ -138,7 +138,7 @@ try {
                     Sdk = $_;
                     Severity = 1;
                     ProblemId = $AutorestCSharpDetected
-                    Description = "Do not support updating SDK using autorest csharp v3."
+                    Description = "Do not support updating SDK using autorest csharp."
                     Remediation = "Please update the Readme.md to generate code by autorest powershell v4."
                 }
             }

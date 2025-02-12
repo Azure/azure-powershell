@@ -1,0 +1,89 @@
+{
+  "appLocation": "northeurope",
+  "configurationType": "DeploymentWithOSConfig",
+  "infrastructureConfiguration": {
+    "appResourceGroup": "PS_CLI_TF_RG",
+    "applicationServer": {
+      "instanceCount": 1,
+      "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/JASKIRAT-RG-NE/providers/Microsoft.Network/virtualNetworks/JAS-VNET-NE/subnets/appsubnet",
+      "virtualMachineConfiguration": {
+        "imageReference": {
+          "offer": "RHEL-SAP-HA",
+          "publisher": "RedHat",
+          "sku": "84sapha-gen2",
+          "version": "latest"
+        },
+        "osProfile": {
+          "adminUsername": "azureuser",
+          "osConfiguration": {
+            "disablePasswordAuthentication": true,
+            "osType": "Linux",
+            "sshKeyPair": {
+              "publicKey": "PublicKey",
+              "privateKey": "PrivateKey"
+            }
+          }
+        },
+        "vmSize": "Standard_D4ds_v4"
+      }
+    },
+    "centralServer": {
+      "instanceCount": 1,
+      "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/JASKIRAT-RG-NE/providers/Microsoft.Network/virtualNetworks/JAS-VNET-NE/subnets/appsubnet",
+      "virtualMachineConfiguration": {
+        "imageReference": {
+          "offer": "RHEL-SAP-HA",
+          "publisher": "RedHat",
+          "sku": "84sapha-gen2",
+          "version": "latest"
+        },
+        "osProfile": {
+          "adminUsername": "azureuser",
+          "osConfiguration": {
+            "disablePasswordAuthentication": true,
+            "osType": "Linux",
+            "sshKeyPair": {
+              "publicKey": "PublicKey",
+              "privateKey": "PrivateKey"
+            }
+          }
+        },
+        "vmSize": "Standard_D4ds_v4"
+      }
+    },
+    "databaseServer": {
+      "databaseType": "HANA",
+      "instanceCount": 1,
+      "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/JASKIRAT-RG-NE/providers/Microsoft.Network/virtualNetworks/JAS-VNET-NE/subnets/dbsubnet",
+      "virtualMachineConfiguration": {
+        "imageReference": {
+          "offer": "RHEL-SAP-HA",
+          "publisher": "RedHat",
+          "sku": "84sapha-gen2",
+          "version": "latest"
+        },
+        "osProfile": {
+          "adminUsername": "azureuser",
+          "osConfiguration": {
+            "disablePasswordAuthentication": true,
+            "osType": "Linux",
+            "sshKeyPair": {
+              "publicKey": "PublicKey",
+              "privateKey": "PrivateKey"
+            }
+          }
+        },
+        "vmSize": "Standard_E32ds_v4"
+      }
+    },
+    "deploymentType": "ThreeTier",
+    "storageConfiguration": {
+      "transportFileShareConfiguration": {
+        "configurationType": "Skip"
+      }
+    }
+  },
+  "osSapConfiguration": {
+    "sapFqdn": "sap.bpaas.com"
+  }
+}

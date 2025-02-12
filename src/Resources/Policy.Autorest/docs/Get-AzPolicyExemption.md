@@ -54,8 +54,9 @@ The second command gets the policy exemption named PolicyExemption07 for the sco
 
 ### Example 3: Get all policy exemptions associated with a policy assignment
 ```powershell
-$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07'
-Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.ResourceId
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.Id
 ```
 
 The first command gets a policy assignment named PolicyAssignment07.
@@ -111,6 +112,7 @@ Accept wildcard characters: False
 
 ### -IncludeDescendent
 Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.
+If not provided, only exemptions at and above the given scope are included.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

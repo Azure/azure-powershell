@@ -60,9 +60,8 @@ module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
-aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2023-08-01
 input-file:
-  - $(aks)/resourcemovercollection.json
+  - $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2023-08-01/resourcemovercollection.json
 module-version: 1.0.0
 
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option

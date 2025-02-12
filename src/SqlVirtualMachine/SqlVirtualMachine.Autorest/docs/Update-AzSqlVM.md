@@ -167,8 +167,7 @@ Update a SQL virtual machine to enable assessment.
 
 ### Example 8
 ```powershell
-# $pwd is the password for cluster accounts
-$securepwd = ConvertTo-SecureString -String $pwd -AsPlainText -Force
+$securepwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
 -SqlVirtualMachineGroupResourceId '<group resource id>' `
 -WsfcDomainCredentialsClusterBootstrapAccountPassword $securepwd `

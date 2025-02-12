@@ -1,0 +1,47 @@
+{
+  "Get-AzNetworkCloudKubernetesClusterFeature+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/features/csi-volume?api-version=2024-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/features/csi-volume?api-version=2024-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "6d58f978-1f0e-492b-90f7-fc6a4175c5b5" ],
+        "CommandName": [ "Get-AzNetworkCloudKubernetesClusterFeature" ],
+        "FullCommandName": [ "Get-AzNetworkCloudKubernetesClusterFeature_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0500ede6-0000-1100-0000-671a5f980000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "869d181e-a0b0-4fd6-99a3-76f7e6b9be41" ],
+        "x-ms-correlation-request-id": [ "dcd995ea-5c06-4fb0-8ea5-165811d37349" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKWEST:20241024T145440Z:dcd995ea-5c06-4fb0-8ea5-165811d37349" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 78D731B784E24216865117BF85683526 Ref B: AMS231020512047 Ref C: 2024-10-24T14:54:39Z" ],
+        "Date": [ "Thu, 24 Oct 2024 14:54:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "784" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/pstest_rg053dl1/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/features/csi-volume\",\"name\":\"csi-volume\",\"type\":\"microsoft.networkcloud/kubernetesclusters/features\",\"location\":\"uksouth\",\"tags\":{\"key\":\"value\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-24T14:53:07.9156304Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-10-24T14:54:16.949859Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"options\":[],\"availabilityLifecycle\":\"GenerallyAvailable\",\"detailedStatus\":\"Installed\",\"detailedStatusMessage\":\"The feature is installed\",\"required\":\"False\",\"version\":\"v1.0.8\"}}",
+      "isContentBase64": false
+    }
+  }
+}

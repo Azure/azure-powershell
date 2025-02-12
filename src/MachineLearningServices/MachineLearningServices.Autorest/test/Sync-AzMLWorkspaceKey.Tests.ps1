@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Sync-AzMLWorkspaceKey'))
 
 Describe 'Sync-AzMLWorkspaceKey' {
     It 'Resync' {
-        { Sync-AzMLWorkspaceKey -ResourceGroupName ml-rg-test -Name mlworkspace-test01 } | Should -Not -Throw
+        { Sync-AzMLWorkspaceKey -ResourceGroupName $env.DataGroupName -Name $env.computeworkspace } | Should -Not -Throw
     }
 }

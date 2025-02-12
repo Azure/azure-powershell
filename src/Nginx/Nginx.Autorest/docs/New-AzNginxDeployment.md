@@ -15,10 +15,11 @@ Create or update the NGINX deployment
 ```
 New-AzNginxDeployment -Name <String> -ResourceGroupName <String> -Location <String>
  -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-SubscriptionId <String>]
- [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ManagedResourceGroup <String>] [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>]
- [-StorageAccountName <String>] [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AutoScaleSettingProfile <IScaleProfile[]>] [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroup <String>]
+ [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>]
+ [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,22 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScaleSettingProfile
+.
+To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +184,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -353,7 +370,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
 
 ## NOTES
 

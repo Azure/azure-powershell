@@ -62,5 +62,5 @@ Delete an action group.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-Create a new action group or update an existing one.
+Update a new action group or update an existing one.
 

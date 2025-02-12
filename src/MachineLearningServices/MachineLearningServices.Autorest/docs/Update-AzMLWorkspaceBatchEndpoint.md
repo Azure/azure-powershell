@@ -37,22 +37,22 @@ Update-AzMLWorkspaceBatchEndpoint -ResourceGroupName ml-rg-test -WorkspaceName m
 ```
 
 ```output
-Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   batch-pwsh03 5/20/2022 7:21:12 AM Lucas Yao (Wicresoft North America)                         5/20/2022 7:31:17 AM                                                                                    ml-rg-test
+Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind ResourceGroupName
+-------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ---- -----------------
+eastus   batch-pwsh03 5/20/2022 7:21:12 AM UserName (Example)                  5/20/2022 7:31:17 AM                                                                                        ml-rg-test
 ```
 
 Update a batch inference endpoint (asynchronous)
 
 ### Example 2: Update a batch inference endpoint (asynchronous) by pipeline
 ```powershell
-Get-AzMLWorkspaceBatchEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name batchpwsh01-key | Update-AzMLWorkspaceBatchEndpoint-Tag @{'key'='value'}
+Get-AzMLWorkspaceBatchEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name batchpwsh01-key | Update-AzMLWorkspaceBatchEndpoint -Tag @{'key'='value'}
 ```
 
 ```output
-Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   batch-pwsh03 5/20/2022 7:21:12 AM Lucas Yao (Wicresoft North America)                         5/20/2022 7:31:17 AM                                                                                    ml-rg-test
+Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind ResourceGroupName
+-------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ---- -----------------
+eastus   batch-pwsh03 5/20/2022 7:21:12 AM UserName (Example)                  5/20/2022 7:31:17 AM                                                                                        ml-rg-test
 ```
 
 Update a batch inference endpoint (asynchronous) by pipeline
@@ -75,7 +75,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -268,31 +269,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IBatchEndpoint
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMachineLearningServicesIdentity>`: Identity Parameter
-  - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
-  - `[ConnectionName <String>]`: Friendly name of the workspace connection
-  - `[DeploymentName <String>]`: Inference deployment identifier.
-  - `[EndpointName <String>]`: Inference Endpoint name.
-  - `[Id <String>]`: The name and identifier for the Job. This is case-sensitive.
-  - `[Id1 <String>]`: Resource identity path
-  - `[Location <String>]`: The location for which resource usage is queried.
-  - `[Name <String>]`: Container name. This is case-sensitive.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the workspace
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: Version identifier. This is case-sensitive.
-  - `[WorkspaceName <String>]`: Name of Azure Machine Learning workspace.
 
 ## RELATED LINKS
 

@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceOutboundNetw
 
 Describe 'Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint' {
     It 'List' {
-        { Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 } | Should -Not -Throw
+        { Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace } | Should -Not -Throw
     }
 }

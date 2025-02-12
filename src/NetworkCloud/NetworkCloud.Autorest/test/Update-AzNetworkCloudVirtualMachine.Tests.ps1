@@ -19,7 +19,7 @@ Describe 'Update-AzNetworkCloudVirtualMachine' {
                 tag1 = $global:config.AzNetworkCloudVirtualMachine.tags
                 tag2 = $global:config.AzNetworkCloudVirtualMachine.tagsUpdate
             }
-            $securePassword = ConvertTo-SecureString $global:config.AzNetworkCloudVirtualMachine.registryPassword -asplaintext -force
+            $securePassword = ConvertTo-SecureString $global:config.AzNetworkCloudVirtualMachine.registryPassword -AsPlainText -Force
             Update-AzNetworkCloudVirtualMachine -Name $global:config.AzNetworkCloudVirtualMachine.vmName `
                 -ResourceGroupName $global:config.AzNetworkCloudVirtualMachine.vmResourceGroup -Tag $tagUpdatedHash `
                 -VMImageRepositoryCredentialsRegistryUrl $global:config.AzNetworkCloudVirtualMachine.registryUrl `

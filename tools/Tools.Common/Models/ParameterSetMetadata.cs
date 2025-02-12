@@ -13,7 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
+using VersionController.Netcore.Models;
 
 namespace Tools.Common.Models
 {
@@ -58,13 +62,24 @@ namespace Tools.Common.Models
                 var otherParameter = other.Parameters.Find(p => thisParameterNames.ContainsKey(p.ParameterMetadata.Name) || p.ParameterMetadata.AliasList.Find(a => thisParameterNames.ContainsKey(a)) != null);
                 if (otherParameter == null)
                 {
+                    // Console.WriteLine($"Parameter {thisParameter.ParameterMetadata.Name} in parameter set {this.Name} is not found in new module.");
                     return false;
                 }
-
                 paramsSetEqual &= thisParameter.Equals(otherParameter);
             }
 
-            paramsSetEqual &= this.Parameters.Count == other.Parameters.Count;
+            var curParameters = this.Parameters.Where(p => !CommonInfo.ExcludedParameters.Contains(p.ParameterMetadata.Name)).ToList();
+            var otherParameters = other.Parameters.Where(p => !CommonInfo.ExcludedParameters.Contains(p.ParameterMetadata.Name)).ToList();
+            /*if (curParameters.Count != otherParameters.Count)
+            {
+                Console.WriteLine($"The number of parameters in parameter set {this.Name} is not same.");
+                Console.WriteLine("Parameters in old version: ");
+                this.Parameters.ForEach(p => Console.Write(p.ParameterMetadata.Name + " "));
+                Console.WriteLine(Environment.NewLine + "Parameters in new version: ");
+                other.Parameters.ForEach(p => Console.Write(p.ParameterMetadata.Name + " "));
+                Console.WriteLine();
+            }*/
+            paramsSetEqual &= curParameters.Count == otherParameters.Count;
             return paramsSetEqual;
         }
 
@@ -232,13 +247,13 @@ namespace Tools.Common.Models
             {
                 return false;
             }
-
             var paramsEqual = true;
             paramsEqual &= this.Mandatory == other.Mandatory &&
                            this.Position == other.Position &&
                            this.ValueFromPipeline == other.ValueFromPipeline &&
                            this.ValueFromPipelineByPropertyName == other.ValueFromPipelineByPropertyName &&
                            this.ParameterMetadata.Equals(other.ParameterMetadata);
+            // if (!paramsEqual) Console.WriteLine($"The attributes of {this.ParameterMetadata.Name} is different in new version");
             return paramsEqual;
         }
 

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceCodeVersion'
 Describe 'Get-AzMLWorkspaceCodeVersion' {
     It 'Get' {
         { 
-            Get-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name 'codepwsh01' -Version 1
+            Get-AzMLWorkspaceCodeVersion -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -Name $env.codename -Version 1
         } | Should -Not -Throw
     }
 }

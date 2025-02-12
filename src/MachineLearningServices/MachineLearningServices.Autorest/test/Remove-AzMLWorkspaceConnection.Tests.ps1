@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMLWorkspaceConnectio
 }
 
 Describe 'Remove-AzMLWorkspaceConnection' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzMLWorkspaceConnection -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainworkspace -Name 'test01'
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

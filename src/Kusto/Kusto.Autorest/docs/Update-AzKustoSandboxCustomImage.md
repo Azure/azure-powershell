@@ -15,8 +15,9 @@ Updates a sandbox custom image.
 ### UpdateExpanded (Default)
 ```
 Update-AzKustoSandboxCustomImage -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LanguageVersion <String>] [-RequirementsFileContent <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-BaseImageName <String>] [-LanguageVersion <String>]
+ [-RequirementsFileContent <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -34,9 +35,9 @@ Update-AzKustoSandboxCustomImage -InputObject <IKustoIdentity> -Parameter <ISand
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKustoSandboxCustomImage -InputObject <IKustoIdentity> [-LanguageVersion <String>]
- [-RequirementsFileContent <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzKustoSandboxCustomImage -InputObject <IKustoIdentity> [-BaseImageName <String>]
+ [-LanguageVersion <String>] [-RequirementsFileContent <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +66,23 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BaseImageName
+The base image name on which the custom image is built on top of.
+It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image.
+Either this property or languageVersion should be specified.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -123,6 +141,7 @@ Accept wildcard characters: False
 
 ### -LanguageVersion
 The version of the language.
+Either this property or baseImageName should be specified.
 
 ```yaml
 Type: System.String
@@ -171,7 +190,7 @@ Class representing a Kusto sandbox custom image.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -264,13 +283,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
 
 ## NOTES
 

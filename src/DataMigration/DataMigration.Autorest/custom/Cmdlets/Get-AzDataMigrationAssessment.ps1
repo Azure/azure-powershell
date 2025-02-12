@@ -83,7 +83,7 @@ function Get-AzDataMigrationAssessment
             #Downloading and extracting SqlAssessment Zip file
             if(-Not $TestExePath)
             {
-                $ZipSource = "https://sqlassess.blob.core.windows.net/app/SqlAssessment.zip";
+                $ZipSource = "https://aka.ms/sqlassessmentpackage";
                 $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "SqlAssessment.zip";
                 Invoke-RestMethod -Uri $ZipSource -OutFile $ZipDestination;
 

@@ -1,4 +1,4 @@
 ### Thanks to our community contributors
-* Math Fortin (@mfortin), Bug fix to allow SharedGalleryImangeId and CommunityGalleryImageId parameters to New-AzVMConfig (#24413)
-* @sakkuntyo, [Get-AzMetric.md]fix: don't worked example 4 (#24653)
-* @Toluwaloope, Update Invoke-AzVMRunCommand.md with more Windows Examples (#23693)
+* Rasmus Wätjen (@rasmus-watjen), Typo fix (#27046)
+* Sebastian Claesson (@SebastianClaesson), [Az.Resources] Adding examples of how to use ServicePrincipalName parameter (#26891)
+* Simon Wåhlin (@SimonWahlin), [Az.Resources] Update BicepUtility.cs (#26782)

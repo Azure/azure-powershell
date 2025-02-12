@@ -31,7 +31,7 @@ Counts devices in catalog.
 
 ### Example 1: Get device number
 ```powershell
-Invoke-AzSphereCountCatalogDevice -CatalogName test2024 -ResourceGroupName joyer-test
+Invoke-AzSphereCountCatalogDevice -CatalogName test2024 -ResourceGroupName group-test
 ```
 
 ```output
