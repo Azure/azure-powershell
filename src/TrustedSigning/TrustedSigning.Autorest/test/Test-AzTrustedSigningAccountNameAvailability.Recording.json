@@ -1,0 +1,41 @@
+{
+  "Test-AzTrustedSigningAccountNameAvailability+[NoContext]+CheckViaJsonString+$POST+https://management.azure.com/subscriptions/76a1b60e-e087-45e5-be6e-8cdeeaee8e77/providers/Microsoft.CodeSigning/checkNameAvailability?api-version=2024-02-05-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/76a1b60e-e087-45e5-be6e-8cdeeaee8e77/providers/Microsoft.CodeSigning/checkNameAvailability?api-version=2024-02-05-preview",
+      "Content": "{ \"name\": \"nonexistent\",   \"type\": \"microsoft.codesigning/codesigningaccounts\" }",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "80" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "dbd6e03b-08c4-4175-addb-08facf943211" ],
+        "x-ms-correlation-request-id": [ "5b0e212d-8908-4ace-a74b-024d71712674" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250201T011415Z:5b0e212d-8908-4ace-a74b-024d71712674" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DAE03C7F6F6D483285F703F24A654FED Ref B: CO6AA3150218019 Ref C: 2025-02-01T01:14:12Z" ],
+        "Date": [ "Sat, 01 Feb 2025 01:14:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}
