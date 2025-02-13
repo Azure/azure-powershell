@@ -554,6 +554,9 @@ Lists network usages for a subscription
 ### [Get-AzNetworkVirtualAppliance](Get-AzNetworkVirtualAppliance.md)
 Get or List Network Virtual Appliances.
 
+### [Get-AzNetworkVirtualApplianceBootDiagnostics](Get-AzNetworkVirtualApplianceBootDiagnostics.md)
+Get boot diagnostic logs for a given Network Virtual Appliance VM instance.
+
 ### [Get-AzNetworkVirtualApplianceConnection](Get-AzNetworkVirtualApplianceConnection.md)
 Get or List Network Virtual Appliances connections connected to a Network Virtual Appliance.
 
