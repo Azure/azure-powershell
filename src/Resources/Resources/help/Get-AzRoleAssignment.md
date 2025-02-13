@@ -214,7 +214,7 @@ Gets role assignments for the specified Service Principal using Get-AzAdServiceP
 ## PARAMETERS
 
 ### -AtScope
-Scope of the role assignment. In the format of relative URI.
+If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
