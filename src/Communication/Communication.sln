@@ -17,13 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{273AA0BD-A4B9-45CF-86E6-898B6F7F4B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Communication", "Communication.Autorest\Az.Communication.csproj", "{8608255E-6E17-44FE-AA27-20431844F43C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "Communication\Communication.csproj", "{BC377B3E-760F-4C72-8E2B-64F295F35AC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailService", "EmailService.Autorest\Az.EmailService.csproj", "{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Communication", "..\..\generated\Communication\Communication.Autorest\Az.Communication.csproj", "{995F9E30-E6AB-4A17-B5E0-8046F1EC8575}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailServicedata", "EmailServicedata.Autorest\Az.EmailServicedata.csproj", "{695CDAA1-885B-48EA-B42C-E4B74620FE00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailService", "..\..\generated\Communication\EmailService.Autorest\Az.EmailService.csproj", "{324263EC-DD31-4D66-8179-1BB45BB6AAD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailServicedata", "..\..\generated\Communication\EmailServicedata.Autorest\Az.EmailServicedata.csproj", "{8234A268-809E-4A15-A874-0D8D6E9F0CFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,22 +58,22 @@ Global
 		{273AA0BD-A4B9-45CF-86E6-898B6F7F4B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{273AA0BD-A4B9-45CF-86E6-898B6F7F4B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{273AA0BD-A4B9-45CF-86E6-898B6F7F4B80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8608255E-6E17-44FE-AA27-20431844F43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8608255E-6E17-44FE-AA27-20431844F43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8608255E-6E17-44FE-AA27-20431844F43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8608255E-6E17-44FE-AA27-20431844F43C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{695CDAA1-885B-48EA-B42C-E4B74620FE00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{695CDAA1-885B-48EA-B42C-E4B74620FE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{695CDAA1-885B-48EA-B42C-E4B74620FE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{695CDAA1-885B-48EA-B42C-E4B74620FE00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{995F9E30-E6AB-4A17-B5E0-8046F1EC8575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{995F9E30-E6AB-4A17-B5E0-8046F1EC8575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{995F9E30-E6AB-4A17-B5E0-8046F1EC8575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{995F9E30-E6AB-4A17-B5E0-8046F1EC8575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{324263EC-DD31-4D66-8179-1BB45BB6AAD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{324263EC-DD31-4D66-8179-1BB45BB6AAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{324263EC-DD31-4D66-8179-1BB45BB6AAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{324263EC-DD31-4D66-8179-1BB45BB6AAD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8234A268-809E-4A15-A874-0D8D6E9F0CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8234A268-809E-4A15-A874-0D8D6E9F0CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8234A268-809E-4A15-A874-0D8D6E9F0CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8234A268-809E-4A15-A874-0D8D6E9F0CFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BDECA744-485E-4FBF-BDBC-D58635179F45} = {8C6025CF-0F63-49CE-8FBE-8275AFC0AD14}
