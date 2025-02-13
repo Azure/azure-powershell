@@ -1,64 +1,71 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitor
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitormarketplacesaasresourcedetail
 schema: 2.0.0
 ---
 
-# Remove-AzDynatraceMonitor
+# Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail
 
 ## SYNOPSIS
-Delete a MonitorResource
+Get Marketplace SaaS resource details of a tenant under a specific subscription
 
 ## SYNTAX
 
-### Delete (Default)
+### GetExpanded (Default)
 ```
-Remove-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -TenantId <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Get
 ```
-Remove-AzDynatraceMonitor -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -Request <IMarketplaceSaaSResourceDetailsRequest>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -InputObject <IDynatraceObservabilityIdentity>
+ -Request <IMarketplaceSaaSResourceDetailsRequest> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -InputObject <IDynatraceObservabilityIdentity>
+ -TenantId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a MonitorResource
+Get Marketplace SaaS resource details of a tenant under a specific subscription
 
 ## EXAMPLES
 
-### Example 1: Remove a dynatrace monitor
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02
+{{ Add code here }}
 ```
 
-This command removes a dynatrace monitor.
-
-### Example 2: Remove a dynatrace monitor by pipeline
-```powershell
-Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 | Remove-AzDynatraceMonitor
+```output
+{{ Add output here }}
 ```
 
-This command removes a dynatrace monitor by pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -82,43 +89,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: MonitorName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -137,19 +114,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Request
+Request for getting Marketplace SaaS resource details for a tenant Id
+To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMarketplaceSaaSResourceDetailsRequest
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -157,13 +134,28 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TenantId
+Tenant Id
+
+```yaml
+Type: System.String
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -204,11 +196,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMarketplaceSaaSResourceDetailsRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMarketplaceSaaSResourceDetailsResponse
 
 ## NOTES
 

@@ -1,34 +1,55 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorlinkableenv
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitormetricstatus
 schema: 2.0.0
 ---
 
-# Get-AzDynatraceMonitorLinkableEnv
+# Get-AzDynatraceMonitorMetricStatus
 
 ## SYNOPSIS
-Gets all the Dynatrace environments that a user can link a azure resource to
+Get metric status
 
 ## SYNTAX
 
+### Get (Default)
 ```
-Get-AzDynatraceMonitorLinkableEnv -Name <String> -ResourceGroupName <String> -Region <String>
- -TenantId <String> -UserPrincipal <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDynatraceMonitorMetricStatus -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDynatraceMonitorMetricStatus -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets all the Dynatrace environments that a user can link a azure resource to
+Get metric status
 
 ## EXAMPLES
 
-### Example 1: Gets all the Dynatrace environments that a user can link a azure resource
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzDynatraceMonitorLinkableEnv -ResourceGroupName dyobrg -Name dyob-pwsh01 -Region 'East US' -UserPrincipal 'user@microsoft.com' -TenantId 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxx'
+{{ Add code here }}
 ```
 
-This command gets all the Dynatrace environments that a user can link a azure resource.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -48,27 +69,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Monitor resource name
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Region
-Azure region in which we want to link the environment
+### -MonitorName
+Name of the Monitor resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -84,7 +106,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -99,7 +121,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -109,30 +131,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TenantId
-Tenant Id of the user in which they want to link the environment
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserPrincipal
-user principal id of the user
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: wi
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,9 +167,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.ILinkableEnvironmentResponse
+### System.String
 
 ## NOTES
 
