@@ -553,9 +553,9 @@ function Test-RaGetByScope
 
 <#
 .SYNOPSIS
-Tests verifies get of RoleAssignment by AtScope
+Tests verifies get of RoleAssignment With AtScope
 #>
-function Test-RaGetByAtScope
+function Test-RaGetWithAtScope
 {
     # Setup
     $subscription = $(Get-AzContext).Subscription
