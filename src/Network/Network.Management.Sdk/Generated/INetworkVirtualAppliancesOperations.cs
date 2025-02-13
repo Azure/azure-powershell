@@ -199,9 +199,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance.
         /// </param>
-        /// <param name='instanceId'>
-        /// Specifies a virtual machine instance ID from the Network Virtual Appliance
-        /// VM instances.
+        /// <param name='request'>
+        /// Parameters supplied to retrieve boot diagnostic logs for a NVA VM instance
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -215,7 +214,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> GetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters instanceId = default(NetworkVirtualApplianceBootDiagnosticParameters), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> GetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all Network Virtual Appliances in a resource group.
@@ -388,9 +387,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance.
         /// </param>
-        /// <param name='instanceId'>
-        /// Specifies a virtual machine instance ID from the Network Virtual Appliance
-        /// VM instances.
+        /// <param name='request'>
+        /// Parameters supplied to retrieve boot diagnostic logs for a NVA VM instance
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -404,7 +402,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> BeginGetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters instanceId = default(NetworkVirtualApplianceBootDiagnosticParameters), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> BeginGetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all Network Virtual Appliances in a resource group.
