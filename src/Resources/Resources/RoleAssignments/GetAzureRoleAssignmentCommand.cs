@@ -179,15 +179,15 @@ namespace Microsoft.Azure.Commands.Resources
         public string Scope { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Scope,
-            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
-            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
-            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
-            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
-            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
         [ValidateNotNullOrEmpty]
         [ScopeCompleter]
         public SwitchParameter AtScope { get; set; }
