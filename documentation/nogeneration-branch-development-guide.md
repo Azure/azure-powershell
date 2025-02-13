@@ -10,14 +10,16 @@ git checkout -b {module-name}/{branch-name} Azure/main
 ```
 
 ## Folder structure
-Modules under /src should look like
+Generally speaking modules under /src should look like
 ````
 - ModuleRootName
   - ParentModule
-  - SubModule.Autorest
+  - SubModule1.Autorest
+  - SubModule2.Autorest
+    ...
   - ModuleRoot.sln
 ````
-The directory you will work on is `SubModule.Autorest`
+The directory you will work on is `src/ModuleRootName/SubModule.Autorest`
 
 ## Code Changes
 You might have noticed that files under `SubModule.Autorest` are almost identical as they used to be in generation branch. Code changes are also identical as what you used to do in generation branch.
@@ -25,7 +27,7 @@ You might have noticed that files under `SubModule.Autorest` are almost identica
 **Note: Please include release notes along with your code changes in `/src/ModuleRootName/ParentModule/Changelog.md`**
 
 ## Commit and Pull Request
-**Note: Please double check file `generate-info.json` under `SubModule.Autorest` was updated each time `build-module.ps1` was executed, please be sure to include this change in your PR, PR validation will fail otherwise**
+**Note: Please double check file `generate-info.json` under `SubModule.Autorest` was updated each time `build-module.ps1` was executed, please be sure to include this change in your PR, PR validation won't pass otherwise**
 
 **Note: Besides changes under `SubModule.Autorest`, there are something more under `ParentModule` and possibly `ModuleRoot.sln`.**
 
@@ -50,11 +52,18 @@ Besides, if the module is completely new, these below item will also be created
 /src/ModuleRootName/ParentModule/ParentModule.csproj
 /src/ModuleRootName/ParentModule/Properties/AssemblyInfo.cs
 ```
-Please be sure to use `git add` to commit these changes in your pull request.
+Please be sure to commit these changes in your pull request.
+```
+cd ${azure-powershell}/src/ModuleRootName
+git add .
+git commit -m "$commitMessage"
+git push origin head
+```
 
 ## Test the entire module
 This used to be impossible on generation branch when you working on submodule part of a hybrid module. Now you can do
 ```
+cd ${azure-powershell}
 ./tools/BuildScripts/BuildModules.ps1 -TargetModule ${ModuleRootName}
 Import-Module /artifacts/Debug/Az.${ModuleRootName}/Az.${ModuleRootName}.psd1
 ```
