@@ -178,6 +178,20 @@ namespace Microsoft.Azure.Commands.Resources
         [ScopeCompleter]
         public string Scope { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Scope,
+            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
+            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+        [ValidateNotNullOrEmpty]
+        [ScopeCompleter]
+        public SwitchParameter AtScope { get; set; }
+
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.")]
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SignInName,
@@ -245,6 +259,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.DefaultContext.Subscription?.Id?.ToString()
                 },
+                AtScope = AtScope.IsPresent,
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
             };
