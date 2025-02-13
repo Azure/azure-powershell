@@ -37,13 +37,9 @@ variables:
   TestCoverageLocation: $(Working_Directory)/artifacts
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
-  
 
 trigger:
   batch: true
-  branches:
-    include:
-      - future
 
 jobs:
 - job: Build

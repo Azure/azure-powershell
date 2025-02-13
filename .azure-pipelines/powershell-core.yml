@@ -27,7 +27,9 @@ trigger: none
 pr:
   branches:
     include:
-      - future
+      - '*'
+    exclude:
+      - Azs-tzl
 
 jobs:
 - job: Build
