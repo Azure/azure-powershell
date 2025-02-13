@@ -18,29 +18,5 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for CI policy signing for OS versions older than Nickel.
-* Rebrand `Az.Codesigning` module to `Az.TrustedSigning`
-* Rename the `Get-AzCodeSigningCustomerEku` cmdlet to `Get-AzTrustedSigningCertificateProfileEku`
-* Rename the `Get-AzCodeSigningRootCert` cmdlet to `Get-AzTrustedSigningCertificateProfileCertificateRoot`
-* Rename the `Get-AzCodeSigningCertChain` cmdlet to `Get-AzTrustedSigningCertificateProfileCertificateChain`
-* Rename the `Invoke-AzCodeSigningCIPolicySigning` cmdlet to `Invoke-AzTrustedSigningCodeIntegrityPolicySigning`
-
-## Version 0.2.1
-* Upgraded nuget package to signed package.
-* Upgraded Azure.Core to 1.44.1.
-* Upgraded to rebranded package Azure.Developer.TrustedSigning.CryptoProvider.
-* Upgraded to updated Azure.Codesigning.Sdk.
-
-## Version 0.2.0
-* Added `Get-AzCodeSigningCertChain` cmdlet to retrieve the certificate chain for a certificate profile.
-* Added System.Formats.Asn1 dependency to the module to address a security vulnerability.
-
-## Version 0.1.2
-* Updated signed 3rd party assembly Polly.dll to PSGallery
-
-## Version 0.1.1
-* Upgraded Azure.Core to 1.37.0.
-
-## Version 0.1.0
-* First preview release for module Az.CodeSigning
+* Renamed from `Az.Codesigning` 0.2.1
 
