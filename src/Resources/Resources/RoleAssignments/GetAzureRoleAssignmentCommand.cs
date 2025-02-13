@@ -188,8 +188,6 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
-        [ValidateNotNullOrEmpty]
-        [ScopeCompleter]
         public SwitchParameter AtScope { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId,
