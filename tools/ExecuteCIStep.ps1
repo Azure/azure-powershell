@@ -24,7 +24,10 @@ Param(
     $BuildAction='build',
 
     [String]
-    $PullRequestNumber,
+    $TriggerType,
+
+    [String]
+    $Trigger,
 
     [String]
     $GenerateDocumentationFile,
@@ -157,20 +160,9 @@ $ErrorActionPreference = 'Stop'
 
 If ($Build)
 {
-    $LogFile = "$RepoArtifacts/Build.Log"
-    $buildCmdResult = "dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
-    If ($GenerateDocumentationFile -eq "false")
-    {
-        $buildCmdResult += " -p:GenerateDocumentationFile=false"
-    }
-    if ($EnableTestCoverage -eq "true")
-    {
-        $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
-    }
-    Invoke-Expression -Command $buildCmdResult
-
     If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
+        $LogFile = Join-Path $RepoArtifacts Build.log
         $LogContent = Get-Content $LogFile
         $BuildResultArray = @()
         ForEach ($Line In $LogContent)
@@ -283,8 +275,8 @@ If ($Build)
             }
             $Template.$DependencyStep.Details += $Detail
         }
-        If ($PSBoundParameters.ContainsKey("PullRequestNumber")) {
-            $Template | Add-Member -NotePropertyName pull_request_number -NotePropertyValue $PullRequestNumber
+        If ($PSBoundParameters.ContainsKey("TriggerType") && $PSBoundParameters.ContainsKey("Trigger")) {
+            $Template | Add-Member -NotePropertyName "$TriggerType triggered" -NotePropertyValue $Trigger
         }
 
         ConvertTo-Json -Depth 10 -InputObject $Template | Out-File -FilePath "$RepoArtifacts/PipelineResult/PipelineResult.json"
@@ -337,13 +329,14 @@ If ($TestAutorest)
 
 If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey("TargetModule"))))
 {
-    dotnet test $RepoArtifacts/Azure.PowerShell.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
+    dotnet build $RepoArtifacts/Azure.PowerShell.Test.sln --configuration $Configuration
+    dotnet test $RepoArtifacts/Azure.PowerShell.Test.sln --no-build --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
 
     $TestResultFiles = Get-ChildItem "$RepoArtifacts/TestResults/" -Filter *.trx
     $FailedTestCases = @{}
     Foreach ($TestResultFile in $TestResultFiles)
     {
-        $Content = Get-Content -Path $TestResultFile
+        $Content = ($TestResultFile | Get-Content)
         $XmlDocument = New-Object System.Xml.XmlDocument
         $XmlDocument.LoadXml($Content)
         $FailedTestIdList = $XmlDocument.TestRun.Results.UnitTestResult | Where-Object { $_.outcome -eq "Failed" } | ForEach-Object { $_.testId }

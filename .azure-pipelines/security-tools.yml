@@ -19,35 +19,62 @@ jobs:
   steps:
   - checkout: self
     fetchTags: false
-  - template: util/get-pr-changed-files.yml
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+  - task: NodeTool@0
+    displayName: Install Autorest
+    inputs:
+      versionSpec: '14.17.1'
+      command: custom
+      verbose: false
+      customCommand: install autorest@latest
+  - task: PowerShell@2
+    displayName: Setup environment for Autorest
+    inputs:
+      targetType: inline
+      script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Build'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        if ("Manual" -eq "$(Build.Reason)") {
+          #TODO: change value of $trigger to the account who trigger this run
+          $trigger = 'Manual'
+        } elseif ("Schedule" -eq "$(Build.Reason)") { 
+          #TODO: change value of $trigger to datetime this run was scheduled
+          $trigger = 'Schedule'
+        } else {
+          $trigger = "$(System.PullRequest.PullRequestNumber)"
+        }
+
+        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+        New-Item -Type File -Path $filesChangedOutputPath -Force
+
+        Write-Host "`n##[group]Filter changed files"
+        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+        Import-Module $filesChangedScriptPath
+        if ("PullRequest" -eq "$(Build.Reason)") {
+          Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
+        } else {
+          Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+        }
+        
+        Write-Host "`n##[group]build steps"
+        $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
+        & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "Debug" -FilesChangedOutputPath $filesChangedOutputPath -IsSecurityCheck $true -BuildReason $(Build.Reason) -Trigger $trigger
+
   - task: PowerShell@2
     displayName: Install platyPS
     inputs:
       targetType: inline
       script: Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser
       pwsh: true
-  - task: NodeTool@0
-    displayName: Install Node 14.17.1
-    condition: eq(variables.IsGenerateBased, true)
-    inputs:
-      versionSpec: 14.17.1
-  
-  - task: PowerShell@2
-    displayName: Install autorest
-    condition: eq(variables.IsGenerateBased, true)
-    inputs:
-      targetType: inline
-      script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
-  - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x for build'
-    inputs:
-      packageType: sdk
-      version: 6.0.x
-  - task: PowerShell@2
-    displayName: Build
-    inputs:
-      targetType: inline
-      script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 8.x for CredScan tools'
     inputs:
