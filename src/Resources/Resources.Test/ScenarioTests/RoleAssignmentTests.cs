@@ -137,14 +137,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaGetByScope()
         {
-            TestRunner.RunTestScript("Test-RaGetWithAtScope");
+            TestRunner.RunTestScript("Test-RaGetByScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaGetByAtScope()
+        public void RaGetWithAtScope()
         {
-            TestRunner.RunTestScript("Test-RaGetByAtScope");
+            TestRunner.RunTestScript("Test-RaGetWithAtScope");
         }
 
         [Fact]
