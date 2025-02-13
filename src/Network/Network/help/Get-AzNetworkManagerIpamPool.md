@@ -60,6 +60,7 @@ PropertiesText     : {
 Name               : testPool
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
+Etag               : "00000000-0000-0000-0000-000000000000"
 Type               : Microsoft.Network/networkManagers/ipamPools
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
@@ -103,6 +104,7 @@ PropertiesText     : {
 Name               : cusPool
 ResourceGroupName  : testRG
 NetworkManagerName : cusNM
+Etag               : "00000000-0000-0000-0000-000000000000"
 Type               : Microsoft.Network/networkManagers/ipamPools
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
@@ -134,6 +136,7 @@ PropertiesText     : {
 Name               : sm_cus_pool1_0911
 ResourceGroupName  : testRG
 NetworkManagerName : cusNM
+Etag               : "00000000-0000-0000-0000-000000000000"
 Type               : Microsoft.Network/networkManagers/ipamPools
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
