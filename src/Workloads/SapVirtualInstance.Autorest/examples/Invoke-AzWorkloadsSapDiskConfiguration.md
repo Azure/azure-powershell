@@ -31,4 +31,3 @@ Values               : {{
 
 This command will help you understand the default disk configuration that will b deployed for the SAP system for a selected deployment type. You can customize this when you are deploying your SAP system from Azure Center for SAP solutions 
 
-

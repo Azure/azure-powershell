@@ -16,4 +16,3 @@ True                 False               Standard_D48ds_v5
 
 This command helps you understand the list of SAP certified Azure SKUs supported for the SAP deployment type you want to deploy and for the region in which you want to deploy the SAP system with Azure Center for SAP solutions
 
-
