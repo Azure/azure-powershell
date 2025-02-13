@@ -562,7 +562,7 @@ function Test-RaGetByAtScope
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 9 -Wait
     $scope1 = '/subscriptions/'+ $subscription[0].Id
     $scope2 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
-    # Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    
     $ras_scope_list = @()
     $ras_atscope_list = @()
     

@@ -259,9 +259,9 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.DefaultContext.Subscription?.Id?.ToString()
                 },
-                AtScope = AtScope.IsPresent,
-                ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
-                IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
+                AtScope = AtScope,
+                ExpandPrincipalGroups = ExpandPrincipalGroups,
+                IncludeClassicAdministrators = IncludeClassicAdministrators,
             };
 
             if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
