@@ -51,6 +51,9 @@ use-extension:
 directive:
   # Fix URL type in autorest v3
   - from: swagger-document
+    where: $.definitions.KubernetesProperties.properties.serviceBusConnectionString
+    transform: $["format"] = "password"
+  - from: swagger-document
     where: $.definitions.WorkspaceConnectionOAuth2.properties.authUrl
     transform: >-
       return {
