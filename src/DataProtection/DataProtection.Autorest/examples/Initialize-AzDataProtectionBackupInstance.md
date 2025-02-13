@@ -53,3 +53,22 @@ Name BackupInstanceName
 
 The first command gets the backup vault. The second command get the AzureDatabaseForPGFlexServer policy.
 The third command datasource ARM Id. The fourth command initializes the backup instance. Similarly use datasourcetype AzureDatabaseForMySQL to initialize backup instance for AzureDatabaseForMySQL.
+
+### Example 4: Initialize Backup instance object for Azure Blob Storage
+```powershell
+$storageAccountId = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"
+$vault = Get-AzDataProtectionBackupVault -ResourceGroupName $resourceGroupName -VaultName $vaultName 
+$blobPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vault.Name -Name $policyName
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -IncludeAllContainer -StorageAccountResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+$backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureBlob -DatasourceLocation $vault.Location -PolicyId $blobPolicy.Id -DatasourceId $storageAccountId -BackupConfiguration $backupConfig
+$backupInstance
+```
+
+```output
+Name BackupInstanceName
+---- ------------------
+     blobbackuptest-blobbackuptest-ed68435e-069t-4b4a-9d84-d0c194800fc2
+```
+
+The first command specifies the Blob storage account id. The second command gets the backup vault. The third command gets a Blob policy within the vault.
+The fourth command initializes the backup configuration. The fifth command initializes the backup instance.
