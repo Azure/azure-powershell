@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppConnectedEnvStorage
 
 ## SYNOPSIS
-Update storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 
 ## SYNTAX
 
@@ -16,75 +16,51 @@ Update storage for a connectedEnvironment.
 ```
 Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
+ [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityConnectedEnvironmentExpanded
 ```
 Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
- [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>]
+ [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
+ [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: Create storage for a connectedEnvironment.
+### Example 1: {{ Add title here }}
 ```powershell
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
-
-Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+{{ Add code here }}
 ```
 
 ```output
-Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
-----       ------------------- -------------------- ------------------ -----------------
-azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create storage for a connectedEnvironment.
+{{ Add description here }}
 
-### Example 2: Create storage for a connectedEnvironment.
+### Example 2: {{ Add title here }}
 ```powershell
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
-$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
-
-Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject $connectedenv -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+{{ Add code here }}
 ```
 
 ```output
-Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
-----       ------------------- -------------------- ------------------ -----------------
-azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create storage for a connectedEnvironment.
-
-### Example 3: Create storage for a connectedEnvironment.
-```powershell
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
-$connectedenvstorage = Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azpstestsa
-
-Update-AzContainerAppConnectedEnvStorage -InputObject $connectedenvstorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
-```
-
-```output
-Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
-----       ------------------- -------------------- ------------------ -----------------
-azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
-```
-
-Create storage for a connectedEnvironment.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -108,6 +84,21 @@ Storage account key for azure file.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFileAccountKeySecure
+Storage account key for azure file.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 

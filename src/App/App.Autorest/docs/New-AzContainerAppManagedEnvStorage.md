@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ## SYNTAX
 
@@ -16,22 +16,23 @@ Create storage for a managedEnvironment.
 ```
 New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
- [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
+ [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityManagedEnvironmentExpanded
 ```
 New-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
- [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>]
+ [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -49,25 +50,31 @@ New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: Create or update storage for a managedEnvironment.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzStorageAccount -ResourceGroupName azps_test_group_app -AccountName azpstestsa -Location eastus -SkuName Standard_GRS
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
-
-New-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+{{ Add code here }}
 ```
 
 ```output
-Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
-----       ------------------- -------------------- ------------------ -----------------
-azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create or update storage for a managedEnvironment.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -91,6 +98,21 @@ Storage account key for azure file.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityManagedEnvironmentExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFileAccountKeySecure
+Storage account key for azure file.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 

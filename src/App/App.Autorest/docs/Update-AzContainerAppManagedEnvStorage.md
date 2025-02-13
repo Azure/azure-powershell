@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ## SYNTAX
 
@@ -16,75 +16,51 @@ Update storage for a managedEnvironment.
 ```
 Update-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
- [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
+ [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityManagedEnvironmentExpanded
 ```
 Update-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
- [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>]
+ [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: Update a managed environment storage.
+### Example 1: {{ Add title here }}
 ```powershell
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
-
-Update-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+{{ Add code here }}
 ```
 
 ```output
-Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
-----       ------------------- -------------------- ------------------ -----------------
-azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update a managed environment storage.
+{{ Add description here }}
 
-### Example 2: Update a managed environment storage.
+### Example 2: {{ Add title here }}
 ```powershell
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
-$managedenvstorage = Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
-
-Update-AzContainerAppManagedEnvStorage -InputObject $managedenvstorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+{{ Add code here }}
 ```
 
 ```output
-Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
-----       ------------------- -------------------- ------------------ -----------------
-azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update a managed environment storage.
-
-### Example 3: Update a managed environment storage.
-```powershell
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
-$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
-
-Update-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject $managedenv -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
-```
-
-```output
-Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
-----       ------------------- -------------------- ------------------ -----------------
-azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
-```
-
-Update a managed environment storage.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -108,6 +84,21 @@ Storage account key for azure file.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFileAccountKeySecure
+Storage account key for azure file.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
