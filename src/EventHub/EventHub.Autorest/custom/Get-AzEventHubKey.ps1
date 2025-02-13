@@ -20,6 +20,7 @@ Gets an EventHub SAS key
 #>
 
 function Get-AzEventHubKey{
+	[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAccessKeys", "14.0.0", "6.0.0", "2025/05/30", DeprecatedOutputProperties = ("primaryKey"), NewOutputProperties = ("primaryKeySecure"))]
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAccessKeys])]
     [CmdletBinding(DefaultParameterSetName = 'GetExpandedNamespace', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
