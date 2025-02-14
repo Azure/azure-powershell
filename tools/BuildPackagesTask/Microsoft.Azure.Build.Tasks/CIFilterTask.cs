@@ -32,15 +32,15 @@ namespace Microsoft.WindowsAzure.Build.Tasks
     public class CIFilterTask : Task
     {
         /// <summary>
-        /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
+        /// Gets or set the Output File Path
         /// </summary>
         [Required]
-        public string FilesChangedFile { get; set; }
+        public string FilesChangedPath { get; set; }
 
         /// <summary>
-        /// Changed File List
+        /// Gets or sets the files changed in a given pull request.
         /// </summary>
-        private string[] FilesChanged { get; set; }
+        public string[] FilesChanged { get; set; }
 
         /// <summary>
         /// Gets or set the Mode, e.g. Release
@@ -62,6 +62,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         [Output]
         public string SubTasks { get; set; }
+
+        public string BuildCsprojListFile { get; set; }
+
+        public string TestCsprojListFile { get; set; }
+
+        public string SubTasksFilePath { get; set; }
 
         private const string TaskMappingConfigName = ".ci-config.json";
 
@@ -107,7 +113,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
             else
             {
-                string expectKey = string.Format("src/{0}/", moduleName);
+                string expectKey = moduleName;
                 foreach (string key in csprojMap.Keys)
                 {
                     if (key.ToLower().Equals(expectKey.ToLower()))
@@ -128,9 +134,24 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private string GetModuleNameFromCsprojPath(string csprojPath)
         {
-            return csprojPath.Replace('/', '\\')
+            string result = null;
+            if (csprojPath.Contains("src")) 
+            {
+                result =  csprojPath.Replace('/', '\\')
                 .Split(new string[] { "src\\" }, StringSplitOptions.None)[1]
                 .Split('\\')[0];
+            }
+            else if (csprojPath.Contains("generated")) 
+            {
+                result =  csprojPath.Replace('/', '\\')
+                .Split(new string[] { "generated\\" }, StringSplitOptions.None)[1]
+                .Split('\\')[0];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Invalid csproj: {}", csprojPath));
+            }
+            return result;
         }
 
         private List<string> GetDependenceModuleList(string moduleName, Dictionary<string, string[]> csprojMap)
@@ -153,7 +174,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 }
                 if (isDependent)
                 {
-                    moduleList.Add(key.Split('/')[1]);
+                    moduleList.Add(key);
                 }
             }
 
@@ -359,7 +380,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private bool ProcessFileChanged(Dictionary<string, string[]> csprojMap)
         {
-
             CIPhaseFilterConfig config = GetCIPhaseFilterConfig();
             List<(Regex, List<string>)> ruleList = config.Rules.Select(rule => (new Regex(string.Join("|", rule.Patterns.Select(ProcessSinglePattern).ToList())), rule.Phases)).ToList();
 
@@ -391,27 +411,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
 
-            BuildCsprojList = influencedModuleInfo[BUILD_PHASE].ToArray();
-            TestCsprojList = influencedModuleInfo[TEST_PHASE].ToArray();
-            if (influencedModuleInfo.ContainsKey(SUB_TASK_PHASE))
+            if (null != SubTasksFilePath && 0 != SubTasksFilePath.Length && influencedModuleInfo.ContainsKey(SUB_TASK_PHASE))
             {
                 SubTasks = string.Join("; ", influencedModuleInfo[SUB_TASK_PHASE].ToArray());
+                File.WriteAllLines(SubTasksFilePath, influencedModuleInfo[SUB_TASK_PHASE].ToArray());
             }
 
             return true;
-        }
-
-        private string GetModuleNameFromPath(string path)
-        {
-            if (path.IndexOf(".csproj") == -1)
-            {
-                return path;
-            }
-            if (path.IndexOf("src") == -1)
-            {
-                return null;
-            }
-            return path.Replace("\\", "/").Split("src/")[1].Split('/')[0];
         }
 
         /// <summary>
@@ -419,7 +425,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// based on file changes from a specified Pull Request.
         /// The output it produces is said list.
         /// </summary>
-        /// <returns> Returns a value indicating wheter the success status of the task. </returns>
+        /// <returns> Returns a value indicating whether the success status of the task. </returns>
         public override bool Execute()
         {
             BuildCsprojList = new string[0];
@@ -427,7 +433,18 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             SubTasks = "";
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
-            FilesChanged = File.ReadAllLines(FilesChangedFile);
+            if (!String.IsNullOrEmpty(FilesChangedPath)) 
+            {
+                try
+                {
+                    FilesChanged = File.ReadAllLines(FilesChangedPath);
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException(e.Message);
+                }
+            }
+
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
             if (FilesChanged != null)
             {

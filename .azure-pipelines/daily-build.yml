@@ -46,12 +46,14 @@ jobs:
                     Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
                     Exit"
         dotnet tool run pwsh -c $command
-  - task: DotNetCoreCLI@2
+  - task: PowerShell@2
     displayName: 'Build for Bumping Version'
     inputs:
-      command: custom
-      custom: msbuild
-      arguments: 'build.proj /t:"Build" /p:"Configuration=Release;TurnOnTestCoverage=true"'
+      targetType: inline
+      pwsh: true
+      script: |
+        $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+        & $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration Release -EnableTestCoverage -InvokedByPipeline
 
   - task: PowerShell@2
     displayName: 'Bump Version'
@@ -71,12 +73,14 @@ jobs:
       script: |
         Remove-Item -Force -Recurse -Path artifacts
 
-  - task: DotNetCoreCLI@2
+  - task: PowerShell@2
     displayName: 'Build after Version Bump up'
     inputs:
-      command: custom
-      custom: msbuild
-      arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true;ModifiedModuleBuild=true'
+      targetType: inline
+      pwsh: true
+      script: |
+        $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+        & $buildScript -ModifiedModule -RepoRoot "$(Build.SourcesDirectory)" -Configuration Release -EnableTestCoverage -InvokedByPipeline
 
   - task: EsrpCodeSigning@5
     displayName: "Sign Dll [Authenticode + Strong Name]"
