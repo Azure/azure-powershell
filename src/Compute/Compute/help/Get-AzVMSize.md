@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzVMSize
 
 ## SYNOPSIS
-Gets available virtual machine sizes.
+Deprecated. Use [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) instead. Gets available virtual machine sizes.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Get-AzVMSize [-ResourceGroupName] <String> [-VMName] <String> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-The **Get-AzVMSize** cmdlet gets available virtual machine sizes.
+Deprecated. Use [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) instead. The **Get-AzVMSize** cmdlet gets available virtual machine sizes.
 
 ## EXAMPLES
 
