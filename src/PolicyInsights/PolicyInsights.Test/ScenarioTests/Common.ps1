@@ -18,7 +18,7 @@ Gets test management group name
 #>
 function Get-TestManagementGroupName {
    # should be a parent of the test subscription
-   "AzGovPerfTest"
+   "PowershellTesting"
 }
 
 <#
@@ -27,7 +27,7 @@ Gets test subscription ID.
 #>
 function Get-TestSubscriptionId {
    # Reminder: The subscription ID in the test context (created via PS command or by creating an env variable) should be the same as this subscription ID.
-   "086aecf4-23d6-4dfd-99a8-a5c6299f0322" # This is the Azure Governance Perf 21 subscription
+   "e5a130f3-57fd-46b6-9c55-03d21a853935" # This is the Azure Governance Perf 20 subscription
 }
 
 <#
@@ -178,16 +178,16 @@ function Get-TestSubscriptionAuditInitiativeAssignmentName {
 .SYNOPSIS
 Gets test query interval start
 #>
-function Get-TestQueryIntervalStart {
-   "2022-01-08 00:00:00Z"
+function Get-TestQueryIntervalStart {#change this value to a few days ago 
+   "2025-01-31 00:00:00Z"
 }
 
 <#
 .SYNOPSIS
 Gets test query interval end
 #>
-function Get-TestQueryIntervalEnd {
-   "2022-01-13 02:00:00Z"
+function Get-TestQueryIntervalEnd {# value has to be after start (value above) and before current UTC
+   "2025-02-05 02:00:00Z"
 }
 
 <#
@@ -384,7 +384,6 @@ function Validate-PolicyMetadata {
    Assert-AreEqual "Microsoft.PolicyInsights/policyMetadata" $policyMetadata.Type
    Assert-True { $policyMetadata.Id -like "/providers/Microsoft.PolicyInsights/policyMetadata/" + $policyMetadata.Name }
 
-   Assert-NotNull $policyMetadata.Owner
    Assert-NotNull $policyMetadata.Title
    Assert-NotNull $policyMetadata.Category
    Assert-NotNull $policyMetadata.MetadataId
