@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppConnectedEnvStorage
 
 ## SYNOPSIS
-Update storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 
 ## SYNTAX
 
@@ -16,26 +16,26 @@ Update storage for a connectedEnvironment.
 ```
 Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityConnectedEnvironmentExpanded
 ```
 Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 
 ## EXAMPLES
 
@@ -103,11 +103,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureFileAccountKey
+### -AzureFileAccountKeySecure
 Storage account key for azure file.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 

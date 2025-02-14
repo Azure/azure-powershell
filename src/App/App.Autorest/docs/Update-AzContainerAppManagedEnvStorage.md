@@ -8,14 +8,14 @@ schema: 2.0.0
 # Update-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
+ [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKeySecure <SecureString>]
  [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -23,19 +23,19 @@ Update-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -Resourc
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityManagedEnvironmentExpanded
 ```
 Update-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ## EXAMPLES
 
@@ -103,11 +103,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureFileAccountKey
+### -AzureFileAccountKeySecure
 Storage account key for azure file.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
