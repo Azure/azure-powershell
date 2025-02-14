@@ -78,7 +78,7 @@ git pull origin main --depth=1
 Copy-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts" -Force -Recurse
 Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
 Copy-Item -Path "$TmpFolder\tools\Common*.targets" -Destination "$PSScriptRoot\..\tools" -Force
-Install-Module Az.Accounts -Repository PSGallery -Force
+Install-Module Az.Accounts -Repository PSGallery -Force -AllowClobber
 Import-Module Az.Accounts
 Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 
