@@ -34,7 +34,7 @@ New-AzContainerAppIdentityProviderObject [-AllowedPrincipalGroup <String[]>]
  [-RegistrationClientSecretCertificateSubjectAlternativeName <String>]
  [-RegistrationClientSecretCertificateThumbprint <String>] [-RegistrationConsumerKey <String>]
  [-RegistrationConsumerSecretSettingName <String>] [-RegistrationOpenIdIssuer <String>]
- [-TwitterEnabled <Boolean>] [<CommonParameters>]
+ [-TwitterEnabled <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -532,6 +532,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RegistrationAppId
 The App ID of the app used for login.
 
@@ -652,7 +667,7 @@ Accept wildcard characters: False
 ### -RegistrationOpenIdIssuer
 The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
         When using Azure Active Directory, this value is the URI of the directory tenant, e.g.
-`https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
+https://login.microsoftonline.com/v2.0/{tenant-guid}/.
         This URI is a case-sensitive identifier for the token issuer.
         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html.
 

@@ -15,7 +15,7 @@ Get a replica for a Container App Revision.
 ### List (Default)
 ```
 Get-AzContainerAppRevisionReplica -ContainerAppName <String> -ResourceGroupName <String> -RevisionName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,25 +23,25 @@ Get-AzContainerAppRevisionReplica -ContainerAppName <String> -ResourceGroupName 
 ```
 Get-AzContainerAppRevisionReplica -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  -RevisionName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityRevision
 ```
 Get-AzContainerAppRevisionReplica -Name <String> -RevisionInputObject <IAppIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityContainerApp
 ```
 Get-AzContainerAppRevisionReplica -Name <String> -RevisionName <String> -ContainerAppInputObject <IAppIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzContainerAppRevisionReplica -InputObject <IAppIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,6 +177,21 @@ Parameter Sets: Get, GetViaIdentityRevision, GetViaIdentityContainerApp
 Aliases: ReplicaName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
