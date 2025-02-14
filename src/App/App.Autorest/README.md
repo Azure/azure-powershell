@@ -1,6 +1,7 @@
 <!-- region Generated -->
 # Az.App
 This directory contains the PowerShell module for the App service.
+Add a test line.
 
 ---
 ## Info
