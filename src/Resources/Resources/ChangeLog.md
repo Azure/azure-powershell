@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`. 
 
 ## Version 7.8.1
 * Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
