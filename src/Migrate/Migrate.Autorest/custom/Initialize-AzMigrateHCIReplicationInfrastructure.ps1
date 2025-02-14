@@ -23,6 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratehci
 #>
 
 function Initialize-AzMigrateHCIReplicationInfrastructure {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([System.Boolean], ParameterSetName = 'AzStackHCI')]
     [CmdletBinding(DefaultParameterSetName = 'AzStackHCI', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
@@ -269,7 +270,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # Get Source and Target Dras from Fabrics
         $sourceDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateDra" `
+            -CommandName "Az.Migrate.Internal\Get-AzMigrateFabricAgent" `
             -Parameters @{"FabricName" = $sourceFabric.Name; "ResourceGroupName" = $ResourceGroupName} `
             -ErrorMessage "No source Fabric Agent (DRA) found. Please verify your appliance setup."
 
@@ -277,7 +278,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         Write-Host "*Selected Source Dra: '$($sourceDra.Name)'"
 
         $targetDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateDra" `
+            -CommandName "Az.Migrate.Internal\Get-AzMigrateFabricAgent" `
             -Parameters @{"FabricName" = $targetFabric.Name; "ResourceGroupName" = $ResourceGroupName} `
             -ErrorMessage "No target Fabric Agent (DRA) found. Please verify your appliance setup."
 
@@ -405,12 +406,12 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             }
 
             # Setup Policy deployment parameters
-            $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.PolicyModelProperties]::new()
+            $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.PolicyModelProperties]::new()
             if ($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) {
-                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHcipolicyModelCustomProperties]::new()
+                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcipolicyModelCustomProperties]::new()
             }
             elseif ($instanceType -eq $AzStackHCIInstanceTypes.VMwareToAzStackHCI) {
-                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHcipolicyModelCustomProperties]::new()
+                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcipolicyModelCustomProperties]::new()
             }
             else {
                 throw "Instance type '$($instanceType)' is not supported. Currently, for AzStackHCI scenario, only HyperV and VMware as the source is supported."
@@ -447,7 +448,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                     -ErrorVariable notPresent `
                     -ErrorAction SilentlyContinue
                 if ($null -eq $policy) {
-                    throw "Unexpected error occurred during policy creation. Please re-run this command or contact support if help needed."
+                    continue
                 }
                 
                 # Stop if policy reaches a terminal state
@@ -712,6 +713,40 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             storageBlobDataContributorRoleDefId = [System.Guid]::parse($RoleDefinitionIds.StorageBlobDataContributorId);
             sourceAppAadId                      = $sourceDra.ResourceAccessIdentityObjectId;
             targetAppAadId                      = $targetDra.ResourceAccessIdentityObjectId;
+        }
+
+        # Grant vault Identity Aad access to Cache Storage Account
+        if (![string]::IsNullOrEmpty($replicationVault.IdentityPrincipalId))
+        {
+            $params.vaultIdentityAadId = $replicationVault.IdentityPrincipalId
+
+            # Grant vault Identity Aad access to Cache Storage Account as "Contributor"
+            $hasAadAppAccess = Get-AzRoleAssignment `
+                -ObjectId $params.vaultIdentityAadId `
+                -RoleDefinitionId $params.contributorRoleDefId `
+                -Scope $cacheStorageAccount.Id `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            if ($null -eq $hasAadAppAccess) {
+                New-AzRoleAssignment `
+                    -ObjectId $params.vaultIdentityAadId `
+                    -RoleDefinitionId $params.contributorRoleDefId `
+                    -Scope $cacheStorageAccount.Id | Out-Null
+            }
+    
+            # Grant vault Identity Aad access to Cache Storage Account as "StorageBlobDataContributor"
+            $hasAadAppAccess = Get-AzRoleAssignment `
+                -ObjectId $params.vaultIdentityAadId `
+                -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
+                -Scope $cacheStorageAccount.Id `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            if ($null -eq $hasAadAppAccess) {
+                New-AzRoleAssignment `
+                    -ObjectId $params.vaultIdentityAadId `
+                    -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
+                    -Scope $cacheStorageAccount.Id | Out-Null
+            }
         }
 
         # Grant Source Dra AAD App access to Cache Storage Account as "Contributor"
@@ -995,15 +1030,15 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             }
 
             # Setup Replication Extension deployment parameters
-            $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ReplicationExtensionModelProperties]::new()
+            $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ReplicationExtensionModelProperties]::new()
         
             if ($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) {
-                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
+                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.HyperVFabricArmId = $params.SourceFabricArmId
                 
             }
             elseif ($instanceType -eq $AzStackHCIInstanceTypes.VMwareToAzStackHCI) {
-                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
+                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.VMwareFabricArmId = $params.SourceFabricArmId
             }
             else {
@@ -1040,8 +1075,9 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                     -SubscriptionId $SubscriptionId `
                     -ErrorVariable notPresent `
                     -ErrorAction SilentlyContinue
+
                 if ($null -eq $replicationExtension) {
-                    throw "Unexpected error occurred during Replication Extension creation. Please re-run this command or contact support if help needed."
+                   continue
                 }
                 
                 # Stop if replication extension reaches a terminal state

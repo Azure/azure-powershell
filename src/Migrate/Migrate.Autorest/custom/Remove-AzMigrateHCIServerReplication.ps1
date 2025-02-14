@@ -22,7 +22,8 @@ The Remove-AzMigrateHCIServerReplication cmdlet stops the replication for a migr
 https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratehciserverreplication
 #>
 function Remove-AzMigrateHCIServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName = 'ByID', Mandatory)]
@@ -34,7 +35,7 @@ function Remove-AzMigrateHCIServerReplication {
         [Parameter(ParameterSetName = 'ByInputObject', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-        # Specifies the replcating server for which the replication needs to be disabled. The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+        # Specifies the replicating server for which the replication needs to be disabled. The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
         ${InputObject},
 
         [Parameter()]
@@ -112,6 +113,7 @@ function Remove-AzMigrateHCIServerReplication {
         if ($parameterSet -eq 'ByInputObject') {            
             $TargetObjectID = $InputObject.Id
         }
+        
         $protectedItemIdArray = $TargetObjectID.Split("/")
         $resourceGroupName = $protectedItemIdArray[4]
         $vaultName = $protectedItemIdArray[8]
@@ -139,14 +141,15 @@ function Remove-AzMigrateHCIServerReplication {
 
         if ($PSCmdlet.ShouldProcess($TargetObjectID, "Stop/Complete VM replication.")) {
             $operation = Az.Migrate.Internal\Remove-AzMigrateProtectedItem @PSBoundParameters
-            $jobName = $operation.Target.Split("/")[-1].Split("?")[0]
+
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
 
             $null = $PSBoundParameters.Remove('ProtectedItemName')
             $null = $PSBoundParameters.Remove('NoWait')
             $null = $PSBoundParameters.Remove('ForceDelete')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
         }
     }
 }

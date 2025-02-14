@@ -22,7 +22,8 @@ The New-AzMigrateHCIServerReplication cmdlet starts the replication for a partic
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehciserverreplication
 #>
 function New-AzMigrateHCIServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -72,13 +73,13 @@ function New-AzMigrateHCIServerReplication {
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCIDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput[]]
         # Specifies the NICs on the source server to be included for replication.
         ${NicToInclude},
 
@@ -282,14 +283,14 @@ function New-AzMigrateHCIServerReplication {
 
         # Get Source and Target Dras
         $sourceDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateDra' `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
             -Parameters @{ FabricName = $sourceFabric.Name; ResourceGroupName = $ResourceGroupName } `
             -ErrorMessage "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
 
         $sourceDra = $sourceDras[0]
 
         $targetDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateDra' `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
             -Parameters @{ FabricName = $targetFabric.Name; ResourceGroupName = $ResourceGroupName } `
             -ErrorMessage "No connected target appliances are found. Deploy and configure a new appliance for the target cluster, or select a different cluster."
 
@@ -343,13 +344,6 @@ function New-AzMigrateHCIServerReplication {
             throw "The target virtual machine name must be between 1 and 64 characters long."
         }
 
-        Import-Module Az.Resources
-        $vmId = $customProperties.TargetResourceGroupId + "/providers/Microsoft.Compute/virtualMachines/" + $TargetVMName
-        $VMNamePresentInRg = Get-AzResource -ResourceId $vmId -ErrorVariable notPresent -ErrorAction SilentlyContinue
-        if ($VMNamePresentInRg) {
-            throw "The target virtual machine name must be unique in the target resource group."
-        }
-
         if ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
             throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
         }
@@ -358,16 +352,16 @@ function New-AzMigrateHCIServerReplication {
             throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
         }
 
-        $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelProperties]::new()
+        $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties]::new()
         $protectedItemProperties.PolicyName = $policyName
         $protectedItemProperties.ReplicationExtensionName = $replicationExtensionName
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
             $isSourceDynamicMemoryEnabled = $machine.IsDynamicMemoryEnabled
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
             $isSourceDynamicMemoryEnabled = $false
         }
 
@@ -375,10 +369,10 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.CustomLocationRegion = $targetCluster.CustomLocationRegion
         $customProperties.FabricDiscoveryMachineId = $machine.Id
         $customProperties.RunAsAccountId = $runAsAccount.Id
-        $customProperties.SourceDraName = $sourceDra.Name
+        $customProperties.SourceFabricAgentName = $sourceDra.Name
         $customProperties.StorageContainerId = $TargetStoragePathId
         $customProperties.TargetArcClusterCustomLocationId = $targetCluster.CustomLocation
-        $customProperties.TargetDraName = $targetDra.Name
+        $customProperties.TargetFabricAgentName = $targetDra.Name
         $customProperties.TargetHciClusterId = $targetClusterId
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
         $customProperties.TargetVMName = $TargetVMName
@@ -387,11 +381,13 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
     
         # Determine target VM Hyper-V Generation
-        if ($SiteType -eq $SiteTypes.HyperVSites) { # Hyper-V
+        if ($SiteType -eq $SiteTypes.HyperVSites) { 
+            # Hyper-V source
             $customProperties.HyperVGeneration = $machine.Generation
         }
-        else { # VMware
-            $customProperties.HyperVGeneration = if ($machine.Firmware -eq "BIOS") { "1" } else { "2" }
+        else { 
+            #Vmware source, non-BOIS VMs will be migrated to Gen2
+            $customProperties.HyperVGeneration = if ($machine.Firmware -ieq "BIOS") { "1" } else { "2" }
         }
 
         # Validate TargetVMRam
@@ -409,7 +405,7 @@ function New-AzMigrateHCIServerReplication {
         }
 
         # Construct default dynamic memory config
-        $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]::new()
+        $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]::new()
         $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMinDynamicMemoryInMB)
         $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMaxDynamicMemoryInMB)
         $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.DefaultTargetMemoryBufferPercentage
@@ -478,7 +474,7 @@ function New-AzMigrateHCIServerReplication {
             # Validate OSDisk is set.
             $osDisk = $DiskToInclude | Where-Object { $_.IsOSDisk }
             if (($null -eq $osDisk) -or ($osDisk.length -ne 1)) {
-                throw "Invalid DiskToInclude. One and only one disk must be set as OS Disk."
+                throw "Invalid DiskToInclude. One disk must be designated as the OS disk."
             }
             
             # Validate DiskToInclude
@@ -531,7 +527,7 @@ function New-AzMigrateHCIServerReplication {
 
                 if ($htNic.SelectionTypeForFailover -eq $VMNicSelection.SelectedByUser -and
                     [string]::IsNullOrEmpty($htNic.TargetNetworkId)) {
-                    throw "TargetVirtualSwitchId is required when the NIC '$($htNic.NicId)' is to be CreateAtTarget. Please utilize the New-AzMigrateHCINicMappingObject command to properly create a Nic mapping object."
+                    throw throw "The TargetVirtualSwitchId parameter is required when the CreateAtTarget flag is set to 'true'. NIC '$($htNic.NicId)'. Please utilize the New-AzMigrateHCINicMappingObject command to properly create a Nic mapping object."
                 }
 
                 $nics += [PSCustomObject]$htNic
@@ -539,12 +535,12 @@ function New-AzMigrateHCIServerReplication {
         }
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCINicInput[]]$nics
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {     
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCINicInput[]]$nics
         }
         
         $protectedItemProperties.CustomProperty = $customProperties
@@ -557,14 +553,14 @@ function New-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Add('NoWait', $true)
             
             $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem @PSBoundParameters
-            $jobName = $operation.Target.Split("/")[-1].Split("?")[0]
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
             
             $null = $PSBoundParameters.Remove('Name')  
             $null = $PSBoundParameters.Remove('Property')
             $null = $PSBoundParameters.Remove('NoWait')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
         }
     }
 }
