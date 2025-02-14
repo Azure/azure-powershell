@@ -38,7 +38,7 @@ if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
 
 $notModules = @('lib', 'shared', 'helpers')
 $coreTestModule = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
-$RepoArtifacts = Join-Path $RepoRoot "Artifacts"
+$RepoArtifacts = Join-Path $RepoRoot "artifacts"
 
 $csprojFiles = @()
 $testModule = @()
