@@ -116,8 +116,9 @@ jobs:
         }
         $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
         
-        $baseBranchName = "origin/$(Build.SourceBranchName)"
-        $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
+        $sourceBranchName = "$(Build.SourceBranch)".Replace("refs/heads/","")
+        $baseBranchName = "origin/$sourceBranchName"
+        $tmpBranchName = "archive/$sourceBranchName/$(Build.Reason)"
         if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
           $trigger = "$(Build.SourceVersion)"
           $tmpBranchName += "/$(Build.SourceVersion)"
@@ -134,7 +135,7 @@ jobs:
           }
         }
         Write-Host "`n##[group]Switch from $baseBranchName to $tmpBranchName"
-        git fetch origin $(Build.SourceBranchName)
+        git fetch origin $sourceBranchName
         git checkout -b $tmpBranchName $baseBranchName
 
         Write-Host "`n##[group]build steps"
@@ -158,7 +159,7 @@ jobs:
         git commit -m $prTitle
         git push origin $tmpBranchName --force
         
-        & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken '$(GithubToken)' -Description $prDescription
+        & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch $sourceBranchName -BotAccessToken '$(GithubToken)' -Description $prDescription
 
         <#
           this commidId will be useful when we push directly to target branch in the future
