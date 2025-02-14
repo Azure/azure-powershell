@@ -127,8 +127,9 @@ $prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestMod
 $isInvokedByPipeline = $false
 if ($InvokedByPipeline) {
     $isInvokedByPipeline = $true
-    $outputModifiedPath = Join-Path $RepoArtifacts "TargetModule.txt"
-    $TargetModule | Out-File -Path $outputModifiedPath -Force
+    $outputTargetPath = Join-Path $RepoArtifacts "TargetModule.txt"
+    New-Item -Path $outputTargetPath -Force
+    $TargetModule | Out-File -Path $outputTargetPath -Force
 }
 foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
