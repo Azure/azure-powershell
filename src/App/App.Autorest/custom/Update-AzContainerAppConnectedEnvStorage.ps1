@@ -209,15 +209,12 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-process {
-    if ($PSBoundParameters.ContainsKey('AzureFileAccountKey')) {
-        $null = $PSBoundParameters.Remove('AzureFileAccountKey')
-        if (-not $PSBoundParameters.ContainsKey('AzureFileAccountKeySecure')) {
-            $AzureFileAccountKeySecure = $AzureFileAccountKey | ConvertTo-SecureString -AsPlainText
-            $PSBoundParameters.Add("AzureFileAccountKeySecure", $AzureFileAccountKeySecure)
+	process {
+        if ($PSBoundParameters.ContainsKey('AzureFileAccountKeySecure')) {
+            $null = $PSBoundParameters.Remove('AzureFileAccountKeySecure')
+            $AzureFileAccountKey = $AzureFileAccountKeySecure | ConvertFrom-SecureString -AsPlainText
+            $PSBoundParameters.Add("AzureFileAccountKey", $AzureFileAccountKey)
         }
-    }
-    Az.App.internal\Update-AzContainerAppConnectedEnvStorage @PSBoundParameters
-}
- 
+		Az.App.internal\Update-AzContainerAppConnectedEnvStorage @PSBoundParameters
+	}
 }

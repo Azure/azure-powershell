@@ -70,11 +70,6 @@ disable-transform-identity-type: true
 
 directive:
   - from: swagger-document 
-    where: $.definitions.AzureFileProperties.properties.accountKey
-    transform: >
-      $["x-ms-client-name"] = "accountKeySecure";
-      $["format"] = "password";
-  - from: swagger-document 
     where: $.definitions.Certificate.properties.properties.properties.password
     transform: >-
       return {
