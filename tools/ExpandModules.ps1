@@ -33,21 +33,21 @@ if ([string]::IsNullOrEmpty($Artifacts)) {
 New-Item -Path (Get-Item $Artifacts).FullName -Name "tmp" -ItemType "directory"
 $tmp = Join-Path -Path (Get-Item $Artifacts).FullName -ChildPath "tmp"
 
-$ModifiedModulesPath = Join-Path $Artifacts -ChildPath "ModifiedModule.txt"
-$ModifiedModules = @()
-if (Test-Path $ModifiedModulesPath) {
-    $ModifiedModules = Get-Content $ModifiedModulesPath
+$TargetModulePath = Join-Path $Artifacts -ChildPath "TargetModule.txt"
+$TargetModule = @()
+if (Test-Path $TargetModulePath) {
+    $TargetModule = Get-Content $TargetModulePath
 }
-Write-Host $ModifiedModules
+Write-Host $TargetModule
 try {
     $AllPackages = Get-ChildItem -Path $Artifacts -Filter "*.nupkg"
 
-    if ($ModifiedModules.Length -eq 0) {
-        Write-Host "ModifiedModule.txt not finded, default expand all modules."
-        $ModifiedModules = $AllPackages.Name
+    if ($TargetModule.Length -eq 0) {
+        Write-Error "No target modules found."
+        exit 1
     }
     foreach ($package in $AllPackages) {
-        foreach ($module in $ModifiedModules) {
+        foreach ($module in $TargetModule) {
             if (($package.Name -like "Az.$module.*.nupkg") -or ($package.Name -match '^Az(Preview)?\.\d+\.\d+\.\d+\.nupkg$')) { 
                 $module_name = $package.Name
                 $zip_artifact = $package.FullName -replace ".nupkg$",".zip"
