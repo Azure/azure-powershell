@@ -40,6 +40,10 @@ variables:
 
 trigger:
   batch: true
+  branches:
+    include:
+    - main
+  
 
 jobs:
 - job: Build
