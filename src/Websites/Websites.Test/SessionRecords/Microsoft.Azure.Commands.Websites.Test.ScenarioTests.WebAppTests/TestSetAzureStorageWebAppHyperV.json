@@ -933,7 +933,7 @@
           "734"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverFarmId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/serverFarms/ps6349\",\r\n    \"siteConfig\": {\r\n      \"windowsFxVersion\": \"DOCKER|psunittesting.azurecr.io/webapplication3:latest\",\r\n      \"appSettings\": [\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_URL\",\r\n          \"value\": \"https://psunittesting.azurecr.io\"\r\n        },\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_USERNAME\",\r\n          \"value\": \"psunittesting\"\r\n        },\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_PASSWORD\",\r\n          \"value\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"East US 2\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverFarmId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/serverFarms/ps6349\",\r\n    \"siteConfig\": {\r\n      \"windowsFxVersion\": \"DOCKER|psunittesting.azurecr.io/webapplication3:latest\",\r\n      \"appSettings\": [\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_URL\",\r\n          \"value\": \"https://psunittesting.azurecr.io\"\r\n        },\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_USERNAME\",\r\n          \"value\": \"psunittesting\"\r\n        },\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_PASSWORD\",\r\n          \"value\": \"REDACTED\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"East US 2\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -1467,7 +1467,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1536,7 +1536,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1605,7 +1605,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1674,7 +1674,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1743,7 +1743,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1812,7 +1812,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -3018,7 +3018,7 @@
           "2306"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": \"DOCKER|psunittesting.azurecr.io/webapplication3:latest\",\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$ps7961\",\r\n    \"appSettings\": [\r\n      {\r\n        \"name\": \"DOCKER_REGISTRY_SERVER_URL\",\r\n        \"value\": \"https://psunittesting.azurecr.io\"\r\n      },\r\n      {\r\n        \"name\": \"DOCKER_REGISTRY_SERVER_USERNAME\",\r\n        \"value\": \"psunittesting\"\r\n      },\r\n      {\r\n        \"name\": \"DOCKER_REGISTRY_SERVER_PASSWORD\",\r\n        \"value\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\"\r\n      }\r\n    ],\r\n    \"connectionStrings\": [],\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false\r\n      }\r\n    ],\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"autoHealEnabled\": false,\r\n    \"vnetName\": \"\",\r\n    \"vnetRouteAllEnabled\": false,\r\n    \"localMySqlEnabled\": false,\r\n    \"ipSecurityRestrictions\": [\r\n      {\r\n        \"ipAddress\": \"Any\",\r\n        \"action\": \"Allow\",\r\n        \"priority\": 2147483647,\r\n        \"name\": \"Allow all\",\r\n        \"description\": \"Allow all access\"\r\n      }\r\n    ],\r\n    \"scmIpSecurityRestrictions\": [\r\n      {\r\n        \"ipAddress\": \"Any\",\r\n        \"action\": \"Allow\",\r\n        \"priority\": 2147483647,\r\n        \"name\": \"Allow all\",\r\n        \"description\": \"Allow all access\"\r\n      }\r\n    ],\r\n    \"scmIpSecurityRestrictionsUseMain\": false,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"ftpsState\": \"AllAllowed\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": \"DOCKER|psunittesting.azurecr.io/webapplication3:latest\",\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$ps7961\",\r\n    \"appSettings\": [\r\n      {\r\n        \"name\": \"DOCKER_REGISTRY_SERVER_URL\",\r\n        \"value\": \"https://psunittesting.azurecr.io\"\r\n      },\r\n      {\r\n        \"name\": \"DOCKER_REGISTRY_SERVER_USERNAME\",\r\n        \"value\": \"psunittesting\"\r\n      },\r\n      {\r\n        \"name\": \"DOCKER_REGISTRY_SERVER_PASSWORD\",\r\n        \"value\": \"REDACTED\"\r\n      }\r\n    ],\r\n    \"connectionStrings\": [],\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false\r\n      }\r\n    ],\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"autoHealEnabled\": false,\r\n    \"vnetName\": \"\",\r\n    \"vnetRouteAllEnabled\": false,\r\n    \"localMySqlEnabled\": false,\r\n    \"ipSecurityRestrictions\": [\r\n      {\r\n        \"ipAddress\": \"Any\",\r\n        \"action\": \"Allow\",\r\n        \"priority\": 2147483647,\r\n        \"name\": \"Allow all\",\r\n        \"description\": \"Allow all access\"\r\n      }\r\n    ],\r\n    \"scmIpSecurityRestrictions\": [\r\n      {\r\n        \"ipAddress\": \"Any\",\r\n        \"action\": \"Allow\",\r\n        \"priority\": 2147483647,\r\n        \"name\": \"Allow all\",\r\n        \"description\": \"Allow all access\"\r\n      }\r\n    ],\r\n    \"scmIpSecurityRestrictionsUseMain\": false,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"ftpsState\": \"AllAllowed\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -3096,7 +3096,7 @@
           "251"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -3147,7 +3147,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps2613/providers/Microsoft.Web/sites/ps7961/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {

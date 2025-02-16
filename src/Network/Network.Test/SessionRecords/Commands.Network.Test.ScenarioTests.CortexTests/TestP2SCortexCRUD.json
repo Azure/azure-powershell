@@ -54988,7 +54988,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"creationTime\": \"2023-03-24T21:01:55.1150484Z\",\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"pH9P4IWKyj6AiWAiuPk+ouRBaNK6PAqmjU5DSHbqEVizLaTl9ufq3MscV4Z7UfGJ/T9pl9ZFUAGZ+AStSoayfw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"creationTime\": \"2023-03-24T21:01:55.1150484Z\",\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"kpaRUM0t2Kg1SDuwqKtOFi1KpUvtb0ERh5nRaob06OPq75dCDOUo2PqCAUzF9UmudC9YBjlBA5cw+AStFF3QIw==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"creationTime\": \"2023-03-24T21:01:55.1150484Z\",\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"creationTime\": \"2023-03-24T21:01:55.1150484Z\",\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {

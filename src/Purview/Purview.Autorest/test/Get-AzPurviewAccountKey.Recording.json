@@ -6,37 +6,76 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "17d0818f-6e35-4afa-99a1-2b2956958591" ],
-        "CommandName": [ "Get-AzPurviewAccountKey" ],
-        "FullCommandName": [ "Get-AzPurviewAccountKey_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "39"
+        ],
+        "x-ms-client-request-id": [
+          "17d0818f-6e35-4afa-99a1-2b2956958591"
+        ],
+        "CommandName": [
+          "Get-AzPurviewAccountKey"
+        ],
+        "FullCommandName": [
+          "Get-AzPurviewAccountKey_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/Az4.0.0-preview"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "fe848281-bfba-4d37-bc76-e3601957fa71" ],
-        "x-ms-correlation-request-id": [ "fe848281-bfba-4d37-bc76-e3601957fa71" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042016Z:fe848281-bfba-4d37-bc76-e3601957fa71" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 18 Aug 2021 04:20:16 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "fe848281-bfba-4d37-bc76-e3601957fa71"
+        ],
+        "x-ms-correlation-request-id": [
+          "fe848281-bfba-4d37-bc76-e3601957fa71"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20210818T042016Z:fe848281-bfba-4d37-bc76-e3601957fa71"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 18 Aug 2021 04:20:16 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "437" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "437"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"atlasKafkaPrimaryEndpoint\":\"Endpoint=sb://atlas-c62bb898-ea30-4649-b8b3-f46b6e778036.servicebus.windows.net/;SharedAccessKeyName=AlternateSharedAccessKey;SharedAccessKey=w8e0sAyctAnQoHc5yQq8WQggdNvnlWZFqWMK5+bErTU=\",\"atlasKafkaSecondaryEndpoint\":\"Endpoint=sb://atlas-c62bb898-ea30-4649-b8b3-f46b6e778036.servicebus.windows.net/;SharedAccessKeyName=AlternateSharedAccessKey;SharedAccessKey=HEZHyfKDIguio7oHTI9uzdB+RizZhLnBONV7XdfDeBg=\"}",
+      "Content": "{\"atlasKafkaPrimaryEndpoint\":\"Endpoint=sb://atlas-c62bb898-ea30-4649-b8b3-f46b6e778036.servicebus.windows.net/;SharedAccessKeyName=AlternateSharedAccessKey;SharedAccessKey=w8e0sAyctAnQoHc5yQq8WQggdNvnlWZFqWMK5+bErTU=\",\"atlasKafkaSecondaryEndpoint\":\"Endpoint=sb://atlas-c62bb898-ea30-4649-b8b3-f46b6e778036.servicebus.windows.net/;SharedAccessKeyName=AlternateSharedAccessKey;SharedAccessKey=REDACTED\"}",
       "isContentBase64": false
     }
   }

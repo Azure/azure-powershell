@@ -1233,7 +1233,7 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/2.3.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=nx44XKfS4bBEK8w/us3PxZl01Dnl3Mj15BNZsg+xlgw=\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"primaryKey\": \"nx44XKfS4bBEK8w/us3PxZl01Dnl3Mj15BNZsg+xlgw=\",\r\n  \"secondaryKey\": \"kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"keyName\": \"TestAuthRule\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=REDACTED\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=REDACTED\",\r\n  \"primaryKey\": \"nx44XKfS4bBEK8w/us3PxZl01Dnl3Mj15BNZsg+xlgw=\",\r\n  \"secondaryKey\": \"kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"keyName\": \"TestAuthRule\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "504"
@@ -1300,7 +1300,7 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/2.3.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=Zfm9UI20p2nepszS1MyRR44CdRVcyKaHgbXC5K0s1pk=\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"primaryKey\": \"Zfm9UI20p2nepszS1MyRR44CdRVcyKaHgbXC5K0s1pk=\",\r\n  \"secondaryKey\": \"kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"keyName\": \"TestAuthRule\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=REDACTED\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=REDACTED\",\r\n  \"primaryKey\": \"Zfm9UI20p2nepszS1MyRR44CdRVcyKaHgbXC5K0s1pk=\",\r\n  \"secondaryKey\": \"kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"keyName\": \"TestAuthRule\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "504"
@@ -1373,7 +1373,7 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/2.3.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=Zfm9UI20p2nepszS1MyRR44CdRVcyKaHgbXC5K0s1pk=\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"primaryKey\": \"Zfm9UI20p2nepszS1MyRR44CdRVcyKaHgbXC5K0s1pk=\",\r\n  \"secondaryKey\": \"kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"keyName\": \"TestAuthRule\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=REDACTED\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://namespace-ps8095.servicebus.windows.net/;SharedAccessKeyName=TestAuthRule;SharedAccessKey=REDACTED\",\r\n  \"primaryKey\": \"Zfm9UI20p2nepszS1MyRR44CdRVcyKaHgbXC5K0s1pk=\",\r\n  \"secondaryKey\": \"kNg8Cpg4DBAVJqucRX1Ad7tYanrU6n7uAFfVLozVSs0=\",\r\n  \"keyName\": \"TestAuthRule\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "504"
