@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDevCenterUserCatalog
 
 ## SYNOPSIS
-Gets the specified catalog within the project
+Gets the specified catalog within the project.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Get-AzDevCenterUserCatalog -DevCenterName <String> -ProjectName <String> [-Defau
 ```
 
 ## DESCRIPTION
-Gets the specified catalog within the project
+Gets the specified catalog within the project.
 
 ## EXAMPLES
 
@@ -100,7 +100,7 @@ This command gets a catalog named "CentralCatalog" in the project "DevProject".
 ## PARAMETERS
 
 ### -CatalogName
-The name of the catalog
+Name of the catalog.
 
 ```yaml
 Type: System.String
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The DevCenter Project upon which to execute operations.
+Name of the project.
 
 ```yaml
 Type: System.String
@@ -200,9 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICatalog
 
 ## NOTES
 

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphAppRoleAssignment(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"appRoleId",@"createdDateTime",@"principalDisplayName",@"principalId",@"principalType",@"resourceDisplayName",@"resourceId" }) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphAppRoleAssignment(json, new global::System.Collections.Generic.HashSet<string>(){ @"ResourceGroupName",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"appRoleId",@"createdDateTime",@"principalDisplayName",@"principalId",@"principalType",@"resourceDisplayName",@"resourceId" }) : null;
         }
 
         /// <summary>
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
             __microsoftGraphDirectoryObject = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObject(json);
-            {_appRoleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("appRoleId"), out var __jsonAppRoleId) ? (string)__jsonAppRoleId : (string)AppRoleId;}
-            {_createdDateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("createdDateTime"), out var __jsonCreatedDateTime) ? global::System.DateTime.TryParse((string)__jsonCreatedDateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedDateTimeValue) ? __jsonCreatedDateTimeValue : CreatedDateTime : CreatedDateTime;}
-            {_principalDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("principalDisplayName"), out var __jsonPrincipalDisplayName) ? (string)__jsonPrincipalDisplayName : (string)PrincipalDisplayName;}
-            {_principalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("principalId"), out var __jsonPrincipalId) ? (string)__jsonPrincipalId : (string)PrincipalId;}
-            {_principalType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("principalType"), out var __jsonPrincipalType) ? (string)__jsonPrincipalType : (string)PrincipalType;}
-            {_resourceDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("resourceDisplayName"), out var __jsonResourceDisplayName) ? (string)__jsonResourceDisplayName : (string)ResourceDisplayName;}
-            {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("resourceId"), out var __jsonResourceId) ? (string)__jsonResourceId : (string)ResourceId;}
+            {_appRoleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("appRoleId"), out var __jsonAppRoleId) ? (string)__jsonAppRoleId : (string)_appRoleId;}
+            {_createdDateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("createdDateTime"), out var __jsonCreatedDateTime) ? global::System.DateTime.TryParse((string)__jsonCreatedDateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedDateTimeValue) ? __jsonCreatedDateTimeValue : _createdDateTime : _createdDateTime;}
+            {_principalDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("principalDisplayName"), out var __jsonPrincipalDisplayName) ? (string)__jsonPrincipalDisplayName : (string)_principalDisplayName;}
+            {_principalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("principalId"), out var __jsonPrincipalId) ? (string)__jsonPrincipalId : (string)_principalId;}
+            {_principalType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("principalType"), out var __jsonPrincipalType) ? (string)__jsonPrincipalType : (string)_principalType;}
+            {_resourceDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("resourceDisplayName"), out var __jsonResourceDisplayName) ? (string)__jsonResourceDisplayName : (string)_resourceDisplayName;}
+            {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("resourceId"), out var __jsonResourceId) ? (string)__jsonResourceId : (string)_resourceId;}
             AfterFromJson(json);
         }
 

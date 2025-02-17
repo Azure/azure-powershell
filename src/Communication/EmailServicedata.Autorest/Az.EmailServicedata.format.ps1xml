@@ -37,6 +37,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ContentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ContentInBase64</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -49,6 +52,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ContentId</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ContentInBase64</PropertyName>
               </TableColumnItem>

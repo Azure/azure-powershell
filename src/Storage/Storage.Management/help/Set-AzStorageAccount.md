@@ -474,7 +474,7 @@ If the Storage account has Kind as Storage, do not specify the *AccessTier* para
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool
+Accepted values: Hot, Cool, Cold
 
 Required: False
 Position: Named

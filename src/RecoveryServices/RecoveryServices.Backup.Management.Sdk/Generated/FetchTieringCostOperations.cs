@@ -39,7 +39,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// Provides the details of the tiering related sizes and cost. Status of the operation can be fetched using GetTieringCostOperationStatus API and result using GetTieringCostOperationResult API.
+        /// Provides the details of the tiering related sizes and cost. Status of the
+        /// operation can be fetched using GetTieringCostOperationStatus API and result
+        /// using GetTieringCostOperationResult API.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group where the recovery services vault is

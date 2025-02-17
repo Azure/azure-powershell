@@ -16,14 +16,14 @@ This operation updates an existing policy definition in the given subscription o
 ```
 Update-AzPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
  [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
  [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-DisplayName 
 ```
 Update-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
  [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,14 +39,14 @@ Update-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Display
 ```
 Update-AzPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
  [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
  [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
- -InputObject <IPolicyDefinition> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -InputObject <IPolicyDefinition> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,12 +58,12 @@ This operation updates an existing policy definition in the given subscription o
 ### Example 1: Update the description of a policy definition
 ```powershell
 $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
-Update-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+Update-AzPolicyDefinition -Id $PolicyDefinition.Id -Description 'Updated policy to not allow virtual machine creation'
 ```
 
 The first command gets a policy definition named VMPolicyDefinition by using the Get-AzPolicyDefinition cmdlet.
 The command stores that object in the $PolicyDefinition variable.
-The second command updates the description of the policy definition identified by the **ResourceId** property of $PolicyDefinition.
+The second command updates the description of the policy definition identified by the **Id** property of $PolicyDefinition.
 
 ### Example 2: Update the mode of a policy definition
 ```powershell
@@ -269,21 +269,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

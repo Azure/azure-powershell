@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Synchronously creates or updates a partner configuration with the specified parameters.
+Synchronously create a partner configuration with the specified parameters.
 .Description
-Synchronously creates or updates a partner configuration with the specified parameters.
+Synchronously create a partner configuration with the specified parameters.
 .Example
 $partner = New-AzEventGridPartnerObject -AuthorizationExpirationTimeInUtc "2023-11-19T09:31:42.521Z" -Name "Auth0" -RegistrationImmutableId "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 New-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid -Location global -PartnerAuthorizationDefaultMaximumExpirationTimeInDay 10 -PartnerAuthorizationAuthorizedPartnersList $partner

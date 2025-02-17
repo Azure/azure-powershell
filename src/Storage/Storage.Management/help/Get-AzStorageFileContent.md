@@ -35,8 +35,8 @@ Get-AzStorageFileContent [-ShareClient] <ShareClient> [-Path] <String> [[-Destin
 Get-AzStorageFileContent [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String>
  [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### File

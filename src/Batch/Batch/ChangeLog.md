@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 3.7.0
+* Upgraded nuget package to signed package.
+* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property. 
+
+## Version 3.6.4
+* Migrate Batch SDK to generated SDK
+  - Removed "Microsoft.Azure.Management.Batch" Version="15.0.0" PackageReference
+  - Added Batch.Management.Sdk ProjectReference
+
 ## Version 3.6.3
 * Fixed secrets exposure in example documentation.
 

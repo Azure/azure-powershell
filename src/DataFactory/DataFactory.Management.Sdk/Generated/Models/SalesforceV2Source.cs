@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SalesforceV2Source class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -64,13 +67,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="includeDeletedObjects">This property control whether query result contains Deleted objects.
         /// Default is false. Type: boolean (or Expression with resultType boolean).
         /// </param>
-        public SalesforceV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object soqlQuery = default(object), object query = default(object), object includeDeletedObjects = default(object))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        /// <param name="pageSize">Page size for each http request, too large pageSize will caused timeout,
+        /// default 300,000. Type: integer (or Expression with resultType integer).
+        /// </param>
+        public SalesforceV2Source(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object soqlQuery = default(object), object query = default(object), object includeDeletedObjects = default(object), object pageSize = default(object))
+
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.SoqlQuery = soqlQuery;
             this.Query = query;
             this.IncludeDeletedObjects = includeDeletedObjects;
+            this.PageSize = pageSize;
             CustomInit();
         }
 
@@ -105,5 +113,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "includeDeletedObjects")]
         public object IncludeDeletedObjects {get; set; }
+
+        /// <summary>
+        /// Gets or sets page size for each http request, too large pageSize will
+        /// caused timeout, default 300,000. Type: integer (or Expression with
+        /// resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "pageSize")]
+        public object PageSize {get; set; }
     }
 }

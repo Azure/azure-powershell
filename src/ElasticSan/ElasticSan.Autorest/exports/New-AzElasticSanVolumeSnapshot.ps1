@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a Volume Snapshot.
+create a Volume Snapshot.
 .Description
-Create a Volume Snapshot.
+create a Volume Snapshot.
 .Example
  $volume = New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGiB 1
  New-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -CreationDataSourceId $volume.Id -Name mysnapshot

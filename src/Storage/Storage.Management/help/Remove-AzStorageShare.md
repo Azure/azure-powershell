@@ -25,8 +25,8 @@ Remove-AzStorageShare [-Name] <String> [-IncludeAllSnapshot] [-SnapshotTime <Dat
 ```
 Remove-AzStorageShare [-ShareClient] <ShareClient> [-IncludeAllSnapshot] [-Force] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

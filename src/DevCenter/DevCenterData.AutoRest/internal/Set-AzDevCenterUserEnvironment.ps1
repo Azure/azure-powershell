@@ -25,35 +25,39 @@ Creates or updates an environment.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IEnvironment>: Properties of an environment.
-  CatalogName <String>: The name of the catalog. Cannot be updated after creation.
-  DefinitionName <String>: The name of the environment definition. Cannot be updated after creation.
-  Type <String>: The name of the environment type. Cannot be updated after creation.
-  [Parameter <IEnvironmentUpdatePropertiesParameters>]: Parameters object for the environment. Can only be updated via create or replace.
-    [(Any) <Object>]: This indicates any property can be added to this object.
-  [ExpirationDate <DateTime?>]: The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
-  [Code <String>]: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-  [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
-    Code <String>: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-    Message <String>: A message describing the error, intended to be suitable for display in a user interface.
-    [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
-    [Target <String>]: The target of the particular error. For example, the name of the property in error.
-  [Message <String>]: A message describing the error, intended to be suitable for display in a user interface.
+  CatalogName <String>: Name of the catalog.
+  DefinitionName <String>: Name of the environment definition.
+  Type <String>: Environment type.
+  [Code <String>]: One of a server-defined set of error codes.
+  [Detail <IAzureCoreFoundationsError[]>]: An array of details about specific errors that led to this reported error.
+    Code <String>: One of a server-defined set of error codes.
+    Message <String>: A human-readable representation of the error.
+    [Detail <IAzureCoreFoundationsError[]>]: An array of details about specific errors that led to this reported error.
+    [Innererror <IAzureCoreFoundationsInnerError>]: An object containing more specific information than the current object about the error.
+      [Code <String>]: One of a server-defined set of error codes.
+      [Innererror <IAzureCoreFoundationsInnerError>]: Inner error.
+    [Target <String>]: The target of the error.
+  [ExpirationDate <DateTime?>]: The time the expiration date will be triggered (UTC), after which the         environment and associated resources will be deleted.
+  [Innererror <IAzureCoreFoundationsInnerError>]: An object containing more specific information than the current object about the error.
+  [Message <String>]: A human-readable representation of the error.
   [OperationLocation <String>]: 
-  [Target <String>]: The target of the particular error. For example, the name of the property in error.
+  [Parameter <IEnvironmentParameters>]: Parameters object for the environment.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [Target <String>]: The target of the error.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenterdata/set-azdevcenteruserenvironment
 #>
 function Set-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='ReplaceExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -85,7 +89,7 @@ param(
 
     [Parameter(ParameterSetName='Replace', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment]
     # Properties of an environment.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -93,36 +97,32 @@ param(
     [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
     [System.String]
-    # The name of the catalog.
-    # Cannot be updated after creation.
+    # Name of the catalog.
     ${CatalogName},
 
     [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
     [System.String]
-    # The name of the environment definition.
-    # Cannot be updated after creation.
+    # Name of the environment definition.
     ${EnvironmentDefinitionName},
 
     [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
     [System.String]
-    # The name of the environment type.
-    # Cannot be updated after creation.
+    # Environment type.
     ${EnvironmentType},
 
     [Parameter(ParameterSetName='ReplaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
     [System.DateTime]
-    # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+    # The time the expiration date will be triggered (UTC), after which theenvironment and associated resources will be deleted.
     ${ExpirationDate},
 
     [Parameter(ParameterSetName='ReplaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentUpdatePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentParameters]))]
     [System.Collections.Hashtable]
     # Parameters object for the environment.
-    # Can only be updated via create or replace.
     ${Parameter},
 
     [Parameter()]

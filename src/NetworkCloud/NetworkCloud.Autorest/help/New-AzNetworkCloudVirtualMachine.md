@@ -297,7 +297,8 @@ Accept wildcard characters: False
 ```
 
 ### -MemorySizeGb
-The memory size of the virtual machine in GB.
+The memory size of the virtual machine.
+Allocations are measured in gibibytes.
 
 ```yaml
 Type: System.Int64
@@ -331,7 +332,7 @@ The list of network attachments to the virtual machine.
 To construct, see NOTES section for NETWORKATTACHMENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.INetworkAttachment[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.INetworkAttachment[]
 Parameter Sets: (All)
 Aliases:
 
@@ -403,8 +404,9 @@ Accept wildcard characters: False
 ```
 
 ### -OSDiskSizeGb
-The size of the disk in gigabytes.
+The size of the disk.
 Required if the createOption is Ephemeral.
+Allocations are measured in gibibytes.
 
 ```yaml
 Type: System.Int64
@@ -423,7 +425,7 @@ The scheduling hints for the virtual machine.
 To construct, see NOTES section for PLACEMENTHINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IVirtualMachinePlacementHint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachinePlacementHint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -456,7 +458,7 @@ Each key will be added to the virtual machine using the cloud-init ssh_authorize
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -657,7 +659,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachine
 
 ## NOTES
 

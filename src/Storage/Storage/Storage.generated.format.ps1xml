@@ -557,6 +557,10 @@
             <Label>SessionId</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientName</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -587,6 +591,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SessionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClientName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

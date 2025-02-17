@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// the parent template or nested template. Only applicable to nested
         /// templates. If not specified, default value is outer.
         /// </param>
-        public DeploymentProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), object parameters = default(object), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment), ExpressionEvaluationOptions expressionEvaluationOptions = default(ExpressionEvaluationOptions))
+        public DeploymentProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), System.Collections.Generic.IDictionary<string, DeploymentParameter> parameters = default(System.Collections.Generic.IDictionary<string, DeploymentParameter>), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment), ExpressionEvaluationOptions expressionEvaluationOptions = default(ExpressionEvaluationOptions))
 
         {
             this.Template = template;
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// but not both. It can be a JObject or a well formed JSON string.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "parameters")]
-        public object Parameters {get; set; }
+        public System.Collections.Generic.IDictionary<string, DeploymentParameter> Parameters {get; set; }
 
         /// <summary>
         /// Gets or sets the URI of parameters file. You use this element to link to an
@@ -160,7 +160,16 @@ namespace Microsoft.Azure.Management.Resources.Models
         {
 
 
-
+            if (this.Parameters != null)
+            {
+                foreach (var valueElement in this.Parameters.Values)
+                {
+                    if (valueElement != null)
+                    {
+                        valueElement.Validate();
+                    }
+                }
+            }
             if (this.ParametersLink != null)
             {
                 this.ParametersLink.Validate();

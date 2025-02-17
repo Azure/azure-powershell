@@ -19,7 +19,10 @@
 -->
 ## Upcoming Release
 
-## Version 1.3.0
+## Version 1.4.1
+* Upgraded nuget package to signed package.
+
+## Version 1.4.0
 * Added support for using Microsoft Entra token-based authentication.
 * Added the new properties of Cluster: highAvailability and redundancyMode.
 * Added new product SKUs.

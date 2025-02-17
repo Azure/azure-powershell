@@ -384,6 +384,9 @@
   <data name="InvalidName" xml:space="preserve">
     <value>Field Name {0} contains invalid character.</value>
   </data>
+  <data name="RouteServerToUpdateNotFound" xml:space="preserve">
+    <value>The Route Server to update could not be found.</value>
+  </data>
   <data name="VirtualHubToUpdateNotFound" xml:space="preserve">
     <value>The VirtualHub to update could not be found.</value>
   </data>

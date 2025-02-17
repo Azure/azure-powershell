@@ -1,0 +1,254 @@
+parameters:
+- name: TargetModule
+  displayName: 'List of target modules, all modules if not provided'
+  type: string
+  default: 'all'
+- name: ForceRegenerate
+  displayName: 'Force regenerate autorest generated modules when pipeline triggered manually'
+  type: boolean
+  default: false
+
+resources:
+  repositories:
+  - repository: azure-powershell-devops
+    type: git
+    name: azure-powershell-devops
+
+variables:
+  Working_Directory: $(Build.SourcesDirectory)/azure-powershell
+  WindowsName: windows
+  WindowsAgentPoolName: pool-windows-2019
+  WindowsAgentPoolVMImage: ''
+  LinuxName: linux
+  LinuxAgentPoolName: pool-ubuntu-2004
+  LinuxAgentPoolVMImage: ''
+  MacOSName: macOS
+  MacOSAgentPoolName: 'Azure Pipelines'
+  MacOSAgentPoolVMImage: macOS-latest
+  TestFramework: net6.0
+  TestTarget: Test
+  Configuration: Debug
+  DebugLocalBuildTasks: true
+  BuildTimeoutInMinutes: 120
+  AnalysisTimeoutInMinutes: 120
+  TestTimeoutInMinutes: 180
+  BuildAzPredictor: false
+  EnableTestCoverage: true
+  TestCoverageLocation: $(Working_Directory)/artifacts
+  PowerShellPlatform: PowerShell Core
+  AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
+
+trigger:
+  batch: true
+
+jobs:
+- job: Build
+  displayName: Build
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  pool: pool-windows-2019
+
+  steps:
+  - checkout: self
+    persistCredentials: true
+    workspaceRepo: true
+  - checkout: azure-powershell-devops
+    path: "azure-powershell-devops"
+  - task: PowerShell@2
+    displayName: 'Get Github Access Token'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
+        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+  # - template: util/get-github-pat-steps.yml
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+  - task: NodeTool@0
+    displayName: Install Autorest
+    inputs:
+      versionSpec: '14.17.1'
+      command: custom
+      verbose: false
+      customCommand: install autorest@latest
+  - task: PowerShell@2
+    displayName: Setup environment for Autorest
+    inputs:
+      targetType: inline
+      script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+      pwsh: true
+  
+  - task: PowerShell@2
+    displayName: 'Build'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        $forceRegenerate = $false
+        if ('true' -eq '${{ parameters.ForceRegenerate }}') {
+          $forceRegenerate = $true
+        }
+
+        Write-Host "`n##[group]Filter changed files"
+        $filesChangedOutputPath = Join-Path "$(Working_Directory)" 'artifacts' 'FilesChanged.txt'
+        New-Item -Type File -Path $filesChangedOutputPath -Force
+        $filesChangedScriptPath = Join-Path "$(Working_Directory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+        Import-Module $filesChangedScriptPath
+        $filesChanged = @()
+        if ("$(Build.reason)" -eq 'IndividualCI') {
+          Get-FilesChangedFromCommit -CommitId "$(Build.SourceVersion)" | Foreach-Object { $filesChanged += $_ }
+        } elseif ("$(Build.reason)" -eq 'BatchedCI') {
+          $batchedCommits = Get-LatestBatchedCommits -Org '$(System.CollectionUri)' -Project '$(System.TeamProject)' -PipelineDefinitionId '$(System.DefinitionId)' -AccessToken '$(System.AccessToken)' -RepositoryType "$(Build.Repository.Provider)" -RepositoryId "$(Build.Repository.ID)" -BranchName "$(Build.SourceBranch)"
+          $batchedCommits | ForEach-Object {
+            Get-FilesChangedFromCommit -CommitId $_ | Foreach-Object { $filesChanged += $_ }
+          }
+        } elseif ("$(Build.reason)" -eq 'Manual') {
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+        } elseif ("$(Build.reason)" -eq 'Schedule') {
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+        } else {
+          Write-Host "##vso[task.logissue type=error]Invalid trigger: $(Build.reason)."
+          exit 1
+        }
+        $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
+        
+        $baseBranchName = "origin/$(Build.SourceBranchName)"
+        $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
+        if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
+          $trigger = "$(Build.SourceVersion)"
+          $tmpBranchName += "/$(Build.SourceVersion)"
+          $prTitle = "[skip ci] Archive $(Build.SourceVersion)"
+        } else {
+          #TODO: replace $(Build.reason) with account when manual and datetime when schedule
+          $prTitle = "[skip ci] Archive $(Build.reason)"
+          if ("Manual" -eq "$(Build.Reason)") {
+            #TODO: change value of $trigger to the account who trigger this run
+            $trigger = 'Manual'
+          } elseif ("Schedule" -eq "$(Build.Reason)") {
+            #TODO: change value of $trigger to datetime this run was scheduled
+            $trigger = 'Schedule'
+          }
+        }
+        Write-Host "`n##[group]Switch from $baseBranchName to $tmpBranchName"
+        git fetch origin $(Build.SourceBranchName)
+        git checkout -b $tmpBranchName $baseBranchName
+
+        Write-Host "`n##[group]build steps"
+        $buildStepsPath = Join-Path "$(Working_Directory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
+        & $buildStepsPath -RepoRoot "$(Working_Directory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -FilesChangedOutputPath $filesChangedOutputPath -ForceRegenerate $forceRegenerate -BuildReason $(Build.Reason) -Trigger $trigger
+
+        Write-Host "`n##[group]create PR"
+        $generatedPath = Join-Path "$(Working_Directory)" 'generated'
+        $diff = ( git status --short --untracked-files $generatedPath)
+        if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
+          return
+        }
+        #TODO: add better PR description
+        $prDescription = ""
+        $prScriptPath = Join-Path "$(Working_Directory)" 'tools' 'Github' 'CreatePR.ps1'
+
+        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+        git config user.name "azure-powershell-bot";
+        git remote set-url origin 'https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git';
+        git add $generatedPath
+        git commit -m $prTitle
+        git push origin $tmpBranchName --force
+        
+        & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken '$(GithubToken)' -Description $prDescription
+
+        <#
+          this commidId will be useful when we push directly to target branch in the future
+          $commitId = (git rev-parse HEAD)
+        #>
+  - template: util/publish-artifacts-steps.yml
+    parameters:
+      artifactName: build-${{ variables.TestFramework }}
+
+- job: Analyze
+  displayName: Analyze
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
+  pool: pool-windows-2019
+  steps:
+  - template: util/download-build-steps.yml
+    parameters:
+      artifactName: build-${{ variables.TestFramework }}
+  - task: NodeTool@0
+    displayName: Install autorest
+    inputs:
+      versionSpec: '14.17.1'
+      command: custom
+      verbose: false
+      customCommand: install autorest@latest
+  - task: PowerShell@2
+    displayName: Setup environment for autorest
+    inputs:
+      targetType: inline
+      script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+      pwsh: true
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+  - task: PowerShell@2
+    displayName: 'Analyze'
+    inputs:
+      targetType: inline
+      pwsh: true
+      workingDirectory: $(Build.SourcesDirectory)
+      script: .azure-pipelines/PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
+  - template: util/publish-artifacts-steps.yml
+    parameters:
+      artifactName: analyze-${{ variables.testFramework }}-$(System.JobAttempt)
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        agentPoolName: ${{ variables.WindowsAgentPoolName }}
+        agentPoolVMImage: ${{ variables.WindowsAgentPoolVMImage }}
+      linux:
+        OSName: ${{ variables.LinuxName }}
+        agentPoolName: ${{ variables.LinuxAgentPoolName }}
+        agentPoolVMImage: ${{ variables.LinuxAgentPoolVMImage }}
+      macOS:
+        OSName: ${{ variables.MacOSName }}
+        agentPoolName: ${{ variables.MacOSAgentPoolName }}
+        agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
+  pool:
+    name: $(agentPoolName)
+    vmImage: $(agentPoolVMImage)
+  steps:
+  - template: util/download-build-steps.yml
+    parameters:
+      artifactName: build-${{ variables.TestFramework }}
+  - task: UseDotNet@2
+    displayName: 'Use .NET SDK 6 for tests'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+  - task: PowerShell@2
+    displayName: 'Test'
+    inputs:
+      targetType: inline
+      workingDirectory: $(Build.SourcesDirectory)
+      pwsh: true
+      script: .azure-pipelines/PipelineSteps/test-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}" -TestFramework "${{ variables.testFramework }}"
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
+  - template: util/publish-artifacts-steps.yml
+    parameters:
+      artifactName: test-${{ variables.testFramework }}-$(OSName)-$(System.JobAttempt)
