@@ -2588,9 +2588,9 @@ end {
 
 <#
 .Synopsis
-Create a new Alias(Disaster Recovery configuration)
+create a new Alias(Disaster Recovery configuration)
 .Description
-Create a new Alias(Disaster Recovery configuration)
+create a new Alias(Disaster Recovery configuration)
 .Example
 New-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace "/subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySecondaryNamespace"
 
@@ -2828,10 +2828,10 @@ end {
 
 <#
 .Synopsis
-Create a Service Bus queue.
+create a Service Bus queue.
 This operation is idempotent.
 .Description
-Create a Service Bus queue.
+create a Service Bus queue.
 This operation is idempotent.
 .Example
 New-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 5) -EnablePartitioning
@@ -3189,9 +3189,9 @@ end {
 
 <#
 .Synopsis
-Create a new rule and updates an existing rule
+create a new rule and create an existing rule
 .Description
-Create a new rule and updates an existing rule
+create a new rule and create an existing rule
 .Example
 New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -FilterType CorrelationFilter -ContentType contenttype -CorrelationFilterProperty @{a='b';c='d'} -SessionId sessionid -CorrelationId correlationid -MessageId messageid -Label label -ReplyTo replyto -ReplyToSessionId replytosessionid
 .Example
@@ -3635,9 +3635,9 @@ end {
 
 <#
 .Synopsis
-Create a topic subscription.
+create a topic subscription.
 .Description
-Create a topic subscription.
+create a topic subscription.
 .Example
 New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 6) -EnableBatchedOperations
 
@@ -4037,9 +4037,9 @@ end {
 
 <#
 .Synopsis
-Create a topic in the specified namespace.
+create a topic in the specified namespace.
 .Description
-Create a topic in the specified namespace.
+create a topic in the specified namespace.
 .Example
 New-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic -DefaultMessageTimeToLive (New-TimeSpan -Days 18) -EnableBatchedOperations
 
@@ -6303,9 +6303,9 @@ end {
 
 <#
 .Synopsis
-Create Migration configuration and starts migration of entities from Standard to Premium namespace
+create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Description
-Create Migration configuration and starts migration of entities from Standard to Premium namespace
+create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Example
 Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PostMigrationName myStandardNamespace2 -TargetNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myPremiumNamespace
 

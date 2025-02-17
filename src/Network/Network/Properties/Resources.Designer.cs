@@ -1822,6 +1822,17 @@ namespace Microsoft.Azure.Commands.Network.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to The Route Server to update could not be found..
+        /// </summary>
+        internal static string RouteServerToUpdateNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("RouteServerToUpdateNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to The virtual hub route table to modify could not be found.
         /// </summary>
         internal static string RouteTableNotFound

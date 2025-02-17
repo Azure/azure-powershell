@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.2
+* Upgraded nuget package to signed package.
+
 ## Version 0.2.1
 * Fixed the placeholder in psd1 file.
 

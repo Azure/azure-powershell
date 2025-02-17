@@ -178,6 +178,82 @@ New-AzRoleAssignment -RoleDefinitionName "Reader" -ApplicationId $servicePrincip
 
 Grant reader access to a service principal
 
+### Example 6
+```powershell
+$Condition = '(
+ (
+  !(ActionMatches{''Microsoft.Authorization/roleAssignments/write''})
+ )
+ OR 
+ (
+  @Request[Microsoft.Authorization/roleAssignments:PrincipalType] StringEqualsIgnoreCase ''ServicePrincipal''
+ )
+)
+AND
+(
+ (
+  !(ActionMatches{''Microsoft.Authorization/roleAssignments/delete''})
+ )
+ OR 
+ (
+  @Resource[Microsoft.Authorization/roleAssignments:PrincipalType] StringEqualsIgnoreCase ''ServicePrincipal''
+ )
+)'
+
+$DelegationParams = @{
+    AllowDelegation = $true
+    Condition = $Condition 
+    Scope = "/subscriptions/11112222-bbbb-3333-cccc-4444dddd5555" 
+    RoleDefinitionName = 'User Access Administrator' 
+    ObjectId = "00001111-aaaa-2222-bbbb-3333cccc4444"
+}
+
+New-AzRoleAssignment @DelegationParams
+```
+
+Grant User Access Administrator over an azure subscription with constrained delegation.<br>
+The constrained delegation will only allow that the delegated user/service principal/group may only create/delete/update new role assignments for a service principal and any roles.
+
+### Example 7
+```powershell
+$Condition = '(
+ (
+  !(ActionMatches{''Microsoft.Authorization/roleAssignments/write''})
+ )
+ OR 
+ (
+  @Request[Microsoft.Authorization/roleAssignments:PrincipalType] StringEqualsIgnoreCase ''ServicePrincipal''
+  AND
+  NOT @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {8e3af657-a8ff-443c-a75c-2fe8c4bcb635,18d7d88d-d35e-4fb5-a5c3-7773c20a72d9}
+ )
+)
+AND
+(
+ (
+  !(ActionMatches{''Microsoft.Authorization/roleAssignments/delete''})
+ )
+ OR 
+ (
+  @Resource[Microsoft.Authorization/roleAssignments:PrincipalType] StringEqualsIgnoreCase ''ServicePrincipal''
+  AND
+  NOT @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {8e3af657-a8ff-443c-a75c-2fe8c4bcb635,18d7d88d-d35e-4fb5-a5c3-7773c20a72d9}
+ )
+)'
+
+$DelegationParams = @{
+    AllowDelegation = $true
+    Condition = $Condition 
+    Scope = "/subscriptions/11112222-bbbb-3333-cccc-4444dddd5555" 
+    RoleDefinitionName = 'User Access Administrator' 
+    ObjectId = "00001111-aaaa-2222-bbbb-3333cccc4444"
+}
+
+New-AzRoleAssignment @DelegationParams
+```
+
+Grant User Access Administrator over an azure subscription with constrained delegation.<br>
+The constrained delegation will only allow that the delegated user/service principal/group may only create/delete/update new role assignments for a service principal, excluding the [Owner](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/privileged#owner) and [User Access Administrator](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/privileged#user-access-administrator) role.
+
 ## PARAMETERS
 
 ### -AllowDelegation
@@ -491,7 +567,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Learn more about role assignment delegation - https://learn.microsoft.com/en-us/azure/role-based-access-control/delegate-role-assignments-portal?tabs=template 
+<br>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

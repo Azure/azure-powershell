@@ -23,7 +23,7 @@ Create or update a Kusto cluster.
 New-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -Location 'East US' -SkuName Standard_D11_v2 -SkuTier Standard -EnableDoubleEncryption -EngineType 'V2'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -31,6 +31,11 @@ To create the parameters described below, construct a hash table containing the 
 
 ACCEPTEDAUDIENCE <IAcceptedAudiences[]>: The cluster's accepted audiences.
   [Value <String>]: GUID or valid URL representing an accepted audience.
+
+CALLOUTPOLICY <ICalloutPolicy[]>: List of callout policies for egress from Cluster.
+  [CalloutType <CalloutType?>]: Type of the callout service, specifying the kind of external resource or service being accessed.
+  [CalloutUriRegex <String>]: Regular expression or FQDN pattern for the callout URI.
+  [OutboundAccess <OutboundAccess?>]: Indicates whether outbound access is permitted for the specified URI pattern.
 
 LANGUAGEEXTENSIONVALUE <ILanguageExtension[]>: The list of language extensions.
   [CustomImageName <String>]: The language extension custom image name.
@@ -43,7 +48,7 @@ TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustocluster
 #>
 function New-AzKustoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -105,7 +110,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAcceptedAudiences[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAcceptedAudiences[]]
     # The cluster's accepted audiences.
     # To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
     ${AcceptedAudience},
@@ -123,6 +128,14 @@ param(
     [System.String[]]
     # The list of ips in the format of CIDR allowed to connect to the cluster.
     ${AllowedIPRangeList},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy[]]
+    # List of callout policies for egress from Cluster.
+    # To construct, see NOTES section for CALLOUTPOLICY properties and create a hash table.
+    ${CalloutPolicy},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -172,7 +185,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The list of user identities associated with the Kusto cluster.
     # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -205,7 +218,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]]
     # The list of language extensions.
     # To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
     ${LanguageExtensionValue},
@@ -273,7 +286,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ITrustedExternalTenant[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ITrustedExternalTenant[]]
     # The cluster's external tenants.
     # To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
     ${TrustedExternalTenant},

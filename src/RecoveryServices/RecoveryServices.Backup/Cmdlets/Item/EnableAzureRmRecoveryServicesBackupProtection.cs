@@ -24,6 +24,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using static Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ParamHelpMsgs;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -220,7 +222,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                     IPsBackupProvider psBackupProvider = (Item != null) ?
                                         providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                                         : providerManager.GetProviderInstance(Policy.WorkloadType);
-
                                     var itemResponse = psBackupProvider.EnableProtection();
 
                                     // Track Response and display job details
@@ -260,7 +261,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         IPsBackupProvider psBackupProvider = (Item != null) ?
                             providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                             : providerManager.GetProviderInstance(Policy.WorkloadType);
+                                        
+                        if (Policy.WorkloadType == Models.WorkloadType.AzureFiles)
+                        {
+                            // if item & policy are not null and both have ids
+                            AzureFileShareItem afsItem = (Item != null) ? (AzureFileShareItem)Item : null;
+                     
+                         
+                            if (afsItem != null && Policy != null && afsItem.PolicyId != null && Policy.Id != null)
+                            {
+                                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(afsItem.PolicyId);
+                                string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, afsItem.PolicyId);
 
+                                keyValueDict = HelperUtils.ParseUri(Policy.Id);
+                                string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, Policy.Id);
+
+                                ProtectionPolicyResource oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                                    oldPolicyName,
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName);
+                                ProtectionPolicyResource newPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                                    newPolicyName,
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName);
+
+                                ServiceClientModel.AzureFileShareProtectionPolicy oldAFSPolicy =
+                                    (ServiceClientModel.AzureFileShareProtectionPolicy)oldPolicy.Properties;
+                                ServiceClientModel.AzureFileShareProtectionPolicy newAFSPolicy =
+                                    (ServiceClientModel.AzureFileShareProtectionPolicy)newPolicy.Properties;
+
+                                if (oldAFSPolicy != null && newAFSPolicy != null)
+                                {
+                                   
+                                    if (oldAFSPolicy.VaultRetentionPolicy != null && newAFSPolicy.RetentionPolicy != null)
+                                    {
+                                        throw new ArgumentException(string.Format(Resources.AFSPolicyUpdateNotAllowed));
+                                    }
+
+                                    if (oldAFSPolicy.RetentionPolicy != null && newAFSPolicy.VaultRetentionPolicy != null)
+                                    {
+
+                                        if (!ShouldContinue(string.Format(Resources.AFSPolicyUpdateWarning), string.Format(Resources.AFSPolicyUpdate)))
+                                        {
+                                            throw new ArgumentException(string.Format(Resources.AFSPolicyUpdateCanceled));
+                                        }
+                                    }
+                                } 
+                            }
+                        }
+                                   
                         var itemResponse = psBackupProvider.EnableProtection();
 
                         // Track Response and display job details

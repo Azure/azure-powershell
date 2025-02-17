@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.1.0
 * Updated API version to 2024-04-01
 * Added Kind and HubResourceId parameters for Workspace cmdlets

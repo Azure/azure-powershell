@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.3.1
+* Upgraded nuget package to signed package.
+
+## Version 6.3.0
 * Changed the type of parameter `-IdentityId` in command `Update-AzHDInsightCluster` from `string`  to `string[]`.
 
 ## Version 6.2.1

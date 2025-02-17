@@ -930,7 +930,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool deploymentOperationFlag = true;
             do
             {
-                WriteVerbose(string.Format("Checking stack deployment status", step));
                 TestMockSupport.Delay(step * counterUnit);
 
                 if (phaseOne > 0)
@@ -958,6 +957,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     deploymentOperationFlag = false;
                     PollDeployments(stack);
                 }
+
+                WriteVerbose("stack deployment status: " + stack.ProvisioningState);
 
             } while (!status.Any(s => s.Equals(stack.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 

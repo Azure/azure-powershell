@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesCreate(string subscriptionId, string resourceGroupName, string deidServiceName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService> DeidServicesCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService body, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesCreateViaJsonString(string subscriptionId, string resourceGroupName, string deidServiceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService> DeidServicesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService> DeidServicesCreateWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService body, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesDelete(string subscriptionId, string resourceGroupName, string deidServiceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesGet(string subscriptionId, string resourceGroupName, string deidServiceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService> DeidServicesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService> DeidServicesGetWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1250,7 +1250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1290,7 +1290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1339,7 +1339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidServiceListResult> DeidServicesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1389,7 +1389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidServiceListResult> DeidServicesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1563,7 +1563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1601,7 +1601,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1647,7 +1647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidServiceListResult> DeidServicesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1693,7 +1693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidServiceListResult> DeidServicesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1865,7 +1865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesUpdate(string subscriptionId, string resourceGroupName, string deidServiceName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1912,7 +1912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1969,7 +1969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService> DeidServicesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidUpdate body, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2029,7 +2029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task DeidServicesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string deidServiceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2075,7 +2075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService> DeidServicesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2122,7 +2122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService> DeidServicesUpdateWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidUpdate body, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2490,7 +2490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2526,7 +2526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2569,7 +2569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2611,7 +2611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2778,7 +2778,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreate(string subscriptionId, string resourceGroupName, string deidServiceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2827,7 +2827,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2887,7 +2887,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource> PrivateEndpointConnectionsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource body, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2951,7 +2951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateViaJsonString(string subscriptionId, string resourceGroupName, string deidServiceName, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3000,7 +3000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource> PrivateEndpointConnectionsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, string privateEndpointConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3050,7 +3050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource> PrivateEndpointConnectionsCreateWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource body, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3427,7 +3427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string deidServiceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3471,7 +3471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3707,7 +3707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string deidServiceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3750,7 +3750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3804,7 +3804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource> PrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3861,7 +3861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResource> PrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4045,7 +4045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListByDeidService(string subscriptionId, string resourceGroupName, string deidServiceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4087,7 +4087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListByDeidServiceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4139,7 +4139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResourceListResult> PrivateEndpointConnectionsListByDeidServiceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4193,7 +4193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateEndpointConnectionResourceListResult> PrivateEndpointConnectionsListByDeidServiceWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4376,7 +4376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinksListByDeidService(string subscriptionId, string resourceGroupName, string deidServiceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4418,7 +4418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinksListByDeidServiceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4470,7 +4470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateLinkResourceListResult> PrivateLinksListByDeidServiceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4524,7 +4524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IPrivateLinkResourceListResult> PrivateLinksListByDeidServiceWithResult(string subscriptionId, string resourceGroupName, string deidServiceName, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-28-preview";
+            var apiVersion = @"2024-09-20";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

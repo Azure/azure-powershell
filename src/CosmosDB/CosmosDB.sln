@@ -36,6 +36,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Authorization", "..\Reso
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosDB.Management.Sdk", "CosmosDB.Management.Sdk\CosmosDB.Management.Sdk.csproj", "{732EA9B7-1A18-4375-9EC8-D403A107AA39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataBoundary", "..\Resources\DataBoundary.Autorest\Az.DataBoundary.csproj", "{9D4535A9-F8FC-4C9A-9CD6-B80C631634D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
