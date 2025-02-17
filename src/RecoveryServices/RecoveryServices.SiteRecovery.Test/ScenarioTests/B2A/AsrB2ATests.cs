@@ -146,5 +146,14 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
                 $"Test-CreateRPIWithMangedDisksForReplication -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateRPIWithMangedDisksForReplication()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-UpdateRPIWithMangedDisksForReplication -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
+        }
     }
 }

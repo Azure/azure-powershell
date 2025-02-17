@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2024-04-01.
+
+## Version 1.1.0
+* Upgraded nuget package to signed package.
+
+## Version 1.0.1
+* Migrated ResourceGraph SDK to generated SDK
+  - Removed "Microsoft.Azure.Management.ResourceGraph" Version "2.1.0" PackageReference
+  - Added ResourceGraph.Management.Sdk ProjectReference
 
 ## Version 1.0.0
 * General availability for module Az.ResourceGraph

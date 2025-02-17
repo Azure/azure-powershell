@@ -22,7 +22,7 @@ Describe 'New-AzDnsResolver' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername0j0cdzg";
         $resourceGroupName = "powershell-test-rg-debug";
-        $virtualNetworkId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname0879evh";
+        $virtualNetworkId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname0879evh";
         $location = "westus2";
 
         # ACT
@@ -37,7 +37,7 @@ Describe 'New-AzDnsResolver' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername1uerapj";
         $resourceGroupName = "powershell-test-rg-debug";
-        $malformedVirtualNetworkArmId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname1dkijv7";
+        $malformedVirtualNetworkArmId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname1dkijv7";
         $location = "westus2";
         
         # ACT,ASSERT
@@ -48,7 +48,7 @@ Describe 'New-AzDnsResolver' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername2zpuk2x";
         $resourceGroupName = "powershell-test-rg-debug";
-        $virtualNetworkId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28oq6tl";
+        $virtualNetworkId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28oq6tl";
         $location = "westus2";
         $tag = GetRandomHashtable -size 2
 
@@ -65,9 +65,9 @@ Describe 'New-AzDnsResolver' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername3142sgr";
         $resourceGroupName = "powershell-test-rg-debug";
-        $virtualNetworkId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28oq6tl";
+        $virtualNetworkId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28oq6tl";
         $location = "westus2";
-        $nonExistentVirtualNetwork = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname9aywbo511111"
+        $nonExistentVirtualNetwork = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname9aywbo511111"
 
         # ACT, ASSERT
         {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $nonExistentVirtualNetwork -Location $location }| Should -Throw
@@ -77,7 +77,7 @@ Describe 'New-AzDnsResolver' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername4c7glpm";
         $resourceGroupName = "powershell-test-rg-debug";
-        $virtualNetworkId = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname4mox6wf";
+        $virtualNetworkId = "/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/powershell-test-rg-debug/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname4mox6wf";
         $location = "westus2";
 
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $virtualNetworkId -Location $location

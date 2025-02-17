@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalysisServices", "Analysi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{592A383A-76BC-4BCA-BD6A-7F112631704E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalysisService.Management.Sdk", "AnalysisService.Management.Sdk\AnalysisService.Management.Sdk.csproj", "{FC9AB621-5BDA-48A8-8CF2-AF2CAB9508F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalysisServices.Management.Sdk", "AnalysisServices.Management.Sdk\AnalysisServices.Management.Sdk.csproj", "{72971D25-2BC6-4384-9449-085B437FD815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +75,10 @@ Global
 		{592A383A-76BC-4BCA-BD6A-7F112631704E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{592A383A-76BC-4BCA-BD6A-7F112631704E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{592A383A-76BC-4BCA-BD6A-7F112631704E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC9AB621-5BDA-48A8-8CF2-AF2CAB9508F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC9AB621-5BDA-48A8-8CF2-AF2CAB9508F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC9AB621-5BDA-48A8-8CF2-AF2CAB9508F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC9AB621-5BDA-48A8-8CF2-AF2CAB9508F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72971D25-2BC6-4384-9449-085B437FD815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72971D25-2BC6-4384-9449-085B437FD815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72971D25-2BC6-4384-9449-085B437FD815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72971D25-2BC6-4384-9449-085B437FD815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

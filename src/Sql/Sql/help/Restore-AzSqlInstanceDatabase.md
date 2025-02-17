@@ -221,7 +221,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-Name "sourceDatabaseName" `
 			-PointInTime $pointInTime `
 			-TargetInstanceDatabaseName "targetDatabaseName" `
-			-TargetInstanceName "targetManagedInstnaceName" `
+			-TargetInstanceName "targetManagedInstanceName" `
 			-TargetResourceGroupName "targetResourceGroupName" `
 			-TargetSubscriptionId "targetSubscriptionId"
 ```
@@ -236,7 +236,7 @@ Set-AzContext -SubscriptionId "targetSubscriptionId"
 $sourceDatabase | Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-PointInTime $pointInTime `
 			-TargetInstanceDatabaseName "targetDatabaseName" `
-			-TargetInstanceName "targetManagedInstnaceName" `
+			-TargetInstanceName "targetManagedInstanceName" `
 			-TargetResourceGroupName "targetResourceGroupName" `
 			-TargetSubscriptionId "targetSubscriptionId"
 ```

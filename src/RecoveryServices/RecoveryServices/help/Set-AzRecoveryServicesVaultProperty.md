@@ -16,8 +16,9 @@ Updates properties of a Vault.
 ### AzureRSVaultSoftDelteParameterSet (Default)
 ```
 Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
- [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftDeleteRetentionPeriodInDays <Int32>] [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultCMKParameterSet
@@ -75,6 +76,16 @@ $prop = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -DisableHybridBac
 
 The first command gets a Vault object and then stores it in the $vault variable.
 The second command disables the HybridBackupSecurityFeature of the vault, set $true to enable it again.
+
+### Example 5: Update SoftDeleteFeatureState and HybridBackupSecurityFeature to AlwaysON
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName" 
+$prop = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -SoftDeleteFeatureState AlwaysON
+```
+
+The first command gets a Vault object and then stores it in the $vault variable.
+The second command sets the SoftDeleteFeatureState of the vault to "AlwaysON", which will also set the HybridBackupSecurityFeature to AlwaysON. Additionally, the SoftDeleteRetentionPeriodInDays parameter is used to set the soft delete retention period to 16 days. 
 
 ## PARAMETERS
 
@@ -161,6 +172,21 @@ Type: System.String
 Parameter Sets: AzureRSVaultSoftDelteParameterSet
 Aliases:
 Accepted values: Enable, Disable, AlwaysON
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteRetentionPeriodInDays
+Specifies the retention period for soft deleted items in days.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Aliases:
 
 Required: False
 Position: Named

@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Oracle",
-  "ModuleVersion": "1.0.0",
+  "ModuleVersion": "1.1.0",
   "Cmdlets": [
     {
       "VerbName": "Add",

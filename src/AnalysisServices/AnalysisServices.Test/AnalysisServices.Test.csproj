@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AnalysisService.Management.Sdk\AnalysisService.Management.Sdk.csproj" />
     <ProjectReference Include="..\AnalysisServices.Dataplane\AnalysisServices.Dataplane.csproj" />
+    <ProjectReference Include="..\AnalysisServices.Management.Sdk\AnalysisServices.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

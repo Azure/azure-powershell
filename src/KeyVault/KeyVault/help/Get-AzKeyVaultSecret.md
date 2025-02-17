@@ -49,21 +49,27 @@ Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersi
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceIdVaultName
+### BySecretUri
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
+Get-AzKeyVaultSecret [-Id] <String> [-InRemovedState] [-AsPlainText] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByParentResourceIdVaultName
+```
+Get-AzKeyVaultSecret [-ParentResourceId] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceIdSecretName
+### ByParentResourceIdSecretName
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
+Get-AzKeyVaultSecret [-ParentResourceId] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceIdSecretVersions
+### ByParentResourceIdSecretVersions
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultSecret [-ParentResourceId] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -181,7 +187,83 @@ Tags         :
 
 This command gets a specific version of the secret named secret1 in the key vault named Contoso.
 
-### Example 5: Get the plain text value of the current version of a specific secret
+
+### Example 5: Get the current version of a specific secret using Uri
+```powershell
+Get-AzKeyVaultSecret -Id 'https://contoso.vault.azure.net/secrets/secret1/'
+```
+
+```output
+Vault Name   : contoso
+Name         : secret1
+Version      : 7128133570f84a71b48d7d0550deb74c
+Id           : https://contoso.vault.azure.net:443/secrets/secret1/7128133570f84a71b48d7d0550deb74c
+Enabled      : True
+Expires      : 4/6/2018 3:59:43 PM
+Not Before   :
+Created      : 4/5/2018 11:46:28 PM
+Updated      : 4/6/2018 11:30:17 PM
+Content Type :
+Tags         :
+```
+
+This command gets the current version of the secret named secret1 in the key vault named Contoso.
+
+### Example 6: Get a specific version of a specific secret using Uri
+```powershell
+Get-AzKeyVaultSecret -Id 'https://contoso.vault.azure.net/secrets/secret1/7128133570f84a71b48d7d0550deb74c'
+```
+
+```output
+Vault Name   : contoso
+Name         : secret1
+Version      : 7128133570f84a71b48d7d0550deb74c
+Id           : https://contoso.vault.azure.net:443/secrets/secret1/7128133570f84a71b48d7d0550deb74c
+Enabled      : True
+Expires      : 4/6/2018 3:59:43 PM
+Not Before   :
+Created      : 4/5/2018 11:46:28 PM
+Updated      : 4/6/2018 11:30:17 PM
+Content Type :
+Tags         :
+```
+
+This command gets a specific version of the secret named secret1 in the key vault named Contoso.
+
+### Example 7: Get the current version of all the secrets using Uri
+```powershell
+Get-AzKeyVaultSecret -Id 'https://contoso.vault.azure.net/secrets/'
+```
+
+```output
+Vault Name   : contoso
+Name         : secret1
+Version      : 7128133570f84a71b48d7d0550deb74c
+Id           : https://contoso.vault.azure.net:443/secrets/secret1/7128133570f84a71b48d7d0550deb74c
+Enabled      : True
+Expires      : 4/6/2018 3:59:43 PM
+Not Before   :
+Created      : 4/5/2018 11:46:28 PM
+Updated      : 4/6/2018 11:30:17 PM
+Content Type :
+Tags         :
+
+Vault Name   : contoso
+Name         : secret2
+Version      : 7128133570f84a71b48d7d0550deb74c
+Id           : https://contoso.vault.azure.net:443/secrets/secret2/7128133570f84a71b48d7d0550deb74c
+Enabled      : True
+Expires      : 4/6/2018 3:59:43 PM
+Not Before   :
+Created      : 4/5/2018 11:46:28 PM
+Updated      : 4/6/2018 11:30:17 PM
+Content Type :
+Tags         :
+```
+
+This command gets the current version of all the secrets in the key vault named Contoso.
+
+### Example 8: Get the plain text value of the current version of a specific secret
 ```powershell
 $secretText = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -AsPlainText
 ```
@@ -190,7 +272,7 @@ The cmdlet returns the secret as a string when `-AsPlainText` is applied.
 
 **Note:** When listing secrets, i.e. not providing `-Name`, the `-AsPlainText` is ignored.
 
-### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
+### Example 9: Get all the secrets that have been deleted but not purged for this key vault.
 ```powershell
 Get-AzKeyVaultSecret -VaultName 'Contoso' -InRemovedState
 ```
@@ -225,7 +307,7 @@ Tags                 :
 
 This command gets all the secrets that have been previously deleted, but not purged, in the key vault named Contoso.
 
-### Example 7: Gets the secret ITSecret that has been deleted but not purged for this key vault.
+### Example 10: Gets the secret ITSecret that has been deleted but not purged for this key vault.
 ```powershell
 Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -InRemovedState
 ```
@@ -249,7 +331,7 @@ Tags                 :
 This command gets the secret 'secret1' that has been previously deleted, but not purged, in the key vault named Contoso.
 This command will return metadata such as the deletion date, and the scheduled purging date of this deleted secret.
 
-### Example 8: Get all current versions of all secrets in a key vault using filtering
+### Example 11: Get all current versions of all secrets in a key vault using filtering
 ```powershell
 Get-AzKeyVaultSecret -VaultName 'Contoso' -Name "secret*"
 ```
@@ -282,7 +364,7 @@ Tags         :
 
 This command gets the current versions of all secrets in the key vault named Contoso that start with "secret".
 
-### Example 9: Get a secret in Azure Key Vault by command Get-Secret in module Microsoft.PowerShell.SecretManagement
+### Example 12: Get a secret in Azure Key Vault by command Get-Secret in module Microsoft.PowerShell.SecretManagement
 ```powershell
 # Install module Microsoft.PowerShell.SecretManagement
 Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -AllowPrerelease
@@ -306,8 +388,8 @@ This example Gets a secret named `secureSecret` in Azure Key Vault named `test-k
 When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByVaultName, BySecretName, ByInputObjectVaultName, ByInputObjectSecretName, ByResourceIdVaultName, ByResourceIdSecretName
+Type: SwitchParameter
+Parameter Sets: ByVaultName, BySecretName, ByInputObjectVaultName, ByInputObjectSecretName, BySecretUri, ByParentResourceIdVaultName, ByParentResourceIdSecretName
 Aliases:
 
 Required: False
@@ -321,9 +403,40 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+The URI of the KeyVault Secret.
+Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
+
+```yaml
+Type: String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to show the previously deleted secrets in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByVaultName, ByInputObjectVaultName, BySecretUri, ByParentResourceIdVaultName
+Aliases:
 
 Required: False
 Position: Named
@@ -339,8 +452,8 @@ If you specify this parameter you must also specify the *Name* and *VaultName* p
 If you do not specify the *IncludeVersions* parameter, this cmdlet gets the current version of the secret with the specified *Name*.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BySecretVersions, ByInputObjectSecretVersions, ByResourceIdSecretVersions
+Type: SwitchParameter
+Parameter Sets: BySecretVersions, ByInputObjectSecretVersions, ByParentResourceIdSecretVersions
 Aliases:
 
 Required: True
@@ -354,7 +467,7 @@ Accept wildcard characters: False
 KeyVault Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Type: PSKeyVault
 Parameter Sets: ByInputObjectVaultName, ByInputObjectSecretName, ByInputObjectSecretVersions
 Aliases:
 
@@ -365,27 +478,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InRemovedState
-Specifies whether to show the previously deleted secrets in the output
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the secret to get.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
+Type: String
+Parameter Sets: ByVaultName, ByInputObjectVaultName, ByParentResourceIdVaultName
 Aliases: SecretName
 
 Required: False
@@ -396,8 +494,8 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: System.String
-Parameter Sets: BySecretName, BySecretVersions, ByInputObjectSecretName, ByInputObjectSecretVersions, ByResourceIdSecretName, ByResourceIdSecretVersions
+Type: String
+Parameter Sets: BySecretName, BySecretVersions, ByInputObjectSecretName, ByInputObjectSecretVersions, ByParentResourceIdSecretName, ByParentResourceIdSecretVersions
 Aliases: SecretName
 
 Required: True
@@ -407,13 +505,13 @@ Accept pipeline input: False
 Accept wildcard characters: True
 ```
 
-### -ResourceId
+### -ParentResourceId
 KeyVault Resource Id.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdVaultName, ByResourceIdSecretName, ByResourceIdSecretVersions
-Aliases:
+Type: String
+Parameter Sets: ByParentResourceIdVaultName, ByParentResourceIdSecretName, ByParentResourceIdSecretVersions
+Aliases: ResourceId
 
 Required: True
 Position: 0
@@ -427,7 +525,7 @@ Specifies the name of the key vault to which the secret belongs.
 This cmdlet constructs the fully qualified domain name (FQDN) of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVaultName, BySecretName, BySecretVersions
 Aliases:
 
@@ -443,8 +541,8 @@ Specifies the secret version.
 This cmdlet constructs the FQDN of a secret based on the key vault name, your currently selected environment, the secret name, and the secret version.
 
 ```yaml
-Type: System.String
-Parameter Sets: BySecretName, ByInputObjectSecretName, ByResourceIdSecretName
+Type: String
+Parameter Sets: BySecretName, ByInputObjectSecretName, ByParentResourceIdSecretName
 Aliases: SecretVersion
 
 Required: True

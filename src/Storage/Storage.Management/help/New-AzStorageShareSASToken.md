@@ -15,7 +15,7 @@ Generate Shared Access Signature token for Azure Storage share.
 
 ### SasPolicy
 ```
-New-AzStorageShareSASToken [-ShareName] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
+New-AzStorageShareSASToken [-ShareName] <String> -Policy <String> [-Protocol <String>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzStorageShareSASToken [-ShareName] <String> -Policy <String> [-Protocol <Sh
 
 ### SasPermission
 ```
-New-AzStorageShareSASToken [-ShareName] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzStorageShareSASToken [-ShareName] <String> [-Permission <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -175,7 +175,7 @@ The acceptable values for this parameter are:
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Storage.SharedAccessProtocol]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp

@@ -15,7 +15,7 @@ Create federatedIdentityCredential for applications.
 ```
 New-AzADAppFederatedCredential -ApplicationObjectId <String> -Audience <String[]> -Issuer <String>
  -Name <String> -Subject <String> [-AdditionalProperties <Hashtable>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,21 +148,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Subject
 Required.
 The identifier of the external software workload within the external identity provider.
@@ -224,7 +209,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

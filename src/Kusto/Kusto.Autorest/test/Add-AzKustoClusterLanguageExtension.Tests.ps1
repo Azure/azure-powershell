@@ -20,7 +20,7 @@ Describe 'Add-AzKustoClusterLanguageExtension' {
     It 'AddExpanded' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
-
+        
         { Add-AzKustoClusterLanguageExtension -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Value (@{ Name = "R" }) } | Should -Not -Throw
     }
 

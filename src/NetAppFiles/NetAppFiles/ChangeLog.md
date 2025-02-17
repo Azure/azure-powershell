@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 0.20.1
+* Upgraded nuget package to signed package.
+
+## Version 0.20.0
+* Removed parameters `Location`, `PoolName`, `VolumeName` from `Get-AzNetAppFilesBackup`, `New-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
+
+## Version 0.19.0
+* Added new cmdLets for on-prem volume migration `Start-AnfPeerExternalCluster`, `Start-AnfFinalizeExternalReplication`, `Start-AnfPerformExternalReplication`, `Start-AnfAuthorizeExternalReplication`
+* Added new cmdLets `Get-AzNetAppFilesQuotaAvailability`, `Get-AzNetAppFilesNameAvailability` and `Get-AzNetAppFilesFileNameAvailability`
+* Added `RemotePath` to `PSNetAppFilesReplicationObject`
+* Added `EffectiveNetworkFeatures` to `PSNetAppFilesVolume`
+
 ## Version 0.18.0
 * Fixed some minor issues
 * Added `SnapshotName` to `New-AzNetAppFilesBackup`

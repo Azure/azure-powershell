@@ -1776,7 +1776,7 @@ function GetFunctionAppStackDefinition
     }
 
     Write-Debug "$DEBUG_PREFIX Get AccessToken."
-    $token = (Get-AzAccessToken).Token
+    $token =  . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
     $headers = @{
         Authorization="Bearer $token"
     }
@@ -1814,7 +1814,7 @@ function GetFunctionAppStackDefinition
             if ($result.StatusCode -eq 401)
             {
                 # Get a new access token, create new headers and retry
-                $token = (Get-AzAccessToken).Token
+                $token =  . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
 
                 $headers = @{
                     Authorization = "Bearer $token"

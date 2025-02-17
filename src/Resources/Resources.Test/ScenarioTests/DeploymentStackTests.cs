@@ -30,7 +30,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStack");
         }
-    
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewResourceGroupDeploymentStackFromBicepparamFileWithOverrides()
+        {
+            TestRunner.RunTestScript("Test-NewResourceGroupDeploymentStackFromBicepparamFileWithOverrides");
+        }
+
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewResourceGroupDeploymentStack()

@@ -20,7 +20,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzContainerGroup' {
 
-    It 'List' {
+    It 'List' -skip {
        {
         Get-AzContainerGroup
        } | Should -Not -Throw

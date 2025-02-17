@@ -586,7 +586,9 @@ namespace Microsoft.Azure.Commands.Compute
                     publicIpSku = _cmdlet.PublicIpSku == "Basic" ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
                 else {
-                    publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
+                    // since Az 13.0.0 and Az.Compute 9.0.0, if PublicIpSku is not specified, it should be Standard by default.
+                    // https://aka.ms/ipbasictostandard
+                    publicIpSku = PublicIPAddressStrategy.Sku.Standard;
                 }
                 
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))
@@ -1719,6 +1721,22 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.GenerateSshKey.IsPresent)
                 {
                     throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
+                }
+            }
+
+            if (this.IsParameterBound(c => c.VM))
+            {
+                if (this.ParameterSetName == "DefaultParameterSet")
+                {
+                    if (VM.SecurityProfile != null && VM.SecurityProfile.EncryptionIdentity != null && 
+                        VM.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
+                    {
+                        if (VM.Identity == null || VM.Identity.UserAssignedIdentities == null || 
+                            !VM.Identity.UserAssignedIdentities.ContainsKey(VM.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId))
+                        {
+                            throw new Exception("Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource");
+                        }
+                    }
                 }
             }
         }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppAuthConfig
 
 ## SYNOPSIS
-Create the AuthConfig for a Container App.
+create the AuthConfig for a Container App.
 
 ## SYNTAX
 
@@ -69,7 +69,7 @@ New-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-CookieExpirationConve
 ```
 
 ## DESCRIPTION
-Create the AuthConfig for a Container App.
+create the AuthConfig for a Container App.
 
 ## EXAMPLES
 
