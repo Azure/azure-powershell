@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppComplianceAutomation", "AppComplianceAutomation\AppComplianceAutomation.csproj", "{2237E137-D991-4FA3-8049-7B182C9A1120}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppComplianceAutomation", "AppComplianceAutomation.Autorest\Az.AppComplianceAutomation.csproj", "{100CD4BF-F2DA-4B02-9E24-667D0524B32B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppComplianceAutomation", "..\..\generated\AppComplianceAutomation\AppComplianceAutomation.Autorest\Az.AppComplianceAutomation.csproj", "{B8C133A8-9127-44E2-94A4-234FC29CC3D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{2237E137-D991-4FA3-8049-7B182C9A1120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2237E137-D991-4FA3-8049-7B182C9A1120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2237E137-D991-4FA3-8049-7B182C9A1120}.Release|Any CPU.Build.0 = Release|Any CPU
-		{100CD4BF-F2DA-4B02-9E24-667D0524B32B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{100CD4BF-F2DA-4B02-9E24-667D0524B32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{100CD4BF-F2DA-4B02-9E24-667D0524B32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{100CD4BF-F2DA-4B02-9E24-667D0524B32B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8C133A8-9127-44E2-94A4-234FC29CC3D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C133A8-9127-44E2-94A4-234FC29CC3D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C133A8-9127-44E2-94A4-234FC29CC3D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C133A8-9127-44E2-94A4-234FC29CC3D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{95882BFF-6AD1-4DDE-BE19-2A1D167FD65E} = {4701F8C5-6400-4038-90AA-3DD03A4F98FE}
