@@ -8,14 +8,14 @@ schema: 2.0.0
 # Update-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
+ [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <SecureString>]
  [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -23,19 +23,19 @@ Update-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -Resourc
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-AzureFileAccountKey <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityManagedEnvironmentExpanded
 ```
 Update-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKey <SecureString>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ## EXAMPLES
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Storage account key for azure file.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
