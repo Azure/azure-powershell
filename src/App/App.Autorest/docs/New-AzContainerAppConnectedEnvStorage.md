@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnvStorage
 
 ## SYNOPSIS
-Create storage for a connectedEnvironment.
+create storage for a connectedEnvironment.
 
 ## SYNTAX
 
@@ -16,21 +16,21 @@ Create storage for a connectedEnvironment.
 ```
 New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityConnectedEnvironmentExpanded
 ```
 New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <
 ```
 
 ## DESCRIPTION
-Create storage for a connectedEnvironment.
+create storage for a connectedEnvironment.
 
 ## EXAMPLES
 
@@ -86,11 +86,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureFileAccountKey
+### -AzureFileAccountKeySecure
 Storage account key for azure file.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
