@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDynatraceMonitorHost
 
 ## SYNOPSIS
-List the compute resources currently being monitored by the Dynatrace resource.
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzDynatraceMonitorHost -MonitorName <String> -ResourceGroupName <String> [-S
 ```
 
 ## DESCRIPTION
-List the compute resources currently being monitored by the Dynatrace resource.
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 
 ## EXAMPLES
 
@@ -32,7 +32,8 @@ This command lists the compute resources currently being monitored by the Dynatr
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -99,11 +100,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IVMInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
