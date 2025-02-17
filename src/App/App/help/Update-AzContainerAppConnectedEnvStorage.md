@@ -16,23 +16,25 @@ update storage for a connectedEnvironment.
 ```
 Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
+ [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityConnectedEnvironmentExpanded
 ```
 Update-AzContainerAppConnectedEnvStorage -Name <String> -ConnectedEnvironmentInputObject <IAppIdentity>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
- [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>]
+ [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AzureFileAccountKey <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
+ [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,6 +111,21 @@ Storage account key for azure file.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFileAccountKeySecure
+Storage account key for azure file.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
