@@ -10,7 +10,7 @@
         "imageReference": {
           "offer": "RHEL-SAP-HA",
           "publisher": "RedHat",
-          "sku": "84sapha-gen2",
+          "sku": "86sapha-gen2",
           "version": "latest"
         },
         "osProfile": {
@@ -19,8 +19,8 @@
             "disablePasswordAuthentication": true,
             "osType": "Linux",
             "sshKeyPair": {
-              "publicKey": "PublicKey",
-              "privateKey": "PrivateKey"
+              "publicKey": "publicKey",
+              "privateKey": "privateKey"
             }
           }
         },
@@ -34,7 +34,7 @@
         "imageReference": {
           "offer": "RHEL-SAP-HA",
           "publisher": "RedHat",
-          "sku": "84sapha-gen2",
+          "sku": "86sapha-gen2",
           "version": "latest"
         },
         "osProfile": {
@@ -59,7 +59,7 @@
         "imageReference": {
           "offer": "RHEL-SAP-HA",
           "publisher": "RedHat",
-          "sku": "84sapha-gen2",
+          "sku": "86sapha-gen2",
           "version": "latest"
         },
         "osProfile": {
@@ -68,8 +68,8 @@
             "disablePasswordAuthentication": true,
             "osType": "Linux",
             "sshKeyPair": {
-              "publicKey": "PublicKey",
-              "privateKey": "PrivateKey"
+              "publicKey": "publicKey",
+              "privateKey": "privateKey"
             }
           }
         },
