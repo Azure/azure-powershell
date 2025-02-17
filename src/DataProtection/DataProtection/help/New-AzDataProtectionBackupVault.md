@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 schema: 2.0.0
 ---
@@ -281,7 +281,7 @@ Gets or sets the user assigned identities.
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: UserAssignedIdentity
+Aliases: UserAssignedIdentity, AssignUserIdentity
 
 Required: False
 Position: Named

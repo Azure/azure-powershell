@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of linux patch classifications")]
+            HelpMessage = "List of linux patch classifications. Allowed values are 'Critical', 'Security', and 'Other'.")]
         public HashSet<string> LinuxParameterClassificationToInclude { get; set; }
 
         [Parameter(
@@ -243,12 +243,12 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of KBs to exclude during vm patch operationn")]
+            HelpMessage = "List of KBs to exclude during vm patch operation")]
         public HashSet<string> WindowParameterKbNumberToExclude { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of windows patch classification")]
+            HelpMessage = "List of windows patch classification. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.")]
         public HashSet<string> WindowParameterClassificationToInclude { get; set; }
 
         [Parameter(

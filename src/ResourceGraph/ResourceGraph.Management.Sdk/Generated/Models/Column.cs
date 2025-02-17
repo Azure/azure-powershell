@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         /// </param>
 
         /// <param name="type">Column data type.
-        /// Possible values include: &#39;string&#39;, &#39;integer&#39;, &#39;number&#39;, &#39;boolean&#39;, &#39;object&#39;</param>
+        /// Possible values include: &#39;string&#39;, &#39;integer&#39;, &#39;number&#39;, &#39;boolean&#39;,
+        /// &#39;object&#39;, &#39;datetime&#39;</param>
         public Column(string name, ColumnDataType type)
 
         {
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Management.ResourceGraph.Models
         public string Name {get; set; }
 
         /// <summary>
-        /// Gets or sets column data type. Possible values include: &#39;string&#39;, &#39;integer&#39;, &#39;number&#39;, &#39;boolean&#39;, &#39;object&#39;
+        /// Gets or sets column data type. Possible values include: &#39;string&#39;, &#39;integer&#39;, &#39;number&#39;, &#39;boolean&#39;, &#39;object&#39;, &#39;datetime&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public ColumnDataType Type {get; set; }

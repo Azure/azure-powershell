@@ -17,21 +17,24 @@ Creates a directory.
 ```
 New-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Share
 ```
 New-AzStorageDirectory [-ShareClient] <ShareClient> [-Path] <String> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Directory
 ```
 New-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String>
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

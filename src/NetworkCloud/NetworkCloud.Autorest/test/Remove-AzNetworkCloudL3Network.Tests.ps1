@@ -18,7 +18,7 @@ Describe 'Remove-AzNetworkCloudL3Network' {
         { Remove-AzNetworkCloudL3Network  -Name $global:config.AzNetworkCloudL3Network.l3NetworkName `
                 -ResourceGroupName $global:config.AzNetworkCloudL3Network.resourceGroup `
                 -Subscription $global:config.AzNetworkCloudL3Network.subscriptionId `
-        } | Should -Not -Throw
+        }  | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

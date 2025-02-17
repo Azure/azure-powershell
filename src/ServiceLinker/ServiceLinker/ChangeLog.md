@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.3
+* Upgraded nuget package to signed package.
+
 ## Version 0.2.2
 * Used `Get-AzAccessToken -AsSecureString` inside the `ServiceLinker` for the plain text version is going to be deprecate in the next release.
 

@@ -75,6 +75,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ltrPolicy;
         }
 
+        /// <summary>
+        /// Helper function to convert ps long term retention policy from service response.
+        /// </summary>
+        public static VaultRetentionPolicy GetPSVaultRetentionPolicy(
+            ServiceClientModel.VaultRetentionPolicy serviceClientRetPolicy, string timeZone, string backupManagementType = "")
+        {
+            if (serviceClientRetPolicy == null)
+            {
+                return null;
+            }
+
+            VaultRetentionPolicy vaultPolicy = new VaultRetentionPolicy();
+
+            if (((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).DailySchedule != null)
+            {
+                vaultPolicy.IsDailyScheduleEnabled = true;
+                vaultPolicy.DailySchedule = GetPSLTRDailySchedule(((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).DailySchedule, timeZone);
+                vaultPolicy.DailySchedule.BackupManagementType = backupManagementType;
+            }
+
+            if (((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).WeeklySchedule != null)
+            {
+                vaultPolicy.IsWeeklyScheduleEnabled = true;
+                vaultPolicy.WeeklySchedule = GetPSLTRWeeklySchedule(((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).WeeklySchedule, timeZone);
+                vaultPolicy.WeeklySchedule.BackupManagementType = backupManagementType;
+            }
+
+            if (((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).MonthlySchedule != null)
+            {
+                vaultPolicy.IsMonthlyScheduleEnabled = true;
+                vaultPolicy.MonthlySchedule = GetPSLTRMonthlySchedule(((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).MonthlySchedule, timeZone);
+                vaultPolicy.MonthlySchedule.BackupManagementType = backupManagementType;
+            }
+
+            if (((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).YearlySchedule != null)
+            {
+                vaultPolicy.IsYearlyScheduleEnabled = true;
+                vaultPolicy.YearlySchedule = GetPSLTRYearlySchedule(((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).YearlySchedule, timeZone);
+                vaultPolicy.YearlySchedule.BackupManagementType = backupManagementType;
+            }
+
+            vaultPolicy.SnapshotRetentionInDays = serviceClientRetPolicy.SnapshotRetentionInDays;
+            vaultPolicy.BackupManagementType = backupManagementType;
+            return vaultPolicy;
+        }
+
         public static SimpleRetentionPolicy GetPSSimpleRetentionPolicy(
            ServiceClientModel.SimpleRetentionPolicy hydraRetPolicy, string timeZone, string provider)
         {
@@ -442,7 +488,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 serviceClientRetPolicy.YearlySchedule = GetServiceClientLTRYearlySchedule(psRetPolicy.YearlySchedule);
             }
-
             return serviceClientRetPolicy;
         }
 

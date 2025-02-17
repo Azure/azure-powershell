@@ -17,21 +17,24 @@ Lists directories and files for a path.
 ```
 Get-AzStorageFile [-ShareName] <String> [[-Path] <String>] [-ExcludeExtendedInfo] [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Share
 ```
 Get-AzStorageFile [-ShareClient] <ShareClient> [[-Path] <String>] [-ExcludeExtendedInfo]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Directory
 ```
 Get-AzStorageFile [-ShareDirectoryClient] <ShareDirectoryClient> [[-Path] <String>] [-ExcludeExtendedInfo]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

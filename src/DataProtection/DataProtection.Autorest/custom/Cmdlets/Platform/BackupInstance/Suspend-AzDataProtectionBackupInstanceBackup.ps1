@@ -31,7 +31,7 @@ function Suspend-AzDataProtectionBackupInstanceBackup
         [System.String[]]
         ${ResourceGuardOperationRequest},
 
-        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.')]
+        [Parameter(Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
         [System.String]
         ${Token},
 
