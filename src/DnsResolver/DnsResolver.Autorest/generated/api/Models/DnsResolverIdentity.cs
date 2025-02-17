@@ -19,12 +19,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
         public string DnsForwardingRulesetName { get => this._dnsForwardingRulesetName; set => this._dnsForwardingRulesetName = value; }
 
+        /// <summary>Backing field for <see cref="DnsResolverDomainListName" /> property.</summary>
+        private string _dnsResolverDomainListName;
+
+        /// <summary>The name of the DNS resolver domain list.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
+        public string DnsResolverDomainListName { get => this._dnsResolverDomainListName; set => this._dnsResolverDomainListName = value; }
+
         /// <summary>Backing field for <see cref="DnsResolverName" /> property.</summary>
         private string _dnsResolverName;
 
         /// <summary>The name of the DNS resolver.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
         public string DnsResolverName { get => this._dnsResolverName; set => this._dnsResolverName = value; }
+
+        /// <summary>Backing field for <see cref="DnsResolverPolicyName" /> property.</summary>
+        private string _dnsResolverPolicyName;
+
+        /// <summary>The name of the DNS resolver policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
+        public string DnsResolverPolicyName { get => this._dnsResolverPolicyName; set => this._dnsResolverPolicyName = value; }
+
+        /// <summary>
+        /// Backing field for <see cref="DnsResolverPolicyVirtualNetworkLinkName" /> property.
+        /// </summary>
+        private string _dnsResolverPolicyVirtualNetworkLinkName;
+
+        /// <summary>
+        /// The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
+        public string DnsResolverPolicyVirtualNetworkLinkName { get => this._dnsResolverPolicyVirtualNetworkLinkName; set => this._dnsResolverPolicyVirtualNetworkLinkName = value; }
+
+        /// <summary>Backing field for <see cref="DnsSecurityRuleName" /> property.</summary>
+        private string _dnsSecurityRuleName;
+
+        /// <summary>The name of the DNS security rule.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
+        public string DnsSecurityRuleName { get => this._dnsSecurityRuleName; set => this._dnsSecurityRuleName = value; }
 
         /// <summary>Backing field for <see cref="ForwardingRuleName" /> property.</summary>
         private string _forwardingRuleName;
@@ -64,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -99,6 +131,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         SerializedName = @"dnsForwardingRulesetName",
         PossibleTypes = new [] { typeof(string) })]
         string DnsForwardingRulesetName { get; set; }
+        /// <summary>The name of the DNS resolver domain list.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the DNS resolver domain list.",
+        SerializedName = @"dnsResolverDomainListName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DnsResolverDomainListName { get; set; }
         /// <summary>The name of the DNS resolver.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
@@ -107,6 +147,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         SerializedName = @"dnsResolverName",
         PossibleTypes = new [] { typeof(string) })]
         string DnsResolverName { get; set; }
+        /// <summary>The name of the DNS resolver policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the DNS resolver policy.",
+        SerializedName = @"dnsResolverPolicyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DnsResolverPolicyName { get; set; }
+        /// <summary>
+        /// The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the DNS resolver policy virtual network link for the DNS resolver policy.",
+        SerializedName = @"dnsResolverPolicyVirtualNetworkLinkName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DnsResolverPolicyVirtualNetworkLinkName { get; set; }
+        /// <summary>The name of the DNS security rule.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the DNS security rule.",
+        SerializedName = @"dnsSecurityRuleName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DnsSecurityRuleName { get; set; }
         /// <summary>The name of the forwarding rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
@@ -147,11 +213,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -178,8 +244,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
     {
         /// <summary>The name of the DNS forwarding ruleset.</summary>
         string DnsForwardingRulesetName { get; set; }
+        /// <summary>The name of the DNS resolver domain list.</summary>
+        string DnsResolverDomainListName { get; set; }
         /// <summary>The name of the DNS resolver.</summary>
         string DnsResolverName { get; set; }
+        /// <summary>The name of the DNS resolver policy.</summary>
+        string DnsResolverPolicyName { get; set; }
+        /// <summary>
+        /// The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+        /// </summary>
+        string DnsResolverPolicyVirtualNetworkLinkName { get; set; }
+        /// <summary>The name of the DNS security rule.</summary>
+        string DnsSecurityRuleName { get; set; }
         /// <summary>The name of the forwarding rule.</summary>
         string ForwardingRuleName { get; set; }
         /// <summary>Resource identity path</summary>
@@ -190,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         string OutboundEndpointName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the virtual network link.</summary>
         string VirtualNetworkLinkName { get; set; }

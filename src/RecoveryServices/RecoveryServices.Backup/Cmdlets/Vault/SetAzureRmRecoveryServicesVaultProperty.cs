@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("Enable", "Disable", "AlwaysON")]
         public string SoftDeleteFeatureState { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet, HelpMessage = "Specifies the retention period for soft deleted items in days.")]        
+        public int? SoftDeleteRetentionPeriodInDays { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
         [ValidateNotNullOrEmpty]
@@ -77,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string vaultName = resourceIdentifier.ResourceName;
                     string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                    if (SoftDeleteFeatureState != null || DisableHybridBackupSecurityFeature != null)
+                    if (SoftDeleteFeatureState != null || DisableHybridBackupSecurityFeature != null || SoftDeleteRetentionPeriodInDays != null)
                     {
                         BackupResourceVaultConfigResource currentConfig = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
                         BackupResourceVaultConfigResource param = new BackupResourceVaultConfigResource();
@@ -85,11 +88,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         param.Properties.SoftDeleteFeatureState = ((SoftDeleteFeatureState != null) && SoftDeleteFeatureState.ToLower() == "alwayson") ? "AlwaysON" : ((SoftDeleteFeatureState != null) ? SoftDeleteFeatureState + "d" : currentConfig.Properties.SoftDeleteFeatureState);
 
-                        param.Properties.EnhancedSecurityState = (DisableHybridBackupSecurityFeature != null) ? (((bool)DisableHybridBackupSecurityFeature) ? "Disabled" : "Enabled") : currentConfig.Properties.EnhancedSecurityState;
+                        param.Properties.SoftDeleteRetentionPeriodInDays = SoftDeleteRetentionPeriodInDays ?? currentConfig.Properties.SoftDeleteRetentionPeriodInDays; // chck - should we get from vault API / MUA angle ?
+
+                        if(SoftDeleteFeatureState !=null && SoftDeleteFeatureState.ToLower() == "alwayson")
+                        {
+                            if(DisableHybridBackupSecurityFeature != null)
+                            {
+                                throw new ArgumentException(Resources.InvalidSoftDeleteFeatureStateException);
+                            }
+                            param.Properties.EnhancedSecurityState = "AlwaysON";
+                        }
+                        else
+                        {
+                            param.Properties.EnhancedSecurityState = (DisableHybridBackupSecurityFeature != null) ? (((bool)DisableHybridBackupSecurityFeature) ? "Disabled" : "Enabled") : currentConfig.Properties.EnhancedSecurityState;
+                        }                        
 
                         bool isMUAProtected = checkMUAForSoftDelete(currentConfig, param);
 
-                        BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param, Token, isMUAProtected);
+                        BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param, Token, isMUAProtected); // chck - should call vault API ?
                         WriteObject(result.Properties);
                     }
                     else if (EncryptionKeyId != null)

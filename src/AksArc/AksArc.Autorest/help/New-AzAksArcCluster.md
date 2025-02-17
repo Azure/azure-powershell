@@ -14,18 +14,18 @@ Create the provisioned cluster instance
 
 ### CreateExpanded (Default)
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
- -CustomLocationName <String> -VnetId <String> [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>]
- [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
- [-AutoScalerProfileBalanceSimilarNodeGroup <String>] [-AutoScalerProfileExpander <String>]
- [-AutoScalerProfileMaxEmptyBulkDelete <String>] [-AutoScalerProfileMaxGracefulTerminationSec <String>]
- [-AutoScalerProfileMaxNodeProvisionTime <String>] [-AutoScalerProfileMaxTotalUnreadyPercentage <String>]
- [-AutoScalerProfileNewPodScaleUpDelay <String>] [-AutoScalerProfileOkTotalUnreadyCount <String>]
- [-AutoScalerProfileScaleDownDelayAfterAdd <String>] [-AutoScalerProfileScaleDownDelayAfterDelete <String>]
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -CustomLocationName <String>
+ -VnetId <String> [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>] [-SubscriptionId <String>]
+ [-AdminGroupObjectID <String[]>] [-AutoScalerProfileBalanceSimilarNodeGroup <String>]
+ [-AutoScalerProfileExpander <String>] [-AutoScalerProfileMaxEmptyBulkDelete <String>]
+ [-AutoScalerProfileMaxGracefulTerminationSec <String>] [-AutoScalerProfileMaxNodeProvisionTime <String>]
+ [-AutoScalerProfileMaxTotalUnreadyPercentage <String>] [-AutoScalerProfileNewPodScaleUpDelay <String>]
+ [-AutoScalerProfileOkTotalUnreadyCount <String>] [-AutoScalerProfileScaleDownDelayAfterAdd <String>]
+ [-AutoScalerProfileScaleDownDelayAfterDelete <String>]
  [-AutoScalerProfileScaleDownDelayAfterFailure <String>] [-AutoScalerProfileScaleDownUnneededTime <String>]
  [-AutoScalerProfileScaleDownUnreadyTime <String>] [-AutoScalerProfileScaleDownUtilizationThreshold <String>]
  [-AutoScalerProfileScanInterval <String>] [-AutoScalerProfileSkipNodesWithLocalStorage <String>]
- [-AutoScalerProfileSkipNodesWithSystemPod <String>] [-ControlPlaneCount <Int32>]
+ [-AutoScalerProfileSkipNodesWithSystemPod <String>] [-ControlPlaneCount <Int32>] [-ControlPlaneIP <String>]
  [-ControlPlaneVMSize <String>] [-EnableAutoScaling] [-EnableAzureHybridBenefit] [-EnableAzureRbac]
  [-KubernetesVersion <String>] [-LoadBalancerCount <Int32>] [-Location <String>] [-NfCsiDriverEnabled]
  [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-PodCidr <String>] [-SmbCsiDriverEnabled]
@@ -36,26 +36,27 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPl
 ### AutoScaling
 ```
 New-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MaxPod <Int32> -MinCount <Int32>
- -ResourceGroupName <String> -ControlPlaneIP <String> -CustomLocationName <String> -EnableAutoScaling
- -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
- [-EnableAzureRbac] [-Location <String>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -CustomLocationName <String> -EnableAutoScaling -VnetId <String>
+ [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-ControlPlaneIP <String>]
+ [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>] [-NodeLabel <Hashtable>]
+ [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
- -CustomLocationName <String> -JsonFilePath <String> -VnetId <String> [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>]
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -CustomLocationName <String>
+ -JsonFilePath <String> -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
+ [-ControlPlaneIP <String>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>]
  [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
- -CustomLocationName <String> -JsonString <String> -VnetId <String> [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>]
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -CustomLocationName <String>
+ -JsonString <String> -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
+ [-ControlPlaneIP <String>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>]
  [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -479,7 +480,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -209,6 +209,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         Registered = 1,
         NotRegistered = 2,
+        SoftDeleted
     }
 
     /// <summary>
@@ -464,5 +465,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         SQLDataBase = 1,
         SQLInstance,
         SQLAvailabilityGroup
+    }
+
+    /// <summary>
+    /// Options to select the Backup Tier type
+    /// </summary>
+    public enum BackupTierType
+    {
+        Snapshot = 1,
+        VaultStandard
     }
 }

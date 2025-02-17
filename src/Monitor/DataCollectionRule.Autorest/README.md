@@ -43,8 +43,6 @@ title: DataCollectionRule
 module-version: 0.1.0
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
 subject-prefix: ''
-disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 directive:
   # custom required body

@@ -251,9 +251,24 @@ namespace Microsoft.Azure.Management.Compute
         IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; }
 
         /// <summary>
+        /// Gets the ISoftDeletedResourceOperations.
+        /// </summary>
+        ISoftDeletedResourceOperations SoftDeletedResource { get; }
+
+        /// <summary>
         /// Gets the IGallerySharingProfileOperations.
         /// </summary>
         IGallerySharingProfileOperations GallerySharingProfile { get; }
+
+        /// <summary>
+        /// Gets the IGalleryInVMAccessControlProfilesOperations.
+        /// </summary>
+        IGalleryInVMAccessControlProfilesOperations GalleryInVMAccessControlProfiles { get; }
+
+        /// <summary>
+        /// Gets the IGalleryInVMAccessControlProfileVersionsOperations.
+        /// </summary>
+        IGalleryInVMAccessControlProfileVersionsOperations GalleryInVMAccessControlProfileVersions { get; }
 
         /// <summary>
         /// Gets the ISharedGalleriesOperations.

@@ -24,7 +24,7 @@ Update-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String>
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> [-Tag <Hashtable>]
+Update-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,7 +87,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -210,12 +210,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapCentralServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapCentralServerInstance
 
 ## NOTES
+
+ALIASES
+
+Update-AzVISCentralInstance
 
 ## RELATED LINKS

@@ -19,7 +19,7 @@
 function Test-CreateDatabaseCopy()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
@@ -67,7 +67,7 @@ function Test-CreateDatabaseCopy()
 function Test-CreateVcoreDatabaseCopy()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$db = Create-VcoreDatabaseForTest $rg $server 2 BasePrice
@@ -121,7 +121,7 @@ function Test-CreateVcoreDatabaseCopy()
 function Test-CreateSecondaryDatabase()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -162,7 +162,7 @@ function Test-CreateSecondaryDatabase()
 function Test-CreateNamedSecondaryDatabase()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -217,7 +217,7 @@ function Test-CreateNamedSecondaryDatabase()
 function Test-CreateNamedSecondaryDatabaseNegative()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -251,7 +251,7 @@ function Test-CreateNamedSecondaryDatabaseNegative()
 function Test-GetReplicationLink()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -295,7 +295,7 @@ function Test-GetReplicationLink()
 function Test-SetReplicationLink()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -356,7 +356,7 @@ function Test-SetReplicationLink()
 function Test-RemoveSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -387,7 +387,7 @@ function Test-RemoveSecondaryDatabase()
 function Test-FailoverSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -484,7 +484,7 @@ function Test-CreateDatabaseCopyWithBackupStorageRedundancy()
 function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 {
 	# Setup
-    $location = "westeurope"
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -582,7 +582,7 @@ function Test-CreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy()
 function Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$sourceNonZRDatabaseName = Get-DatabaseName + "-non-zr"
@@ -659,7 +659,7 @@ function Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundan
 function Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$sourceZRDatabaseName = Get-DatabaseName + "-zr"
@@ -736,7 +736,7 @@ function Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
 function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 
 	# Setup for geo primary
 	$rg = Create-ResourceGroupForTest $location
@@ -825,7 +825,7 @@ function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRed
 function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
 
 	# Setup for geo primary
 	$rg = Create-ResourceGroupForTest $location

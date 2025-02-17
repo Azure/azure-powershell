@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an ApplicationGroup for a Namespace.</summary>
+    /// <summary>create an ApplicationGroup for a Namespace.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdateApplicationGroup=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubApplicationGroup_CreateViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create an ApplicationGroup for a Namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create an ApplicationGroup for a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubApplicationGroup_CreateViaIdentity : global::System.Management.Automation.PSCmdlet,

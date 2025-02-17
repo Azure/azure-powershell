@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureDataExplorerSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -59,9 +62,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="flushImmediately">If set to true, any aggregation will be skipped. Default is false. Type:
         /// boolean.
         /// </param>
-        public AzureDataExplorerSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object ingestionMappingName = default(object), object ingestionMappingAsJson = default(object), object flushImmediately = default(object))
+        public AzureDataExplorerSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object ingestionMappingName = default(object), object ingestionMappingAsJson = default(object), object flushImmediately = default(object))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.IngestionMappingName = ingestionMappingName;
             this.IngestionMappingAsJson = ingestionMappingAsJson;

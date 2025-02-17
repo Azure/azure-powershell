@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401
             }
             if (content.Contains("AdditionalInfo"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICloudErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICloudErrorInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICloudErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICloudErrorInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             if (content.Contains("Code"))
             {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401
             }
             if (content.Contains("AdditionalInfo"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICloudErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICloudErrorInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICloudErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICloudErrorInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             if (content.Contains("Code"))
             {

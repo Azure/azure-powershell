@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Migrate data from a Kusto cluster to another cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/migrate", ApiVersion = "2023-08-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/migrate", ApiVersion = "2024-04-13")]
     public partial class InvokeAzKustoClusterMigration_Migrate : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener
     {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Kusto Client => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.ClientAPI;
 
         /// <summary>Backing field for <see cref="ClusterMigrateRequest" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest _clusterMigrateRequest;
+        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest _clusterMigrateRequest;
 
         /// <summary>A cluster migrate request.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "A cluster migrate request.", ValueFromPipeline = true)]
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         ReadOnly = false,
         Description = @"A cluster migrate request.",
         SerializedName = @"clusterMigrateRequest",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest ClusterMigrateRequest { get => this._clusterMigrateRequest; set => this._clusterMigrateRequest = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest ClusterMigrateRequest { get => this._clusterMigrateRequest; set => this._clusterMigrateRequest = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet

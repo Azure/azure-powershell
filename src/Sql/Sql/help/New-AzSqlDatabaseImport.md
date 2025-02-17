@@ -110,7 +110,7 @@ This parameter is only available on SQL Database V12 servers.
 Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Sql, AdPassword
+Accepted values: None, Sql, AdPassword, ManagedIdentity
 
 Required: False
 Position: Named
@@ -288,7 +288,7 @@ Uses the Shared Access Signature (SAS) key.
 Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType
 Parameter Sets: (All)
 Aliases:
-Accepted values: StorageAccessKey, SharedAccessKey
+Accepted values: StorageAccessKey, SharedAccessKey, ManagedIdentity
 
 Required: True
 Position: Named

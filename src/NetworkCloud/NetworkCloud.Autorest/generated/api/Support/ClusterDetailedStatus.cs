@@ -24,6 +24,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterDetailedStatus Running = @"Running";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterDetailedStatus UpdatePaused = @"UpdatePaused";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterDetailedStatus Updating = @"Updating";
 
         /// <summary>the value for an instance of the <see cref="ClusterDetailedStatus" /> Enum.</summary>

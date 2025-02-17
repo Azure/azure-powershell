@@ -68,6 +68,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public ItemDeleteState DeleteState { get; set; }
 
+        /// <summary>
+        /// Gets or sets flag to identify whether datasource is protected in archive
+        /// </summary>
+        public bool? IsArchiveEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets soft delete retention period in days
+        /// </summary>
+        public int? SoftDeleteRetentionPeriodInDays { get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to identify whether the DS is scheduled for deferred
+        /// delete
+        /// </summary>
+        public bool? IsScheduledForDeferredDelete { get; set; }
+
+        /// <summary>
+        /// Gets or sets time for deferred deletion in UTC
+        /// </summary>
+        public System.DateTime? DeferredDeleteTimeInUtc { get; set; }
+
         public AzureItem(ProtectedItemResource protectedItemResource,
            string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)

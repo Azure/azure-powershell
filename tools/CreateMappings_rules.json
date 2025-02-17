@@ -911,5 +911,45 @@
   {
     "alias": "Astro",
     "module": "Astro"
+  },
+  {
+    "module": "Fabric",
+    "alias": "Fabric"
+  },
+  {
+    "alias": "KubernetesRuntime",
+    "module": "KubernetesRuntime"
+  },
+  {
+    "module": "Terraform",
+    "alias": "Terraform"
+  },
+  {
+    "alias": "ArcGateway",
+    "module": "ArcGateway"
+  },
+  {
+    "module": "HealthDataAIServices",
+    "alias": "HealthDataAIServices"
+  },
+  {
+    "alias": "Mdp",
+    "module": "Mdp"
+  },
+  {
+    "alias": "NeonPostgres",
+    "module": "NeonPostgres"
+  },
+  {
+    "module": "ComputeFleet",
+    "alias": "ComputeFleet"
+  },
+  {
+    "module": "ComputeSchedule",
+    "alias": "ComputeSchedule"
+  },
+  {
+    "module": "DeviceRegistry",
+    "alias": "DeviceRegistry"
   }
 ]

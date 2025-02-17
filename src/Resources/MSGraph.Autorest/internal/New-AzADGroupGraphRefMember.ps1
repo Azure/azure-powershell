@@ -62,12 +62,25 @@ param(
     # Additional Parameters
     ${AdditionalProperties},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -127,6 +140,8 @@ begin {
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADGroupGraphRefMember_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADGroupGraphRefMember_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADGroupGraphRefMember_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADGroupGraphRefMember_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

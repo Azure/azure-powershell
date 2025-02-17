@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
         private void ValidateFileType(string fullInPath)
         {
-            if (System.IO.Path.GetExtension(fullInPath).ToLower() == ".bin")
+            if (string.Equals(System.IO.Path.GetExtension(fullInPath), ".bin", StringComparison.OrdinalIgnoreCase))
             {
                 WriteMessage(Environment.NewLine);
                 WriteMessage("CI Policy file submitted");

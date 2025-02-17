@@ -17,9 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{CF8A9A95-4825-47E0-86E7-2788A2127BE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Workloads", "Workloads.Autorest\Az.Workloads.csproj", "{A0A4C25D-0286-4F08-9BB1-F6687AA34239}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workloads", "Workloads\Workloads.csproj", "{F27ABA7E-B3ED-4B35-8409-43B3D92FFBFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Monitors", "Monitors.Autorest\Az.Monitors.csproj", "{06CAF38B-05ED-4264-B6F7-A978F85F45EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SapVirtualInstance", "SapVirtualInstance.Autorest\Az.SapVirtualInstance.csproj", "{5782798D-C3B4-45D0-ABCB-730CBC9DA186}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,14 @@ Global
 		{F27ABA7E-B3ED-4B35-8409-43B3D92FFBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F27ABA7E-B3ED-4B35-8409-43B3D92FFBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F27ABA7E-B3ED-4B35-8409-43B3D92FFBFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06CAF38B-05ED-4264-B6F7-A978F85F45EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06CAF38B-05ED-4264-B6F7-A978F85F45EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06CAF38B-05ED-4264-B6F7-A978F85F45EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06CAF38B-05ED-4264-B6F7-A978F85F45EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5782798D-C3B4-45D0-ABCB-730CBC9DA186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5782798D-C3B4-45D0-ABCB-730CBC9DA186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5782798D-C3B4-45D0-ABCB-730CBC9DA186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5782798D-C3B4-45D0-ABCB-730CBC9DA186}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FAEF600D-0073-487E-B125-669EB7D06E3D} = {CDFD4C75-7CF6-4B30-9A7E-D8B5D25EB75A}

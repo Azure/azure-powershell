@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation creates or updates a policy definition in the given management group with the given name.
+    /// This operation create a policy definition in the given management group with the given name.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdateAtManagementGroup=>PUT:"/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPolicyDefinition_CreateExpanded1", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation creates or updates a policy definition in the given management group with the given name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation create a policy definition in the given management group with the given name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}", ApiVersion = "2023-04-01")]
     public partial class NewAzPolicyDefinition_CreateExpanded1 : global::System.Management.Automation.PSCmdlet,

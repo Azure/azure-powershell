@@ -184,6 +184,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
             }
+            if (content.Contains("FeatureName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).FeatureName = (string) content.GetValueForProperty("FeatureName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).FeatureName, global::System.Convert.ToString);
+            }
             if (content.Contains("ConsoleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).ConsoleName = (string) content.GetValueForProperty("ConsoleName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).ConsoleName, global::System.Convert.ToString);
@@ -284,6 +288,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("AgentPoolName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FeatureName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).FeatureName = (string) content.GetValueForProperty("FeatureName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentityInternal)this).FeatureName, global::System.Convert.ToString);
             }
             if (content.Contains("ConsoleName"))
             {

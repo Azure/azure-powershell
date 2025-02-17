@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/scripts/{scriptName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzKustoScript_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Creates a Kusto database script.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/scripts/{scriptName}", ApiVersion = "2023-08-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/scripts/{scriptName}", ApiVersion = "2024-04-13")]
     public partial class NewAzKustoScript_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Class representing a database script.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Script();
+        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.Script();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -161,6 +161,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.HttpPipeline Pipeline { get; set; }
 
+        /// <summary>
+        /// Indicates if the permissions for the script caller are kept following completion of the script.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates if the permissions for the script caller are kept following completion of the script.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates if the permissions for the script caller are kept following completion of the script.",
+        SerializedName = @"principalPermissionsAction",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction PrincipalPermissionsAction { get => _parametersBody.PrincipalPermissionsAction ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction)""); set => _parametersBody.PrincipalPermissionsAction = value; }
+
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Runtime)]
@@ -204,6 +218,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         SerializedName = @"scriptContent",
         PossibleTypes = new [] { typeof(string) })]
         public string ScriptContent { get => _parametersBody.Content ?? null; set => _parametersBody.Content = value; }
+
+        /// <summary>
+        /// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Differentiates between the type of script commands included - Database or Cluster. The default is Database.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Differentiates between the type of script commands included - Database or Cluster. The default is Database.",
+        SerializedName = @"scriptLevel",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel ScriptLevel { get => _parametersBody.Level ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel)""); set => _parametersBody.Level = value; }
 
         /// <summary>
         /// The url to the KQL script blob file. Must not be used together with scriptContent property
@@ -266,12 +294,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -575,12 +603,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript> response)
         {
             using( NoSynchronizationContext )
             {
@@ -592,7 +620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
                 WriteObject((await response));
             }
         }

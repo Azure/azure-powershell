@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureDatabricksDeltaLakeSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -53,9 +56,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="importSettings">Azure Databricks Delta Lake import settings.
         /// </param>
-        public AzureDatabricksDeltaLakeSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object preCopyScript = default(object), AzureDatabricksDeltaLakeImportCommand importSettings = default(AzureDatabricksDeltaLakeImportCommand))
+        public AzureDatabricksDeltaLakeSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object preCopyScript = default(object), AzureDatabricksDeltaLakeImportCommand importSettings = default(AzureDatabricksDeltaLakeImportCommand))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.PreCopyScript = preCopyScript;
             this.ImportSettings = importSettings;

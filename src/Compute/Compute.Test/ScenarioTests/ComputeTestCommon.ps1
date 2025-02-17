@@ -138,6 +138,47 @@ function Create-KeyVault
     return $properties
 }
 
+# Create key vault resources
+function Create-KeyVaultWithAclEncryptionIdentity
+{
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        [string] $resourceGroupName,
+        [Parameter(Mandatory=$true, Position=1)]
+        [string] $location,
+        [Parameter(Mandatory=$false, Position=2)]
+        [string] $vaultName,
+        [Parameter(Mandatory=$false, Position=3)]
+        [String] $userIdentityPrincipalId
+    )
+
+    # initialize parameters if needed
+    if ([string]::IsNullOrEmpty($resourceGroupName)) { $resourceGroupName = Get-ComputeTestResourceName }
+    if ([string]::IsNullOrEmpty($location)) { $location = Get-ComputeVMLocation }
+    if ([string]::IsNullOrEmpty($vaultName)) { $vaultName = 'kv' + $resourceGroupName }
+
+    # create vault
+    $vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location -Sku standard -DisableRbacAuthorization
+    $vault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
+
+    # create access policy
+    $servicePrincipalName = (Get-AzContext).Account.Id
+    Assert-NotNull $servicePrincipalName
+    if (-not [string]::IsNullOrEmpty($userIdentityPrincipalId)) {
+       Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ObjectId $userIdentityPrincipalId -PermissionsToKeys all -PermissionsToSecrets all
+    }
+    Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDeployment -EnabledForTemplateDeployment
+
+    # return the newly created key vault properties
+    $properties = New-Object PSObject -Property @{
+        DiskEncryptionKeyVaultId = $vault.ResourceId
+        DiskEncryptionKeyVaultUrl = $vault.VaultUri
+        #KeyEncryptionKeyUrl = $kek.Key.kid
+    }
+    return $properties
+}
+
 # Create a new virtual machine with other necessary resources configured
 function Create-VirtualMachine
 {

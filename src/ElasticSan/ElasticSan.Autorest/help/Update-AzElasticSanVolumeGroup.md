@@ -16,16 +16,17 @@ Update an VolumeGroup.
 ```
 Update-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
- [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityElasticSanExpanded
 ```
 Update-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
- [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>]
+ [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -34,10 +35,11 @@ Update-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Nam
 ### UpdateViaIdentityExpanded
 ```
 Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
+ [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,19 +56,20 @@ Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanNam
 ```
 
 ```output
-Encryption                    : EncryptionAtRestWithPlatformKey
-Id                            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup
-Name                          : myvolumegroup
-NetworkAclsVirtualNetworkRule : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2}
-ProtocolType                  : iSCSI
-ProvisioningState             : Succeeded
-SystemDataCreatedAt           : 9/19/2022 7:05:47 AM
-SystemDataCreatedBy           : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType       : Application
-SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
-SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType  : Application
-Type                          : Microsoft.ElasticSan/ElasticSans
+Encryption                             : EncryptionAtRestWithPlatformKey
+EnforceDataIntegrityCheckForIscsi      : True
+Id                                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup
+Name                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule          : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2}
+ProtocolType                           : iSCSI
+ProvisioningState                      : Succeeded
+SystemDataCreatedAt                    : 9/19/2022 7:05:47 AM
+SystemDataCreatedBy                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataCreatedByType                : Application
+SystemDataLastModifiedAt               : 9/19/2022 7:05:47 AM
+SystemDataLastModifiedBy               : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataLastModifiedByType           : Application
+Type                                   : Microsoft.ElasticSan/ElasticSans
 ```
 
 This example updates the protocol type and virtual network rules of a volume gorup
@@ -82,19 +85,20 @@ Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanNam
 ```
 
 ```output
-Encryption                    : EncryptionAtRestWithPlatformKey
-Id                            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup
-Name                          : myvolumegroup
-NetworkAclsVirtualNetworkRule : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2}
-ProtocolType                  : iSCSI
-ProvisioningState             : Succeeded
-SystemDataCreatedAt           : 9/19/2022 7:05:47 AM
-SystemDataCreatedBy           : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType       : Application
-SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
-SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType  : Application
-Type                          : Microsoft.ElasticSan/ElasticSans
+Encryption                             : EncryptionAtRestWithPlatformKey
+EnforceDataIntegrityCheckForIscsi      : True
+Id                                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup
+Name                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule          : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2}
+ProtocolType                           : iSCSI
+ProvisioningState                      : Succeeded
+SystemDataCreatedAt                    : 9/19/2022 7:05:47 AM
+SystemDataCreatedBy                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataCreatedByType                : Application
+SystemDataLastModifiedAt               : 9/19/2022 7:05:47 AM
+SystemDataLastModifiedBy               : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataLastModifiedByType           : Application
+Type                                   : Microsoft.ElasticSan/ElasticSans
 ```
 
 This example updates the protocol type, virtual network rules, and tag of a volume group.
@@ -108,6 +112,7 @@ Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanNam
 ```output
 Encryption                                             : EncryptionAtRestWithPlatformKey
 EncryptionIdentityEncryptionUserAssignedIdentity       :
+EnforceDataIntegrityCheckForIscsi                      : True
 Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
 IdentityPrincipalId                                    :
 IdentityTenantId                                       :
@@ -149,6 +154,7 @@ Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanNam
 ```output
 Encryption                                             : EncryptionAtRestWithCustomerManagedKey
 EncryptionIdentityEncryptionUserAssignedIdentity       : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuai2
+EnforceDataIntegrityCheckForIscsi                      : True
 Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
 IdentityPrincipalId                                    :
 IdentityTenantId                                       :
@@ -179,6 +185,44 @@ Type                                                   : Microsoft.ElasticSan/el
 ```
 
 This command updates a volume group's user assigned identity.
+
+### Example 5: Update a volume group to disable EnforceDataIntegrityCheckForIscsi
+```powershell
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
+```
+
+```output
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EncryptionIdentityEncryptionUserAssignedIdentity       :
+EnforceDataIntegrityCheckForIscsi                      : False
+Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           :
+IdentityUserAssignedIdentity                           : {
+                                                         }
+KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp :
+KeyVaultPropertyCurrentVersionedKeyIdentifier          :
+KeyVaultPropertyKeyName                                :
+KeyVaultPropertyKeyVaultUri                            :
+KeyVaultPropertyKeyVersion                             :
+KeyVaultPropertyLastKeyRotationTimestamp               :
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          :
+PrivateEndpointConnection                              :
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Succeeded
+ResourceGroupName                                      : myresourcegroup
+SystemDataCreatedAt                                    : 9/18/2024 3:20:40 AM
+SystemDataCreatedBy                                    : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType                                : User
+SystemDataLastModifiedAt                               : 9/18/2024 3:23:34 AM
+SystemDataLastModifiedBy                               : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType                           : User
+Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
+```
+
+This command disables EnforceDataIntegrityCheckForIscsi on a volume group.
 
 ## PARAMETERS
 
@@ -264,6 +308,21 @@ Resource identifier of the UserAssigned identity to be associated with server-si
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnforceDataIntegrityCheckForIscsi
+A boolean indicating whether or not Data Integrity Check is enabled
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

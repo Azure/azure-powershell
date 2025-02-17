@@ -33,7 +33,7 @@ AttachedDatabaseConfigurationName ClusterResourceId                             
 myfollowerconfiguration             /subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/testnewkustoclusterf mykustodatabase
 ```
 
-The above command lists all the databases that are owned by this cluster and were followed by another cluster.
+The above command lists all the databases that are owned by this cluster and are followed by another cluster.
 
 ## PARAMETERS
 
@@ -137,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IFollowerDatabaseDefinition
 
 ## NOTES
 

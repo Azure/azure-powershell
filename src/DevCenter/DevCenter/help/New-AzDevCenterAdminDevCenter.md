@@ -21,7 +21,7 @@ New-AzDevCenterAdminDevCenter -Name <String> -ResourceGroupName <String> [-Subsc
  [-IdentityUserAssignedIdentity <Hashtable>]
  [-NetworkSettingMicrosoftHostedNetworkEnableStatus <MicrosoftHostedNetworkEnableStatus>] [-PlanId <String>]
  [-ProjectCatalogSettingCatalogItemSyncEnableStatus <CatalogItemSyncEnableStatus>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity> -Location <Strin
  [-IdentityUserAssignedIdentity <Hashtable>]
  [-NetworkSettingMicrosoftHostedNetworkEnableStatus <MicrosoftHostedNetworkEnableStatus>] [-PlanId <String>]
  [-ProjectCatalogSettingCatalogItemSyncEnableStatus <CatalogItemSyncEnableStatus>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -252,21 +252,6 @@ Resource Id of an associated Plan
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

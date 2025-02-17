@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPortalDashboard_GetViaIdentity")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Description(@"Gets the Dashboard.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}", ApiVersion = "2019-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}", ApiVersion = "2022-12-01-preview")]
     public partial class GetAzPortalDashboard_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener
     {
@@ -84,13 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
-        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Portal.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Portal.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
-
-        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.HttpPipeline Pipeline { get; set; }
@@ -116,34 +109,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
-
-        /// <summary>
-        /// <c>overrideOnNotFound</c> will be called before the regular onNotFound has been processed, allowing customization of what
-        /// happens on that response. Implement this method in a partial class to enable this behavior
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="returnNow">/// Determines if the rest of the onNotFound method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
-
-        partial void overrideOnNotFound(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -307,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.DashboardsGetViaIdentity(InputObject.Id, onOk, onNotFound, onDefault, this, Pipeline);
+                        await this.Client.DashboardsGetViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -324,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.DashboardName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.DashboardsGet(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.DashboardName ?? null, onOk, onNotFound, onDefault, this, Pipeline);
+                        await this.Client.DashboardsGet(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.DashboardName ?? null, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -368,12 +351,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -390,7 +373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -406,38 +389,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
             }
         }
 
-        /// <summary>a delegate that is called when the remote service returns 404 (NotFound).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onNotFound(global::System.Net.Http.HttpResponseMessage responseMessage)
-        {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnNotFound(responseMessage, ref _returnNow);
-                // if overrideOnNotFound has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onNotFound - response for 404 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
-                {
-                    WriteObject(true);
-                }
-            }
-        }
-
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard">Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard> response)
         {
             using( NoSynchronizationContext )
             {
@@ -449,7 +408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
                 WriteObject((await response));
             }
         }

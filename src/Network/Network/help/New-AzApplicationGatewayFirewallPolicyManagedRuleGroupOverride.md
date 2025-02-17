@@ -14,7 +14,7 @@ Creates RuleGroupOverride entry in ManagedRuleSets for the firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName <String>
- -Rule <PSApplicationGatewayFirewallPolicyManagedRuleOverride[]> [-DefaultProfile <IAzureContextContainer>]
+ [-Rule <PSApplicationGatewayFirewallPolicyManagedRuleOverride[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 

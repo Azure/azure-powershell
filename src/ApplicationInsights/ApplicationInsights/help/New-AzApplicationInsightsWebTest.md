@@ -82,7 +82,25 @@ This command creates or updates a standard kind of the Application Insights web 
 
 The switch parameter "-Enabled" must be set explicitly to $false to disable the test.
 
-### Example 3: Creates or updates a ping kind of the Application Insights web test
+### Example 3: Creates a standard kind of the Application Insights web test with a custom header
+
+
+```powershell
+$headerField = New-AzApplicationInsightsWebTestHeaderFieldObject -Name "HeaderName1" -Value "HeaderValue1"
+New-AzApplicationInsightsWebTest -ResourceGroupName exampleRG -Name expwshelltestheader2 -Location 'westus2' -Tag @{"hidden-link:<RESOURCE URL>" = "Resource"} -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'expwshelltestheader2' -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation -RequestHeader $headerField
+```
+
+
+```output
+Name            	Location 	WebTestKind 	ResourceGroupName  	Enabled
+----            	-------- 	----------- 	-----------------  	-------
+expwshellheader2 	westus2  	standard    	exampleRG		    True
+```
+
+This command creates a standard kind of the Application Insights web test with a custom header
+
+### Example 4: Creates or updates a ping kind of the Application Insights web test
+
 ```powershell
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
@@ -102,7 +120,8 @@ pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test      True
 
 This command creates or updates an ping kind of the Application Insights web test.
 
-### Example 4: Creates or updates a ping kind of the Application Insights web test with custom configuration
+### Example 5: Creates or updates a ping kind of the Application Insights web test with custom configuration
+
 ```powershell
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"

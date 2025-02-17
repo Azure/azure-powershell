@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.DevTestLabs",
-  "ModuleVersion": "1.0.3",
+  "ModuleVersion": "1.1.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Description": "System.String",
@@ -184,7 +184,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DailyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
               "HourlyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
@@ -352,7 +352,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DailyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
               "HourlyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
@@ -520,7 +520,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Description": "System.String",
@@ -688,7 +688,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Description": "System.String",
@@ -856,7 +856,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Description": "System.String",
@@ -922,7 +922,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -931,7 +931,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -1061,7 +1061,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -1153,7 +1153,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -1252,7 +1252,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DailyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
               "HourlyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
@@ -1320,7 +1320,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -1329,7 +1329,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -1461,7 +1461,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -1555,7 +1555,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -1656,7 +1656,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DailyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
               "HourlyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
@@ -1734,7 +1734,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -1743,7 +1743,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -1891,7 +1891,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2001,7 +2001,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2118,7 +2118,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Description": "System.String",
@@ -2186,7 +2186,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -2195,7 +2195,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -2327,7 +2327,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2421,7 +2421,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2522,7 +2522,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Description": "System.String",
@@ -2590,7 +2590,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -2599,7 +2599,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -2731,7 +2731,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2825,7 +2825,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -3102,7 +3102,7 @@
     "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails": {
       "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
       "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Time": "System.String"
       },
@@ -3139,7 +3139,7 @@
     "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails": {
       "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
       "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Minute": "System.Nullable`1[System.Int32]"
       },
@@ -3184,7 +3184,7 @@
     "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails": {
       "Namespace": "Microsoft.Azure.Commands.DevTestLabs.Models",
       "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails, Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Weekdays": "System.Collections.Generic.IList`1[System.String]",
         "Time": "System.String"

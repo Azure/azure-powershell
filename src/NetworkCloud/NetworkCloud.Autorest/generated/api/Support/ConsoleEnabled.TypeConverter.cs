@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
 {
 
-    /// <summary>
-    /// The credentials used to login to the image repository that has access to the specified image.
-    /// </summary>
+    /// <summary>The indicator of whether the console access is enabled.</summary>
     public partial class ConsoleEnabledTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

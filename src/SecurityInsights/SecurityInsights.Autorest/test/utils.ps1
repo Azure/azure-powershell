@@ -45,9 +45,9 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
 
     #needed for custom api call
-    $Token = (Get-AzAccessToken).Token
+    $token = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
     $Header = @{
-        Authorization="Bearer $Token"
+        Authorization="Bearer $token"
         Content='application/json'
     }
 

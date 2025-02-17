@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
     public partial class DataCollectionRule
     {
 
-        /// <summary>Create a data collection endpoint.</summary>
+        /// <summary>update a data collection endpoint.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionEndpointName">The name of the data collection endpoint. The name is case insensitive.</param>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Create a data collection endpoint.</summary>
+        /// <summary>update a data collection endpoint.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The payload</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Create a data collection endpoint.</summary>
+        /// <summary>update a data collection endpoint.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The payload</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Create a data collection endpoint.</summary>
+        /// <summary>update a data collection endpoint.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionEndpointName">The name of the data collection endpoint. The name is case insensitive.</param>
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Create a data collection endpoint.</summary>
+        /// <summary>update a data collection endpoint.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionEndpointName">The name of the data collection endpoint. The name is case insensitive.</param>
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Create a data collection endpoint.</summary>
+        /// <summary>update a data collection endpoint.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionEndpointName">The name of the data collection endpoint. The name is case insensitive.</param>
@@ -1594,7 +1594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update part of a data collection endpoint.</summary>
+        /// <summary>Updates part of a data collection endpoint.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionEndpointName">The name of the data collection endpoint. The name is case insensitive.</param>
@@ -1643,7 +1643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update part of a data collection endpoint.</summary>
+        /// <summary>Updates part of a data collection endpoint.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The payload</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1702,7 +1702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update part of a data collection endpoint.</summary>
+        /// <summary>Updates part of a data collection endpoint.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The payload</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1759,7 +1759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update part of a data collection endpoint.</summary>
+        /// <summary>Updates part of a data collection endpoint.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionEndpointName">The name of the data collection endpoint. The name is case insensitive.</param>
@@ -1807,7 +1807,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update part of a data collection endpoint.</summary>
+        /// <summary>Updates part of a data collection endpoint.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionEndpointName">The name of the data collection endpoint. The name is case insensitive.</param>
@@ -1853,7 +1853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update part of a data collection endpoint.</summary>
+        /// <summary>Updates part of a data collection endpoint.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionEndpointName">The name of the data collection endpoint. The name is case insensitive.</param>
@@ -2039,7 +2039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update an association.</summary>
+        /// <summary>update an association.</summary>
         /// <param name="resourceUri">The identifier of the resource.</param>
         /// <param name="associationName">The name of the association. The name is case insensitive.</param>
         /// <param name="body">The payload</param>
@@ -2086,7 +2086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update an association.</summary>
+        /// <summary>update an association.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The payload</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2143,7 +2143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update an association.</summary>
+        /// <summary>update an association.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The payload</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2197,7 +2197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update an association.</summary>
+        /// <summary>update an association.</summary>
         /// <param name="resourceUri">The identifier of the resource.</param>
         /// <param name="associationName">The name of the association. The name is case insensitive.</param>
         /// <param name="jsonString">Json string supplied to the DataCollectionRuleAssociationsCreate operation</param>
@@ -2243,7 +2243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update an association.</summary>
+        /// <summary>update an association.</summary>
         /// <param name="resourceUri">The identifier of the resource.</param>
         /// <param name="associationName">The name of the association. The name is case insensitive.</param>
         /// <param name="jsonString">Json string supplied to the DataCollectionRuleAssociationsCreate operation</param>
@@ -2286,7 +2286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update an association.</summary>
+        /// <summary>update an association.</summary>
         /// <param name="resourceUri">The identifier of the resource.</param>
         /// <param name="associationName">The name of the association. The name is case insensitive.</param>
         /// <param name="body">The payload</param>
@@ -3919,7 +3919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update a data collection rule.</summary>
+        /// <summary>update a data collection rule.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionRuleName">The name of the data collection rule. The name is case insensitive.</param>
@@ -3969,7 +3969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update a data collection rule.</summary>
+        /// <summary>update a data collection rule.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The payload</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4029,7 +4029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update a data collection rule.</summary>
+        /// <summary>update a data collection rule.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The payload</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4086,7 +4086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update a data collection rule.</summary>
+        /// <summary>update a data collection rule.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionRuleName">The name of the data collection rule. The name is case insensitive.</param>
@@ -4135,7 +4135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update a data collection rule.</summary>
+        /// <summary>update a data collection rule.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionRuleName">The name of the data collection rule. The name is case insensitive.</param>
@@ -4181,7 +4181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             }
         }
 
-        /// <summary>Update a data collection rule.</summary>
+        /// <summary>update a data collection rule.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="dataCollectionRuleName">The name of the data collection rule. The name is case insensitive.</param>

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.1
+* Upgraded nuget package to signed package.
+
 ## Version 0.2.0
 * Updated API version from 2022-07-01 to 2024-01-01.
 * Added cmdlets:

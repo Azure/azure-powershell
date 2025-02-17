@@ -870,6 +870,7 @@ function Test-Zones
     Assert-AreEqual "Premium" $cacheCreated.Sku
     Assert-AreEqual "1" $cacheCreated.Zone[0]
     Assert-AreEqual "2" $cacheCreated.Zone[1]
+    Assert-AreEqual "UserDefined" $cacheCreated.ZonalAllocationPolicy
     Assert-AreEqual "example-value" $cacheCreated.Tag.Item("example-key")
     Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
@@ -908,8 +909,8 @@ function Test-ManagedIdentity
     $cacheName = "redisteam050"
     $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
     # Replace with managed identities in your sub while testing
-    $uai1 = "/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourcegroups/powershell-testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache1"
-    $uai2 = "/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourcegroups/powershell-testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2"
+    $uai1 = "/subscriptions/6364f508-1150-4431-b973-c3f133466e56/resourcegroups/test-rg-using-ps/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache1"
+    $uai2 = "/subscriptions/6364f508-1150-4431-b973-c3f133466e56/resourcegroups/test-rg-using-ps/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -1142,9 +1143,9 @@ function Test-UpdateChannel
 {
     # Setup
     $id = (New-Guid).ToString().Substring(0,8)
-    $resourceGroupName = "PowerShellTest-05968abc"
-    $cacheName = "redisteam011-05968abc"
-    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
+    $resourceGroupName = "PowerShellTest-05965def"
+    $cacheName = "redisteam011-05965def"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -1194,6 +1195,128 @@ function Test-UpdateChannel
 
     Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
+
+    # Delete cache
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+
+    # Delete resource group
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Tests redis cache.
+#>
+function Test-UpdateToAutomaticZonalAllocationPolicyForPremiumCache
+{
+    # Setup
+    $id = (New-Guid).ToString().Substring(0,8)
+    $resourceGroupName = "PowerShellTest-966dc012"
+    $cacheName = "redispszonalallocation-966dc012"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
+
+    # Create resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Creating Cache
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -RedisVersion latest -ZonalAllocationPolicy NoZones
+
+    Assert-AreEqual $cacheName $cacheCreated.Name
+    Assert-AreEqual $location $cacheCreated.Location
+    Assert-AreEqual "Microsoft.Cache/Redis" $cacheCreated.Type
+    Assert-AreEqual $resourceGroupName $cacheCreated.ResourceGroupName
+
+    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
+    Assert-AreEqual "6GB" $cacheCreated.Size
+    Assert-AreEqual "Premium" $cacheCreated.Sku
+    Assert-AreEqual "NoZones" $cacheCreated.ZonalAllocationPolicy
+    Assert-AreEqual 0 $cacheCreated.Zone.Count
+
+    # In loop to check if cache exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep -Seconds 30
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+
+    # Updating Cache
+    $cacheUpdated = Set-AzRedisCache -Name $cacheName -ZonalAllocationPolicy Automatic
+    # In loop to check if microsoft entra auth disablement succeeded
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep -Seconds 30
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+    $cacheUpdated = Get-AzRedisCache -Name $cacheName
+
+    Assert-AreEqual $cacheName $cacheUpdated.Name
+    Assert-AreEqual "succeeded" $cacheUpdated.ProvisioningState
+    Assert-AreEqual "Automatic" $cacheUpdated.ZonalAllocationPolicy
+    Assert-AreEqual 0 $cacheUpdated.Zone.Count
+
+    # Delete cache
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+
+    # Delete resource group
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Tests redis cache.
+#>
+function Test-AutomaticZonalAllocationPolicyForStandardCache
+{
+    # Setup
+    $id = (New-Guid).ToString().Substring(0,8)
+    $resourceGroupName = "PowerShellTest-49099bb2"
+    $cacheName = "redispszonalallocation-49099bb2"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
+
+    # Create resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Creating Cache
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size C1 -Sku Standard -RedisVersion latest -ZonalAllocationPolicy Automatic
+
+    Assert-AreEqual $cacheName $cacheCreated.Name
+    Assert-AreEqual $location $cacheCreated.Location
+    Assert-AreEqual "Microsoft.Cache/Redis" $cacheCreated.Type
+    Assert-AreEqual $resourceGroupName $cacheCreated.ResourceGroupName
+
+    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
+    Assert-AreEqual "1GB" $cacheCreated.Size
+    Assert-AreEqual "Standard" $cacheCreated.Sku
+    Assert-AreEqual "Automatic" $cacheCreated.ZonalAllocationPolicy
+    Assert-AreEqual 0 $cacheCreated.Zone.Count
+
+    # In loop to check if cache exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep -Seconds 30
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
 
     # Delete cache
     Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."

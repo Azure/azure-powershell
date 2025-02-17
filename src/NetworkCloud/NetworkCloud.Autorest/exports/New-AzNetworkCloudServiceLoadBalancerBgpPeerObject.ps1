@@ -23,12 +23,12 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password passsword -PeerPort 1234
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServiceLoadBalancerBgpPeer
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudServiceLoadBalancerBgpPeerObject
 #>
 function New-AzNetworkCloudServiceLoadBalancerBgpPeerObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServiceLoadBalancerBgpPeer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -66,6 +66,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
+    # Field Deprecated.
+    # The field was previously optional, now it will have no defined behavior and will be ignored.
     # The requested BGP hold time value.
     # This field uses ISO 8601 duration format, for example P1H.
     ${HoldTime},
@@ -73,6 +75,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
+    # Field Deprecated.
+    # The field was previously optional, now it will have no defined behavior and will be ignored.
     # The requested BGP keepalive time value.
     # This field uses ISO 8601 duration format, for example P1H.
     ${KeepAliveTime},

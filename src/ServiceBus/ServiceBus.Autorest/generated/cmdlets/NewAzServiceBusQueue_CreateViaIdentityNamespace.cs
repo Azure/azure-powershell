@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Service Bus queue. This operation is idempotent.</summary>
+    /// <summary>create a Service Bus queue. This operation is idempotent.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzServiceBusQueue_CreateViaIdentityNamespace", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Create a Service Bus queue. This operation is idempotent.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"create a Service Bus queue. This operation is idempotent.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ExternalDocs(@"https://msdn.microsoft.com/en-us/library/azure/mt639395.aspx", @"")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}", ApiVersion = "2022-10-01-preview")]

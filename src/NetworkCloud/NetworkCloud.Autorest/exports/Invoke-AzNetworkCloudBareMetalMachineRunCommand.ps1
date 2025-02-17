@@ -42,6 +42,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [ClusterManagerName <String>]: The name of the cluster manager.
   [ClusterName <String>]: The name of the cluster.
   [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
   [Id <String>]: Resource identity path
   [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
   [L2NetworkName <String>]: The name of the L2 network.

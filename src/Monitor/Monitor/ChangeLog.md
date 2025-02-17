@@ -20,6 +20,29 @@
 
 ## Upcoming Release
 
+## Version 6.0.1
+* Upgraded nuget package to signed package.
+
+## Version 6.0.0
+* The parameters of the `New-AzDataCollectionEndpoint`, `New-AzDataCollectionRule`, `Update-AzDataCollectionEndpoint`, `Update-AzDataCollectionRule` commands have changed.
+  * `IdentityType` has been removed. `EnableSystemAssignedIdentity` is used to enable/disable system-assigned identities.
+  * The type of `UserAssignedIdentity` is simplified to an array of strings that is used to specify the user's assigned identity.
+
+## Version 5.3.0
+* Added new cmdlet for Azure Monitor Pipeline Groups
+  * `Get-AzPipelineGroup`
+  * `New-AzPipelineGroup`
+  * `Update-AzPipelineGroup`
+  * `Remove-AzPipelineGroup`
+
+## Version 5.2.2
+* Added breaking change messages:
+  * `New-AzDataCollectionEndpoint`
+  * `New-AzDataCollectionRule`
+  * `Update-AzDataCollectionEndpoint`
+  * `Update-AzDataCollectionRule`
+* Updated documentation for `New-AzActionGroupLogicAppReceiverObject`
+
 ## Version 5.2.1
 * Removed breaking change warning messages for Metric Management Plane
     * Get-AzMetric
@@ -74,7 +97,7 @@
 * Added breaking change for Action Group
 
 ## Version 4.5.0
-* Added cmdlets for monitor workspace: 
+* Added cmdlets for monitor workspace:
     - `Get-AzMonitorWorkspace`
     - `New-AzMonitorWorkspace`
     - `Update-AzMonitorWorkspace`
@@ -114,7 +137,7 @@
   * `New-AzDiagnosticDetailSetting` replaced by `New-AzDiagnosticSettingLogSettingsObject` and `New-AzDiagnosticSettingMetricSettingsObject`
   * `Get-AzSubscriptionDiagnosticSettingCategory` replaced by `Get-AzEventCategory`
 * [Breaking Change] Upgraded API version for Autoscale from 2015-04-01 to 2022-10-01
-  * `Get-AzAutoscaleSetting` 
+  * `Get-AzAutoscaleSetting`
   * `Remove-AzAutoscaleSetting`
   * `Add-AzAutoscaleSetting` replaced by `New-AzAutoscaleSetting`
   * `New-AzAutoscaleNotification` replaced by `New-AzAutoscaleNotificationObject`
@@ -135,7 +158,7 @@
   * `Update-AzScheduledQueryRule`
 
 ## Version 3.1.0
-* Added breaking change warning messages for 
+* Added breaking change warning messages for
     - `ActivityLogAlert`
     - `DiagnosticSetting`
     - `ScheduledQueryRule`
@@ -169,7 +192,7 @@
 * Supported `AutoMitigate` parameter in metric alert rule properties. The flag indicates whether the alert should be auto resolved or not.
 
 ## Version 2.4.0
-* Added cmdlets for data collection rules: 
+* Added cmdlets for data collection rules:
     - `Get-AzDataCollectionRule`
     - `New-AzDataCollectionRule`
     - `Set-AzDataCollectionRule`
@@ -274,7 +297,7 @@
 * Fixed incorrect parameter names in help examples
 
 ## Version 1.2.0
-* New cmdlets for SQR API (Scheduled Query Rule)  
+* New cmdlets for SQR API (Scheduled Query Rule)
     - New-AzScheduledQueryRuleAlertingAction
 	- New-AzScheduledQueryRuleAznsActionGroup
 	- New-AzScheduledQueryRuleLogMetricTrigger

@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.5.0
+* Upgraded nuget package to signed package.
+
+## Version 2.4.1
+* added support for new environment
+
 ## Version 2.4.0
 * Upgraded API version to 2024-04-01
 * Allowed registration for 23H2 and above versions of the device

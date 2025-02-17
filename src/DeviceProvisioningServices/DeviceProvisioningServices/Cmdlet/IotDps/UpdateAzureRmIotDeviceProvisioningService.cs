@@ -14,14 +14,15 @@
 
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 {
-    using System;
-    using System.Collections;
-    using System.Linq;
-    using System.Management.Automation;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
+    using System;
+    using System.Collections;
+    using System.Linq;
+    using System.Management.Automation;
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningService", DefaultParameterSetName = ResourceUpdateParameterSet, SupportsShouldProcess = true)]
@@ -159,8 +160,8 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     this.ResourceGroupName = IotDpsUtils.GetResourceGroupName(this.ResourceId);
                     this.Name = IotDpsUtils.GetIotDpsName(this.ResourceId);
                 }
-                
-                switch(ParameterSetName)
+
+                switch (ParameterSetName)
                 {
                     case InputObjectCreateUpdateParameterSet:
                     case ResourceIdCreateUpdateParameterSet:

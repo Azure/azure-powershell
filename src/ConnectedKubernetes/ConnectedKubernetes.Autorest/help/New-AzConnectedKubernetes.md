@@ -18,9 +18,12 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-OnboardingTimeout <Int32>] [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA]
  [-AzureHybridBenefit <AzureHybridBenefit>] [-CustomLocationsOid <String>] [-Distribution <String>]
  [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-ConfigurationProtectedSetting <Hashtable>]
+ [-ConfigurationSetting <Hashtable>] [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +101,7 @@ This command creates a connected kubernetes with parameters HttpProxy, HttpsProx
 
 ### Example 6: Create a connected kubernetes with parameters HttpProxy, HttpsProxy, NoProxy, Proxy and ProxyCredential.
 ```powershell
-$pwd = ConvertTo-SecureString "proxy-password" -AsPlainText -Force
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("proxy-user", $pwd)
 New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -HttpProxy "http://proxy-user:proxy-password@proxy-ip:port" -HttpsProxy "http://proxy-user:proxy-password@proxy-ip:port" -NoProxy "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.96.0.0/12,10.244.0.0/16,10.43.0.0/24,.svc" -Proxy "http://proxy-ip:port" -ProxyCredential $cred
 ```
@@ -199,6 +202,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConfigurationProtectedSetting
+Arc Agentry System Protected Configuration (hash table of hash tables).
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationSetting
+Arc Agentry System Configuration (hash table of hash tables).
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ContainerLogPath
 Override the default container log path to enable fluent-bit logging.
 
@@ -276,6 +309,21 @@ Accept wildcard characters: False
 
 ### -DistributionVersion
 The Kubernetes distribution version on this connected cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GatewayResourceId
+Arc Gateway resource Id
 
 ```yaml
 Type: System.String
@@ -409,6 +457,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OidcIssuerProfileEnabled
+Whether to enable oidc issuer for workload identity integration.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OidcIssuerProfileSelfHostedIssuerUrl
+The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OnboardingTimeout
 The time required (in seconds) for the arc-agent pods to be installed on the kubernetes cluster.
 
@@ -530,6 +608,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkloadIdentityEnabled
+Whether to enable or disable the workload identity Webhook
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -568,7 +661,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
 
 ## NOTES
 

@@ -79,11 +79,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             __microsoftGraphIdentityProviderBase = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphIdentityProviderBase(json,new global::System.Collections.Generic.HashSet<string>(){ @"id",@"displayName",@"issuerUri",@"metadataExchangeUri",@"passiveSignInUri",@"preferredAuthenticationProtocol",@"signingCertificate" });
-            {_issuerUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("issuerUri"), out var __jsonIssuerUri) ? (string)__jsonIssuerUri : (string)IssuerUri;}
-            {_metadataExchangeUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("metadataExchangeUri"), out var __jsonMetadataExchangeUri) ? (string)__jsonMetadataExchangeUri : (string)MetadataExchangeUri;}
-            {_passiveSignInUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("passiveSignInUri"), out var __jsonPassiveSignInUri) ? (string)__jsonPassiveSignInUri : (string)PassiveSignInUri;}
-            {_preferredAuthenticationProtocol = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("preferredAuthenticationProtocol"), out var __jsonPreferredAuthenticationProtocol) ? (string)__jsonPreferredAuthenticationProtocol : (string)PreferredAuthenticationProtocol;}
-            {_signingCertificate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("signingCertificate"), out var __jsonSigningCertificate) ? (string)__jsonSigningCertificate : (string)SigningCertificate;}
+            {_issuerUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("issuerUri"), out var __jsonIssuerUri) ? (string)__jsonIssuerUri : (string)_issuerUri;}
+            {_metadataExchangeUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("metadataExchangeUri"), out var __jsonMetadataExchangeUri) ? (string)__jsonMetadataExchangeUri : (string)_metadataExchangeUri;}
+            {_passiveSignInUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("passiveSignInUri"), out var __jsonPassiveSignInUri) ? (string)__jsonPassiveSignInUri : (string)_passiveSignInUri;}
+            {_preferredAuthenticationProtocol = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("preferredAuthenticationProtocol"), out var __jsonPreferredAuthenticationProtocol) ? (string)__jsonPreferredAuthenticationProtocol : (string)_preferredAuthenticationProtocol;}
+            {_signingCertificate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("signingCertificate"), out var __jsonSigningCertificate) ? (string)__jsonSigningCertificate : (string)_signingCertificate;}
             AfterFromJson(json);
         }
 

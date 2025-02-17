@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnv
 
 ## SYNOPSIS
-Create an connectedEnvironment.
+create an connectedEnvironment.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-Create an connectedEnvironment.
+create an connectedEnvironment.
 
 ## EXAMPLES
 
@@ -190,7 +190,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

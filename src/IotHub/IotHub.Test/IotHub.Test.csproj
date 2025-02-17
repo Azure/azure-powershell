@@ -13,9 +13,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Devices" Version="1.22.0" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="4.2.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IotHub.Management.Sdk\IotHub.Management.Sdk.csproj" />
+    <ProjectReference Include="..\..\EventHub\EventHub.Management.Sdk\EventHub.Management.Sdk.csproj" />
+    <ProjectReference Include="..\..\Storage\Storage.Management.Sdk\Storage.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

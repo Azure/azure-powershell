@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
-    /// <summary>Clustering policy - default is OSSCluster. Specified at create time.</summary>
+    /// <summary>
+    /// Clustering policy - default is OSSCluster. This property must be chosen at create time, and cannot be changed without
+    /// deleting the database.
+    /// </summary>
     public partial class ClusteringPolicyTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -23,12 +23,12 @@ Gets the network endpoints of all outbound dependencies of a Kusto cluster
 Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName "mycluster" -ResourceGroupName "testrg"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOutboundNetworkDependenciesEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOutboundNetworkDependenciesEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusteroutboundnetworkdependencyendpoint
 #>
 function Get-AzKustoClusterOutboundNetworkDependencyEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOutboundNetworkDependenciesEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IOutboundNetworkDependenciesEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

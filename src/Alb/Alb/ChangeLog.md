@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.4
+* Upgraded nuget package to signed package.
+
 ## Version 0.1.3
 * Introduced secrets detection feature to safeguard sensitive data.
 

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Upgraded nuget package to signed package.
+* Removed "Microsoft.Azure.Management.DevTestLabs" Version "1.0.0" PackageReference
+
 ## Version 1.0.3
 * Removed the outdated deps.json file.
 

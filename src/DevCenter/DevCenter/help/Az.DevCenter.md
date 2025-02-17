@@ -115,22 +115,31 @@ Lists the Microsoft.DevCenter SKUs available in a subscription
 Lists the current usages and limits in this location for the provided subscription.
 
 ### [Get-AzDevCenterUserCatalog](Get-AzDevCenterUserCatalog.md)
-Gets the specified catalog within the project
+Gets the specified catalog within the project.
 
 ### [Get-AzDevCenterUserDevBox](Get-AzDevCenterUserDevBox.md)
-Gets a Dev Box
+Gets a Dev Box.
 
 ### [Get-AzDevCenterUserDevBoxAction](Get-AzDevCenterUserDevBoxAction.md)
 Gets an action.
+
+### [Get-AzDevCenterUserDevBoxCustomizationGroup](Get-AzDevCenterUserDevBoxCustomizationGroup.md)
+Gets a customization group.
+
+### [Get-AzDevCenterUserDevBoxCustomizationTaskDefinition](Get-AzDevCenterUserDevBoxCustomizationTaskDefinition.md)
+Gets a customization task.
+
+### [Get-AzDevCenterUserDevBoxCustomizationTaskLog](Get-AzDevCenterUserDevBoxCustomizationTaskLog.md)
+Gets the log for a customization task.
 
 ### [Get-AzDevCenterUserDevBoxOperation](Get-AzDevCenterUserDevBoxOperation.md)
 Gets an operation on a Dev Box.
 
 ### [Get-AzDevCenterUserDevBoxRemoteConnection](Get-AzDevCenterUserDevBoxRemoteConnection.md)
-Gets RDP Connection info
+Gets RDP Connection info.
 
 ### [Get-AzDevCenterUserEnvironment](Get-AzDevCenterUserEnvironment.md)
-Gets an environment
+Gets an environment.
 
 ### [Get-AzDevCenterUserEnvironmentAction](Get-AzDevCenterUserEnvironmentAction.md)
 Retrieve a specific environment action.
@@ -145,13 +154,13 @@ Gets the logs for an operation on an environment.
 Gets an environment action result.
 
 ### [Get-AzDevCenterUserEnvironmentOutput](Get-AzDevCenterUserEnvironmentOutput.md)
-Gets Outputs from the environment
+Gets Outputs from the environment.
 
 ### [Get-AzDevCenterUserEnvironmentType](Get-AzDevCenterUserEnvironmentType.md)
-Lists all environment types configured for a project.
+Get an environment type configured for a project.
 
 ### [Get-AzDevCenterUserPool](Get-AzDevCenterUserPool.md)
-Gets a pool
+Gets a pool.
 
 ### [Get-AzDevCenterUserProject](Get-AzDevCenterUserProject.md)
 Gets a project.
@@ -216,6 +225,9 @@ Creates or updates a Schedule.
 ### [New-AzDevCenterUserDevBox](New-AzDevCenterUserDevBox.md)
 Creates or replaces a Dev Box.
 
+### [New-AzDevCenterUserDevBoxCustomizationGroup](New-AzDevCenterUserDevBoxCustomizationGroup.md)
+Applies customizations to the Dev Box.
+
 ### [New-AzDevCenterUserEnvironment](New-AzDevCenterUserEnvironment.md)
 Creates or updates an environment.
 
@@ -272,7 +284,7 @@ Attempts automated repair steps to resolve common problems on a Dev Box.
 The Dev Box may restart during this operation.
 
 ### [Restart-AzDevCenterUserDevBox](Restart-AzDevCenterUserDevBox.md)
-Restarts a Dev Box
+Restarts a Dev Box.
 
 ### [Skip-AzDevCenterUserDevBoxAction](Skip-AzDevCenterUserDevBoxAction.md)
 Skips an occurrence of an action.
@@ -288,16 +300,19 @@ The execution and health check result can be tracked via the network Connection 
 Triggers a refresh of the pool status.
 
 ### [Start-AzDevCenterUserDevBox](Start-AzDevCenterUserDevBox.md)
-Starts a Dev Box
+Starts a Dev Box.
 
 ### [Stop-AzDevCenterUserDevBox](Stop-AzDevCenterUserDevBox.md)
-Stops a Dev Box
+Stops a Dev Box.
 
 ### [Sync-AzDevCenterAdminCatalog](Sync-AzDevCenterAdminCatalog.md)
 Syncs templates for a template source.
 
 ### [Sync-AzDevCenterAdminProjectCatalog](Sync-AzDevCenterAdminProjectCatalog.md)
 Syncs templates for a template source.
+
+### [Test-AzDevCenterUserDevBoxCustomizationTaskAction](Test-AzDevCenterUserDevBoxCustomizationTaskAction.md)
+Validates a list of customization tasks.
 
 ### [Update-AzDevCenterAdminCatalog](Update-AzDevCenterAdminCatalog.md)
 Partially updates a catalog.
@@ -336,5 +351,5 @@ Partially updates a project environment type.
 Partially updates a Scheduled.
 
 ### [Update-AzDevCenterUserEnvironment](Update-AzDevCenterUserEnvironment.md)
-Partially updates an environment
+Partially updates an environment.
 

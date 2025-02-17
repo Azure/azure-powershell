@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 2.4.1
+* Removed "Microsoft.Azure.Management.Authorization" Version "2.13.0-preview" package reference
+
+## Version 2.4.0
+* Upgraded nuget package to signed package.
+
+## Version 2.3.1
+* Fixed the bug in server registration
+* Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
+
 ## Version 2.3.0
 * Fixed the Register-AzStorageSyncServer with Azure FileSync Agent v17
 * Improved performance for Managed Identity migration cmdlet

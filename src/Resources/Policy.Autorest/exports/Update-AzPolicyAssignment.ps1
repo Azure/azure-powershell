@@ -26,19 +26,19 @@ For example, when you assign a policy at resource group scope, that policy appli
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -DisplayName 'Do not allow VM creation'
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -DisplayName 'Do not allow VM creation'
 .Example
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'SystemAssigned' -Location 'westus'
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -IdentityType 'SystemAssigned' -Location 'westus'
 .Example
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
 $UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName 'ResourceGroup1' -Name 'UserAssignedIdentity1'
- Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
+ Update-AzPolicyAssignment -Id $PolicyAssignment.Id -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
 .Example
 $Locations = Get-AzLocation | Where-Object {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -PolicyParameterObject $AllowedLocations
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -PolicyParameterObject $AllowedLocations
 .Example
 {
   "listOfAllowedLocations":  {
@@ -55,13 +55,20 @@ Update-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\AllowedLoc
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -EnforcementMode Default
 .Example
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+.Example
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelector $ResourceSelector
+.Example
+$Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId -BackwardCompatible
 Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
 
 .Inputs
@@ -107,6 +114,21 @@ INPUTOBJECT <IPolicyAssignment>:
   [ResourceSelector <List<IResourceSelector>>]: The resource selector list to filter policies by resource properties.
     [Name <String>]: The name of the resource selector.
     [Selector <List<ISelector>>]: The list of the selector expressions.
+
+OVERRIDE <IOverride[]>: The policy property value override.
+  [Kind <String>]: The override kind.
+  [Selector <List<ISelector>>]: The list of the selector expressions.
+    [In <List<String>>]: The list of values to filter in.
+    [Kind <String>]: The selector kind.
+    [NotIn <List<String>>]: The list of values to filter out.
+  [Value <String>]: The value to override the policy property.
+
+RESOURCESELECTOR <IResourceSelector[]>: The resource selector list to filter policies by resource properties.
+  [Name <String>]: The name of the resource selector.
+  [Selector <List<ISelector>>]: The list of the selector expressions.
+    [In <List<String>>]: The list of values to filter in.
+    [Kind <String>]: The selector kind.
+    [NotIn <List<String>>]: The list of values to filter out.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyassignment
 #>
@@ -209,6 +231,20 @@ param(
     # The messages that describe why a resource is non-compliant with the policy.
     # To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.
     ${NonComplianceMessage},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]

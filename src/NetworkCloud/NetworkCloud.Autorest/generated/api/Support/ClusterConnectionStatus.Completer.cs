@@ -30,6 +30,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Connected'", "Connected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Connected");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disconnected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Disconnected'", "Disconnected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disconnected");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Timeout".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Timeout'", "Timeout", global::System.Management.Automation.CompletionResultType.ParameterValue, "Timeout");

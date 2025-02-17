@@ -14,6 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.LanguageExtensionImageName Python3108Dl = @"Python3_10_8_DL";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.LanguageExtensionImageName Python3117 = @"Python3_11_7";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.LanguageExtensionImageName Python3117Dl = @"Python3_11_7_DL";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.LanguageExtensionImageName Python365 = @"Python3_6_5";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.LanguageExtensionImageName PythonCustomImage = @"PythonCustomImage";

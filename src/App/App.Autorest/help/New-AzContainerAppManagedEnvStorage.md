@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ## EXAMPLES
 
@@ -164,7 +164,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -210,7 +209,6 @@ Accept wildcard characters: False
 
 ### -ManagedEnvironmentInputObject
 Identity Parameter
-To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

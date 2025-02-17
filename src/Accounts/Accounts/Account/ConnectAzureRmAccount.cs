@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
-                    Mandatory = false, HelpMessage = "Account Id for managed service. Can be a managed service resource Id, or the associated client id. To use the SystemAssigned identity, leave this field blank.")]
+                    Mandatory = false, HelpMessage = "Client id of UserAssigned identity. To use the SystemAssigned identity, leave this field blank.")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 

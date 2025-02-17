@@ -33,6 +33,8 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -905,24 +907,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private IDictionary<string, DeploymentParameter> ConvertParameterHashtableToDictionary(Hashtable parameters)
         {
-            var paramDictionary = new Dictionary<string, DeploymentParameter>();
+            Dictionary<string, object> parametersDictionary = parameters?.ToDictionary(false);
+            string parametersContent = parametersDictionary != null
+                ? PSJsonSerializer.Serialize(parametersDictionary)
+                : null;
 
-            foreach (string key in parameters.Keys)
-            {
-                paramDictionary[key] = new DeploymentParameter();
-                var paramTable = (Hashtable)parameters[key];
-
-                if (paramTable["reference"] != null)
-                {
-                    paramDictionary[key].Reference = JsonConvert.DeserializeObject<KeyVaultParameterReference>(paramTable["reference"].ToString());
-                }
-                else
-                {
-                    paramDictionary[key].Value = paramTable["value"];
-                }
-            }
-
-            return paramDictionary;
+            return !string.IsNullOrEmpty(parametersContent)
+                ? parametersContent.FromJson<Dictionary<string, DeploymentParameter>>()
+                : null;
         }
 
         private DeploymentStack waitStackCompletion(Func<Task<AzureOperationResponse<DeploymentStack>>> getStack, params string[] status)
@@ -938,7 +930,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool deploymentOperationFlag = true;
             do
             {
-                WriteVerbose(string.Format("Checking stack deployment status", step));
                 TestMockSupport.Delay(step * counterUnit);
 
                 if (phaseOne > 0)
@@ -966,6 +957,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     deploymentOperationFlag = false;
                     PollDeployments(stack);
                 }
+
+                WriteVerbose("stack deployment status: " + stack.ProvisioningState);
 
             } while (!status.Any(s => s.Equals(stack.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 

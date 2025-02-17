@@ -144,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Resource id of the virtual machine.",
         SerializedName = @"virtualMachineResourceId",
         PossibleTypes = new [] { typeof(string) })]

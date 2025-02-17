@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the RestSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -69,9 +72,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Compression Level, Default is None. And The Only Supported option is Gzip.
         /// Type: string (or Expression with resultType string).
         /// </param>
-        public RestSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object requestMethod = default(object), object additionalHeaders = default(object), object httpRequestTimeout = default(object), object requestInterval = default(object), object httpCompressionType = default(object))
+        public RestSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object requestMethod = default(object), object additionalHeaders = default(object), object httpRequestTimeout = default(object), object requestInterval = default(object), object httpCompressionType = default(object))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.RequestMethod = requestMethod;
             this.AdditionalHeaders = additionalHeaders;

@@ -15,9 +15,10 @@ Updates a database script.
 ### UpdateExpanded (Default)
 ```
 Update-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>] [-ScriptContent <String>]
- [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>]
+ [-PrincipalPermissionsAction <PrincipalPermissionsAction>] [-ScriptContent <String>]
+ [-ScriptLevel <ScriptLevel>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -36,7 +37,8 @@ Update-AzKustoScript -InputObject <IKustoIdentity> -Parameter <IScript> [-Defaul
 ### UpdateViaIdentityExpanded
 ```
 Update-AzKustoScript -InputObject <IKustoIdentity> [-ContinueOnError] [-ForceUpdateTag <String>]
- [-ScriptContent <String>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
+ [-PrincipalPermissionsAction <PrincipalPermissionsAction>] [-ScriptContent <String>]
+ [-ScriptLevel <ScriptLevel>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -47,7 +49,7 @@ Updates a database script.
 
 ### Example 1: Update an existing kusto script by name
 ```powershell
-Update-AzKustoScript -DatabaseName mykustodatabase -Name newkustoscript -ClusterName testnewkustocluster -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken
+Update-AzKustoScript -DatabaseName mykustodatabase -Name newkustoscript -ClusterName testnewkustocluster -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken -PrincipalPermissionsAction RemovePermissionOnScriptCompletion -ScriptLevel Database
 ```
 
 ```output
@@ -203,7 +205,7 @@ Class representing a database script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -211,6 +213,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PrincipalPermissionsAction
+Indicates if the permissions for the script caller are kept following completion of the script.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -237,6 +254,22 @@ Must not be used together with scriptUrl and scriptUrlSasToken properties.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScriptLevel
+Differentiates between the type of script commands included - Database or Cluster.
+The default is Database.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ScriptLevel
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -330,13 +363,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IScript
 
 ## NOTES
 

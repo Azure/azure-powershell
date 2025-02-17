@@ -29,19 +29,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the scope assignment resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="description">A description of the network group.
         /// </param>
 
+        /// <param name="memberType">The type of the group member.
+        /// Possible values include: &#39;VirtualNetwork&#39;, &#39;Subnet&#39;</param>
+
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public ConfigurationGroup(string id = default(string), string provisioningState = default(string), string description = default(string), string resourceGuid = default(string))
+        public ConfigurationGroup(string id = default(string), string provisioningState = default(string), string description = default(string), string memberType = default(string), string resourceGuid = default(string))
 
         {
             this.Id = id;
             this.ProvisioningState = provisioningState;
             this.Description = description;
+            this.MemberType = memberType;
             this.ResourceGuid = resourceGuid;
             CustomInit();
         }
@@ -59,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Id {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the scope assignment resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the scope assignment resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -69,6 +74,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
         public string Description {get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the group member. Possible values include: &#39;VirtualNetwork&#39;, &#39;Subnet&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.memberType")]
+        public string MemberType {get; set; }
 
         /// <summary>
         /// Gets unique identifier for this resource.

@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the backend HTTP settings resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public ApplicationGatewayBackendHttpSettingsPropertiesFormat(int? port = default(int?), string protocol = default(string), string cookieBasedAffinity = default(string), int? requestTimeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> authenticationCertificates = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string), string provisioningState = default(string))
 
         {
@@ -180,7 +181,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Path {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the backend HTTP settings resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the backend HTTP settings resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

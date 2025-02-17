@@ -1168,8 +1168,9 @@ Get-AzPolicyExemption
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
 .Example
-$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07'
-Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.ResourceId
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.Id
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -2290,11 +2291,11 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy assignment with the given scope and name.
+This operation create a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Description
-This operation creates or updates a policy assignment with the given scope and name.
+This operation create a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Example
@@ -2312,7 +2313,7 @@ $Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 .Example
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -2320,7 +2321,7 @@ New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinitio
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.DisplayName -eq 'Allowed locations'}
@@ -2343,13 +2344,22 @@ $PolicySet = Get-AzPolicySetDefinition -Name 'VirtualMachinePolicySet'
 $NonComplianceMessages = @(@{Message="Only DsV2 SKUs are allowed."; PolicyDefinitionReferenceId="DefRef1"}, @{Message="Virtual machines must follow cost management best practices."})
 New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicySetDefinition $PolicySet -NonComplianceMessage $NonComplianceMessages
 .Example
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -ResourceSelector $ResourceSelector
+.Example
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$Selector = @{Kind = "resourceLocation"; In = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Override $Override
+.Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
 $Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 .Example
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -2357,7 +2367,7 @@ New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinitio
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
@@ -2438,7 +2448,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
@@ -2462,6 +2472,20 @@ param(
     [System.String[]]
     # The policy's excluded scopes.
     ${NotScope},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -2565,9 +2589,9 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy definition in the given subscription with the given name.
+This operation create a policy definition in the given subscription with the given name.
 .Description
-This operation creates or updates a policy definition in the given subscription with the given name.
+This operation create a policy definition in the given subscription with the given name.
 .Example
 {{ Add code here }}
 .Example
@@ -2740,9 +2764,9 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy definition in the given subscription with the given name.
+This operation create a policy definition in the given subscription with the given name.
 .Description
-This operation creates or updates a policy definition in the given subscription with the given name.
+This operation create a policy definition in the given subscription with the given name.
 .Example
 {
    "if": {
@@ -2930,11 +2954,11 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy exemption with the given scope and name.
+This operation create a policy exemption with the given scope and name.
 Policy exemptions apply to all resources contained within their scope.
 For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
 .Description
-This operation creates or updates a policy exemption with the given scope and name.
+This operation create a policy exemption with the given scope and name.
 Policy exemptions apply to all resources contained within their scope.
 For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
 .Example
@@ -2953,6 +2977,10 @@ New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $
 $VM = Get-AzVM -Name 'SpecialVM'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
 New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+.Example
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachineAssignment'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $Assignment -ResourceSelector $ResourceSelector
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
@@ -3021,6 +3049,13 @@ param(
     [System.String[]]
     # The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
     ${PolicyDefinitionReferenceId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3121,9 +3156,9 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+This operation create a policy set definition version in the given subscription with the given name and version.
 .Description
-This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+This operation create a policy set definition version in the given subscription with the given name and version.
 .Example
 {{ Add code here }}
 .Example
@@ -3301,9 +3336,9 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy set definition in the given subscription with the given name.
+This operation create a policy set definition in the given subscription with the given name.
 .Description
-This operation creates or updates a policy set definition in the given subscription with the given name.
+This operation create a policy set definition in the given subscription with the given name.
 .Example
 [
    {
@@ -3537,10 +3572,10 @@ Remove-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.Resou
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
-Remove-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -Confirm:$false
+Remove-AzPolicyAssignment -Id $PolicyAssignment.Id -Confirm:$false
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
 Remove-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -Confirm:$false -BackwardCompatible
 True
 
@@ -3954,9 +3989,9 @@ This operation deletes the policy definition in the given subscription with the 
 Remove-AzPolicyDefinition -Name 'VMPolicyDefinition'
 .Example
 $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
-Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force
+Remove-AzPolicyDefinition -Id $PolicyDefinition.Id -Force
 .Example
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
+$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -BackwardCompatible
 Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force -BackwardCompatible
 True
 
@@ -4141,10 +4176,10 @@ Remove-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.Resourc
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Confirm
+Remove-AzPolicyExemption -Id $PolicyExemption.Id -Confirm
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
 Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Force -BackwardCompatible
 True
 
@@ -4547,9 +4582,9 @@ This operation deletes the policy set definition in the given subscription with 
 This operation deletes the policy set definition in the given subscription with the given name.
 .Example
 $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
+Remove-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Force
 .Example
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition' -BackwardCompatible
 Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force -BackwardCompatible
 True
 
@@ -4723,13 +4758,13 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates the policy assignment with the given ID.
+This operation update the policy assignment with the given ID.
 Policy assignments made on a scope apply to all resources contained in that scope.
 For example, when you assign a policy to a resource group that policy applies to all resources in the group.
 Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
 Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
 .Description
-This operation creates or updates the policy assignment with the given ID.
+This operation update the policy assignment with the given ID.
 Policy assignments made on a scope apply to all resources contained in that scope.
 For example, when you assign a policy to a resource group that policy applies to all resources in the group.
 Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
@@ -4737,19 +4772,19 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -DisplayName 'Do not allow VM creation'
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -DisplayName 'Do not allow VM creation'
 .Example
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'SystemAssigned' -Location 'westus'
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -IdentityType 'SystemAssigned' -Location 'westus'
 .Example
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
 $UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName 'ResourceGroup1' -Name 'UserAssignedIdentity1'
- Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
+ Update-AzPolicyAssignment -Id $PolicyAssignment.Id -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
 .Example
 $Locations = Get-AzLocation | Where-Object {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -PolicyParameterObject $AllowedLocations
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -PolicyParameterObject $AllowedLocations
 .Example
 {
   "listOfAllowedLocations":  {
@@ -4766,13 +4801,20 @@ Update-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\AllowedLoc
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -EnforcementMode Default
 .Example
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+.Example
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelector $ResourceSelector
+.Example
+$Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId -BackwardCompatible
 Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
 
 .Outputs
@@ -4837,7 +4879,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.Nullable[System.Boolean]]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
@@ -4861,6 +4903,20 @@ param(
     [System.String[]]
     # The policy's excluded scopes.
     ${NotScope},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -4963,9 +5019,9 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy definition version in the given management group with the given name.
+This operation update a policy definition version in the given management group with the given name.
 .Description
-This operation creates or updates a policy definition version in the given management group with the given name.
+This operation update a policy definition version in the given management group with the given name.
 .Example
 {{ Add code here }}
 .Example
@@ -5176,12 +5232,12 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy definition in the given management group with the given name.
+This operation update a policy definition in the given management group with the given name.
 .Description
-This operation creates or updates a policy definition in the given management group with the given name.
+This operation update a policy definition in the given management group with the given name.
 .Example
 $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
-Update-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+Update-AzPolicyDefinition -Id $PolicyDefinition.Id -Description 'Updated policy to not allow virtual machine creation'
 .Example
 Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 .Example
@@ -5366,26 +5422,29 @@ end {
 
 <#
 .Synopsis
-This operation updates a policy exemption with the given scope and name.
+This operation update a policy exemption with the given scope and name.
 .Description
-This operation updates a policy exemption with the given scope and name.
+This operation update a policy exemption with the given scope and name.
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
- $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -DisplayName 'Exempt VM creation limit'
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+Update-AzPolicyExemption -Id $PolicyExemption.Id -DisplayName 'Exempt VM creation limit'
 .Example
 $NextMonth = (Get-Date).AddMonths(1)
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ExpiresOn $NextMonth
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ExpiresOn $NextMonth
 .Example
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ClearExpiration
 .Example
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ExemptionCategory Mitigated
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ExemptionCategory Mitigated
 .Example
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyExemption -Name 'VirtualMachineExemption' -ResourceSelector $ResourceSelector
+.Example
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -BackwardCompatible
+Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration -BackwardCompatible
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -5454,6 +5513,13 @@ param(
     [System.String]
     # The option whether validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5549,9 +5615,9 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy set definition version in the given management group with the given name and version.
+This operation update a policy set definition version in the given management group with the given name and version.
 .Description
-This operation creates or updates a policy set definition version in the given management group with the given name and version.
+This operation update a policy set definition version in the given management group with the given name and version.
 .Example
 {{ Add code here }}
 .Example
@@ -5763,12 +5829,12 @@ end {
 
 <#
 .Synopsis
-This operation creates or updates a policy set definition in the given management group with the given name.
+This operation update a policy set definition in the given management group with the given name.
 .Description
-This operation creates or updates a policy set definition in the given management group with the given name.
+This operation update a policy set definition in the given management group with the given name.
 .Example
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-Update-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+$PolicySetDefinition = Get-AzPolicySetDefinition -Id '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+Update-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Description 'Updated policy to not allow virtual machine creation'
 .Example
 Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
 .Example

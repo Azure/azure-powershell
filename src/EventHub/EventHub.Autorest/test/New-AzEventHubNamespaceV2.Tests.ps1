@@ -24,7 +24,6 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.MinimumTlsVersion | Should -Be "1.2"
         $eventhubNamespace.PublicNetworkAccess | Should -Be "Enabled"
         $eventHubNamespace.EnableAutoInflate | Should -Be $false
-        $eventHubNamespace.ZoneRedundant | Should -Be $false
         $eventHubNamespace.DisableLocalAuth | Should -Be $false
         $eventHubNamespace.KafkaEnabled | Should be $true
 

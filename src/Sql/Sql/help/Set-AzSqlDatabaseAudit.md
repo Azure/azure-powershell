@@ -110,12 +110,12 @@ RECEIVE
 REFERENCES  
 The general form for defining an action to be audited is:
 [action] ON [object] BY [principal]
-Note that [object] in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::[dbname] and SCHEMA::[schemaname] are used, respectively.
+Note that [object] in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema.if the reference object is dropped and recreated ,audit configuration should be resaved. For the latter cases, the forms DATABASE::[dbname] and SCHEMA::[schemaname] are used, respectively.
 For example:  
 SELECT on dbo.myTable by public  
 SELECT on DATABASE::myDatabase by public  
 SELECT on SCHEMA::mySchema by public  
-For more information, see https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.
+For more information, see https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions. 
 
 ```yaml
 Type: System.String[]

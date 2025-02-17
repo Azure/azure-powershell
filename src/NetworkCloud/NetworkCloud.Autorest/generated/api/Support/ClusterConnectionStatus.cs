@@ -12,6 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterConnectionStatus Connected = @"Connected";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterConnectionStatus Disconnected = @"Disconnected";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterConnectionStatus Timeout = @"Timeout";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterConnectionStatus Undefined = @"Undefined";

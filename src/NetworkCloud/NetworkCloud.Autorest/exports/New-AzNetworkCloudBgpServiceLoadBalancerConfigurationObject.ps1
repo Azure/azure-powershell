@@ -32,7 +32,7 @@ $object=New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject -BgpAdvertis
 Write-Host ($object | Format-List | Out-String)
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpServiceLoadBalancerConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpServiceLoadBalancerConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,14 +50,14 @@ BGPPEER <IServiceLoadBalancerBgpPeer[]>: The list of additional BgpPeer entities
   PeerAsn <Int64>: The autonomous system number expected from the remote end of the BGP session.
   [BfdEnabled <BfdEnabled?>]: The indicator of BFD enablement for this BgpPeer.
   [BgpMultiHop <BgpMultiHop?>]: The indicator to enable multi-hop peering support.
-  [HoldTime <String>]: The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
-  [KeepAliveTime <String>]: The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+  [HoldTime <String>]: Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+  [KeepAliveTime <String>]: Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
   [MyAsn <Int64?>]: The autonomous system number used for the local end of the BGP session.
   [Password <String>]: The authentication password for routers enforcing TCP MD5 authenticated sessions.
   [PeerPort <Int64?>]: The port used to connect this BGP session.
 
-IPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be allocated to Load Balancer services.
-  Address <String[]>: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+IPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be allocated to load balancer services.
+  Address <String[]>: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
   Name <String>: The name used to identify this IP address pool for association with a BGP advertisement.
   [AutoAssign <BfdEnabled?>]: The indicator to determine if automatic allocation from the pool should occur.
   [OnlyUseHostIP <BfdEnabled?>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
@@ -65,19 +65,19 @@ IPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be 
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject
 #>
 function New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpServiceLoadBalancerConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpServiceLoadBalancerConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBgpAdvertisement[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBgpAdvertisement[]]
     # The association of IP address pools to the communities and peers, allowing for announcement of IPs.
     # To construct, see NOTES section for BGPADVERTISEMENT properties and create a hash table.
     ${BgpAdvertisement},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IServiceLoadBalancerBgpPeer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IServiceLoadBalancerBgpPeer[]]
     # The list of additional BgpPeer entities that the Kubernetes cluster will peer with.
     # All peering must be explicitly defined.
     # To construct, see NOTES section for BGPPEER properties and create a hash table.
@@ -92,8 +92,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IIPAddressPool[]]
-    # The list of pools of IP addresses that can be allocated to Load Balancer services.
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IIPAddressPool[]]
+    # The list of pools of IP addresses that can be allocated to load balancer services.
     # To construct, see NOTES section for IPADDRESSPOOL properties and create a hash table.
     ${IPAddressPool}
 )

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new Alias(Disaster Recovery configuration)</summary>
+    /// <summary>create a new Alias(Disaster Recovery configuration)</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubGeoDRConfiguration_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IArmDisasterRecovery))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create a new Alias(Disaster Recovery configuration)")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create a new Alias(Disaster Recovery configuration)")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubGeoDRConfiguration_CreateExpanded : global::System.Management.Automation.PSCmdlet,

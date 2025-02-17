@@ -58,7 +58,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
             FriendlyName = protectedItem.FriendlyName;
             ResourceState = "";
-            if(protectedItem.ExtendedInfo != null && protectedItem.ExtendedInfo.ResourceState != null)
+
+            IsArchiveEnabled = protectedItem.IsArchiveEnabled;
+            SoftDeleteRetentionPeriodInDays = protectedItem.SoftDeleteRetentionPeriodInDays;
+            IsScheduledForDeferredDelete = protectedItem.IsScheduledForDeferredDelete;
+            DeferredDeleteTimeInUtc = protectedItem.DeferredDeleteTimeInUtc;
+
+            if (protectedItem.ExtendedInfo != null && protectedItem.ExtendedInfo.ResourceState != null)
             {
                 ResourceState = protectedItem.ExtendedInfo.ResourceState;
             }

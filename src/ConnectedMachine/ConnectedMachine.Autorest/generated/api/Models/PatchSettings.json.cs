@@ -77,8 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 return;
             }
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("status"), out var __jsonStatus) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatus.FromJson(__jsonStatus) : _status;}
             {_assessmentMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("assessmentMode"), out var __jsonAssessmentMode) ? (string)__jsonAssessmentMode : (string)_assessmentMode;}
             {_patchMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("patchMode"), out var __jsonPatchMode) ? (string)__jsonPatchMode : (string)_patchMode;}
+            {_enableHotpatching = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonBoolean>("enableHotpatching"), out var __jsonEnableHotpatching) ? (bool?)__jsonEnableHotpatching : _enableHotpatching;}
             AfterFromJson(json);
         }
 
@@ -101,8 +103,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 return container;
             }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._status ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._status.ToJson(null,serializationMode) : null, "status" ,container.Add );
+            }
             AddIf( null != (((object)this._assessmentMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._assessmentMode.ToString()) : null, "assessmentMode" ,container.Add );
             AddIf( null != (((object)this._patchMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._patchMode.ToString()) : null, "patchMode" ,container.Add );
+            AddIf( null != this._enableHotpatching ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonBoolean((bool)this._enableHotpatching) : null, "enableHotpatching" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -28,7 +28,7 @@ Update-AzDnsResolverInboundEndpoint -InputObject $inputobject -Tag @{"value0" = 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IInboundEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,20 +36,24 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [DnsForwardingRulesetName <String>]: The name of the DNS forwarding ruleset.
+  [DnsResolverDomainListName <String>]: The name of the DNS resolver domain list.
   [DnsResolverName <String>]: The name of the DNS resolver.
+  [DnsResolverPolicyName <String>]: The name of the DNS resolver policy.
+  [DnsResolverPolicyVirtualNetworkLinkName <String>]: The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+  [DnsSecurityRuleName <String>]: The name of the DNS security rule.
   [ForwardingRuleName <String>]: The name of the forwarding rule.
   [Id <String>]: Resource identity path
   [InboundEndpointName <String>]: The name of the inbound endpoint for the DNS resolver.
   [OutboundEndpointName <String>]: The name of the outbound endpoint for the DNS resolver.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverinboundendpoint
 #>
 function Update-AzDnsResolverInboundEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IInboundEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -77,6 +81,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -96,7 +101,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpointPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IInboundEndpointPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for inbound endpoint.
     ${Tag},

@@ -29,6 +29,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public string EncryptionIdentityEncryptionUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)Property).EncryptionIdentityEncryptionUserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)Property).EncryptionIdentityEncryptionUserAssignedIdentity = value ?? null; }
 
+        /// <summary>A boolean indicating whether or not Data Integrity Check is enabled</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public bool? EnforceDataIntegrityCheckForIscsi { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)Property).EnforceDataIntegrityCheckForIscsi; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)Property).EnforceDataIntegrityCheckForIscsi = value ?? default(bool); }
+
         /// <summary>
         /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
@@ -254,6 +258,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"userAssignedIdentity",
         PossibleTypes = new [] { typeof(string) })]
         string EncryptionIdentityEncryptionUserAssignedIdentity { get; set; }
+        /// <summary>A boolean indicating whether or not Data Integrity Check is enabled</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A boolean indicating whether or not Data Integrity Check is enabled",
+        SerializedName = @"enforceDataIntegrityCheckForIscsi",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnforceDataIntegrityCheckForIscsi { get; set; }
         /// <summary>The principal ID of resource identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -436,6 +451,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionIdentity EncryptionPropertyEncryptionIdentity { get; set; }
         /// <summary>Properties provided by key vault.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IKeyVaultProperties EncryptionPropertyKeyVaultProperty { get; set; }
+        /// <summary>A boolean indicating whether or not Data Integrity Check is enabled</summary>
+        bool? EnforceDataIntegrityCheckForIscsi { get; set; }
         /// <summary>The identity of the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIdentity Identity { get; set; }
         /// <summary>The principal ID of resource identity.</summary>

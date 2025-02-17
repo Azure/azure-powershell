@@ -79,11 +79,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             __microsoftGraphEntity = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphEntity(json,new global::System.Collections.Generic.HashSet<string>(){ @"id",@"isOptional",@"label",@"recordType",@"supportedService",@"ttl" });
-            {_isOptional = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("isOptional"), out var __jsonIsOptional) ? (bool?)__jsonIsOptional : IsOptional;}
-            {_label = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("label"), out var __jsonLabel) ? (string)__jsonLabel : (string)Label;}
-            {_recordType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("recordType"), out var __jsonRecordType) ? (string)__jsonRecordType : (string)RecordType;}
-            {_supportedService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("supportedService"), out var __jsonSupportedService) ? (string)__jsonSupportedService : (string)SupportedService;}
-            {_ttl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNumber>("ttl"), out var __jsonTtl) ? (int?)__jsonTtl : Ttl;}
+            {_isOptional = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("isOptional"), out var __jsonIsOptional) ? (bool?)__jsonIsOptional : _isOptional;}
+            {_label = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("label"), out var __jsonLabel) ? (string)__jsonLabel : (string)_label;}
+            {_recordType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("recordType"), out var __jsonRecordType) ? (string)__jsonRecordType : (string)_recordType;}
+            {_supportedService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("supportedService"), out var __jsonSupportedService) ? (string)__jsonSupportedService : (string)_supportedService;}
+            {_ttl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNumber>("ttl"), out var __jsonTtl) ? (int?)__jsonTtl : _ttl;}
             AfterFromJson(json);
         }
 

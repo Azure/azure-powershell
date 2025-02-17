@@ -1,22 +1,21 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkCloudAgentPool'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzNetworkCloudAgentPool.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+if (($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkCloudAgentPool')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzNetworkCloudAgentPool.Recording.json'
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'Update-AzNetworkCloudAgentPool' {
     It 'Update' {
-        { Update-AzNetworkCloudAgentPool -Name $global:config.AzNetworkCloudAgentPool.agentPoolName -ResourceGroupName $global:config.AzNetworkCloudAgentPool.agentPoolRg -KubernetesClusterName $global:config.AzNetworkCloudAgentPool.clusterName -Count $global:config.AzNetworkCloudAgentPool.count -Tag @{tags = $global:config.AzNetworkCloudAgentPool.tags} -UpgradeSettingMaxSurge $global:config.AzNetworkCloudAgentPool.maxSurge -SubscriptionId $global:config.AzNetworkCloudAgentPool.subscriptionId } | Should -Not -Throw
+        { Update-AzNetworkCloudAgentPool -Name $global:config.AzNetworkCloudAgentPool.agentPoolName -ResourceGroupName $global:config.AzNetworkCloudAgentPool.agentPoolRg -KubernetesClusterName $global:config.AzNetworkCloudAgentPool.clusterName -Count $global:config.AzNetworkCloudAgentPool.count -Tag @{tags = $global:config.AzNetworkCloudAgentPool.tags } -UpgradeSettingMaxSurge $global:config.AzNetworkCloudAgentPool.maxSurge -SubscriptionId $global:config.AzNetworkCloudAgentPool.subscriptionId } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {

@@ -26,7 +26,7 @@ Create a new virtual machine console or update the properties of the existing vi
 
 ### Example 1: Create virtual machine's console
 ```powershell
-New-AzNetworkCloudConsole -ResourceGroupName resourceGroupName -Location location -ExtendedLocationName "/subscriptions/subscriptionId/resourcegroups/clusterManagerHostedResourceGroup/providers/microsoft.extendedlocation/customlocations/clusterManagerExtendedLocation" -ExtendedLocationType "CustomLocation" -SubscriptionId subscriptionId -Tag @{tags="tag1"} -Enabled ConsoleEnabled.True -VirtualMachineName virtualMachineName -SshPublicKeyData "ssh-rsa StNw+/C+g0tOZLT9OKK6YTovOn= fakekey@vm" -Expiration "2023-07-01T01:27:03.008Z"
+New-AzNetworkCloudConsole -ResourceGroupName resourceGroupName -Location location -ExtendedLocationName "/subscriptions/subscriptionId/resourcegroups/clusterManagerHostedResourceGroup/providers/microsoft.extendedlocation/customlocations/clusterManagerExtendedLocation" -ExtendedLocationType "CustomLocation" -SubscriptionId subscriptionId -Tag @{tags="tag1"} -Enabled ConsoleEnabled.True -VirtualMachineName virtualMachineName -SshPublicKeyData "ssh-rsa StNw+/C+g0tOZLT9OKK6YTovOn= fakekey@vm" -Expiration "2024-07-01T01:27:03.008Z"
 ```
 
 ```output
@@ -292,7 +292,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IConsole
 
 ## NOTES
 

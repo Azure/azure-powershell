@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
         public ServerManagedIdentityProvider(Action<string, EventLevel> traceLog = null)
         {
-            EnableMIChecking = true;
+            EnableMIChecking = false;
             this.TraceLog = new Action<string, EventLevel>((message, e) => {
                 if (traceLog != null)
                 {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         {
             TraceLog($"{nameof(EnableMIChecking)} is {EnableMIChecking}.", EventLevel.Informational);
 
-            // TODO: this should be removed once MI is fullly functional
+            // TODO: this should be removed once MI is fully functional
             if (!EnableMIChecking)
             {
                 return LocalServerType.HybridServer;

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create Migration configuration and starts migration of entities from Standard to Premium namespace
+create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Description
-Create Migration configuration and starts migration of entities from Standard to Premium namespace
+create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Example
 Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PostMigrationName myStandardNamespace2 -TargetNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myPremiumNamespace
 

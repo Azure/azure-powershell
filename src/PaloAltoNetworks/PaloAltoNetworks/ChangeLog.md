@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.1
+* Upgraded nuget package to signed package.
+
 ## Version 0.3.0
 * Upgraded managed identity parameters.
 * Updated example for new managed identity.

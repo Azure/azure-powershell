@@ -22,8 +22,8 @@ Describe 'New-AzNetworkCloudBmcKeySet' {
                 -description $bmcksconfig.userDescription `
                 -azureUserName $bmcksconfig.userName `
                 -sshPublicKey @{
-                    keyData = $bmcksconfig.sshKey
-                }
+                keyData = $bmcksconfig.sshKey
+            }
 
             New-AzNetworkCloudBmcKeySet -ResourceGroupName $bmcksconfig.bmcksrg `
                 -Name $bmcksconfig.bmcKeySetName -ClusterName $bmcksconfig.clusterName `

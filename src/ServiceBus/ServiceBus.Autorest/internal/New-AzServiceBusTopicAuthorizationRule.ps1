@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create an authorization rule for the specified topic.
+create an authorization rule for the specified topic.
 .Description
-Create an authorization rule for the specified topic.
+create an authorization rule for the specified topic.
 .Example
 {{ Add code here }}
 .Example

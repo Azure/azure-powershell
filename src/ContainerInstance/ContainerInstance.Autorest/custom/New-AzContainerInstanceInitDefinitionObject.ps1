@@ -22,7 +22,7 @@ Create a in-memory object for InitContainerDefinition
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
 #>
 function New-AzContainerInstanceInitDefinitionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.InitContainerDefinition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerDefinition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -30,7 +30,7 @@ function New-AzContainerInstanceInitDefinitionObject {
         [string[]]
         $Command,
         [Parameter(HelpMessage="The environment variables to set in the init container.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IEnvironmentVariable[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IEnvironmentVariable[]]
         $EnvironmentVariable,
         [Parameter(HelpMessage="The image of the init container.")]
         [string]
@@ -39,12 +39,12 @@ function New-AzContainerInstanceInitDefinitionObject {
         [string]
         $Name,
         [Parameter(HelpMessage="The volume mounts available to the init container.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolumeMount[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeMount[]]
         $VolumeMount
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.InitContainerDefinition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerDefinition]::New()
 
         $Object.Command = $Command
         $Object.EnvironmentVariable = $EnvironmentVariable

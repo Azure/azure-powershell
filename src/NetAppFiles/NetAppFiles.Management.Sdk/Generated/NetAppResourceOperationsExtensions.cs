@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='location'>
         /// The name of the Azure region.
         /// </param>
-        public static CheckAvailabilityResponse CheckFilePathAvailability(this INetAppResourceOperations operations, string location, string name, string subnetId)
+        public static CheckAvailabilityResponse CheckFilePathAvailability(this INetAppResourceOperations operations, string location, string name, string subnetId, string availabilityZone = default(string))
         {
-                return ((INetAppResourceOperations)operations).CheckFilePathAvailabilityAsync(location, name, subnetId).GetAwaiter().GetResult();
+                return ((INetAppResourceOperations)operations).CheckFilePathAvailabilityAsync(location, name, subnetId, availabilityZone).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CheckAvailabilityResponse> CheckFilePathAvailabilityAsync(this INetAppResourceOperations operations, string location, string name, string subnetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CheckAvailabilityResponse> CheckFilePathAvailabilityAsync(this INetAppResourceOperations operations, string location, string name, string subnetId, string availabilityZone = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CheckFilePathAvailabilityWithHttpMessagesAsync(location, name, subnetId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CheckFilePathAvailabilityWithHttpMessagesAsync(location, name, subnetId, availabilityZone, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

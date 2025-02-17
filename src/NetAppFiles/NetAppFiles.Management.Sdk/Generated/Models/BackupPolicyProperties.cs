@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the BackupPolicyProperties class.
         /// </summary>
 
-        /// <param name="backupPolicyId">Backup Policy Resource ID
+        /// <param name="backupPolicyId">Backup Policy GUID ID
         /// </param>
 
         /// <param name="provisioningState">Azure lifecycle management
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets backup Policy Resource ID
+        /// Gets backup Policy GUID ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupPolicyId")]
         public string BackupPolicyId {get; private set; }

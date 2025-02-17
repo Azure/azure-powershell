@@ -26,10 +26,14 @@ function Test-JobCRUD
 
     try
     {
-        # Create 2 jobs
         $poolInfo1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $poolInfo1.PoolId = "testPool"
-        New-AzBatchJob -Id $jobId1 -PoolInformation $poolInfo1 -BatchContext $context
+        $envSettings = @{
+            "ThisIsAString" = "Hello world";
+            # Make sure CommonEnvironmentSettings allows null values
+            "ThisIsNull" = $null
+        }
+        New-AzBatchJob -Id $jobId1 -PoolInformation $poolInfo1 -CommonEnvironmentSettings $envSettings -BatchContext $context
 
         $poolInfo2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $poolInfo2.PoolId = "testPool2"

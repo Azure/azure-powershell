@@ -27,12 +27,12 @@ It contains a URL link to get the next set of results.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/get-aznetworkcloudoperation
 #>
 function Get-AzNetworkCloudOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api40.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

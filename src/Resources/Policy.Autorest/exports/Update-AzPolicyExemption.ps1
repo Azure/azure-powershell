@@ -21,21 +21,24 @@ This operation updates a policy exemption with the given scope and name.
 This operation updates a policy exemption with the given scope and name.
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
- $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -DisplayName 'Exempt VM creation limit'
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+Update-AzPolicyExemption -Id $PolicyExemption.Id -DisplayName 'Exempt VM creation limit'
 .Example
 $NextMonth = (Get-Date).AddMonths(1)
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ExpiresOn $NextMonth
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ExpiresOn $NextMonth
 .Example
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ClearExpiration
 .Example
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ExemptionCategory Mitigated
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ExemptionCategory Mitigated
 .Example
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyExemption -Name 'VirtualMachineExemption' -ResourceSelector $ResourceSelector
+.Example
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -BackwardCompatible
+Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration -BackwardCompatible
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
@@ -70,6 +73,13 @@ INPUTOBJECT <IPolicyExemption>:
       [In <List<String>>]: The list of values to filter in.
       [Kind <String>]: The selector kind.
       [NotIn <List<String>>]: The list of values to filter out.
+
+RESOURCESELECTOR <IResourceSelector[]>: The resource selector list to filter policies by resource properties.
+  [Name <String>]: The name of the resource selector.
+  [Selector <List<ISelector>>]: The list of the selector expressions.
+    [In <List<String>>]: The list of values to filter in.
+    [Kind <String>]: The selector kind.
+    [NotIn <List<String>>]: The list of values to filter out.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyexemption
 #>
@@ -146,10 +156,11 @@ param(
     ${Metadata},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible},
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotValidate")]
@@ -157,6 +168,12 @@ param(
     [System.String]
     # The option whether validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+    ${BackwardCompatible},
 
     [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]

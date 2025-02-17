@@ -79,7 +79,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     : null
             };
 
-            WriteObject(NewResourceManagerSdkClient.ValidateDeployment(parameters));
+            var validationInfo = NewResourceManagerSdkClient.ValidateDeployment(parameters);
+
+            WriteOutput(validationInfo);
         }
     }
 }

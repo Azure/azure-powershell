@@ -6,19 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a ScalingPlanPersonalSchedule.</summary>
+    /// <summary>update a ScalingPlanPersonalSchedule.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzWvdScalingPlanPersonalSchedule_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Update a ScalingPlanPersonalSchedule.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"update a ScalingPlanPersonalSchedule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}", ApiVersion = "2023-09-05")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}", ApiVersion = "2024-04-03")]
     public partial class UpdateAzWvdScalingPlanPersonalSchedule_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,13 +37,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>ScalingPlanPersonalSchedule properties that can be patched.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedulePatch _scalingPlanScheduleBody = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ScalingPlanPersonalSchedulePatch();
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatch _scalingPlanScheduleBody = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePatch();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.DesktopVirtualizationClient Client => Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.ClientAPI;
@@ -54,9 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Set of days of the week on which this schedule is active.",
         SerializedName = @"daysOfWeek",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[] DaysOfWeek { get => _scalingPlanScheduleBody.DaysOfWeek ?? null /* arrayOf */; set => _scalingPlanScheduleBody.DaysOfWeek = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
+        public string[] DaysOfWeek { get => _scalingPlanScheduleBody.DaysOfWeek?.ToArray() ?? null /* fixedArrayOf */; set => _scalingPlanScheduleBody.DaysOfWeek = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -67,6 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -99,9 +120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Action to be taken after a user disconnect during the off-peak period.",
         SerializedName = @"offPeakActionOnDisconnect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation OffPeakActionOnDisconnect { get => _scalingPlanScheduleBody.OffPeakActionOnDisconnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation)""); set => _scalingPlanScheduleBody.OffPeakActionOnDisconnect = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
+        public string OffPeakActionOnDisconnect { get => _scalingPlanScheduleBody.OffPeakActionOnDisconnect ?? null; set => _scalingPlanScheduleBody.OffPeakActionOnDisconnect = value; }
 
         /// <summary>Action to be taken after a logoff during the off-peak period.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Action to be taken after a logoff during the off-peak period.")]
@@ -111,9 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Action to be taken after a logoff during the off-peak period.",
         SerializedName = @"offPeakActionOnLogoff",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation OffPeakActionOnLogoff { get => _scalingPlanScheduleBody.OffPeakActionOnLogoff ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation)""); set => _scalingPlanScheduleBody.OffPeakActionOnLogoff = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
+        public string OffPeakActionOnLogoff { get => _scalingPlanScheduleBody.OffPeakActionOnLogoff ?? null; set => _scalingPlanScheduleBody.OffPeakActionOnLogoff = value; }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak
@@ -175,9 +196,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.",
         SerializedName = @"offPeakStartVMOnConnect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect OffPeakStartVMOnConnect { get => _scalingPlanScheduleBody.OffPeakStartVMOnConnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect)""); set => _scalingPlanScheduleBody.OffPeakStartVMOnConnect = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
+        public string OffPeakStartVMOnConnect { get => _scalingPlanScheduleBody.OffPeakStartVMOnConnect ?? null; set => _scalingPlanScheduleBody.OffPeakStartVMOnConnect = value; }
 
         /// <summary>Action to be taken after a user disconnect during the peak period.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Action to be taken after a user disconnect during the peak period.")]
@@ -187,9 +208,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Action to be taken after a user disconnect during the peak period.",
         SerializedName = @"peakActionOnDisconnect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation PeakActionOnDisconnect { get => _scalingPlanScheduleBody.PeakActionOnDisconnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation)""); set => _scalingPlanScheduleBody.PeakActionOnDisconnect = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
+        public string PeakActionOnDisconnect { get => _scalingPlanScheduleBody.PeakActionOnDisconnect ?? null; set => _scalingPlanScheduleBody.PeakActionOnDisconnect = value; }
 
         /// <summary>Action to be taken after a logoff during the peak period.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Action to be taken after a logoff during the peak period.")]
@@ -199,9 +220,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Action to be taken after a logoff during the peak period.",
         SerializedName = @"peakActionOnLogoff",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation PeakActionOnLogoff { get => _scalingPlanScheduleBody.PeakActionOnLogoff ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation)""); set => _scalingPlanScheduleBody.PeakActionOnLogoff = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
+        public string PeakActionOnLogoff { get => _scalingPlanScheduleBody.PeakActionOnLogoff ?? null; set => _scalingPlanScheduleBody.PeakActionOnLogoff = value; }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak
@@ -263,14 +284,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"The desired configuration of Start VM On Connect for the hostpool during the peak phase.",
         SerializedName = @"peakStartVMOnConnect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect PeakStartVMOnConnect { get => _scalingPlanScheduleBody.PeakStartVMOnConnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect)""); set => _scalingPlanScheduleBody.PeakStartVMOnConnect = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
+        public string PeakStartVMOnConnect { get => _scalingPlanScheduleBody.PeakStartVMOnConnect ?? null; set => _scalingPlanScheduleBody.PeakStartVMOnConnect = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -296,9 +317,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Action to be taken after a user disconnect during the ramp down period.",
         SerializedName = @"rampDownActionOnDisconnect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation RampDownActionOnDisconnect { get => _scalingPlanScheduleBody.RampDownActionOnDisconnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation)""); set => _scalingPlanScheduleBody.RampDownActionOnDisconnect = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
+        public string RampDownActionOnDisconnect { get => _scalingPlanScheduleBody.RampDownActionOnDisconnect ?? null; set => _scalingPlanScheduleBody.RampDownActionOnDisconnect = value; }
 
         /// <summary>Action to be taken after a logoff during the ramp down period.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Action to be taken after a logoff during the ramp down period.")]
@@ -308,9 +329,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Action to be taken after a logoff during the ramp down period.",
         SerializedName = @"rampDownActionOnLogoff",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation RampDownActionOnLogoff { get => _scalingPlanScheduleBody.RampDownActionOnLogoff ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation)""); set => _scalingPlanScheduleBody.RampDownActionOnLogoff = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
+        public string RampDownActionOnLogoff { get => _scalingPlanScheduleBody.RampDownActionOnLogoff ?? null; set => _scalingPlanScheduleBody.RampDownActionOnLogoff = value; }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp
@@ -372,9 +393,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.",
         SerializedName = @"rampDownStartVMOnConnect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect RampDownStartVMOnConnect { get => _scalingPlanScheduleBody.RampDownStartVMOnConnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect)""); set => _scalingPlanScheduleBody.RampDownStartVMOnConnect = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
+        public string RampDownStartVMOnConnect { get => _scalingPlanScheduleBody.RampDownStartVMOnConnect ?? null; set => _scalingPlanScheduleBody.RampDownStartVMOnConnect = value; }
 
         /// <summary>Action to be taken after a user disconnect during the ramp up period.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Action to be taken after a user disconnect during the ramp up period.")]
@@ -384,9 +405,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Action to be taken after a user disconnect during the ramp up period.",
         SerializedName = @"rampUpActionOnDisconnect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation RampUpActionOnDisconnect { get => _scalingPlanScheduleBody.RampUpActionOnDisconnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation)""); set => _scalingPlanScheduleBody.RampUpActionOnDisconnect = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
+        public string RampUpActionOnDisconnect { get => _scalingPlanScheduleBody.RampUpActionOnDisconnect ?? null; set => _scalingPlanScheduleBody.RampUpActionOnDisconnect = value; }
 
         /// <summary>Action to be taken after a logoff during the ramp up period.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Action to be taken after a logoff during the ramp up period.")]
@@ -396,9 +417,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Action to be taken after a logoff during the ramp up period.",
         SerializedName = @"rampUpActionOnLogoff",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation RampUpActionOnLogoff { get => _scalingPlanScheduleBody.RampUpActionOnLogoff ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation)""); set => _scalingPlanScheduleBody.RampUpActionOnLogoff = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
+        public string RampUpActionOnLogoff { get => _scalingPlanScheduleBody.RampUpActionOnLogoff ?? null; set => _scalingPlanScheduleBody.RampUpActionOnLogoff = value; }
 
         /// <summary>
         /// The desired startup behavior during the ramp up period for personal vms in the hostpool.
@@ -410,9 +431,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"The desired startup behavior during the ramp up period for personal vms in the hostpool.",
         SerializedName = @"rampUpAutoStartHosts",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior RampUpAutoStartHost { get => _scalingPlanScheduleBody.RampUpAutoStartHost ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior)""); set => _scalingPlanScheduleBody.RampUpAutoStartHost = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "WithAssignedUser", "All")]
+        public string RampUpAutoStartHost { get => _scalingPlanScheduleBody.RampUpAutoStartHost ?? null; set => _scalingPlanScheduleBody.RampUpAutoStartHost = value; }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp
@@ -475,9 +496,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.",
         SerializedName = @"rampUpStartVMOnConnect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect RampUpStartVMOnConnect { get => _scalingPlanScheduleBody.RampUpStartVMOnConnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect)""); set => _scalingPlanScheduleBody.RampUpStartVMOnConnect = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
+        public string RampUpStartVMOnConnect { get => _scalingPlanScheduleBody.RampUpStartVMOnConnect ?? null; set => _scalingPlanScheduleBody.RampUpStartVMOnConnect = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -524,18 +545,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -544,24 +566,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -584,6 +606,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -648,8 +675,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -705,7 +757,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -718,12 +770,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ScalingPlanPersonalSchedulesUpdate(SubscriptionId, ResourceGroupName, ScalingPlanName, ScalingPlanScheduleName, _scalingPlanScheduleBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ScalingPlanPersonalSchedulesUpdate(SubscriptionId, ResourceGroupName, ScalingPlanName, ScalingPlanScheduleName, _scalingPlanScheduleBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ScalingPlanName=ScalingPlanName,ScalingPlanScheduleName=ScalingPlanScheduleName,body=_scalingPlanScheduleBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ScalingPlanName=ScalingPlanName,ScalingPlanScheduleName=ScalingPlanScheduleName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -743,7 +795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzWvdScalingPlanPersonalSchedule_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzWvdScalingPlanPersonalSchedule_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzWvdScalingPlanPersonalSchedule_UpdateExpanded()
         {
@@ -769,12 +821,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -791,15 +843,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ScalingPlanName=ScalingPlanName, ScalingPlanScheduleName=ScalingPlanScheduleName, body=_scalingPlanScheduleBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ScalingPlanName=ScalingPlanName, ScalingPlanScheduleName=ScalingPlanScheduleName, body=_scalingPlanScheduleBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -809,12 +861,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule> response)
         {
             using( NoSynchronizationContext )
             {
@@ -826,8 +878,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

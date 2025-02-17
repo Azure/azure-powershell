@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an authorization rule for a namespace.</summary>
+    /// <summary>create an authorization rule for a namespace.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdateAuthorizationRule=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzServiceBusNamespaceAuthorizationRule_CreateViaIdentityNamespaceExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Create an authorization rule for a namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"create an authorization rule for a namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ExternalDocs(@"https://msdn.microsoft.com/en-us/library/azure/mt639410.aspx", @"")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}", ApiVersion = "2022-10-01-preview")]

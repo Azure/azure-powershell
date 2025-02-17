@@ -27,11 +27,14 @@ Update-AzNetworkCloudAgentPool -Name agentPoolName -KubernetesClusterName cluste
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ADMINISTRATORCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>: SshPublicKey represents the public key used to authenticate with a resource through SSH.
+  KeyData <String>: The SSH public key data.
 
 INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
@@ -42,6 +45,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [ClusterManagerName <String>]: The name of the cluster manager.
   [ClusterName <String>]: The name of the cluster.
   [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
   [Id <String>]: Resource identity path
   [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
   [L2NetworkName <String>]: The name of the L2 network.
@@ -59,7 +63,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.networkcloud/update-aznetworkcloudagentpool
 #>
 function Update-AzNetworkCloudAgentPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPool])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -98,6 +102,14 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
+    # SshPublicKey represents the public key used to authenticate with a resource through SSH.
+    # To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
+    ${AdministratorConfigurationSshPublicKey},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The number of virtual machines that use this configuration.
@@ -105,10 +117,17 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IAgentPoolPatchParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IAgentPoolPatchParametersTags]))]
     [System.Collections.Hashtable]
     # The Azure resource tags that will replace the existing ones.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.Int64]
+    # The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool.
+    # If not specified during creation, a value of 1800 seconds is used.
+    ${UpgradeSettingDrainTimeout},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
@@ -119,8 +138,22 @@ param(
     # '50%').
     # If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade.
     # For percentages, fractional nodes are rounded up.
-    # If not specified, the default is 1.
+    # If not specified during creation, a value of 1 is used.
+    # One of MaxSurge and MaxUnavailable must be greater than 0.
     ${UpgradeSettingMaxSurge},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The maximum number or percentage of nodes that can be unavailable during upgrade.
+    # This can either be set to an integer (e.g.
+    # '5') or a percentage (e.g.
+    # '50%').
+    # If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade.
+    # For percentages, fractional nodes are rounded up.
+    # If not specified during creation, a value of 0 is used.
+    # One of MaxSurge and MaxUnavailable must be greater than 0.
+    ${UpgradeSettingMaxUnavailable},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

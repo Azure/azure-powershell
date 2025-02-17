@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
 
         /// <param name="connectionString">Teradata ODBC connection string. Type: string, SecureString or
-        /// AzureKeyVaultSecretReference.
+        /// AzureKeyVaultSecretReference. Only applied for version 1.0.
         /// </param>
 
         /// <param name="server">Server name for connection. Type: string (or Expression with resultType
@@ -42,10 +42,40 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="password">Password for authentication.
         /// </param>
 
+        /// <param name="sslMode">SSL mode for connection. Valid values including: “Disable”, “Allow”,
+        /// “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is
+        /// “Verify-Full”. Type: string (or Expression with resultType string). Only
+        /// applied for version 2.0.
+        /// </param>
+
+        /// <param name="portNumber">The port numbers when connecting to server through non HTTPS/TLS
+        /// connections. Type: integer (or Expression with resultType integer). Only
+        /// used for V2. Only applied for version 2.0.
+        /// </param>
+
+        /// <param name="httpsPortNumber">The port numbers when connecting to server through HTTPS/TLS connections.
+        /// Type: integer (or Expression with resultType integer). Only applied for
+        /// version 2.0.
+        /// </param>
+
+        /// <param name="useDataEncryption">Specifies whether to encrypt all communication with the Teradata database.
+        /// Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS
+        /// connections. Type: integer (or Expression with resultType integer). Only
+        /// applied for version 2.0.
+        /// </param>
+
+        /// <param name="characterSet">The character set to use for the connection. Type: string (or Expression
+        /// with resultType string). Only applied for version 2.0.
+        /// </param>
+
+        /// <param name="maxRespSize">The maximum size of the response buffer for SQL requests, in bytes. Type:
+        /// integer. Only applied for version 2.0.
+        /// </param>
+
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public TeradataLinkedServiceTypeProperties(object connectionString = default(object), object server = default(object), string authenticationType = default(string), object username = default(object), SecretBase password = default(SecretBase), string encryptedCredential = default(string))
+        public TeradataLinkedServiceTypeProperties(object connectionString = default(object), object server = default(object), string authenticationType = default(string), object username = default(object), SecretBase password = default(SecretBase), object sslMode = default(object), object portNumber = default(object), object httpsPortNumber = default(object), object useDataEncryption = default(object), object characterSet = default(object), object maxRespSize = default(object), string encryptedCredential = default(string))
 
         {
             this.ConnectionString = connectionString;
@@ -53,6 +83,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.AuthenticationType = authenticationType;
             this.Username = username;
             this.Password = password;
+            this.SslMode = sslMode;
+            this.PortNumber = portNumber;
+            this.HttpsPortNumber = httpsPortNumber;
+            this.UseDataEncryption = useDataEncryption;
+            this.CharacterSet = characterSet;
+            this.MaxRespSize = maxRespSize;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
         }
@@ -65,7 +101,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets teradata ODBC connection string. Type: string, SecureString or
-        /// AzureKeyVaultSecretReference.
+        /// AzureKeyVaultSecretReference. Only applied for version 1.0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectionString")]
         public object ConnectionString {get; set; }
@@ -95,6 +131,54 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "password")]
         public SecretBase Password {get; set; }
+
+        /// <summary>
+        /// Gets or sets sSL mode for connection. Valid values including: “Disable”,
+        /// “Allow”, “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is
+        /// “Verify-Full”. Type: string (or Expression with resultType string). Only
+        /// applied for version 2.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sslMode")]
+        public object SslMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port numbers when connecting to server through non
+        /// HTTPS/TLS connections. Type: integer (or Expression with resultType
+        /// integer). Only used for V2. Only applied for version 2.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "portNumber")]
+        public object PortNumber {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port numbers when connecting to server through HTTPS/TLS
+        /// connections. Type: integer (or Expression with resultType integer). Only
+        /// applied for version 2.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "httpsPortNumber")]
+        public object HttpsPortNumber {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether to encrypt all communication with the
+        /// Teradata database. Allowed values are 0 or 1. This setting will be ignored
+        /// for HTTPS/TLS connections. Type: integer (or Expression with resultType
+        /// integer). Only applied for version 2.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "useDataEncryption")]
+        public object UseDataEncryption {get; set; }
+
+        /// <summary>
+        /// Gets or sets the character set to use for the connection. Type: string (or
+        /// Expression with resultType string). Only applied for version 2.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "characterSet")]
+        public object CharacterSet {get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum size of the response buffer for SQL requests, in
+        /// bytes. Type: integer. Only applied for version 2.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxRespSize")]
+        public object MaxRespSize {get; set; }
 
         /// <summary>
         /// Gets or sets the encrypted credential used for authentication. Credentials

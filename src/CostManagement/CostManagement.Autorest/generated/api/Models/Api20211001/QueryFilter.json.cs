@@ -81,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001
             {_or = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray>("or"), out var __jsonOr) ? If( __jsonOr as Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter) (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter.FromJson(__p) )) ))() : null : Or;}
             {_not = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("not"), out var __jsonNot) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter.FromJson(__jsonNot) : Not;}
             {_dimensions = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("dimensions"), out var __jsonDimensions) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression.FromJson(__jsonDimensions) : Dimensions;}
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("tag"), out var __jsonTag) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression.FromJson(__jsonTag) : Tag;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression.FromJson(__jsonTags) : Tag;}
             AfterFromJson(json);
         }
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001
             }
             AddIf( null != this._not ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._not.ToJson(null,serializationMode) : null, "not" ,container.Add );
             AddIf( null != this._dimensions ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._dimensions.ToJson(null,serializationMode) : null, "dimensions" ,container.Add );
-            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tag" ,container.Add );
+            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

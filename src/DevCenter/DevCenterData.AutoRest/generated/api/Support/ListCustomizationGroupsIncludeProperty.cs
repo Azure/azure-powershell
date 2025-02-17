@@ -9,6 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
     public partial struct ListCustomizationGroupsIncludeProperty :
         System.IEquatable<ListCustomizationGroupsIncludeProperty>
     {
+        /// <summary>Include list of tasks in the response.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ListCustomizationGroupsIncludeProperty Tasks = @"tasks";
 
         /// <summary>

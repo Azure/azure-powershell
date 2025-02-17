@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create the provisioned cluster instance</summary>
+    /// <summary>create the provisioned cluster instance</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAksArcCluster_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Create the provisioned cluster instance")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"create the provisioned cluster instance")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.HttpPath(Path = "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default", ApiVersion = "2024-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.NotSuggestDefaultParameterSet]

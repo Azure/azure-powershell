@@ -26,11 +26,11 @@ function Test-AzureVmWorkloadCrossRegionRestore
 {
 	$resourceGroupName = "hiagarg"
 	$vaultId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault"
-	$sourceDBName = "model"
+	$sourceDBName = "master"
 	$location = "centraluseuap"
-	$recoveryPointId = "174141832383313" # $rp[1].RecoveryPointId
-	$itemName = "SQLDataBase;mssqlserver;model"
-	$containerNameSubstr = "sql-pstest-vm1"
+	$recoveryPointId = "159973507264917" # $rp[1].RecoveryPointId
+	$itemName = "SQLDataBase;mssqlserver;master"
+	$containerNameSubstr = "sql-pstest-vm2"
 
 
 	$targetResourceGroup = "clitest-rg-donotuse"
@@ -334,7 +334,7 @@ function Test-AzureVmWorkloadBackupProtectionItem
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiagaVault"	
 	$sourceDBName = "master"
-	$containerFriendlyName = "sql-pstest-vm1"
+	$containerFriendlyName = "sql-pstest-vm2"
 
 	try
 	{   

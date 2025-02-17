@@ -17,27 +17,19 @@ using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    internal class TemplateValidationInfo
+    public class TemplateValidationInfo
     {
-        public TemplateValidationInfo(DeploymentValidateResult validationResult)
+        public TemplateValidationInfo(List<Provider> requiredProviders, List<ErrorDetail> errors, List<DeploymentDiagnosticsDefinition> diagnostics)
         {
-            Errors = new List<ErrorResponse>();
-            RequiredProviders = new List<Provider>();
-
-            if (validationResult.Error != null)
-            {
-                Errors.Add(validationResult.Error);
-            }
-
-            if (validationResult.Properties != null &&
-               validationResult.Properties.Providers != null)
-            {
-                RequiredProviders.AddRange(validationResult.Properties.Providers);
-            }
+            Errors = errors;
+            RequiredProviders = requiredProviders;
+            Diagnostics = diagnostics;
         }
 
-        public List<ErrorResponse> Errors { get; set; }
+        public List<ErrorDetail> Errors { get; set; }
 
         public List<Provider> RequiredProviders { get; set; }
+
+        public List<DeploymentDiagnosticsDefinition> Diagnostics { get; set; }
     }
 }

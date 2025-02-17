@@ -9,7 +9,6 @@
   <Import Project="$(MSBuildThisFileDirectory)Az.nonprod.props" Condition="'$(TargetFramework)' == 'net6.0'" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
     <PackageReference Include="xunit" Version="2.4.2" />
   </ItemGroup>
 

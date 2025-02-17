@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 param.TargetPlatform = TargetType;
                 param.Location = Location;
 
-                response = DataMigrationClient.Projects.CreateOrUpdate(param, ResourceGroupName, ServiceName, Name);
+                response = DataMigrationClient.Projects.CreateOrUpdate(ResourceGroupName, ServiceName, Name, param);
             }
             catch (ApiErrorException ex)
             {

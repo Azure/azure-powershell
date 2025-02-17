@@ -15,7 +15,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
+
         /// <summary>
         /// Gets or sets BackupStorageRedundancy type.
         /// </summary>
@@ -54,27 +55,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             if (ShouldProcess(Resources.VaultTarget, "set"))
             {
                 try
-                {
-                    BackupResourceConfigResource vaultStorageRequest = new BackupResourceConfigResource();
-                    BackupResourceConfig properties = new BackupResourceConfig();
-                    vaultStorageRequest.Properties = properties;
+                {                    
+                    PatchVault patchVault = new PatchVault();
+                    patchVault.Properties = new VaultProperties();
+                    patchVault.Properties.RedundancySettings = new VaultPropertiesRedundancySettings();
 
-                    if (this.BackupStorageRedundancy.HasValue) 
+                    Vault vault = RecoveryServicesClient.GetVault(this.Vault.ResourceGroupName, this.Vault.Name);
+
+                    if (this.BackupStorageRedundancy.HasValue || this.EnableCrossRegionRestore.IsPresent)
                     {                        
-                        vaultStorageRequest.Properties.StorageModelType = BackupStorageRedundancy.ToString();
-                        if (this.EnableCrossRegionRestore.IsPresent)
-                        {
-                            vaultStorageRequest.Properties.CrossRegionRestoreFlag = true;
-                        }
-                        RecoveryServicesClient.UpdateVaultStorageType(
-                            this.Vault.ResourceGroupName, this.Vault.Name, vaultStorageRequest);
-                    }
-                    else if(this.EnableCrossRegionRestore.IsPresent) 
-                    {   
-                        vaultStorageRequest.Properties.CrossRegionRestoreFlag = true;
+                        var patchRedundancySettings = patchVault.Properties.RedundancySettings;
+                        var vaultRedundancySettings = vault.Properties?.RedundancySettings;
 
-                        RecoveryServicesClient.PatchVaultStorageConfigProperties(
-                            this.Vault.ResourceGroupName, this.Vault.Name, vaultStorageRequest);
+                        patchRedundancySettings.StandardTierStorageRedundancy = this.BackupStorageRedundancy?.ToString()
+                            ?? vaultRedundancySettings?.StandardTierStorageRedundancy
+                            ?? patchRedundancySettings.StandardTierStorageRedundancy;
+
+                        patchRedundancySettings.CrossRegionRestore = this.EnableCrossRegionRestore.IsPresent
+                            ? "Enabled"
+                            : vaultRedundancySettings?.CrossRegionRestore ?? patchRedundancySettings.CrossRegionRestore;
+
+                        var result = RecoveryServicesClient.UpdateRSVault(this.Vault.ResourceGroupName, this.Vault.Name, patchVault);
                     }
                     else
                     {

@@ -254,9 +254,24 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; private set; }
 
         /// <summary>
+        /// Gets the ISoftDeletedResourceOperations.
+        /// </summary>
+        public virtual ISoftDeletedResourceOperations SoftDeletedResource { get; private set; }
+
+        /// <summary>
         /// Gets the IGallerySharingProfileOperations.
         /// </summary>
         public virtual IGallerySharingProfileOperations GallerySharingProfile { get; private set; }
+
+        /// <summary>
+        /// Gets the IGalleryInVMAccessControlProfilesOperations.
+        /// </summary>
+        public virtual IGalleryInVMAccessControlProfilesOperations GalleryInVMAccessControlProfiles { get; private set; }
+
+        /// <summary>
+        /// Gets the IGalleryInVMAccessControlProfileVersionsOperations.
+        /// </summary>
+        public virtual IGalleryInVMAccessControlProfileVersionsOperations GalleryInVMAccessControlProfileVersions { get; private set; }
 
         /// <summary>
         /// Gets the ISharedGalleriesOperations.
@@ -591,7 +606,10 @@ namespace Microsoft.Azure.Management.Compute
             GalleryImageVersions = new GalleryImageVersionsOperations(this);
             GalleryApplications = new GalleryApplicationsOperations(this);
             GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
+            SoftDeletedResource = new SoftDeletedResourceOperations(this);
             GallerySharingProfile = new GallerySharingProfileOperations(this);
+            GalleryInVMAccessControlProfiles = new GalleryInVMAccessControlProfilesOperations(this);
+            GalleryInVMAccessControlProfileVersions = new GalleryInVMAccessControlProfileVersionsOperations(this);
             SharedGalleries = new SharedGalleriesOperations(this);
             SharedGalleryImages = new SharedGalleryImagesOperations(this);
             SharedGalleryImageVersions = new SharedGalleryImageVersionsOperations(this);

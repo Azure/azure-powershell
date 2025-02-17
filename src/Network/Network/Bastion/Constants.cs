@@ -25,5 +25,8 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         // Scale Units
         internal const int MinimumScaleUnits = 2;
         internal const int MaximumScaleUnits = 50;
+
+        // Shareable Link
+        internal const string ShareableLink = "ShareableLink";
     }
 }

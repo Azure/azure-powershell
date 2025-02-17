@@ -17,7 +17,7 @@ Describe 'Get-AzKustoCluster' {
     }
     It 'Get' {
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName
-        Validate_Cluster $clusterGetItem $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName $env.kustoClusterTier 1
+        Validate_Cluster $clusterGetItem $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName $env.kustoClusterTier 2
     }
 
     It 'List' {
@@ -27,7 +27,7 @@ Describe 'Get-AzKustoCluster' {
         {
             if ($cluster.Name -eq $env.kustoClusterName)
             {
-                Validate_Cluster $cluster $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName $env.kustoClusterTier 1
+                Validate_Cluster $cluster $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName $env.kustoClusterTier 2
             }
         }
     }

@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.CodeSigning",
-  "ModuleVersion": "0.2.0",
+  "ModuleVersion": "0.2.1",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.CodeSigning, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.CodeSigning, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate"
             ]
@@ -529,7 +529,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.CodeSigning.Models",
             "Name": "Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.CodeSigning, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.CodeSigning, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Thumbprint": "System.String",
               "Subject": "System.String",
@@ -1222,7 +1222,7 @@
     "Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate": {
       "Namespace": "Microsoft.Azure.Commands.CodeSigning.Models",
       "Name": "Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.CodeSigning, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.CodeSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.CodeSigning, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Thumbprint": "System.String",
         "Subject": "System.String",

@@ -51,7 +51,7 @@ This allows for connection from a Hybrid AKS cluster to the specified endpoint.
 To construct, see NOTES section for ADDITIONALEGRESSENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IEgressEndpoint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IEgressEndpoint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -268,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ICloudServicesNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICloudServicesNetwork
 
 ## NOTES
 

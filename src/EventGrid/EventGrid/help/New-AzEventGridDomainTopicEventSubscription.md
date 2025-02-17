@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridDomainTopicEventSubscription
 
 ## SYNOPSIS
-Asynchronously creates a new event subscription or updates an existing event subscription.
+Asynchronously create a new event subscription or create an existing event subscription.
 
 ## SYNTAX
 
@@ -88,7 +88,7 @@ New-AzEventGridDomainTopicEventSubscription -InputObject <IEventGridIdentity>
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new event subscription or updates an existing event subscription.
+Asynchronously create a new event subscription or create an existing event subscription.
 
 ## EXAMPLES
 

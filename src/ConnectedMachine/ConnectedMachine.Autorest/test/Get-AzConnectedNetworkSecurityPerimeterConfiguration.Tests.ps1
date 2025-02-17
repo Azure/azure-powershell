@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedNetworkSecurit
 
 Describe 'Get-AzConnectedNetworkSecurityPerimeterConfiguration' {
     It 'List' {
-        $all = @(Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName $env.ResourceGroupNameNSP -ScopeName $env.PrivateLinkScopeNameNSP)
+        $all = @(Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName)
         $all | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
-        $all = @(Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName $env.ResourceGroupNameNSP -ScopeName $env.PrivateLinkScopeNameNSP -PerimeterName $env.PerimeterName)
+        $all = @(Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PerimeterName $env.PerimeterName)
         $all | Should -Not -BeNullOrEmpty
     }
 }

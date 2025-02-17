@@ -20,45 +20,65 @@ Applies customizations to the Dev Box.
 .Description
 Applies customizations to the Dev Box.
 .Example
-{{ Add code here }}
+$task = @{
+    Name = "catalogName/choco"
+    DisplayName = "choco"
+    Parameter = @{
+        PackageName = "vscode"
+        PackageVersion = "1.0.0"
+    }
+    RunAs = "System"
+    TimeoutInSecond = 120
+}
+$tasks = @($task)
+New-AzDevCenterUserDevBoxCustomizationGroup -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0 -DevBoxName myDevBox -CustomizationGroupName Provisioning -Task $tasks
 .Example
-{{ Add code here }}
+New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName Contoso -ProjectName DevProject -UserId "me" -DevBoxName myDevBox -CustomizationGroupName Provisioning -Task $tasks
+.Example
+$customizationGroupInput = @{"CustomizationGroupName" = "Provisioning"; "DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
+New-AzDevCenterUserDevBoxCustomizationGroup -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $customizationGroupInput -Task $tasks
+.Example
+$customizationGroupInput = @{"CustomizationGroupName" = "Provisioning"; "DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
+New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName Contoso -InputObject $customizationGroupInput -Task $tasks
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [ActionName <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [CustomizationGroupName <String>]: A customization group name.
+  [ActionName <String>]: The name of the action.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
-  [OperationId <String>]: The id of the operation on a Dev Box.
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
-  [TaskName <String>]: A customization task name.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
-TASK <ICustomizationTask[]>: Tasks to apply. Note by default tasks are excluded from the response when listing customization groups. To include them, use the `include=tasks` query parameter.
+TASK <ICustomizationTask[]>: Tasks to apply. Note by default tasks are excluded from the response whenlisting customization groups. To include them, use the `include=tasks` queryparameter.
   Name <String>: Name of the task.
   [DisplayName <String>]: Display name to help differentiate multiple instances of the same task.
   [Parameter <ICustomizationTaskParameters>]: Parameters for the task.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [RunAs <CustomizationTaskExecutionAccount?>]: What account to run the task as.
+  [TimeoutInSecond <Int32?>]: Timeout, in seconds. Overrides any timeout provided on the task definition.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenterdata/new-azdevcenteruserdevboxcustomizationgroup
 #>
 function New-AzDevCenterUserDevBoxCustomizationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -90,7 +110,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
     [System.String]
     # The AAD object id of the user.
-    # If value is 'me', the identity is taken from the authentication context.
+    # If value is 'me', the identity is taken from the 
+    #  authentication context.
     ${UserId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -103,10 +124,10 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTask[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]]
     # Tasks to apply.
-    # Note by default tasks are excluded from the response when listing customization groups.
-    # To include them, use the `include=tasks` query parameter.
+    # Note by default tasks are excluded from the response whenlisting customization groups.
+    # To include them, use the `include=tasks` queryparameter.
     # To construct, see NOTES section for TASK properties and create a hash table.
     ${Task},
 

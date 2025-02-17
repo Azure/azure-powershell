@@ -21,12 +21,12 @@ Create an in-memory object for InitialAgentPoolConfiguration.
 Create an in-memory object for InitialAgentPoolConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.InitialAgentPoolConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.InitialAgentPoolConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudInitialAgentPoolConfigurationObject
 #>
 function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.InitialAgentPoolConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.InitialAgentPoolConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,7 +34,7 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [string]
         $AdministratorConfigurationAdminUsername,
         [Parameter(HelpMessage="The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
         $AdministratorConfigurationSshPublicKey,
         [Parameter(HelpMessage="The number of hugepages to allocate.")]
         [long]
@@ -44,13 +44,13 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HugepagesSize]
         $AgentOptionHugepagesSize,
         [Parameter(HelpMessage="The list of Layer 2 Networks and related configuration for attachment.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IL2NetworkAttachmentConfiguration[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2NetworkAttachmentConfiguration[]]
         $AttachedNetworkConfigurationL2Network,
         [Parameter(HelpMessage="The list of Layer 3 Networks and related configuration for attachment.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IL3NetworkAttachmentConfiguration[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL3NetworkAttachmentConfiguration[]]
         $AttachedNetworkConfigurationL3Network,
         [Parameter(HelpMessage="The list of Trunked Networks and related configuration for attachment.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ITrunkedNetworkAttachmentConfiguration[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetworkAttachmentConfiguration[]]
         $AttachedNetworkConfigurationTrunkedNetwork,
         [Parameter(HelpMessage="The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.")]
         [string[]]
@@ -59,7 +59,7 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [long]
         $Count,
         [Parameter(HelpMessage="The labels applied to the nodes in this agent pool.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesLabel[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesLabel[]]
         $Label,
         [Parameter(Mandatory, HelpMessage="The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AgentPoolMode])]
@@ -69,18 +69,24 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [string]
         $Name,
         [Parameter(HelpMessage="The taints applied to the nodes in this agent pool.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesLabel[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesLabel[]]
         $Taint,
-        [Parameter(HelpMessage="The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.")]
+        [Parameter(HelpMessage="The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.")]
+        [long]
+        $UpgradeSettingDrainTimeout,
+        [Parameter(HelpMessage="The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.")]
         [string]
         $UpgradeSettingMaxSurge,
+        [Parameter(HelpMessage="The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.")]
+        [string]
+        $UpgradeSettingMaxUnavailable,
         [Parameter(Mandatory, HelpMessage="The name of the VM SKU that determines the size of resources allocated for node VMs.")]
         [string]
         $VMSkuName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.InitialAgentPoolConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.InitialAgentPoolConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('AdministratorConfigurationAdminUsername')) {
             $Object.AdministratorConfigurationAdminUsername = $AdministratorConfigurationAdminUsername
@@ -121,8 +127,14 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         if ($PSBoundParameters.ContainsKey('Taint')) {
             $Object.Taint = $Taint
         }
+        if ($PSBoundParameters.ContainsKey('UpgradeSettingDrainTimeout')) {
+            $Object.UpgradeSettingDrainTimeout = $UpgradeSettingDrainTimeout
+        }
         if ($PSBoundParameters.ContainsKey('UpgradeSettingMaxSurge')) {
             $Object.UpgradeSettingMaxSurge = $UpgradeSettingMaxSurge
+        }
+        if ($PSBoundParameters.ContainsKey('UpgradeSettingMaxUnavailable')) {
+            $Object.UpgradeSettingMaxUnavailable = $UpgradeSettingMaxUnavailable
         }
         if ($PSBoundParameters.ContainsKey('VMSkuName')) {
             $Object.VMSkuName = $VMSkuName

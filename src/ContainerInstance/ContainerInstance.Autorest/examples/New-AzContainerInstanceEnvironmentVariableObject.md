@@ -13,7 +13,8 @@ This command creates an environment variable within a container instance.
 
 ### Example 2: Create a secure environment variable within a container instance
 ```powershell
-New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "******" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue $pwd
 ```
 
 ```output

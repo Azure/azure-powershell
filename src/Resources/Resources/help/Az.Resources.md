@@ -65,6 +65,12 @@ Lists key credentials and password credentials for an service principal.
 ### [Get-AzADUser](Get-AzADUser.md)
 Lists entities from users or get entity from users by key
 
+### [Get-AzDataBoundaryScope](Get-AzDataBoundaryScope.md)
+Get data boundary at specified scope
+
+### [Get-AzDataBoundaryTenant](Get-AzDataBoundaryTenant.md)
+Get data boundary of tenant.
+
 ### [Get-AzDenyAssignment](Get-AzDenyAssignment.md)
 Lists Azure RBAC deny assignments at the specified scope.
 By default it lists all deny assignments in the selected Azure subscription.
@@ -549,6 +555,9 @@ Saves a Subscription scoped Deployment Stack Template.
 ### [Save-AzTenantDeploymentTemplate](Save-AzTenantDeploymentTemplate.md)
 Saves a deployment template to a file.
 
+### [Set-AzDataBoundary](Set-AzDataBoundary.md)
+Opt-in tenant to data boundary.
+
 ### [Set-AzManagedApplication](Set-AzManagedApplication.md)
 Updates managed application
 
@@ -648,19 +657,19 @@ Removes a feature registration from your account.
 Unregisters a resource provider.
 
 ### [Update-AzADAppFederatedCredential](Update-AzADAppFederatedCredential.md)
-Update the navigation property federatedIdentityCredentials in applications
+update the navigation property federatedIdentityCredentials in applications
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
 
 ### [Update-AzADGroup](Update-AzADGroup.md)
-Update entity in groups
+update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
 
 ### [Update-AzADServicePrincipalAppRoleAssignment](Update-AzADServicePrincipalAppRoleAssignment.md)
-Update the navigation property appRoleAssignments in servicePrincipals
+update the navigation property appRoleAssignments in servicePrincipals
 
 ### [Update-AzADUser](Update-AzADUser.md)
 Updates entity in users

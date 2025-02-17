@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridCaCertificate
 
 ## SYNOPSIS
-Create a CA certificate with the specified parameters.
+create a CA certificate with the specified parameters.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzEventGridCaCertificate -InputObject <IEventGridIdentity> [-Description <St
 ```
 
 ## DESCRIPTION
-Create a CA certificate with the specified parameters.
+create a CA certificate with the specified parameters.
 
 ## EXAMPLES
 

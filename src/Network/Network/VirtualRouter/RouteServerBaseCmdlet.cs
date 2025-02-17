@@ -2,6 +2,9 @@
 using Microsoft.Azure.Management.Network.Models;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Network.Models;
+using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -36,6 +39,15 @@ namespace Microsoft.Azure.Commands.Network
             var ipconfig = NetworkResourceManagerProfile.Mapper.Map<CNM.PSHubIpConfiguration>(ipConfigModel);
             virtualHubModel.IpConfigurations = new List<CNM.PSHubIpConfiguration>();
             virtualHubModel.IpConfigurations.Add(ipconfig);
+        }
+        
+        public PSVirtualHub ToPsVirtualHub(Management.Network.Models.VirtualHub virtualHub)
+        {
+            var psVirtualHub = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHub);
+            
+            psVirtualHub.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
+
+            return psVirtualHub;
         }
     }
 }

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureDataLakeStoreWriteSettings class.
         /// </summary>
 
+        /// <param name="additionalProperties">Connector write settings.
+        /// </param>
+
         /// <param name="maxConcurrentConnections">The maximum concurrent connection count for the source data store. Type:
         /// integer (or Expression with resultType integer).
         /// </param>
@@ -44,9 +47,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// UTC time zone in the format of &#34;2018-12-01T05:00:00Z&#34;. Default value is
         /// NULL. Type: string (or Expression with resultType string).
         /// </param>
-        public AzureDataLakeStoreWriteSettings(object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), object expiryDateTime = default(object))
+        public AzureDataLakeStoreWriteSettings(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), object expiryDateTime = default(object))
 
-        : base(maxConcurrentConnections, disableMetricsCollection, copyBehavior, metadata)
+        : base(additionalProperties, maxConcurrentConnections, disableMetricsCollection, copyBehavior, metadata)
         {
             this.ExpiryDateTime = expiryDateTime;
             CustomInit();

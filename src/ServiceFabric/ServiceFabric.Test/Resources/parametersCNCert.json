@@ -21,7 +21,7 @@
       "value": "WindowsServer"
     },
     "vmImageSku": {
-      "value": "2022-Datacenter"
+      "value": "2022-datacenter-azure-edition"
     },
     "vmImageVersion": {
       "value": "latest"
@@ -63,7 +63,7 @@
       "value": 5
     },
     "vmNodeType0Size": {
-      "value": "Standard_D2_V2"
+      "value": "Standard_D2s_v3"
     }
   }
 }

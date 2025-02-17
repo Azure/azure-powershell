@@ -8,53 +8,87 @@ schema: 2.0.0
 # Update-AzWvdScalingPlanPersonalSchedule
 
 ## SYNOPSIS
-Update a ScalingPlanPersonalSchedule.
+update a ScalingPlanPersonalSchedule.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- -ScalingPlanScheduleName <String> [-SubscriptionId <String>] [-DaysOfWeek <DayOfWeek[]>]
- [-OffPeakActionOnDisconnect <SessionHandlingOperation>] [-OffPeakActionOnLogoff <SessionHandlingOperation>]
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>] [-DaysOfWeek <String[]>]
+ [-OffPeakActionOnDisconnect <String>] [-OffPeakActionOnLogoff <String>]
  [-OffPeakMinutesToWaitOnDisconnect <Int32>] [-OffPeakMinutesToWaitOnLogoff <Int32>]
- [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>]
- [-OffPeakStartVMOnConnect <SetStartVMOnConnect>] [-PeakActionOnDisconnect <SessionHandlingOperation>]
- [-PeakActionOnLogoff <SessionHandlingOperation>] [-PeakMinutesToWaitOnDisconnect <Int32>]
+ [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>] [-OffPeakStartVMOnConnect <String>]
+ [-PeakActionOnDisconnect <String>] [-PeakActionOnLogoff <String>] [-PeakMinutesToWaitOnDisconnect <Int32>]
  [-PeakMinutesToWaitOnLogoff <Int32>] [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>]
- [-PeakStartVMOnConnect <SetStartVMOnConnect>] [-RampDownActionOnDisconnect <SessionHandlingOperation>]
- [-RampDownActionOnLogoff <SessionHandlingOperation>] [-RampDownMinutesToWaitOnDisconnect <Int32>]
- [-RampDownMinutesToWaitOnLogoff <Int32>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
- [-RampDownStartVMOnConnect <SetStartVMOnConnect>] [-RampUpActionOnDisconnect <SessionHandlingOperation>]
- [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpAutoStartHost <StartupBehavior>]
+ [-PeakStartVMOnConnect <String>] [-RampDownActionOnDisconnect <String>] [-RampDownActionOnLogoff <String>]
+ [-RampDownMinutesToWaitOnDisconnect <Int32>] [-RampDownMinutesToWaitOnLogoff <Int32>]
+ [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>] [-RampDownStartVMOnConnect <String>]
+ [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>] [-RampUpAutoStartHost <String>]
  [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
- [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>]
+ [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityScalingPlanExpanded
+```
+Update-AzWvdScalingPlanPersonalSchedule -ScalingPlanScheduleName <String>
+ -ScalingPlanInputObject <IDesktopVirtualizationIdentity> [-DaysOfWeek <String[]>]
+ [-OffPeakActionOnDisconnect <String>] [-OffPeakActionOnLogoff <String>]
+ [-OffPeakMinutesToWaitOnDisconnect <Int32>] [-OffPeakMinutesToWaitOnLogoff <Int32>]
+ [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>] [-OffPeakStartVMOnConnect <String>]
+ [-PeakActionOnDisconnect <String>] [-PeakActionOnLogoff <String>] [-PeakMinutesToWaitOnDisconnect <Int32>]
+ [-PeakMinutesToWaitOnLogoff <Int32>] [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>]
+ [-PeakStartVMOnConnect <String>] [-RampDownActionOnDisconnect <String>] [-RampDownActionOnLogoff <String>]
+ [-RampDownMinutesToWaitOnDisconnect <Int32>] [-RampDownMinutesToWaitOnLogoff <Int32>]
+ [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>] [-RampDownStartVMOnConnect <String>]
+ [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>] [-RampUpAutoStartHost <String>]
+ [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
+ [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityScalingPlan
+```
+Update-AzWvdScalingPlanPersonalSchedule -ScalingPlanScheduleName <String>
+ -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
+ -ScalingPlanSchedule <IScalingPlanPersonalSchedulePatch> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIdentity>
- [-DaysOfWeek <DayOfWeek[]>] [-OffPeakActionOnDisconnect <SessionHandlingOperation>]
- [-OffPeakActionOnLogoff <SessionHandlingOperation>] [-OffPeakMinutesToWaitOnDisconnect <Int32>]
- [-OffPeakMinutesToWaitOnLogoff <Int32>] [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>]
- [-OffPeakStartVMOnConnect <SetStartVMOnConnect>] [-PeakActionOnDisconnect <SessionHandlingOperation>]
- [-PeakActionOnLogoff <SessionHandlingOperation>] [-PeakMinutesToWaitOnDisconnect <Int32>]
+Update-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIdentity> [-DaysOfWeek <String[]>]
+ [-OffPeakActionOnDisconnect <String>] [-OffPeakActionOnLogoff <String>]
+ [-OffPeakMinutesToWaitOnDisconnect <Int32>] [-OffPeakMinutesToWaitOnLogoff <Int32>]
+ [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>] [-OffPeakStartVMOnConnect <String>]
+ [-PeakActionOnDisconnect <String>] [-PeakActionOnLogoff <String>] [-PeakMinutesToWaitOnDisconnect <Int32>]
  [-PeakMinutesToWaitOnLogoff <Int32>] [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>]
- [-PeakStartVMOnConnect <SetStartVMOnConnect>] [-RampDownActionOnDisconnect <SessionHandlingOperation>]
- [-RampDownActionOnLogoff <SessionHandlingOperation>] [-RampDownMinutesToWaitOnDisconnect <Int32>]
- [-RampDownMinutesToWaitOnLogoff <Int32>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
- [-RampDownStartVMOnConnect <SetStartVMOnConnect>] [-RampUpActionOnDisconnect <SessionHandlingOperation>]
- [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpAutoStartHost <StartupBehavior>]
+ [-PeakStartVMOnConnect <String>] [-RampDownActionOnDisconnect <String>] [-RampDownActionOnLogoff <String>]
+ [-RampDownMinutesToWaitOnDisconnect <Int32>] [-RampDownMinutesToWaitOnLogoff <Int32>]
+ [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>] [-RampDownStartVMOnConnect <String>]
+ [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>] [-RampUpAutoStartHost <String>]
  [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
- [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a ScalingPlanPersonalSchedule.
+update a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
@@ -108,8 +142,8 @@ Updates an existing PersonalSchedule in a Scaling Plan.
 Set of days of the week on which this schedule is active.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +171,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -151,12 +184,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OffPeakActionOnDisconnect
 Action to be taken after a user disconnect during the off-peak period.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -170,8 +233,8 @@ Accept wildcard characters: False
 Action to be taken after a logoff during the off-peak period.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -186,7 +249,7 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -201,7 +264,7 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -216,7 +279,7 @@ The hour.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -231,7 +294,7 @@ The minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -245,8 +308,8 @@ Accept wildcard characters: False
 The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -260,8 +323,8 @@ Accept wildcard characters: False
 Action to be taken after a user disconnect during the peak period.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -275,8 +338,8 @@ Accept wildcard characters: False
 Action to be taken after a logoff during the peak period.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -291,7 +354,7 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -306,7 +369,7 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -321,7 +384,7 @@ The hour.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -336,7 +399,7 @@ The minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -350,8 +413,8 @@ Accept wildcard characters: False
 The desired configuration of Start VM On Connect for the hostpool during the peak phase.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -365,8 +428,8 @@ Accept wildcard characters: False
 Action to be taken after a user disconnect during the ramp down period.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -380,8 +443,8 @@ Accept wildcard characters: False
 Action to be taken after a logoff during the ramp down period.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -396,7 +459,7 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -411,7 +474,7 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -426,7 +489,7 @@ The hour.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -441,7 +504,7 @@ The minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -455,8 +518,8 @@ Accept wildcard characters: False
 The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -470,8 +533,8 @@ Accept wildcard characters: False
 Action to be taken after a user disconnect during the ramp up period.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -485,8 +548,8 @@ Accept wildcard characters: False
 Action to be taken after a logoff during the ramp up period.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHandlingOperation
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -500,8 +563,8 @@ Accept wildcard characters: False
 The desired startup behavior during the ramp up period for personal vms in the hostpool.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -516,7 +579,7 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -531,7 +594,7 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -546,7 +609,7 @@ The hour.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -561,7 +624,7 @@ The minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -576,8 +639,8 @@ The desired configuration of Start VM On Connect for the hostpool during the ram
 If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -593,13 +656,28 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScalingPlanInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityScalingPlan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -608,7 +686,7 @@ The name of the scaling plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -618,12 +696,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScalingPlanSchedule
+ScalingPlanPersonalSchedule properties that can be patched.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatch
+Parameter Sets: UpdateViaIdentityScalingPlan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ScalingPlanScheduleName
 The name of the ScalingPlanSchedule
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityScalingPlan
 Aliases:
 
 Required: True
@@ -635,10 +728,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -686,9 +780,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatch
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule
 
 ## NOTES
 

@@ -16,21 +16,21 @@ Creates a new private DNS virtual network link.
 ### VirtualNetworkId (Default)
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -VirtualNetworkId <String> [-EnableRegistration] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ -VirtualNetworkId <String> [-EnableRegistration] [-ResolutionPolicy <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualNetworkObject
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -VirtualNetwork <VirtualNetwork> [-EnableRegistration] [-Tag <Hashtable>]
+ -VirtualNetwork <VirtualNetwork> [-EnableRegistration] [-ResolutionPolicy <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoteVirtualNetworkId
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -RemoteVirtualNetworkId <String> [-EnableRegistration] [-Tag <Hashtable>]
+ -RemoteVirtualNetworkId <String> [-EnableRegistration] [-ResolutionPolicy <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,6 +60,7 @@ Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Tags                    : {}
 RegistrationEnabled     : True
+ResolutionPolicy        : Default
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
 ```
@@ -97,6 +98,23 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -ResolutionPolicy
+Speficies the resolution policy of the virtual network link
+
+```yaml
+Type: Azure.ResourceManager.PrivateDns.Models.PrivateDnsResolutionPolicy
+Parameter Sets: (All)
+Aliases:
+Accepted values: Default, NxDomainRedirect
+
+Required: False
+Position: Named
+Default value: Default
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 
 ### -Name
 Specifies the name of the virtual network link to create.

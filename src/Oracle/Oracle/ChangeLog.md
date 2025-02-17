@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.0.0
 * General availability for module Az.Oracle
 

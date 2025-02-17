@@ -27,7 +27,7 @@ Get-AzPortalDashboard -ResourceGroupName my-rg -Name mydashboard
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,14 +36,14 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IPortalIdentity>: Identity Parameter
   [DashboardName <String>]: The name of the dashboard.
   [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.portal/get-azportaldashboard
 #>
 function Get-AzPortalDashboard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('DashboardName')]
@@ -53,10 +53,11 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -65,9 +66,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -105,13 +105,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
@@ -232,27 +225,50 @@ Creates or updates a Dashboard.
 New-AzPortalDashboard -DashboardPath .\resources\dash1.json -ResourceGroupName mydash-rg -DashboardName my-dashboard03
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-DASHBOARD <IDashboard>: The shared dashboard resource definition.
-  Location <String>: Resource location
-  [Lens <IDashboardPropertiesLenses>]: The dashboard lenses.
-    [(Any) <IDashboardLens>]: This indicates any property can be added to this object.
-  [Metadata <IDashboardPropertiesMetadata>]: The dashboard metadata.
-    [(Any) <Object>]: This indicates any property can be added to this object.
-  [Tag <IDashboardTags>]: Resource tags
+LENS <IDashboardLens[]>: The dashboard lenses.
+  Order <Int32>: The lens order.
+  Part <IDashboardParts[]>: The dashboard parts.
+    PositionColSpan <Int32>: The dashboard's part column span.
+    PositionRowSpan <Int32>: The dashboard's part row span.
+    PositionX <Int32>: The dashboard's part x coordinate.
+    PositionY <Int32>: The dashboard's part y coordinate.
+    [PositionMetadata <IAny>]: The dashboard part's metadata.
+  [Metadata <IAny>]: The dashboard len's metadata.
+
+RESOURCE <IDashboard>: The shared dashboard resource definition.
+  Location <String>: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Lens <IDashboardLens[]>]: The dashboard lenses.
+    Order <Int32>: The lens order.
+    Part <IDashboardParts[]>: The dashboard parts.
+      PositionColSpan <Int32>: The dashboard's part column span.
+      PositionRowSpan <Int32>: The dashboard's part row span.
+      PositionX <Int32>: The dashboard's part x coordinate.
+      PositionY <Int32>: The dashboard's part y coordinate.
+      [PositionMetadata <IAny>]: The dashboard part's metadata.
+    [Metadata <IAny>]: The dashboard len's metadata.
+  [Metadata <IDashboardPropertiesWithProvisioningStateMetadata>]: The dashboard metadata.
+    [(Any) <Object>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.portal/new-azportaldashboard
 #>
 function New-AzPortalDashboard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -266,49 +282,50 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard]
     # The shared dashboard resource definition.
-    # To construct, see NOTES section for DASHBOARD properties and create a hash table.
-    ${Dashboard},
+    # To construct, see NOTES section for RESOURCE properties and create a hash table.
+    ${Resource},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
     [System.String]
-    # Resource location
+    # The geo-location where the resource lives
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses]))]
-    [System.Collections.Hashtable]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]]
     # The dashboard lenses.
+    # To construct, see NOTES section for LENS properties and create a hash table.
     ${Lens},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata]))]
     [System.Collections.Hashtable]
     # The dashboard metadata.
     ${Metadata},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Resource tags
+    # Resource tags.
     ${Tag},
 
     [Parameter(ParameterSetName='CreateByFile', Mandatory)]
@@ -478,8 +495,8 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IPortalIdentity>: Identity Parameter
   [DashboardName <String>]: The name of the dashboard.
   [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.portal/remove-azportaldashboard
 #>
@@ -498,15 +515,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -672,7 +689,7 @@ Get-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 | Update-AzPorta
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -681,13 +698,23 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IPortalIdentity>: Identity Parameter
   [DashboardName <String>]: The name of the dashboard.
   [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+LENS <IDashboardLens[]>: The dashboard lenses.
+  Order <Int32>: The lens order.
+  Part <IDashboardParts[]>: The dashboard parts.
+    PositionColSpan <Int32>: The dashboard's part column span.
+    PositionRowSpan <Int32>: The dashboard's part row span.
+    PositionX <Int32>: The dashboard's part x coordinate.
+    PositionY <Int32>: The dashboard's part y coordinate.
+    [PositionMetadata <IAny>]: The dashboard part's metadata.
+  [Metadata <IAny>]: The dashboard len's metadata.
 .Link
 https://learn.microsoft.com/powershell/module/az.portal/update-azportaldashboard
 #>
 function Update-AzPortalDashboard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -701,15 +728,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -720,22 +747,23 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesLenses]))]
-    [System.Collections.Hashtable]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]]
     # The dashboard lenses.
+    # To construct, see NOTES section for LENS properties and create a hash table.
     ${Lens},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboardPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # The dashboard metadata.
     ${Metadata},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IPatchableDashboardTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IPatchableDashboardTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
@@ -768,12 +796,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Runtime')]
@@ -892,12 +914,12 @@ Creates or updates a Dashboard.
 Set-AzPortalDashboard -DashboardPath .\resources\dash1-update.json -ResourceGroupName my-rg -DashboardName dashbase03
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
 .Link
 https://learn.microsoft.com/powershell/module/az.portal/set-azportaldashboard
 #>
 function Set-AzPortalDashboard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

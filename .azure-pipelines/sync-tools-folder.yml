@@ -1,8 +1,25 @@
-resources:
-  repositories:
-  - repository: self
-    type: git
-    ref: main
+parameters:
+- name: ToBranches
+  displayName: To Branches
+  type: object
+  default: ["generation"]
+- name: SyncPaths
+  displayName: Paths to sync
+  type: object
+  default:
+  - .ci-config.json
+  - tools
+  - .azure-pipelines
+  - src/lib
+  - src/shared
+  - build.proj
+  - src/Az.props
+  - src/Az.Shared.props
+  - src/Az.Test.props
+  - src/Az.autorest.props
+  - src/Az.Post.props
+  - src/psm1.props
+  - NuGet.Config
 
 trigger:
   branches:
@@ -10,47 +27,42 @@ trigger:
       - main
   paths:
     include:
-      - .azure-pipelines
-      - .devcontainer
-      - tools
-      - src/lib
-      - .ci-config.json
-      - src/shared
-      - build.proj
-      - src/Az.props
-      - src/Az.Shared.props
-      - src/Az.Test.props
-      - src/Az.autorest.props
-      - src/Az.Post.props
-      - src/psm1.props
-      - NuGet.Config
+    - .ci-config.json
+    - tools
+    - .azure-pipelines
+    - src/lib
+    - src/shared
+    - build.proj
+    - src/Az.props
+    - src/Az.Shared.props
+    - src/Az.Test.props
+    - src/Az.autorest.props
+    - src/Az.Post.props
+    - src/psm1.props
+    - NuGet.Config
       
-variables:
-  GenerationBranchName: generation
-
 jobs:
-- job: Sync
-  displayName: Sync task
-  condition: succeeded()
-  strategy:
-    matrix:
-      Generation:
-        BranchName: ${{ variables.GenerationBranchName }}
+- ${{ each ToBranch in parameters.ToBranches }}:
+    - job: Sync_${{ replace(ToBranch, '/', '_') }}
+      displayName: "Sync To ${{ ToBranch }}"
+      pool: pool-ubuntu-2004
 
-  steps:
-  - template: util/get-github-pat-steps.yml
-  - task: PowerShell@2
-    displayName: Sync branch
-    inputs:
-      targetType: inline
-      script: >-
-        ./tools/SyncFromMainBranch.ps1 -BranchName $(BranchName) -GithubToken $(GithubToken)
-      pwsh: true
+      steps:
+      - template: util/get-github-pat-steps.yml
 
-  - pwsh: |
-      $Title = "Sync tools code from main branch to $(BranchName) branch"
-      $HeadBranch = "syncToolsFolder-$(BranchName)"
-      $BaseBranch = "$(BranchName)"
-      $Description = "Migrate Sync tools code from main branch to $(BranchName) branch"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
-    displayName: Create PR to $(BranchName) branch
+      - task: PowerShell@2
+        displayName: "Sync To ${{ ToBranch }}"
+        inputs:
+          targetType: inline
+          script: |
+            $SyncPaths='${{Converttojson(parameters.SyncPaths)}}' | ConvertFrom-Json
+            ./tools/SyncFromMainBranch.ps1 -BranchName ${{ ToBranch }} -GithubToken $(GithubToken) -SyncPath $SyncPaths -UnSyncPath @()
+          pwsh: true
+          
+      - pwsh: |
+          $Title = "Sync tools code from $(Build.SourceBranchName) branch to ${{ ToBranch }} branch"
+          $HeadBranch = "syncToolsFolder/${{ ToBranch }}"
+          $BaseBranch = "${{ ToBranch }}"
+          $Description = "Migrate Sync tools code from $(Build.SourceBranchName) branch to ${{ ToBranch }} branch"
+          ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
+        displayName: Create PR to ${{ ToBranch }} branch

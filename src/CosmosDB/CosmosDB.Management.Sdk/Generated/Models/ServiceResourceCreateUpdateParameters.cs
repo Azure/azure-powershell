@@ -8,9 +8,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters for Create or Update Request for ServiceResource
+    /// Parameters for Create or Update request for ServiceResource
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class ServiceResourceCreateUpdateParameters
     {
         /// <summary>
@@ -25,21 +24,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the ServiceResourceCreateUpdateParameters class.
         /// </summary>
 
-        /// <param name="serviceType">ServiceType for the service.
-        /// Possible values include: &#39;SqlDedicatedGateway&#39;, &#39;DataTransfer&#39;,
-        /// &#39;GraphAPICompute&#39;, &#39;MaterializedViewsBuilder&#39;</param>
-
-        /// <param name="instanceSize">Instance type for the service.
-        /// Possible values include: &#39;Cosmos.D4s&#39;, &#39;Cosmos.D8s&#39;, &#39;Cosmos.D16s&#39;</param>
-
-        /// <param name="instanceCount">Instance count for the service.
+        /// <param name="properties">Properties in ServiceResourceCreateUpdateParameters.
         /// </param>
-        public ServiceResourceCreateUpdateParameters(string serviceType = default(string), string instanceSize = default(string), int? instanceCount = default(int?))
+        public ServiceResourceCreateUpdateParameters(ServiceResourceCreateUpdateProperties properties = default(ServiceResourceCreateUpdateProperties))
 
         {
-            this.ServiceType = serviceType;
-            this.InstanceSize = instanceSize;
-            this.InstanceCount = instanceCount;
+            this.Properties = properties;
             CustomInit();
         }
 
@@ -50,22 +40,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets or sets serviceType for the service. Possible values include: &#39;SqlDedicatedGateway&#39;, &#39;DataTransfer&#39;, &#39;GraphAPICompute&#39;, &#39;MaterializedViewsBuilder&#39;
+        /// Gets or sets properties in ServiceResourceCreateUpdateParameters.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceType")]
-        public string ServiceType {get; set; }
-
-        /// <summary>
-        /// Gets or sets instance type for the service. Possible values include: &#39;Cosmos.D4s&#39;, &#39;Cosmos.D8s&#39;, &#39;Cosmos.D16s&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.instanceSize")]
-        public string InstanceSize {get; set; }
-
-        /// <summary>
-        /// Gets or sets instance count for the service.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.instanceCount")]
-        public int? InstanceCount {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public ServiceResourceCreateUpdateProperties Properties {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -74,14 +52,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
-            if (this.InstanceCount != null)
+            if (this.Properties != null)
             {
-                if (this.InstanceCount < 0)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "InstanceCount", 0);
-                }
+                this.Properties.Validate();
             }
         }
     }

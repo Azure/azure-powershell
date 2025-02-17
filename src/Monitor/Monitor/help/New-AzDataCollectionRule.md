@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataCollectionRule
 
 ## SYNOPSIS
-Create a data collection rule.
+create a data collection rule.
 
 ## SYNTAX
 
@@ -30,8 +30,8 @@ New-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-Subscripti
  [-DestinationMonitoringAccount <IMonitoringAccountDestination[]>]
  [-DestinationStorageAccount <IStorageBlobDestination[]>]
  [-DestinationStorageBlobsDirect <IStorageBlobDestination[]>]
- [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-IdentityType <String>] [-Kind <String>]
- [-StreamDeclaration <Hashtable>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-EnableSystemAssignedIdentity]
+ [-Kind <String>] [-StreamDeclaration <Hashtable>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ New-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-Subscripti
 ```
 
 ## DESCRIPTION
-Create a data collection rule.
+create a data collection rule.
 
 ## EXAMPLES
 
@@ -730,11 +730,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -883,12 +883,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 

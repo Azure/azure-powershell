@@ -32,11 +32,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 0dd49a444195fef7f3555cad038cb7665cbd928c
+commit: 570ea717eb84ecf725399353d2b52a590353e589
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/portal/resource-manager/Microsoft.Portal/preview/2019-01-01-preview/portal.json
+  - $(repo)/specification/portal/resource-manager/Microsoft.Portal/preview/2022-12-01-preview/portal.json
 
 metadata:
   authors: Microsoft Corporation
@@ -73,6 +73,21 @@ directive:
       subject: Dashboard
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
-      
+  - from: swagger-document 
+    where: $.definitions.DashboardPropertiesWithProvisioningState.properties.metadata
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": {"type": "object"},
+          "description": "The dashboard metadata."
+      }
+  - from: swagger-document 
+    where: $.definitions.DashboardProperties.properties.metadata
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": {"type": "object"},
+          "description": "The dashboard metadata."
+      }
 
 ```

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SqlDWSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -81,9 +84,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="upsertSettings">SQL DW upsert settings.
         /// </param>
-        public SqlDWSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object preCopyScript = default(object), object allowPolyBase = default(object), PolybaseSettings polyBaseSettings = default(PolybaseSettings), object allowCopyCommand = default(object), DWCopyCommandSettings copyCommandSettings = default(DWCopyCommandSettings), object tableOption = default(object), object sqlWriterUseTableLock = default(object), object writeBehavior = default(object), SqlDWUpsertSettings upsertSettings = default(SqlDWUpsertSettings))
+        public SqlDWSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object preCopyScript = default(object), object allowPolyBase = default(object), PolybaseSettings polyBaseSettings = default(PolybaseSettings), object allowCopyCommand = default(object), DWCopyCommandSettings copyCommandSettings = default(DWCopyCommandSettings), object tableOption = default(object), object sqlWriterUseTableLock = default(object), object writeBehavior = default(object), SqlDWUpsertSettings upsertSettings = default(SqlDWUpsertSettings))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.PreCopyScript = preCopyScript;
             this.AllowPolyBase = allowPolyBase;

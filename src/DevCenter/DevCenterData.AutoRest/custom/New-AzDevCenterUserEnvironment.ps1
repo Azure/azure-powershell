@@ -20,203 +20,199 @@ Creates or updates an environment.
 .Description
 Creates or updates an environment.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$functionAppParameters = @{"name" = "testfuncApp" }
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
+New-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters -ExpirationDate $dateIn8Months
+.Example
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
+
+New-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest -ExpirationDate $dateIn8Months
+.Example
+$envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
+
+New-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest -ExpirationDate $dateIn8Months
+.Example
+$functionAppParameters = @{"name" = "testfuncApp" }
+$envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
+
+New-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters -ExpirationDate $dateIn8Months
+
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IEnvironment>: Properties of an environment.
-  CatalogName <String>: Name of the catalog.
-  DefinitionName <String>: Name of the environment definition.
-  Type <String>: Environment type.
-  [Parameter <IAny>]: Parameters object for the environment.
-  [Code <String>]: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-  [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
-    Code <String>: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-    Message <String>: A message describing the error, intended to be suitable for display in a user interface.
-    [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
-    [Target <String>]: The target of the particular error. For example, the name of the property in error.
-  [Message <String>]: A message describing the error, intended to be suitable for display in a user interface.
-  [OperationLocation <String>]: 
-  [Target <String>]: The target of the particular error. For example, the name of the property in error.
-
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [Name <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
+  [ActionName <String>]: The name of the action.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserenvironment
 #>
 function New-AzDevCenterUserEnvironment {
-  [OutputType([System.Boolean])]
-  [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
+  [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
-    [System.String]
-    # The DevCenter-specific URI to operate on.
-    ${Endpoint},
-  
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
-    [Alias('DevCenter')]
-    [System.String]
-    # The DevCenter upon which to execute operations.
-    ${DevCenterName},
-  
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Alias('EnvironmentName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [System.String]
-    # The name of the environment.
-    ${Name},
-  
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [System.String]
-    # The DevCenter Project upon which to execute operations.
-    ${ProjectName},
-  
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script = '"me"')]
-    [System.String]
-    # The AAD object id of the user.
-    # If value is 'me', the identity is taken from the authentication context.
-    ${UserId},
-  
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-  
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [System.String]
-    # Name of the catalog.
-    ${CatalogName},
-  
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [System.String]
-    # Name of the environment definition.
-    ${EnvironmentDefinitionName},
-  
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [System.String]
-    # Environment type.
-    ${EnvironmentType},
-  
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter')]
-    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentUpdatePropertiesParameters]))]
-    [System.Collections.Hashtable]
-    # Parameters object for the environment.
-    ${Parameter},
+      [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+      [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+      [System.String]
+      # The DevCenter-specific URI to operate on.
+      ${Endpoint},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [System.DateTime]
-    # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
-    ${ExpirationDate},
+      [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
+      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+      [Alias('DevCenter')]
+      [System.String]
+      # The DevCenter upon which to execute operations.
+      ${DevCenterName},
   
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
+      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+      [Alias('EnvironmentName')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+      [System.String]
+      # The name of the environment.
+      ${Name},
   
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
+      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+      [System.String]
+      # The DevCenter Project upon which to execute operations.
+      ${ProjectName},
   
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+      [Parameter(ParameterSetName='CreateExpanded')]
+      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+      [System.String]
+      # The AAD object id of the user.
+      # If value is 'me', the identity is taken from the authentication context.
+      ${UserId},
   
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+      [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+      [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+      # Identity Parameter
+      # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+      ${InputObject},
   
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+      [Parameter(Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+      [System.String]
+      # Name of the catalog.
+      ${CatalogName},
   
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
+      [Parameter(Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+      [System.String]
+      # Name of the environment definition.
+      ${EnvironmentDefinitionName},
   
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+      [Parameter(Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+      [System.String]
+      # Environment type.
+      ${EnvironmentType},
   
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+      [System.DateTime]
+      # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+      ${ExpirationDate},
   
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentParameters]))]
+      [System.Collections.Hashtable]
+      # Parameters object for the environment.
+      ${Parameter},
+  
+      [Parameter()]
+      [Alias('AzureRMContext', 'AzureCredential')]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+      [System.Management.Automation.PSObject]
+      # The DefaultProfile parameter is not functional.
+      # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+      ${DefaultProfile},
+  
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Run the command as a job
+      ${AsJob},
+  
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Wait for .NET debugger to attach
+      ${Break},
+  
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+      # SendAsync Pipeline Steps to be appended to the front of the pipeline
+      ${HttpPipelineAppend},
+  
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+      ${HttpPipelinePrepend},
+  
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Run the command asynchronously
+      ${NoWait},
+  
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+      [System.Uri]
+      # The URI for the proxy server to use
+      ${Proxy},
+  
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+      [System.Management.Automation.PSCredential]
+      # Credentials for a proxy server to use for the remote call
+      ${ProxyCredential},
+  
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Use the default credentials for the proxy
+      ${ProxyUseDefaultCredentials}
   )
 
   process {

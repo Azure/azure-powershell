@@ -54,11 +54,17 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
-        [ValidateNotNullOrEmpty]
         public string[] AddressPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "IpamPool to auto allocate from for virtual network address prefixes.")]
+        [ValidateNotNullOrEmpty]
+        public PSIpamPoolPrefixAllocation[] IpamPoolPrefixAllocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -127,6 +133,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The PrivateEndpointVNetPolicies of the virtual network")]
+        public string PrivateEndpointVNetPoliciesValue { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to override a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -160,6 +172,11 @@ namespace Microsoft.Azure.Commands.Network
                 AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
 
+            if (IpamPoolPrefixAllocation?.Length > 0)
+            {
+                vnet.AddressSpace.IpamPoolPrefixAllocations = IpamPoolPrefixAllocation.ToList();
+            }
+
             if (DnsServer != null)
             {
                 vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
@@ -191,6 +208,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.EdgeZone))
             {
                 vnet.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
+            if(!string.IsNullOrEmpty(this.PrivateEndpointVNetPoliciesValue))
+            {
+                vnet.PrivateEndpointVNetPolicies = this.PrivateEndpointVNetPoliciesValue;
             }
 
             // Map to the sdk object

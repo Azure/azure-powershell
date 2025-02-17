@@ -16,13 +16,12 @@ Creates a new workspace.
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AccessConnectorId <String>] [-AccessConnectorIdentityType <IdentityType>]
  [-AccessConnectorUserAssignedIdentityId <String>] [-AmlWorkspaceId <String>]
- [-Authorization <IWorkspaceProviderAuthorization[]>]
- [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
- [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
- [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-DefaultCatalogInitialType <InitialType>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-AutomaticClusterUpdate <AutomaticClusterUpdateValue>]
+ [-ComplianceStandard <ComplianceStandard[]>] [-DefaultCatalogInitialType <InitialType>]
  [-DefaultStorageFirewall <DefaultStorageFirewall>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
  [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
- [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>] [-LoadBalancerBackendPoolName <String>]
+ [-EnhancedSecurityCompliance <ComplianceSecurityProfileValue>]
+ [-EnhancedSecurityMonitoring <EnhancedSecurityMonitoringValue>] [-LoadBalancerBackendPoolName <String>]
  [-LoadBalancerId <String>] [-ManagedDiskKeySource <EncryptionKeySource>]
  [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
@@ -185,13 +184,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutomaticClusterUpdateValue
+### -AutomaticClusterUpdate
 Status of automated cluster updates feature.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue
 Parameter Sets: (All)
-Aliases:
+Aliases: AutomaticClusterUpdateValue
 
 Required: False
 Position: Named
@@ -200,28 +199,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComplianceSecurityProfileComplianceStandard
+### -ComplianceStandard
 Compliance standards associated with the workspace.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ComplianceSecurityProfileValue
-Status of Compliance Security Profile feature.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue
-Parameter Sets: (All)
-Aliases:
+Aliases: ComplianceSecurityProfileComplianceStandard
 
 Required: False
 Position: Named
@@ -353,13 +337,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnhancedSecurityMonitoringValue
+### -EnhancedSecurityCompliance
+Status of Compliance Security Profile feature.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue
+Parameter Sets: (All)
+Aliases: ComplianceSecurityProfileValue
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnhancedSecurityMonitoring
 Status of Enhanced Security Monitoring feature.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue
 Parameter Sets: (All)
-Aliases:
+Aliases: EnhancedSecurityMonitoringValue
 
 Required: False
 Position: Named

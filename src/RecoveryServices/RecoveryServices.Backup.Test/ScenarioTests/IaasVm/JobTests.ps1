@@ -17,10 +17,10 @@ function Test-AzureVMGetJobs
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
-	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganevm4" # hiaganewvm3"
-	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganevm4" # "hiaganewvm3"	
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2"
+	$vmFriendlyName1 = "pstest-ccy-vm"
+	$vmFriendlyName2 = "pstest-ccy-vm2"
 	
 	try
 	{
@@ -36,6 +36,12 @@ function Test-AzureVMGetJobs
 		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
 		$job = Disable-AzRecoveryServicesBackupProtection -VaultId $vault.ID -Item $item[0] -RemoveRecoveryPoints -Force;
 		$job2 = Disable-AzRecoveryServicesBackupProtection -VaultId $vault.ID -Item $item[1] -RemoveRecoveryPoints -Force;
+
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+
+		# undelete backup item
+		$undeleteJob = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[0] -VaultId $vault.ID
+		$undeleteJob2 = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[1] -VaultId $vault.ID
 
 		# Enable Protection
 		Enable-Protection $vault $vm1
@@ -190,10 +196,10 @@ function Test-AzureVMWaitJob
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
-	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm3"	
-	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganewvm3"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2"	
+	$vmFriendlyName1 = "pstest-ccy-vm"
+	$vmFriendlyName2 = "pstest-ccy-vm2"
 
 	try
 	{
@@ -230,8 +236,8 @@ function Test-AzureVMCancelJob
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
-	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmFriendlyName1 = "hiaga-adhoc-vm"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmFriendlyName1 = "pstest-ccy-vm"
 
 	try
 	{

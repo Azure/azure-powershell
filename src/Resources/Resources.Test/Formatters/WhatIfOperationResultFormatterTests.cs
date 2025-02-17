@@ -445,6 +445,88 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_FormatsDiagnosticsAndUnsupportedChanges()
+        {
+            var whatIfChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
+                    ChangeType = ChangeType.Unsupported,
+                    UnsupportedReason = "Unable to determine the source."
+                }
+            };
+
+            var diagnostics = new List<DeploymentDiagnosticsDefinition>
+            {
+                new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
+            };
+
+            string expected = $@"Diagnostics (2): 
+{Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
+{Color.Reset}{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(changes: whatIfChanges, diagnostics: diagnostics)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_FormatsDiagnostics()
+        {
+            var diagnostics = new List<DeploymentDiagnosticsDefinition>
+            {
+                new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
+            };
+
+            string expected = $@"Diagnostics (1): 
+{Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine); 
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(diagnostics: diagnostics)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_FormatsUnsupportedChanges()
+        {
+            var whatIfChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
+                    ChangeType = ChangeType.Unsupported,
+                    UnsupportedReason = "Unable to determine the source."
+                }
+            };
+
+            string expected = $@"Diagnostics (1): 
+{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(changes: whatIfChanges)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_nested_array_changes_does_not_throw()
         {
             // Arrange.

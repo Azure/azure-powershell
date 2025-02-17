@@ -32,11 +32,14 @@ Update-AzNetworkCloudKubernetesCluster -KubernetesClusterName kubernetesClusterN
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesCluster
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY <ISshPublicKey[]>: SshPublicKey represents the public key used to authenticate with a resource through SSH.
+  KeyData <String>: The SSH public key data.
 
 INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
@@ -47,6 +50,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [ClusterManagerName <String>]: The name of the cluster manager.
   [ClusterName <String>]: The name of the cluster.
   [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
   [Id <String>]: Resource identity path
   [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
   [L2NetworkName <String>]: The name of the L2 network.
@@ -60,11 +64,14 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [TrunkedNetworkName <String>]: The name of the trunked network.
   [VirtualMachineName <String>]: The name of the virtual machine.
   [VolumeName <String>]: The name of the volume.
+
+SSHPUBLICKEY <ISshPublicKey[]>: SshPublicKey represents the public key used to authenticate with a resource through SSH.
+  KeyData <String>: The SSH public key data.
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/update-aznetworkcloudkubernetescluster
 #>
 function Update-AzNetworkCloudKubernetesCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -97,6 +104,14 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
+    # SshPublicKey represents the public key used to authenticate with a resource through SSH.
+    # To construct, see NOTES section for CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY properties and create a hash table.
+    ${ControlPlaneNodeConfigurationAdminPublicKey},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The number of virtual machines that use this configuration.
@@ -106,13 +121,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The Kubernetes version for this cluster.
-    # Accepts n.n, n.n.n, and n.n.n-n format.
-    # The interpreted version used will be resolved into this field after creation or update.
     ${KubernetesVersion},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesClusterPatchParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
+    # SshPublicKey represents the public key used to authenticate with a resource through SSH.
+    # To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
+    ${SshPublicKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesClusterPatchParametersTags]))]
     [System.Collections.Hashtable]
     # The Azure resource tags that will replace the existing ones.
     ${Tag},

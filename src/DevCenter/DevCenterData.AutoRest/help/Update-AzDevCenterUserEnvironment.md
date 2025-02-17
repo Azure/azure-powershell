@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDevCenterUserEnvironment
 
 ## SYNOPSIS
-Partially updates an environment
+Partially updates an environment.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCent
 ```
 
 ## DESCRIPTION
-Partially updates an environment
+Partially updates an environment.
 
 ## EXAMPLES
 
@@ -251,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 
 ## NOTES
 

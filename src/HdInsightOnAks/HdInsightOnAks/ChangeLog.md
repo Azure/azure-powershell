@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.1
+* Upgraded nuget package to signed package.
+
 ## Version 0.2.0
 * Added commands
   - `New-AzHdInsightOnAksManagedIdentityObject` for create an in-memory object for ManagedIdentitySpec.

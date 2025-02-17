@@ -231,7 +231,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 replication.EndpointType = DataProtection.Replication.EndpointType;
                 replication.ReplicationSchedule = DataProtection.Replication.ReplicationSchedule;
                 replication.RemoteVolumeResourceId = DataProtection.Replication.RemoteVolumeResourceId;
-                // replication.RemoteVolumeRegion = DataProtection.Replication.RemoteVolumeRegion;
+                replication.RemoteVolumeRegion = DataProtection.Replication.RemoteVolumeRegion;
+                replication.RemotePath = DataProtection.Replication?.RemotePath?.ConvertToPs();
                 psDataProtection.Replication = replication;
             }
             if (DataProtection.Snapshot != null)
@@ -257,6 +258,29 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             }
            return psDataProtection;
         }
+        public static PSRemotePath ConvertToPs(this RemotePath remotePath)
+        {
+            var psRemotePath = new PSRemotePath();
+            if(remotePath != null)
+            {
+                psRemotePath.ServerName = remotePath.ServerName;
+                psRemotePath.VolumeName = remotePath.VolumeName;
+                psRemotePath.ExternalHostName = remotePath.ExternalHostName;
+            }
+            return psRemotePath;
+        }
+
+        public static RemotePath ConvertFromPs(this PSRemotePath psRemotePath)
+        {
+            var remotePath = new RemotePath();
+            if (psRemotePath != null)
+            {
+                remotePath.ServerName = psRemotePath.ServerName;
+                remotePath.VolumeName = psRemotePath.VolumeName;
+                remotePath.ExternalHostName = psRemotePath.ExternalHostName;
+            }
+            return remotePath;
+        }
 
         public static VolumePropertiesDataProtection ConvertDataProtectionFromPs(PSNetAppFilesVolumeDataProtection psDataProtection)
         {
@@ -269,7 +293,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 replication.EndpointType = psDataProtection.Replication.EndpointType;
                 replication.ReplicationSchedule = psDataProtection.Replication.ReplicationSchedule;
                 replication.RemoteVolumeResourceId = psDataProtection.Replication.RemoteVolumeResourceId;
-                // replication.RemoteVolumeRegion = psDataProtection.Replication.RemoteVolumeRegion;
+                replication.RemoteVolumeRegion = psDataProtection.Replication.RemoteVolumeRegion;
+                replication.RemotePath = psDataProtection.Replication.RemotePath?.ConvertFromPs();
                 dataProtection.Replication = replication;
             }
             
@@ -468,6 +493,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 DefaultUserQuotaInKiBs = volume.DefaultUserQuotaInKiBs,
                 DefaultGroupQuotaInKiBs = volume.DefaultGroupQuotaInKiBs,
                 NetworkFeatures = volume.NetworkFeatures,
+                EffectiveNetworkFeatures = volume.EffectiveNetworkFeatures,
                 NetworkSiblingSetId = volume.NetworkSiblingSetId,
                 StorageToNetworkProximity = volume.StorageToNetworkProximity,
                 VolumeGroupName = volume.VolumeGroupName,

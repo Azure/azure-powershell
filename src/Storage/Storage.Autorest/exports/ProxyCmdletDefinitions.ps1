@@ -271,8 +271,8 @@ function Start-AzStorageAccountMigration {
 [CmdletBinding(DefaultParameterSetName='CustomerExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CustomerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
     # The name of the storage account within the specified resource group.
@@ -280,8 +280,8 @@ param(
     ${AccountName},
 
     [Parameter(ParameterSetName='CustomerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
     # The name of the resource group within the user's subscription.
@@ -289,8 +289,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CustomerExpanded')]
-    [Parameter(ParameterSetName='CustomerViaJsonFilePath')]
     [Parameter(ParameterSetName='CustomerViaJsonString')]
+    [Parameter(ParameterSetName='CustomerViaJsonFilePath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -325,17 +325,17 @@ param(
     # SrpAccountMigrationType in ARM contract which is 'accountMigrations'
     ${Type},
 
-    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Customer operation
-    ${JsonFilePath},
-
     [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # Json string supplied to the Customer operation
     ${JsonString},
+
+    [Parameter(ParameterSetName='CustomerViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Customer operation
+    ${JsonFilePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -430,12 +430,12 @@ begin {
         }
 
         $mapping = @{
-            CustomerExpanded = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerExpanded';
-            CustomerViaIdentityExpanded = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerViaIdentityExpanded';
-            CustomerViaJsonFilePath = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerViaJsonFilePath';
-            CustomerViaJsonString = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerViaJsonString';
+            CustomerExpanded = 'Az.Storage.custom\Start-AzStorageAccountMigration';
+            CustomerViaJsonString = 'Az.Storage.custom\Start-AzStorageAccountMigration';
+            CustomerViaJsonFilePath = 'Az.Storage.custom\Start-AzStorageAccountMigration';
+            CustomerViaIdentityExpanded = 'Az.Storage.custom\Start-AzStorageAccountMigration';
         }
-        if (('CustomerExpanded', 'CustomerViaJsonFilePath', 'CustomerViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('CustomerExpanded', 'CustomerViaJsonString', 'CustomerViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

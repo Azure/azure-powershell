@@ -115,6 +115,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     ResourceTypeName = resourceType.ResourceType,
                     Locations = resourceType.Locations != null ? resourceType.Locations.ToArray() : null,
                     ApiVersions = resourceType.ApiVersions != null ? resourceType.ApiVersions.ToArray() : null,
+                    DefaultApiVersion = resourceType.DefaultApiVersion
                 }).ToArray(),
             };
         }
@@ -214,7 +215,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
 
             StringBuilder output = new StringBuilder();
-                
+
                 if (dictionary.Count > 0)
                 {
                     string rowFormat = "{0, -" + maxNameLength + "}  {1}\r\n";
@@ -266,7 +267,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
                 foreach (KeyValuePair<string, DeploymentVariable> pair in dictionary)
                 {
-                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type, 
+                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type,
                         JsonConvert.SerializeObject(pair.Value.Value).Indent(maxNameLength + maxTypeLength + 4).Trim());
                 }
             }

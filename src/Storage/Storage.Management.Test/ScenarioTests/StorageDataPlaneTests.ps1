@@ -35,6 +35,8 @@ function Test-File
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
+        $storageContext2 = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName).Context
+
         $localSrcFile = "localsrcfiletestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
         New-Item $localSrcFile -ItemType File -Force
         $localDestFile = "localdestfiletestfile1.txt"    
@@ -59,13 +61,13 @@ function Test-File
         $dirName1WithTrailingDot = "testdir1.."      
         $dirName1WithOutTrailingDot = "testdir1" 
         $objectPathWithoutTrailingDot  = "testdir1/filetest1.txt"    
-        New-AzStorageDirectory -ShareName $shareName -Path $dirName1WithTrailingDot -Context $storageContext -DisAllowTrailingDot
-        $file11 = Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path "$($dirName1WithTrailingDot)/$($objectName1)" -Force -Context $storageContext -DisAllowTrailingDot
-        $file = Get-AzStorageFile -ShareName $shareName -Path $objectPathWithoutTrailingDot -Context $storageContext -DisAllowTrailingDot
+        New-AzStorageDirectory -ShareName $shareName -Path $dirName1WithTrailingDot -Context $storageContext2 -DisAllowTrailingDot
+        $file11 = Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path "$($dirName1WithTrailingDot)/$($objectName1)" -Force -Context $storageContext2 -DisAllowTrailingDot
+        $file = Get-AzStorageFile -ShareName $shareName -Path $objectPathWithoutTrailingDot -Context $storageContext2 -DisAllowTrailingDot
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].ShareFileClient.Path $objectPathWithoutTrailingDot
-        Remove-AzStorageFile -ShareName $shareName -Path "$($dirName1WithTrailingDot)/$($objectName1)" -Context $storageContext -DisAllowTrailingDot
-        Remove-AzStorageDirectory -ShareName $shareName -Path $dirName1WithTrailingDot -Context $storageContext -DisAllowTrailingDot
+        Remove-AzStorageFile -ShareName $shareName -Path "$($dirName1WithTrailingDot)/$($objectName1)" -Context $storageContext2 -DisAllowTrailingDot
+        Remove-AzStorageDirectory -ShareName $shareName -Path $dirName1WithTrailingDot -Context $storageContext2 -DisAllowTrailingDot
 
         # list file        
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
@@ -198,6 +200,7 @@ function Test-Blob
     ) 
 
     New-TestResourceGroupAndStorageAccount -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
+    Set-AzStorageAccount  -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -AllowBlobPublicAccess $true
 
     try{
         $location = Get-ProviderLocation ResourceManagement    
@@ -211,9 +214,8 @@ function Test-Blob
 
         $containerName = "blobtestcontainer"    
         $storageAccountName2 = $storageAccountName + "2"
-        New-AzStorageAccount -Name $storageAccountName2 -ResourceGroupName $ResourceGroupName -Location $location -Type 'Standard_LRS' 
-        $storageAccountKeyValue2 = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName2)[0].Value
-        $storageContext2 = New-AzStorageContext -StorageAccountName $StorageAccountName2 -StorageAccountKey $storageAccountKeyValue2
+        New-AzStorageAccount -Name $storageAccountName2 -ResourceGroupName $ResourceGroupName -Location $location -Type 'Standard_LRS'
+        $storageContext2 = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName2).Context
         $containerName3 = "blobtestcontainer2"
         New-AzStorageContainer $containerName3 -Context $storageContext
         New-AzStorageContainer $containerName3 -Context $storageContext2
@@ -424,6 +426,8 @@ function Test-Blob
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
         Remove-AzStorageContainer -Name $containerName3 -Force -Context $storageContext
         Remove-AzStorageContainer -Name $containerName3 -Force -Context $storageContext2
+
+        Set-AzStorageAccount  -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -AllowBlobPublicAccess $false
     }
     finally
     {
@@ -453,6 +457,8 @@ function Test-Queue
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
+        $storageContext2 = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName).Context
+
         $queueName = "queue-test"
         New-AzStorageQueue -Name $queueName -Context $storageContext
         $queue = Get-AzStorageQueue -Name $queueName -Context $storageContext
@@ -462,7 +468,7 @@ function Test-Queue
         $queueMessage =  "This is message 1"
         $queue.QueueClient.SendMessage($queueMessage)
         
-        $queueCount1 = (Get-AzStorageQueue -Context $storageContext).Count
+        $queueCount1 = (Get-AzStorageQueue -Context $storageContext2).Count
         Remove-AzStorageQueue -Name $queueName -Force -Context $storageContext
         $queue2 = Get-AzStorageQueue -Context $storageContext # modified, it did not assign to anything 
         if ($null -eq $queue2) { # modified, PS guidelines require null on the left side
@@ -500,11 +506,13 @@ function Test-Table
     {
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
+
+        $storageContext2 = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName).Context
         
         # Create Table
         $tableName = "tabletest"
         New-AzStorageTable -Name $tableName -Context $storageContext
-        $table =Get-AzStorageTable -Name $tableName -Context $storageContext
+        $table =Get-AzStorageTable -Name $tableName -Context $storageContext2
         Assert-AreEqual $table.Count 1
         Assert-AreEqual $table[0].Name $tableName
 
@@ -575,6 +583,8 @@ function Test-BlobFileCopy
     {
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
+
+        $storageContext2 = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName).Context
     
         $localSrcFile = "localsrcblobfilecopytestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
         New-Item $localSrcFile -ItemType File -Force     
@@ -588,8 +598,8 @@ function Test-BlobFileCopy
         $ContentMD5 = "i727sP7HigloQDsqadNLHw=="
         
         $containerName = "blobfilecopytestcontainer"  
-        New-AzStorageContainer $containerName -Context $storageContext
-        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
+        New-AzStorageContainer $containerName -Context $storageContext2
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext2
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext |Get-AzStorageBlob
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob.Name $objectName1
@@ -616,8 +626,8 @@ function Test-BlobFileCopy
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob[0].Name $objectName3
 
-        Start-AzStorageFileCopy  -SrcContainerName $containerName -SrcBlobName $objectName1  -DestShareName $shareName -DestFilePath $objectName3 -Force -Context $storageContext -DestContext $storageContext
-        Get-AzStorageFileCopyState -ShareName $shareName -FilePath $objectName3 -Context $storageContext    
+        Start-AzStorageFileCopy  -SrcContainerName $containerName -SrcBlobName $objectName1  -DestShareName $shareName -DestFilePath $objectName3 -Force -Context $storageContext2 -DestContext $storageContext2
+        Get-AzStorageFileCopyState -ShareName $shareName -FilePath $objectName3 -Context $storageContext2    
         $file = Get-AzStorageFile -ShareName $shareName -Path $objectName3 -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName3
@@ -654,6 +664,8 @@ function Test-Common
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
+        $storageContext2 = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName).Context
+
         # wait at most 120*5s=600s for the set sevice property updated on server.
         $retryTimes = 120
         
@@ -684,12 +696,12 @@ function Test-Common
         Assert-AreEqual $retentionDays $property.RetentionDays  
 
         $MetricsLevel = "Service"
-        Set-AzStorageServiceMetricsProperty -ServiceType blob -Version $version -MetricsType Hour -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext
+        Set-AzStorageServiceMetricsProperty -ServiceType blob -Version $version -MetricsType Hour -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext2
         $i = 0
         $propertyUpdated = $false
         while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
         {
-            $property = Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -Context $storageContext
+            $property = Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -Context $storageContext2
             if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
             {
                 $propertyUpdated = $true
@@ -750,7 +762,7 @@ function Test-Common
                 $i = $i + 5
             }
         }
-        $cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
+        $cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext2
         Assert-AreEqual 0 $cors.Count    
         
         # Table Service properties
@@ -763,7 +775,7 @@ function Test-Common
         $propertyUpdated = $false
         while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
         {
-            $property = Get-AzStorageServiceLoggingProperty -ServiceType table -Context $storageContext
+            $property = Get-AzStorageServiceLoggingProperty -ServiceType table -Context $storageContext2
             if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
             {
                 $propertyUpdated = $true
@@ -780,7 +792,7 @@ function Test-Common
         Assert-AreEqual $retentionDays $property.RetentionDays  
 
         $MetricsLevel = "ServiceAndApi"
-        Set-AzStorageServiceMetricsProperty -ServiceType table -Version $version -MetricsType Minute -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext
+        Set-AzStorageServiceMetricsProperty -ServiceType table -Version $version -MetricsType Minute -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext2
         $i = 0
         $propertyUpdated = $false
         while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
@@ -821,7 +833,7 @@ function Test-Common
                 $i = $i + 5
             }
         }
-        $cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+        $cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext2
         Assert-AreEqual 1 $cors.Count 
 
         Remove-AzStorageCORSRule -ServiceType table -Context $storageContext
@@ -871,6 +883,8 @@ function Test-DatalakeGen2
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
+        $storageContext2 = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName).Context
+
         $localSrcFile = "localsrcDatalakeGen2testfile.psd1" #The file need exist before test, and should be 512 bytes aligned
         New-Item $localSrcFile -ItemType File -Force
         $localDestFile = "localdestDatalakeGen2testfile.txt"
@@ -895,7 +909,7 @@ function Test-DatalakeGen2
         $dir1 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
         Assert-AreEqual $dir1.Path $directoryPath1
         Assert-AreEqual $dir1.Permissions.ToSymbolicPermissions() "rwx---rwx"
-        $dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory -Permission r---wx-wT -Umask --x-wx--x
+        $dir2 = New-AzDataLakeGen2Item -Context $storageContext2 -FileSystem $filesystemName -Path $directoryPath2 -Directory -Permission r---wx-wT -Umask --x-wx--x
         Assert-AreEqual $dir2.Path $directoryPath2
         Assert-AreEqual $dir2.Permissions.ToSymbolicPermissions() "r------wT"
 
@@ -904,7 +918,7 @@ function Test-DatalakeGen2
         $t | wait-job
         Assert-AreEqual $t.State "Completed"
         Assert-AreEqual $t.Error $null
-        $file2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5}  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
+        $file2 = New-AzDataLakeGen2Item -Context $storageContext2 -FileSystem $filesystemName -Path $filePath2 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5}  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
         Assert-AreEqual $file2.Path $filePath2
         Assert-AreEqual $file2.Properties.ContentType $ContentType
         Assert-AreEqual $file2.Properties.Metadata.Count 2
@@ -926,7 +940,7 @@ function Test-DatalakeGen2
                 -Permission rw-rw--wt `
                 -Owner '$superuser' `
                 -Group '$superuser'
-        $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $filePath1 -Permission rw -Context $storageContext
+        $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $filePath1 -Permission rw -Context $storageContext2
         $ctxsas = New-AzStorageContext -StorageAccountName $StorageAccountName -SasToken $sas
         $file1 = Get-AzDataLakeGen2Item -Context $ctxsas -FileSystem $filesystemName -Path $filePath1
         Assert-AreEqual $file1.Path $filePath1
@@ -943,7 +957,7 @@ function Test-DatalakeGen2
                  -Permission rw-rw--wx `
                  -Owner '$superuser' `
                  -Group '$superuser' 
-        $dir1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1
+        $dir1 = Get-AzDataLakeGen2Item -Context $storageContext2 -FileSystem $filesystemName -Path $directoryPath1
         Assert-AreEqual $dir1.Path $directoryPath1
         Assert-AreEqual $dir1.Permissions.ToSymbolicPermissions() "rw-rw--wx"
         Assert-AreEqual $dir1.Properties.ContentEncoding $ContentEncoding
@@ -956,12 +970,12 @@ function Test-DatalakeGen2
         $items = Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName -FetchPermission
         Assert-AreEqual $items.Count 2
         Assert-NotNull $items[0].Permissions
-        $items = Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName -Recurse 
+        $items = Get-AzDataLakeGen2ChildItem -Context $storageContext2 -FileSystem $filesystemName -Recurse 
         Assert-AreEqual $items.Count 4
         Assert-AreEqual "rw-rw--wx" $items[0].Permissions.ToSymbolicPermissions()
 
         #download File
-        $t  = Get-AzDataLakeGen2ItemContent -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Destination $localDestFile -AsJob -Force
+        $t  = Get-AzDataLakeGen2ItemContent -Context $storageContext2 -FileSystem $filesystemName -Path $filePath1 -Destination $localDestFile -AsJob -Force
         $t  | Wait-Job
         Assert-AreEqual $t.State "Completed"
         Assert-AreEqual $t.Error $null
@@ -992,7 +1006,7 @@ function Test-DatalakeGen2
         Assert-AreEqual 0 $result.TotalFailureCount
         Assert-AreEqual 2 $result.TotalFilesSuccessfulCount
         Assert-AreEqual 3 $result.TotalDirectoriesSuccessfulCount
-        $result = Update-AzDataLakeGen2AclRecursive -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Acl $acl -BatchSize 2 -MaxBatchCount 2 
+        $result = Update-AzDataLakeGen2AclRecursive -Context $storageContext2 -FileSystem $filesystemName -Path $directoryPath1 -Acl $acl -BatchSize 2 -MaxBatchCount 2 
         Assert-Null $result.FailedEntries
         Assert-AreEqual 0 $result.TotalFailureCount
         Assert-AreEqual 1 $result.TotalFilesSuccessfulCount

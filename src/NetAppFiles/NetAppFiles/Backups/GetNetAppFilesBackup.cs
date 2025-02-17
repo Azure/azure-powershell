@@ -65,32 +65,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             nameof(ResourceGroupName))]
         public string AccountName { get; set; }
 
-        public const String ChangeDesc = "Parameter is being deprecated without being replaced";
-        [CmdletParameterBreakingChangeWithVersion("PoolName", "12", "0.16", ChangeDescription = ChangeDesc)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = FieldsParameterSet,
-            HelpMessage = "The name of the ANF pool")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(
-            "Microsoft.NetApp/netAppAccounts/capacityPools",
-            nameof(ResourceGroupName),
-            nameof(AccountName))]
-        public string PoolName { get; set; }
-
-        [CmdletParameterBreakingChangeWithVersion("VolumeName", "12", "0.16", ChangeDescription = ChangeDesc)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = FieldsParameterSet,
-            HelpMessage = "The name of the ANF volume")]
-        [ValidateNotNullOrEmpty]        
-        [ResourceNameCompleter(
-            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes",
-            nameof(ResourceGroupName),
-            nameof(AccountName),
-            nameof(PoolName))]            
-        public string VolumeName { get; set; }
-
         [Parameter(
             Mandatory = false,
             ParameterSetName = FieldsParameterSet,
@@ -115,9 +89,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/backups",
             nameof(ResourceGroupName),
-            nameof(AccountName),
-            nameof(PoolName),
-            nameof(VolumeName))]
+            nameof(AccountName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -126,22 +98,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             HelpMessage = "Filter list of backups, this filter accepts volumeResourceId")]        
         public string Filter { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("AccountBackupName", "12", "0.16", ChangeDescription = ChangeDesc)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the ANF backup",
-            ParameterSetName = AccountBackupFieldsParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the ANF backup",
-            ParameterSetName = ParentObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(
-            "Microsoft.NetApp/netAppAccounts/backups",
-            nameof(ResourceGroupName),
-            nameof(AccountName))]
-        public string AccountBackupName { get; set; }
-
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -149,15 +105,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             HelpMessage = "The resource id of the ANF Backup")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        [CmdletParameterBreakingChangeWithVersion("VolumeObject", "12", "0.16", ChangeDescription = ChangeDesc)]
-        [Parameter(
-            ParameterSetName = ParentObjectParameterSet,
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "The Volume object containing the backup to return")]
-        [ValidateNotNullOrEmpty]
-        public PSNetAppFilesVolume VolumeObject { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,

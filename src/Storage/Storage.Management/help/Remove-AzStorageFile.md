@@ -23,24 +23,24 @@ Remove-AzStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-DisAll
 
 ### Share
 ```
-Remove-AzStorageFile [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Path] <String> [-PassThru]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzStorageFile [-ShareClient] <ShareClient> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Remove-AzStorageFile [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
- [-Path] <String> [-PassThru] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+Remove-AzStorageFile [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String> [-PassThru]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### File
 ```
-Remove-AzStorageFile [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-PassThru]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzStorageFile [-ShareFileClient] <ShareFileClient> [-PassThru] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -134,22 +134,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Directory
-Specifies a folder as a **CloudFileDirectory** object.
-This cmdlet removes a file in the folder that this parameter specifies.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileDirectory
-Parameter Sets: Directory
-Aliases: CloudFileDirectory
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -DisAllowTrailingDot
 Disallow trailing dot (.) to suffix directory and file names.
 
@@ -162,23 +146,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -File
-Specifies a file as a **CloudFile** object.
-This cmdlet removes the file that this parameter specifies.
-To obtain a **CloudFile** object, use the Get-AzStorageFile cmdlet.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFile
-Parameter Sets: File
-Aliases: CloudFile
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -229,25 +196,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Share
-Specifies a **CloudFileShare** object.
-This cmdlet removes the file in the share this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
-This object contains the storage context.
-If you specify this parameter, do not specify the *Context* parameter.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileShare
-Parameter Sets: Share
-Aliases: CloudFileShare
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -ShareClient
 ShareClient object indicated the share where the file would be removed.
 
@@ -256,8 +204,8 @@ Type: Azure.Storage.Files.Shares.ShareClient
 Parameter Sets: Share
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -271,8 +219,8 @@ Type: Azure.Storage.Files.Shares.ShareDirectoryClient
 Parameter Sets: Directory
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -286,8 +234,8 @@ Type: Azure.Storage.Files.Shares.ShareFileClient
 Parameter Sets: File
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -345,11 +293,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Azure.Storage.Files.Shares.ShareClient
 
-### Microsoft.Azure.Storage.File.CloudFileDirectory
+### Azure.Storage.Files.Shares.ShareDirectoryClient
 
-### Microsoft.Azure.Storage.File.CloudFile
+### Azure.Storage.Files.Shares.ShareFileClient
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

@@ -17,6 +17,7 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -35,7 +36,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
-        private const string ByResourceIdParameterSet = "ByResourceId";
+        private const string ByParentResourceIdParameterSet = "ByParentResourceId";
+        private const string BySecretUriParameterSet = "BySecretUri";
 
         #endregion
 
@@ -53,6 +55,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string VaultName { get; set; }
 
         /// <summary>
+        /// KeyVault Secret ID (uri of the secret)
+        /// </summary>
+        [Parameter(Mandatory = true,
+           Position = 0,
+           ParameterSetName = BySecretUriParameterSet,
+           HelpMessage = "The URI of the KeyVault Secret.")]
+        [Alias("SecretId")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
+        /// <summary>
         /// KeyVault object
         /// </summary>
         [Parameter(Mandatory = true,
@@ -64,15 +77,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
-        /// KeyVault ResourceId
+        /// KeyVault's ResourceId
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
-                   ParameterSetName = ByResourceIdParameterSet,
+                   ParameterSetName = ByParentResourceIdParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "KeyVault Resource Id")]
+        [Alias("ResourceId")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// The input file in which the backup blob is stored
@@ -91,10 +105,17 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 VaultName = InputObject.VaultName;
             }
-            else if (ResourceId != null)
+            else if (ParentResourceId != null)
             {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                VaultName = resourceIdentifier.ResourceName;
+                var ParentResourceIdentifier = new ResourceIdentifier(ParentResourceId);
+                VaultName = ParentResourceIdentifier.ResourceName;
+            }
+
+            if (ParameterSetName == BySecretUriParameterSet)
+            {
+                SecretUriComponents splitUri = new SecretUriComponents(Id);
+
+                VaultName = splitUri.VaultName;
             }
 
             if (ShouldProcess(VaultName, Properties.Resources.RestoreSecret))

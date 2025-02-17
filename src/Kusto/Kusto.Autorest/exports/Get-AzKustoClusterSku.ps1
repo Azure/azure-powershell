@@ -25,14 +25,14 @@ Get-AzKustoClusterSku
  Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAzureResourceSku
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAzureResourceSku
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
 #>
 function Get-AzKustoClusterSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAzureResourceSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAzureResourceSku])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

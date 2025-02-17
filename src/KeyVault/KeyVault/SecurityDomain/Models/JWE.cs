@@ -162,7 +162,7 @@ concatenation:
         public void SetCEK(X509Certificate2 cert, byte[] cek)
         {
             RSA rsa = cert.GetRSAPublicKey();
-            jwe_decode.encrypted_key = rsa.Encrypt(cek, GetPaddingMode());
+            jwe_decode.encrypted_key = rsa.Encrypt(cek, GetPaddingMode()); //CodeQL [SM03796] Because this code is an SDK/platform, we need to support not only RSA-OAEP-SHA256, but also legacy padding schemes.
         }
         byte[] DekFromCek(byte[] cek)
         {

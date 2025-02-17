@@ -89,7 +89,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths17CrvdcApplicationsApplicationIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='AddExpanded')]
@@ -102,14 +101,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential]
     # keyCredential
-    # To construct, see NOTES section for KEYCREDENTIAL properties and create a hash table.
     ${KeyCredential},
 
     [Parameter(ParameterSetName='AddExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential]
     # passwordCredential
-    # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
     ${PasswordCredential},
 
     [Parameter(ParameterSetName='AddExpanded')]
@@ -118,12 +115,25 @@ param(
     # .
     ${Proof},
 
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Add operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Add operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -177,6 +187,8 @@ begin {
         $mapping = @{
             Add = 'Az.MSGraph.private\Add-AzADApplicationKey_Add';
             AddExpanded = 'Az.MSGraph.private\Add-AzADApplicationKey_AddExpanded';
+            AddViaJsonFilePath = 'Az.MSGraph.private\Add-AzADApplicationKey_AddViaJsonFilePath';
+            AddViaJsonString = 'Az.MSGraph.private\Add-AzADApplicationKey_AddViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -262,7 +274,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths141Ryo0ApplicationsApplicationIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='AddExpanded')]
@@ -275,15 +286,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential]
     # passwordCredential
-    # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
     ${PasswordCredential},
+
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Add operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Add operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -337,6 +360,8 @@ begin {
         $mapping = @{
             Add = 'Az.MSGraph.private\Add-AzADApplicationPassword_Add';
             AddExpanded = 'Az.MSGraph.private\Add-AzADApplicationPassword_AddExpanded';
+            AddViaJsonFilePath = 'Az.MSGraph.private\Add-AzADApplicationPassword_AddViaJsonFilePath';
+            AddViaJsonString = 'Az.MSGraph.private\Add-AzADApplicationPassword_AddViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -444,7 +469,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsN3Fx9GServiceprincipalsServiceprincipalIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='AddExpanded')]
@@ -457,14 +481,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential]
     # keyCredential
-    # To construct, see NOTES section for KEYCREDENTIAL properties and create a hash table.
     ${KeyCredential},
 
     [Parameter(ParameterSetName='AddExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential]
     # passwordCredential
-    # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
     ${PasswordCredential},
 
     [Parameter(ParameterSetName='AddExpanded')]
@@ -473,12 +495,25 @@ param(
     # .
     ${Proof},
 
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Add operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Add operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -532,6 +567,8 @@ begin {
         $mapping = @{
             Add = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_Add';
             AddExpanded = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_AddExpanded';
+            AddViaJsonFilePath = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_AddViaJsonFilePath';
+            AddViaJsonString = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_AddViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -617,7 +654,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsIeboplServiceprincipalsServiceprincipalIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='AddExpanded')]
@@ -630,15 +666,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential]
     # passwordCredential
-    # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
     ${PasswordCredential},
+
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Add operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Add operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -692,6 +740,8 @@ begin {
         $mapping = @{
             Add = 'Az.MSGraph.private\Add-AzADServicePrincipalPassword_Add';
             AddExpanded = 'Az.MSGraph.private\Add-AzADServicePrincipalPassword_AddExpanded';
+            AddViaJsonFilePath = 'Az.MSGraph.private\Add-AzADServicePrincipalPassword_AddViaJsonFilePath';
+            AddViaJsonString = 'Az.MSGraph.private\Add-AzADServicePrincipalPassword_AddViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -811,7 +861,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -999,7 +1050,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1181,7 +1233,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1364,7 +1417,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1559,7 +1613,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1715,7 +1770,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1863,7 +1919,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1986,7 +2043,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2167,7 +2225,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2262,9 +2321,9 @@ end {
 
 <#
 .Synopsis
-Create new navigation property to federatedIdentityCredentials for applications
+create new navigation property to federatedIdentityCredentials for applications
 .Description
-Create new navigation property to federatedIdentityCredentials for applications
+create new navigation property to federatedIdentityCredentials for applications
 .Example
 New-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -Audience api://AzureADTokenExchange -Issuer https://login.microsoftonline.com/3d1e2be9-a10a-4a0c-8380-7ce190f98ed9/v2.0 -name 'test-cred' -Subject 'subject'
 
@@ -2283,13 +2342,13 @@ param(
     # key: id of application
     ${ApplicationObjectId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -2300,14 +2359,14 @@ param(
     # Required.
     ${Audience},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The un-validated, user-provided description of the federated identity credential.
     # Optional.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The URL of the external identity provider and must match the issuer claim of the external token being exchanged.
@@ -2315,7 +2374,7 @@ param(
     # Required.
     ${Issuer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # is the unique identifier for the federated identity credential, which has a character limit of 120 characters and must be URL friendly.
@@ -2325,7 +2384,7 @@ param(
     # Supports $filter (eq).
     ${Name},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Required.
@@ -2336,12 +2395,25 @@ param(
     # Supports $filter (eq).
     ${Subject},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2394,6 +2466,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MSGraph.private\New-AzADAppFederatedCredential_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADAppFederatedCredential_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADAppFederatedCredential_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -2533,7 +2607,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: .
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -2797,7 +2871,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: .
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -3008,7 +3082,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -3184,64 +3258,61 @@ function New-AzADApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
     # Defines custom behavior that a consuming service can use to call an app in specific contexts.
     # For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality.
     # This will let services like Office 365 call the application in the context of a document the user is working on.
-    # To construct, see NOTES section for ADDIN properties and create a hash table.
     ${AddIn},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApiApplication]
     # apiApplication
-    # To construct, see NOTES section for API properties and create a hash table.
     ${Api},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]]
     # The collection of roles assigned to the application.
     # With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications.
     # Not nullable.
-    # To construct, see NOTES section for APPROLE properties and create a hash table.
     ${AppRole},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Unique identifier of the applicationTemplate.
     ${ApplicationTemplateId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${CreatedOnBehalfOfDeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${CreatedOnBehalfOfDisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # An optional description of the application.
@@ -3249,7 +3320,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies whether Microsoft has disabled the registered application.
@@ -3257,37 +3328,35 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[]]
     # Federated identities for applications.
     # Supports $expand and $filter (eq when counting empty collections).
-    # To construct, see NOTES section for FEDERATEDIDENTITYCREDENTIALS properties and create a hash table.
     ${FederatedIdentityCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects.
     # To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
     ${GroupMembershipClaim},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
     # .
-    # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -3298,21 +3367,20 @@ param(
     # Supports $filter (eq, ne, ge, le, startsWith).
     ${IdentifierUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
     # informationalUrl
-    # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether this application supports device authentication without a user.
     # The default is false.
     ${IsDeviceOnlyAuthSupported},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies the fallback application type as public client, such as an installed application running on a mobile device.
@@ -3322,66 +3390,61 @@ param(
     # In those cases Azure AD interprets the application type based on the value of this property.
     ${IsFallbackPublicClient},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
     # The collection of key credentials associated with the application.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
     ${KeyCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Input File for Logo (The main logo for the application.
     # Not nullable.)
     ${LogoInputFile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Notes relevant for the management of the application.
     ${Note},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${Oauth2RequirePostResponse},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOptionalClaims]
     # optionalClaims
-    # To construct, see NOTES section for OPTIONALCLAIM properties and create a hash table.
     ${OptionalClaim},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettings]
     # parentalControlSettings
-    # To construct, see NOTES section for PARENTALCONTROLSETTING properties and create a hash table.
     ${ParentalControlSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
     # The collection of password credentials associated with the application.
     # Not nullable.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPublicClientApplication]
     # publicClientApplication
-    # To construct, see NOTES section for PUBLICCLIENT properties and create a hash table.
     ${PublicClient},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[]]
@@ -3390,17 +3453,16 @@ param(
     # This configuration of access to the required resources drives the consent experience.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for REQUIREDRESOURCEACCESS properties and create a hash table.
     ${RequiredResourceAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # References application or service contact information from a Service or Asset Management database.
     # Nullable.
     ${ServiceManagementReference},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the Microsoft accounts that are supported for the current application.
@@ -3409,14 +3471,13 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${SignInAudience},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplication]
     # spaApplication
-    # To construct, see NOTES section for SPA properties and create a hash table.
     ${Spa},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -3424,7 +3485,7 @@ param(
     # Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the keyId of a public key from the keyCredentials collection.
@@ -3432,36 +3493,46 @@ param(
     # The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     ${TokenEncryptionKeyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]]
     # .
-    # To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
     ${TokenIssuancePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]]
     # The tokenLifetimePolicies assigned to this application.
     # Supports $expand.
-    # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
     # webApplication
-    # To construct, see NOTES section for WEB properties and create a hash table.
     ${Web},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -3514,6 +3585,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MSGraph.private\New-AzADApplication_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADApplication_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADApplication_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -3594,12 +3667,25 @@ param(
     # Additional Parameters
     ${AdditionalProperties},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -3659,6 +3745,8 @@ begin {
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADGroupGraphRefMember_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADGroupGraphRefMember_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADGroupGraphRefMember_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADGroupGraphRefMember_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -3693,9 +3781,9 @@ end {
 
 <#
 .Synopsis
-Create new navigation property ref to owners for groups
+create new navigation property ref to owners for groups
 .Description
-Create new navigation property ref to owners for groups
+create new navigation property ref to owners for groups
 .Example
 {{ Add code here }}
 .Example
@@ -3733,7 +3821,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -3869,22 +3958,21 @@ function New-AzADGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignmentAutoGenerated[]]
     # Represents the app roles a group has been granted for an application.
     # Supports $expand.
-    # To construct, see NOTES section for APPROLEASSIGNMENT properties and create a hash table.
     ${AppRoleAssignment},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Describes a classification for the group (such as low, medium or high business impact).
@@ -3892,21 +3980,20 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith).
     ${Classification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject]
     # Represents an Azure Active Directory object.
     # The directoryObject type is the base type for many other directory entity types.
-    # To construct, see NOTES section for CREATEDONBEHALFOF properties and create a hash table.
     ${CreatedOnBehalfOf},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # An optional description for the group.
@@ -3914,13 +4001,13 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -3931,7 +4018,7 @@ param(
     # Supports $filter (eq, NOT).
     ${GroupType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether there are members in this group that have license errors from its group-based license assignment.
@@ -3940,13 +4027,13 @@ param(
     # Supports $filter (eq).
     ${HasMembersWithLicenseError},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${IsArchived},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether this group can be assigned to an Azure Active Directory role.This property can only be set while creating the group and is immutable.
@@ -3957,7 +4044,7 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${IsAssignableToRole},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether the group is mail-enabled.
@@ -3965,7 +4052,7 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${MailEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The mail alias for the group, unique in the organization.
@@ -3975,7 +4062,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${MailNickname},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The rule that determines members for this group if the group is a dynamic group (groupTypes contains DynamicMembership).
@@ -3984,7 +4071,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith).
     ${MembershipRule},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Indicates whether the dynamic membership processing is on or paused.
@@ -3993,16 +4080,15 @@ param(
     # Supports $filter (eq, ne, NOT, in).
     ${MembershipRuleProcessingState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceSpecificPermissionGrant[]]
     # The permissions that have been granted for a group to a specific application.
     # Supports $expand.
-    # To construct, see NOTES section for PERMISSIONGRANT properties and create a hash table.
     ${PermissionGrant},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The preferred data location for the group.
@@ -4010,7 +4096,7 @@ param(
     # Returned by default.
     ${PreferredDataLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The preferred language for a Microsoft 365 group.
@@ -4019,7 +4105,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${PreferredLanguage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether the group is a security group.
@@ -4027,14 +4113,14 @@ param(
     # Supports $filter (eq, ne, NOT, in).
     ${SecurityEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Security identifier of the group, used in Windows scenarios.
     # Returned by default.
     ${SecurityIdentifier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies a Microsoft 365 group's color theme.
@@ -4042,7 +4128,7 @@ param(
     # Returned by default.
     ${Theme},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the group join policy and group content visibility for groups.
@@ -4055,12 +4141,25 @@ param(
     # Returned by default.
     ${Visibility},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -4113,6 +4212,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MSGraph.private\New-AzADGroup_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADGroup_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADGroup_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4221,7 +4322,7 @@ BODY <IMicrosoftGraphOrganization>: organization
   [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
     [Id <String>]: The unique idenfier for an entity. Read-only.
   [MarketingNotificationEmail <String[]>]: Not nullable.
-  [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+  [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
   [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
   [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
   [PostalCode <String>]: Postal code of the address for the organization.
@@ -4313,7 +4414,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization]
     # organization
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4328,14 +4428,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAssignedPlan[]]
     # The collection of service plans associated with the tenant.
     # Not nullable.
-    # To construct, see NOTES section for ASSIGNEDPLAN properties and create a hash table.
     ${AssignedPlan},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBranding]
     # organizationalBranding
-    # To construct, see NOTES section for BRANDING properties and create a hash table.
     ${Branding},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4352,7 +4450,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphCertificateBasedAuthConfiguration[]]
     # Navigation property to manage certificate-based authentication configuration.
     # Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
-    # To construct, see NOTES section for CERTIFICATEBASEDAUTHCONFIGURATION properties and create a hash table.
     ${CertificateBasedAuthConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4402,7 +4499,6 @@ param(
     # The collection of open extensions defined for the organization.
     # Read-only.
     # Nullable.
-    # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4413,9 +4509,9 @@ param(
     ${MarketingNotificationEmail},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PSArgumentCompleterAttribute("unknown", "intune", "sccm", "office365")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority]
+    [System.String]
     # Mobile device management authority.
     ${MobileDeviceManagementAuthority},
 
@@ -4453,7 +4549,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPrivacyProfile]
     # privacyProfile
-    # To construct, see NOTES section for PRIVACYPROFILE properties and create a hash table.
     ${PrivacyProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4461,7 +4556,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphProvisionedPlan[]]
     # Not nullable.
-    # To construct, see NOTES section for PROVISIONEDPLAN properties and create a hash table.
     ${ProvisionedPlan},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4509,15 +4603,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphVerifiedDomain[]]
     # The collection of domains associated with this tenant.
     # Not nullable.
-    # To construct, see NOTES section for VERIFIEDDOMAIN properties and create a hash table.
     ${VerifiedDomain},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -4571,6 +4677,8 @@ begin {
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADOrganization_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADOrganization_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADOrganization_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADOrganization_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4605,9 +4713,9 @@ end {
 
 <#
 .Synopsis
-Create new navigation property to appRoleAssignments for servicePrincipals
+create new navigation property to appRoleAssignments for servicePrincipals
 .Description
-Create new navigation property to appRoleAssignments for servicePrincipals
+create new navigation property to appRoleAssignments for servicePrincipals
 .Example
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -ResourceId 351fa797-c81a-4998-9720-4c2ecb6c7abc -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 .Example
@@ -4648,7 +4756,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment]
     # Represents an Azure Active Directory object.
     # The directoryObject type is the base type for many other directory entity types.
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4693,12 +4800,25 @@ param(
     # Supports $filter (eq only).
     ${ResourceId},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -4752,6 +4872,8 @@ begin {
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4885,7 +5007,7 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -5118,7 +5240,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -5368,7 +5490,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -5579,7 +5701,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -5749,30 +5871,29 @@ function New-AzADServicePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the service principal account is enabled; otherwise, false.
     # Supports $filter (eq, ne, NOT, in).
     ${AccountEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
     # Defines custom behavior that a consuming service can use to call an app in specific contexts.
     # For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality.
     # This will let services like Microsoft 365 call the application in the context of a document the user is working on.
-    # To construct, see NOTES section for ADDIN properties and create a hash table.
     ${AddIn},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -5780,59 +5901,56 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${AlternativeName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The description exposed by the associated application.
     ${AppDescription},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The display name exposed by the associated application.
     ${AppDisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The unique identifier for the associated application (its appId property).
     ${AppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Contains the tenant id where the application is registered.
     # This is applicable only to service principals backed by applications.Supports $filter (eq, ne, NOT, ge, le).
     ${AppOwnerOrganizationId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]]
     # The roles exposed by the application which this service principal represents.
     # For more information see the appRoles property definition on the application entity.
     # Not nullable.
-    # To construct, see NOTES section for APPROLE properties and create a hash table.
     ${AppRole},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
     # App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.
-    # To construct, see NOTES section for APPROLEASSIGNEDTO properties and create a hash table.
     ${AppRoleAssignedTo},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
     # App role assignment for another app or service, granted to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for APPROLEASSIGNMENT properties and create a hash table.
     ${AppRoleAssignment},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens.
@@ -5841,31 +5959,29 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${AppRoleAssignmentRequired},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy[]]
     # The claimsMappingPolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for CLAIMSMAPPINGPOLICY properties and create a hash table.
     ${ClaimsMappingPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification[]]
     # The permission classifications for delegated permissions exposed by the app that this service principal represents.
     # Supports $expand.
-    # To construct, see NOTES section for DELEGATEDPERMISSIONCLASSIFICATION properties and create a hash table.
     ${DelegatedPermissionClassification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Free text field to provide an internal end-user facing description of the service principal.
@@ -5874,7 +5990,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies whether Microsoft has disabled the registered application.
@@ -5882,62 +5998,57 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[]]
     # Endpoints available for discovery.
     # Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.
-    # To construct, see NOTES section for ENDPOINT properties and create a hash table.
     ${Endpoint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[]]
     # .
-    # To construct, see NOTES section for FEDERATEDIDENTITYCREDENTIALS properties and create a hash table.
     ${FederatedIdentityCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
     # The homeRealmDiscoveryPolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Home page or landing page of the application.
     ${Homepage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
     # informationalUrl
-    # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
     # The collection of key credentials associated with the service principal.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
     ${KeyCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL where the service provider redirects the user to Azure AD to authenticate.
@@ -5946,20 +6057,20 @@ param(
     # The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.
     ${LoginUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.
     ${LogoutUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Free text field to capture information about the service principal, typically used for operational purposes.
     # Maximum allowed size is 1024 characters.
     ${Note},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -5967,26 +6078,24 @@ param(
     # This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
     ${NotificationEmailAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope[]]
     # The delegated permissions exposed by the application.
     # For more information see the oauth2PermissionScopes property on the application entity's api property.
     # Not nullable.
-    # To construct, see NOTES section for OAUTH2PERMISSIONSCOPE properties and create a hash table.
     ${Oauth2PermissionScope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
     # The collection of password credentials associated with the service principal.
     # Not nullable.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the single sign-on mode configured for this application.
@@ -5994,7 +6103,7 @@ param(
     # The supported values are password, saml, notSupported, and oidc.
     ${PreferredSingleSignOnMode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Reserved for internal use only.
@@ -6002,7 +6111,7 @@ param(
     # May be removed in future versions.
     ${PreferredTokenSigningKeyThumbprint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -6010,14 +6119,13 @@ param(
     # Not nullable.
     ${ReplyUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings]
     # samlSingleSignOnSettings
-    # To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
     ${SamlSingleSignOnSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -6029,7 +6137,7 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${ServicePrincipalName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Identifies if the service principal represents an application or a managed identity.
@@ -6038,7 +6146,7 @@ param(
     # For a service principal that represent a managed identity this is set as ManagedIdentity.
     ${ServicePrincipalType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -6047,7 +6155,7 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the keyId of a public key from the keyCredentials collection.
@@ -6055,38 +6163,48 @@ param(
     # The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     ${TokenEncryptionKeyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]]
     # The tokenIssuancePolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
     ${TokenIssuancePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]]
     # The tokenLifetimePolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]]
     # .
-    # To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
     ${TransitiveMemberOf},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -6139,6 +6257,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MSGraph.private\New-AzADServicePrincipal_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADServicePrincipal_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADServicePrincipal_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6217,7 +6337,7 @@ function New-AzADUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the account is enabled; otherwise, false.
@@ -6225,13 +6345,13 @@ param(
     # Supports $filter (eq, ne, NOT, and in).
     ${AccountEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Sets the age group of the user.
@@ -6240,7 +6360,7 @@ param(
     # Supports $filter (eq, ne, NOT, and in).
     ${AgeGroup},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time.
@@ -6249,7 +6369,7 @@ param(
     # Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
     ${ApproximateLastSignInDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The city in which the user is located.
@@ -6257,7 +6377,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${City},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The company name which the user is associated.
@@ -6265,7 +6385,7 @@ param(
     # The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${CompanyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The timestamp when the device is no longer deemed compliant.
@@ -6274,7 +6394,7 @@ param(
     # Read-only.
     ${ComplianceExpirationDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Sets whether consent has been obtained for minors.
@@ -6283,7 +6403,7 @@ param(
     # Supports $filter (eq, ne, NOT, and in).
     ${ConsentProvidedForMinor},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The country/region in which the user is located; for example, US or UK.
@@ -6291,53 +6411,52 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${Country},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name for the department in which the user works.
     # Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).
     ${Department},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Int32]
     # For internal use only.
     ${DeviceVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The date and time when the user was hired or will start work in case of a future hire.
     # Supports $filter (eq, ne, NOT , ge, le, in).
     ${EmployeeHireDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The employee identifier assigned to the user by the organization.
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${EmployeeId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEmployeeOrgData]
     # employeeOrgData
-    # To construct, see NOTES section for EMPLOYEEORGDATA properties and create a hash table.
     ${EmployeeOrgData},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Captures enterprise worker type.
@@ -6345,7 +6464,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${EmployeeType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation status.
@@ -6353,21 +6472,21 @@ param(
     # Supports $filter (eq, ne, NOT , in).
     ${ExternalUserState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # Shows the timestamp for the latest change to the externalUserState property.
     # Supports $filter (eq, ne, NOT , in).
     ${ExternalUserStateChangeDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The fax number of the user.
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${FaxNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The given name (first name) of the user.
@@ -6375,7 +6494,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${GivenName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphObjectIdentity[]]
@@ -6383,16 +6502,15 @@ param(
     # An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account.
     # May contain multiple items with the same signInType value.
     # Supports $filter (eq) only where the signInType is not userPrincipalName.
-    # To construct, see NOTES section for IDENTITY properties and create a hash table.
     ${Identity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Do not use - reserved for future use.
     ${IsResourceAccount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user's job title.
@@ -6400,7 +6518,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${JobTitle},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The SMTP address for the user, for example, admin@contoso.com.
@@ -6409,7 +6527,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).
     ${Mail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The mail alias for the user.
@@ -6418,15 +6536,14 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${MailNickname},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject]
     # Represents an Azure Active Directory object.
     # The directoryObject type is the base type for many other directory entity types.
-    # To construct, see NOTES section for MANAGER properties and create a hash table.
     ${Manager},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The office location in the user's place of business.
@@ -6434,7 +6551,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${OfficeLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
@@ -6444,7 +6561,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in)..
     ${OnPremisesImmutableId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The last time at which the object was synced with the on-premises directory.
@@ -6453,7 +6570,7 @@ param(
     # Supports $filter (eq, ne, not, ge, le, in).
     ${OnPremisesLastSyncDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default).
@@ -6461,7 +6578,7 @@ param(
     # Supports $filter (eq, ne, not, in, and eq on null values).
     ${OnPremisesSyncEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Operating system of the device.
@@ -6469,7 +6586,7 @@ param(
     # This property is read-only.
     ${OperatingSystem},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Operating system version of the device.
@@ -6477,14 +6594,14 @@ param(
     # Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
     ${OperatingSystemVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
     # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports $filter (eq, NOT, ge, le, in, startsWith).
     ${OtherMail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies password policies for the user.
@@ -6493,14 +6610,13 @@ param(
     # The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).
     ${PasswordPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile]
     # passwordProfile
-    # To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
     ${PasswordProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -6509,7 +6625,7 @@ param(
     # Supports $filter (eq, not, ge, le, startsWith).
     ${PhysicalId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The postal code for the user's postal address.
@@ -6519,7 +6635,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${PostalCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The preferred language for the user.
@@ -6527,7 +6643,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${PreferredLanguage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the Outlook global address list should contain this user, otherwise false.
@@ -6536,7 +6652,7 @@ param(
     # Supports $filter (eq, ne, NOT, in).
     ${ShowInAddressList},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The state or province in the user's address.
@@ -6544,7 +6660,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${State},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The street address of the user's place of business.
@@ -6552,7 +6668,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${StreetAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user's surname (family name or last name).
@@ -6560,7 +6676,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${Surname},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Type of trust for the joined device.
@@ -6569,7 +6685,7 @@ param(
     # For more details, see Introduction to device management in Azure Active Directory
     ${TrustType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # A two letter country code (ISO standard 3166).
@@ -6579,7 +6695,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${UsageLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user principal name (UPN) of the user.
@@ -6591,19 +6707,32 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.
     ${UserPrincipalName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # A string value that can be used to classify user types in your directory, such as Member and Guest.
     # Supports $filter (eq, ne, NOT, in,).
     ${UserType},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -6656,6 +6785,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MSGraph.private\New-AzADUser_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADUser_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADUser_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6728,7 +6859,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsHxlydaApplicationsApplicationIdMicrosoftGraphRemovekeyPostRequestbodyContentApplicationJsonSchema]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='RemoveExpanded')]
@@ -6749,12 +6879,25 @@ param(
     # .
     ${Proof},
 
+    [Parameter(ParameterSetName='RemoveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Remove operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RemoveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Remove operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -6814,6 +6957,8 @@ begin {
         $mapping = @{
             Remove = 'Az.MSGraph.private\Remove-AzADApplicationKey_Remove';
             RemoveExpanded = 'Az.MSGraph.private\Remove-AzADApplicationKey_RemoveExpanded';
+            RemoveViaJsonFilePath = 'Az.MSGraph.private\Remove-AzADApplicationKey_RemoveViaJsonFilePath';
+            RemoveViaJsonString = 'Az.MSGraph.private\Remove-AzADApplicationKey_RemoveViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6885,7 +7030,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsHv033BApplicationsApplicationIdMicrosoftGraphRemovepasswordPostRequestbodyContentApplicationJsonSchema]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='RemoveExpanded')]
@@ -6900,12 +7044,25 @@ param(
     # .
     ${KeyId},
 
+    [Parameter(ParameterSetName='RemoveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Remove operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RemoveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Remove operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -6965,6 +7122,8 @@ begin {
         $mapping = @{
             Remove = 'Az.MSGraph.private\Remove-AzADApplicationPassword_Remove';
             RemoveExpanded = 'Az.MSGraph.private\Remove-AzADApplicationPassword_RemoveExpanded';
+            RemoveViaJsonFilePath = 'Az.MSGraph.private\Remove-AzADApplicationPassword_RemoveViaJsonFilePath';
+            RemoveViaJsonString = 'Az.MSGraph.private\Remove-AzADApplicationPassword_RemoveViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -7036,7 +7195,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -7169,7 +7329,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -7299,7 +7460,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -7430,7 +7592,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths1UhuhlbServiceprincipalsServiceprincipalIdMicrosoftGraphRemovekeyPostRequestbodyContentApplicationJsonSchema]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='RemoveExpanded')]
@@ -7451,12 +7612,25 @@ param(
     # .
     ${Proof},
 
+    [Parameter(ParameterSetName='RemoveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Remove operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RemoveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Remove operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -7516,6 +7690,8 @@ begin {
         $mapping = @{
             Remove = 'Az.MSGraph.private\Remove-AzADServicePrincipalKey_Remove';
             RemoveExpanded = 'Az.MSGraph.private\Remove-AzADServicePrincipalKey_RemoveExpanded';
+            RemoveViaJsonFilePath = 'Az.MSGraph.private\Remove-AzADServicePrincipalKey_RemoveViaJsonFilePath';
+            RemoveViaJsonString = 'Az.MSGraph.private\Remove-AzADServicePrincipalKey_RemoveViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -7587,7 +7763,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths1Idoj4GServiceprincipalsServiceprincipalIdMicrosoftGraphRemovepasswordPostRequestbodyContentApplicationJsonSchema]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='RemoveExpanded')]
@@ -7602,12 +7777,25 @@ param(
     # .
     ${KeyId},
 
+    [Parameter(ParameterSetName='RemoveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Remove operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RemoveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Remove operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -7667,6 +7855,8 @@ begin {
         $mapping = @{
             Remove = 'Az.MSGraph.private\Remove-AzADServicePrincipalPassword_Remove';
             RemoveExpanded = 'Az.MSGraph.private\Remove-AzADServicePrincipalPassword_RemoveExpanded';
+            RemoveViaJsonFilePath = 'Az.MSGraph.private\Remove-AzADServicePrincipalPassword_RemoveViaJsonFilePath';
+            RemoveViaJsonString = 'Az.MSGraph.private\Remove-AzADServicePrincipalPassword_RemoveViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -7738,7 +7928,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -7866,7 +8057,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -8068,7 +8260,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: .
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -8332,7 +8524,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: .
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -8543,7 +8735,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -8726,64 +8918,61 @@ param(
     # key: id of application
     ${Id},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
     # Defines custom behavior that a consuming service can use to call an app in specific contexts.
     # For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality.
     # This will let services like Office 365 call the application in the context of a document the user is working on.
-    # To construct, see NOTES section for ADDIN properties and create a hash table.
     ${AddIn},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApiApplication]
     # apiApplication
-    # To construct, see NOTES section for API properties and create a hash table.
     ${Api},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]]
     # The collection of roles assigned to the application.
     # With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications.
     # Not nullable.
-    # To construct, see NOTES section for APPROLE properties and create a hash table.
     ${AppRole},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Unique identifier of the applicationTemplate.
     ${ApplicationTemplateId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${CreatedOnBehalfOfDeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${CreatedOnBehalfOfDisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # An optional description of the application.
@@ -8791,7 +8980,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies whether Microsoft has disabled the registered application.
@@ -8799,37 +8988,35 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[]]
     # Federated identities for applications.
     # Supports $expand and $filter (eq when counting empty collections).
-    # To construct, see NOTES section for FEDERATEDIDENTITYCREDENTIALS properties and create a hash table.
     ${FederatedIdentityCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects.
     # To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
     ${GroupMembershipClaim},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
     # .
-    # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -8840,21 +9027,20 @@ param(
     # Supports $filter (eq, ne, ge, le, startsWith).
     ${IdentifierUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
     # informationalUrl
-    # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether this application supports device authentication without a user.
     # The default is false.
     ${IsDeviceOnlyAuthSupported},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies the fallback application type as public client, such as an installed application running on a mobile device.
@@ -8864,66 +9050,61 @@ param(
     # In those cases Azure AD interprets the application type based on the value of this property.
     ${IsFallbackPublicClient},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
     # The collection of key credentials associated with the application.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
     ${KeyCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Input File for Logo (The main logo for the application.
     # Not nullable.)
     ${LogoInputFile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Notes relevant for the management of the application.
     ${Note},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${Oauth2RequirePostResponse},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOptionalClaims]
     # optionalClaims
-    # To construct, see NOTES section for OPTIONALCLAIM properties and create a hash table.
     ${OptionalClaim},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettings]
     # parentalControlSettings
-    # To construct, see NOTES section for PARENTALCONTROLSETTING properties and create a hash table.
     ${ParentalControlSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
     # The collection of password credentials associated with the application.
     # Not nullable.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPublicClientApplication]
     # publicClientApplication
-    # To construct, see NOTES section for PUBLICCLIENT properties and create a hash table.
     ${PublicClient},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[]]
@@ -8932,17 +9113,16 @@ param(
     # This configuration of access to the required resources drives the consent experience.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for REQUIREDRESOURCEACCESS properties and create a hash table.
     ${RequiredResourceAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # References application or service contact information from a Service or Asset Management database.
     # Nullable.
     ${ServiceManagementReference},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the Microsoft accounts that are supported for the current application.
@@ -8951,14 +9131,13 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${SignInAudience},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplication]
     # spaApplication
-    # To construct, see NOTES section for SPA properties and create a hash table.
     ${Spa},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -8966,7 +9145,7 @@ param(
     # Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the keyId of a public key from the keyCredentials collection.
@@ -8974,36 +9153,46 @@ param(
     # The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     ${TokenEncryptionKeyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]]
     # .
-    # To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
     ${TokenIssuancePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]]
     # The tokenLifetimePolicies assigned to this application.
     # Supports $expand.
-    # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
     # webApplication
-    # To construct, see NOTES section for WEB properties and create a hash table.
     ${Web},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -9062,6 +9251,8 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.MSGraph.private\Update-AzADApplication_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.MSGraph.private\Update-AzADApplication_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.MSGraph.private\Update-AzADApplication_UpdateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -9195,7 +9386,7 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -9428,7 +9619,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -9678,7 +9869,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -9889,7 +10080,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -10066,30 +10257,29 @@ param(
     # key: id of servicePrincipal
     ${Id},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the service principal account is enabled; otherwise, false.
     # Supports $filter (eq, ne, NOT, in).
     ${AccountEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
     # Defines custom behavior that a consuming service can use to call an app in specific contexts.
     # For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality.
     # This will let services like Microsoft 365 call the application in the context of a document the user is working on.
-    # To construct, see NOTES section for ADDIN properties and create a hash table.
     ${AddIn},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -10097,59 +10287,56 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${AlternativeName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The description exposed by the associated application.
     ${AppDescription},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The display name exposed by the associated application.
     ${AppDisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The unique identifier for the associated application (its appId property).
     ${AppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Contains the tenant id where the application is registered.
     # This is applicable only to service principals backed by applications.Supports $filter (eq, ne, NOT, ge, le).
     ${AppOwnerOrganizationId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]]
     # The roles exposed by the application which this service principal represents.
     # For more information see the appRoles property definition on the application entity.
     # Not nullable.
-    # To construct, see NOTES section for APPROLE properties and create a hash table.
     ${AppRole},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
     # App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.
-    # To construct, see NOTES section for APPROLEASSIGNEDTO properties and create a hash table.
     ${AppRoleAssignedTo},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
     # App role assignment for another app or service, granted to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for APPROLEASSIGNMENT properties and create a hash table.
     ${AppRoleAssignment},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens.
@@ -10158,31 +10345,29 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${AppRoleAssignmentRequired},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy[]]
     # The claimsMappingPolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for CLAIMSMAPPINGPOLICY properties and create a hash table.
     ${ClaimsMappingPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification[]]
     # The permission classifications for delegated permissions exposed by the app that this service principal represents.
     # Supports $expand.
-    # To construct, see NOTES section for DELEGATEDPERMISSIONCLASSIFICATION properties and create a hash table.
     ${DelegatedPermissionClassification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Free text field to provide an internal end-user facing description of the service principal.
@@ -10191,7 +10376,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies whether Microsoft has disabled the registered application.
@@ -10199,62 +10384,57 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[]]
     # Endpoints available for discovery.
     # Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.
-    # To construct, see NOTES section for ENDPOINT properties and create a hash table.
     ${Endpoint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[]]
     # .
-    # To construct, see NOTES section for FEDERATEDIDENTITYCREDENTIALS properties and create a hash table.
     ${FederatedIdentityCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
     # The homeRealmDiscoveryPolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Home page or landing page of the application.
     ${Homepage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
     # informationalUrl
-    # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
     # The collection of key credentials associated with the service principal.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
     ${KeyCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL where the service provider redirects the user to Azure AD to authenticate.
@@ -10263,20 +10443,20 @@ param(
     # The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.
     ${LoginUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.
     ${LogoutUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Free text field to capture information about the service principal, typically used for operational purposes.
     # Maximum allowed size is 1024 characters.
     ${Note},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -10284,26 +10464,24 @@ param(
     # This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
     ${NotificationEmailAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope[]]
     # The delegated permissions exposed by the application.
     # For more information see the oauth2PermissionScopes property on the application entity's api property.
     # Not nullable.
-    # To construct, see NOTES section for OAUTH2PERMISSIONSCOPE properties and create a hash table.
     ${Oauth2PermissionScope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
     # The collection of password credentials associated with the service principal.
     # Not nullable.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the single sign-on mode configured for this application.
@@ -10311,7 +10489,7 @@ param(
     # The supported values are password, saml, notSupported, and oidc.
     ${PreferredSingleSignOnMode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Reserved for internal use only.
@@ -10319,7 +10497,7 @@ param(
     # May be removed in future versions.
     ${PreferredTokenSigningKeyThumbprint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -10327,14 +10505,13 @@ param(
     # Not nullable.
     ${ReplyUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings]
     # samlSingleSignOnSettings
-    # To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
     ${SamlSingleSignOnSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -10346,7 +10523,7 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${ServicePrincipalName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Identifies if the service principal represents an application or a managed identity.
@@ -10355,7 +10532,7 @@ param(
     # For a service principal that represent a managed identity this is set as ManagedIdentity.
     ${ServicePrincipalType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -10364,7 +10541,7 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the keyId of a public key from the keyCredentials collection.
@@ -10372,38 +10549,48 @@ param(
     # The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     ${TokenEncryptionKeyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]]
     # The tokenIssuancePolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
     ${TokenIssuancePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]]
     # The tokenLifetimePolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]]
     # .
-    # To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
     ${TransitiveMemberOf},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -10462,6 +10649,8 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.MSGraph.private\Update-AzADServicePrincipal_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.MSGraph.private\Update-AzADServicePrincipal_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.MSGraph.private\Update-AzADServicePrincipal_UpdateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -10542,7 +10731,7 @@ param(
     # key: id of user
     ${Id},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true for enabling the account; otherwise, false.
@@ -10550,13 +10739,13 @@ param(
     # `-AccountEnabled $false` is ignored when changing the account's password.
     ${AccountEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Sets the age group of the user.
@@ -10565,7 +10754,7 @@ param(
     # Supports $filter (eq, ne, NOT, and in).
     ${AgeGroup},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time.
@@ -10574,7 +10763,7 @@ param(
     # Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
     ${ApproximateLastSignInDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The city in which the user is located.
@@ -10582,7 +10771,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${City},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The company name which the user is associated.
@@ -10590,7 +10779,7 @@ param(
     # The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${CompanyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The timestamp when the device is no longer deemed compliant.
@@ -10599,7 +10788,7 @@ param(
     # Read-only.
     ${ComplianceExpirationDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Sets whether consent has been obtained for minors.
@@ -10608,7 +10797,7 @@ param(
     # Supports $filter (eq, ne, NOT, and in).
     ${ConsentProvidedForMinor},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The country/region in which the user is located; for example, US or UK.
@@ -10616,53 +10805,52 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${Country},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name for the department in which the user works.
     # Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).
     ${Department},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Int32]
     # For internal use only.
     ${DeviceVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The date and time when the user was hired or will start work in case of a future hire.
     # Supports $filter (eq, ne, NOT , ge, le, in).
     ${EmployeeHireDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The employee identifier assigned to the user by the organization.
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${EmployeeId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEmployeeOrgData]
     # employeeOrgData
-    # To construct, see NOTES section for EMPLOYEEORGDATA properties and create a hash table.
     ${EmployeeOrgData},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Captures enterprise worker type.
@@ -10670,7 +10858,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${EmployeeType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation status.
@@ -10678,21 +10866,21 @@ param(
     # Supports $filter (eq, ne, NOT , in).
     ${ExternalUserState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # Shows the timestamp for the latest change to the externalUserState property.
     # Supports $filter (eq, ne, NOT , in).
     ${ExternalUserStateChangeDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The fax number of the user.
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${FaxNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The given name (first name) of the user.
@@ -10700,7 +10888,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${GivenName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphObjectIdentity[]]
@@ -10708,16 +10896,15 @@ param(
     # An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account.
     # May contain multiple items with the same signInType value.
     # Supports $filter (eq) only where the signInType is not userPrincipalName.
-    # To construct, see NOTES section for IDENTITY properties and create a hash table.
     ${Identity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Do not use - reserved for future use.
     ${IsResourceAccount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user's job title.
@@ -10725,7 +10912,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${JobTitle},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The SMTP address for the user, for example, admin@contoso.com.
@@ -10734,7 +10921,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).
     ${Mail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The mail alias for the user.
@@ -10743,15 +10930,14 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${MailNickname},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject]
     # Represents an Azure Active Directory object.
     # The directoryObject type is the base type for many other directory entity types.
-    # To construct, see NOTES section for MANAGER properties and create a hash table.
     ${Manager},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The office location in the user's place of business.
@@ -10759,7 +10945,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${OfficeLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
@@ -10769,7 +10955,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in)..
     ${OnPremisesImmutableId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The last time at which the object was synced with the on-premises directory.
@@ -10778,7 +10964,7 @@ param(
     # Supports $filter (eq, ne, not, ge, le, in).
     ${OnPremisesLastSyncDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default).
@@ -10786,7 +10972,7 @@ param(
     # Supports $filter (eq, ne, not, in, and eq on null values).
     ${OnPremisesSyncEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Operating system of the device.
@@ -10794,7 +10980,7 @@ param(
     # This property is read-only.
     ${OperatingSystem},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Operating system version of the device.
@@ -10802,14 +10988,14 @@ param(
     # Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
     ${OperatingSystemVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
     # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports $filter (eq, NOT, ge, le, in, startsWith).
     ${OtherMail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies password policies for the user.
@@ -10818,14 +11004,13 @@ param(
     # The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).
     ${PasswordPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile]
     # passwordProfile
-    # To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
     ${PasswordProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -10834,7 +11019,7 @@ param(
     # Supports $filter (eq, not, ge, le, startsWith).
     ${PhysicalId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The postal code for the user's postal address.
@@ -10844,7 +11029,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${PostalCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The preferred language for the user.
@@ -10852,7 +11037,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${PreferredLanguage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the Outlook global address list should contain this user, otherwise false.
@@ -10861,7 +11046,7 @@ param(
     # Supports $filter (eq, ne, NOT, in).
     ${ShowInAddressList},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The state or province in the user's address.
@@ -10869,7 +11054,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${State},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The street address of the user's place of business.
@@ -10877,7 +11062,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${StreetAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user's surname (family name or last name).
@@ -10885,7 +11070,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${Surname},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Type of trust for the joined device.
@@ -10894,7 +11079,7 @@ param(
     # For more details, see Introduction to device management in Azure Active Directory
     ${TrustType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # A two letter country code (ISO standard 3166).
@@ -10904,7 +11089,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${UsageLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user principal name (UPN) of the user.
@@ -10916,19 +11101,32 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.
     ${UserPrincipalName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # A string value that can be used to classify user types in your directory, such as Member and Guest.
     # Supports $filter (eq, ne, NOT, in,).
     ${UserType},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -10987,6 +11185,8 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.MSGraph.private\Update-AzADUser_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.MSGraph.private\Update-AzADUser_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.MSGraph.private\Update-AzADUser_UpdateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

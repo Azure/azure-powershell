@@ -324,6 +324,9 @@ Cancels a running job.
 ### [Test-AzRecoveryServicesDSMove](Test-AzRecoveryServicesDSMove.md)
 This cmdlet performs necessary validations for DS Move.
 
+### [Undo-AzRecoveryServicesBackupContainerDeletion](Undo-AzRecoveryServicesBackupContainerDeletion.md)
+Undeletes a previously soft-deleted backup container in a recovery services vault.
+
 ### [Undo-AzRecoveryServicesBackupItemDeletion](Undo-AzRecoveryServicesBackupItemDeletion.md)
 If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever
 

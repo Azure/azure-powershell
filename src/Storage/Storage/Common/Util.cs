@@ -855,5 +855,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             return new Uri(noLastSegment);
         }
+
+        public static string RemoveFilePathTrailingDot(string filePath)
+        {
+            string filePathWithoutDot;
+            string[] segments = filePath.Split(NamingUtil.PathSeparators);
+            List<string> segmentsWithoutDot = new List<string>();
+
+            foreach (string segment in segments)
+            {
+                segmentsWithoutDot.Add(segment.TrimEnd('.'));
+            }
+            filePathWithoutDot = String.Join(Path.DirectorySeparatorChar.ToString(), segmentsWithoutDot);
+
+            return filePathWithoutDot;
+        }
     }
 }

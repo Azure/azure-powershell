@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.1.0
 * Added feature for auto scaling and upgradeprofile, and nginx configuration analysis
 

@@ -12,18 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Storage;
-using XFile = Microsoft.Azure.Storage.File;
-using Microsoft.Azure.Storage.File;
 using System;
 using System.Collections.Concurrent;
 using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Azure.Storage.Files.Shares;
-using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Azure.Storage.Files.Shares.Models;
 
@@ -49,19 +44,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("File", "13.0.0", "8.0.0", ChangeDescription = "The parameter File (alias CloudFile) will be deprecated, and ShareFileClient will be mandatory.")]
         [Parameter(
             Position = 0,
-            HelpMessage = "Target file instance", Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.FileParameterSetName)]
-        [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
-
-        [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.FileParameterSetName,
@@ -109,10 +94,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             if (this.ShareFileClient != null)
             {
                 file = this.ShareFileClient;
-            }
-            else if (null != this.File)
-            {
-                file = AzureStorageFile.GetTrack2FileClient(this.File);
             }
             else
             {

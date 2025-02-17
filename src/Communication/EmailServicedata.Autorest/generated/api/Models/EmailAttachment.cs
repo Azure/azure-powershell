@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
         Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal
     {
 
+        /// <summary>Backing field for <see cref="ContentId" /> property.</summary>
+        private string _contentId;
+
+        /// <summary>Unique identifier (CID) to reference an inline attachment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.PropertyOrigin.Owned)]
+        public string ContentId { get => this._contentId; set => this._contentId = value; }
+
         /// <summary>Backing field for <see cref="ContentInBase64" /> property.</summary>
         private byte[] _contentInBase64;
 
@@ -44,6 +51,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
     public partial interface IEmailAttachment :
         Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IJsonSerializable
     {
+        /// <summary>Unique identifier (CID) to reference an inline attachment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Unique identifier (CID) to reference an inline attachment.",
+        SerializedName = @"contentId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ContentId { get; set; }
         /// <summary>Base64 encoded contents of the attachment</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Info(
         Required = true,
@@ -83,6 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
     internal partial interface IEmailAttachmentInternal
 
     {
+        /// <summary>Unique identifier (CID) to reference an inline attachment.</summary>
+        string ContentId { get; set; }
         /// <summary>Base64 encoded contents of the attachment</summary>
         byte[] ContentInBase64 { get; set; }
         /// <summary>MIME type of the content being attached.</summary>

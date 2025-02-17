@@ -172,15 +172,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// <summary>Backing field for <see cref="Token" /> property.</summary>
         private string _token;
 
-        /// <summary>
-        /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
-        /// to fetch authorization token for different tenant.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\").Token to fetch authorization token for different tenant.")]
+        /// <summary>Parameter deprecate. Please use SecureToken instead.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Parameter deprecate. Please use SecureToken instead.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId ""xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"").Token to fetch authorization token for different tenant.",
+        Description = @"Parameter deprecate. Please use SecureToken instead.",
         SerializedName = @"x-ms-authorization-auxiliary",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Header)]

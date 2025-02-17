@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusSubscription
 
 ## SYNOPSIS
-Create a topic subscription.
+create a topic subscription.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGro
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
  [-IsDurable] [-IsShared] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession]
- [-Status <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Status <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,13 +32,13 @@ New-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceInputO
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations]
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-IsDurable] [-IsShared]
  [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceInputObject <IServiceBusIdentity>
- -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-WhatIf]
+ -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,18 +50,18 @@ New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdenti
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations]
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-IsDurable] [-IsShared]
  [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopic
 ```
 New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
- -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-WhatIf]
+ -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a topic subscription.
+create a topic subscription.
 
 ## EXAMPLES
 
@@ -396,6 +396,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RequiresSession
 Value indicating if a subscription supports the concept of sessions.
 
@@ -536,3 +551,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx)
+

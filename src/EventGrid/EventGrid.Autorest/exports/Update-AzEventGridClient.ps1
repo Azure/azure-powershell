@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a client with the specified parameters.
+update a client with the specified parameters.
 .Description
-Update a client with the specified parameters.
+update a client with the specified parameters.
 .Example
 $attribute = @{"room"="345";"floor"="3";"deviceTypes"="AC"}
 Update-AzEventGridClient -Name azps-client -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -Attribute $attribute -Description "This is a test client"

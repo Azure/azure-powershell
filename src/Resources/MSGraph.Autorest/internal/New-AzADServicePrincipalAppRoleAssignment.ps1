@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create new navigation property to appRoleAssignments for servicePrincipals
+create new navigation property to appRoleAssignments for servicePrincipals
 .Description
-Create new navigation property to appRoleAssignments for servicePrincipals
+create new navigation property to appRoleAssignments for servicePrincipals
 .Example
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -ResourceId 351fa797-c81a-4998-9720-4c2ecb6c7abc -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 .Example
@@ -59,7 +59,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment]
     # Represents an Azure Active Directory object.
     # The directoryObject type is the base type for many other directory entity types.
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -104,12 +103,25 @@ param(
     # Supports $filter (eq only).
     ${ResourceId},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -163,6 +175,8 @@ begin {
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADServicePrincipalAppRoleAssignment_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

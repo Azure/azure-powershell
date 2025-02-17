@@ -50,7 +50,7 @@ This operation deletes the policy definition in the given subscription with the 
 ### Example 1: Remove policy set definition by resource ID
 ```powershell
 $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
+Remove-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Force
 ```
 
 The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
@@ -59,7 +59,7 @@ The second command removes the policy set definition identified by the **Resourc
 
 ### Example 2: [Backcompat] Remove policy set definition by resource ID
 ```powershell
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition' -BackwardCompatible
 Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force -BackwardCompatible
 True
 ```

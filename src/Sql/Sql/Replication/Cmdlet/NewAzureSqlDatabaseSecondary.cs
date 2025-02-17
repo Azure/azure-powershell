@@ -26,6 +26,8 @@ using System.Globalization;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using Microsoft.Azure.Commands.Sql.ReplicationLink.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
@@ -99,6 +101,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             HelpMessage = "The name of the secondary database to create.")]
         [ValidateNotNullOrEmpty]
         public string PartnerDatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the subscription id of the secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The subscription id of the secondary database to create.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the read intent of the secondary (ReadOnly is not yet supported).
@@ -259,7 +269,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             // We try to get the database.  Since this is a create secondary database operation, we don't want the secondary database to already exist
             try
             {
-                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName));
+                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName), this.PartnerSubscriptionId);
             }
             catch (CloudException ex)
             {
@@ -286,7 +296,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureReplicationLinkModel> ApplyUserInputToModel(IEnumerable<AzureReplicationLinkModel> model)
         {
-            string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName);
+            string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName, this.PartnerSubscriptionId);
             List<Model.AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
             Database.Model.AzureSqlDatabaseModel primaryDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
             
@@ -349,9 +359,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
+            string partnerSubscriptionId = MyInvocation.BoundParameters.ContainsKey("PartnerSubscriptionId") ? this.PartnerSubscriptionId : null;
             return new List<AzureReplicationLinkModel>()
             {
-                ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
+                ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First(), partnerSubscriptionId)
             };
         }
 

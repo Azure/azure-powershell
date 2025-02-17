@@ -117,6 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).RoleType = (string) content.GetValueForProperty("RoleType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).RoleType, global::System.Convert.ToString);
             }
+            if (content.Contains("ReplicaState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).ReplicaState = (string) content.GetValueForProperty("ReplicaState",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).ReplicaState, global::System.Convert.ToString);
+            }
             if (content.Contains("ClusterArmId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).ClusterArmId = (string) content.GetValueForProperty("ClusterArmId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).ClusterArmId, global::System.Convert.ToString);
@@ -145,6 +149,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("RoleType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).RoleType = (string) content.GetValueForProperty("RoleType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).RoleType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicaState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).ReplicaState = (string) content.GetValueForProperty("ReplicaState",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocationInternal)this).ReplicaState, global::System.Convert.ToString);
             }
             if (content.Contains("ClusterArmId"))
             {

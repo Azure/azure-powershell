@@ -83,7 +83,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             {
                 if (_track2OauthToken == null)
                 {
-                   _track2OauthToken = _track2OAuthTokenFactory();
+                    if (_track2OAuthTokenFactory == null)
+                    {
+                        return null;
+                    }
+                    _track2OauthToken = _track2OAuthTokenFactory();
                     return _track2OauthToken;
                 }
                 return _track2OauthToken;

@@ -158,6 +158,33 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInSetADECmdlet()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInSetADECmdlet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithIdentityNotSetInVirtualMachine()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithIdentityNotAckledInKeyVault()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithIdentityNotAckledInKeyVault");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBginfoExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineBginfoExtension");

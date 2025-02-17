@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation creates or updates a policy set definition version in the given management group with the given name and
-    /// version.
+    /// This operation update a policy set definition version in the given management group with the given name and version.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] GetAtManagementGroup=>GET:"/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}"
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPolicySetDefinitionVersion_UpdateViaIdentityPolicySetDefinitionExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation creates or updates a policy set definition version in the given management group with the given name and version.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation update a policy set definition version in the given management group with the given name and version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     public partial class UpdateAzPolicySetDefinitionVersion_UpdateViaIdentityPolicySetDefinitionExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,

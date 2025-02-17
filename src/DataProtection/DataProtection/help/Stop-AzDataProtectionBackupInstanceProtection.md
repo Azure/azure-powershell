@@ -16,15 +16,16 @@ This operation will stop protection of a backup instance and data will be held f
 ```
 Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName <String> -BackupInstanceName <String>
  -VaultName <String> [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopViaIdentity
 ```
 Stop-AzDataProtectionBackupInstanceProtection [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] -InputObject <IDataProtectionIdentity>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ -InputObject <IDataProtectionIdentity> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,6 +163,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id of the backup vault
 
@@ -178,8 +195,8 @@ Accept wildcard characters: False
 ```
 
 ### -Token
-Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+Parameter deprecate.
+Please use SecureToken instead.
 
 ```yaml
 Type: System.String

@@ -21,6 +21,9 @@
 
 ## Upcoming Release
 
+## Version 1.2.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.1.1
 * Removed the outdated deps.json file.
 

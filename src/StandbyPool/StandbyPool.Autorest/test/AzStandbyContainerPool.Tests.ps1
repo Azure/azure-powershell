@@ -17,21 +17,30 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStandbyContainerPool'))
 Describe 'AzStandbyContainerPool' {
     It 'CreateExpanded' {
         {
-            $standbyvmpool = New-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -Location eastus -MaxReadyCapacity 1 -RefillPolicy always -ContainerProfileId "/subscriptions/$($env.SubscriptionId)/resourcegroups/test-rg/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG" -ProfileRevision 1 -SubnetId @{id="/subscriptions/$($env.SubscriptionId)/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-rg-vnet/subnets/default"}
-            $standbyvmpool.Name | Should -Be testCGPool
+            $standbycgpool = New-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId -Location eastasia -MaxReadyCapacity 1 -RefillPolicy always -ContainerProfileId "/subscriptions/$($env.SubscriptionId)/resourcegroups/test-sdks/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG" -ProfileRevision 1 -SubnetId @{id="/subscriptions/$($env.SubscriptionId)/resourceGroups/test-sdks/providers/Microsoft.Network/virtualNetworks/test-sdks-vnet/subnets/default"}
+            $standbycgpool.Name | Should -Be testCGPool
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $standbyvmpool = Get-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId
-            $standbyvmpool.Name | Should -Be testCGPool
+            $standbycgpool = Get-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId
+            $standbycgpool.Name | Should -Be testCGPool
+        } | Should -Not -Throw
+    }
+
+    It 'GetRuntimeView' {
+        {
+            $standbycgpoolRuntimeView = Get-AzStandbyContainerGroupPoolStatus -Name testCGPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId
+            $standbycgpoolRuntimeView.Name | Should -Be latest
+            $standbycgpoolRuntimeView.InstanceCountSummary.Count | Should BeGreaterThan 0
+            $standbycgpoolRuntimeView.InstanceCountSummary.instanceCountsByState.Count | Should BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -NoWait
+            Remove-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId -NoWait
         } | Should -Not -Throw
     }
 }

@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-The Microsoft Portal operations API.
+List the operations for the provider
 .Description
-The Microsoft Portal operations API.
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IResourceProviderOperation
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.portal/get-azportaloperation
 #>
 function Get-AzPortalOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IResourceProviderOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

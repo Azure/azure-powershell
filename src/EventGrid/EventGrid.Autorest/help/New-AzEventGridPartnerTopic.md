@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously create a new partner topic with the specified parameters.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzEventGridPartnerTopic -Name <String> -ResourceGroupName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously create a new partner topic with the specified parameters.
 
 ## EXAMPLES
 

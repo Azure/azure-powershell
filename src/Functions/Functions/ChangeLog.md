@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.0
+* Upgraded nuget package to signed package.
+
+## Version 4.1.1
+* Used `Get-AzAccessToken -AsSecureString` inside the `Functions` for the plain text version is going to be deprecate in the next release.
+
 ## Version 4.1.0
 * Upgraded to Microsoft.Web API version 2023-12-01 [#25347]
 * Added support for creating function apps on container app [#22736]

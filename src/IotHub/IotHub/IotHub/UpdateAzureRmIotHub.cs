@@ -77,8 +77,32 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     }
                 }
 
-                iotHubDescription = this.IotHubClient.IotHubResource.Update(this.ResourceGroupName, this.Name, this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value));
+                Dictionary<string, string> dictionaryTag = new Dictionary<string, string>();
+                HashtableToDictionary<string>(this.Tag, dictionaryTag);
+                TagsResource tagsResource = new TagsResource()
+                {
+                    Tags = dictionaryTag
+                };
+
+                iotHubDescription = this.IotHubClient.IotHubResource.Update(this.ResourceGroupName, this.Name, tagsResource);
                 this.WriteObject(IotHubUtils.ToPSIotHub(iotHubDescription), false);
+            }
+        }
+
+        private void HashtableToDictionary<V>(Hashtable hashtable, IDictionary<string, V> dictionary)
+        {
+            if (null == hashtable)
+            {
+                return;
+            }
+            foreach (var each in hashtable.Keys)
+            {
+                var key = each.ToString();
+                var value = hashtable[key];
+                if (null != value)
+                {
+                    dictionary[key] = (V)value;
+                }
             }
         }
     }

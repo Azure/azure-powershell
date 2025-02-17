@@ -41,7 +41,7 @@ Remove-AzDataFactoryV2 -Name "WikiADF" -ResourceGroupName "ADF"
 ```
 
 ```output
-          Confirm
+Confirm
           Are you sure you want to remove data factory 'WikiADF' in resource group 'ADF'?
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
           True
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

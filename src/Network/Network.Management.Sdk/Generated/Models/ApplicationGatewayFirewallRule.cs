@@ -36,15 +36,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="action">The string representation of the web application firewall rule action.
         /// Possible values include: &#39;None&#39;, &#39;AnomalyScoring&#39;, &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;</param>
 
+        /// <param name="sensitivity">The string representation of the web application firewall rule sensitivity.
+        /// Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
+
         /// <param name="description">The description of the web application firewall rule.
         /// </param>
-        public ApplicationGatewayFirewallRule(int ruleId, string ruleIdString = default(string), string state = default(string), string action = default(string), string description = default(string))
+        public ApplicationGatewayFirewallRule(int ruleId, string ruleIdString = default(string), string state = default(string), string action = default(string), string sensitivity = default(string), string description = default(string))
 
         {
             this.RuleId = ruleId;
             this.RuleIdString = ruleIdString;
             this.State = state;
             this.Action = action;
+            this.Sensitivity = sensitivity;
             this.Description = description;
             CustomInit();
         }
@@ -83,6 +87,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Action {get; set; }
 
         /// <summary>
+        /// Gets or sets the string representation of the web application firewall rule
+        /// sensitivity. Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sensitivity")]
+        public string Sensitivity {get; set; }
+
+        /// <summary>
         /// Gets or sets the description of the web application firewall rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
@@ -95,6 +106,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 

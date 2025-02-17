@@ -475,6 +475,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMWithPublicIPAddressStandardSku()
+        {
+            TestRunner.RunTestScript("Test-VMWithPublicIPAddressStandardSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMForceDelete()
         {
             TestRunner.RunTestScript("Test-ForceDelete");
@@ -667,6 +674,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVMSetAzOSCredentialNullRef()
         {
             TestRunner.RunTestScript("Test-VMSetAzOSCredentialNullRef");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddEncryptionIdentityInAzureVmConfig()
+        {
+            TestRunner.RunTestScript("Test-AddEncryptionIdentityInAzureVmConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm()
+        {
+            TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm");
         }
     }
 }

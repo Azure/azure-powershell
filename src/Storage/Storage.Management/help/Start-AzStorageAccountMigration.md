@@ -21,17 +21,17 @@ Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CustomerViaJsonString
-```
-Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CustomerViaJsonFilePath
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CustomerViaJsonString
+```
+Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -229,7 +229,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -244,7 +244,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: False

@@ -23,9 +23,9 @@ This operation deletes the policy definition in the given subscription with the 
 Remove-AzPolicyDefinition -Name 'VMPolicyDefinition'
 .Example
 $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
-Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force
+Remove-AzPolicyDefinition -Id $PolicyDefinition.Id -Force
 .Example
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
+$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -BackwardCompatible
 Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force -BackwardCompatible
 True
 

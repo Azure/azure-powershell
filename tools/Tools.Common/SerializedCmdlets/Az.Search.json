@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Search",
-  "ModuleVersion": "0.10.0",
+  "ModuleVersion": "0.10.1",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Primary": "System.String",
               "Secondary": "System.String"
@@ -78,7 +78,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -160,7 +160,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -371,7 +371,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpoint": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint",
               "PrivateLinkServiceConnectionState": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState",
@@ -419,7 +419,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -510,7 +510,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -751,7 +751,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -831,7 +831,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -993,7 +993,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -1097,7 +1097,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "Key": "System.String"
@@ -1159,7 +1159,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -1241,7 +1241,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -1452,7 +1452,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -1728,7 +1728,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -1781,7 +1781,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -1872,7 +1872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -2113,7 +2113,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Primary": "System.String",
               "Secondary": "System.String"
@@ -2175,7 +2175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -2231,7 +2231,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -2240,7 +2240,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2275,7 +2275,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -2310,7 +2310,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2325,7 +2325,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2386,7 +2386,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2401,7 +2401,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2477,7 +2477,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2492,7 +2492,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2538,7 +2538,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -2553,7 +2553,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2606,7 +2606,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "Key": "System.String"
@@ -2668,7 +2668,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -2759,7 +2759,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -3030,7 +3030,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -3126,7 +3126,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3168,7 +3168,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode"
             ]
@@ -3180,7 +3180,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess"
             ]
@@ -3192,7 +3192,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType"
             ]
@@ -3204,7 +3204,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule"
           },
           "ValidateNotNullOrEmpty": false
@@ -3226,7 +3226,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName"
             ]
@@ -3238,7 +3238,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode"
             ]
@@ -3250,7 +3250,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode"
             ]
@@ -3318,7 +3318,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3384,7 +3384,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode"
                   ]
@@ -3402,7 +3402,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess"
                   ]
@@ -3420,7 +3420,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType"
                   ]
@@ -3438,7 +3438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3472,7 +3472,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName"
                   ]
@@ -3490,7 +3490,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode"
                   ]
@@ -3508,7 +3508,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode"
                   ]
@@ -3564,7 +3564,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -3680,7 +3680,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3820,7 +3820,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3886,7 +3886,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -3942,7 +3942,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpoint": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint",
               "PrivateLinkServiceConnectionState": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState",
@@ -3966,7 +3966,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3975,7 +3975,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4010,7 +4010,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -4060,7 +4060,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4075,7 +4075,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4166,7 +4166,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4181,7 +4181,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4227,7 +4227,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "PrivateEndpoint": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint",
                     "PrivateLinkServiceConnectionState": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState",
@@ -4248,7 +4248,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4263,7 +4263,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4324,7 +4324,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4339,7 +4339,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4385,7 +4385,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4400,7 +4400,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4466,7 +4466,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -4531,7 +4531,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4540,7 +4540,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4575,7 +4575,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -4625,7 +4625,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4640,7 +4640,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4716,7 +4716,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4731,7 +4731,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4822,7 +4822,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4837,7 +4837,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4898,7 +4898,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4913,7 +4913,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4979,7 +4979,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -5035,7 +5035,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5044,7 +5044,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5079,7 +5079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -5114,7 +5114,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5129,7 +5129,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5190,7 +5190,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5205,7 +5205,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5281,7 +5281,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5296,7 +5296,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5342,7 +5342,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5357,7 +5357,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5423,7 +5423,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -5488,7 +5488,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -5508,7 +5508,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5517,7 +5517,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5526,7 +5526,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5561,7 +5561,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -5611,7 +5611,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5626,7 +5626,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5641,7 +5641,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5732,7 +5732,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5747,7 +5747,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5762,7 +5762,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5823,7 +5823,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5838,7 +5838,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5853,7 +5853,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5899,7 +5899,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -5925,7 +5925,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5940,7 +5940,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5955,7 +5955,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6001,7 +6001,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6016,7 +6016,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6031,7 +6031,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6084,7 +6084,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpoint": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint",
               "PrivateLinkServiceConnectionState": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState",
@@ -6132,7 +6132,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -6197,7 +6197,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -6215,7 +6215,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpoint": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint",
               "PrivateLinkServiceConnectionState": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState",
@@ -6256,7 +6256,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -6306,7 +6306,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -6412,7 +6412,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -6488,7 +6488,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -6549,7 +6549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -6610,7 +6610,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "PrivateEndpoint": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint",
                     "PrivateLinkServiceConnectionState": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState",
@@ -6631,7 +6631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -6699,7 +6699,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -6777,7 +6777,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -6857,7 +6857,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess"
             ]
@@ -6869,7 +6869,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType"
             ]
@@ -6881,7 +6881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule"
           },
           "ValidateNotNullOrEmpty": false
@@ -6903,7 +6903,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName"
             ]
@@ -6915,7 +6915,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode"
             ]
@@ -6953,7 +6953,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -7024,7 +7024,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess"
                   ]
@@ -7042,7 +7042,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType"
                   ]
@@ -7060,7 +7060,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7094,7 +7094,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName"
                   ]
@@ -7112,7 +7112,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode"
                   ]
@@ -7212,7 +7212,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess"
                   ]
@@ -7230,7 +7230,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType"
                   ]
@@ -7248,7 +7248,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7282,7 +7282,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName"
                   ]
@@ -7300,7 +7300,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode"
                   ]
@@ -7415,7 +7415,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess"
                   ]
@@ -7433,7 +7433,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType"
                   ]
@@ -7451,7 +7451,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7485,7 +7485,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName"
                   ]
@@ -7503,7 +7503,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode"
                   ]
@@ -7588,7 +7588,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess"
                   ]
@@ -7606,7 +7606,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType"
                   ]
@@ -7624,7 +7624,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7658,7 +7658,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName"
                   ]
@@ -7676,7 +7676,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode"
                   ]
@@ -7732,7 +7732,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -7785,7 +7785,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
               "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -7859,7 +7859,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -7879,7 +7879,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7914,7 +7914,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
                     "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -7979,7 +7979,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8085,7 +8085,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8161,7 +8161,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8222,7 +8222,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8268,7 +8268,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -8309,7 +8309,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8395,7 +8395,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Primary": "System.String",
         "Secondary": "System.String"
@@ -8454,7 +8454,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AadOrApiKey": "Microsoft.Azure.Commands.Management.Search.Models.PsAadOrApiKeyAuthOption",
         "ApiKeyOnly": "System.Management.Automation.PSObject"
@@ -8492,7 +8492,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PsAadOrApiKeyAuthOption": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PsAadOrApiKeyAuthOption",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PsAadOrApiKeyAuthOption, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PsAadOrApiKeyAuthOption, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AadAuthFailureMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]"
       },
@@ -8529,7 +8529,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode"
       ]
@@ -8537,7 +8537,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -8629,12 +8629,12 @@
     "System.Management.Automation.PSObject": {
       "Namespace": "System.Management.Automation",
       "Name": "System.Management.Automation.PSObject",
-      "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Type": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType",
         "TenantId": "System.String",
@@ -8673,7 +8673,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -8760,7 +8760,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -8856,7 +8856,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.Search.Models.PSIpRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.Search.Models.PSIpRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.Search.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule"
       ]
@@ -8864,7 +8864,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Value": "System.String"
       },
@@ -8901,7 +8901,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection"
       ]
@@ -8909,7 +8909,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrivateEndpoint": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint",
         "PrivateLinkServiceConnectionState": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState",
@@ -8949,7 +8949,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       },
@@ -8986,7 +8986,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionState, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus",
         "Description": "System.String",
@@ -9025,7 +9025,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPrivateLinkServiceConnectionStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -9112,7 +9112,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource"
       ]
@@ -9120,7 +9120,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Status": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
         "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
@@ -9165,7 +9165,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -9252,7 +9252,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState"
       ]
@@ -9260,7 +9260,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResourceProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -9347,7 +9347,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode"
       ]
@@ -9355,7 +9355,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -9442,7 +9442,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess"
       ]
@@ -9450,7 +9450,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -9537,7 +9537,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus"
       ]
@@ -9545,7 +9545,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchServiceStatus, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -9632,7 +9632,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSkuName]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSkuName]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName"
       ]
@@ -9640,7 +9640,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -9872,7 +9872,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Key": "System.String"
@@ -9926,7 +9926,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AuthOptions": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptions",
         "Identity": "Microsoft.Azure.Commands.Management.Search.Models.PSIdentity",
@@ -9996,7 +9996,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",

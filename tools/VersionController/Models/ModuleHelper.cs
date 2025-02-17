@@ -32,7 +32,7 @@ namespace VersionController.Netcore.Models
         }
 
         /// <summary>
-        /// Get version from PSGallery and TestGallery and merge into one list.
+        /// Get version from PSGallery and merge into one list.
         /// </summary>
         /// <returns>A list of version</returns>
         internal static List<AzurePSVersion> GetAllVersionsFromGallery(string moduleName, string psRepository)

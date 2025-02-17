@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Dns
         public string Exchange { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The preference value of the MX record to remove.", ParameterSetName = "MX")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The preference value of the NAPTR record to remove.", ParameterSetName = "NAPTR")]
         [ValidateNotNullOrEmpty]
         public ushort Preference { get; set; }
 
@@ -125,6 +126,27 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string CertificateAssociationData { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The order value of the NAPTR record to remove.", ParameterSetName = "NAPTR")]
+        [ValidateNotNullOrEmpty]
+        public ushort Order { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flags value of the NAPTR record to remove.", ParameterSetName = "NAPTR")]
+        [ValidateNotNullOrEmpty]
+        public string Flags { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The service value of the NAPTR record to remove.", ParameterSetName = "NAPTR")]
+        [ValidateNotNullOrEmpty]
+        public string Services { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The regular expression value of the NAPTR record to remove.", ParameterSetName = "NAPTR")]
+        [ValidateNotNull]
+        [AllowEmptyString]
+        public string Regexp { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The replacement value of the NAPTR record to remove.", ParameterSetName = "NAPTR")]
+        [ValidateNotNullOrEmpty]
+        public string Replacement { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var result = this.RecordSet;
@@ -164,6 +186,17 @@ namespace Microsoft.Azure.Commands.Dns
                             break;
                         }
 
+                    case RecordType.Naptr:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is NaptrRecord
+                                && ((NaptrRecord)record).Flags == this.Flags
+                                && ((NaptrRecord)record).Order == this.Order
+                                && string.Equals(((NaptrRecord)record).Regexp, this.Regexp, System.StringComparison.OrdinalIgnoreCase)
+                                && string.Equals(((NaptrRecord)record).Replacement, this.Replacement, System.StringComparison.OrdinalIgnoreCase)
+                                && string.Equals(((NaptrRecord)record).Services, this.Services, System.StringComparison.OrdinalIgnoreCase));
+                            break;
+                        }
                     case RecordType.NS:
                         {
                             removedCount = result.Records.RemoveAll(record =>

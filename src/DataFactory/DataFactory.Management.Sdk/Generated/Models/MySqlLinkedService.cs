@@ -80,7 +80,36 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public MySqlLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object driverVersion = default(object), object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object useSystemTrustStore = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+
+        /// <param name="allowZeroDateTime">This allows the special “zero” date value 0000-00-00 to be retrieved from
+        /// the database. Type: boolean.
+        /// </param>
+
+        /// <param name="connectionTimeout">The length of time (in seconds) to wait for a connection to the server
+        /// before terminating the attempt and generating an error. Type: integer.
+        /// </param>
+
+        /// <param name="convertZeroDateTime">True to return DateTime.MinValue for date or datetime columns that have
+        /// disallowed values. Type: boolean.
+        /// </param>
+
+        /// <param name="guidFormat">Determines which column type (if any) should be read as a GUID. Type:
+        /// string. None: No column types are automatically read as a Guid; Char36: All
+        /// CHAR(36) columns are read/written as a Guid using lowercase hex with
+        /// hyphens, which matches UUID.
+        /// </param>
+
+        /// <param name="sslCert">The path to the client’s SSL certificate file in PEM format. SslKey must
+        /// also be specified. Type: string.
+        /// </param>
+
+        /// <param name="sslKey">The path to the client’s SSL private key in PEM format. SslCert must also
+        /// be specified. Type: string.
+        /// </param>
+
+        /// <param name="treatTinyAsBoolean">When set to true, TINYINT(1) values are returned as booleans. Type: bool.
+        /// </param>
+        public MySqlLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object driverVersion = default(object), object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object useSystemTrustStore = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string), object allowZeroDateTime = default(object), object connectionTimeout = default(object), object convertZeroDateTime = default(object), object guidFormat = default(object), object sslCert = default(object), object sslKey = default(object), object treatTinyAsBoolean = default(object))
 
         : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
@@ -94,6 +123,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.UseSystemTrustStore = useSystemTrustStore;
             this.Password = password;
             this.EncryptedCredential = encryptedCredential;
+            this.AllowZeroDateTime = allowZeroDateTime;
+            this.ConnectionTimeout = connectionTimeout;
+            this.ConvertZeroDateTime = convertZeroDateTime;
+            this.GuidFormat = guidFormat;
+            this.SslCert = sslCert;
+            this.SslKey = sslKey;
+            this.TreatTinyAsBoolean = treatTinyAsBoolean;
             CustomInit();
         }
 
@@ -170,6 +206,58 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public string EncryptedCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets this allows the special “zero” date value 0000-00-00 to be
+        /// retrieved from the database. Type: boolean.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.allowZeroDateTime")]
+        public object AllowZeroDateTime {get; set; }
+
+        /// <summary>
+        /// Gets or sets the length of time (in seconds) to wait for a connection to
+        /// the server before terminating the attempt and generating an error. Type:
+        /// integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectionTimeout")]
+        public object ConnectionTimeout {get; set; }
+
+        /// <summary>
+        /// Gets or sets true to return DateTime.MinValue for date or datetime columns
+        /// that have disallowed values. Type: boolean.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.convertZeroDateTime")]
+        public object ConvertZeroDateTime {get; set; }
+
+        /// <summary>
+        /// Gets or sets determines which column type (if any) should be read as a
+        /// GUID. Type: string. None: No column types are automatically read as a Guid;
+        /// Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex
+        /// with hyphens, which matches UUID.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.guidFormat")]
+        public object GuidFormat {get; set; }
+
+        /// <summary>
+        /// Gets or sets the path to the client’s SSL certificate file in PEM format.
+        /// SslKey must also be specified. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.sslCert")]
+        public object SslCert {get; set; }
+
+        /// <summary>
+        /// Gets or sets the path to the client’s SSL private key in PEM format.
+        /// SslCert must also be specified. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.sslKey")]
+        public object SslKey {get; set; }
+
+        /// <summary>
+        /// Gets or sets when set to true, TINYINT(1) values are returned as booleans.
+        /// Type: bool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.treatTinyAsBoolean")]
+        public object TreatTinyAsBoolean {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -191,6 +279,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.Password.Validate();
             }
+
+
+
+
+
+
+
 
         }
     }

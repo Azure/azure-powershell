@@ -20,12 +20,13 @@ Create an in-memory object for Volume.
 .Description
 Create an in-memory object for Volume.
 .Example
-New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "******" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey $pwd
 .Example
 New-AzContainerGroupVolumeObject -Name "emptyvolume" -EmptyDir @{} | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Volume
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Volume
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +41,7 @@ SECRET <ISecretVolume>: The secret volume.
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 #>
 function New-AzContainerGroupVolumeObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Volume])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Volume])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -75,7 +76,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolumeEmptyDir]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeEmptyDir]
     # The empty directory volume.
     # To construct, see NOTES section for EMPTYDIR properties and create a hash table.
     ${EmptyDir},
@@ -103,7 +104,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ISecretVolume]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ISecretVolume]
     # The secret volume.
     # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret}

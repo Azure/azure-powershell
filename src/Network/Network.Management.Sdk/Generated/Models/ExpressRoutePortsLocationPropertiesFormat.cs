@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the express route port location resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public ExpressRoutePortsLocationPropertiesFormat(string address = default(string), string contact = default(string), System.Collections.Generic.IList<ExpressRoutePortsLocationBandwidths> availableBandwidths = default(System.Collections.Generic.IList<ExpressRoutePortsLocationBandwidths>), string provisioningState = default(string))
 
         {
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<ExpressRoutePortsLocationBandwidths> AvailableBandwidths {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the express route port location resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the express route port location resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

@@ -386,6 +386,14 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.TargetCpuCore = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $machine.NumberOfProcessorCore }
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
     
+        # Determine target VM Hyper-V Generation
+        if ($SiteType -eq $SiteTypes.HyperVSites) { # Hyper-V
+            $customProperties.HyperVGeneration = $machine.Generation
+        }
+        else { # VMware
+            $customProperties.HyperVGeneration = if ($machine.Firmware -eq "BIOS") { "1" } else { "2" }
+        }
+
         # Validate TargetVMRam
         if ($HasTargetVMRam) {
             # TargetVMRam needs to be greater than 0

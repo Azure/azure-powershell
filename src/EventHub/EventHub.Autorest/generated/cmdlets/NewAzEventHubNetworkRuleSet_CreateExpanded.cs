@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create NetworkRuleSet for a Namespace.</summary>
+    /// <summary>create NetworkRuleSet for a Namespace.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdateNetworkRuleSet=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets/default"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubNetworkRuleSet_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSet))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create NetworkRuleSet for a Namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create NetworkRuleSet for a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets/default", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubNetworkRuleSet_CreateExpanded : global::System.Management.Automation.PSCmdlet,

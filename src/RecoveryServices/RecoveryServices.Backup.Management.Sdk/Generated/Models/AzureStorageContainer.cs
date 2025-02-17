@@ -56,7 +56,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="acquireStorageAccountLock">Whether storage account lock is to be acquired for this container or not.
         /// Possible values include: &#39;Acquire&#39;, &#39;NotAcquire&#39;</param>
-        public AzureStorageContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceResourceId = default(string), string storageAccountVersion = default(string), string resourceGroup = default(string), long? protectedItemCount = default(long?), string acquireStorageAccountLock = default(string))
+
+        /// <param name="operationType">Re-Do Operation
+        /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;, &#39;Rehydrate&#39;</param>
+        public AzureStorageContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceResourceId = default(string), string storageAccountVersion = default(string), string resourceGroup = default(string), long? protectedItemCount = default(long?), string acquireStorageAccountLock = default(string), string operationType = default(string))
 
         : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType)
         {
@@ -65,6 +68,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.ResourceGroup = resourceGroup;
             this.ProtectedItemCount = protectedItemCount;
             this.AcquireStorageAccountLock = acquireStorageAccountLock;
+            this.OperationType = operationType;
             CustomInit();
         }
 
@@ -104,5 +108,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "acquireStorageAccountLock")]
         public string AcquireStorageAccountLock {get; set; }
+
+        /// <summary>
+        /// Gets or sets re-Do Operation Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;, &#39;Rehydrate&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "operationType")]
+        public string OperationType {get; set; }
     }
 }

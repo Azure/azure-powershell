@@ -40,7 +40,7 @@ Get a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 
-### Example 1: Get a standby container pool
+### Example 1: Get a standby container group pool
 ```powershell
 Get-AzStandbyContainerGroupPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
@@ -72,7 +72,7 @@ Tag                               : {
 Type                              : microsoft.standbypool/standbycontainergrouppools
 ```
 
-Above command is getting a standby container pool.
+Above command is getting a standby container group pool.
 
 ## PARAMETERS
 

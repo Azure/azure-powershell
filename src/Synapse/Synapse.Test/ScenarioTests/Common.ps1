@@ -14,6 +14,20 @@
 
 <#
 .SYNOPSIS
+Gets a passwrod
+#>
+function Get-TestPassword
+{
+    $passwordLength = 26
+    $charSet = 'tesMakingItLor0123456789!@#$%^&*()'
+    $password = -join ((1..$passwordLength) | ForEach-Object { $charSet[(Get-Random -Maximum $charSet.Length)] })
+    return $password
+}
+
+
+
+<#
+.SYNOPSIS
 Gets a Synapse Analytics workspace name to use for testing
 #>
 function Get-SynapseWorkspaceName
@@ -179,7 +193,7 @@ function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 			  storageAccountName = "sqlstorage" + $testSuffix;
 			  fileSystemName = "sqlcmdletfs" + $testSuffix;
 			  loginName = "testlogin";
-			  pwd = "testp@ssMakingIt1007Longer";
+			  pwd = Get-TestPassword;
 			  perfLevel = 'DW200c';
 			  location = "eastus";
 			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix

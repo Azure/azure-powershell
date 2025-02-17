@@ -166,6 +166,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).Encryption = (string) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).Encryption, global::System.Convert.ToString);
             }
+            if (content.Contains("EnforceDataIntegrityCheckForIscsi"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).EnforceDataIntegrityCheckForIscsi = (bool?) content.GetValueForProperty("EnforceDataIntegrityCheckForIscsi",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).EnforceDataIntegrityCheckForIscsi, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("EncryptionPropertyEncryptionIdentity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).EncryptionPropertyEncryptionIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionIdentity) content.GetValueForProperty("EncryptionPropertyEncryptionIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).EncryptionPropertyEncryptionIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionIdentityTypeConverter.ConvertFrom);
@@ -262,6 +266,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("Encryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).Encryption = (string) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).Encryption, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnforceDataIntegrityCheckForIscsi"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).EnforceDataIntegrityCheckForIscsi = (bool?) content.GetValueForProperty("EnforceDataIntegrityCheckForIscsi",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal)this).EnforceDataIntegrityCheckForIscsi, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("EncryptionPropertyEncryptionIdentity"))
             {

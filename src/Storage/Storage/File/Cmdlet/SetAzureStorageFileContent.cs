@@ -21,7 +21,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -36,7 +35,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Threading.Tasks;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFile), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFile from deprecated v11 SDK will be removed. Use child property ShareFileClient instead.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFile))]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {
@@ -48,20 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Share", "13.0.0", "8.0.0", ChangeDescription = "The parameter Share (alias CloudFileShare) will be deprecated, and ShareClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = LocalConstants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share where the file would be uploaded to.")]
-        [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.ShareParameterSetName,
@@ -69,24 +56,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Directory", "13.0.0", "8.0.0", ChangeDescription = "The parameter Directory (alias CloudFileDirectory) will be deprecated, and ShareDirectoryClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be uploaded.")]
-        [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = LocalConstants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be uploaded.")]
+            HelpMessage = "ShareDirectoryClient object indicated the directory where the file would be uploaded.")]
         [ValidateNotNull]
         public ShareDirectoryClient ShareDirectoryClient { get; set; }
 
@@ -154,14 +130,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             bool isDirectory;
             string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
 
+            var cloudFileToBeUploaded =
+                        BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+            var fileClientToBeUploaded = BuildShareFileClientInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+
+
             this.RunTask(async taskId =>
             {
-                if (fileSize <= sizeTB && !WithOauthCredential() && (this.DisAllowTrailingDot.IsPresent || !Util.PathContainsTrailingDot(this.Path)))
-                {
-                    // Step 2: Build the CloudFile object which pointed to the
-                    // destination cloud file.
-                    var cloudFileToBeUploaded =
-                        BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+                if (fileSize <= sizeTB && !WithOauthCredential() && (this.DisAllowTrailingDot.IsPresent || !Util.PathContainsTrailingDot(fileClientToBeUploaded.Path)))
+                {                    
                     if (ShouldProcess(cloudFileToBeUploaded.Name, "Set file content"))
                     {
                         var progressRecord = new ProgressRecord(
@@ -186,14 +163,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         if (this.PassThru)
                         {
                             // TODO: is get attributes necessary?
-                            cloudFileToBeUploaded.FetchAttributes();
-                            WriteCloudFileObject(taskId, (AzureStorageContext)this.Context, cloudFileToBeUploaded);
+                            ShareFileProperties fileProperties = fileClientToBeUploaded.GetProperties(this.CmdletCancellationToken).Value;
+                            OutputStream.WriteObject(taskId, new AzureStorageFile(fileClientToBeUploaded, (AzureStorageContext)this.Context, fileProperties, ClientOptions));
                         }
                     }
                 }
                 else // use Track2 SDK
                 {
-                    var fileClientToBeUploaded = BuildShareFileClientInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+                   
                     if (ShouldProcess(fileClientToBeUploaded.Path, "Set file content"))
                     {
                         var progressRecord = new ProgressRecord(
@@ -307,7 +284,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             }
 
                             // set file header and attributes to the file
-                            fileClient.SetHttpHeaders(httpHeaders: header, smbProperties: smbProperties);
+                            ShareFileSetHttpHeadersOptions httpHeadersOptions = new ShareFileSetHttpHeadersOptions
+                            {
+                                HttpHeaders = header,
+                                SmbProperties = smbProperties
+                            };
+                            fileClient.SetHttpHeaders(httpHeadersOptions);
                         }
 
                         if (this.PassThru)
@@ -344,13 +326,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case LocalConstants.DirectoryParameterSetName:
-                    baseDirectory = this.Directory;
-                    // Build and set storage context for the output object when
-                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                    if (ShouldSetContext(this.Context, this.Directory.ServiceClient))
-                    {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
-                    }
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    baseDirectory = AzureStorageFileDirectory.GetTrack1FileDirClient(this.ShareDirectoryClient, ((AzureStorageContext)this.Context).StorageAccount.Credentials, ClientOptions);
                     break;
 
                 case LocalConstants.ShareNameParameterSetName:
@@ -359,13 +336,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case LocalConstants.ShareParameterSetName:
-                    baseDirectory = this.Share.GetRootDirectoryReference();
-                    // Build and set storage context for the output object when
-                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                    if (ShouldSetContext(this.Context, this.Share.ServiceClient))
-                    {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
-                    }
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    baseDirectory = AzureStorageFileDirectory.GetTrack1FileDirClient(this.ShareClient.GetRootDirectoryClient(), ((AzureStorageContext)this.Context).StorageAccount.Credentials, ClientOptions);
                     break;
 
                 default:
@@ -435,14 +407,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case LocalConstants.DirectoryParameterSetName:
-                    if (this.ShareDirectoryClient != null)
-                    {
-                        baseDirectory = this.ShareDirectoryClient;
-                    }
-                    else
-                    {
-                        baseDirectory = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
-                    }
+                    baseDirectory = this.ShareDirectoryClient;
                     break;
 
                 case LocalConstants.ShareNameParameterSetName:
@@ -455,14 +420,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case LocalConstants.ShareParameterSetName:
-                    if (this.ShareClient != null)
-                    {
-                        baseDirectory = this.ShareClient.GetRootDirectoryClient();
-                    }
-                    else
-                    {
-                        baseDirectory = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
-                    }
+                    baseDirectory = this.ShareClient.GetRootDirectoryClient();
                     break;
 
                 default:

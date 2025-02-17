@@ -10,6 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
     public partial struct RackSkuProvisioningState :
         System.IEquatable<RackSkuProvisioningState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RackSkuProvisioningState Canceled = @"Canceled";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RackSkuProvisioningState Failed = @"Failed";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RackSkuProvisioningState Succeeded = @"Succeeded";
 
         /// <summary>the value for an instance of the <see cref="RackSkuProvisioningState" /> Enum.</summary>

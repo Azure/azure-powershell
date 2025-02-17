@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SqlSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -80,9 +83,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="upsertSettings">SQL upsert settings.
         /// </param>
-        public SqlSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object sqlWriterStoredProcedureName = default(object), object sqlWriterTableType = default(object), object preCopyScript = default(object), object storedProcedureParameters = default(object), object storedProcedureTableTypeParameterName = default(object), object tableOption = default(object), object sqlWriterUseTableLock = default(object), object writeBehavior = default(object), SqlUpsertSettings upsertSettings = default(SqlUpsertSettings))
+        public SqlSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object sqlWriterStoredProcedureName = default(object), object sqlWriterTableType = default(object), object preCopyScript = default(object), object storedProcedureParameters = default(object), object storedProcedureTableTypeParameterName = default(object), object tableOption = default(object), object sqlWriterUseTableLock = default(object), object writeBehavior = default(object), SqlUpsertSettings upsertSettings = default(SqlUpsertSettings))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.SqlWriterStoredProcedureName = sqlWriterStoredProcedureName;
             this.SqlWriterTableType = sqlWriterTableType;

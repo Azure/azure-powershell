@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHub
 
 ## SYNOPSIS
-Create a new Event Hub as a nested resource within a Namespace.
+create a new Event Hub as a nested resource within a Namespace.
 
 ## SYNTAX
 
@@ -17,9 +17,10 @@ Create a new Event Hub as a nested resource within a Namespace.
 New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-CleanupPolicy <String>]
  [-DestinationName <String>] [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>]
- [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
- [-Status <String>] [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-MinCompactionLagInMin <Int64>] [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>]
+ [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>] [-StorageAccountResourceId <String>]
+ [-TimestampType <String>] [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>]
+ [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,11 +28,11 @@ New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
 ```
 New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> [-ArchiveNameFormat <String>]
  [-BlobContainer <String>] [-CaptureEnabled] [-CleanupPolicy <String>] [-DestinationName <String>]
- [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>]
- [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
- [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-MinCompactionLagInMin <Int64>]
+ [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
+ [-Status <String>] [-StorageAccountResourceId <String>] [-TimestampType <String>]
+ [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>] [-UserMetadata <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
@@ -41,7 +42,7 @@ New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> -Paramet
 ```
 
 ## DESCRIPTION
-Create a new Event Hub as a nested resource within a Namespace.
+create a new Event Hub as a nested resource within a Namespace.
 
 ## EXAMPLES
 
@@ -302,6 +303,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MinCompactionLagInMin
+The minimum time a message will remain ineligible for compaction in the log.
+This value is used when cleanupPolicy is Compact or DeleteOrCompact.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The Event Hub name
 
@@ -394,8 +411,8 @@ Accept wildcard characters: False
 
 ### -RetentionTimeInHour
 Number of hours to retain the events for this Event Hub.
-This value is only used when cleanupPolicy is Delete.
-If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
+This should be positive value upto namespace SKU max.
+-1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
 
 ```yaml
 Type: System.Int64
@@ -485,9 +502,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TimestampType
+Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime".
+AppendTime refers the time in which message got appended inside broker log.
+CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message.
+Default value is AppendTime.
+If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TombstoneRetentionTimeInHour
 Number of hours to retain the tombstone markers of a compacted Event Hub.
-This value is only used when cleanupPolicy is Compact.
+This value is used when cleanupPolicy is Compact or DeleteOrCompact.
 Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 
 ```yaml
@@ -506,6 +542,21 @@ Accept wildcard characters: False
 ARM ID of Managed User Identity.
 This property is required is the type is UserAssignedIdentity.
 If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserMetadata
+Gets and Sets Metadata of User.
 
 ```yaml
 Type: System.String

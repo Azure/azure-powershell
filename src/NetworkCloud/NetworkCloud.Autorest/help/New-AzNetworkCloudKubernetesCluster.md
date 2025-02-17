@@ -29,6 +29,7 @@ New-AzNetworkCloudKubernetesCluster -KubernetesClusterName <String> -ResourceGro
  [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
  [-ControlPlaneNodeConfigurationAdminUsername <String>]
  [-ControlPlaneNodeConfigurationAvailabilityZone <String[]>]
+ [-L2ServiceLoadBalancerConfigurationIPAddressPool <IIPAddressPool[]>]
  [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
  [-NetworkConfigurationDnsServiceIP <String>] [-NetworkConfigurationPodCidr <String[]>]
  [-NetworkConfigurationServiceCidr <String[]>] [-SshPublicKey <ISshPublicKey[]>] [-Tag <Hashtable>]
@@ -130,7 +131,7 @@ The list of Layer 2 Networks and related configuration for attachment.
 To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL2NETWORK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IL2NetworkAttachmentConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2NetworkAttachmentConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +147,7 @@ The list of Layer 3 Networks and related configuration for attachment.
 To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL3NETWORK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IL3NetworkAttachmentConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL3NetworkAttachmentConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +163,7 @@ The list of Trunked Networks and related configuration for attachment.
 To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ITrunkedNetworkAttachmentConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetworkAttachmentConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -178,7 +179,7 @@ The association of IP address pools to the communities and peers, allowing for a
 To construct, see NOTES section for BGPADVERTISEMENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBgpAdvertisement[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBgpAdvertisement[]
 Parameter Sets: (All)
 Aliases:
 
@@ -190,11 +191,11 @@ Accept wildcard characters: False
 ```
 
 ### -BgpIPAddressPool
-The list of pools of IP addresses that can be allocated to Load Balancer services.
+The list of pools of IP addresses that can be allocated to load balancer services.
 To construct, see NOTES section for BGPIPADDRESSPOOL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IIPAddressPool[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IIPAddressPool[]
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +212,7 @@ All peering must be explicitly defined.
 To construct, see NOTES section for BGPPEER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IServiceLoadBalancerBgpPeer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IServiceLoadBalancerBgpPeer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -243,7 +244,7 @@ In some cases, specification of public keys may be required to produce a working
 To construct, see NOTES section for CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -369,7 +370,7 @@ After creation, the management of agent pools is done using the agentPools sub-r
 To construct, see NOTES section for INITIALAGENTPOOLCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IInitialAgentPoolConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IInitialAgentPoolConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -397,8 +398,6 @@ Accept wildcard characters: False
 
 ### -KubernetesVersion
 The Kubernetes version for this cluster.
-Accepts n.n, n.n.n, and n.n.n-n format.
-The interpreted version used will be resolved into this field after creation or update.
 
 ```yaml
 Type: System.String
@@ -406,6 +405,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -L2ServiceLoadBalancerConfigurationIPAddressPool
+The list of pools of IP addresses that can be allocated to load balancer services.
+To construct, see NOTES section for L2SERVICELOADBALANCERCONFIGURATIONIPADDRESSPOOL properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IIPAddressPool[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -576,7 +591,7 @@ In some cases, specification of public keys may be required to produce a working
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -656,7 +671,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKubernetesCluster
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster
 
 ## NOTES
 

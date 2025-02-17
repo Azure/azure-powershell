@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update the provisioned cluster instance
+update the provisioned cluster instance
 .Description
-Update the provisioned cluster instance
+update the provisioned cluster instance
 .Example
 Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -ControlPlaneCount 3
 .Example

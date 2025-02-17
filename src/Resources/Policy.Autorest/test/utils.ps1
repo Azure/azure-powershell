@@ -90,7 +90,11 @@ function New-ResourceGroup
         [string] $Name,
 
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
-        [string]$Location
+        [string]$Location,
+
+        [string]$TagName,
+
+        [string]$TagValue
     )
 
     begin {
@@ -106,7 +110,14 @@ function New-ResourceGroup
     }
 
     process {
-        $response = Invoke-AzRestMethod -Uri $uri -Method PUT -Payload "{ ""location"": ""$Location"" }"
+        if ($tagName) {
+            $payload = "{ ""location"": ""$Location"", ""tags"": ""[{""$TagName"": ""$TagValue""}]"" }"
+        }
+        else {
+            $payload = "{ ""location"": ""$Location"" }"
+        }
+
+        $response = Invoke-AzRestMethod -Uri $uri -Method PUT -Payload $payload
         if ($response.StatusCode -eq 201 -or ($response.StatusCode -eq 200)) {
             $result = Get-ResourceGroup -Name $Name
             while ($result.ProvisioningState -ne 'Succeeded' -and $result.ProvisioningState -ne 'Failed' -and $result.ProvisioningState -ne 'Canceled') {
@@ -261,15 +272,6 @@ function setupEnv() {
     # ----------------------------------------------------+
     # set up common variables used in policy legacy tests |
     # ----------------------------------------------------+
-    $env['rgName'] = Get-ResourceGroupName
-    $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
-    $env['rgScope'] = $rg.ResourceId
-    $env['location'] = $rg.Location
-
-    $env['userAssignedIdentityName'] = "test-user-msi"
-    $userAssignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName -Location $env.location
-    $env['userAssignedIdentityId'] = $userAssignedIdentity.Id
-
     $env['managementGroup'] = 'AzGovPerfTest'
     $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
     $env['description'] = 'Unit test junk: sorry for littering. Please delete me!'
@@ -332,12 +334,23 @@ function setupEnv() {
     $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
     $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id  are provided.'
     $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id  are provided.'
+    $env['disallowedByPolicy'] = "was disallowed by policy."
+
+    $env['rgName'] = Get-ResourceGroupName
+    $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
+    $env['rgScope'] = $rg.ResourceId
+    $env['location'] = $rg.Location
+
+    $env['userAssignedIdentityName'] = "test-user-msi"
+    $userAssignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName -Location $env.location
+    $env['userAssignedIdentityId'] = $userAssignedIdentity.Id
 
     # create a couple of test objects
     $env['customSubDefName'] = Get-ResourceName
     $env['customSubDefinition'] = New-AzPolicyDefinition -Name $env.customSubDefName -Policy '{ "if": { "field": "location", "equals": "westus" }, "then": { "effect": "audit" } }'
     $env['customSubSetDefName'] = Get-ResourceName
     $env['customSubSetDefinition'] = New-AzPolicySetDefinition -Name $env.customSubSetDefName -PolicyDefinition ("[{""policyDefinitionId"":""" + $($env.customSubDefinition).Id + """}]")
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

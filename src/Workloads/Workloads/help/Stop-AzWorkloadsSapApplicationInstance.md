@@ -22,7 +22,7 @@ Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String
 
 ### StopViaIdentityExpanded
 ```
-Stop-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-DeallocateVM]
+Stop-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> [-DeallocateVM]
  [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -189,7 +189,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: StopViaIdentityExpanded
 Aliases:
 
@@ -329,12 +329,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult
 
 ## NOTES
+
+ALIASES
+
+Stop-AzVISApplicationInstance
 
 ## RELATED LINKS

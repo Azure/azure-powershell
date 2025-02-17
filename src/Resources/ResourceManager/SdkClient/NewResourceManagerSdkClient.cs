@@ -40,6 +40,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
+using Microsoft.Rest.Serialization;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
@@ -472,7 +473,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     : null;
                 // NOTE(jcotillo): Adding FromJson<> to parameters as well 
                 deployment.Properties.Parameters = !string.IsNullOrEmpty(parametersContent)
-                    ? parametersContent.FromJson<JObject>()
+                    ? parametersContent.FromJson<Dictionary<string, DeploymentParameter>>()
                     : null;
             }
 
@@ -488,17 +489,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             try
             {
                 var validationResult = this.ValidateDeployment(parameters, deployment);
-
-                return new TemplateValidationInfo(validationResult);
+                switch (validationResult)
+                {
+                    case DeploymentExtended deploymentExtended:
+                        return new TemplateValidationInfo(deploymentExtended.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentExtended.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
+                    case DeploymentValidationError deploymentValidationError:
+                        return new TemplateValidationInfo(new List<Provider>(), new List<ErrorDetail>(deploymentValidationError.Error.AsArray()), new List<DeploymentDiagnosticsDefinition>());
+                    case JObject obj:
+                        // 202 Response is not deserialized in DeploymentsOperations so we should attempt to deserialize the object here before failing
+                        // Should attempt to deserialize for success(DeploymentExtended)
+                        try
+                        {
+                            var deploymentDeserialized = SafeJsonConvert.DeserializeObject<DeploymentExtended>(validationResult.ToString(), ResourceManagementClient.DeserializationSettings);
+                            return new TemplateValidationInfo(deploymentDeserialized?.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentDeserialized?.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
+                        }
+                        catch (Newtonsoft.Json.JsonException)
+                        { 
+                            throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
+                        }
+                    default:
+                        throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
+                }
             }
             catch (Exception ex)
             {
                 var error = HandleError(ex).FirstOrDefault();
-                return new TemplateValidationInfo(new DeploymentValidateResult(error));
+                return new TemplateValidationInfo(new List<Provider>(), error.AsArray().ToList(), new List<DeploymentDiagnosticsDefinition>());
             }
         }
 
-        private DeploymentValidateResult ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        private object ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
             var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
 
@@ -527,26 +547,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private List<ErrorResponse> HandleError(Exception ex)
+        private List<ErrorDetail> HandleError(Exception ex)
         {
             if (ex == null)
             {
                 return null;
             }
 
-            ErrorResponse error = null;
+            ErrorDetail error = null;
             var innerException = HandleError(ex.InnerException);
             if (ex is CloudException)
             {
                 var cloudEx = ex as CloudException;
-                error = new ErrorResponse(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+                error = new ErrorDetail(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
             }
             else
             {
-                error = new ErrorResponse(null, ex.Message, null, innerException);
+                error = new ErrorDetail(null, ex.Message, null, innerException);
             }
 
-            return new List<ErrorResponse> { error };
+            return new List<ErrorDetail> { error };
 
         }
 
@@ -1509,7 +1529,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return ProvisionDeploymentStatus(parameters, deployment);
         }
 
-        private void DisplayInnerDetailErrorMessage(ErrorResponse error)
+        private void DisplayInnerDetailErrorMessage(ErrorDetail error)
         {
             WriteError(string.Format(ErrorFormat, error.Code, error.Message));
             if (error.Details != null)
@@ -1709,8 +1729,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Validates a given deployment.
         /// </summary>
         /// <param name="parameters">The deployment create options</param>
-        /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
-        public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters)
+        /// <returns>The validation info</returns>
+        public virtual TemplateValidationInfo ValidateDeployment(PSDeploymentCmdletParameters parameters)
         {
             if (parameters.DeploymentName == null)
             {
@@ -1724,7 +1744,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 WriteVerbose(ProjectResources.TemplateValid);
             }
-            return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
+            return validationInfo;
         }
 
         public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null, string correlationId = null)

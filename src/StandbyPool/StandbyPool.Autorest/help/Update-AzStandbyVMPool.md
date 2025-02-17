@@ -15,14 +15,15 @@ Update a StandbyVirtualMachinePoolResource
 ### UpdateExpanded (Default)
 ```
 Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MaxReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>] [-VMState <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MaxReadyCapacity <Int64>] [-MinReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>]
+ [-VMState <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-MaxReadyCapacity <Int64>] [-Tag <Hashtable>]
- [-VMSSId <String>] [-VMState <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-MaxReadyCapacity <Int64>]
+ [-MinReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>] [-VMState <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -54,6 +55,7 @@ Update-AzStandbyVMPool `
 ```output
 AttachedVirtualMachineScaleSetId  : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss
 ElasticityProfileMaxReadyCapacity : 2
+ElasticityProfileMinReadyCapacity : 2
 Id                                : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool
 Location                          : eastus
 Name                              : testPool
@@ -137,7 +139,23 @@ Accept wildcard characters: False
 ```
 
 ### -MaxReadyCapacity
-Specifies maximum number of virtual machines in the standby virtual machine pool.
+Specifies the maximum number of virtual machines in the standby virtual machine pool.
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinReadyCapacity
+Specifies the desired minimum number of virtual machines in the standby virtual machine pool.
+MinReadyCapacity cannot exceed MaxReadyCapacity.
 
 ```yaml
 Type: System.Int64

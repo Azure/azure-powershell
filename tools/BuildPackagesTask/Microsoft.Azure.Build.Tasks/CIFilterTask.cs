@@ -32,10 +32,15 @@ namespace Microsoft.WindowsAzure.Build.Tasks
     public class CIFilterTask : Task
     {
         /// <summary>
-        /// Gets or sets the files changed in a given pull request.
+        /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
         /// </summary>
         [Required]
-        public string[] FilesChanged { get; set; }
+        public string FilesChangedFile { get; set; }
+
+        /// <summary>
+        /// Changed File List
+        /// </summary>
+        private string[] FilesChanged { get; set; }
 
         /// <summary>
         /// Gets or set the Mode, e.g. Release
@@ -186,7 +191,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         private Dictionary<string, HashSet<string>> CalculateInfluencedModuleInfoForEachPhase(List<(Regex, List<string>)> ruleList, Dictionary<string, string[]> csprojMap)
         {
             Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>();
-
+			
             foreach (string filePath in FilesChanged)
             {
                 List<string> phaseList = new List<string>();
@@ -422,6 +427,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             SubTasks = "";
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
+            FilesChanged = File.ReadAllLines(FilesChangedFile);
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
             if (FilesChanged != null)
             {

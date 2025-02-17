@@ -833,6 +833,200 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// This operation retrieves the details of all the failover tests performed on
+        /// the gateway for different peering locations
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteFailoverTestDetails> GetFailoverAllTestDetails(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string type, bool fetchLatest)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).GetFailoverAllTestDetailsAsync(resourceGroupName, virtualNetworkGatewayName, type, fetchLatest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves the details of all the failover tests performed on
+        /// the gateway for different peering locations
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteFailoverTestDetails>> GetFailoverAllTestDetailsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string type, bool fetchLatest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetFailoverAllTestDetailsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, type, fetchLatest, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation retrieves the details of a particular failover test
+        /// performed on the gateway based on the test Guid
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails> GetFailoverSingleTestDetails(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, string failoverTestId)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).GetFailoverSingleTestDetailsAsync(resourceGroupName, virtualNetworkGatewayName, peeringLocation, failoverTestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves the details of a particular failover test
+        /// performed on the gateway based on the test Guid
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails>> GetFailoverSingleTestDetailsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, string failoverTestId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetFailoverSingleTestDetailsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, peeringLocation, failoverTestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation starts failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        public static string StartExpressRouteSiteFailoverSimulation(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).StartExpressRouteSiteFailoverSimulationAsync(resourceGroupName, virtualNetworkGatewayName, peeringLocation).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation starts failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> StartExpressRouteSiteFailoverSimulationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StartExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, peeringLocation, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation stops failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        public static string StopExpressRouteSiteFailoverSimulation(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, ExpressRouteFailoverStopApiParameters stopParameters)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).StopExpressRouteSiteFailoverSimulationAsync(resourceGroupName, virtualNetworkGatewayName, stopParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation stops failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> StopExpressRouteSiteFailoverSimulationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, ExpressRouteFailoverStopApiParameters stopParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StopExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, stopParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Get VPN client connection health detail per P2S client connection of the
         /// virtual network gateway in the specified resource group.
         /// </summary>
@@ -1536,6 +1730,200 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<string> BeginStopPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation retrieves the details of all the failover tests performed on
+        /// the gateway for different peering locations
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteFailoverTestDetails> BeginGetFailoverAllTestDetails(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string type, bool fetchLatest)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginGetFailoverAllTestDetailsAsync(resourceGroupName, virtualNetworkGatewayName, type, fetchLatest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves the details of all the failover tests performed on
+        /// the gateway for different peering locations
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteFailoverTestDetails>> BeginGetFailoverAllTestDetailsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string type, bool fetchLatest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetFailoverAllTestDetailsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, type, fetchLatest, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation retrieves the details of a particular failover test
+        /// performed on the gateway based on the test Guid
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails> BeginGetFailoverSingleTestDetails(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, string failoverTestId)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginGetFailoverSingleTestDetailsAsync(resourceGroupName, virtualNetworkGatewayName, peeringLocation, failoverTestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves the details of a particular failover test
+        /// performed on the gateway based on the test Guid
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails>> BeginGetFailoverSingleTestDetailsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, string failoverTestId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetFailoverSingleTestDetailsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, peeringLocation, failoverTestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation starts failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        public static string BeginStartExpressRouteSiteFailoverSimulation(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginStartExpressRouteSiteFailoverSimulationAsync(resourceGroupName, virtualNetworkGatewayName, peeringLocation).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation starts failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> BeginStartExpressRouteSiteFailoverSimulationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peeringLocation, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginStartExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, peeringLocation, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation stops failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        public static string BeginStopExpressRouteSiteFailoverSimulation(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, ExpressRouteFailoverStopApiParameters stopParameters)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginStopExpressRouteSiteFailoverSimulationAsync(resourceGroupName, virtualNetworkGatewayName, stopParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation stops failover simulation on the gateway for the specified
+        /// peering location
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> BeginStopExpressRouteSiteFailoverSimulationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, ExpressRouteFailoverStopApiParameters stopParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginStopExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, stopParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

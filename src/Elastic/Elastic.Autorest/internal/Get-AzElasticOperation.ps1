@@ -25,12 +25,12 @@ List all operations provided by Microsoft.Elastic.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOperationResult
 .Link
 https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticoperation
 #>
 function Get-AzElasticOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOperationResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

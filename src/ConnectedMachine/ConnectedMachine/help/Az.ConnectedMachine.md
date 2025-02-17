@@ -20,6 +20,9 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 ### [Get-AzConnectedLicense](Get-AzConnectedLicense.md)
 Retrieves information about the view of a license.
 
+### [Get-AzConnectedLicenseProfile](Get-AzConnectedLicenseProfile.md)
+Retrieves information about the view of a license profile.
+
 ### [Get-AzConnectedMachine](Get-AzConnectedMachine.md)
 Retrieves information about the model view or the instance view of a hybrid machine.
 
@@ -41,24 +44,36 @@ The operation to install patches on a hybrid machine identity in Azure.
 ### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
 The operation to assess patches on a hybrid machine identity in Azure.
 
+### [Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration.md)
+Forces the network security perimeter configuration to refresh for a private link scope.
+
 ### [New-AzConnectedLicense](New-AzConnectedLicense.md)
-The operation to create or update a license.
+The operation to create a license.
 
 ### [New-AzConnectedLicenseDetail](New-AzConnectedLicenseDetail.md)
 Create an in-memory object for LicenseDetails.
 
+### [New-AzConnectedLicenseProfile](New-AzConnectedLicenseProfile.md)
+The operation to create a license profile.
+
+### [New-AzConnectedLicenseProfileFeature](New-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeature.
+
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to create the extension.
 
 ### [New-AzConnectedMachineRunCommand](New-AzConnectedMachineRunCommand.md)
-The operation to create or update a run command.
+The operation to create a run command.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
-Create (or updates) a Azure Arc PrivateLinkScope.
+create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Remove-AzConnectedLicense](Remove-AzConnectedLicense.md)
 The operation to delete a license.
+
+### [Remove-AzConnectedLicenseProfile](Remove-AzConnectedLicenseProfile.md)
+The operation to delete a license profile.
 
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)
 The operation to delete a hybrid machine.
@@ -73,28 +88,34 @@ The operation to delete a run command.
 Deletes a Azure Arc PrivateLinkScope.
 
 ### [Set-AzConnectedLicense](Set-AzConnectedLicense.md)
-The operation to create or update a license.
+The operation to update a license.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to update the extension.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
-Update (or updates) a Azure Arc PrivateLinkScope.
+update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
 
+### [Update-AzConnectedLicenseProfile](Update-AzConnectedLicenseProfile.md)
+The operation to update a license profile.
+
+### [Update-AzConnectedLicenseProfileFeature](Update-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeatureUpdate.
+
 ### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
 The operation to update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to update the extension.
 
 ### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
-The operation to create or update a run command.
+The operation to update a run command.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+update an existing PrivateLinkScope's tags.
+To update other fields use the CreateOrupdate method.
 

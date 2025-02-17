@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+    /// This operation create a policy set definition version in the given subscription with the given name and version.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPolicySetDefinitionVersion_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation creates or updates a policy set definition version in the given subscription with the given name and version.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation create a policy set definition version in the given subscription with the given name and version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}", ApiVersion = "2023-04-01")]
     public partial class NewAzPolicySetDefinitionVersion_CreateExpanded : global::System.Management.Automation.PSCmdlet,

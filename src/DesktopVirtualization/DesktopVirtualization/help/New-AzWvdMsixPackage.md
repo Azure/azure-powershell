@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdMsixPackage
 
 ## SYNOPSIS
-Create or update a MSIX package.
+create a MSIX package.
 
 ## SYNTAX
 
@@ -22,6 +22,20 @@ New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> -FullNam
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> -FullName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> -FullName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### PackageAlias
 ```
 New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
@@ -30,7 +44,7 @@ New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> [-Subscr
 ```
 
 ## DESCRIPTION
-Create or update a MSIX package.
+create a MSIX package.
 
 ## EXAMPLES
 
@@ -97,7 +111,7 @@ User friendly Name to be displayed in the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, PackageAlias
 Aliases:
 
 Required: False
@@ -112,7 +126,7 @@ The version specific package full name of the MSIX package within specified host
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: MsixPackageFullName
 
 Required: True
@@ -142,7 +156,7 @@ VHD/CIM image path on Network Share.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, PackageAlias
 Aliases:
 
 Required: False
@@ -157,7 +171,7 @@ Make this version of the package the active one across the hostpool.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, PackageAlias
 Aliases:
 
 Required: False
@@ -172,10 +186,40 @@ Specifies how to register Package in feed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, PackageAlias
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,10 +259,8 @@ Accept wildcard characters: False
 ### -PackageApplication
 List of package applications.
 
-To construct, see NOTES section for PACKAGEAPPLICATION properties and create a hash table.
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -232,10 +274,8 @@ Accept wildcard characters: False
 ### -PackageDependency
 List of package dependencies.
 
-To construct, see NOTES section for PACKAGEDEPENDENCY properties and create a hash table.
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -310,6 +350,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -324,7 +365,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Package Version found in the appxmanifest.xml.
+Package version found in the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -376,7 +417,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage
 
 ## NOTES
 
