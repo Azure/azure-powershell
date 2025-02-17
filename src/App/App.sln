@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{D3F9A0AD-C07B-484E-86D7-C0B5EB30D313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.App", "..\..\generated\App\App.Autorest\Az.App.csproj", "{8E37E676-9CEB-4DA3-91B8-06FE8B5B24DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.App", "..\..\generated\App\App.Autorest\Az.App.csproj", "{B49D0CDC-453B-4496-8753-47017896C372}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{D3F9A0AD-C07B-484E-86D7-C0B5EB30D313}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3F9A0AD-C07B-484E-86D7-C0B5EB30D313}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3F9A0AD-C07B-484E-86D7-C0B5EB30D313}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E37E676-9CEB-4DA3-91B8-06FE8B5B24DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E37E676-9CEB-4DA3-91B8-06FE8B5B24DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E37E676-9CEB-4DA3-91B8-06FE8B5B24DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E37E676-9CEB-4DA3-91B8-06FE8B5B24DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B49D0CDC-453B-4496-8753-47017896C372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49D0CDC-453B-4496-8753-47017896C372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49D0CDC-453B-4496-8753-47017896C372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49D0CDC-453B-4496-8753-47017896C372}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F6A3833A-FEEC-47B7-86D9-89115E498E74} = {F56D746A-7E30-44E5-BE3D-1131680A1448}
