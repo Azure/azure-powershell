@@ -15,7 +15,7 @@ Creates a peering between two virtual networks.
 
 ```
 Add-AzVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork> -RemoteVirtualNetworkId <String>
- [-PeerCompleteVnets] [-LocalSubnetNames] [-RemoteSubnetNames] [-EnableOnlyIPv6Peering]
+ [-PeerCompleteVnets] [-LocalSubnetName] [-RemoteSubnetName] [-EnableOnlyIPv6Peering]
  [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-UseRemoteGateways] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -209,7 +209,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LocalSubnetNames
+### -LocalSubnetName
 Specifies the list of local subnets to be peered.
 
 ```yaml
@@ -224,7 +224,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RemoteSubnetNames
+### -RemoteSubnetName
 Specifies the list of remote subnets to be peered.
 
 ```yaml

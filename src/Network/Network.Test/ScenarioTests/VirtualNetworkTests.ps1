@@ -1178,7 +1178,7 @@ function Test-SubnetPeeringCRUD
         Assert-AreEqual "Succeeded" $vnet2.ProvisioningState 
 
         # Add Peering to vnet1
-        $job = $vnet1 | Add-AzVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id -PeerCompleteVnets false -LocalSubnetNames $subnet1Name -RemoteSubnetNames $subnet2Name -AllowForwardedTraffic -AsJob
+        $job = $vnet1 | Add-AzVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id -PeerCompleteVnet false -LocalSubnetName $subnet1Name -RemoteSubnetName $subnet2Name -AllowForwardedTraffic -AsJob
         $job | Wait-Job
         $peer = $job | Receive-Job
         
@@ -1189,9 +1189,9 @@ function Test-SubnetPeeringCRUD
         Assert-AreEqual $peer.RemoteVirtualNetwork.Id $vnet2.Id
         Assert-AreEqual $peer.AllowVirtualNetworkAccess True
         Assert-AreEqual $peer.AllowForwardedTraffic True
-	Assert-AreEqual $peer.PeerCompleteVnets $false
- 	Assert-AreEqual $peer.LocalSubnetNames $subnet1Name
-  	Assert-AreEqual $peer.RemoteSubnetNames $subnet2Name
+	Assert-AreEqual $peer.PeerCompleteVnet $false
+ 	Assert-AreEqual $peer.LocalSubnetName $subnet1Name
+  	Assert-AreEqual $peer.RemoteSubnetName $subnet2Name
         Assert-Null $peer.RemoteGateways
         Assert-Null $peer.$peer.RemoteVirtualNetworkAddressSpace
         
@@ -1207,9 +1207,9 @@ function Test-SubnetPeeringCRUD
         Assert-AreEqual $getPeer.AllowForwardedTraffic True
         Assert-AreEqual $peer.AllowGatewayTransit $false
         Assert-AreEqual $peer.UseRemoteGateways $false	
-	Assert-AreEqual $peer.PeerCompleteVnets $false
- 	Assert-AreEqual $peer.LocalSubnetNames $subnet1Name
-  	Assert-AreEqual $peer.RemoteSubnetNames $subnet2Name
+	Assert-AreEqual $peer.PeerCompleteVnet $false
+ 	Assert-AreEqual $peer.LocalSubnetName $subnet1Name
+  	Assert-AreEqual $peer.RemoteSubnetName $subnet2Name
         Assert-Null $getPeer.RemoteGateways
         Assert-Null $getPeer.$peer.RemoteVirtualNetworkAddressSpace
         
@@ -1226,9 +1226,9 @@ function Test-SubnetPeeringCRUD
         Assert-AreEqual $listPeer[0].AllowForwardedTraffic True
         Assert-AreEqual $listPeer[0].AllowGatewayTransit $false
         Assert-AreEqual $listPeer[0].UseRemoteGateways $false
-	Assert-AreEqual $peer.PeerCompleteVnets $false
- 	Assert-AreEqual $peer.LocalSubnetNames $subnet1Name
-  	Assert-AreEqual $peer.RemoteSubnetNames $subnet2Name
+	Assert-AreEqual $peer.PeerCompleteVnet $false
+ 	Assert-AreEqual $peer.LocalSubnetName $subnet1Name
+  	Assert-AreEqual $peer.RemoteSubnetName $subnet2Name
         Assert-Null $listPeer[0].RemoteGateways
         Assert-Null $listPeer[0].$peer.RemoteVirtualNetworkAddressSpace
 
@@ -1245,9 +1245,9 @@ function Test-SubnetPeeringCRUD
         Assert-AreEqual $listPeer[0].AllowForwardedTraffic True
         Assert-AreEqual $listPeer[0].AllowGatewayTransit $false
         Assert-AreEqual $listPeer[0].UseRemoteGateways $false
-	Assert-AreEqual $peer.PeerCompleteVnets $false
- 	Assert-AreEqual $peer.LocalSubnetNames $subnet1Name
-  	Assert-AreEqual $peer.RemoteSubnetNames $subnet2Name
+	Assert-AreEqual $peer.PeerCompleteVnet $false
+ 	Assert-AreEqual $peer.LocalSubnetName $subnet1Name
+  	Assert-AreEqual $peer.RemoteSubnetName $subnet2Name
         Assert-Null $listPeer[0].RemoteGateways
         Assert-Null $listPeer[0].$peer.RemoteVirtualNetworkAddressSpace
         
@@ -1267,9 +1267,9 @@ function Test-SubnetPeeringCRUD
         Assert-AreEqual $setPeer.AllowForwardedTraffic $false
         Assert-AreEqual $setPeer.AllowGatewayTransit $false
         Assert-AreEqual $setPeer.UseRemoteGateways $false
-	Assert-AreEqual $peer.PeerCompleteVnets $false
- 	Assert-AreEqual $peer.LocalSubnetNames $subnet1Name
-  	Assert-AreEqual $peer.RemoteSubnetNames $subnet2Name
+	Assert-AreEqual $peer.PeerCompleteVnet $false
+ 	Assert-AreEqual $peer.LocalSubnetName $subnet1Name
+  	Assert-AreEqual $peer.RemoteSubnetName $subnet2Name
         Assert-Null $setPeer.RemoteGateways
         Assert-Null $setPeer.$peer.RemoteVirtualNetworkAddressSpace
         
@@ -1929,12 +1929,12 @@ function Test-SyncSubnetPeeringCRUD
         Assert-AreEqual "Succeeded" $vnet2.ProvisioningState 
 
         # Add Peering to vnet1
-        $job = $vnet1 | Add-AzVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id -PeerCompleteVnets false -LocalSubnetNames $subnet1Name -RemoteSubnetNames $subnet2Name -AllowForwardedTraffic -AsJob
+        $job = $vnet1 | Add-AzVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id -PeerCompleteVnet false -LocalSubnetName $subnet1Name -RemoteSubnetName $subnet2Name -AllowForwardedTraffic -AsJob
         $job | Wait-Job
         $peer1 = $job | Receive-Job
         
         # Add Peering to VNet2
-        $job = $vnet2 | Add-AzVirtualNetworkPeering -name $peerName2 -RemoteVirtualNetworkId $vnet1.Id -PeerCompleteVnets false -LocalSubnetNames $subnet2Name -RemoteSubnetNames $subnet1Name -AllowForwardedTraffic -AsJob
+        $job = $vnet2 | Add-AzVirtualNetworkPeering -name $peerName2 -RemoteVirtualNetworkId $vnet1.Id -PeerCompleteVnet false -LocalSubnetName $subnet2Name -RemoteSubnetName $subnet1Name -AllowForwardedTraffic -AsJob
         $job | Wait-Job
         $peer2 = $job | Receive-Job
 
@@ -1945,9 +1945,9 @@ function Test-SyncSubnetPeeringCRUD
         Assert-AreEqual $peer1.RemoteVirtualNetwork.Id $vnet2.Id
         Assert-AreEqual $peer1.AllowVirtualNetworkAccess True
         Assert-AreEqual $peer1.AllowForwardedTraffic True
-	Assert-AreEqual $peer1.PeerCompleteVnets $false
- 	Assert-AreEqual $peer1.LocalSubnetNames $subnet1Name
-  	Assert-AreEqual $peer1.RemoteSubnetNames $subnet2Name
+	Assert-AreEqual $peer1.PeerCompleteVnet $false
+ 	Assert-AreEqual $peer1.LocalSubnetName $subnet1Name
+  	Assert-AreEqual $peer1.RemoteSubnetName $subnet2Name
 
         Assert-AreEqual $peer2.ResourceGroupName $rgname    
         Assert-AreEqual $peer2.Name $peerName2    
@@ -1956,15 +1956,15 @@ function Test-SyncSubnetPeeringCRUD
         Assert-AreEqual $peer2.RemoteVirtualNetwork.Id $vnet1.Id
         Assert-AreEqual $peer2.AllowVirtualNetworkAccess True
         Assert-AreEqual $peer2.AllowForwardedTraffic True
-	Assert-AreEqual $peer2.PeerCompleteVnets $false
- 	Assert-AreEqual $peer2.LocalSubnetNames $subnet2Name
-  	Assert-AreEqual $peer2.RemoteSubnetNames $subnet1Name
+	Assert-AreEqual $peer2.PeerCompleteVnet $false
+ 	Assert-AreEqual $peer2.LocalSubnetName $subnet2Name
+  	Assert-AreEqual $peer2.RemoteSubnetName $subnet1Name
         
         # Check if Address Spaces are same
         Assert-AreEqual $peer1.RemoteVirtualNetworkAddressSpace.AddressPrefixesText $vnet2.AddressSpace.AddressPrefixesText
 
         # Update peer1
-        $peer1.LocalSubnetNames.Add($subnet0)
+        $peer1.LocalSubnetName.Add($subnet0)
 	$job = $peer1 | Set-AzVirtualNetworkPeering -AsJob
         $job | Wait-Job
         $setPeer = $job | Receive-Job

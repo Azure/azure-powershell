@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string[] LocalSubnetName { get; set; }
 
         [JsonIgnore]
-        public string LocalSubnetNamesText
+        public string LocalSubnetNameText
         {
             get { return JsonConvert.SerializeObject(LocalSubnetName, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }

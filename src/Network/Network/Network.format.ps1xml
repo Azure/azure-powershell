@@ -1519,16 +1519,16 @@
                 <PropertyName>RemoteVirtualNetworkAddressSpaceText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>PeerCompleteVnets</Label>
-                <PropertyName>PeerCompleteVnets</PropertyName>
+                <Label>PeerCompleteVnet</Label>
+                <PropertyName>PeerCompleteVnet</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>LocalSubnetNames</Label>
-                <PropertyName>LocalSubnetNamesText</PropertyName>
+                <Label>LocalSubnetName</Label>
+                <PropertyName>LocalSubnetNameText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>RemoteSubnetNames</Label>
-                <PropertyName>RemoteSubnetNamesText</PropertyName>
+                <Label>RemoteSubnetName</Label>
+                <PropertyName>RemoteSubnetNameText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>EnableOnlyIPv6Peering</Label>
