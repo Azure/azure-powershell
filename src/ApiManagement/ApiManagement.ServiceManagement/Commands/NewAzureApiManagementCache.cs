@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCache", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementCache))]
@@ -38,10 +40,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
-            HelpMessage = "Redis Connection String. This parameter is required.")]
-        [ValidateNotNullOrEmpty]
+            Mandatory = false,
+            HelpMessage = "Redis Connection String. This parameter or parameter ConnectionStringSecureis required.")]
         public String ConnectionString { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Redis Connection String. This parameter is required.")]
+        public System.Security.SecureString ConnectionStringSecure { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -67,13 +74,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public override void ExecuteApiManagementCmdlet()
         {
             string cacheId = CacheId ?? "default";
+            if (string.IsNullOrEmpty(ConnectionString) && null == ConnectionStringSecure) { 
+                throw new PSArgumentException("The parameter 'ConnectionString' or 'ConnectionStringSecure' can't both be null!");
+            }
+            string internalConnectionString = ConnectionString;
+            if (ConnectionStringSecure != null)
+            {
+                internalConnectionString = Utils.ConvertToString(ConnectionStringSecure);
+            }
 
             if (ShouldProcess(CacheId, Resources.CreateCache))
             {
                 var cache = Client.CacheCreate(
                     Context,
                     cacheId,
-                    ConnectionString,
+                    internalConnectionString,
                     Description,
                     AzureRedisResourceId,
                     UseFromLocation ?? "default");
