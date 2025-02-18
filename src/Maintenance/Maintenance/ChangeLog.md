@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Migrated the Maintenance SDK for Autorest from C# to PowerShell
+* Migrated SDK generation from autorest csharp to autorest powershell.
 
 ## Version 1.5.0
 * Upgraded nuget package to signed package.
