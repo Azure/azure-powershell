@@ -86,6 +86,10 @@ function Test-StorageAccount
         Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
         Assert-AreEqual $stokey2[1].Value $stokey1[1].Value;
 
+        $value1SecurePlainText = $stokey1[1].ValueSecure | ConvertFrom-SecureString -AsPlainText
+        $value2SecurePlainText = $stokey2[1].ValueSecure | ConvertFrom-SecureString -AsPlainText
+        Assert-AreEqual $value1SecurePlainText $value2SecurePlainText;
+
         New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
 
         $stokey3 = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
