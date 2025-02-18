@@ -176,17 +176,17 @@ function Get-TestSubscriptionAuditInitiativeAssignmentName {
 
 <#
 .SYNOPSIS
-Gets test query interval start
+Gets test query interval start, should be a few days before tests are being run
 #>
-function Get-TestQueryIntervalStart {#change this value to a few days ago 
+function Get-TestQueryIntervalStart {
    "2025-01-31 00:00:00Z"
 }
 
 <#
 .SYNOPSIS
-Gets test query interval end
+Gets test query interval end, value has to be after start (value above) and before current UTC
 #>
-function Get-TestQueryIntervalEnd {# value has to be after start (value above) and before current UTC
+function Get-TestQueryIntervalEnd {
    "2025-02-05 02:00:00Z"
 }
 
