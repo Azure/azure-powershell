@@ -17,11 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{AFC99D4F-4983-4CC4-A284-4A763374FC3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppConfiguration", "AppConfiguration.Autorest\Az.AppConfiguration.csproj", "{0A26A996-8746-467D-B984-C3B3F6B6E63A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppConfiguration", "AppConfiguration\AppConfiguration.csproj", "{AAA0CCC9-9FD8-4D1E-98FE-62005C6A6A05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppConfigurationdata", "AppConfigurationData.Autorest\Az.AppConfigurationdata.csproj", "{EAF492FC-E0D0-464E-8724-8E87348B9905}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppConfiguration", "..\..\generated\AppConfiguration\AppConfiguration.Autorest\Az.AppConfiguration.csproj", "{E6E86B91-7575-471B-AA10-2738B2674A5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppConfigurationData", "..\..\generated\AppConfiguration\AppConfigurationData.Autorest\Az.AppConfigurationData.csproj", "{AAA3136C-E832-41E3-B774-3A4B4F997C3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,18 +56,18 @@ Global
 		{AFC99D4F-4983-4CC4-A284-4A763374FC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFC99D4F-4983-4CC4-A284-4A763374FC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFC99D4F-4983-4CC4-A284-4A763374FC3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A26A996-8746-467D-B984-C3B3F6B6E63A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A26A996-8746-467D-B984-C3B3F6B6E63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A26A996-8746-467D-B984-C3B3F6B6E63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A26A996-8746-467D-B984-C3B3F6B6E63A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AAA0CCC9-9FD8-4D1E-98FE-62005C6A6A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AAA0CCC9-9FD8-4D1E-98FE-62005C6A6A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA0CCC9-9FD8-4D1E-98FE-62005C6A6A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA0CCC9-9FD8-4D1E-98FE-62005C6A6A05}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EAF492FC-E0D0-464E-8724-8E87348B9905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EAF492FC-E0D0-464E-8724-8E87348B9905}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EAF492FC-E0D0-464E-8724-8E87348B9905}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EAF492FC-E0D0-464E-8724-8E87348B9905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E86B91-7575-471B-AA10-2738B2674A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E86B91-7575-471B-AA10-2738B2674A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E86B91-7575-471B-AA10-2738B2674A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E86B91-7575-471B-AA10-2738B2674A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA3136C-E832-41E3-B774-3A4B4F997C3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA3136C-E832-41E3-B774-3A4B4F997C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA3136C-E832-41E3-B774-3A4B4F997C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA3136C-E832-41E3-B774-3A4B4F997C3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D4407E96-2E07-4C5F-B17F-97C4BF09DDF8} = {E4EA62CD-566F-439D-A591-A3969389B28E}

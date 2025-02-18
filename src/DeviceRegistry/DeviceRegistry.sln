@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceRegistry", "DeviceRegistry\DeviceRegistry.csproj", "{396AE973-86A9-475C-9D2D-4EE7618B84EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DeviceRegistry", "DeviceRegistry.Autorest\Az.DeviceRegistry.csproj", "{D14B31C3-8C95-4E6F-9973-1FFCF911902D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DeviceRegistry", "..\..\generated\DeviceRegistry\DeviceRegistry.Autorest\Az.DeviceRegistry.csproj", "{2B09CBB2-9E47-4524-9E0A-AB146E93B49C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{396AE973-86A9-475C-9D2D-4EE7618B84EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{396AE973-86A9-475C-9D2D-4EE7618B84EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{396AE973-86A9-475C-9D2D-4EE7618B84EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D14B31C3-8C95-4E6F-9973-1FFCF911902D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D14B31C3-8C95-4E6F-9973-1FFCF911902D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D14B31C3-8C95-4E6F-9973-1FFCF911902D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D14B31C3-8C95-4E6F-9973-1FFCF911902D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B09CBB2-9E47-4524-9E0A-AB146E93B49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B09CBB2-9E47-4524-9E0A-AB146E93B49C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B09CBB2-9E47-4524-9E0A-AB146E93B49C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B09CBB2-9E47-4524-9E0A-AB146E93B49C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A1F1FB0B-4A4E-4009-BED5-A4AFE41CEB6D} = {9164047D-4250-4686-A316-745B46E760CE}

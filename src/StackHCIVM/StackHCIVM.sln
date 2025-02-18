@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackHCIVM", "StackHCIVM\StackHCIVM.csproj", "{0DE64F39-2359-486F-8183-49157FD9EA15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StackHCIVM", "StackHCIVM.Autorest\Az.StackHCIVM.csproj", "{AB93E074-D3EC-4C09-827F-31867745A66E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StackHCIVM", "..\..\generated\StackHCIVM\StackHCIVM.Autorest\Az.StackHCIVM.csproj", "{E881FBE6-BD27-4189-B538-0B36FD8CB66B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{0DE64F39-2359-486F-8183-49157FD9EA15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DE64F39-2359-486F-8183-49157FD9EA15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DE64F39-2359-486F-8183-49157FD9EA15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB93E074-D3EC-4C09-827F-31867745A66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB93E074-D3EC-4C09-827F-31867745A66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB93E074-D3EC-4C09-827F-31867745A66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB93E074-D3EC-4C09-827F-31867745A66E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E881FBE6-BD27-4189-B538-0B36FD8CB66B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E881FBE6-BD27-4189-B538-0B36FD8CB66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E881FBE6-BD27-4189-B538-0B36FD8CB66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E881FBE6-BD27-4189-B538-0B36FD8CB66B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C98DFB64-A4CB-4199-B058-C8B867610B1E} = {11EA6155-226F-4921-A998-E856F24D0B6D}

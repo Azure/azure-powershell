@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeonPostgres", "NeonPostgres\NeonPostgres.csproj", "{E54B0A08-39BC-4187-9CC7-E50FDCDD6E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NeonPostgres", "NeonPostgres.Autorest\Az.NeonPostgres.csproj", "{A8643DF0-3762-4D1F-A23E-60BA7C688D52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NeonPostgres", "..\..\generated\NeonPostgres\NeonPostgres.Autorest\Az.NeonPostgres.csproj", "{CE244FA5-D8FB-4BD8-A7E9-1287B199A262}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{E54B0A08-39BC-4187-9CC7-E50FDCDD6E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E54B0A08-39BC-4187-9CC7-E50FDCDD6E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E54B0A08-39BC-4187-9CC7-E50FDCDD6E49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8643DF0-3762-4D1F-A23E-60BA7C688D52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8643DF0-3762-4D1F-A23E-60BA7C688D52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8643DF0-3762-4D1F-A23E-60BA7C688D52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8643DF0-3762-4D1F-A23E-60BA7C688D52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE244FA5-D8FB-4BD8-A7E9-1287B199A262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE244FA5-D8FB-4BD8-A7E9-1287B199A262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE244FA5-D8FB-4BD8-A7E9-1287B199A262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE244FA5-D8FB-4BD8-A7E9-1287B199A262}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{880CB216-FFD4-48DB-9082-BFCE532A13A4} = {595B2E4A-7EE3-460E-898F-0C7D79DE4FCE}
