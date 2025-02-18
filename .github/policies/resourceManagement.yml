@@ -813,6 +813,23 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: CodeSigning
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: CodeSigning
+        then:
+        - mentionUsers:
+            mentionees:
+            - Jaxelr
+            - DawnWang17
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Cognitive - Anomaly Detector
         - hasLabel:
             label: Service Attention
@@ -1845,8 +1862,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - raedJarrar
-            - jifems
+            - dlacy7
+            - NateB2
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2856,7 +2873,6 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - SameergMS
             - yairgil
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -3454,6 +3470,9 @@ configuration:
         - mentionUsers:
             mentionees:
             - kenieva
+            - shanhix1
+            - calecarter
+            - mentat9
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -4220,6 +4239,7 @@ configuration:
             mentionees:
             - AzureAppServiceCLI
             - antcp
+            - yutanglin16
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

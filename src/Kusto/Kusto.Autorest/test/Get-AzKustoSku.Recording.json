@@ -1,17 +1,17 @@
 {
-  "Get-AzKustoSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East US/skus?api-version=2023-08-15+1": {
+  "Get-AzKustoSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East US/skus?api-version=2024-04-13+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/skus?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/skus?api-version=2024-04-13",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "151" ],
-        "x-ms-client-request-id": [ "ca67977d-3260-4210-bcab-9f88a49f5acd" ],
+        "x-ms-unique-id": [ "237" ],
+        "x-ms-client-request-id": [ "aa73e121-974c-4472-aead-140674e63462" ],
         "CommandName": [ "Get-AzKustoSku" ],
         "FullCommandName": [ "Get-AzKustoSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Kusto/0.1.4" ],
+        "User-Agent": [ "AzurePowershell/v12.5.0", "PSVersion/v7.4.6", "Az.Kusto/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,14 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "983ecf05-2a94-463f-9025-c55fe0199320" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-request-id": [ "9290460e-6874-4beb-b80f-882a1e233c3e" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-correlation-request-id": [ "a01ae3f9-401e-4254-a9ac-f4877938c07a" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T195121Z:a01ae3f9-401e-4254-a9ac-f4877938c07a" ],
+        "x-ms-correlation-request-id": [ "bc83811f-f423-4532-8a28-0b7f4f9905a6" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T004243Z:bc83811f-f423-4532-8a28-0b7f4f9905a6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 19:51:21 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 97132CD7C8264ADB8200CC59E1B1C36F Ref B: MRS211050315025 Ref C: 2024-12-01T00:42:42Z" ],
+        "Date": [ "Sun, 01 Dec 2024 00:42:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "7600" ],

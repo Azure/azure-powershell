@@ -42,6 +42,8 @@
 | Cognitive Services             | `Az.CognitiveServices`          | [![CognitiveServices]][CognitiveServicesGallery]                   | [Changelog][CognitiveServicesChangeLog]          |
 | Communication                  | `Az.Communication`              | [![Communication]][CommunicationGallery]                           | [Changelog][CommunicationChangeLog]              |
 | Compute                        | `Az.Compute`                    | [![Compute]][ComputeGallery]                                       | [Changelog][ComputeChangeLog]                    |
+| Compute Fleet                  | `Az.ComputeFleet`               | [![ComputeFleet]][ComputeFleetGallery]                             | [Changelog][ComputeFleetChangeLog]               |
+| Compute Schedule               | `Az.ComputeSchedule`            | [![ComputeSchedule]][ComputeScheduleGallery]                       | [Changelog][ComputeScheduleChangeLog]            |
 | ConfidentialLedger             | `Az.ConfidentialLedger`         | [![ConfidentialLedger]][ConfidentialLedgerGallery]                 | [Changelog][ConfidentialLedgerChangeLog]         |
 | Confluent                      | `Az.Confluent`                  | [![Confluent]][ConfluentGallery]                                   | [Changelog][ConfluentChangeLog]                  |
 | Connected Kubernetes           | `Az.ConnectedKubernetes`        | [![ConnectedKubernetes]][ConnectedKubernetesGallery]               | [Changelog][ConnectedKubernetesChangeLog]        |
@@ -69,6 +71,7 @@
 | Windows Virtual Desktop        | `Az.DesktopVirtualization`      | [![DesktopVirtualization]][DesktopVirtualizationGallery]           | [Changelog][DesktopVirtualizationChangeLog]      |
 | DevCenter                      | `Az.DevCenter`                  | [![DevCenter]][DevCenterGallery]                                   | [Changelog][DevCenterChangeLog]                  |
 | Device Provisioning Services   | `Az.DeviceProvisioningServices` | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery] | [Changelog][DeviceProvisioningServicesChangeLog] |
+| Device Registry                | `Az.DeviceRegistry`             | [![DeviceRegistry]][DeviceUpdateGallery]                           | [Changelog][DeviceRegistryChangeLog]             |
 | Device Update                  | `Az.DeviceUpdate`               | [![DeviceUpdate]][DeviceUpdateGallery]                             | [Changelog][DeviceUpdateChangeLog]               |
 | DevTest Labs                   | `Az.DevTestLabs`                | [![DevTestLabs]][DevTestLabsGallery]                               | [Changelog][DevTestLabsChangeLog]                |
 | Digital Twins                  | `Az.DigitalTwins`               | [![DigitalTwins]][DigitalTwinsGallery]                             | [Changelog][DigitalTwinsChangeLog]               |
@@ -227,6 +230,8 @@
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
+[ComputeFleet]:               https://img.shields.io/powershellgallery/v/Az.ComputeFleet.svg?style=flat-square&label=Az.ComputeFleet
+[ComputeSchedule]:            https://img.shields.io/powershellgallery/v/Az.ComputeSchedule.svg?style=flat-square&label=Az.ComputeSchedule
 [ConfidentialLedger]:         https://img.shields.io/powershellgallery/v/Az.ConfidentialLedger.svg?style=flat-square&label=Az.ConfidentialLedger
 [Confluent]:                  https://img.shields.io/powershellgallery/v/Az.Confluent.svg?style=flat-square&label=Az.Confluent
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
@@ -254,6 +259,7 @@
 [DesktopVirtualization]:      https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization
 [DevCenter]:                  https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter
 [DeviceProvisioningServices]: https://img.shields.io/powershellgallery/v/Az.DeviceProvisioningServices.svg?style=flat-square&label=Az.DeviceProvisioningServices
+[DeviceRegistry]:             https://img.shields.io/powershellgallery/v/Az.DeviceRegistry.svg?style=flat-square&label=Az.DeviceRegistry
 [DeviceUpdate]:               https://img.shields.io/powershellgallery/v/Az.DeviceUpdate.svg?style=flat-square&label=Az.DeviceUpdate
 [DevTestLabs]:                https://img.shields.io/powershellgallery/v/Az.DevTestLabs.svg?style=flat-square&label=Az.DevTestLabs
 [DigitalTwins]:               https://img.shields.io/powershellgallery/v/Az.DigitalTwins.svg?style=flat-square&label=Az.DigitalTwins
@@ -408,6 +414,8 @@
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
+[ComputeFleetGallery]:               https://www.powershellgallery.com/packages/Az.ComputeFleet/
+[ComputeScheduleGallery]:            https://www.powershellgallery.com/packages/Az.ComputeSchedule/
 [ConfidentialLedgerGallery]:         https://www.powershellgallery.com/packages/Az.ConfidentialLedger/
 [ConfluentGallery]:                  https://www.powershellgallery.com/packages/Az.Confluent/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
@@ -435,6 +443,7 @@
 [DesktopVirtualizationGallery]:      https://www.powershellgallery.com/packages/Az.DesktopVirtualization/
 [DevCenterGallery]:                  https://www.powershellgallery.com/packages/Az.DevCenter/
 [DeviceProvisioningServicesGallery]: https://www.powershellgallery.com/packages/Az.DeviceProvisioningServices/
+[DeviceRegistryGallery]:             https://www.powershellgallery.com/packages/Az.DeviceRegistry/
 [DeviceUpdateGallery]:               https://www.powershellgallery.com/packages/Az.DeviceUpdate/
 [DevTestLabsGallery]:                https://www.powershellgallery.com/packages/Az.DevTestLabs/
 [DigitalTwinsGallery]:               https://www.powershellgallery.com/packages/Az.DigitalTwins/
@@ -587,6 +596,8 @@
 [CognitiveServicesChangeLog]:          ../src/CognitiveServices/CognitiveServices/ChangeLog.md
 [CommunicationChangeLog]:              ../src/Communication/Communication/ChangeLog.md
 [ComputeChangeLog]:                    ../src/Compute/Compute/ChangeLog.md
+[ComputeFleetChangeLog]:               ../src/ComputeFleet/ComputeFleet/ChangeLog.md
+[ComputeScheduleChangeLog]:            ../src/ComputeSchedule/ComputeSchedule/ChangeLog.md
 [ConfidentialLedgerChangeLog]:         ../src/ConfidentialLedger/ConfidentialLedger/ChangeLog.md
 [ConfluentChangeLog]:                  ../src/Confluent/Confluent/ChangeLog.md
 [ConnectedKubernetesChangeLog]:        ../src/ConnectedKubernetes/ConnectedKubernetes/ChangeLog.md
@@ -614,6 +625,7 @@
 [DesktopVirtualizationChangeLog]:      ../src/DesktopVirtualization/DesktopVirtualization/ChangeLog.md
 [DevCenterChangeLog]:                  ../src/DevCenter/DevCenter/ChangeLog.md
 [DeviceProvisioningServicesChangeLog]: ../src/DeviceProvisioningServices/DeviceProvisioningServices/ChangeLog.md
+[DeviceRegistryChangeLog]:             ../src/DeviceRegistry/DeviceRegistry/ChangeLog.md
 [DeviceUpdateChangeLog]:               ../src/DeviceUpdate/DeviceUpdate/ChangeLog.md
 [DevTestLabsChangeLog]:                ../src/DevTestLabs/DevTestLabs/ChangeLog.md
 [DigitalTwinsChangeLog]:               ../src/DigitalTwins/DigitalTwins/ChangeLog.md

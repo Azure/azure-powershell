@@ -1,6 +1,6 @@
 ---
 external help file: Az.DataProtection-help.xml
-Module Name: Az.Dataprotection
+Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerestore
 schema: 2.0.0
 ---
@@ -516,8 +516,8 @@ Accept wildcard characters: False
 ```
 
 ### -Token
-Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
+Parameter deprecate.
+Please use SecureToken instead.
 
 ```yaml
 Type: System.String

@@ -24,22 +24,24 @@ Rename-AzStorageFile [-ShareName] <String> [-SourcePath] <String> [[-Destination
 ```
 Rename-AzStorageFile [-ShareFileClient] <ShareFileClient> [[-DestinationPath] <String>] [-ContentType <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareObject
 ```
 Rename-AzStorageFile [-ShareClient] <ShareClient> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DirecotryObject
 ```
 Rename-AzStorageFile [-ShareDirectoryClient] <ShareDirectoryClient> [-SourcePath] <String>
  [[-DestinationPath] <String>] [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

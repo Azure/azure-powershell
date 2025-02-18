@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             else
                             {
                                 MSI.Type = MSIdentity.SystemAssigned.ToString();
-                            }                            
+                            }
                         }
                         else if (IdentityType == MSIdentity.None)
                         {
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         patchVault.Identity = MSI;
                     }
 
-                    // alerts V1 changes 
+                    // alerts V1 changes
                     if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null || DisableAzureMonitorAlertsForAllReplicationIssue != null || DisableAzureMonitorAlertsForAllFailoverIssue != null || DisableEmailNotificationsForSiteRecovery != null)
                     {                        
                         MonitoringSettings alerts = (vault.Properties!= null && vault.Properties.MonitoringSettings != null) ? vault.Properties.MonitoringSettings : new MonitoringSettings();

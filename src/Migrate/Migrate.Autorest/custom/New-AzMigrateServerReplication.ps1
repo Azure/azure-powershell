@@ -712,12 +712,17 @@ public static int hashForArtifact(String artifact)
         }
 
 
-        # Check for duplicate disk UUID in user input/discovered VM.
+        # Check for duplicate disk UUID in user input/discovered VM and Premium V2 disk validations.
         foreach ($disk in $ProviderSpecificDetails.DisksToInclude)
         {
             if ($uniqueDiskUuids.Contains($disk.DiskId)) {
                 throw "The disk uuid '$($disk.DiskId)' is already taken."
             }
+
+            if (-not $HasTargetAVZone -and $disk.DiskType -eq "PremiumV2_LRS") {
+                throw "Premium SSD V2 disk can only be attached to zonal VMs."
+            }
+
             $res = $uniqueDiskUuids.Add($disk.DiskId)
         }
 

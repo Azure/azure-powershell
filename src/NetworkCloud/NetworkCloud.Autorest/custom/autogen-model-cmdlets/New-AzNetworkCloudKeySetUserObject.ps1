@@ -21,12 +21,12 @@ Create an in-memory object for KeySetUser.
 Create an in-memory object for KeySetUser.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KeySetUser
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUser
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudKeySetUserObject
 #>
 function New-AzNetworkCloudKeySetUserObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KeySetUser')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUser')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,11 +38,14 @@ function New-AzNetworkCloudKeySetUserObject {
         $Description,
         [Parameter(Mandatory, HelpMessage="The SSH public key data.")]
         [string]
-        $SshPublicKeyData
+        $SshPublicKeyData,
+        [Parameter(HelpMessage="The user principal name (email format) used to validate this user's group membership.")]
+        [string]
+        $UserPrincipalName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.KeySetUser]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.KeySetUser]::New()
 
         if ($PSBoundParameters.ContainsKey('AzureUserName')) {
             $Object.AzureUserName = $AzureUserName
@@ -52,6 +55,9 @@ function New-AzNetworkCloudKeySetUserObject {
         }
         if ($PSBoundParameters.ContainsKey('SshPublicKeyData')) {
             $Object.SshPublicKeyData = $SshPublicKeyData
+        }
+        if ($PSBoundParameters.ContainsKey('UserPrincipalName')) {
+            $Object.UserPrincipalName = $UserPrincipalName
         }
         return $Object
     }

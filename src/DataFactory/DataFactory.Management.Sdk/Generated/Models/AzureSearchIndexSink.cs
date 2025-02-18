@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureSearchIndexSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -51,9 +54,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="writeBehavior">Specify the write behavior when upserting documents into Azure Search
         /// Index.
         /// Possible values include: &#39;Merge&#39;, &#39;Upload&#39;</param>
-        public AzureSearchIndexSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), string writeBehavior = default(string))
+        public AzureSearchIndexSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), string writeBehavior = default(string))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.WriteBehavior = writeBehavior;
             CustomInit();

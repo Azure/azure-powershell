@@ -21,12 +21,12 @@ Create an in-memory object for BgpAdvertisement.
 Create an in-memory object for BgpAdvertisement.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpAdvertisement
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpAdvertisement
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBgpAdvertisementObject
 #>
 function New-AzNetworkCloudBgpAdvertisementObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpAdvertisement')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpAdvertisement')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,7 +46,7 @@ function New-AzNetworkCloudBgpAdvertisementObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BgpAdvertisement]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.BgpAdvertisement]::New()
 
         if ($PSBoundParameters.ContainsKey('AdvertiseToFabric')) {
             $Object.AdvertiseToFabric = $AdvertiseToFabric
