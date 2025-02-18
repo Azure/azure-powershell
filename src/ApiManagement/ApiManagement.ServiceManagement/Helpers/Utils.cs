@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using System.Runtime.InteropServices;
+    using System.Security;
     using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Management.ApiManagement.Models;
@@ -233,7 +235,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
 
             return result;
-        }       
+        }
 
         public static AuthenticationSettingsContract ToAuthenticationSettings(PsApiManagementApi psApiManagementApi)
         {
@@ -360,7 +362,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         public static string GetAlwaysLog(string alwaysLog)
         {
-            switch(alwaysLog)
+            switch (alwaysLog)
             {
                 case Constants.AllErrors: return "allErrors";
                 default: return alwaysLog;
@@ -389,7 +391,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 return diagnosticId;
             }
 
-            switch(diagnosticId)
+            switch (diagnosticId)
             {
                 case Constants.ApplicationInsightsDiagnostics: return Constants.ApplicationInsightsDiagnostics.ToLower();
                 case Constants.AzureMonitorDiagnostic: return Constants.AzureMonitorDiagnostic.ToLower();
@@ -415,10 +417,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         {
             switch (contentType.ToLower().Trim())
             {
-                case ApiSchemaContentType.SwaggerDefinition : return Constants.SwaggerDefinitions;
-                case ApiSchemaContentType.OpenApiComponents : return Constants.OpenApiComponents;
-                case ApiSchemaContentType.XsdSchema : return Constants.XsdSchema;
-                case ApiSchemaContentType.WadlGrammar : return Constants.WadlGrammar;
+                case ApiSchemaContentType.SwaggerDefinition: return Constants.SwaggerDefinitions;
+                case ApiSchemaContentType.OpenApiComponents: return Constants.OpenApiComponents;
+                case ApiSchemaContentType.XsdSchema: return Constants.XsdSchema;
+                case ApiSchemaContentType.WadlGrammar: return Constants.WadlGrammar;
             }
 
             // else we return the content-Type which user specified
@@ -454,5 +456,42 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             public const string WadlGrammar = "application/vnd.ms-azure-apim.wadl.grammars+xml";
         }
+        public static System.Security.SecureString ToSecureString(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return null;
+
+            System.Security.SecureString secureString = new System.Security.SecureString();
+            foreach (char c in input)
+            {
+                secureString.AppendChar(c);
+            }
+            secureString.MakeReadOnly();
+            return secureString;
+        }
+
+        public static string ConvertToString(SecureString secureString)
+        {
+            if (secureString == null)
+            {
+                return null;
+            }
+
+            IntPtr unmanagedString = IntPtr.Zero;
+
+            try
+            {
+                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
+                return Marshal.PtrToStringUni(unmanagedString);
+            }
+            finally
+            {
+                if (unmanagedString != IntPtr.Zero)
+                {
+                    Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+                }
+            }
+        }
+
     }
 }
