@@ -47,22 +47,22 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to indicate whether this is a Vnet peering or subnet peering")]
-        public SwitchParameter PeerCompleteVnets { get; set; }
+        public SwitchParameter PeerCompleteVnet { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of local subnets to be peered")]
-        public string[] LocalSubnetNames { get; set; }
+        public string[] LocalSubnetName { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of remote subnets to be peered")]
-        public string[] RemoteSubnetNames { get; set; }
+        public string[] RemoteSubnetName { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to determine whether this is a IPv6 only peering")]
-        public SwitchParameter EnableOnlyIPv6Peering  { get; set; }
+        public SwitchParameter EnableOnlyIPv6Peering { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetworkPeering AddVirtualNetworkPeering()
         {
-            var vnetPeering= new PSVirtualNetworkPeering();
+            var vnetPeering = new PSVirtualNetworkPeering();
             vnetPeering.Name = this.Name;
             Dictionary<string, List<string>> auxAuthHeader = null;
 
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            vnetPeering.PeerCompleteVnets = this.PeerCompleteVnets;
-            vnetPeering.LocalSubnetNames = this.LocalSubnetNames;
-            vnetPeering.RemoteSubnetNames = this.RemoteSubnetNames;
+            vnetPeering.PeerCompleteVnet = this.PeerCompleteVnet;
+            vnetPeering.LocalSubnetName = this.LocalSubnetName;
+            vnetPeering.RemoteSubnetName = this.RemoteSubnetName;
             vnetPeering.EnableOnlyIPv6Peering = this.EnableOnlyIPv6Peering;
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
             vnetPeering.AllowGatewayTransit = this.AllowGatewayTransit;

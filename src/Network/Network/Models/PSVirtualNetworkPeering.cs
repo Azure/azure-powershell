@@ -71,30 +71,30 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
-        
+
         [JsonProperty(Order = 1)]
-        public bool? PeerCompleteVnets { get; set; }
-        
+        public bool? PeerCompleteVnet { get; set; }
+
         [JsonProperty(Order = 1)]
         public bool? EnableOnlyIPv6Peering { get; set; }
-        
+
+        [JsonProperty(Order = 1)]
+        public string[] RemoteSubnetName { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] LocalSubnetName { get; set; }
+
         [JsonIgnore]
         public string LocalSubnetNamesText
         {
-            get { return JsonConvert.SerializeObject(LocalSubnetNames, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(LocalSubnetName, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-        
+
         [JsonIgnore]
-        public string RemoteSubnetNamesText
+        public string RemoteSubnetNameText
         {
-            get { return JsonConvert.SerializeObject(RemoteSubnetNames, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(RemoteSubnetName, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-
-        [JsonProperty(Order = 1)]
-        public string[] RemoteSubnetNames { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string[] LocalSubnetNames { get; set; }
 
         [JsonIgnore]
         public string RemoteVirtualNetworkText
