@@ -40,14 +40,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
-            HelpMessage = "Redis Connection String. This parameter or parameter ConnectionStringSecureis required.")]
-        public String ConnectionString { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Redis Connection String. This parameter is required.")]
+        [ValidateNotNull]
         public System.Security.SecureString ConnectionStringSecure { get; set; }
 
         [Parameter(
@@ -74,14 +69,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public override void ExecuteApiManagementCmdlet()
         {
             string cacheId = CacheId ?? "default";
-            if (string.IsNullOrEmpty(ConnectionString) && null == ConnectionStringSecure) { 
-                throw new PSArgumentException("The parameter 'ConnectionString' or 'ConnectionStringSecure' can't both be null!");
-            }
-            string internalConnectionString = ConnectionString;
-            if (ConnectionStringSecure != null)
-            {
-                internalConnectionString = Utils.ConvertToString(ConnectionStringSecure);
-            }
+            string internalConnectionString = Utils.ConvertToString(ConnectionStringSecure);
 
             if (ShouldProcess(CacheId, Resources.CreateCache))
             {
