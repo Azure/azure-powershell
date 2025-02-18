@@ -22,7 +22,8 @@ The New-AzMigrateHCINicMappingObject cmdlet creates a mapping of the source NIC 
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject
 #>
 function New-AzMigrateHCINicMappingObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -48,7 +49,7 @@ function New-AzMigrateHCINicMappingObject {
         [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies whether the this Nic should be created at target.
+        # Specifies whether this Nic should be created at target.
         ${CreateAtTarget} = "true"
     )
     
@@ -56,7 +57,7 @@ function New-AzMigrateHCINicMappingObject {
         if ($CreateAtTarget -eq "true") {
             if (!$PSBoundParameters.ContainsKey('TargetVirtualSwitchId') -or
                 [string]::IsNullOrEmpty($TargetVirtualSwitchId)) {
-                throw "TargetVirtualSwitchId is required when CreateAtTarget is 'true'."
+                throw "The TargetVirtualSwitchId parameter is required when the CreateAtTarget flag is set to 'true'."
             }
 
             if (!$PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')) {
@@ -69,7 +70,7 @@ function New-AzMigrateHCINicMappingObject {
             $selectionTypeForFailover = $VMNicSelection.NotSelected
         }
 
-        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput]::new(
+        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput]::new(
             $NicID,
             $TargetVirtualSwitchId,
             $TargetTestVirtualSwitchId,

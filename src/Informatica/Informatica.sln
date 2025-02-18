@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informatica", "Informatica\Informatica.csproj", "{1953FD17-D28C-4447-B091-DBDD0B7752D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Informatica", "Informatica.Autorest\Az.Informatica.csproj", "{0639E6E5-2D8C-46A6-A7ED-60D622749945}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Informatica", "..\..\generated\Informatica\Informatica.Autorest\Az.Informatica.csproj", "{9CB77146-1CF7-491E-8577-6AEF7298B9BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{1953FD17-D28C-4447-B091-DBDD0B7752D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1953FD17-D28C-4447-B091-DBDD0B7752D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1953FD17-D28C-4447-B091-DBDD0B7752D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0639E6E5-2D8C-46A6-A7ED-60D622749945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0639E6E5-2D8C-46A6-A7ED-60D622749945}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0639E6E5-2D8C-46A6-A7ED-60D622749945}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0639E6E5-2D8C-46A6-A7ED-60D622749945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CB77146-1CF7-491E-8577-6AEF7298B9BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB77146-1CF7-491E-8577-6AEF7298B9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB77146-1CF7-491E-8577-6AEF7298B9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB77146-1CF7-491E-8577-6AEF7298B9BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8D2CF5C6-2EFD-4313-9FDE-FBD266771F11} = {8514069D-40FB-48FC-85E2-89E890E5B522}

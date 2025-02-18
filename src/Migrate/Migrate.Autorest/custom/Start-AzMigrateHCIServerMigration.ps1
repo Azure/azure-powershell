@@ -22,7 +22,8 @@ Starts the migration for the replicating server.
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratehciservermigration
 #>
 function Start-AzMigrateHCIServerMigration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName = 'ByID', Mandatory)]
@@ -143,13 +144,13 @@ function Start-AzMigrateHCIServerMigration {
         $instanceType = $protectedItem.Property.CustomProperty.InstanceType
 
         # Setup PlannedFailover deployment parameters
-        $properties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.PlannedFailoverModelProperties]::new()
+        $properties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.PlannedFailoverModelProperties]::new()
         
         if ($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) {
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHciPlannedFailoverModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHciPlannedFailoverModelCustomProperties]::new()
         }
         elseif ($instanceType -eq $AzStackHCIInstanceTypes.VMwareToAzStackHCI) {
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHciPlannedFailoverModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHciPlannedFailoverModelCustomProperties]::new()
         }
         else {
             throw "Currently, for AzStackHCI scenario, only HyperV and VMware as the source is supported."
@@ -166,14 +167,14 @@ function Start-AzMigrateHCIServerMigration {
 
         if ($PSCmdlet.ShouldProcess($TargetObjectID, "Migrate VM.")) {
             $operation = Az.Migrate.Internal\Invoke-AzMigratePlannedProtectedItemFailover @PSBoundParameters
-            $jobName = $operation.Target.Split("/")[-1].Split("?")[0]
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
           
             $null = $PSBoundParameters.Remove('ProtectedItemName')  
             $null = $PSBoundParameters.Remove('NoWait')
             $null = $PSBoundParameters.Remove('Property')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
         }
     }
 }
