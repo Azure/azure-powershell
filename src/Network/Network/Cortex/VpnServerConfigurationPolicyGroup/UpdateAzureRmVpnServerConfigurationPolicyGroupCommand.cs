@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Priority of the policy group.",
+            HelpMessage = "The Priority of the policy group. Priority should be in consecutive orders.",
             ValueFromPipelineByPropertyName = true)]
         public int Priority { get; set; }
 
