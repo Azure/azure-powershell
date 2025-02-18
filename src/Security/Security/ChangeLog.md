@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.8.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.7.0
 * Added new cmdlets for defender for storage
 

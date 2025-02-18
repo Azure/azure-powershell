@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KubernetesRuntime", "KubernetesRuntime\KubernetesRuntime.csproj", "{4D1F37A0-3223-4491-8A39-99DF18C6D7FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KubernetesRuntime", "KubernetesRuntime.Autorest\Az.KubernetesRuntime.csproj", "{E9E6B476-9EDB-433E-95A5-B92C10E7E9B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KubernetesRuntime", "..\..\generated\KubernetesRuntime\KubernetesRuntime.Autorest\Az.KubernetesRuntime.csproj", "{937B8022-22CB-4008-AC3B-01845BFE26B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{4D1F37A0-3223-4491-8A39-99DF18C6D7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D1F37A0-3223-4491-8A39-99DF18C6D7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D1F37A0-3223-4491-8A39-99DF18C6D7FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9E6B476-9EDB-433E-95A5-B92C10E7E9B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9E6B476-9EDB-433E-95A5-B92C10E7E9B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9E6B476-9EDB-433E-95A5-B92C10E7E9B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9E6B476-9EDB-433E-95A5-B92C10E7E9B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{937B8022-22CB-4008-AC3B-01845BFE26B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{937B8022-22CB-4008-AC3B-01845BFE26B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{937B8022-22CB-4008-AC3B-01845BFE26B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{937B8022-22CB-4008-AC3B-01845BFE26B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1F8A3737-D1D4-40F0-A505-0C2B8A960D21} = {BE0EEBCA-B12C-4A83-B669-C9019C77FD65}

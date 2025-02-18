@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "46" ],
-        "x-ms-client-request-id": [ "9874a02b-aee1-400c-bd70-bdb92e6c61f5" ],
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "791ba36d-2110-4924-b2ec-d85d34ce8409" ],
         "CommandName": [ "Get-AzEventHubClusterNamespace" ],
         "FullCommandName": [ "Get-AzEventHubClusterNamespace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.EventHub/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,19 +22,19 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "432cf1ce-6c89-432f-b7b1-a0f6cd786199" ],
-        "x-ms-client-request-id": [ "9874a02b-aee1-400c-bd70-bdb92e6c61f5_RP" ],
-        "x-ms-messaging-activity-id": [ "bd75c819-f751-4030-8e82-9152b32211bf" ],
-        "x-ms-messaging-routing-id": [ "AUSTRALIAEAST|AUSTRALIAEAST|G9|2024-04-29T12:45:32" ],
+        "x-ms-correlation-request-id": [ "788cb450-1fcf-4a30-af16-debe18fffbce" ],
+        "x-ms-client-request-id": [ "791ba36d-2110-4924-b2ec-d85d34ce8409_RP" ],
+        "x-ms-messaging-activity-id": [ "27aa3ade-5a0c-46ed-9e8a-ddd20852146c" ],
+        "x-ms-messaging-routing-id": [ "AUSTRALIAEAST|AUSTRALIAEAST|G2|2025-01-21T11:37:42" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "432cf1ce-6c89-432f-b7b1-a0f6cd786199" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240429T124532Z:432cf1ce-6c89-432f-b7b1-a0f6cd786199" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "788cb450-1fcf-4a30-af16-debe18fffbce" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250121T113742Z:788cb450-1fcf-4a30-af16-debe18fffbce" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6D9B1B396B874C039E494B6527CBE341 Ref B: SEL221051504047 Ref C: 2024-04-29T12:45:29Z" ],
-        "Date": [ "Mon, 29 Apr 2024 12:45:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DF2B88BEEB0C4CC3BF748CC285A5B8F7 Ref B: MAA201060516035 Ref C: 2025-01-21T11:37:41Z" ],
+        "Date": [ "Tue, 21 Jan 2025 11:37:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "332" ],

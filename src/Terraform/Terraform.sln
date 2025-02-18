@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terraform", "Terraform\Terraform.csproj", "{4A6F8874-AA17-4DE7-9519-5FD2CD3570FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Terraform", "Terraform.Autorest\Az.Terraform.csproj", "{E10C806F-E784-4F89-B08A-0E2884A3F5E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Terraform", "..\..\generated\Terraform\Terraform.Autorest\Az.Terraform.csproj", "{0E0CF393-4225-4189-8F30-F6E50FEEADB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{4A6F8874-AA17-4DE7-9519-5FD2CD3570FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A6F8874-AA17-4DE7-9519-5FD2CD3570FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A6F8874-AA17-4DE7-9519-5FD2CD3570FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E10C806F-E784-4F89-B08A-0E2884A3F5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E10C806F-E784-4F89-B08A-0E2884A3F5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E10C806F-E784-4F89-B08A-0E2884A3F5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E10C806F-E784-4F89-B08A-0E2884A3F5E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E0CF393-4225-4189-8F30-F6E50FEEADB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E0CF393-4225-4189-8F30-F6E50FEEADB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E0CF393-4225-4189-8F30-F6E50FEEADB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E0CF393-4225-4189-8F30-F6E50FEEADB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3B55E6D8-00FB-4AB6-998E-7024E3CA106D} = {7468E327-1FF9-4007-BDBE-CE4D3F24F522}

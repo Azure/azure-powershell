@@ -36,7 +36,7 @@ Replace the provided bare metal machine.
 
 ### Example 1: Replace a bare metal machine
 ```powershell
-$baseboardManagementControllerPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$baseboardManagementControllerPassword = ConvertTo-SecureString "password" -asplaintext -force
 
 Invoke-AzNetworkCloudBareMetalMachineReplace -Name bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -BmcCredentialsPassword $baseboardManagementControllerPassword -BmcCredentialsUsername baseboardManagementControllerUsername -BmcMacAddress baseboardManagementControllerMacAddress -BootMacAddress bmmBootMacAddress -MachineName newMachineName -SerialNumber bmmSerialNumber
 ```

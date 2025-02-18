@@ -27,17 +27,16 @@ For information on how to develop for `Az.NetworkCloud`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ```yaml
-# pin the swagger version by using the commit id instead of branch name
-# the 2023-05-01-preview in main: 64efc48302878a07d1d1231eaed0ca9cadfaf037
-# the 2023-07-01 stable in a temp commit: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
-commit: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
+# pin the swagger version by using the commit id instead of branch name : https://github.com/Azure/azure-rest-api-specs/
+# the 2024-07-01 stable in a commit: f999652ecea2a4bddc2b08a113617e23e98f10d4
+commit: f999652ecea2a4bddc2b08a113617e23e98f10d4
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/networkcloud/resource-manager/readme.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2023-07-01/networkcloud.json
+  - $(repo)/specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2024-07-01/networkcloud.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -87,6 +86,12 @@ directive:
       $["200"] = {
           "description": "OK",
       }
+  - from: networkcloud.json
+    where: $.paths..delete.responses
+    transform: >-
+      $["200"] = {
+          "description": "OK",
+      }
   # This is a known issue related to singularizing. To workaround the issue, please rename the cmdlet by following https://github.com/Azure/autorest.powershell/blob/main/docs/directives.md#Cmdlet-Rename
   - where:
       verb: Get
@@ -123,6 +128,16 @@ directive:
       subject: KuberneteClusterNode
     set:
       subject: KubernetesClusterNode
+  - where:
+      verb: New
+      subject: KuberneteClusterFeature
+    set:
+      subject: KubernetesClusterFeature
+  - where:
+      verb: Get
+      subject: KuberneteClusterFeature
+    set:
+      subject: KubernetesClusterFeature
   # Remove New/Remove cmdlets for hydrated resources as the explicit creation and deletion is not allowed
   - where:
       verb: New
@@ -202,6 +217,12 @@ directive:
       variant: ^Update|^UpdateExpanded$
     set:
       subject: ClusterVersionUpdate
+      verb: Invoke
+  - where:
+      subject: ^ContinueClusterUpdateVersion$
+      verb: Invoke
+    set:
+      subject: ClusterContinueVersionUpdate
       verb: Invoke
   # rename parameter with duplicate or long names to shorted names
   # For. e.g, in cmdlet "New-AzNetworkCloudKubernetesCluster", the parameter "ControlPlaneNodeConfigurationAdministratorConfigurationAdminUsername" is long and
