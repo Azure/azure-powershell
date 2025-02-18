@@ -46,6 +46,16 @@ jobs:
         New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
 
   - task: PowerShell@2
+    displayName: Prepare for dump capture
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpFolder /t REG_EXPAND_SZ /d "$(DataLocation)" /f
+        reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpCount /t REG_DWORD /d 10 /f
+        reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpType /t REG_DWORD /d 2 /f
+
+  - task: PowerShell@2
     displayName: Install desired Az module from ${{ parameters.galleryName }}
     inputs:
       pwsh: true
@@ -61,9 +71,18 @@ jobs:
       outVar: 'LiveTestServicePrincipalSecret'
       execCondition: and(succeeded(), ne(variables['skipLatest'], 'true'))
 
+  - task: PowerShell@2
+    displayName: Get temp PS1
+    condition: always()
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        Copy-Item -Path $(Agent.TempDirectory)/* -Destination $(DataLocation) -Force
+
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact
-    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+    condition: always()
     inputs:
       artifact: livetest-os-${{ parameters.vmImage }}-ps-${{ replace(parameters.psVersion, '*', 'x') }}
       targetPath: $(DataLocation)
