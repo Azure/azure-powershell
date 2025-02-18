@@ -120,6 +120,20 @@ NoRootSquash
 
 This command creates a Storage file share with EnabledProtocol proeprty as NFS, and RootSquash proeprty as NoRootSquash.
 
+### Example 6: Create a Storage file share with provisioned bandwidth and IOPS
+```powershell
+New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -ProvisionedBandwidthMibps 129 -ProvisionedIops 3032
+```
+
+This command creates a Storage file share with provisioned bandwidth and IOPS, it only work on Files Provisioned v2 account type.
+
+### Example 7: Create a Storage file share with paid bursting bandwidth and IOPS
+```powershell
+New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -PaidBurstingEnabled -PaidBurstingMaxBandwidthMibps 129 -PaidBurstingMaxIops 3032
+```
+
+This command creates a Storage file share with paid bursting bandwidth and IOPS, it only work on Files Provisioned v1 account type.
+
 ## PARAMETERS
 
 ### -AccessTier

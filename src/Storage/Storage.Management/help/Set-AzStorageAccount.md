@@ -1168,6 +1168,12 @@ The acceptable values for this parameter are:
 - Premium_LRS - Premium locally-redundant storage.
 - Standard_GZRS - Geo-redundant zone-redundant storage.
 - Standard_RAGZRS - Read access geo-redundant zone-redundant storage.
+- StandardV2_LRS - Locally-redundant storage for File Provision v2.
+- StandardV2_GRS - Geo-redundant storage for File Provision v2.
+- StandardV2_ZRS - Zone-redundant storage for File Provision v2.
+- StandardV2_GZRS - Geo-redundant zone-redundant storage for File Provision v2.
+- PremiumV2_LRS - Premium locally-redundant storage for File Provision v2.
+- PremiumV2_ZRS - Premium zone-redundant storage for File Provision v2.
 You cannot change Standard_ZRS and Premium_LRS types to other account types.
 You cannot change other account types to Standard_ZRS or Premium_LRS.
 

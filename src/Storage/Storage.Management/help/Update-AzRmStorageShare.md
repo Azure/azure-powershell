@@ -139,6 +139,20 @@ NoRootSquash
 
 This command modifies share RootSquash property to NoRootSquash. RootSquash property is only avaialbe on share with EnabledProtocol as NFS.
 
+### Example 6: Modifies a Storage file share with provisioned bandwidth and IOPS
+```powershell
+New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -ProvisionedBandwidthMibps 129 -ProvisionedIops 3032
+```
+
+This command modifies a Storage file share with provisioned bandwidth and IOPS, it only work on Files Provisioned v2 account type.
+
+### Example 7: Modifies a Storage file share with paid bursting bandwidth and IOPS
+```powershell
+New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -PaidBurstingEnabled -PaidBurstingMaxBandwidthMibps 129 -PaidBurstingMaxIops 3032
+```
+
+This command modifies a Storage file share with paid bursting bandwidth and IOPS, it only work on Files Provisioned v1 account type.
+
 ## PARAMETERS
 
 ### -AccessTier

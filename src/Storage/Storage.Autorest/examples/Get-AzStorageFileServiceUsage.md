@@ -23,7 +23,7 @@ LiveShareProvisionedBandwidthMiBPerSec              : 129
 LiveShareProvisionedIops                            : 3032
 LiveShareProvisionedStorageGiB                      : 32
 Name                                                : default
-ResourceGroupName                                   : weitry
+ResourceGroupName                                   : myresroucegroup
 SoftDeletedShareFileShareCount                      : 0
 SoftDeletedShareProvisionedBandwidthMiBPerSec       : 0
 SoftDeletedShareProvisionedIops                     : 0
