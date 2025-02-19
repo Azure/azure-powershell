@@ -36,9 +36,9 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the Graph Query resource.
-  [SubscriptionId <String>]: The Azure subscription Id.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcegraph/remove-azresourcegraphquery
 #>
@@ -56,13 +56,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription Id.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
