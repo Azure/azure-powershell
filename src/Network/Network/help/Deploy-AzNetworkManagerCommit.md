@@ -44,10 +44,28 @@ This example is used to uncommit all connecitivity confgurations in West US regi
 ```powershell
 $regions = @( "westus")
 $configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig")
-Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity" -ConfigurationId $configids
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "SecurityAdmin" -ConfigurationId $configids
 ```
 
 This example is used to commit a security admin config in West US region.
+
+### Example 3
+```powershell
+$regions = @( "westus")
+$configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/routingConfigurations/psRoutingConfig")
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Routing" -ConfigurationId $configids
+```
+
+This example is used to commit a routing config in West US region.
+
+### Example 3
+```powershell
+$regions = @( "westus")
+$configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityUserConfigurations/psSecurityUserConfig")
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "SecurityUser" -ConfigurationId $configids
+```
+
+This example is used to commit a security user config in West US region.
 
 ## PARAMETERS
 
@@ -58,7 +76,7 @@ Commit Type.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SecurityAdmin, Connectivity
+Accepted values: SecurityAdmin, Connectivity, Routing, SecurityUser
 
 Required: True
 Position: Named

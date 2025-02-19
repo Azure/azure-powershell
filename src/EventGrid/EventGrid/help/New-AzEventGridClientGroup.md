@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridClientGroup
 
 ## SYNOPSIS
-Create a client group with the specified parameters.
+create a client group with the specified parameters.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzEventGridClientGroup -InputObject <IEventGridIdentity> [-Description <Stri
 ```
 
 ## DESCRIPTION
-Create a client group with the specified parameters.
+create a client group with the specified parameters.
 
 ## EXAMPLES
 

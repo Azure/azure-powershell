@@ -278,6 +278,16 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPolicyRuleCollectionGroupDraftsOperations FirewallPolicyRuleCollectionGroupDrafts { get; }
 
         /// <summary>
+        /// Gets the IIpamPoolsOperations
+        /// </summary>
+        IIpamPoolsOperations IpamPools { get; }
+
+        /// <summary>
+        /// Gets the IStaticCidrsOperations
+        /// </summary>
+        IStaticCidrsOperations StaticCidrs { get; }
+
+        /// <summary>
         /// Gets the IIPAllocationsOperations
         /// </summary>
         IIPAllocationsOperations IPAllocations { get; }
@@ -408,6 +418,36 @@ namespace Microsoft.Azure.Management.Network
         IAdminRulesOperations AdminRules { get; }
 
         /// <summary>
+        /// Gets the INetworkManagerRoutingConfigurationsOperations
+        /// </summary>
+        INetworkManagerRoutingConfigurationsOperations NetworkManagerRoutingConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IRoutingRuleCollectionsOperations
+        /// </summary>
+        IRoutingRuleCollectionsOperations RoutingRuleCollections { get; }
+
+        /// <summary>
+        /// Gets the IRoutingRulesOperations
+        /// </summary>
+        IRoutingRulesOperations RoutingRules { get; }
+
+        /// <summary>
+        /// Gets the ISecurityUserConfigurationsOperations
+        /// </summary>
+        ISecurityUserConfigurationsOperations SecurityUserConfigurations { get; }
+
+        /// <summary>
+        /// Gets the ISecurityUserRuleCollectionsOperations
+        /// </summary>
+        ISecurityUserRuleCollectionsOperations SecurityUserRuleCollections { get; }
+
+        /// <summary>
+        /// Gets the ISecurityUserRulesOperations
+        /// </summary>
+        ISecurityUserRulesOperations SecurityUserRules { get; }
+
+        /// <summary>
         /// Gets the INetworkProfilesOperations
         /// </summary>
         INetworkProfilesOperations NetworkProfiles { get; }
@@ -426,6 +466,21 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IDefaultSecurityRulesOperations
         /// </summary>
         IDefaultSecurityRulesOperations DefaultSecurityRules { get; }
+
+        /// <summary>
+        /// Gets the IReachabilityAnalysisIntentsOperations
+        /// </summary>
+        IReachabilityAnalysisIntentsOperations ReachabilityAnalysisIntents { get; }
+
+        /// <summary>
+        /// Gets the IReachabilityAnalysisRunsOperations
+        /// </summary>
+        IReachabilityAnalysisRunsOperations ReachabilityAnalysisRuns { get; }
+
+        /// <summary>
+        /// Gets the IVerifierWorkspacesOperations
+        /// </summary>
+        IVerifierWorkspacesOperations VerifierWorkspaces { get; }
 
         /// <summary>
         /// Gets the INetworkVirtualAppliancesOperations

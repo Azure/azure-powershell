@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{38FD16E6-8B3F-4C8D-805A-506EF7A60CF7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.KeyVault", "KeyVault.Autorest\Az.KeyVault.csproj", "{3D5958BF-AAD2-4B69-A5CC-C17DBE878278}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A37CE0AD-3D97-4E6F-AE8B-0FF121BAA91F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Test", "KeyVault.Test\KeyVault.Test.csproj", "{1B4EC632-821C-44EA-B8FF-30B5A9474F7B}"
@@ -34,6 +32,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{893B0F7E-C1BB-4129-A315-898FF8B197D5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{26D8DBDB-8C23-42A0-9ACF-67A61DDB95ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{FEC8B761-481F-4141-A25F-3B4DA53400BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,6 @@ Global
 		{38FD16E6-8B3F-4C8D-805A-506EF7A60CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38FD16E6-8B3F-4C8D-805A-506EF7A60CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38FD16E6-8B3F-4C8D-805A-506EF7A60CF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D5958BF-AAD2-4B69-A5CC-C17DBE878278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D5958BF-AAD2-4B69-A5CC-C17DBE878278}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D5958BF-AAD2-4B69-A5CC-C17DBE878278}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D5958BF-AAD2-4B69-A5CC-C17DBE878278}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B4EC632-821C-44EA-B8FF-30B5A9474F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B4EC632-821C-44EA-B8FF-30B5A9474F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B4EC632-821C-44EA-B8FF-30B5A9474F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -93,6 +89,10 @@ Global
 		{26D8DBDB-8C23-42A0-9ACF-67A61DDB95ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D8DBDB-8C23-42A0-9ACF-67A61DDB95ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D8DBDB-8C23-42A0-9ACF-67A61DDB95ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC8B761-481F-4141-A25F-3B4DA53400BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC8B761-481F-4141-A25F-3B4DA53400BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC8B761-481F-4141-A25F-3B4DA53400BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC8B761-481F-4141-A25F-3B4DA53400BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

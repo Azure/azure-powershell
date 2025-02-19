@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the MSGraph service.
 
 ---
-## Status
-[![Az.MSGraph](https://img.shields.io/powershellgallery/v/Az.MSGraph.svg?style=flat-square&label=Az.MSGraph "Az.MSGraph")](https://www.powershellgallery.com/packages/Az.MSGraph/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,10 +44,6 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-version: "3.9.5"
-use-extension:
-  "@autorest/powershell": "4.0.0-dev.12"
-
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
@@ -71,6 +64,7 @@ endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
 export-properties-for-dict: false
 nested-object-to-string: true
 add-api-version-in-model-namespace: true
+fixed-array: true
 
 # Disable default settings and Set in to empty for msgraph
 default-exclude-tableview-properties: false
@@ -125,7 +119,57 @@ directive:
   - from: source-file-csharp
     where: $
     transform: if ($documentPath.endsWith("MSGraph.cs")) {$ = $.replace(/Count.ToString\(\)/g, "Count.ToString().ToLower()")}
-  
+    
+    # below directives are for mitigate breaking change upgrading autorest.powershell v3 -> v4
+  - where:
+      subject: ApplicationsApplication
+    set:
+      subject: Application
+  - where:
+      subject: GroupsGroup
+    set:
+      subject: Group
+  - where:
+      subject: ServicePrincipalsServicePrincipal
+    set:
+      subject: ServicePrincipal
+  - where:
+      subject: (UsersUser)(.*)
+    set:
+      subject: User$2
+  - where:
+      subject: ^Application$
+      parameter-name: ApplicationId
+    set: 
+      parameter-name: Id
+      alias: ApplicationId
+  - where:
+      subject: ^User$
+      parameter-name: UserId
+    set: 
+      parameter-name: Id
+      alias: UserId    
+  - where:
+      subject: ^ServicePrincipal$
+      parameter-name: ServicePrincipalId
+    set: 
+      parameter-name: Id
+      alias: ServicePrincipalId    
+  - where:
+      subject: ^Group$
+      verb: ^(?!Update$)
+      parameter-name: GroupId
+    set:
+      parameter-name: Id
+      alias: GroupId
+  - where:
+      subject: ^Group$
+      verb: ^Update$
+      parameter-name: GroupId
+    set:
+      parameter-name: ObjectId
+      alias: GroupId
+
   # hide user owned application cmdlets
   - where:
       subject: UserOwnedApplication|UserOwnedObject
@@ -229,12 +273,6 @@ directive:
       subject: organization
       verb: New
     hide: true
-  - where:
-      subject: ^group$
-      verb: ^Update$
-      parameter-name: Id
-    set:
-      parameter-name: ObjectId
 
   - where: 
       subject: ^group$

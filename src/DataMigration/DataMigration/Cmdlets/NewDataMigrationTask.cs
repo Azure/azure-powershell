@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                             Properties = properties
                         };
 
-                        response = DataMigrationClient.Tasks.CreateOrUpdate(taskInput, ResourceGroupName, ServiceName, ProjectName, Name);
+                        response = DataMigrationClient.Tasks.CreateOrUpdate(ResourceGroupName, ServiceName, ProjectName, Name, taskInput);
 
                         // wait for the task to finish: not queued or running state:
                         while (this.Wait.IsPresent && response !=null && response.Properties != null &&

@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
         [PSArgumentCompleter(SDKModel.PublicNetworkAccess.Disabled, SDKModel.PublicNetworkAccess.Enabled)]
         public string PublicNetworkAccess { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableTtlHelpMessage)]
+        public bool? DisableTtl { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.SourceBackupLocationHelpMessage)]
         public string SourceBackupLocation { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.DisableTtlHelpMessage)]
-        public bool? DisableTtl { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -104,15 +104,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     if (restorableAccount.CreationTime.HasValue &&
                         restorableAccount.CreationTime < utcRestoreDateTime)
                     {
-                        if (restorableAccount.DeletionTime.HasValue && restorableAccount.DeletionTime >= utcRestoreDateTime)
+                        if (restorableAccount.DeletionTime.HasValue)
                         {
-                            sourceAccountToRestore = restorableAccount;
-                            isSourceRestorableAccountDeleted = true;
-                            break;
+                            if (restorableAccount.DeletionTime >= utcRestoreDateTime)
+                            {
+                                sourceAccountToRestore = restorableAccount;
+                                isSourceRestorableAccountDeleted = true;
+                                break;
+                            }
                         }
                         else
                         {
                             sourceAccountToRestore = restorableAccount;
+                            isSourceRestorableAccountDeleted = false;
                             break;
                         }
                     }

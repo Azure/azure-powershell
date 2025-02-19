@@ -108,6 +108,7 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $multiplePolicyDefinitionParams = $env.multiplePolicyDefinitionParams
         $versionRequiresNameOrId = $env.versionRequiresNameOrId
         $listVersionsRequiresNameOrId = $env.listVersionsRequiresNameOrId
+        $disallowedByPolicy = $env.disallowedByPolicy
     }
     catch {
         Write-Host -ForegroundColor Red "Failed setting up environment for [$TargetTestName]: [$_]"

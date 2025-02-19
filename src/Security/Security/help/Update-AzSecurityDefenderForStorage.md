@@ -16,7 +16,7 @@ Update the Defender for Storage settings on a specified storage account.
 Update-AzSecurityDefenderForStorage -ResourceId <String> [-IsEnabled]
  [-MalwareScanningScanResultsEventGridTopicResourceId <String>] [-OnUploadCapGbPerMonth <Int32>]
  [-OnUploadIsEnabled] [-OverrideSubscriptionLevelSetting] [-SensitiveDataDiscoveryIsEnabled]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,21 +157,6 @@ Indicates whether the settings defined for this storage account should override 
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

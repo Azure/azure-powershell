@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the Azure firewall resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="threatIntelMode">The operation mode for Threat Intelligence.
         /// Possible values include: &#39;Alert&#39;, &#39;Deny&#39;, &#39;Off&#39;</param>
@@ -62,7 +63,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="additionalProperties">The additional properties used to further config this azure firewall.
         /// </param>
-        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="autoscaleConfiguration">Properties to provide a custom autoscale configuration to this azure
+        /// firewall.
+        /// </param>
+        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration))
 
         {
             this.ApplicationRuleCollections = applicationRuleCollections;
@@ -78,6 +83,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.IPGroups = ipGroups;
             this.Sku = sku;
             this.AdditionalProperties = additionalProperties;
+            this.AutoscaleConfiguration = autoscaleConfiguration;
             CustomInit();
         }
 
@@ -120,7 +126,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public AzureFirewallIPConfiguration ManagementIPConfiguration {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the Azure firewall resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the Azure firewall resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -167,5 +173,65 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "additionalProperties")]
         public System.Collections.Generic.IDictionary<string, string> AdditionalProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets properties to provide a custom autoscale configuration to this
+        /// azure firewall.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoscaleConfiguration")]
+        public AzureFirewallAutoscaleConfiguration AutoscaleConfiguration {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.ApplicationRuleCollections != null)
+            {
+                foreach (var element in this.ApplicationRuleCollections)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.NatRuleCollections != null)
+            {
+                foreach (var element in this.NatRuleCollections)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.NetworkRuleCollections != null)
+            {
+                foreach (var element in this.NetworkRuleCollections)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+            if (this.AutoscaleConfiguration != null)
+            {
+                this.AutoscaleConfiguration.Validate();
+            }
+        }
     }
 }

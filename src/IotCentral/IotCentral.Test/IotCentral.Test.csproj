@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.IotCentral" Version="4.0.0" />
+    <ProjectReference Include="..\IotCentral.Management.Sdk\IotCentral.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

@@ -24,14 +24,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ManagedRulesDefinition class.
         /// </summary>
 
+        /// <param name="exceptions">The exceptions that are applied on the policy.
+        /// </param>
+
         /// <param name="exclusions">The Exclusions that are applied on the policy.
         /// </param>
 
         /// <param name="managedRuleSets">The managed rule sets that are associated with the policy.
         /// </param>
-        public ManagedRulesDefinition(System.Collections.Generic.IList<ManagedRuleSet> managedRuleSets, System.Collections.Generic.IList<OwaspCrsExclusionEntry> exclusions = default(System.Collections.Generic.IList<OwaspCrsExclusionEntry>))
+        public ManagedRulesDefinition(System.Collections.Generic.IList<ManagedRuleSet> managedRuleSets, System.Collections.Generic.IList<ExceptionEntry> exceptions = default(System.Collections.Generic.IList<ExceptionEntry>), System.Collections.Generic.IList<OwaspCrsExclusionEntry> exclusions = default(System.Collections.Generic.IList<OwaspCrsExclusionEntry>))
 
         {
+            this.Exceptions = exceptions;
             this.Exclusions = exclusions;
             this.ManagedRuleSets = managedRuleSets;
             CustomInit();
@@ -42,6 +46,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the exceptions that are applied on the policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "exceptions")]
+        public System.Collections.Generic.IList<ExceptionEntry> Exceptions {get; set; }
 
         /// <summary>
         /// Gets or sets the Exclusions that are applied on the policy.
@@ -65,6 +75,16 @@ namespace Microsoft.Azure.Management.Network.Models
             if (this.ManagedRuleSets == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ManagedRuleSets");
+            }
+            if (this.Exceptions != null)
+            {
+                foreach (var element in this.Exceptions)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
             if (this.Exclusions != null)
             {

@@ -15,7 +15,8 @@ Create an in-memory object for Container.
 ```
 New-AzContainerAppTemplateObject [-Probe <IContainerAppProbe[]>] [-Arg <String[]>] [-Command <String[]>]
  [-Env <IEnvironmentVar[]>] [-Image <String>] [-Name <String>] [-ResourceCpu <Double>]
- [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
+ [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +74,6 @@ Accept wildcard characters: False
 
 ### -Env
 Container environment variables.
-To construct, see NOTES section for ENV properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]
@@ -119,7 +119,6 @@ Accept wildcard characters: False
 
 ### -Probe
 List of probes for the container.
-To construct, see NOTES section for PROBE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbe[]
@@ -167,7 +166,6 @@ Accept wildcard characters: False
 
 ### -VolumeMount
 Container volume mounts.
-To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolumeMount[]

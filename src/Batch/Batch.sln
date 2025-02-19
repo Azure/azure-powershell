@@ -5,39 +5,38 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{017F1277-0280-4544-AF22-231768874D1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{CFD5CF9A-B2E3-4F69-9759-7DE4980936B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{CFD5CF9A-B2E3-4F69-9759-7DE4980936B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{8F310D80-52AF-4E89-B61E-1FD596D2B83D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{8F310D80-52AF-4E89-B61E-1FD596D2B83D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{4A5E29D5-749A-46B7-AB0E-9AA0E4977ED1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{4A5E29D5-749A-46B7-AB0E-9AA0E4977ED1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{08E02681-4D96-4A95-BA2C-A32A3354AEFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{08E02681-4D96-4A95-BA2C-A32A3354AEFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{E169C6A2-58DC-4FCE-8E91-2AC4F0CDA7E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{E169C6A2-58DC-4FCE-8E91-2AC4F0CDA7E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{1AB99293-F381-41C6-9F22-ED6FF4E93C51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{1AB99293-F381-41C6-9F22-ED6FF4E93C51}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{50EAAC73-162C-4060-A28B-592C9FD3FA1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Batch.Test", "Batch.Test\Batch.Test.csproj", "{F2419995-1E08-4EC6-A620-F165C144D4A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Batch.Test", "Batch.Test\Batch.Test.csproj", "{F2419995-1E08-4EC6-A620-F165C144D4A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Batch", "Batch\Batch.csproj", "{639E4290-A6D6-4FFC-9D41-E823CE427E73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Batch", "Batch\Batch.csproj", "{639E4290-A6D6-4FFC-9D41-E823CE427E73}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{7129077A-5BF9-4F8B-9795-BAF3E08F1860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{90A86F6C-9D58-43C2-A534-9C621410D221}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{90A86F6C-9D58-43C2-A534-9C621410D221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Network\Network.csproj", "{B93529F5-43E7-4DF5-BCE1-08E7D0A187E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{B93529F5-43E7-4DF5-BCE1-08E7D0A187E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{8568021D-0F10-4F0A-9C2D-42669DCD3A3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{8568021D-0F10-4F0A-9C2D-42669DCD3A3F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Batch.Management.Sdk", "Batch.Management.Sdk\Batch.Management.Sdk.csproj", "{01E1634E-4210-4869-9F13-7B093E7BD85E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CFD5CF9A-B2E3-4F69-9759-7DE4980936B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -84,6 +83,13 @@ Global
 		{8568021D-0F10-4F0A-9C2D-42669DCD3A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8568021D-0F10-4F0A-9C2D-42669DCD3A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8568021D-0F10-4F0A-9C2D-42669DCD3A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E1634E-4210-4869-9F13-7B093E7BD85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E1634E-4210-4869-9F13-7B093E7BD85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E1634E-4210-4869-9F13-7B093E7BD85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E1634E-4210-4869-9F13-7B093E7BD85E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CFD5CF9A-B2E3-4F69-9759-7DE4980936B6} = {017F1277-0280-4544-AF22-231768874D1E}

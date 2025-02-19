@@ -73,8 +73,6 @@ RoutingConfiguration   : {
                          }
 ```
 
-
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -244,6 +242,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)
 
 [Get-AzNetworkVirtualAppliance](./Get-AzNetworkVirtualAppliance.md)
