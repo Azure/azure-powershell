@@ -37,7 +37,7 @@ Gets the usage of file service in storage account including account limits, file
 
 ### Example 1: Get a Storage account file service usage data
 ```powershell
-Get-AzStorageFileServiceUsage -AccountName myaccount -ResourceGroupName myresroucegroup
+Get-AzStorageFileServiceUsage -StorageAccountName myaccount -ResourceGroupName myresroucegroup
 ```
 
 ```output

@@ -516,7 +516,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"creationTime\": \"2022-03-14T05:13:10.1452242Z\",\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"0Ijo+xd/w7VEo55xc2T7DCbS37fAkfeITcC2DRnKBoxwDvUkJz3z+5wbaOusdzAB3pxaVUhLg1jM+5iZEGBXYA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"creationTime\": \"2022-03-14T05:13:10.1452242Z\",\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"0KYEVAbAkzuAP/SwGa0898IQLNQz0ugxqjEKDCJpZ7ERMAN4kqwjQ8JD5jmdwFJj78ttPGDcDPvY1MIJGuT5VQ==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"creationTime\": \"2022-03-14T05:13:10.1452242Z\",\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"[sanitize]\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"creationTime\": \"2022-03-14T05:13:10.1452242Z\",\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"[sanitize]\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {

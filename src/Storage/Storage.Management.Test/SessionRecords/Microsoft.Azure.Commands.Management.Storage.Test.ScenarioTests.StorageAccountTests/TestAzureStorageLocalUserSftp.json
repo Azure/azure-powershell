@@ -858,7 +858,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg1345/providers/Microsoft.Storage/storageAccounts/stopstestrg1345/localusers/testuser1\",\r\n  \"name\": \"testuser1\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/localUsers\",\r\n  \"properties\": {\r\n    \"hasSshPassword\": true,\r\n    \"sshPassword\": \"F2HNcQaxFxy3l/UqdYtkYCONm9ZFP+61AkuicYllstWdhNDFrDXpygeT6EewnNAlWFjoUegD95hiJTkFn+sqng==\",\r\n    \"permissionScopes\": [\r\n      {\r\n        \"permissions\": \"rwd\",\r\n        \"service\": \"blob\",\r\n        \"resourceName\": \"container1\"\r\n      },\r\n      {\r\n        \"permissions\": \"rw\",\r\n        \"service\": \"file\",\r\n        \"resourceName\": \"share2\"\r\n      }\r\n    ],\r\n    \"homeDirectory\": \"/\",\r\n    \"sshAuthorizedKeys\": [\r\n      {\r\n        \"description\": \"sshpulickey name1\",\r\n        \"key\": \"ssh-rsa keykeykeykeykey=\"\r\n      },\r\n      {\r\n        \"description\": \"sshpulickey name2\",\r\n        \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n      }\r\n    ],\r\n    \"sid\": \"S-1-2-0-1611252643-3822659537-461345879-1000\",\r\n    \"sharedKey\": \"pog0POM8/+sjL5CXyLd2ELsiZtQIGTdlXOxZ0EdXPv489bOJvE5pd4D/3XVv0eWSdIFY8Qbmpm2U30XV/pzvIQ==\",\r\n    \"hasSharedKey\": true,\r\n    \"hasSshKey\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg1345/providers/Microsoft.Storage/storageAccounts/stopstestrg1345/localusers/testuser1\",\r\n  \"name\": \"testuser1\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/localUsers\",\r\n  \"properties\": {\r\n    \"hasSshPassword\": true,\r\n    \"sshPassword\": \"[sanitize]\",\r\n    \"permissionScopes\": [\r\n      {\r\n        \"permissions\": \"rwd\",\r\n        \"service\": \"blob\",\r\n        \"resourceName\": \"container1\"\r\n      },\r\n      {\r\n        \"permissions\": \"rw\",\r\n        \"service\": \"file\",\r\n        \"resourceName\": \"share2\"\r\n      }\r\n    ],\r\n    \"homeDirectory\": \"/\",\r\n    \"sshAuthorizedKeys\": [\r\n      {\r\n        \"description\": \"sshpulickey name1\",\r\n        \"key\": \"ssh-rsa keykeykeykeykey=\"\r\n      },\r\n      {\r\n        \"description\": \"sshpulickey name2\",\r\n        \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n      }\r\n    ],\r\n    \"sid\": \"S-1-2-0-1611252643-3822659537-461345879-1000\",\r\n    \"sharedKey\": \"[sanitize]\",\r\n    \"hasSharedKey\": true,\r\n    \"hasSshKey\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -927,7 +927,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg1345/providers/Microsoft.Storage/storageAccounts/stopstestrg1345/localusers/testuser2\",\r\n  \"name\": \"testuser2\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/localUsers\",\r\n  \"properties\": {\r\n    \"homeDirectory\": \"/dir1\",\r\n    \"sid\": \"S-1-2-0-2854737607-717915506-2156295004-1001\",\r\n    \"sharedKey\": \"yka9qwL5PV5tjk9QMqG/l3OzXdKrhScoldXZyFPe5YOb6mhzisxrAZgZzxKqM6S1GNpf4xKWku0MKMzFHER7Hw==\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg1345/providers/Microsoft.Storage/storageAccounts/stopstestrg1345/localusers/testuser2\",\r\n  \"name\": \"testuser2\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/localUsers\",\r\n  \"properties\": {\r\n    \"homeDirectory\": \"/dir1\",\r\n    \"sid\": \"S-1-2-0-2854737607-717915506-2156295004-1001\",\r\n    \"sharedKey\": \"[sanitize]\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -996,7 +996,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg1345/providers/Microsoft.Storage/storageAccounts/stopstestrg1345/localusers/testuser2\",\r\n  \"name\": \"testuser2\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/localUsers\",\r\n  \"properties\": {\r\n    \"hasSshPassword\": true,\r\n    \"sshPassword\": \"Ey7gMzxHkb/rVVmm/FNWDAiF3BvVIO8qRaoaiViGcwhWGVh0cbQvJGdB7xHdX9GwKfacjHnQb/2OpcbB+yRHdQ==\",\r\n    \"permissionScopes\": [\r\n      {\r\n        \"permissions\": \"rw\",\r\n        \"service\": \"blob\",\r\n        \"resourceName\": \"container1\"\r\n      },\r\n      {\r\n        \"permissions\": \"rwd\",\r\n        \"service\": \"file\",\r\n        \"resourceName\": \"share1\"\r\n      }\r\n    ],\r\n    \"homeDirectory\": \"/dir2\",\r\n    \"sshAuthorizedKeys\": [\r\n      {\r\n        \"description\": \"sshpulickey name3\",\r\n        \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n      },\r\n      {\r\n        \"description\": \"sshpulickey name4\",\r\n        \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n      }\r\n    ],\r\n    \"sid\": \"S-1-2-0-2854737607-717915506-2156295004-1001\",\r\n    \"sharedKey\": \"yka9qwL5PV5tjk9QMqG/l3OzXdKrhScoldXZyFPe5YOb6mhzisxrAZgZzxKqM6S1GNpf4xKWku0MKMzFHER7Hw==\",\r\n    \"hasSharedKey\": true,\r\n    \"hasSshKey\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg1345/providers/Microsoft.Storage/storageAccounts/stopstestrg1345/localusers/testuser2\",\r\n  \"name\": \"testuser2\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/localUsers\",\r\n  \"properties\": {\r\n    \"hasSshPassword\": true,\r\n    \"sshPassword\": \"[sanitize]\",\r\n    \"permissionScopes\": [\r\n      {\r\n        \"permissions\": \"rw\",\r\n        \"service\": \"blob\",\r\n        \"resourceName\": \"container1\"\r\n      },\r\n      {\r\n        \"permissions\": \"rwd\",\r\n        \"service\": \"file\",\r\n        \"resourceName\": \"share1\"\r\n      }\r\n    ],\r\n    \"homeDirectory\": \"/dir2\",\r\n    \"sshAuthorizedKeys\": [\r\n      {\r\n        \"description\": \"sshpulickey name3\",\r\n        \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n      },\r\n      {\r\n        \"description\": \"sshpulickey name4\",\r\n        \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n      }\r\n    ],\r\n    \"sid\": \"S-1-2-0-2854737607-717915506-2156295004-1001\",\r\n    \"sharedKey\": \"[sanitize]\",\r\n    \"hasSharedKey\": true,\r\n    \"hasSshKey\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1248,7 +1248,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sshAuthorizedKeys\": [\r\n    {\r\n      \"description\": \"sshpulickey name1\",\r\n      \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n    },\r\n    {\r\n      \"description\": \"sshpulickey name2\",\r\n      \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n    }\r\n  ],\r\n  \"sharedKey\": \"pog0POM8/+sjL5CXyLd2ELsiZtQIGTdlXOxZ0EdXPv489bOJvE5pd4D/3XVv0eWSdIFY8Qbmpm2U30XV/pzvIQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"sshAuthorizedKeys\": [\r\n    {\r\n      \"description\": \"sshpulickey name1\",\r\n      \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n    },\r\n    {\r\n      \"description\": \"sshpulickey name2\",\r\n      \"key\": \"ssh-rsa keykeykeykeykew=\"\r\n    }\r\n  ],\r\n  \"sharedKey\": \"[sanitize]\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1311,7 +1311,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"hasSshPassword\": true,\r\n  \"sshPassword\": \"NvGIGbQnlh54aZ2XGP7Ugv4GAdPatPVblOx0Y4wlUpfQXbyj3qTNPc4Tcwmn0yw+eaCI9forjlsX/X3unCHiyg==\",\r\n  \"permissionScopes\": [\r\n    {\r\n      \"permissions\": \"rwd\",\r\n      \"service\": \"blob\",\r\n      \"resourceName\": \"container1\"\r\n    },\r\n    {\r\n      \"permissions\": \"rw\",\r\n      \"service\": \"file\",\r\n      \"resourceName\": \"share2\"\r\n    }\r\n  ],\r\n  \"homeDirectory\": \"/\",\r\n  \"sid\": \"S-1-2-0-1611252643-3822659537-461345879-1000\",\r\n  \"hasSharedKey\": true,\r\n  \"hasSshKey\": true\r\n}",
+      "ResponseBody": "{\r\n  \"hasSshPassword\": true,\r\n  \"sshPassword\": \"[sanitize]\",\r\n  \"permissionScopes\": [\r\n    {\r\n      \"permissions\": \"rwd\",\r\n      \"service\": \"blob\",\r\n      \"resourceName\": \"container1\"\r\n    },\r\n    {\r\n      \"permissions\": \"rw\",\r\n      \"service\": \"file\",\r\n      \"resourceName\": \"share2\"\r\n    }\r\n  ],\r\n  \"homeDirectory\": \"/\",\r\n  \"sid\": \"S-1-2-0-1611252643-3822659537-461345879-1000\",\r\n  \"hasSharedKey\": true,\r\n  \"hasSshKey\": true\r\n}",
       "StatusCode": 200
     },
     {
