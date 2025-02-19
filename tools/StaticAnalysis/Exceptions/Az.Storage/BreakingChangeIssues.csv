@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Storage","Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet.GetAzureStorageTableStoredAccessPolicyCommand","Get-AzStorageTableStoredAccessPolicy","0","1020","The cmdlet 'Get-AzStorageTableStoredAccessPolicy' no longer has output type 'Microsoft.Azure.Cosmos.Table.SharedAccessTablePolicy'.","Make cmdlet 'Get-AzStorageTableStoredAccessPolicy' return type 'Microsoft.Azure.Cosmos.Table.SharedAccessTablePolicy'."
