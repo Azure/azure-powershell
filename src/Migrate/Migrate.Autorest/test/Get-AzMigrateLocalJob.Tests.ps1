@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateHCIJob'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateLocalJob'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMigrateHCIJob.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMigrateLocalJob.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateHCIJob'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzMigrateHCIJob' {
+Describe 'Get-AzMigrateLocalJob' {
     It 'ListByName' {
-        $output = Get-AzMigrateHCIJob `
+        $output = Get-AzMigrateLocalJob `
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
             -SubscriptionId $env.hciSubscriptionId
@@ -24,7 +24,7 @@ Describe 'Get-AzMigrateHCIJob' {
     }
 
     It 'GetByName' {
-        $output = Get-AzMigrateHCIJob `
+        $output = Get-AzMigrateLocalJob `
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
             -SubscriptionId $env.hciSubscriptionId `
@@ -33,27 +33,27 @@ Describe 'Get-AzMigrateHCIJob' {
     }
 
     It 'GetById' {
-        $output = Get-AzMigrateHCIJob `
+        $output = Get-AzMigrateLocalJob `
             -SubscriptionId $env.hciSubscriptionId `
             -ID $env.hciJobId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetByInputObject' {
-        $output = Get-AzMigrateHCIJob `
+        $output = Get-AzMigrateLocalJob `
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
             -SubscriptionId $env.hciSubscriptionId `
             -Name $env.hciJobName
         
-        $output1 = Get-AzMigrateHCIJob `
+        $output1 = Get-AzMigrateLocalJob `
             -InputObject $output `
             -SubscriptionId $env.hciSubscriptionId
         $output1.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'ListById' {
-        $output = Get-AzMigrateHCIJob `
+        $output = Get-AzMigrateLocalJob `
             -ProjectID $env.hciProjectId `
             -ResourceGroupID $env.hciMigResourceGroupId `
             -SubscriptionId $env.hciSubscriptionId

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMigrateHCIServerReplication'))
+if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMigrateLocalServerReplication'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Set-AzMigrateHCIServerReplication.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Set-AzMigrateLocalServerReplication.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMigrateHCIServerReplica
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Set-AzMigrateHCIServerReplication' -Tag 'LiveOnly' {
+Describe 'Set-AzMigrateLocalServerReplication' {
     It 'ByID' {
-        $output = Set-AzMigrateHCIServerReplication `
+        $output = Set-AzMigrateLocalServerReplication `
             -TargetObjectID $env.hciProtectedItem1 `
             -SubscriptionId $env.hciSubscriptionId `
-            -IsDynamicMemoryEnabled "false"
+            -IsDynamicMemoryEnabled "true"
         $output.Count | Should -BeGreaterOrEqual 1
     }
 }

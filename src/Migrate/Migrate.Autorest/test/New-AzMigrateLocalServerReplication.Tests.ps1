@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateHCIServerReplication'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateLocalServerReplication'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMigrateHCIServerReplication.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMigrateLocalServerReplication.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateHCIServerReplica
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMigrateHCIServerReplication' -Tag 'LiveOnly' {
+Describe 'New-AzMigrateLocalServerReplication' {
     It 'ByIdDefaultUser' {
-        $output = New-AzMigrateHCIServerReplication `
+        $output = New-AzMigrateLocalServerReplication `
             -MachineId $env.hciSDSMachineId1 `
             -TargetResourceGroupId $env.hciTargetRGId `
             -TargetVMName $env.hciTgtVMName1 `
@@ -29,9 +29,9 @@ Describe 'New-AzMigrateHCIServerReplication' -Tag 'LiveOnly' {
     }
 
     It 'ByIdPowerUser' {
-        $diskToInclude = New-AzMigrateHCIDiskMappingObject -DiskID $env.hciDiskId2 -IsOSDisk "true" -IsDynamic "true" -Size 1 -Format "VHDX"
-        $nicToInclude = New-AzMigrateHCINicMappingObject -NicID $env.hciNicId2 -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId
-        $output = New-AzMigrateHCIServerReplication `
+        $diskToInclude = New-AzMigrateLocalDiskMappingObject -DiskID $env.hciDiskId2 -IsOSDisk "true" -IsDynamic "true" -Size 1 -Format "VHDX"
+        $nicToInclude = New-AzMigrateLocalNicMappingObject -NicID $env.hciNicId2 -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId
+        $output = New-AzMigrateLocalServerReplication `
             -MachineId $env.hciSDSMachineId2 `
             -TargetResourceGroupId $env.hciTargetRGId `
             -TargetVMName $env.hciTgtVMName2 `
