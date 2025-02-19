@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{D2FB716C-31CA-4D36-84BD-E702EEE70191}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StorageMover", "StorageMover.Autorest\Az.StorageMover.csproj", "{F16ABC21-B40A-4BC3-B0ED-1B067CCC5C99}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageMover", "StorageMover\StorageMover.csproj", "{3CD5212D-D513-4E3A-9321-85644970EE9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StorageMover", "..\..\generated\StorageMover\StorageMover.Autorest\Az.StorageMover.csproj", "{D6CC2120-2786-4B75-99B1-6BD759085C15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,14 +54,14 @@ Global
 		{D2FB716C-31CA-4D36-84BD-E702EEE70191}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2FB716C-31CA-4D36-84BD-E702EEE70191}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2FB716C-31CA-4D36-84BD-E702EEE70191}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F16ABC21-B40A-4BC3-B0ED-1B067CCC5C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F16ABC21-B40A-4BC3-B0ED-1B067CCC5C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F16ABC21-B40A-4BC3-B0ED-1B067CCC5C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F16ABC21-B40A-4BC3-B0ED-1B067CCC5C99}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3CD5212D-D513-4E3A-9321-85644970EE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3CD5212D-D513-4E3A-9321-85644970EE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CD5212D-D513-4E3A-9321-85644970EE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CD5212D-D513-4E3A-9321-85644970EE9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6CC2120-2786-4B75-99B1-6BD759085C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6CC2120-2786-4B75-99B1-6BD759085C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6CC2120-2786-4B75-99B1-6BD759085C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6CC2120-2786-4B75-99B1-6BD759085C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F10F55ED-609A-4C7E-9F65-F37A64511D4F} = {E1519A88-B8C2-4D42-B4DC-0E3C22778AAC}
