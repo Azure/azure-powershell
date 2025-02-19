@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSStaticRoutesConfig
     {
         [Ps1Xml(Label = "PropagateStaticRoutes", Target = ViewControl.Table)]
-        public bool PropagateStaticRoutes { get; } = true;
+        public bool PropagateStaticRoutes { get; set; }
 
         [Ps1Xml(Label = "VnetLocalRouteOverrideCriteria", Target = ViewControl.Table)]
         public string VnetLocalRouteOverrideCriteria { get; set; }
