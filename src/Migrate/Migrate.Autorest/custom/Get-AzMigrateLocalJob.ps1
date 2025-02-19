@@ -17,11 +17,11 @@
 .Synopsis
 Retrieves the status of an Azure Migrate job.
 .Description
-The Get-AzMigrateHCIJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateLocalJob cmdlet retrives the status of an Azure Migrate job.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehcijob
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocaljob
 #>
-function Get-AzMigrateHCIJob {
+function Get-AzMigrateLocalJob {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
@@ -184,6 +184,6 @@ function Get-AzMigrateHCIJob {
             $null = $PSBoundParameters.Add('JobName', $Name)
         }
 
-        return  Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        return  Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
     }
 }

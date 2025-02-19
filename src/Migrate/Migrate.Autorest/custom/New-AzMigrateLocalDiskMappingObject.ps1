@@ -17,13 +17,13 @@
 .Synopsis
 Creates a new disk mapping
 .Description
-The New-AzMigrateHCIDiskMappingObject cmdlet creates a mapping of the source disk attached to the server to be migrated
+The New-AzMigrateLocalDiskMappingObject cmdlet creates a mapping of the source disk attached to the server to be migrated
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmappingobject
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocaldiskmappingobject
 #>
-function New-AzMigrateHCIDiskMappingObject {
+function New-AzMigrateLocalDiskMappingObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCIDiskInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -81,7 +81,7 @@ function New-AzMigrateHCIDiskMappingObject {
         $isDynamicDisk = [System.Convert]::ToBoolean($IsDynamic)
         $osDisk = [System.Convert]::ToBoolean($IsOSDisk)
 
-        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCIDiskInput]::new(
+        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput]::new(
             $DiskID, 
             $isDynamicDisk, 
             $Size, 

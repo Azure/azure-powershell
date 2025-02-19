@@ -17,13 +17,13 @@
 .Synopsis
 Creates an object to update NIC properties of a replicating server.
 .Description
-The New-AzMigrateHCINicMappingObject cmdlet creates a mapping of the source NIC attached to the server to be migrated. This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
+The New-AzMigrateLocalNicMappingObject cmdlet creates a mapping of the source NIC attached to the server to be migrated. This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalnicmappingobject
 #>
-function New-AzMigrateHCINicMappingObject {
+function New-AzMigrateLocalNicMappingObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -70,7 +70,7 @@ function New-AzMigrateHCINicMappingObject {
             $selectionTypeForFailover = $VMNicSelection.NotSelected
         }
 
-        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput]::new(
+        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput]::new(
             $NicID,
             $TargetVirtualSwitchId,
             $TargetTestVirtualSwitchId,

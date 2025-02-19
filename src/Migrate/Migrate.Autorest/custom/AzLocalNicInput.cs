@@ -3,9 +3,9 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 {
-    public class AzStackHCINicInput
+    public class AzLocalNicInput
     {
-        public AzStackHCINicInput(
+        public AzLocalNicInput(
             string nicId,
             string targetNetworkId,
             string testNetworkId,
@@ -20,10 +20,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         /// <summary>Gets or sets the NIC Id.</summary>
         public string NicId { get; set; }
 
-        /// <summary>Gets or sets the target network Id within AzStackHCI Cluster.</summary>
+        /// <summary>Gets or sets the target network Id within Azure Local Cluster.</summary>
         public string TargetNetworkId { get; set; }
 
-        /// <summary>Gets or sets the target test network Id within AzStackHCI Cluster.</summary>
+        /// <summary>Gets or sets the target test network Id within Azure Local Cluster.</summary>
         public string TestNetworkId { get; set; }
 
         /// <summary>Gets or sets the selection type of the NIC.</summary>

@@ -4,9 +4,9 @@ using System;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 {
-    public class AzStackHCIDiskInput
+    public class AzLocalDiskInput
     {
-        public AzStackHCIDiskInput(
+        public AzLocalDiskInput(
             string diskId, 
             bool isDynamic, 
             long diskSizeGB, 

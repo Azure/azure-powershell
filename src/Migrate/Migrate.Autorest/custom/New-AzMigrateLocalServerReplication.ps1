@@ -17,11 +17,11 @@
 .Synopsis
 Starts replication for the specified server.
 .Description
-The New-AzMigrateHCIServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
+The New-AzMigrateLocalServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehciserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserverreplication
 #>
-function New-AzMigrateHCIServerReplication {
+function New-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
@@ -73,13 +73,13 @@ function New-AzMigrateHCIServerReplication {
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCIDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
         # Specifies the NICs on the source server to be included for replication.
         ${NicToInclude},
 
@@ -157,7 +157,7 @@ function New-AzMigrateHCIServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzStackHCICommonSettings.ps1
+        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
         Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
 
         CheckResourceGraphModuleDependency
@@ -203,7 +203,7 @@ function New-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Add("MachineName", $MachineName)
         
         if ($SiteType -eq $SiteTypes.HyperVSites) {
-            $instanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
+            $instanceType = $AzLocalInstanceTypes.HyperVToAzLocal
             $machine = InvokeAzMigrateGetCommandWithRetries `
                 -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVMachine' `
                 -Parameters $PSBoundParameters `
@@ -217,7 +217,7 @@ function New-AzMigrateHCIServerReplication {
                 -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {
-            $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
+            $instanceType = $AzLocalInstanceTypes.VMwareToAzLocal
             $machine = InvokeAzMigrateGetCommandWithRetries `
                 -CommandName 'Az.Migrate.Internal\Get-AzMigrateMachine' `
                 -Parameters $PSBoundParameters `
@@ -252,11 +252,11 @@ function New-AzMigrateHCIServerReplication {
         
         $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
         if ([string]::IsNullOrEmpty($VaultName)) {
-            throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding."
+            throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateLocalReplicationInfrastructure script before proceeding."
         }
         
         # Get fabrics and appliances in the project
-        $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
+        $allFabrics = Az.Migrate\Get-AzMigrateLocalReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
             if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $solution.Id) {
                 continue
@@ -268,7 +268,7 @@ function New-AzMigrateHCIServerReplication {
             elseif ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.VmwareInstance) {
                 $sourceFabric = $fabric
             }
-            elseif ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.AzStackHCIInstance) {
+            elseif ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.AzLocalInstance) {
                 $targetFabric = $fabric
             }
         }
@@ -301,14 +301,14 @@ function New-AzMigrateHCIServerReplication {
         $policy = InvokeAzMigrateGetCommandWithRetries `
             -CommandName 'Az.Migrate.Internal\Get-AzMigratePolicy' `
             -Parameters @{ ResourceGroupName = $ResourceGroupName; Name = $policyName; VaultName = $vaultName; SubscriptionId = $SubscriptionId } `
-            -ErrorMessage "The replication policy '$policyName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
+            -ErrorMessage "The replication policy '$policyName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateLocalReplicationInfrastructure script again."
 
         # Validate Replication Extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
         $replicationExtension = InvokeAzMigrateGetCommandWithRetries `
             -CommandName 'Az.Migrate.Internal\Get-AzMigrateReplicationExtension' `
             -Parameters @{ ResourceGroupName = $ResourceGroupName; Name = $replicationExtensionName; VaultName = $vaultName; SubscriptionId = $SubscriptionId } `
-            -ErrorMessage "The replication extension '$replicationExtensionName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
+            -ErrorMessage "The replication extension '$replicationExtensionName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateLocalReplicationInfrastructure script again."
         
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
         $targetClusterIdArray = $targetClusterId.Split("/")
@@ -527,7 +527,7 @@ function New-AzMigrateHCIServerReplication {
 
                 if ($htNic.SelectionTypeForFailover -eq $VMNicSelection.SelectedByUser -and
                     [string]::IsNullOrEmpty($htNic.TargetNetworkId)) {
-                    throw throw "The TargetVirtualSwitchId parameter is required when the CreateAtTarget flag is set to 'true'. NIC '$($htNic.NicId)'. Please utilize the New-AzMigrateHCINicMappingObject command to properly create a Nic mapping object."
+                    throw throw "The TargetVirtualSwitchId parameter is required when the CreateAtTarget flag is set to 'true'. NIC '$($htNic.NicId)'. Please utilize the New-AzMigrateLocalNicMappingObject command to properly create a Nic mapping object."
                 }
 
                 $nics += [PSCustomObject]$htNic
@@ -560,7 +560,7 @@ function New-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Remove('NoWait')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
         }
     }
 }

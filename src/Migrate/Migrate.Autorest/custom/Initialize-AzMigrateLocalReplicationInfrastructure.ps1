@@ -17,15 +17,15 @@
 .Synopsis
 Initializes the infrastructure for the migrate project.
 .Description
-The Initialize-AzMigrateHCIReplicationInfrastructure cmdlet initializes the infrastructure for the migrate project in AzStackHCI scenario.
+The Initialize-AzMigrateLocalReplicationInfrastructure cmdlet initializes the infrastructure for the migrate project in AzLocal scenario.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratehcireplicationinfrastructure
+https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure
 #>
 
-function Initialize-AzMigrateHCIReplicationInfrastructure {
+function Initialize-AzMigrateLocalReplicationInfrastructure {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([System.Boolean], ParameterSetName = 'AzStackHCI')]
-    [CmdletBinding(DefaultParameterSetName = 'AzStackHCI', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [OutputType([System.Boolean], ParameterSetName = 'AzLocal')]
+    [CmdletBinding(DefaultParameterSetName = 'AzLocal', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
         [ValidateNotNull()]
@@ -56,13 +56,13 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the source appliance name for the AzStackHCI scenario.
+        # Specifies the source appliance name for the AzLocal scenario.
         ${SourceApplianceName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the target appliance name for the AzStackHCI scenario.
+        # Specifies the target appliance name for the AzLocal scenario.
         ${TargetApplianceName},
 
         [Parameter()]
@@ -120,7 +120,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
     )
 
     process {
-        Import-Module $PSScriptRoot\Helper\AzStackHCICommonSettings.ps1
+        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
         Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
 
         CheckResourcesModuleDependency
@@ -218,10 +218,10 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         $sourceSiteId = $appMap[$SourceApplianceName.ToLower()]
         $targetSiteId = $appMap[$TargetApplianceName.ToLower()]
         if ($sourceSiteId -match $hyperVSiteTypeRegex -and $targetSiteId -match $hyperVSiteTypeRegex) {
-            $instanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
+            $instanceType = $AzLocalInstanceTypes.HyperVToAzLocal
         }
         elseif ($sourceSiteId -match $vmwareSiteTypeRegex -and $targetSiteId -match $hyperVSiteTypeRegex) {
-            $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
+            $instanceType = $AzLocalInstanceTypes.VMwareToAzLocal
         }
         else {
             throw "Error encountered in matching the given source appliance name '$SourceApplianceName' and target appliance name '$TargetApplianceName'. Please verify the VM site type to be either for HyperV or VMware for both source and target appliances, and the appliance names are correct."
@@ -235,21 +235,21 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
 
         # Get Source and Target Fabrics
-        $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
+        $allFabrics = Az.Migrate\Get-AzMigrateLocalReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
             if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $amhSolution.Id) {
                 continue
             }
 
-            if (($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) -and
+            if (($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) -and
                 ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance)) {
                 $sourceFabric = $fabric
             }
-            elseif (($instanceType -eq $AzStackHCIInstanceTypes.VMwareToAzStackHCI) -and
+            elseif (($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) -and
                 ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.VMwareInstance)) {
                 $sourceFabric = $fabric
             }
-            elseif ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.AzStackHCIInstance) {
+            elseif ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.AzLocalInstance) {
                 $targetFabric = $fabric
             }
 
@@ -407,14 +407,14 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
             # Setup Policy deployment parameters
             $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.PolicyModelProperties]::new()
-            if ($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) {
+            if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
                 $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcipolicyModelCustomProperties]::new()
             }
-            elseif ($instanceType -eq $AzStackHCIInstanceTypes.VMwareToAzStackHCI) {
+            elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
                 $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcipolicyModelCustomProperties]::new()
             }
             else {
-                throw "Instance type '$($instanceType)' is not supported. Currently, for AzStackHCI scenario, only HyperV and VMware as the source is supported."
+                throw "Instance type '$($instanceType)' is not supported. Currently, for AzLocal scenario, only HyperV and VMware as the source is supported."
             }
             $policyCustomProperties.InstanceType = $params.InstanceType
             $policyCustomProperties.RecoveryPointHistoryInMinute = $params.RecoveryPointHistoryInMinute
@@ -1032,17 +1032,17 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             # Setup Replication Extension deployment parameters
             $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ReplicationExtensionModelProperties]::new()
         
-            if ($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) {
+            if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
                 $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.HyperVFabricArmId = $params.SourceFabricArmId
                 
             }
-            elseif ($instanceType -eq $AzStackHCIInstanceTypes.VMwareToAzStackHCI) {
+            elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
                 $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.VMwareFabricArmId = $params.SourceFabricArmId
             }
             else {
-                throw "Currently, for AzStackHCI scenario, only HyperV and VMware as the source is supported."
+                throw "Currently, for AzLocal scenario, only HyperV and VMware as the source is supported."
             }
             $replicationExtensionCustomProperties.InstanceType = $params.InstanceType
             $replicationExtensionCustomProperties.AzStackHCIFabricArmId = $params.TargetFabricArmId

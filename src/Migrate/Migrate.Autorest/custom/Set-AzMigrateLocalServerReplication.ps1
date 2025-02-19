@@ -17,11 +17,11 @@
 .Synopsis
 Updates the target properties for the replicating server.
 .Description
-The Set-AzMigrateHCIServerReplication cmdlet updates the target properties for the replicating server.
+The Set-AzMigrateLocalServerReplication cmdlet updates the target properties for the replicating server.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratehciserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratelocalserverreplication
 #>
-function Set-AzMigrateHCIServerReplication {
+function Set-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ById', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -29,7 +29,7 @@ function Set-AzMigrateHCIServerReplication {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replicating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+        # Specifies the replicating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
         ${TargetObjectID},
 
         [Parameter()]
@@ -60,7 +60,7 @@ function Set-AzMigrateHCIServerReplication {
 		
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
         # Specifies the nics on the source server to be included for replication.
         ${NicToInclude},
 
@@ -120,7 +120,7 @@ function Set-AzMigrateHCIServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzStackHCICommonSettings.ps1
+        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
         Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
 
         CheckResourcesModuleDependency
@@ -177,11 +177,11 @@ function Set-AzMigrateHCIServerReplication {
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
             $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
-            $customPropertiesUpdate.InstanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
+            $customPropertiesUpdate.InstanceType = $AzLocalInstanceTypes.HyperVToAzLocal
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
             $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
-            $customPropertiesUpdate.InstanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
+            $customPropertiesUpdate.InstanceType = $AzLocalInstanceTypes.VMwareToAzLocal
         }
 
         # Update target CPU core
@@ -287,7 +287,7 @@ function Set-AzMigrateHCIServerReplication {
 
                 if ($htNic.SelectionTypeForFailover -eq $VMNicSelection.SelectedByUser -and
                     [string]::IsNullOrEmpty($htNic.TargetNetworkId)) {
-                    throw "The TargetVirtualSwitchId parameter is required when the CreateAtTarget flag is set to 'true'. NIC '$($htNic.NicId)'. Please utilize the New-AzMigrateHCINicMappingObject command to properly create a Nic mapping object."
+                    throw "The TargetVirtualSwitchId parameter is required when the CreateAtTarget flag is set to 'true'. NIC '$($htNic.NicId)'. Please utilize the New-AzMigrateLocalNicMappingObject command to properly create a Nic mapping object."
                 }
 
                 $nics += [PSCustomObject]$htNic
@@ -319,7 +319,7 @@ function Set-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Remove('NoWait')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
         }
     }
 }   

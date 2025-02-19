@@ -17,11 +17,11 @@
 .Synopsis
 Retrieves the details of the replicating server.
 .Description
-The Get-AzMigrateHCIServerReplication cmdlet retrieves the object for the replicating server.
+The Get-AzMigrateLocalServerReplication cmdlet retrieves the object for the replicating server.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehciserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalserverreplication
 #>
-function Get-AzMigrateHCIServerReplication {
+function Get-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
@@ -132,7 +132,7 @@ function Get-AzMigrateHCIServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzStackHCICommonSettings.ps1
+        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
 
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('TargetObjectID')
@@ -195,7 +195,7 @@ function Get-AzMigrateHCIServerReplication {
 
             $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
             if ([string]::IsNullOrEmpty($VaultName)) {
-                throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding."
+                throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateLocalReplicationInfrastructure script before proceeding."
             }
     
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
@@ -237,7 +237,7 @@ function Get-AzMigrateHCIServerReplication {
 
             $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
             if ([string]::IsNullOrEmpty($VaultName)) {
-                throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding."
+                throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateLocalReplicationInfrastructure script before proceeding."
             }
 
             $null = $PSBoundParameters.Add("VaultName", $VaultName)

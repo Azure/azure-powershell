@@ -1,13 +1,13 @@
-$AzStackHCIInstanceTypes = @{
-    HyperVToAzStackHCI = "HyperVToAzStackHCI";
-    VMwareToAzStackHCI = "VMwareToAzStackHCI";
+$AzLocalInstanceTypes = @{
+    HyperVToAzLocal = "HyperVToAzStackHCI";
+    VMwareToAzLocal = "VMwareToAzStackHCI";
 }
 
 # Fabric instances
 $FabricInstanceTypes = @{
     HyperVInstance     = "HyperVMigrate";
     VMwareInstance     = "VMwareMigrate";
-    AzStackHCIInstance = "AzStackHCI";
+    AzLocalInstance = "AzStackHCI";
 }
 
 $ReplicationDetails = @{
@@ -27,7 +27,7 @@ $ApiVersions = @{
     StorageAccount       = "2021-09-01";
     HyperVSites          = "2020-01-01";
     ProtectedItem        = "2021-02-16-preview";
-    AzStackHCI           = "2021-09-01-preview";
+    AzLocal              = "2021-09-01-preview";
 }
 
 # Role definition GUIDs for storage account creation
