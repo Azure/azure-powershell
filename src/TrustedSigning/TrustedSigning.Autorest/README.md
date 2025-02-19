@@ -31,7 +31,7 @@ For information on how to develop for `Az.TrustedSigning`, see [how-to.md](how-t
 commit: 7ecaa839ffee4d2be46df1783e6167714c0db523
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../../../tools/SwaggerCI/readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/codesigning/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
