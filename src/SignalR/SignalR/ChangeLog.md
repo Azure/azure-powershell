@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Upgraded nuget package to signed package.
+* Removed "Microsoft.Azure.Management.SignalR" Version "1.1.2-preview" PackageReference
+
 ## Version 2.0.2
 * Fixed secrets exposure in example documentation.
 * Improve the doc for `Test-AzSignalRName`.

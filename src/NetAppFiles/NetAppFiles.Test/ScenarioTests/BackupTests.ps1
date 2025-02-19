@@ -166,7 +166,7 @@ function Test-BackupCrud
         Start-TestSleep -Seconds 30
         
        # Assert-ThrowsContains{ Get-AzNetAppFilesVolumeGroupIdListForLDAPUser -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Username $userName} 'Group Id list can be fetched for LDAP enabled volumes only. Please check that the volume is LDAP enabled'
-        Assert-ThrowsContains{New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1 -Label $label -VolumeResourceId "bogus Id" } 'is an invalid resource Id'
+        Assert-ThrowsContains{New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1 -Label $label -VolumeResourceId "bogus Id" } 'is an invalid resource Id'
         
         # create and check Backup
         $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1 -Label $label -VolumeResourceId $retrievedVolume.Id

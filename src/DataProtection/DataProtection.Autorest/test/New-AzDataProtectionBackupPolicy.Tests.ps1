@@ -216,6 +216,59 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $policy | Should be $null
     }
 
+    It 'AzureKubernetesServiceVaultedPolicy' {
+        $subId = $env.TestAksPolicyScenario.SubscriptionId
+        $resourceGroupName = $env.TestAksPolicyScenario.ResourceGroupName
+        $vaultName = $env.TestAksPolicyScenario.VaultName
+        $newPolicyName = $env.TestAksPolicyScenario.NewVaultedPolicyName
+    
+        $pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureKubernetesService
+    
+        # update backup schedule
+        $schDate = @(
+        (
+            (Get-Date -Year 2024 -Month 10 -Day 02 -Hour 15 -Minute 30 -Second 0)
+        ))
+        $trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $schDate -IntervalType Daily -IntervalCount 1
+        Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $pol     
+
+        # add default retention rule
+        $lifeCycleDefault = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 9
+
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Default -LifeCycles $lifeCycleDefault -IsDefault $true
+
+        # add daily retention rule
+        $lifeCycleDailyOperational = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 9 -TargetDataStore VaultStore -CopyOption ImmediateCopyOption
+
+        $lifeCycleDailyVaulted = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 86
+
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Daily -LifeCycles $lifeCycleDailyOperational, $lifeCycleDailyVaulted -IsDefault $false
+
+        # add daily tag criteria
+        $tagCriteriaDaily = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfDay
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Daily -Criteria $tagCriteriaDaily
+
+
+        # create policy
+        $aksPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $newPolicyName -Policy $pol
+        $aksPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -Name $newPolicyName | Where-Object {$_.Name -eq $newPolicyName}
+
+        # Verify
+        $aksPolicy.Name | Should be $newPolicyName
+        $aksPolicy.Property.DatasourceType.ToLower().Equals("microsoft.containerservice/managedclusters") | Should be $true
+        ($aksPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Daily" }) -ne $null | Should be $true
+        $aksPolicy.Property.PolicyRule[-1].Lifecycle[1].SourceDataStoreType | Should be "VaultStore"
+        $aksPolicy.Property.PolicyRule[2].Lifecycle[0].DeleteAfterDuration | Should be "P9D"
+        $aksPolicy.Property.PolicyRule[2].Lifecycle[1].DeleteAfterDuration | Should be "P86D"
+        ($aksPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Default" }) -ne $null | Should be $true
+
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object {$_.Name -eq $newPolicyName}
+        $policy | Should be $null
+    }
+
     It 'BlobHardeningOperationalPolicy' {
         $subId = $env.TestBlobHardeningScenario.SubscriptionId
         $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName

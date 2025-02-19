@@ -17,29 +17,31 @@ Renames a file.
 Rename-AzStorageFile [-ShareName] <String> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-ContentType <String>] [-Permission <String>] [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot]
  [-Force] [-AsJob] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileObject
 ```
 Rename-AzStorageFile [-ShareFileClient] <ShareFileClient> [[-DestinationPath] <String>] [-ContentType <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareObject
 ```
 Rename-AzStorageFile [-ShareClient] <ShareClient> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DirecotryObject
 ```
 Rename-AzStorageFile [-ShareDirectoryClient] <ShareDirectoryClient> [-SourcePath] <String>
  [[-DestinationPath] <String>] [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -226,6 +228,21 @@ If SDDL is specified as input, it must have owner, group and dacl.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

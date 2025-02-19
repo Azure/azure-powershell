@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureDatabricksDeltaLakeExportCommand class.
         /// </summary>
 
+        /// <param name="additionalProperties">Export command settings.
+        /// </param>
+
         /// <param name="dateFormat">Specify the date format for the csv in Azure Databricks Delta Lake Copy.
         /// Type: string (or Expression with resultType string).
         /// </param>
@@ -32,8 +35,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="timestampFormat">Specify the timestamp format for the csv in Azure Databricks Delta Lake
         /// Copy. Type: string (or Expression with resultType string).
         /// </param>
-        public AzureDatabricksDeltaLakeExportCommand(object dateFormat = default(object), object timestampFormat = default(object))
+        public AzureDatabricksDeltaLakeExportCommand(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object dateFormat = default(object), object timestampFormat = default(object))
 
+        : base(additionalProperties)
         {
             this.DateFormat = dateFormat;
             this.TimestampFormat = timestampFormat;

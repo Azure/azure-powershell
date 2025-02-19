@@ -67,7 +67,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="features">A list of gallery image features.</param>
         /// <param name="architecture">Possible values include: 'x64',
         /// 'Arm64'</param>
-        public GalleryImage(string location, OperatingSystemTypes osType, OperatingSystemStateTypes osState, GalleryImageIdentifier identifier, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), string hyperVGeneration = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string provisioningState = default(string), IList<GalleryImageFeature> features = default(IList<GalleryImageFeature>), string architecture = default(string))
+        /// <param name="allowUpdateImage">Optional. Must be set to true if the
+        /// gallery image features are being updated.</param>
+        public GalleryImage(string location, OperatingSystemTypes osType, OperatingSystemStateTypes osState, GalleryImageIdentifier identifier, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), string hyperVGeneration = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string provisioningState = default(string), IList<GalleryImageFeature> features = default(IList<GalleryImageFeature>), string architecture = default(string), bool? allowUpdateImage = default(bool?))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -85,6 +87,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             ProvisioningState = provisioningState;
             Features = features;
             Architecture = architecture;
+            AllowUpdateImage = allowUpdateImage;
             CustomInit();
         }
 
@@ -189,6 +192,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.architecture")]
         public string Architecture { get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Must be set to true if the gallery image
+        /// features are being updated.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.allowUpdateImage")]
+        public bool? AllowUpdateImage { get; set; }
 
         /// <summary>
         /// Validate the object.

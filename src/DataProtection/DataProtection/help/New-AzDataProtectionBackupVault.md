@@ -281,7 +281,7 @@ Gets or sets the user assigned identities.
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: UserAssignedIdentity
+Aliases: UserAssignedIdentity, AssignUserIdentity
 
 Required: False
 Position: Named

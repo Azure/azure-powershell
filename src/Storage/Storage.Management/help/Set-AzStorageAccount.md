@@ -27,7 +27,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
  [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -45,7 +46,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
  [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -63,7 +65,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
  [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -84,7 +86,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
  [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -474,7 +476,7 @@ If the Storage account has Kind as Storage, do not specify the *AccessTier* para
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool
+Accepted values: Hot, Cool, Cold
 
 Required: False
 Position: Named
@@ -1089,6 +1091,21 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

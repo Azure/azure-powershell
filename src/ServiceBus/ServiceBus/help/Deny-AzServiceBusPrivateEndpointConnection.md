@@ -16,13 +16,13 @@ Denies a ServiceBus PrivateEndpointConnection
 ```
 Deny-AzServiceBusPrivateEndpointConnection -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Deny-AzServiceBusPrivateEndpointConnection -InputObject <IServiceBusIdentity> [-Description <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,6 +168,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

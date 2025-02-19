@@ -157,6 +157,7 @@ configuration:
             mentionees:
             - mojayara
             - jportugal0
+            - pkrishnanms
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -690,7 +691,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - matthchr
+            - pradeepgunda
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -788,7 +789,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - maertendMSFT
+            - mbifeld
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -805,6 +806,23 @@ configuration:
         - mentionUsers:
             mentionees:
             - bberera
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: CodeSigning
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: CodeSigning
+        then:
+        - mentionUsers:
+            mentionees:
+            - Jaxelr
+            - DawnWang17
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1764,7 +1782,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - idear1203
+            - MikeRys
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1844,8 +1862,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - raedJarrar
-            - jifems
+            - dlacy7
+            - NateB2
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1999,7 +2017,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - Tanmayeekamath
+            - anishtrakru
+            - derekbekoe
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2033,6 +2052,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - arpit-gagneja
+            - jotrivet
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2300,7 +2320,8 @@ configuration:
             mentionees:
             - RandalliLama
             - schaabs
-            - jlichwa
+            - chen-karen
+            - chandanrr
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2317,9 +2338,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - bavneetsingh16
-            - Arif-lakhani
             - ramyasreechakka
-            - NarayanThiru
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2854,7 +2873,6 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - SameergMS
             - yairgil
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -3101,6 +3119,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
+            - isamorris
             - bastionsuppgithub
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -3451,6 +3470,9 @@ configuration:
         - mentionUsers:
             mentionees:
             - kenieva
+            - shanhix1
+            - calecarter
+            - mentat9
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3535,6 +3557,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
+            - gyprakas
             - rahuls-microsoft
             - devatula
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
@@ -4133,7 +4156,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - wonner
+            - wanyang7
             - v-yanjungao
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -4216,6 +4239,7 @@ configuration:
             mentionees:
             - AzureAppServiceCLI
             - antcp
+            - yutanglin16
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

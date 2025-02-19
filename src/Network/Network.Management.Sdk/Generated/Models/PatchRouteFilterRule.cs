@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
 
         /// <param name="provisioningState">The provisioning state of the route filter rule resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="routeFilterRuleType">The rule type of the rule.
         /// Possible values include: &#39;Community&#39;</param>
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Access {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the route filter rule resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the route filter rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }

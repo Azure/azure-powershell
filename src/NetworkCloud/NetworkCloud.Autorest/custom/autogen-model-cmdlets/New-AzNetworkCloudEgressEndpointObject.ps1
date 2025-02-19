@@ -21,12 +21,12 @@ Create an in-memory object for EgressEndpoint.
 Create an in-memory object for EgressEndpoint.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EgressEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EgressEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudEgressEndpointObject
 #>
 function New-AzNetworkCloudEgressEndpointObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EgressEndpoint')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EgressEndpoint')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,12 +34,12 @@ function New-AzNetworkCloudEgressEndpointObject {
         [string]
         $Category,
         [Parameter(Mandatory, HelpMessage="The list of endpoint dependencies.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IEndpointDependency[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IEndpointDependency[]]
         $Endpoint
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EgressEndpoint]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EgressEndpoint]::New()
 
         if ($PSBoundParameters.ContainsKey('Category')) {
             $Object.Category = $Category

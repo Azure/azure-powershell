@@ -32,8 +32,9 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-ImageReferenceId <String>]
  [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>]
- [-EnableResilientVMCreate] [-EnableResilientVMDelete] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
+ [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
+ [-EnableResilientVMDelete] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,14 +52,14 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>] [-EnableSpotRestore]
  [-SpotRestoreTimeout <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-TerminateScheduledEvents]
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
- [-ScaleInPolicy <String[]>] -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-EncryptionAtHost]
+ [-ScaleInPolicy <String[]>] -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-EncryptionIdentity <String>] [-EncryptionAtHost]
  [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-AutomaticRepairAction <String>] [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>]
  [-ImageReferenceId <String>] [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>]
- [-EnableResilientVMCreate] [-EnableResilientVMDelete] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
+ [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
+ [-EnableResilientVMDelete] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -537,6 +538,20 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EncryptionIdentity
+Specifies the user identity associated with the virtual machine.That identity will be used for Azure Disk Encryption.
+```yaml
+Type: System.String
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 Specifies the type of identity used for the virtual machine scale set.
 The type 'SystemAssignedUserAssigned' includes both an implicitly created identity and a set of user assigned identities.
@@ -856,6 +871,36 @@ The rules to be followed when scaling-in a virtual machine scale set.  Possible 
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityPostureExcludeExtension
+List of virtual machine extensions to exclude when applying the security posture.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityPostureId
+The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

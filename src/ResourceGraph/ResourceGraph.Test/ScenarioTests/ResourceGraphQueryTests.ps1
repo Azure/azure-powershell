@@ -42,8 +42,8 @@ function Search-AzureRmGraph-Query
 	Assert-AreEqual $queryResult.Data[0].id $queryResult.Data[0].ResourceId
 	Assert-AreEqual $queryResult.Data[1].id $queryResult.Data[1].ResourceId
 
-	Assert-PropertiesCount 7 $queryResult.Data[0].properties
-	Assert-PropertiesCount 7 $queryResult.Data[1].properties
+	Assert-PropertiesCount 11 $queryResult.Data[0].properties
+	Assert-PropertiesCount 14 $queryResult.Data[1].properties
 }
 
 <#
@@ -87,7 +87,7 @@ Run query with subscriptions explicitly passed
 #>
 function Search-AzureRmGraph-Subscriptions
 {
-	$testSubId = "82506e98-9fdb-41f5-ab67-031005041a26"
+	$testSubId = "9e223dbe-3399-4e19-88eb-0975f02ac87f"
 	$nonExsitentTestSubId = "000b1166-1e13-4370-a951-6ed345a48c16"
 	$query = "distinct subscriptionId | order by subscriptionId asc"
 
@@ -117,7 +117,7 @@ Run query with management groups explicitly passed
 #>
 function Search-AzureRmGraph-ManagementGroups
 {
-	$testSubId = "82506e98-9fdb-41f5-ab67-031005041a26"
+	$testSubId = "9e223dbe-3399-4e19-88eb-0975f02ac87f"
 	$testMgId1 = "72f988bf-86f1-41af-91ab-2d7cd011db47"
 	$testMgId2 = "makharchMg"
 	$nonExistentTestMgId = "nonExistentMg"
@@ -129,12 +129,12 @@ function Search-AzureRmGraph-ManagementGroups
 	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultOneMg	
 	Assert-Null $queryResultOneMg.SkipToken
 	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultOneMg.Data
-	Assert-AreEqual $testSubId $queryResultOneMg.Data.subscriptionId
+	Assert-AreEqual $testSubId $queryResultOneMg.Data.subscriptionId[4]
 	
 	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultMultipleMgs
 	Assert-Null $queryResultMultipleMgs.SkipToken
 	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultMultipleMgs.Data
-	Assert-AreEqual $testSubId $queryResultMultipleMgs.Data.subscriptionId
+	Assert-AreEqual $testSubId $queryResultMultipleMgs.Data.subscriptionId[4]
 }
 
 <#
@@ -143,7 +143,7 @@ Run query with UseTenantScope passed
 #>
 function Search-AzureRmGraph-Tenant
 {
-	$testSubId = "82506e98-9fdb-41f5-ab67-031005041a26"
+	$testSubId = "9e223dbe-3399-4e19-88eb-0975f02ac87f"
 	$query = "distinct subscriptionId | order by subscriptionId asc"
 
 	$queryResultTenant = Search-AzGraph $query -UseTenantScope
@@ -152,12 +152,12 @@ function Search-AzureRmGraph-Tenant
 	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultTenant	
 	Assert-Null $queryResultTenant.SkipToken
 	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultTenant.Data
-	Assert-AreEqual $testSubId $queryResultTenant.Data.subscriptionId
+	Assert-AreEqual $testSubId $queryResultTenant.Data.subscriptionId[4]
 	
 	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultTenantWithPartialScope
 	Assert-Null $queryResultTenantWithPartialScope.SkipToken
 	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultTenantWithPartialScope.Data
-	Assert-AreEqual $testSubId $queryResultTenantWithPartialScope.Data.subscriptionId
+	Assert-AreEqual $testSubId $queryResultTenantWithPartialScope.Data.subscriptionId[4]
 }
 
 <#

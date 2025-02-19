@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.3
+* Upgraded nuget package to signed package.
+
+## Version 0.1.2
+* Used `Get-AzAccessToken -AsSecureString` inside the `AppComplianceAutomation` for the plain text version is going to be deprecate in the next release.
+
 ## Version 0.1.1
 * Fixed secrets exposure in example documentation.
 

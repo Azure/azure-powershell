@@ -1,8 +1,8 @@
 {
-  "Update-AzNetworkCloudVolume+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-739d849be2fc-HostedResources-61763B01/providers/Microsoft.NetworkCloud/volumes/ps-test-volume?api-version=2023-07-01+1": {
+  "Update-AzNetworkCloudVolume+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/powershell-test/providers/Microsoft.NetworkCloud/volumes/ps-test-volume?api-version=2024-07-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-739d849be2fc-HostedResources-61763B01/providers/Microsoft.NetworkCloud/volumes/ps-test-volume?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/powershell-test/providers/Microsoft.NetworkCloud/volumes/ps-test-volume?api-version=2024-07-01",
       "Content": "{\n  \"tags\": {\n    \"tag\": \"tag1Update\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,22 +17,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1d0174c3-0000-0100-0000-64cad17b0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "ETag": [ "\"42036479-0000-1100-0000-671fdf390000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "83674f27-9d30-4a6b-a2db-b5b0fbb2ef39" ],
-        "x-ms-correlation-request-id": [ "c5987878-6c9c-4a8a-8cdc-85eb3e0dd5fc" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230802T215820Z:c5987878-6c9c-4a8a-8cdc-85eb3e0dd5fc" ],
+        "x-ms-request-id": [ "f3e38e56-a1e4-4305-95e2-b83fbbc32652" ],
+        "x-ms-correlation-request-id": [ "f586bd82-4911-4a32-bea4-83219f8abdf9" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20241028T190010Z:f586bd82-4911-4a32-bea4-83219f8abdf9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 02 Aug 2023 21:58:20 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FBBDE18D85BB41FAB0865E314E68C6D7 Ref B: AMS231032609039 Ref C: 2024-10-28T19:00:09Z" ],
+        "Date": [ "Mon, 28 Oct 2024 19:00:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "969" ],
+        "Content-Length": [ "945" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-739d849be2fc-HostedResources-61763B01/providers/Microsoft.NetworkCloud/volumes/ps-test-volume\",\"name\":\"ps-test-volume\",\"type\":\"microsoft.networkcloud/volumes\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-739d849be2fc-HostedResources-61763B01/providers/Microsoft.ExtendedLocation/customLocations/m16-1-739d849be2fc-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tag\":\"tag1Update\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-02T21:57:47.4452488Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-02T21:58:19.8673506Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"sizeMiB\":10,\"attachedTo\":[],\"detailedStatus\":\"Active\",\"detailedStatusMessage\":\"Could not add NAKS cluster ResourceID to volume. Volume is ready to use.\"}}",
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/powershell-test/providers/Microsoft.NetworkCloud/volumes/ps-test-volume\",\"name\":\"ps-test-volume\",\"type\":\"microsoft.networkcloud/volumes\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev05-198f60409e38-HostedResources-2BF8FDF9/providers/Microsoft.ExtendedLocation/customLocations/dev05-198f60409e38-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tag\":\"tag1Update\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-28T18:59:36.9666136Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-28T19:00:09.8339695Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"sizeMiB\":10,\"attachedTo\":[],\"detailedStatus\":\"Active\",\"detailedStatusMessage\":\"Could not add NAKS cluster ResourceID to volume. Volume is ready to use.\"}}",
       "isContentBase64": false
     }
   }

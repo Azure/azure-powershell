@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Upgraded nuget package to signed package.
+
+## Version 1.1.0
+* Updated new property ResolutionPolicy to Get, New and Set virtual network link cmdlets.
+* Created autorest generated sdk in PrivateDns.Management.Sdk folder
+
 ## Version 1.0.5
 * Removed the outdated deps.json file.
 

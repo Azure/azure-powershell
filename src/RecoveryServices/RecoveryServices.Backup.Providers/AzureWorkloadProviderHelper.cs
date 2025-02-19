@@ -27,6 +27,7 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -103,6 +104,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     registerResponse.Response.StatusCode);
                 Logger.Instance.WriteDebug(errorMessage);
             } */
+        }
+
+        public void UndeleteContainer(string containerName,
+            ProtectionContainerResource protectionContainerResource,
+            string vaultName, string vaultResourceGroupName)
+        {
+            var registerResponse = ServiceClientAdapter.RegisterContainer(
+                            containerName,
+                            protectionContainerResource,
+                            vaultName,
+                            vaultResourceGroupName);
+            
+            if (registerResponse.Body == null || registerResponse.Body.Properties == null)
+            {
+                string errorMessage = string.Format(Resources.UndeleteContainerFailureErrorCode,
+                    registerResponse.Response.StatusCode);
+                Logger.Instance.WriteDebug(errorMessage);
+            }
         }
 
         public List<ProtectedItemResource> ListProtectedItemsByContainer(
@@ -483,8 +502,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         Resources.InvalidRetentionPolicyException,
                         typeof(CmdletModel.LongTermRetentionPolicy).ToString()));
             }
-
+        
             ((CmdletModel.LongTermRetentionPolicy)policy).Validate(ScheduleRunFrequency);
+        }
+
+        public void ValidateVaultRetentionPolicy(CmdletModel.RetentionPolicyBase policy, string backupManagementType = "", ScheduleRunType ScheduleRunFrequency = 0)
+        {
+            if (policy == null || policy.GetType() != typeof(CmdletModel.VaultRetentionPolicy))
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        Resources.InvalidRetentionPolicyException,
+                        typeof(CmdletModel.VaultRetentionPolicy).ToString()));
+            }
+           
+            ((CmdletModel.VaultRetentionPolicy)policy).Validate(ScheduleRunFrequency);
         }
 
         public void ValidateSQLRetentionPolicy(CmdletModel.RetentionPolicyBase policy)
@@ -1017,7 +1049,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // filter move readness based on target tier
             recoveryPointList = RecoveryPointConversions.CheckRPMoveReadiness(recoveryPointList, targetTier, isReadyForMove);
-
+            
             //filter RPs based on tier
             return RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, tier);
         }

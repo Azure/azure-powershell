@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageTaskAssignment
 
 ## SYNOPSIS
-Update storage task assignment properties
+update storage task assignment properties
 
 ## SYNTAX
 
@@ -41,16 +41,52 @@ Update-AzStorageTaskAssignment -InputObject <IStorageIdentity> [-Description <St
 ```
 
 ## DESCRIPTION
-Update storage task assignment properties
+update storage task assignment properties
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update a task assignment
+```powershell
 $start = Get-Date -Year 2024 -Month 8 -Day 7 -Hour 1 -Minute 30
 $end = Get-Date -Year 2024 -Month 12 -Day 25 -Hour 2 -Minute 45
 Update-AzStorageTaskAssignment -accountname myaccount -name mytaskassignment -resourcegroupname myresourcegroup -StartFrom $start.ToUniversalTime() -EndBy $end.ToUniversalTime() -Interval 7 -Description "update task assignment" -Enabled
 ```
+
+```output
+Description                     : update task assignment
+Enabled                         : True
+EndBy                           : 12/24/2024 6:45:03 PM
+Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount/storageTaskAssignments/mytaskassignment
+Interval                        : 7
+IntervalUnit                    : days
+Name                            : mytaskassignment
+ProvisioningState               : Succeeded
+ReportPrefix                    : test
+ResourceGroupName               : myresourcegroup
+RunStatusEnum                   :
+RunStatusError                  :
+RunStatusFinishTime             :
+RunStatusObjectFailedCount      :
+RunStatusObjectsOperatedOnCount :
+RunStatusObjectsSucceededCount  :
+RunStatusObjectsTargetedCount   :
+RunStatusRunResult              :
+RunStatusStartTime              :
+RunStatusStorageAccountId       :
+RunStatusSummaryReportPath      :
+RunStatusTaskAssignmentId       :
+RunStatusTaskId                 :
+RunStatusTaskVersion            :
+StartFrom                       : 8/6/2024 5:30:39 PM
+StartOn                         :
+TargetExcludePrefix             :
+TargetPrefix                    :
+TaskId                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask
+TriggerType                     : OnSchedule
+Type                            : Microsoft.Storage/storageAccounts/storageTaskAssignments
+```
+
+This command updates the interval, start time, end time, and description of a task assignment, and enables the task assignment.
 
 ## PARAMETERS
 
@@ -59,7 +95,7 @@ The name of the storage account within the specified resource group.
 Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -74,13 +110,13 @@ Accept wildcard characters: False
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -90,7 +126,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -105,7 +141,7 @@ Accept wildcard characters: False
 Text that describes the purpose of the storage task assignment
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,13 +156,13 @@ Accept wildcard characters: False
 Whether the storage task assignment is enabled or not
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -136,7 +172,7 @@ When to end task execution.
 This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +187,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IStorageIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -167,13 +203,13 @@ Run interval of task execution.
 This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -183,7 +219,7 @@ Run interval unit of task execution.
 This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +235,7 @@ The name of the storage task assignment within the specified resource group.
 Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageAccountExpanded
 Aliases: StorageTaskAssignmentName
 
@@ -214,13 +250,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -229,7 +265,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -244,7 +280,7 @@ Accept wildcard characters: False
 The prefix of the storage task assignment report
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -260,7 +296,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -276,7 +312,7 @@ When to start task execution.
 This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +328,7 @@ When to start task execution.
 This is a mutable field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -307,7 +343,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IStorageIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 Parameter Sets: UpdateViaIdentityStorageAccountExpanded
 Aliases:
 
@@ -322,13 +358,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -338,7 +374,7 @@ List of object prefixes to be excluded from task execution.
 If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -353,7 +389,7 @@ Accept wildcard characters: False
 Required list of object prefixes to be included for task execution
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -368,7 +404,7 @@ Accept wildcard characters: False
 The trigger type of the storage task assignment execution
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -383,7 +419,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -399,7 +435,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -416,74 +452,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IStorageIdentity\>: Identity Parameter
-  \[AccountName \<String\>\]: The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[BlobInventoryPolicyName \<String\>\]: The name of the storage account blob inventory policy.
-It should always be 'default'
-  \[DeletedAccountName \<String\>\]: Name of the deleted storage account.
-  \[EncryptionScopeName \<String\>\]: The name of the encryption scope within the specified storage account.
-Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
-Every dash (-) character must be immediately preceded and followed by a letter or number.
-  \[Id \<String\>\]: Resource identity path
-  \[Location \<String\>\]: The location of the deleted storage account.
-  \[ManagementPolicyName \<String\>\]: The name of the Storage Account Management Policy.
-It should always be 'default'
-  \[MigrationName \<String\>\]: The name of the Storage Account Migration.
-It should always be 'default'
-  \[ObjectReplicationPolicyId \<String\>\]: For the destination account, provide the value 'default'.
-Configure the policy on the destination account first.
-For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account.
-The policy is downloaded as a JSON file.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection associated with the Azure resource
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[StorageTaskAssignmentName \<String\>\]: The name of the storage task assignment within the specified resource group.
-Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Username \<String\>\]: The name of local user.
-The username must contain lowercase letters and numbers only.
-It must be unique only within the storage account.
-
-STORAGEACCOUNTINPUTOBJECT \<IStorageIdentity\>: Identity Parameter
-  \[AccountName \<String\>\]: The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[BlobInventoryPolicyName \<String\>\]: The name of the storage account blob inventory policy.
-It should always be 'default'
-  \[DeletedAccountName \<String\>\]: Name of the deleted storage account.
-  \[EncryptionScopeName \<String\>\]: The name of the encryption scope within the specified storage account.
-Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
-Every dash (-) character must be immediately preceded and followed by a letter or number.
-  \[Id \<String\>\]: Resource identity path
-  \[Location \<String\>\]: The location of the deleted storage account.
-  \[ManagementPolicyName \<String\>\]: The name of the Storage Account Management Policy.
-It should always be 'default'
-  \[MigrationName \<String\>\]: The name of the Storage Account Migration.
-It should always be 'default'
-  \[ObjectReplicationPolicyId \<String\>\]: For the destination account, provide the value 'default'.
-Configure the policy on the destination account first.
-For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account.
-The policy is downloaded as a JSON file.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection associated with the Azure resource
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[StorageTaskAssignmentName \<String\>\]: The name of the storage task assignment within the specified resource group.
-Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Username \<String\>\]: The name of local user.
-The username must contain lowercase letters and numbers only.
-It must be unique only within the storage account.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.storage/update-azstoragetaskassignment](https://learn.microsoft.com/powershell/module/az.storage/update-azstoragetaskassignment)
-

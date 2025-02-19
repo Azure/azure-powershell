@@ -15,19 +15,19 @@ Gets policy exemptions.
 ### Name (Default)
 ```
 Get-AzPolicyExemption [-Name <String>] [-Scope <String>] [-PolicyAssignmentIdFilter <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### IncludeDescendent
 ```
 Get-AzPolicyExemption [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Id
 ```
 Get-AzPolicyExemption [-PolicyAssignmentIdFilter <String>] -Id <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,8 +54,9 @@ The second command gets the policy exemption named PolicyExemption07 for the sco
 
 ### Example 3: Get all policy exemptions associated with a policy assignment
 ```powershell
-$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07'
-Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.ResourceId
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.Id
 ```
 
 The first command gets a policy assignment named PolicyAssignment07.
@@ -152,21 +153,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
