@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for Cosmos DB Table role definition and role assignment related cmdlets.
 
 ## Version 2.0.6
 * Added capability to provide Min/Max Throughput RU Consumption

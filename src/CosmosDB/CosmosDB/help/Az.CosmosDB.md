@@ -159,6 +159,12 @@ Lists all the restorable Azure Cosmos DB Table resources available for a specifi
 ### [Get-AzCosmosDBTableRestorableTable](Get-AzCosmosDBTableRestorableTable.md)
 Lists all the restorable Azure Cosmos DB Tables available for a specific database.
 
+### [Get-AzCosmosDBTableRoleAssignment](Get-AzCosmosDBTableRoleAssignment.md)
+Gets the CosmosDB Table Role Assignment.
+
+### [Get-AzCosmosDBTableRoleDefinition](Get-AzCosmosDBTableRoleDefinition.md)
+Gets the CosmosDB Table Role Definition.
+
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
 Gets the throughput of a CosmosDB Table.
 
@@ -345,6 +351,12 @@ Creates a new CosmosDB Sql UserDefinedFunction.
 ### [New-AzCosmosDBTable](New-AzCosmosDBTable.md)
 Creates a new CosmosDB Table.
 
+### [New-AzCosmosDBTableRoleAssignment](New-AzCosmosDBTableRoleAssignment.md)
+Creates a new CosmosDB Table Role Assignment.
+
+### [New-AzCosmosDBTableRoleDefinition](New-AzCosmosDBTableRoleDefinition.md)
+Creates a new CosmosDB Table Role Definition.
+
 ### [New-AzCosmosDBTableToRestore](New-AzCosmosDBTableToRestore.md)
 Creates a new CosmosDB Table to Restore object(PSTableToRestore)
 
@@ -410,6 +422,12 @@ Deletes the CosmosDB Sql UserDefinedFunction.
 
 ### [Remove-AzCosmosDBTable](Remove-AzCosmosDBTable.md)
 Deletes the CosmosDB Table.
+
+### [Remove-AzCosmosDBTableRoleAssignment](Remove-AzCosmosDBTableRoleAssignment.md)
+Deletes the CosmosDB Table Role Assignment.
+
+### [Remove-AzCosmosDBTableRoleDefinition](Remove-AzCosmosDBTableRoleDefinition.md)
+Deletes the CosmosDB Table Role Definition.
 
 ### [Remove-AzManagedCassandraCluster](Remove-AzManagedCassandraCluster.md)
 Deletes a Azure Managed Instances for Apache Cassandra cluster.
@@ -536,6 +554,12 @@ Updates the CosmosDB Sql UserDefinedFunction. Performs a client side patch opera
 
 ### [Update-AzCosmosDBTable](Update-AzCosmosDBTable.md)
 Updates the CosmosDB Table. Performs a client side patch operation by reading the existing Table.
+
+### [Update-AzCosmosDBTableRoleAssignment](Update-AzCosmosDBTableRoleAssignment.md)
+Updates an existing CosmosDB Table Role Assignment.
+
+### [Update-AzCosmosDBTableRoleDefinition](Update-AzCosmosDBTableRoleDefinition.md)
+Updates an existing CosmosDB Table Role Definition.
 
 ### [Update-AzCosmosDBTableThroughput](Update-AzCosmosDBTableThroughput.md)
 Updates the throughput value of a CosmosDB Table.
