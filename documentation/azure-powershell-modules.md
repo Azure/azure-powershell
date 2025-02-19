@@ -109,8 +109,7 @@
 | Kusto                          | `Az.Kusto`                      | [![Kusto]][KustoGallery]                                           | [Changelog][KustoChangeLog]                      |
 | Lab Services                   | `Az.LabServices`                | [![LabServices]][LabServicesGallery]                               | [Changelog][LabServicesChangeLog]                |
 | Load Testing                   | `Az.LoadTesting`                | [![LoadTesting]][LoadTestingGallery]                               | [Changelog][LoadTestingChangeLog]                |
-| Logic App                      | `Az.LogicApp`                   | [![LogicApp]][LogicAppGallery]                                     | [Changelog][LogicAppChangeLog]                   |
-| Logz.io                        | `Az.Logz`                       | [![Logz]][LogzGallery]                                             | [Changelog][LogzChangeLog]                       |
+| Logic App                      | `Az.LogicApp`                   | [![LogicApp]][LogicAppGallery]                                     | [Changelog][LogicAppChangeLog]                   |                      |
 | Machine Learning               | `Az.MachineLearning`            | [![MachineLearning]][MachineLearningGallery]                       | [Changelog][MachineLearningChangeLog]            |
 | Machine Learning Services      | `Az.MachineLearningServices`    | [![MachineLearningServices]][MachineLearningServicesGallery]       | [Changelog][MachineLearningServicesChangeLog]    |
 | Maintenance                    | `Az.Maintenance`                | [![Maintenance]][MaintenanceGallery]                               | [Changelog][MaintenanceChangeLog]                |
@@ -298,7 +297,6 @@
 [LabServices]:                https://img.shields.io/powershellgallery/v/Az.LabServices.svg?style=flat-square&label=Az.LabServices
 [LoadTesting]:                https://img.shields.io/powershellgallery/v/Az.LoadTesting.svg?style=flat-square&label=Az.LoadTesting
 [LogicApp]:                   https://img.shields.io/powershellgallery/v/Az.LogicApp.svg?style=flat-square&label=Az.LogicApp
-[Logz]:                       https://img.shields.io/powershellgallery/v/Az.Logz.svg?style=flat-square&label=Az.Logz
 [MachineLearning]:            https://img.shields.io/powershellgallery/v/Az.MachineLearning.svg?style=flat-square&label=Az.MachineLearning
 [MachineLearningServices]:    https://img.shields.io/powershellgallery/v/Az.MachineLearningServices.svg?style=flat-square&label=Az.MachineLearningServices
 [Maintenance]:                https://img.shields.io/powershellgallery/v/Az.Maintenance.svg?style=flat-square&label=Az.Maintenance
@@ -482,7 +480,6 @@
 [LabServicesGallery]:                https://www.powershellgallery.com/packages/Az.LabServices/
 [LoadTestingGallery]:                https://www.powershellgallery.com/packages/Az.LoadTesting/
 [LogicAppGallery]:                   https://www.powershellgallery.com/packages/Az.LogicApp/
-[LogzGallery]:                       https://www.powershellgallery.com/packages/Az.Logz/
 [MachineLearningGallery]:            https://www.powershellgallery.com/packages/Az.MachineLearning/
 [MachineLearningServicesGallery]:    https://www.powershellgallery.com/packages/Az.MachineLearningServices/
 [MaintenanceGallery]:                https://www.powershellgallery.com/packages/Az.Maintenance/
@@ -664,7 +661,6 @@
 [LabServicesChangeLog]:                ../src/LabServices/LabServices/ChangeLog.md
 [LoadTestingChangeLog]:                ../src/LoadTesting/LoadTesting/ChangeLog.md
 [LogicAppChangeLog]:                   ../src/LogicApp/LogicApp/ChangeLog.md
-[LogzChangeLog]:                       ../src/Logz/Logz/ChangeLog.md
 [MachineLearningChangeLog]:            ../src/MachineLearning/MachineLearning/ChangeLog.md
 [MachineLearningServicesChangeLog]:    ../src/MachineLearningServices/MachineLearningServices/ChangeLog.md
 [MaintenanceChangeLog]:                ../src/Maintenance/Maintenance/ChangeLog.md
