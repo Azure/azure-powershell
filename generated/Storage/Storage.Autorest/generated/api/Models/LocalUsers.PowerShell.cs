@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PowerShell;
 
-    /// <summary>List storage account local users.</summary>
+    /// <summary>
+    /// List of local users requested, and if paging is required, a URL to the next page of local users.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(LocalUsersTypeConverter))]
     public partial class LocalUsers
     {
@@ -113,6 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LocalUserTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -134,6 +140,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LocalUserTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -154,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             return ToJsonString();
         }
     }
-    /// List storage account local users.
+    /// List of local users requested, and if paging is required, a URL to the next page of local users.
     [System.ComponentModel.TypeConverter(typeof(LocalUsersTypeConverter))]
     public partial interface ILocalUsers
 

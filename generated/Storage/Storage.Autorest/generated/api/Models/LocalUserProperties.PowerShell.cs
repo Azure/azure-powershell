@@ -137,6 +137,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).HasSshPassword = (bool?) content.GetValueForProperty("HasSshPassword",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).HasSshPassword, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("UserId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).UserId = (int?) content.GetValueForProperty("UserId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).UserId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).GroupId = (int?) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).GroupId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllowAclAuthorization"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).AllowAclAuthorization = (bool?) content.GetValueForProperty("AllowAclAuthorization",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).AllowAclAuthorization, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ExtendedGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).ExtendedGroup = (System.Collections.Generic.List<int>) content.GetValueForProperty("ExtendedGroup",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).ExtendedGroup, __y => TypeConverterExtensions.SelectToList<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            }
+            if (content.Contains("IsNfSv3Enabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).IsNfSv3Enabled = (bool?) content.GetValueForProperty("IsNfSv3Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).IsNfSv3Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -181,6 +201,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("HasSshPassword"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).HasSshPassword = (bool?) content.GetValueForProperty("HasSshPassword",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).HasSshPassword, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("UserId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).UserId = (int?) content.GetValueForProperty("UserId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).UserId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).GroupId = (int?) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).GroupId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllowAclAuthorization"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).AllowAclAuthorization = (bool?) content.GetValueForProperty("AllowAclAuthorization",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).AllowAclAuthorization, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ExtendedGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).ExtendedGroup = (System.Collections.Generic.List<int>) content.GetValueForProperty("ExtendedGroup",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).ExtendedGroup, __y => TypeConverterExtensions.SelectToList<int>(__y, (__w)=> (int) global::System.Convert.ChangeType(__w, typeof(int))));
+            }
+            if (content.Contains("IsNfSv3Enabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).IsNfSv3Enabled = (bool?) content.GetValueForProperty("IsNfSv3Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)this).IsNfSv3Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }
