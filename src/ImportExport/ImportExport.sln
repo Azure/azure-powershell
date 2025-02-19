@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportExport", "ImportExport\ImportExport.csproj", "{8179B22C-7652-4F0C-9CE1-6C9062908704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ImportExport", "..\..\generated\ImportExport\ImportExport.Autorest\Az.ImportExport.csproj", "{A34674EC-9EA9-4305-9D03-8BF7AA926EE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ImportExport", "..\..\generated\ImportExport\ImportExport.Autorest\Az.ImportExport.csproj", "{D0D43142-BEE3-4F25-A64A-7FD4883FC3C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{8179B22C-7652-4F0C-9CE1-6C9062908704}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8179B22C-7652-4F0C-9CE1-6C9062908704}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8179B22C-7652-4F0C-9CE1-6C9062908704}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A34674EC-9EA9-4305-9D03-8BF7AA926EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A34674EC-9EA9-4305-9D03-8BF7AA926EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A34674EC-9EA9-4305-9D03-8BF7AA926EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A34674EC-9EA9-4305-9D03-8BF7AA926EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D43142-BEE3-4F25-A64A-7FD4883FC3C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D43142-BEE3-4F25-A64A-7FD4883FC3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D43142-BEE3-4F25-A64A-7FD4883FC3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D43142-BEE3-4F25-A64A-7FD4883FC3C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{49D2AAD2-27DE-45C7-B622-10BE5A3CB060} = {5C09F986-9CD8-445E-9A0B-2BD17D0D2249}

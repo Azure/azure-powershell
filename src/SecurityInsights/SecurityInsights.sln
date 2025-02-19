@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityInsights", "SecurityInsights\SecurityInsights.csproj", "{F74A1659-4994-47CB-A786-DF83675AD4DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SecurityInsights", "..\..\generated\SecurityInsights\SecurityInsights.Autorest\Az.SecurityInsights.csproj", "{889B1BC1-E8D5-43F6-AA56-546D9BCBC277}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SecurityInsights", "..\..\generated\SecurityInsights\SecurityInsights.Autorest\Az.SecurityInsights.csproj", "{1E59DA7A-D72B-4EF1-ADA7-6CC8E70463A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{F74A1659-4994-47CB-A786-DF83675AD4DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F74A1659-4994-47CB-A786-DF83675AD4DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F74A1659-4994-47CB-A786-DF83675AD4DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{889B1BC1-E8D5-43F6-AA56-546D9BCBC277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{889B1BC1-E8D5-43F6-AA56-546D9BCBC277}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{889B1BC1-E8D5-43F6-AA56-546D9BCBC277}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{889B1BC1-E8D5-43F6-AA56-546D9BCBC277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E59DA7A-D72B-4EF1-ADA7-6CC8E70463A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E59DA7A-D72B-4EF1-ADA7-6CC8E70463A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E59DA7A-D72B-4EF1-ADA7-6CC8E70463A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E59DA7A-D72B-4EF1-ADA7-6CC8E70463A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{190A5E6D-42A5-48BB-AE09-0A40734AAA30} = {F3681287-CEBF-4540-A820-B4B174AFF47F}

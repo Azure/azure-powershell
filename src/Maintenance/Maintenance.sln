@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compute.Management.Sdk", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{371AAFEC-7F5B-45BD-89EE-E55B9180CD2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{0257660B-F039-4059-8577-DC7568E8187D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,10 +113,10 @@ Global
 		{371AAFEC-7F5B-45BD-89EE-E55B9180CD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{371AAFEC-7F5B-45BD-89EE-E55B9180CD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{371AAFEC-7F5B-45BD-89EE-E55B9180CD2D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0257660B-F039-4059-8577-DC7568E8187D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0257660B-F039-4059-8577-DC7568E8187D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0257660B-F039-4059-8577-DC7568E8187D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0257660B-F039-4059-8577-DC7568E8187D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

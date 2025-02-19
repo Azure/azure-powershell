@@ -47,15 +47,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosDB.Management.Sdk", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "..\KeyVault\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{678BA287-7C32-4542-826A-838574141C00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{4423FD22-C2C7-4BFA-B4B3-2A32702DA413}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{A6D82791-857B-4D00-BCD0-96EE100AB4D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\..\generated\Resources\Authorization.Autorest\Az.Authorization.csproj", "{D4C64D04-4B4F-4848-8F2A-51C943EE614A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\..\generated\Resources\Authorization.Autorest\Az.Authorization.csproj", "{64B35321-F10B-47F5-9D99-F93FCAB3519E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataBoundary", "..\..\generated\Resources\DataBoundary.Autorest\Az.DataBoundary.csproj", "{6436AE8D-F6DC-404F-9445-A0E58DF0A42E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataBoundary", "..\..\generated\Resources\DataBoundary.Autorest\Az.DataBoundary.csproj", "{0CD4FB87-BB87-4EA5-B4CA-441EDFF43EC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "..\..\generated\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{33D12AD0-A478-4F77-948E-A220FEECA347}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "..\..\generated\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{99CD61FB-CF16-48FB-B416-9699A2DEEA96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{BEFC979F-938A-49B8-81FD-4C0AD5A65544}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{E0DCD918-D7C3-4C1A-A3E2-F5A2348AADFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,26 +139,26 @@ Global
 		{678BA287-7C32-4542-826A-838574141C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678BA287-7C32-4542-826A-838574141C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678BA287-7C32-4542-826A-838574141C00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4423FD22-C2C7-4BFA-B4B3-2A32702DA413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4423FD22-C2C7-4BFA-B4B3-2A32702DA413}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4423FD22-C2C7-4BFA-B4B3-2A32702DA413}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4423FD22-C2C7-4BFA-B4B3-2A32702DA413}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4C64D04-4B4F-4848-8F2A-51C943EE614A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4C64D04-4B4F-4848-8F2A-51C943EE614A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4C64D04-4B4F-4848-8F2A-51C943EE614A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4C64D04-4B4F-4848-8F2A-51C943EE614A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6436AE8D-F6DC-404F-9445-A0E58DF0A42E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6436AE8D-F6DC-404F-9445-A0E58DF0A42E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6436AE8D-F6DC-404F-9445-A0E58DF0A42E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6436AE8D-F6DC-404F-9445-A0E58DF0A42E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33D12AD0-A478-4F77-948E-A220FEECA347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33D12AD0-A478-4F77-948E-A220FEECA347}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33D12AD0-A478-4F77-948E-A220FEECA347}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33D12AD0-A478-4F77-948E-A220FEECA347}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEFC979F-938A-49B8-81FD-4C0AD5A65544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEFC979F-938A-49B8-81FD-4C0AD5A65544}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEFC979F-938A-49B8-81FD-4C0AD5A65544}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEFC979F-938A-49B8-81FD-4C0AD5A65544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D82791-857B-4D00-BCD0-96EE100AB4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D82791-857B-4D00-BCD0-96EE100AB4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D82791-857B-4D00-BCD0-96EE100AB4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D82791-857B-4D00-BCD0-96EE100AB4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B35321-F10B-47F5-9D99-F93FCAB3519E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B35321-F10B-47F5-9D99-F93FCAB3519E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B35321-F10B-47F5-9D99-F93FCAB3519E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B35321-F10B-47F5-9D99-F93FCAB3519E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD4FB87-BB87-4EA5-B4CA-441EDFF43EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD4FB87-BB87-4EA5-B4CA-441EDFF43EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD4FB87-BB87-4EA5-B4CA-441EDFF43EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD4FB87-BB87-4EA5-B4CA-441EDFF43EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99CD61FB-CF16-48FB-B416-9699A2DEEA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99CD61FB-CF16-48FB-B416-9699A2DEEA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99CD61FB-CF16-48FB-B416-9699A2DEEA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99CD61FB-CF16-48FB-B416-9699A2DEEA96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0DCD918-D7C3-4C1A-A3E2-F5A2348AADFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0DCD918-D7C3-4C1A-A3E2-F5A2348AADFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0DCD918-D7C3-4C1A-A3E2-F5A2348AADFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0DCD918-D7C3-4C1A-A3E2-F5A2348AADFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

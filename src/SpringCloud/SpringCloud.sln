@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringCloud", "SpringCloud\SpringCloud.csproj", "{0511202E-1814-41C2-9FCA-E1BB78BA3ACE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SpringCloud", "..\..\generated\SpringCloud\SpringCloud.Autorest\Az.SpringCloud.csproj", "{D639775E-4551-4B9A-9791-C3E7703D412B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SpringCloud", "..\..\generated\SpringCloud\SpringCloud.Autorest\Az.SpringCloud.csproj", "{AF5A8CDB-0FF7-46C9-B6F7-560647EE069B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{0511202E-1814-41C2-9FCA-E1BB78BA3ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0511202E-1814-41C2-9FCA-E1BB78BA3ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0511202E-1814-41C2-9FCA-E1BB78BA3ACE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D639775E-4551-4B9A-9791-C3E7703D412B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D639775E-4551-4B9A-9791-C3E7703D412B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D639775E-4551-4B9A-9791-C3E7703D412B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D639775E-4551-4B9A-9791-C3E7703D412B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5A8CDB-0FF7-46C9-B6F7-560647EE069B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5A8CDB-0FF7-46C9-B6F7-560647EE069B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5A8CDB-0FF7-46C9-B6F7-560647EE069B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5A8CDB-0FF7-46C9-B6F7-560647EE069B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0C686B8C-A42A-4776-BBF4-5089D169D5B4} = {61EC9815-465C-429F-B333-7867D532C102}

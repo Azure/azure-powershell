@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marketplace.Management.Sdk", "Marketplace.Management.Sdk\Marketplace.Management.Sdk.csproj", "{716D96C3-F553-46D5-AA0C-D736218623FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Marketplace", "..\..\generated\Marketplace\Marketplace.Autorest\Az.Marketplace.csproj", "{DC9AD0BB-309B-4F56-AA14-AB9B7F7BB902}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Marketplace", "..\..\generated\Marketplace\Marketplace.Autorest\Az.Marketplace.csproj", "{FF2B7D7B-60C0-4375-BB34-8F86917299BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +75,10 @@ Global
 		{716D96C3-F553-46D5-AA0C-D736218623FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{716D96C3-F553-46D5-AA0C-D736218623FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{716D96C3-F553-46D5-AA0C-D736218623FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC9AD0BB-309B-4F56-AA14-AB9B7F7BB902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC9AD0BB-309B-4F56-AA14-AB9B7F7BB902}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC9AD0BB-309B-4F56-AA14-AB9B7F7BB902}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC9AD0BB-309B-4F56-AA14-AB9B7F7BB902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF2B7D7B-60C0-4375-BB34-8F86917299BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF2B7D7B-60C0-4375-BB34-8F86917299BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF2B7D7B-60C0-4375-BB34-8F86917299BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF2B7D7B-60C0-4375-BB34-8F86917299BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

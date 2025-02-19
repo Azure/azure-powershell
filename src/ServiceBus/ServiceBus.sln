@@ -37,9 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBus.Management.Sdk", "ServiceBus.Management.Sdk\ServiceBus.Management.Sdk.csproj", "{58769EFF-5074-48DC-80C5-E06FEDC9F982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ServiceBus", "..\..\generated\ServiceBus\ServiceBus.Autorest\Az.ServiceBus.csproj", "{F8439D3D-DF50-48FC-BDC4-5FC7E23D565D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ServiceBus", "..\..\generated\ServiceBus\ServiceBus.Autorest\Az.ServiceBus.csproj", "{BF6872A7-3392-44F2-88D3-118F44EA5C34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{6D83A5B5-B825-44C5-A60B-3C9CAD0ACC63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{9EBDC0E6-C384-4B87-A6AF-EAC9891CE9D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,14 +103,14 @@ Global
 		{58769EFF-5074-48DC-80C5-E06FEDC9F982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58769EFF-5074-48DC-80C5-E06FEDC9F982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58769EFF-5074-48DC-80C5-E06FEDC9F982}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8439D3D-DF50-48FC-BDC4-5FC7E23D565D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8439D3D-DF50-48FC-BDC4-5FC7E23D565D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8439D3D-DF50-48FC-BDC4-5FC7E23D565D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8439D3D-DF50-48FC-BDC4-5FC7E23D565D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D83A5B5-B825-44C5-A60B-3C9CAD0ACC63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D83A5B5-B825-44C5-A60B-3C9CAD0ACC63}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D83A5B5-B825-44C5-A60B-3C9CAD0ACC63}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D83A5B5-B825-44C5-A60B-3C9CAD0ACC63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF6872A7-3392-44F2-88D3-118F44EA5C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6872A7-3392-44F2-88D3-118F44EA5C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6872A7-3392-44F2-88D3-118F44EA5C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6872A7-3392-44F2-88D3-118F44EA5C34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EBDC0E6-C384-4B87-A6AF-EAC9891CE9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EBDC0E6-C384-4B87-A6AF-EAC9891CE9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EBDC0E6-C384-4B87-A6AF-EAC9891CE9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EBDC0E6-C384-4B87-A6AF-EAC9891CE9D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

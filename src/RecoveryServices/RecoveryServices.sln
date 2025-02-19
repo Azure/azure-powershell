@@ -65,7 +65,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecoveryServices", "Recover
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{5F03F7CC-EAFE-4D41-87F7-9C7B03FA6BFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{BD48E89D-23F1-4749-8063-5F3DC2F225CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{F088516D-127C-4B07-9ACB-C636D3E121DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -188,10 +188,10 @@ Global
 		{5F03F7CC-EAFE-4D41-87F7-9C7B03FA6BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F03F7CC-EAFE-4D41-87F7-9C7B03FA6BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F03F7CC-EAFE-4D41-87F7-9C7B03FA6BFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD48E89D-23F1-4749-8063-5F3DC2F225CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD48E89D-23F1-4749-8063-5F3DC2F225CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD48E89D-23F1-4749-8063-5F3DC2F225CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD48E89D-23F1-4749-8063-5F3DC2F225CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F088516D-127C-4B07-9ACB-C636D3E121DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F088516D-127C-4B07-9ACB-C636D3E121DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F088516D-127C-4B07-9ACB-C636D3E121DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F088516D-127C-4B07-9ACB-C636D3E121DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34F69ECD-95B8-49DB-9D78-2B9D5C34D405} = {81B2982D-240C-47B0-9DB4-2D94D4DF8C6E}

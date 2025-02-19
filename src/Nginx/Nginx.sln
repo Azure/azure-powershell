@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nginx", "Nginx\Nginx.csproj", "{E2BD204E-629F-4FAD-8683-B6DD885287E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Nginx", "..\..\generated\Nginx\Nginx.Autorest\Az.Nginx.csproj", "{43E011FC-99C4-48DD-963A-D60A8388C8BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Nginx", "..\..\generated\Nginx\Nginx.Autorest\Az.Nginx.csproj", "{CC6E1DF8-FBE9-4630-9D1A-9545F85BB695}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{E2BD204E-629F-4FAD-8683-B6DD885287E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2BD204E-629F-4FAD-8683-B6DD885287E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2BD204E-629F-4FAD-8683-B6DD885287E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43E011FC-99C4-48DD-963A-D60A8388C8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43E011FC-99C4-48DD-963A-D60A8388C8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43E011FC-99C4-48DD-963A-D60A8388C8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43E011FC-99C4-48DD-963A-D60A8388C8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC6E1DF8-FBE9-4630-9D1A-9545F85BB695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6E1DF8-FBE9-4630-9D1A-9545F85BB695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6E1DF8-FBE9-4630-9D1A-9545F85BB695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6E1DF8-FBE9-4630-9D1A-9545F85BB695}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{12A4E834-6826-4758-AFE5-0C1496BF2C11} = {2AC97FFE-301E-43FA-93E1-72922F8B9C41}

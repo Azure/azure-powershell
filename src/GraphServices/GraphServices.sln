@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphServices", "GraphServices\GraphServices.csproj", "{285C3FD4-A59A-4BD1-A391-E952A0411FEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.GraphServices", "..\..\generated\GraphServices\GraphServices.Autorest\Az.GraphServices.csproj", "{91D3921C-AB7C-4883-927B-E58814E43E49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.GraphServices", "..\..\generated\GraphServices\GraphServices.Autorest\Az.GraphServices.csproj", "{AFDEF74B-3070-4ADD-9EF7-CC0E3609DB95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{285C3FD4-A59A-4BD1-A391-E952A0411FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{285C3FD4-A59A-4BD1-A391-E952A0411FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{285C3FD4-A59A-4BD1-A391-E952A0411FEA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91D3921C-AB7C-4883-927B-E58814E43E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91D3921C-AB7C-4883-927B-E58814E43E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91D3921C-AB7C-4883-927B-E58814E43E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91D3921C-AB7C-4883-927B-E58814E43E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFDEF74B-3070-4ADD-9EF7-CC0E3609DB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDEF74B-3070-4ADD-9EF7-CC0E3609DB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFDEF74B-3070-4ADD-9EF7-CC0E3609DB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFDEF74B-3070-4ADD-9EF7-CC0E3609DB95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8053A26F-8D96-4348-8C40-1A51B41B9178} = {955CFAB1-98ED-4980-BC7E-ECDC14FF685C}

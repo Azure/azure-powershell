@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Websites", "Websites\Websit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{A3FBC234-434F-4C1C-9721-D55C14E6CF59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Websites", "..\..\generated\Websites\Websites.Autorest\Az.Websites.csproj", "{11C8DB7C-4114-44B9-974A-459FF64D8050}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Websites", "..\..\generated\Websites\Websites.Autorest\Az.Websites.csproj", "{52333454-9C85-4F05-9F31-09EC74DEDAF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,10 +92,10 @@ Global
 		{A3FBC234-434F-4C1C-9721-D55C14E6CF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3FBC234-434F-4C1C-9721-D55C14E6CF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3FBC234-434F-4C1C-9721-D55C14E6CF59}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11C8DB7C-4114-44B9-974A-459FF64D8050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11C8DB7C-4114-44B9-974A-459FF64D8050}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11C8DB7C-4114-44B9-974A-459FF64D8050}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11C8DB7C-4114-44B9-974A-459FF64D8050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52333454-9C85-4F05-9F31-09EC74DEDAF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52333454-9C85-4F05-9F31-09EC74DEDAF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52333454-9C85-4F05-9F31-09EC74DEDAF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52333454-9C85-4F05-9F31-09EC74DEDAF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DFB63A49-2771-491E-84EB-6DE370B730E1} = {41C9F58D-9ABC-43BB-A274-2E7E2F17BFAE}

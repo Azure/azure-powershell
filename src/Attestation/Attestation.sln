@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attestation.Management.Sdk", "Attestation.Management.Sdk\Attestation.Management.Sdk.csproj", "{D0EAA185-822C-45C8-A287-FD05AF138209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Attestation", "..\..\generated\Attestation\Attestation.Autorest\Az.Attestation.csproj", "{F1AFC858-886E-49A9-852C-F3FA9722AA42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Attestation", "..\..\generated\Attestation\Attestation.Autorest\Az.Attestation.csproj", "{C126ED4A-CE30-4E0D-9D1C-DDB7EEE4200E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +75,10 @@ Global
 		{D0EAA185-822C-45C8-A287-FD05AF138209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0EAA185-822C-45C8-A287-FD05AF138209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0EAA185-822C-45C8-A287-FD05AF138209}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1AFC858-886E-49A9-852C-F3FA9722AA42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1AFC858-886E-49A9-852C-F3FA9722AA42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1AFC858-886E-49A9-852C-F3FA9722AA42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1AFC858-886E-49A9-852C-F3FA9722AA42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C126ED4A-CE30-4E0D-9D1C-DDB7EEE4200E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C126ED4A-CE30-4E0D-9D1C-DDB7EEE4200E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C126ED4A-CE30-4E0D-9D1C-DDB7EEE4200E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C126ED4A-CE30-4E0D-9D1C-DDB7EEE4200E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

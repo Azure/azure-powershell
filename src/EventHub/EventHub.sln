@@ -37,9 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub.Management.Sdk", "EventHub.Management.Sdk\EventHub.Management.Sdk.csproj", "{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "..\..\generated\EventHub\EventHub.Autorest\Az.EventHub.csproj", "{294CE0E4-1C12-46D6-98E5-6903D48177AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "..\..\generated\EventHub\EventHub.Autorest\Az.EventHub.csproj", "{29801E7E-C37B-4EE3-98EE-F9CE1846332B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{47453DC6-04E3-4CEE-A4EE-C72577A16C0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{AFD3455B-F506-43E3-A584-BA36F79B824A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,14 +103,14 @@ Global
 		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{294CE0E4-1C12-46D6-98E5-6903D48177AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{294CE0E4-1C12-46D6-98E5-6903D48177AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{294CE0E4-1C12-46D6-98E5-6903D48177AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{294CE0E4-1C12-46D6-98E5-6903D48177AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47453DC6-04E3-4CEE-A4EE-C72577A16C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47453DC6-04E3-4CEE-A4EE-C72577A16C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47453DC6-04E3-4CEE-A4EE-C72577A16C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47453DC6-04E3-4CEE-A4EE-C72577A16C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29801E7E-C37B-4EE3-98EE-F9CE1846332B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29801E7E-C37B-4EE3-98EE-F9CE1846332B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29801E7E-C37B-4EE3-98EE-F9CE1846332B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29801E7E-C37B-4EE3-98EE-F9CE1846332B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD3455B-F506-43E3-A584-BA36F79B824A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD3455B-F506-43E3-A584-BA36F79B824A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD3455B-F506-43E3-A584-BA36F79B824A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD3455B-F506-43E3-A584-BA36F79B824A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnsResolver", "DnsResolver\DnsResolver.csproj", "{2A671912-B43B-464C-9244-019BC1F1A2D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DnsResolver", "..\..\generated\DnsResolver\DnsResolver.Autorest\Az.DnsResolver.csproj", "{0098CCF9-A8C8-48E1-9D65-FE9274656D44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DnsResolver", "..\..\generated\DnsResolver\DnsResolver.Autorest\Az.DnsResolver.csproj", "{A59B867F-470B-4CAA-AE44-AFD5DD5D6A73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{2A671912-B43B-464C-9244-019BC1F1A2D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A671912-B43B-464C-9244-019BC1F1A2D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A671912-B43B-464C-9244-019BC1F1A2D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0098CCF9-A8C8-48E1-9D65-FE9274656D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0098CCF9-A8C8-48E1-9D65-FE9274656D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0098CCF9-A8C8-48E1-9D65-FE9274656D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0098CCF9-A8C8-48E1-9D65-FE9274656D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59B867F-470B-4CAA-AE44-AFD5DD5D6A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59B867F-470B-4CAA-AE44-AFD5DD5D6A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59B867F-470B-4CAA-AE44-AFD5DD5D6A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59B867F-470B-4CAA-AE44-AFD5DD5D6A73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{73CFBAE3-BD11-44B9-8984-F7207F706166} = {883B467C-E170-4A9F-972A-45BD8CE86D96}

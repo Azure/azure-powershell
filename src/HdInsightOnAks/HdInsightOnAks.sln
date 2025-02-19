@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HdInsightOnAks", "HdInsightOnAks\HdInsightOnAks.csproj", "{456C99FF-36C3-4668-BAA3-1FC0468A5E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.HdInsightOnAks", "..\..\generated\HdInsightOnAks\HdInsightOnAks.Autorest\Az.HdInsightOnAks.csproj", "{9DCEB0E2-636C-4DD9-ACAF-804210FD183D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.HdInsightOnAks", "..\..\generated\HdInsightOnAks\HdInsightOnAks.Autorest\Az.HdInsightOnAks.csproj", "{428D4D57-3974-4CE2-B794-E332462B3C4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{456C99FF-36C3-4668-BAA3-1FC0468A5E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{456C99FF-36C3-4668-BAA3-1FC0468A5E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{456C99FF-36C3-4668-BAA3-1FC0468A5E4B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DCEB0E2-636C-4DD9-ACAF-804210FD183D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DCEB0E2-636C-4DD9-ACAF-804210FD183D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DCEB0E2-636C-4DD9-ACAF-804210FD183D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DCEB0E2-636C-4DD9-ACAF-804210FD183D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{428D4D57-3974-4CE2-B794-E332462B3C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{428D4D57-3974-4CE2-B794-E332462B3C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{428D4D57-3974-4CE2-B794-E332462B3C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{428D4D57-3974-4CE2-B794-E332462B3C4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3391CB2A-BBC1-4DA2-8867-A9D56A5C69D8} = {109A5E79-C774-4642-8187-6A4B0E28DAB5}

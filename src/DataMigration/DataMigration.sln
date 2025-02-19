@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataMigration.Management.Sdk", "DataMigration.Management.Sdk\DataMigration.Management.Sdk.csproj", "{F2182D2E-3C99-4294-ACCA-D081A4ABA49E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataMigration", "..\..\generated\DataMigration\DataMigration.Autorest\Az.DataMigration.csproj", "{956987AC-41DB-4025-B7EB-758365D95146}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataMigration", "..\..\generated\DataMigration\DataMigration.Autorest\Az.DataMigration.csproj", "{38C16CD2-B62F-41FB-9911-0941304C40F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +75,10 @@ Global
 		{F2182D2E-3C99-4294-ACCA-D081A4ABA49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2182D2E-3C99-4294-ACCA-D081A4ABA49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2182D2E-3C99-4294-ACCA-D081A4ABA49E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{956987AC-41DB-4025-B7EB-758365D95146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{956987AC-41DB-4025-B7EB-758365D95146}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{956987AC-41DB-4025-B7EB-758365D95146}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{956987AC-41DB-4025-B7EB-758365D95146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C16CD2-B62F-41FB-9911-0941304C40F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C16CD2-B62F-41FB-9911-0941304C40F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C16CD2-B62F-41FB-9911-0941304C40F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C16CD2-B62F-41FB-9911-0941304C40F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

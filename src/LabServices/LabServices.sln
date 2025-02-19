@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabServices", "LabServices\LabServices.csproj", "{7B8F6897-6BFD-4AA7-9283-261F37834B05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.LabServices", "..\..\generated\LabServices\LabServices.Autorest\Az.LabServices.csproj", "{5B06C483-BD82-4285-A375-8DC5AF171F18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.LabServices", "..\..\generated\LabServices\LabServices.Autorest\Az.LabServices.csproj", "{543362D9-369D-4EDC-ADD1-3661ACB2B49D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{7B8F6897-6BFD-4AA7-9283-261F37834B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B8F6897-6BFD-4AA7-9283-261F37834B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B8F6897-6BFD-4AA7-9283-261F37834B05}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B06C483-BD82-4285-A375-8DC5AF171F18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B06C483-BD82-4285-A375-8DC5AF171F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B06C483-BD82-4285-A375-8DC5AF171F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B06C483-BD82-4285-A375-8DC5AF171F18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{543362D9-369D-4EDC-ADD1-3661ACB2B49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{543362D9-369D-4EDC-ADD1-3661ACB2B49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{543362D9-369D-4EDC-ADD1-3661ACB2B49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{543362D9-369D-4EDC-ADD1-3661ACB2B49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{00058521-D244-40D2-90F6-1A434F02F93C} = {48298E71-49DA-43CD-8F43-CCA904E54839}

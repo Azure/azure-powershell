@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceServices", "VoiceServices\VoiceServices.csproj", "{60CCBE5C-F539-4313-8480-DE82F3386747}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.VoiceServices", "..\..\generated\VoiceServices\VoiceServices.Autorest\Az.VoiceServices.csproj", "{86AF1B6C-B193-445A-B283-16FDE1670CBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.VoiceServices", "..\..\generated\VoiceServices\VoiceServices.Autorest\Az.VoiceServices.csproj", "{1699ECD6-77C2-4FD6-8AC9-ECF8AC1A845C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{60CCBE5C-F539-4313-8480-DE82F3386747}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60CCBE5C-F539-4313-8480-DE82F3386747}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60CCBE5C-F539-4313-8480-DE82F3386747}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86AF1B6C-B193-445A-B283-16FDE1670CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86AF1B6C-B193-445A-B283-16FDE1670CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86AF1B6C-B193-445A-B283-16FDE1670CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86AF1B6C-B193-445A-B283-16FDE1670CBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1699ECD6-77C2-4FD6-8AC9-ECF8AC1A845C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1699ECD6-77C2-4FD6-8AC9-ECF8AC1A845C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1699ECD6-77C2-4FD6-8AC9-ECF8AC1A845C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1699ECD6-77C2-4FD6-8AC9-ECF8AC1A845C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CE2C9262-02CD-4FBF-A878-F7F1B1B5C66C} = {25A2E8EA-4B42-4C53-ACC0-8C68E5BF65BD}

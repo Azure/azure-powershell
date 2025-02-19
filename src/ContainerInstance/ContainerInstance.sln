@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerInstance", "ContainerInstance\ContainerInstance.csproj", "{A3A7B7C9-B81F-4358-B223-1E11C3B4A63E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ContainerInstance", "..\..\generated\ContainerInstance\ContainerInstance.Autorest\Az.ContainerInstance.csproj", "{58267425-53D3-42B1-B39B-8C534DE48FD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ContainerInstance", "..\..\generated\ContainerInstance\ContainerInstance.Autorest\Az.ContainerInstance.csproj", "{95153300-E225-4AF2-BB15-BA09E3EA6B97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{A3A7B7C9-B81F-4358-B223-1E11C3B4A63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3A7B7C9-B81F-4358-B223-1E11C3B4A63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3A7B7C9-B81F-4358-B223-1E11C3B4A63E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58267425-53D3-42B1-B39B-8C534DE48FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58267425-53D3-42B1-B39B-8C534DE48FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58267425-53D3-42B1-B39B-8C534DE48FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58267425-53D3-42B1-B39B-8C534DE48FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95153300-E225-4AF2-BB15-BA09E3EA6B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95153300-E225-4AF2-BB15-BA09E3EA6B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95153300-E225-4AF2-BB15-BA09E3EA6B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95153300-E225-4AF2-BB15-BA09E3EA6B97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F77D573A-2A15-463F-86B6-6C137D16F14D} = {BEAB14E1-7B36-4191-AA9A-CE4EDB78022F}

@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDInsight.Management.Sdk", "HDInsight.Management.Sdk\HDInsight.Management.Sdk.csproj", "{0ADC7BEE-A58B-4910-BE66-2000516C1645}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedServiceIdentity", "..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj", "{353BE7C8-2620-447B-93AB-AB66C90449DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedServiceIdentity", "..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj", "{CCF1B729-40FB-49A4-B1A1-149BC2ACE260}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,10 +87,10 @@ Global
 		{0ADC7BEE-A58B-4910-BE66-2000516C1645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ADC7BEE-A58B-4910-BE66-2000516C1645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ADC7BEE-A58B-4910-BE66-2000516C1645}.Release|Any CPU.Build.0 = Release|Any CPU
-		{353BE7C8-2620-447B-93AB-AB66C90449DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{353BE7C8-2620-447B-93AB-AB66C90449DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{353BE7C8-2620-447B-93AB-AB66C90449DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{353BE7C8-2620-447B-93AB-AB66C90449DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF1B729-40FB-49A4-B1A1-149BC2ACE260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF1B729-40FB-49A4-B1A1-149BC2ACE260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF1B729-40FB-49A4-B1A1-149BC2ACE260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF1B729-40FB-49A4-B1A1-149BC2ACE260}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

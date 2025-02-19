@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlertsManagement.Management.Sdk", "AlertsManagement.Management.Sdk\AlertsManagement.Management.Sdk.csproj", "{C806845B-B2AF-4A66-A7FB-3A013993B0DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PrometheusRuleGroups", "..\..\generated\AlertsManagement\PrometheusRuleGroups.Autorest\Az.PrometheusRuleGroups.csproj", "{F77EE1FE-B2F7-4C03-8308-18B5A88CE40A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PrometheusRuleGroups", "..\..\generated\AlertsManagement\PrometheusRuleGroups.Autorest\Az.PrometheusRuleGroups.csproj", "{EBFC093C-316B-4ABC-ADED-5873B3EC38A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +75,10 @@ Global
 		{C806845B-B2AF-4A66-A7FB-3A013993B0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C806845B-B2AF-4A66-A7FB-3A013993B0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C806845B-B2AF-4A66-A7FB-3A013993B0DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F77EE1FE-B2F7-4C03-8308-18B5A88CE40A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F77EE1FE-B2F7-4C03-8308-18B5A88CE40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F77EE1FE-B2F7-4C03-8308-18B5A88CE40A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F77EE1FE-B2F7-4C03-8308-18B5A88CE40A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBFC093C-316B-4ABC-ADED-5873B3EC38A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFC093C-316B-4ABC-ADED-5873B3EC38A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFC093C-316B-4ABC-ADED-5873B3EC38A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFC093C-316B-4ABC-ADED-5873B3EC38A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySql", "MySql\MySql.csproj", "{286CC291-268F-4E04-85A8-1794BAAAF876}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MySql", "..\..\generated\MySql\MySql.Autorest\Az.MySql.csproj", "{AA8A8730-E3B9-46B5-8AA3-57AFDA6BEEAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MySql", "..\..\generated\MySql\MySql.Autorest\Az.MySql.csproj", "{BE109346-A947-4081-BE2A-3057F6DFF782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{286CC291-268F-4E04-85A8-1794BAAAF876}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{286CC291-268F-4E04-85A8-1794BAAAF876}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{286CC291-268F-4E04-85A8-1794BAAAF876}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA8A8730-E3B9-46B5-8AA3-57AFDA6BEEAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA8A8730-E3B9-46B5-8AA3-57AFDA6BEEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA8A8730-E3B9-46B5-8AA3-57AFDA6BEEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA8A8730-E3B9-46B5-8AA3-57AFDA6BEEAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE109346-A947-4081-BE2A-3057F6DFF782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE109346-A947-4081-BE2A-3057F6DFF782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE109346-A947-4081-BE2A-3057F6DFF782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE109346-A947-4081-BE2A-3057F6DFF782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3814EE7A-27EB-4621-8059-027E1DDEA4B5} = {2FFC8559-B8D4-4C7B-8B15-AEECEFA2F290}

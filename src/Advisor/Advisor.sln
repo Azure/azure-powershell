@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advisor", "Advisor\Advisor.csproj", "{FC2C296A-E36A-4E6E-85FB-AFCF51D40B1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Advisor", "..\..\generated\Advisor\Advisor.Autorest\Az.Advisor.csproj", "{FF926264-7FCB-40D8-AB8E-4BED61CC71A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Advisor", "..\..\generated\Advisor\Advisor.Autorest\Az.Advisor.csproj", "{EEEB4BCB-9D78-44A1-8666-36E805A5C773}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{FC2C296A-E36A-4E6E-85FB-AFCF51D40B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC2C296A-E36A-4E6E-85FB-AFCF51D40B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC2C296A-E36A-4E6E-85FB-AFCF51D40B1B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF926264-7FCB-40D8-AB8E-4BED61CC71A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF926264-7FCB-40D8-AB8E-4BED61CC71A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF926264-7FCB-40D8-AB8E-4BED61CC71A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF926264-7FCB-40D8-AB8E-4BED61CC71A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEEB4BCB-9D78-44A1-8666-36E805A5C773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEEB4BCB-9D78-44A1-8666-36E805A5C773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEEB4BCB-9D78-44A1-8666-36E805A5C773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEEB4BCB-9D78-44A1-8666-36E805A5C773}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3F279170-3991-4589-8093-5106A6B7AA69} = {F9AB9B33-370D-450F-BFB6-A0B29E4B8A83}

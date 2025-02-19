@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssh", "Ssh\Ssh.csproj", "{7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{C09E9A5A-9B39-4E3C-B42F-A3C86B8A7D2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{3685FC78-DFBB-409B-B968-C149CF70AEBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{F2A5C796-D062-44FE-8D00-F8FD7F2EF5C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,10 +104,10 @@ Global
 		{C09E9A5A-9B39-4E3C-B42F-A3C86B8A7D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C09E9A5A-9B39-4E3C-B42F-A3C86B8A7D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C09E9A5A-9B39-4E3C-B42F-A3C86B8A7D2A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3685FC78-DFBB-409B-B968-C149CF70AEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3685FC78-DFBB-409B-B968-C149CF70AEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3685FC78-DFBB-409B-B968-C149CF70AEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3685FC78-DFBB-409B-B968-C149CF70AEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A5C796-D062-44FE-8D00-F8FD7F2EF5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A5C796-D062-44FE-8D00-F8FD7F2EF5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A5C796-D062-44FE-8D00-F8FD7F2EF5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A5C796-D062-44FE-8D00-F8FD7F2EF5C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C2AA3921-DF9A-4686-AD12-8A98C4A584AB} = {AE1AA184-0E50-41A8-B7D5-18A944F213B7}

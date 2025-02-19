@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageCache", "StorageCache\StorageCache.csproj", "{EE9C3C11-415B-4056-BCFE-639E0BA67B9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StorageCache", "..\..\generated\StorageCache\StorageCache.Autorest\Az.StorageCache.csproj", "{11DDC3E3-64BF-4034-96BD-E255352D3385}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StorageCache", "..\..\generated\StorageCache\StorageCache.Autorest\Az.StorageCache.csproj", "{0678E662-2188-4369-9F36-E3AF42EE6554}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{EE9C3C11-415B-4056-BCFE-639E0BA67B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE9C3C11-415B-4056-BCFE-639E0BA67B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE9C3C11-415B-4056-BCFE-639E0BA67B9B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11DDC3E3-64BF-4034-96BD-E255352D3385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11DDC3E3-64BF-4034-96BD-E255352D3385}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11DDC3E3-64BF-4034-96BD-E255352D3385}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11DDC3E3-64BF-4034-96BD-E255352D3385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0678E662-2188-4369-9F36-E3AF42EE6554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0678E662-2188-4369-9F36-E3AF42EE6554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0678E662-2188-4369-9F36-E3AF42EE6554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0678E662-2188-4369-9F36-E3AF42EE6554}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C3712D94-3E4E-4272-91D8-E209A13824BA} = {42754F93-95F0-4316-A32F-DA165A219909}

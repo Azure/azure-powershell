@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaloAltoNetworks", "PaloAltoNetworks\PaloAltoNetworks.csproj", "{3F43646B-9867-4026-8511-992EA213D5E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PaloAltoNetworks", "..\..\generated\PaloAltoNetworks\PaloAltoNetworks.Autorest\Az.PaloAltoNetworks.csproj", "{5F0209E7-619E-419F-8027-3584F53C7194}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PaloAltoNetworks", "..\..\generated\PaloAltoNetworks\PaloAltoNetworks.Autorest\Az.PaloAltoNetworks.csproj", "{A02C02D2-C6C6-4B2E-A214-52CCD8B3A511}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{3F43646B-9867-4026-8511-992EA213D5E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F43646B-9867-4026-8511-992EA213D5E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F43646B-9867-4026-8511-992EA213D5E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5F0209E7-619E-419F-8027-3584F53C7194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F0209E7-619E-419F-8027-3584F53C7194}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F0209E7-619E-419F-8027-3584F53C7194}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F0209E7-619E-419F-8027-3584F53C7194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A02C02D2-C6C6-4B2E-A214-52CCD8B3A511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02C02D2-C6C6-4B2E-A214-52CCD8B3A511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02C02D2-C6C6-4B2E-A214-52CCD8B3A511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02C02D2-C6C6-4B2E-A214-52CCD8B3A511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{72C2BB7D-276E-423F-BFFF-E6EA8D67D52F} = {1786B0CE-D0B4-420C-8A7D-B4A57474E1E7}

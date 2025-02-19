@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProtection", "DataProtection\DataProtection.csproj", "{3710851E-1CE1-45F7-8E14-B07092F08E8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataProtection", "..\..\generated\DataProtection\DataProtection.Autorest\Az.DataProtection.csproj", "{A9C6DDC6-EEA0-40BD-9E2F-CB4EB0E35E1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataProtection", "..\..\generated\DataProtection\DataProtection.Autorest\Az.DataProtection.csproj", "{83C08C40-03F6-4B4E-B037-1AAABA6ADFF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{3710851E-1CE1-45F7-8E14-B07092F08E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3710851E-1CE1-45F7-8E14-B07092F08E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3710851E-1CE1-45F7-8E14-B07092F08E8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9C6DDC6-EEA0-40BD-9E2F-CB4EB0E35E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9C6DDC6-EEA0-40BD-9E2F-CB4EB0E35E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9C6DDC6-EEA0-40BD-9E2F-CB4EB0E35E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9C6DDC6-EEA0-40BD-9E2F-CB4EB0E35E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C08C40-03F6-4B4E-B037-1AAABA6ADFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C08C40-03F6-4B4E-B037-1AAABA6ADFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C08C40-03F6-4B4E-B037-1AAABA6ADFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C08C40-03F6-4B4E-B037-1AAABA6ADFF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0D594CEC-A610-4B9A-8836-0404F88C5A59} = {EE974D4B-93C7-4914-A6C2-432E7B720B21}

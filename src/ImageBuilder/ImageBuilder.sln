@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageBuilder", "ImageBuilder\ImageBuilder.csproj", "{5889860D-1168-42B0-B89E-430C65CCBF81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ImageBuilder", "..\..\generated\ImageBuilder\ImageBuilder.Autorest\Az.ImageBuilder.csproj", "{8E7C832E-18EA-4108-92E9-6444B63D78B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ImageBuilder", "..\..\generated\ImageBuilder\ImageBuilder.Autorest\Az.ImageBuilder.csproj", "{770C9E7A-F5BD-405D-88D5-3CEEEFF759CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{5889860D-1168-42B0-B89E-430C65CCBF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5889860D-1168-42B0-B89E-430C65CCBF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5889860D-1168-42B0-B89E-430C65CCBF81}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E7C832E-18EA-4108-92E9-6444B63D78B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E7C832E-18EA-4108-92E9-6444B63D78B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E7C832E-18EA-4108-92E9-6444B63D78B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E7C832E-18EA-4108-92E9-6444B63D78B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770C9E7A-F5BD-405D-88D5-3CEEEFF759CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770C9E7A-F5BD-405D-88D5-3CEEEFF759CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770C9E7A-F5BD-405D-88D5-3CEEEFF759CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770C9E7A-F5BD-405D-88D5-3CEEEFF759CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B9F03F96-BCF3-4029-B4D1-F4948F9F2618} = {BCB63C93-9FA3-45A0-B45E-39B331BC4D20}

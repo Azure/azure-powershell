@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfidentialLedger", "ConfidentialLedger\ConfidentialLedger.csproj", "{C76F12D6-516B-49D4-9D4E-F763928D7DF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConfidentialLedger", "..\..\generated\ConfidentialLedger\ConfidentialLedger.Autorest\Az.ConfidentialLedger.csproj", "{9B9DE801-46A5-462D-8102-63FBDD14BE8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConfidentialLedger", "..\..\generated\ConfidentialLedger\ConfidentialLedger.Autorest\Az.ConfidentialLedger.csproj", "{CBECCA1B-FCB6-49F3-B161-1EC246A96171}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{C76F12D6-516B-49D4-9D4E-F763928D7DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C76F12D6-516B-49D4-9D4E-F763928D7DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C76F12D6-516B-49D4-9D4E-F763928D7DF8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B9DE801-46A5-462D-8102-63FBDD14BE8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B9DE801-46A5-462D-8102-63FBDD14BE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B9DE801-46A5-462D-8102-63FBDD14BE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B9DE801-46A5-462D-8102-63FBDD14BE8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBECCA1B-FCB6-49F3-B161-1EC246A96171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBECCA1B-FCB6-49F3-B161-1EC246A96171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBECCA1B-FCB6-49F3-B161-1EC246A96171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBECCA1B-FCB6-49F3-B161-1EC246A96171}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B50B3F66-2B0C-4AC9-9EE9-9F35AD3BC8A6} = {68BFAAC4-AF9D-4C66-9FFA-76935089F9AD}

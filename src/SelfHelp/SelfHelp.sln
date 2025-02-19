@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHelp", "SelfHelp\SelfHelp.csproj", "{FAB33C2B-CCA9-4DD5-9013-8845672F878B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SelfHelp", "..\..\generated\SelfHelp\SelfHelp.Autorest\Az.SelfHelp.csproj", "{48B78736-0499-4246-B4E0-3EFB75BBA14B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SelfHelp", "..\..\generated\SelfHelp\SelfHelp.Autorest\Az.SelfHelp.csproj", "{F6B61F7E-C2DB-4854-A574-9AFD0BE59DB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{FAB33C2B-CCA9-4DD5-9013-8845672F878B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAB33C2B-CCA9-4DD5-9013-8845672F878B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAB33C2B-CCA9-4DD5-9013-8845672F878B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48B78736-0499-4246-B4E0-3EFB75BBA14B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48B78736-0499-4246-B4E0-3EFB75BBA14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48B78736-0499-4246-B4E0-3EFB75BBA14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48B78736-0499-4246-B4E0-3EFB75BBA14B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B61F7E-C2DB-4854-A574-9AFD0BE59DB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B61F7E-C2DB-4854-A574-9AFD0BE59DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B61F7E-C2DB-4854-A574-9AFD0BE59DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B61F7E-C2DB-4854-A574-9AFD0BE59DB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9CCD204D-1E93-42B0-B792-7BFCF7461384} = {EAEC5C8A-2B43-4894-91D7-2216FF9613C2}

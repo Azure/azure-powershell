@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeSeriesInsights", "TimeSeriesInsights\TimeSeriesInsights.csproj", "{B23B6846-16FE-4BEF-9A5E-21A8C3D64F8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TimeSeriesInsights", "..\..\generated\TimeSeriesInsights\TimeSeriesInsights.Autorest\Az.TimeSeriesInsights.csproj", "{1E45B612-1C46-4662-B03E-EE6088CC7EF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TimeSeriesInsights", "..\..\generated\TimeSeriesInsights\TimeSeriesInsights.Autorest\Az.TimeSeriesInsights.csproj", "{6D2D2CB7-CBE6-43E1-9CF5-81DB648972CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{B23B6846-16FE-4BEF-9A5E-21A8C3D64F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B23B6846-16FE-4BEF-9A5E-21A8C3D64F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B23B6846-16FE-4BEF-9A5E-21A8C3D64F8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E45B612-1C46-4662-B03E-EE6088CC7EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E45B612-1C46-4662-B03E-EE6088CC7EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E45B612-1C46-4662-B03E-EE6088CC7EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E45B612-1C46-4662-B03E-EE6088CC7EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D2D2CB7-CBE6-43E1-9CF5-81DB648972CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2D2CB7-CBE6-43E1-9CF5-81DB648972CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2D2CB7-CBE6-43E1-9CF5-81DB648972CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2D2CB7-CBE6-43E1-9CF5-81DB648972CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{32D6D559-5D2C-456E-B44A-742D057AAF55} = {EED5C867-9022-4FA0-AC89-C4EBBE89E317}

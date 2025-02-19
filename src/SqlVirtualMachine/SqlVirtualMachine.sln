@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlVirtualMachine", "SqlVirtualMachine\SqlVirtualMachine.csproj", "{21D878C4-E55C-4BE7-A60F-4C4176D9349F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SqlVirtualMachine", "..\..\generated\SqlVirtualMachine\SqlVirtualMachine.Autorest\Az.SqlVirtualMachine.csproj", "{3C60C7BB-F146-44E0-B948-40D425C17CE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SqlVirtualMachine", "..\..\generated\SqlVirtualMachine\SqlVirtualMachine.Autorest\Az.SqlVirtualMachine.csproj", "{B84DA3DD-B1D2-4CD3-8E7C-1923B41ED3E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{21D878C4-E55C-4BE7-A60F-4C4176D9349F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D878C4-E55C-4BE7-A60F-4C4176D9349F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D878C4-E55C-4BE7-A60F-4C4176D9349F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C60C7BB-F146-44E0-B948-40D425C17CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C60C7BB-F146-44E0-B948-40D425C17CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C60C7BB-F146-44E0-B948-40D425C17CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C60C7BB-F146-44E0-B948-40D425C17CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84DA3DD-B1D2-4CD3-8E7C-1923B41ED3E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84DA3DD-B1D2-4CD3-8E7C-1923B41ED3E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84DA3DD-B1D2-4CD3-8E7C-1923B41ED3E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84DA3DD-B1D2-4CD3-8E7C-1923B41ED3E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{35D5A0E3-90BF-4D34-928D-E0045BE782AF} = {0804965F-E456-4666-9A1D-2F0BA62D52C5}

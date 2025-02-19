@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{E4DCAB1E-B774-417E-843F-171B143D80DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{3ED88479-E18E-415B-9F5E-EEADD8862E1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{8B532EC4-D7F4-4072-BD4E-43D7FE740F27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,10 +104,10 @@ Global
 		{E4DCAB1E-B774-417E-843F-171B143D80DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4DCAB1E-B774-417E-843F-171B143D80DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4DCAB1E-B774-417E-843F-171B143D80DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3ED88479-E18E-415B-9F5E-EEADD8862E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3ED88479-E18E-415B-9F5E-EEADD8862E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3ED88479-E18E-415B-9F5E-EEADD8862E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3ED88479-E18E-415B-9F5E-EEADD8862E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B532EC4-D7F4-4072-BD4E-43D7FE740F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B532EC4-D7F4-4072-BD4E-43D7FE740F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B532EC4-D7F4-4072-BD4E-43D7FE740F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B532EC4-D7F4-4072-BD4E-43D7FE740F27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{37927537-502F-4583-A344-1F8D43BDB22C} = {E3E4C93E-C568-4358-AD14-BFCCD373D0B2}

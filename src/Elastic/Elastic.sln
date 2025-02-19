@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elastic", "Elastic\Elastic.csproj", "{476FE783-48CC-4754-AFE5-5A23F20EE4C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Elastic", "..\..\generated\Elastic\Elastic.Autorest\Az.Elastic.csproj", "{DF4FC329-1F99-4EE2-B629-EA8DC11302A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Elastic", "..\..\generated\Elastic\Elastic.Autorest\Az.Elastic.csproj", "{866985A1-7445-4351-BF7C-AC117712C6B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{476FE783-48CC-4754-AFE5-5A23F20EE4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{476FE783-48CC-4754-AFE5-5A23F20EE4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{476FE783-48CC-4754-AFE5-5A23F20EE4C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF4FC329-1F99-4EE2-B629-EA8DC11302A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF4FC329-1F99-4EE2-B629-EA8DC11302A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF4FC329-1F99-4EE2-B629-EA8DC11302A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF4FC329-1F99-4EE2-B629-EA8DC11302A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{866985A1-7445-4351-BF7C-AC117712C6B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{866985A1-7445-4351-BF7C-AC117712C6B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{866985A1-7445-4351-BF7C-AC117712C6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{866985A1-7445-4351-BF7C-AC117712C6B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DDE9F70D-91FC-42A7-8DB6-0426A6F4A248} = {42AFADE3-9BA0-489B-B79E-1E9517FAF1A2}

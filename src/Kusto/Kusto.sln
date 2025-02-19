@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kusto", "Kusto\Kusto.csproj", "{6D96BABF-EE42-497D-B773-E295E93BD811}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Kusto", "..\..\generated\Kusto\Kusto.Autorest\Az.Kusto.csproj", "{AC0069C9-D8DE-4C38-91B0-73724870B666}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Kusto", "..\..\generated\Kusto\Kusto.Autorest\Az.Kusto.csproj", "{BA41BA3B-FD27-4AF6-BFC3-307380FF7427}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{6D96BABF-EE42-497D-B773-E295E93BD811}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D96BABF-EE42-497D-B773-E295E93BD811}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D96BABF-EE42-497D-B773-E295E93BD811}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC0069C9-D8DE-4C38-91B0-73724870B666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC0069C9-D8DE-4C38-91B0-73724870B666}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC0069C9-D8DE-4C38-91B0-73724870B666}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC0069C9-D8DE-4C38-91B0-73724870B666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA41BA3B-FD27-4AF6-BFC3-307380FF7427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA41BA3B-FD27-4AF6-BFC3-307380FF7427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA41BA3B-FD27-4AF6-BFC3-307380FF7427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA41BA3B-FD27-4AF6-BFC3-307380FF7427}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AF7FD2C3-22D7-44E1-9494-14BE58EC35D8} = {2153FD1F-A819-4EF3-ACB1-501A9F3A1B96}

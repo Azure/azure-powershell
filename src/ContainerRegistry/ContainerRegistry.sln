@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Netwo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{9C8309D3-EAAC-4608-ACAC-50A300BB1EB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ContainerRegistry", "..\..\generated\ContainerRegistry\ContainerRegistry.Autorest\Az.ContainerRegistry.csproj", "{5BE5D29E-6E0A-482B-871C-B0CB54EA3BF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ContainerRegistry", "..\..\generated\ContainerRegistry\ContainerRegistry.Autorest\Az.ContainerRegistry.csproj", "{EEBDF680-AB69-4605-963A-5564203D2CD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,10 +80,10 @@ Global
 		{9C8309D3-EAAC-4608-ACAC-50A300BB1EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C8309D3-EAAC-4608-ACAC-50A300BB1EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C8309D3-EAAC-4608-ACAC-50A300BB1EB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BE5D29E-6E0A-482B-871C-B0CB54EA3BF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BE5D29E-6E0A-482B-871C-B0CB54EA3BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BE5D29E-6E0A-482B-871C-B0CB54EA3BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BE5D29E-6E0A-482B-871C-B0CB54EA3BF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEBDF680-AB69-4605-963A-5564203D2CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBDF680-AB69-4605-963A-5564203D2CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBDF680-AB69-4605-963A-5564203D2CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBDF680-AB69-4605-963A-5564203D2CD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{97AC9DC0-F400-455C-96DE-36BD1B13D1CB} = {84FB336F-95F1-4DE9-976E-1C2F993F0DC0}

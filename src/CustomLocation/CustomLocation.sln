@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLocation", "CustomLocation\CustomLocation.csproj", "{DAE2DF24-C464-46AF-96C1-27EF471DD94B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.CustomLocation", "..\..\generated\CustomLocation\CustomLocation.Autorest\Az.CustomLocation.csproj", "{1CF3D9EB-C848-4DE6-8E4E-408B12D07A5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.CustomLocation", "..\..\generated\CustomLocation\CustomLocation.Autorest\Az.CustomLocation.csproj", "{658BB9C4-30AE-4BA3-977B-39B8AC4DA562}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{DAE2DF24-C464-46AF-96C1-27EF471DD94B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAE2DF24-C464-46AF-96C1-27EF471DD94B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAE2DF24-C464-46AF-96C1-27EF471DD94B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CF3D9EB-C848-4DE6-8E4E-408B12D07A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CF3D9EB-C848-4DE6-8E4E-408B12D07A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CF3D9EB-C848-4DE6-8E4E-408B12D07A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CF3D9EB-C848-4DE6-8E4E-408B12D07A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{658BB9C4-30AE-4BA3-977B-39B8AC4DA562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658BB9C4-30AE-4BA3-977B-39B8AC4DA562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658BB9C4-30AE-4BA3-977B-39B8AC4DA562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658BB9C4-30AE-4BA3-977B-39B8AC4DA562}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5E049DA2-E1AB-4B59-A6C0-103A944F7268} = {985D22EB-3007-4A74-B849-230767D32D23}

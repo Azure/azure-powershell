@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixedReality", "MixedReality\MixedReality.csproj", "{5D30382E-326B-43A0-8250-44ADCFF7B5CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MixedReality", "..\..\generated\MixedReality\MixedReality.Autorest\Az.MixedReality.csproj", "{EA2C9FC1-B99C-4B9D-9C18-4D087D449500}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MixedReality", "..\..\generated\MixedReality\MixedReality.Autorest\Az.MixedReality.csproj", "{09813C54-B5AF-4600-889E-3151274F23B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{5D30382E-326B-43A0-8250-44ADCFF7B5CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D30382E-326B-43A0-8250-44ADCFF7B5CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D30382E-326B-43A0-8250-44ADCFF7B5CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA2C9FC1-B99C-4B9D-9C18-4D087D449500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA2C9FC1-B99C-4B9D-9C18-4D087D449500}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA2C9FC1-B99C-4B9D-9C18-4D087D449500}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA2C9FC1-B99C-4B9D-9C18-4D087D449500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09813C54-B5AF-4600-889E-3151274F23B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09813C54-B5AF-4600-889E-3151274F23B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09813C54-B5AF-4600-889E-3151274F23B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09813C54-B5AF-4600-889E-3151274F23B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{018C42B9-3CB8-4591-8BC9-C88D2081746F} = {F8FAAF15-65D0-4E38-AFAF-8DBB22DD9AE0}

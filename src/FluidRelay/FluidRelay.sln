@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluidRelay", "FluidRelay\FluidRelay.csproj", "{1CCAEFB2-E0A9-4A92-AA5F-103F23F9E63A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.FluidRelay", "..\..\generated\FluidRelay\FluidRelay.Autorest\Az.FluidRelay.csproj", "{FF6CF548-ED65-4784-A3E1-8177443E373E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.FluidRelay", "..\..\generated\FluidRelay\FluidRelay.Autorest\Az.FluidRelay.csproj", "{EA3DA901-1440-4CDC-9FC8-F8E246AC34A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{1CCAEFB2-E0A9-4A92-AA5F-103F23F9E63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCAEFB2-E0A9-4A92-AA5F-103F23F9E63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCAEFB2-E0A9-4A92-AA5F-103F23F9E63A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF6CF548-ED65-4784-A3E1-8177443E373E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF6CF548-ED65-4784-A3E1-8177443E373E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF6CF548-ED65-4784-A3E1-8177443E373E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF6CF548-ED65-4784-A3E1-8177443E373E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3DA901-1440-4CDC-9FC8-F8E246AC34A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3DA901-1440-4CDC-9FC8-F8E246AC34A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3DA901-1440-4CDC-9FC8-F8E246AC34A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3DA901-1440-4CDC-9FC8-F8E246AC34A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8B93491B-97BF-4DA2-84BA-EE8FCDB3CEE9} = {70438151-ACF2-41C5-9C77-AA1E9680A611}

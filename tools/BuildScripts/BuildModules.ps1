@@ -38,7 +38,7 @@ if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
 
 $notModules = @('lib', 'shared', 'helpers')
 $coreTestModule = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
-$RepoArtifacts = Join-Path $RepoRoot "Artifacts"
+$RepoArtifacts = Join-Path $RepoRoot "artifacts"
 
 $csprojFiles = @()
 $testModule = @()
@@ -127,6 +127,9 @@ $prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestMod
 $isInvokedByPipeline = $false
 if ($InvokedByPipeline) {
     $isInvokedByPipeline = $true
+    $outputTargetPath = Join-Path $RepoArtifacts "TargetModule.txt"
+    New-Item -Path $outputTargetPath -Force
+    $TargetModule | Out-File -Path $outputTargetPath -Force
 }
 foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen

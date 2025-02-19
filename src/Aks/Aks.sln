@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aks.Management.Sdk", "Aks.Management.Sdk\Aks.Management.Sdk.csproj", "{3CB53E47-87C1-41C9-BD57-19E7B07C63FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Aks", "..\..\generated\Aks\Aks.Autorest\Az.Aks.csproj", "{67618E3C-29F1-4FB6-9753-B8295BF2FD14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Aks", "..\..\generated\Aks\Aks.Autorest\Az.Aks.csproj", "{6705C86C-1CE9-465C-9552-1E6B816AAF3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +75,10 @@ Global
 		{3CB53E47-87C1-41C9-BD57-19E7B07C63FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CB53E47-87C1-41C9-BD57-19E7B07C63FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CB53E47-87C1-41C9-BD57-19E7B07C63FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67618E3C-29F1-4FB6-9753-B8295BF2FD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67618E3C-29F1-4FB6-9753-B8295BF2FD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67618E3C-29F1-4FB6-9753-B8295BF2FD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67618E3C-29F1-4FB6-9753-B8295BF2FD14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6705C86C-1CE9-465C-9552-1E6B816AAF3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6705C86C-1CE9-465C-9552-1E6B816AAF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6705C86C-1CE9-465C-9552-1E6B816AAF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6705C86C-1CE9-465C-9552-1E6B816AAF3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

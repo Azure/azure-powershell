@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MariaDb", "MariaDb\MariaDb.csproj", "{23BFEE76-229E-464B-9FAD-C725CCD4FD24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MariaDb", "..\..\generated\MariaDb\MariaDb.Autorest\Az.MariaDb.csproj", "{99F473C0-731E-41D8-8534-001DB02D614B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MariaDb", "..\..\generated\MariaDb\MariaDb.Autorest\Az.MariaDb.csproj", "{587FC867-0439-4DA4-B9BE-C9A647DBBBAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{23BFEE76-229E-464B-9FAD-C725CCD4FD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23BFEE76-229E-464B-9FAD-C725CCD4FD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23BFEE76-229E-464B-9FAD-C725CCD4FD24}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99F473C0-731E-41D8-8534-001DB02D614B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99F473C0-731E-41D8-8534-001DB02D614B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99F473C0-731E-41D8-8534-001DB02D614B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99F473C0-731E-41D8-8534-001DB02D614B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587FC867-0439-4DA4-B9BE-C9A647DBBBAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587FC867-0439-4DA4-B9BE-C9A647DBBBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587FC867-0439-4DA4-B9BE-C9A647DBBBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587FC867-0439-4DA4-B9BE-C9A647DBBBAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{38922A16-8CD7-481C-A215-99B52812F208} = {1FCC8714-67DA-45A5-9B58-F212C44B4840}

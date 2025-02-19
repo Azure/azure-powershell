@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotService", "BotService\BotService.csproj", "{FFE20009-821E-4E3B-A84F-42B64E3A7AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.BotService", "..\..\generated\BotService\BotService.Autorest\Az.BotService.csproj", "{112354F5-09AF-4ADF-A3AE-3927E815F929}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.BotService", "..\..\generated\BotService\BotService.Autorest\Az.BotService.csproj", "{DEC8A338-D740-4DA7-95A3-E93BB0366487}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{FFE20009-821E-4E3B-A84F-42B64E3A7AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFE20009-821E-4E3B-A84F-42B64E3A7AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFE20009-821E-4E3B-A84F-42B64E3A7AEC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{112354F5-09AF-4ADF-A3AE-3927E815F929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{112354F5-09AF-4ADF-A3AE-3927E815F929}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{112354F5-09AF-4ADF-A3AE-3927E815F929}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{112354F5-09AF-4ADF-A3AE-3927E815F929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC8A338-D740-4DA7-95A3-E93BB0366487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC8A338-D740-4DA7-95A3-E93BB0366487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC8A338-D740-4DA7-95A3-E93BB0366487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC8A338-D740-4DA7-95A3-E93BB0366487}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{542B1FA9-F381-4503-A745-537E45B3FB24} = {58ECC49C-4BD1-4D7F-A0DC-E8D4EB606DAE}
