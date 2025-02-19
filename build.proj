@@ -123,37 +123,32 @@
     <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration)" />
   </Target>
 
-  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != ''" DependsOnTargets="BuildTools">
+  <Target Name="FilterBuild" DependsOnTargets="BuildTools">
     <Message Importance="high" Text="Filtering projects and modules..." />
 
     <Message Text="$(IsGenerateBased)" />
     <!-- Build the Microsoft.Azure.Build.Tasks project -->
     <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration)" />
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareAutorestModule.ps1&quot;" Condition="'$(IsGenerateBased)' == 'true'"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)CreateFilterMappings.ps1&quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareForSecurityCheck.ps1&quot;" Condition="'$(IsSecurityCheck)' == 'true'"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/CreateFilterMappings.ps1&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/PrepareForSecurityCheck.ps1&quot;" Condition="'$(IsSecurityCheck)' == 'true'"/>
 
-    <CIFilterTask FilesChangedFile="$(RepoArtifacts)FilesChanged.txt" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
-      <Output TaskParameter="BuildCsprojList" ItemName="BuildCsprojList" />
-      <Output TaskParameter="TestCsprojList" ItemName="TestCsprojList" />
-      <Output TaskParameter="SubTasks" PropertyName="SubTasks" />
-    </CIFilterTask>
+    <CIFilterTask FilesChangedPath="$(FilesChangedOutputPath)" Mode="$(Configuration)" SubTasksFilePath="$(SubTasksFilePath)" CsprojMapFilePath="./CsprojMappings.json"></CIFilterTask>
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
-  <Target Name="Build" DependsOnTargets="FilterBuild">
+  <Target Name="Build">
     <Message Importance="high" Text="Building Cmdlets..." />
 
     <MakeDir Directories="$(RepoArtifacts)" />
 
     <!-- Copy appropriate targets -->
     <Copy SourceFiles="$(RepoTools)after.Azure.PowerShell.sln.targets" DestinationFolder="$(RepoArtifacts)" />
-
     <!-- Build and create package content -->
-    <CallTarget Targets="BuildNormalModules" />
-    <CallTarget Targets="AzToolsPredictor" Condition="$(SubTasks.Contains('Predictor')) OR $(SubTasks.Contains('all'))" />
-    <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('Installer')) OR $(SubTasks.Contains('all'))" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration)" />
+
+    <!-- Build version controller -->
+    <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
   </Target>
 
   <Target Name="BuildNormalModules">

@@ -395,7 +395,7 @@ the *AccessTier* parameter.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool
+Accepted values: Hot, Cool, Cold
 
 Required: False
 Position: Named
@@ -1066,7 +1066,7 @@ The minimum TLS version to be permitted on requests to storage. The default inte
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TLS1_0, TLS1_1, TLS1_2
+Accepted values: TLS1_0, TLS1_1, TLS1_2, TLS1_3
 
 Required: False
 Position: Named

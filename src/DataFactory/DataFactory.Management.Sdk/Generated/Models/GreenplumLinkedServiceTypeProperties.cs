@@ -34,12 +34,54 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public GreenplumLinkedServiceTypeProperties(object connectionString = default(object), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+
+        /// <param name="authenticationType">The authentication type to use. Type: string. Only used for V2.
+        /// Possible values include: &#39;Basic&#39;</param>
+
+        /// <param name="host">Host name for connection. Type: string. Only used for V2.
+        /// </param>
+
+        /// <param name="port">The port for the connection. Type: integer. Only used for V2.
+        /// </param>
+
+        /// <param name="username">Username for authentication. Type: string. Only used for V2.
+        /// </param>
+
+        /// <param name="database">Database name for connection. Type: string. Only used for V2.
+        /// </param>
+
+        /// <param name="sslMode">SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3:
+        /// require, 4: verify-ca, 5: verify-full. Type: integer. Only used for V2.
+        /// </param>
+
+        /// <param name="connectionTimeout">The time to wait (in seconds) while trying to establish a connection before
+        /// terminating the attempt and generating an error. Type: integer. Only used
+        /// for V2.
+        /// </param>
+
+        /// <param name="commandTimeout">The time to wait (in seconds) while trying to execute a command before
+        /// terminating the attempt and generating an error. Set to zero for infinity.
+        /// Type: integer. Only used for V2.
+        /// </param>
+
+        /// <param name="password">The Azure key vault secret reference of password in connection string.
+        /// Type: string. Only used for V2.
+        /// </param>
+        public GreenplumLinkedServiceTypeProperties(object connectionString = default(object), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string), string authenticationType = default(string), object host = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object connectionTimeout = default(object), object commandTimeout = default(object), SecretBase password = default(SecretBase))
 
         {
             this.ConnectionString = connectionString;
             this.Pwd = pwd;
             this.EncryptedCredential = encryptedCredential;
+            this.AuthenticationType = authenticationType;
+            this.Host = host;
+            this.Port = port;
+            this.Username = username;
+            this.Database = database;
+            this.SslMode = sslMode;
+            this.ConnectionTimeout = connectionTimeout;
+            this.CommandTimeout = commandTimeout;
+            this.Password = password;
             CustomInit();
         }
 
@@ -70,6 +112,68 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "encryptedCredential")]
         public string EncryptedCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication type to use. Type: string. Only used for
+        /// V2. Possible values include: &#39;Basic&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "authenticationType")]
+        public string AuthenticationType {get; set; }
+
+        /// <summary>
+        /// Gets or sets host name for connection. Type: string. Only used for V2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "host")]
+        public object Host {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port for the connection. Type: integer. Only used for V2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "port")]
+        public object Port {get; set; }
+
+        /// <summary>
+        /// Gets or sets username for authentication. Type: string. Only used for V2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "username")]
+        public object Username {get; set; }
+
+        /// <summary>
+        /// Gets or sets database name for connection. Type: string. Only used for V2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "database")]
+        public object Database {get; set; }
+
+        /// <summary>
+        /// Gets or sets sSL mode for connection. Type: integer. 0: disable, 1:allow,
+        /// 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer. Only
+        /// used for V2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sslMode")]
+        public object SslMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets the time to wait (in seconds) while trying to establish a
+        /// connection before terminating the attempt and generating an error. Type:
+        /// integer. Only used for V2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "connectionTimeout")]
+        public object ConnectionTimeout {get; set; }
+
+        /// <summary>
+        /// Gets or sets the time to wait (in seconds) while trying to execute a
+        /// command before terminating the attempt and generating an error. Set to zero
+        /// for infinity. Type: integer. Only used for V2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "commandTimeout")]
+        public object CommandTimeout {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure key vault secret reference of password in connection
+        /// string. Type: string. Only used for V2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "password")]
+        public SecretBase Password {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -83,6 +187,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.Pwd.Validate();
             }
+
+
+
+
+
+
+
+
+
 
         }
     }

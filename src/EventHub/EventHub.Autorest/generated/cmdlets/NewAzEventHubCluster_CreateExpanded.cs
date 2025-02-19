@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an instance of an Event Hubs Cluster.</summary>
+    /// <summary>create an instance of an Event Hubs Cluster.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubCluster_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create an instance of an Event Hubs Cluster.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create an instance of an Event Hubs Cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,

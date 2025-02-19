@@ -226,7 +226,7 @@
     <value>In Monthly and Yearly retention schedules, RetentionFormatType cannot be 'Daily' if Weekly BackupSchedule is selected</value>
   </data>
   <data name="RetentionDurationCountInvalidException" xml:space="preserve">
-    <value>RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999</value>
+    <value>RetentionDuration in {0} should be from {1} - {2}</value>
   </data>
   <data name="WeeklyRetentionScheduleNullException" xml:space="preserve">
     <value>If Weekly backup schedule is enabled, then IsDailyScheduleEnabled should be false and Weekly retention schedule should not be null, IsWeeklyScheduleEnabled should be true</value>
@@ -572,7 +572,7 @@ Please contact Microsoft for further assistance.</value>
     <value>RetentionDuration in Days should be from 7 - 9999</value>
   </data>
   <data name="ProtectedItemsCountExceededException" xml:space="preserve">
-    <value>Cannot configure backup for more than 100 VMs per policy</value>
+    <value>Cannot configure backup for more than 1000 VMs per policy</value>
   </data>
   <data name="SoftdeleteNotImplementedException" xml:space="preserve">
     <value>Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.</value>
@@ -617,7 +617,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Please provide a vaild target storage account</value>
   </data>
   <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
-    <value>Please ensure that the given RP recovery type is 'VaultStandard' or remove TargetZone</value>
+    <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>
   </data>
   <data name="RecoveryPointZonePinnedException" xml:space="preserve">
     <value>Please ensure that the Recovery point is Zone pinned or remove TargetZone</value>
@@ -860,7 +860,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists</value>
   </data>
   <data name="AFSPolicyUpdateNotAllowed" xml:space="preserve">
-    <value>Modifying existing policies to stop data transfer to the vault and retain backups only as snapshots is not supported. Please create a new policy to opt-out of the data transfer to the recovery services vault.</value>
+    <value>Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups.</value>
   </data>
   <data name="AFSPolicyUpdateWarning" xml:space="preserve">
     <value>Changing the backup tier keeps current snapshots as-is under the existing policy. Future backups will be stored in the vault with new retention settings. This action is irreversible and incurs additional costs. Switching from vault to snapshot requires reconfiguration. Learn more at https://learn.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview?tabs=snapshot.</value>
@@ -873,5 +873,17 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="SnapshotRetentionInDaysInvalidException" xml:space="preserve">
     <value>SnapshotRetentionInDays should be from 1 - 30</value>
+  </data>
+  <data name="UndeleteContainerFailureErrorCode" xml:space="preserve">
+    <value>UndeleteContainer operation failed with ErrorCode: {0}</value>
+  </data>
+  <data name="UndeleteContainerWarning" xml:space="preserve">
+    <value>Are you sure you want to undelete the container '{0}'</value>
+  </data>
+  <data name="UndeleteContainerMessage" xml:space="preserve">
+    <value>Undeleting container</value>
+  </data>
+  <data name="InvalidSoftDeleteFeatureStateException" xml:space="preserve">
+    <value>Setting SoftDeleteFeatureState to 'AlwaysON' will automatically set HybridBackupSecurityFeature to AlwaysON. Please remove the DisableHybridBackupSecurityFeature parameter or use a different value for the SoftDeleteFeatureState parameter.</value>
   </data>
 </root>

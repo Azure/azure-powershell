@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -Enabled
-The credentials used to login to the image repository that has access to the specified image.
+The indicator of whether the console access is enabled.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ConsoleEnabled
@@ -280,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IConsole
 
 ## NOTES
 

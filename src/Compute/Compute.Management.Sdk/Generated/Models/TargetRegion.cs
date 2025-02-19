@@ -12,6 +12,8 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -37,16 +39,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="storageAccountType">Specifies the storage account type
         /// to be used to store the image. This property is not updatable.
         /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
-        /// 'Premium_LRS'</param>
+        /// 'Premium_LRS', 'PremiumV2_LRS'</param>
         /// <param name="excludeFromLatest">Contains the flag setting to hide
         /// an image when users specify version='latest'</param>
-        public TargetRegion(string name, int? regionalReplicaCount = default(int?), string storageAccountType = default(string), EncryptionImages encryption = default(EncryptionImages), bool? excludeFromLatest = default(bool?))
+        /// <param name="additionalReplicaSets">List of storage sku with
+        /// replica count to create direct drive replicas.</param>
+        public TargetRegion(string name, int? regionalReplicaCount = default(int?), string storageAccountType = default(string), EncryptionImages encryption = default(EncryptionImages), bool? excludeFromLatest = default(bool?), IList<AdditionalReplicaSet> additionalReplicaSets = default(IList<AdditionalReplicaSet>))
         {
             Name = name;
             RegionalReplicaCount = regionalReplicaCount;
             StorageAccountType = storageAccountType;
             Encryption = encryption;
             ExcludeFromLatest = excludeFromLatest;
+            AdditionalReplicaSets = additionalReplicaSets;
             CustomInit();
         }
 
@@ -71,7 +76,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Gets or sets specifies the storage account type to be used to store
         /// the image. This property is not updatable. Possible values include:
-        /// 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS'
+        /// 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS', 'PremiumV2_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
         public string StorageAccountType { get; set; }
@@ -87,6 +92,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "excludeFromLatest")]
         public bool? ExcludeFromLatest { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of storage sku with replica count to create
+        /// direct drive replicas.
+        /// </summary>
+        [JsonProperty(PropertyName = "additionalReplicaSets")]
+        public IList<AdditionalReplicaSet> AdditionalReplicaSets { get; set; }
 
         /// <summary>
         /// Validate the object.

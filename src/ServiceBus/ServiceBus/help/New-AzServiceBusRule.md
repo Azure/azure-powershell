@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusRule
 
 ## SYNOPSIS
-Create a new rule and updates an existing rule
+create a new rule and create an existing rule
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <
  [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <String>] [-Label <String>]
  [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SessionId <String>]
  [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopicExpanded
@@ -30,14 +30,14 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject
  [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>]
  [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing]
- [-To <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-To <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopic
 ```
 New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject <IServiceBusIdentity>
- -Parameter <IRule> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -Parameter <IRule> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicName <Strin
  [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing]
  [-CorrelationId <String>] [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing]
- [-To <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-To <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -56,7 +56,7 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicName <Strin
 ```
 New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicName <String>
  -NamespaceInputObject <IServiceBusIdentity> -Parameter <IRule> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentitySubscriptionExpanded
@@ -66,18 +66,18 @@ New-AzServiceBusRule -Name <String> -SubscriptionInputObject <IServiceBusIdentit
  [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>]
  [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing]
- [-To <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-To <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentitySubscription
 ```
 New-AzServiceBusRule -Name <String> -SubscriptionInputObject <IServiceBusIdentity> -Parameter <IRule>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new rule and updates an existing rule
+create a new rule and create an existing rule
 
 ## EXAMPLES
 
@@ -356,6 +356,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

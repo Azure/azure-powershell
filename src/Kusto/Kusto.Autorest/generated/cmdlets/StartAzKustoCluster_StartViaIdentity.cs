@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Starts a Kusto cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/start", ApiVersion = "2023-08-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/start", ApiVersion = "2024-04-13")]
     public partial class StartAzKustoCluster_StartViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener
     {

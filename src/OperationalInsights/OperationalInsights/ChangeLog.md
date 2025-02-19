@@ -21,6 +21,9 @@
 ## Upcoming Release
 * Removed "Microsoft.Azure.Management.OperationalInsights" Version "0.25.0-preview" PackageReference.
 
+## Version 3.3.0
+* Upgraded nuget package to signed package.
+
 ## Version 3.2.1
 * Fixed an issue that `Invoke-AzOperationalInsightsQuery` timed out after 100 seconds. The timeout is now bound to the `-Wait` parameter. (#16553)
 * Removed the outdated deps.json file.

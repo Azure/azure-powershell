@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The Azure subscription Id.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -57,11 +57,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the resource group.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceName { get; set; }
-        /// <summary>The Azure subscription Id.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Azure subscription Id.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -88,11 +88,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models
     {
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the Graph Query resource.</summary>
         string ResourceName { get; set; }
-        /// <summary>The Azure subscription Id.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
 
     }
