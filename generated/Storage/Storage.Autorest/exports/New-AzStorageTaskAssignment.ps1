@@ -16,13 +16,13 @@
 
 <#
 .Synopsis
-Asynchronously creates a new storage task assignment sub-resource with the specified parameters.
+Asynchronously create a new storage task assignment sub-resource with the specified parameters.
 If a storage task assignment is already created and a subsequent create request is issued with different properties, the storage task assignment properties will be updated.
-If a storage task assignment is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
 .Description
-Asynchronously creates a new storage task assignment sub-resource with the specified parameters.
+Asynchronously create a new storage task assignment sub-resource with the specified parameters.
 If a storage task assignment is already created and a subsequent create request is issued with different properties, the storage task assignment properties will be updated.
-If a storage task assignment is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
 .Example
 $taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
 New-AzStorageTaskAssignment -ResourceGroupName myresourcegroup -AccountName myaccount -name mytaskassignment -TaskId $taskid -ReportPrefix "test" -TriggerType RunOnce -Description "task assignment" -Enabled:$false
@@ -257,6 +257,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
