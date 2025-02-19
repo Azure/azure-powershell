@@ -267,9 +267,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance.
         /// </param>
-        public static NetworkVirtualApplianceInstanceId GetBootDiagnosticLogs(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters instanceId = default(NetworkVirtualApplianceBootDiagnosticParameters))
+        public static NetworkVirtualApplianceInstanceId GetBootDiagnosticLogs(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request)
         {
-                return ((INetworkVirtualAppliancesOperations)operations).GetBootDiagnosticLogsAsync(resourceGroupName, networkVirtualApplianceName, instanceId).GetAwaiter().GetResult();
+                return ((INetworkVirtualAppliancesOperations)operations).GetBootDiagnosticLogsAsync(resourceGroupName, networkVirtualApplianceName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -288,9 +288,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceId> GetBootDiagnosticLogsAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters instanceId = default(NetworkVirtualApplianceBootDiagnosticParameters), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceId> GetBootDiagnosticLogsAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, instanceId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, request, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -526,9 +526,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance.
         /// </param>
-        public static NetworkVirtualApplianceInstanceId BeginGetBootDiagnosticLogs(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters instanceId = default(NetworkVirtualApplianceBootDiagnosticParameters))
+        public static NetworkVirtualApplianceInstanceId BeginGetBootDiagnosticLogs(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request)
         {
-                return ((INetworkVirtualAppliancesOperations)operations).BeginGetBootDiagnosticLogsAsync(resourceGroupName, networkVirtualApplianceName, instanceId).GetAwaiter().GetResult();
+                return ((INetworkVirtualAppliancesOperations)operations).BeginGetBootDiagnosticLogsAsync(resourceGroupName, networkVirtualApplianceName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -547,9 +547,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceId> BeginGetBootDiagnosticLogsAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters instanceId = default(NetworkVirtualApplianceBootDiagnosticParameters), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceId> BeginGetBootDiagnosticLogsAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginGetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, instanceId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginGetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, request, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

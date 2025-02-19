@@ -4794,6 +4794,7 @@
       "Get-AzNetworkServiceTag": {},
       "Get-AzNetworkUsage": {},
       "Get-AzNetworkVirtualAppliance": {},
+      "Get-AzNetworkVirtualApplianceBootDiagnostics": {},
       "Get-AzNetworkVirtualApplianceConnection": {},
       "Get-AzNetworkVirtualApplianceSku": {},
       "Get-AzNetworkWatcher": {},
