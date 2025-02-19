@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sphere", "Sphere\Sphere.csproj", "{FA6B8332-4EB9-4220-93DA-2CE18902F9DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Sphere", "Sphere.Autorest\Az.Sphere.csproj", "{23122B69-24BB-49D2-9C0F-1CDD7A8ECC5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Sphere", "..\..\generated\Sphere\Sphere.Autorest\Az.Sphere.csproj", "{AF26F2EE-E95E-43E7-B7B2-70BEBF0FD893}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{FA6B8332-4EB9-4220-93DA-2CE18902F9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA6B8332-4EB9-4220-93DA-2CE18902F9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA6B8332-4EB9-4220-93DA-2CE18902F9DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{23122B69-24BB-49D2-9C0F-1CDD7A8ECC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23122B69-24BB-49D2-9C0F-1CDD7A8ECC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23122B69-24BB-49D2-9C0F-1CDD7A8ECC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23122B69-24BB-49D2-9C0F-1CDD7A8ECC5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF26F2EE-E95E-43E7-B7B2-70BEBF0FD893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF26F2EE-E95E-43E7-B7B2-70BEBF0FD893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF26F2EE-E95E-43E7-B7B2-70BEBF0FD893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF26F2EE-E95E-43E7-B7B2-70BEBF0FD893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0167E36E-BED5-4238-BC69-81D387E4F23F} = {47CEACF6-017B-4402-8AFF-C5C0EB69394A}

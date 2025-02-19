@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mdp", "Mdp\Mdp.csproj", "{DA26A3C5-5B68-41EE-8600-7739229F8B5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Mdp", "Mdp.Autorest\Az.Mdp.csproj", "{7B59D054-D619-4228-94DE-ECE2C0FC9B36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Mdp", "..\..\generated\Mdp\Mdp.Autorest\Az.Mdp.csproj", "{8360C5B9-BAC0-435C-9BCB-5BF84907880B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{DA26A3C5-5B68-41EE-8600-7739229F8B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA26A3C5-5B68-41EE-8600-7739229F8B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA26A3C5-5B68-41EE-8600-7739229F8B5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B59D054-D619-4228-94DE-ECE2C0FC9B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B59D054-D619-4228-94DE-ECE2C0FC9B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B59D054-D619-4228-94DE-ECE2C0FC9B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B59D054-D619-4228-94DE-ECE2C0FC9B36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8360C5B9-BAC0-435C-9BCB-5BF84907880B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8360C5B9-BAC0-435C-9BCB-5BF84907880B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8360C5B9-BAC0-435C-9BCB-5BF84907880B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8360C5B9-BAC0-435C-9BCB-5BF84907880B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DEE69ADB-AB13-45C8-9EA5-AB507B394767} = {3BDFB375-06AB-4C0C-AC0E-80BDE42AEA8A}
