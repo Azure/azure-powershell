@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.common", "Storage.common\Storage.common.csproj", "{612125D7-36AF-4889-AB38-9B4D0D37CF0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{11700D7F-BF6C-42F9-959D-D0889FA683F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{8D31F814-3107-4826-84C0-BD49B1C2C63D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,10 +93,10 @@ Global
 		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11700D7F-BF6C-42F9-959D-D0889FA683F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11700D7F-BF6C-42F9-959D-D0889FA683F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11700D7F-BF6C-42F9-959D-D0889FA683F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11700D7F-BF6C-42F9-959D-D0889FA683F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D31F814-3107-4826-84C0-BD49B1C2C63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D31F814-3107-4826-84C0-BD49B1C2C63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D31F814-3107-4826-84C0-BD49B1C2C63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D31F814-3107-4826-84C0-BD49B1C2C63D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

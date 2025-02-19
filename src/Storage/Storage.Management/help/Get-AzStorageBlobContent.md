@@ -43,7 +43,7 @@ Get-AzStorageBlobContent -CloudBlobContainer <CloudBlobContainer> [-Blob] <Strin
 ```
 Get-AzStorageBlobContent [-Destination <String>] -AbsoluteUri <String> [-Force] [-AsJob]
  [-TagCondition <String>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

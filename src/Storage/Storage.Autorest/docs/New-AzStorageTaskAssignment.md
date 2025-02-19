@@ -8,9 +8,9 @@ schema: 2.0.0
 # New-AzStorageTaskAssignment
 
 ## SYNOPSIS
-Asynchronously creates a new storage task assignment sub-resource with the specified parameters.
+Asynchronously create a new storage task assignment sub-resource with the specified parameters.
 If a storage task assignment is already created and a subsequent create request is issued with different properties, the storage task assignment properties will be updated.
-If a storage task assignment is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
 
 ## SYNTAX
 
@@ -23,9 +23,9 @@ New-AzStorageTaskAssignment -AccountName <String> -Name <String> -ResourceGroupN
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new storage task assignment sub-resource with the specified parameters.
+Asynchronously create a new storage task assignment sub-resource with the specified parameters.
 If a storage task assignment is already created and a subsequent create request is issued with different properties, the storage task assignment properties will be updated.
-If a storage task assignment is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
 
 ## EXAMPLES
 

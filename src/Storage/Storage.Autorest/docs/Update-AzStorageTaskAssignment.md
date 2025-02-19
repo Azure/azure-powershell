@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageTaskAssignment
 
 ## SYNOPSIS
-Update storage task assignment properties
+update storage task assignment properties
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzStorageTaskAssignment -Name <String> -StorageAccountInputObject <IStora
 ```
 
 ## DESCRIPTION
-Update storage task assignment properties
+update storage task assignment properties
 
 ## EXAMPLES
 
