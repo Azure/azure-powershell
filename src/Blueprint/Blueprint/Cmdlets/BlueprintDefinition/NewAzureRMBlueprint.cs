@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Commands.Blueprint.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
+    [GenericBreakingChangeWithVersion("Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.", "16.0.0", "-")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateBlueprintBySubscription), OutputType(typeof(PSBlueprint))]
     public class NewAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {

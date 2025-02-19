@@ -15,7 +15,7 @@ To create network manager verifier workspace.
 ```
 New-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
  -Location <String> [-Description <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -163,21 +163,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 
@@ -260,4 +245,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzNetworkManagerVerifierWorkspace](./Set-AzNetworkManagerVerifierWorkspace.md)
 
 [Remove-AzNetworkManagerVerifierWorkspace](./Remove-AzNetworkManagerVerifierWorkspace.md)
-

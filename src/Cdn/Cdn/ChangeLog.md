@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 3.3.0
+* Upgraded nuget package to signed package.
+
 ## Version 3.2.2
 * Added support to enable ManagedIdentity when no BYOC in the classic front door during migration
 

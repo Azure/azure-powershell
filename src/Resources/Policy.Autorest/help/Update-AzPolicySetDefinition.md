@@ -56,13 +56,13 @@ This operation updates an existing policy set definition in the given subscripti
 
 ### Example 1: Update the description of a policy set definition
 ```powershell
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-Update-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+$PolicySetDefinition = Get-AzPolicySetDefinition -Id '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+Update-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Description 'Updated policy to not allow virtual machine creation'
 ```
 
 The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
 The command stores that object in the $PolicySetDefinition variable.
-The second command updates the description of the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
+The second command updates the description of the policy set definition identified by the **Id** property of $PolicySetDefinition.
 
 ### Example 2: Update the metadata of a policy set definition
 ```powershell

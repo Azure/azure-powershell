@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return;
             }
             {_primaryLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("primaryLocation"), out var __jsonPrimaryLocation) ? (string)__jsonPrimaryLocation : (string)_primaryLocation;}
-            {_maximumGracePeriodInMin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("maximumGracePeriodInMins"), out var __jsonMaximumGracePeriodInMins) ? (int?)__jsonMaximumGracePeriodInMins : _maximumGracePeriodInMin;}
+            {_force = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonBoolean>("force"), out var __jsonForce) ? (bool?)__jsonForce : _force;}
             AfterFromJson(json);
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return container;
             }
             AddIf( null != (((object)this._primaryLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._primaryLocation.ToString()) : null, "primaryLocation" ,container.Add );
-            AddIf( null != this._maximumGracePeriodInMin ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((int)this._maximumGracePeriodInMin) : null, "maximumGracePeriodInMins" ,container.Add );
+            AddIf( null != this._force ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonBoolean((bool)this._force) : null, "force" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

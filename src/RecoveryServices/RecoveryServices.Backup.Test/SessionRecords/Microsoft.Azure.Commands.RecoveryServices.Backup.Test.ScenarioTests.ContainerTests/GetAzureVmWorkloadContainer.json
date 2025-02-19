@@ -6,16 +6,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "210a7558-47d3-4760-b76e-e4b12f9731a3"
+          "af0f7e39-4f65-4a94-8147-10a4ae656991"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.3.0"
         ]
       },
       "RequestBody": "",
@@ -27,22 +27,25 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1099"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "9a58e4eb-064c-4831-a9ef-f44534d79a0e"
+          "8d3fc07b-c3a1-461d-843c-5cafb503b1e9"
         ],
         "x-ms-client-request-id": [
-          "210a7558-47d3-4760-b76e-e4b12f9731a3"
+          "af0f7e39-4f65-4a94-8147-10a4ae656991"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "9a58e4eb-064c-4831-a9ef-f44534d79a0e"
+          "8d3fc07b-c3a1-461d-843c-5cafb503b1e9"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T080046Z:9a58e4eb-064c-4831-a9ef-f44534d79a0e"
+          "SOUTHINDIA:20250105T125212Z:8d3fc07b-c3a1-461d-843c-5cafb503b1e9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +54,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 96E5B1C6F2844E849E2D8B97EF0754F2 Ref B: MAA201060513025 Ref C: 2024-04-22T08:00:45Z"
+          "Ref A: BCCC2EAECEAA4EF99619C95F35F076E5 Ref B: MAA201060514037 Ref C: 2025-01-05T12:52:11Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 08:00:46 GMT"
+          "Sun, 05 Jan 2025 12:52:12 GMT"
         ],
         "Content-Length": [
           "1086"
@@ -66,25 +69,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"sqlcontainer-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2023-04-18T13%3A42%3A34.8614306Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2029\",\r\n    \"Owner\": \"hiaga\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"sqlcontainer-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2024-04-22T18%3A34%3A32.5035878Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2029\",\r\n    \"Owner\": \"hiaga\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupProtectionContainers?$filter=backupManagementType%20eq%20'AzureWorkload'&api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0L2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzPyRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCdBenVyZVdvcmtsb2FkJyZhcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupProtectionContainers?$filter=backupManagementType%20eq%20'AzureWorkload'&api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0L2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzPyRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCdBenVyZVdvcmtsb2FkJyZhcGktdmVyc2lvbj0yMDI0LTEwLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab3bc141-113c-4947-a8a8-9617703e36c7"
+          "a79394fe-f818-48cb-ad6b-69b7b609f712"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
         ]
       },
       "RequestBody": "",
@@ -99,19 +102,19 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "4ad8b4b4-399c-430f-b1ae-5ec2c18ed3e3"
+          "2740813a-c7b5-4018-8b31-f20590e5c8dc"
         ],
         "x-ms-client-request-id": [
-          "ab3bc141-113c-4947-a8a8-9617703e36c7"
+          "a79394fe-f818-48cb-ad6b-69b7b609f712"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "4ad8b4b4-399c-430f-b1ae-5ec2c18ed3e3"
+          "2740813a-c7b5-4018-8b31-f20590e5c8dc"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T080048Z:4ad8b4b4-399c-430f-b1ae-5ec2c18ed3e3"
+          "WESTINDIA:20250105T125214Z:2740813a-c7b5-4018-8b31-f20590e5c8dc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,10 +123,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: F04E233021FC4DC6950F8B28A229610B Ref B: MAA201060516051 Ref C: 2024-04-22T08:00:47Z"
+          "Ref A: C864AB03E230409684D31DAFF4F88994 Ref B: MAA201060513039 Ref C: 2025-01-05T12:52:12Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 08:00:48 GMT"
+          "Sun, 05 Jan 2025 12:52:13 GMT"
         ],
         "Content-Length": [
           "1198"
@@ -139,21 +142,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupProtectionContainers?$filter=backupManagementType%20eq%20'AzureWorkload'&api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0L2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzPyRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCdBenVyZVdvcmtsb2FkJyZhcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupProtectionContainers?$filter=backupManagementType%20eq%20'AzureWorkload'&api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0L2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzPyRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCdBenVyZVdvcmtsb2FkJyZhcGktdmVyc2lvbj0yMDI0LTEwLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0bd7e078-b64c-46d4-86d7-9e0e3b2f171c"
+          "0dc74faa-71a5-469f-b07b-264d78793a16"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
         ]
       },
       "RequestBody": "",
@@ -168,19 +171,19 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "97f03f1f-e871-4df2-bef1-ac624feb94b9"
+          "d2991d9e-de38-46b9-94aa-a50d9f710f0b"
         ],
         "x-ms-client-request-id": [
-          "0bd7e078-b64c-46d4-86d7-9e0e3b2f171c"
+          "0dc74faa-71a5-469f-b07b-264d78793a16"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "298"
+          "299"
         ],
         "x-ms-correlation-request-id": [
-          "97f03f1f-e871-4df2-bef1-ac624feb94b9"
+          "d2991d9e-de38-46b9-94aa-a50d9f710f0b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T080051Z:97f03f1f-e871-4df2-bef1-ac624feb94b9"
+          "WESTINDIA:20250105T125216Z:d2991d9e-de38-46b9-94aa-a50d9f710f0b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -189,10 +192,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: B3708F4E60A6400FADD1F0B4A49719A7 Ref B: MAA201060516031 Ref C: 2024-04-22T08:00:50Z"
+          "Ref A: 613F952DBC154FD7A4438105EC32B0CC Ref B: MAA201060515029 Ref C: 2025-01-05T12:52:15Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 08:00:50 GMT"
+          "Sun, 05 Jan 2025 12:52:15 GMT"
         ],
         "Content-Length": [
           "1198"
@@ -208,21 +211,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupProtectionContainers?$filter=friendlyName%20eq%20'sql-pstest-vm'%20and%20backupManagementType%20eq%20'AzureWorkload'&api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0L2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzPyRmaWx0ZXI9ZnJpZW5kbHlOYW1lJTIwZXElMjAnc3FsLXBzdGVzdC12bSclMjBhbmQlMjBiYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlV29ya2xvYWQnJmFwaS12ZXJzaW9uPTIwMjQtMDQtMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupProtectionContainers?$filter=friendlyName%20eq%20'sql-pstest-vm'%20and%20backupManagementType%20eq%20'AzureWorkload'&api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0L2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzPyRmaWx0ZXI9ZnJpZW5kbHlOYW1lJTIwZXElMjAnc3FsLXBzdGVzdC12bSclMjBhbmQlMjBiYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlV29ya2xvYWQnJmFwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "528e13d0-129a-4dc9-adce-6c9aeee9e604"
+          "39e651dc-c56a-4581-b474-66fc73a078cd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
         ]
       },
       "RequestBody": "",
@@ -237,19 +240,19 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "79f042e0-5eca-4973-9e5c-240bdb7e1c74"
+          "6a7038c1-af71-4828-93fb-d81cb75c0ebe"
         ],
         "x-ms-client-request-id": [
-          "528e13d0-129a-4dc9-adce-6c9aeee9e604"
+          "39e651dc-c56a-4581-b474-66fc73a078cd"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "79f042e0-5eca-4973-9e5c-240bdb7e1c74"
+          "6a7038c1-af71-4828-93fb-d81cb75c0ebe"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T080049Z:79f042e0-5eca-4973-9e5c-240bdb7e1c74"
+          "WESTINDIA:20250105T125215Z:6a7038c1-af71-4828-93fb-d81cb75c0ebe"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -258,10 +261,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: FE6E0CF7828B4DB3A50C515455CE92E0 Ref B: MAA201060515037 Ref C: 2024-04-22T08:00:49Z"
+          "Ref A: 456667ACDAA34A6982336861F533F7CF Ref B: MAA201060513009 Ref C: 2025-01-05T12:52:14Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 08:00:49 GMT"
+          "Sun, 05 Jan 2025 12:52:15 GMT"
         ],
         "Content-Length": [
           "1198"
@@ -277,21 +280,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupProtectionContainers?$filter=friendlyName%20eq%20'sql-pstest-vm'%20and%20backupManagementType%20eq%20'AzureWorkload'&api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0L2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzPyRmaWx0ZXI9ZnJpZW5kbHlOYW1lJTIwZXElMjAnc3FsLXBzdGVzdC12bSclMjBhbmQlMjBiYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlV29ya2xvYWQnJmFwaS12ZXJzaW9uPTIwMjQtMDQtMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupProtectionContainers?$filter=friendlyName%20eq%20'sql-pstest-vm'%20and%20backupManagementType%20eq%20'AzureWorkload'&api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0L2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzPyRmaWx0ZXI9ZnJpZW5kbHlOYW1lJTIwZXElMjAnc3FsLXBzdGVzdC12bSclMjBhbmQlMjBiYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlV29ya2xvYWQnJmFwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7527abbf-8cfb-4b13-a74b-cd71dfaff8cd"
+          "457b31a5-29ce-4d82-9620-d36a0a466a1e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
         ]
       },
       "RequestBody": "",
@@ -306,19 +309,19 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "4dc64397-967a-41df-8d4d-38bc4c631137"
+          "d0cea657-8b0d-4d5a-8ab4-44fc26b621e1"
         ],
         "x-ms-client-request-id": [
-          "7527abbf-8cfb-4b13-a74b-cd71dfaff8cd"
+          "457b31a5-29ce-4d82-9620-d36a0a466a1e"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "4dc64397-967a-41df-8d4d-38bc4c631137"
+          "d0cea657-8b0d-4d5a-8ab4-44fc26b621e1"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T080053Z:4dc64397-967a-41df-8d4d-38bc4c631137"
+          "WESTINDIA:20250105T125217Z:d0cea657-8b0d-4d5a-8ab4-44fc26b621e1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -327,10 +330,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 7488AA3EFE2E4F9281F4A3C3E6BEBA5C Ref B: MAA201060516011 Ref C: 2024-04-22T08:00:52Z"
+          "Ref A: 23ECCD10C8C945EA96AF61139CB72EBD Ref B: MAA201060516033 Ref C: 2025-01-05T12:52:16Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 08:00:53 GMT"
+          "Sun, 05 Jan 2025 12:52:16 GMT"
         ],
         "Content-Length": [
           "1198"

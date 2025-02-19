@@ -18,14 +18,14 @@ New-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String> -R
  [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>]
  [-PrincipalPermissionsAction <PrincipalPermissionsAction>] [-ScriptContent <String>]
  [-ScriptLevel <ScriptLevel>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Parameter <IScript> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,21 +195,6 @@ Indicates if the permissions for the script caller are kept following completion
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalPermissionsAction
 Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create PrivateEndpointConnections of service namespace.</summary>
+    /// <summary>create PrivateEndpointConnections of service namespace.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzServiceBusPrivateEndpointConnection_CreateViaIdentityNamespace", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Create PrivateEndpointConnections of service namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"create PrivateEndpointConnections of service namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ExternalDocs(@"https://msdn.microsoft.com/en-us/library/azure/mt639408.aspx", @"")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}", ApiVersion = "2022-10-01-preview")]

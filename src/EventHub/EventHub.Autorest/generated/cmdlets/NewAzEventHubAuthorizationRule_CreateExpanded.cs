@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using System;
 
     /// <summary>
-    /// Create an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds
+    /// create an AuthorizationRule for the specified Event Hub. Creation/create of the AuthorizationRule will take a few seconds
     /// to take effect.
     /// </summary>
     /// <remarks>
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubAuthorizationRule_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Create an AuthorizationRule for the specified Event Hub. Creation/update of the AuthorizationRule will take a few seconds to take effect.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create an AuthorizationRule for the specified Event Hub. Creation/create of the AuthorizationRule will take a few seconds to take effect.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubAuthorizationRule_CreateExpanded : global::System.Management.Automation.PSCmdlet,

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the RestSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -68,9 +71,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="additionalColumns">Specifies the additional columns to be added to source data. Type: key
         /// value pairs (value should be string type).
         /// </param>
-        public RestSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object requestMethod = default(object), object requestBody = default(object), object additionalHeaders = default(object), object paginationRules = default(object), object httpRequestTimeout = default(object), object requestInterval = default(object), object additionalColumns = default(object))
+        public RestSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object requestMethod = default(object), object requestBody = default(object), object additionalHeaders = default(object), object paginationRules = default(object), object httpRequestTimeout = default(object), object requestInterval = default(object), object additionalColumns = default(object))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.RequestMethod = requestMethod;
             this.RequestBody = requestBody;

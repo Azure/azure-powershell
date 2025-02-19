@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a topic in the specified namespace.
+create a topic in the specified namespace.
 .Description
-Create a topic in the specified namespace.
+create a topic in the specified namespace.
 .Example
 New-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic -DefaultMessageTimeToLive (New-TimeSpan -Days 18) -EnableBatchedOperations
 

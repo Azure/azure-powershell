@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.8.0
+* Upgraded nuget package to signed package.
 * Removed "Microsoft.Azure.Management.IotHub" Version "4.2.0" PackageReference
 
 ## Version 2.7.7

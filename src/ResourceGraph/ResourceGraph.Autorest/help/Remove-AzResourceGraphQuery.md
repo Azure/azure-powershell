@@ -110,6 +110,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -124,7 +125,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription Id.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
