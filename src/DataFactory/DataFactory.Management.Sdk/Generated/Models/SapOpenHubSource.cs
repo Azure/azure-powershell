@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SapOpenHubSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -67,9 +70,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// well as splitting the output data retrieved. Type: string (or Expression
         /// with resultType string).
         /// </param>
-        public SapOpenHubSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object excludeLastRequest = default(object), object baseRequestId = default(object), object customRfcReadTableFunctionModule = default(object), object sapDataColumnDelimiter = default(object))
+        public SapOpenHubSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object excludeLastRequest = default(object), object baseRequestId = default(object), object customRfcReadTableFunctionModule = default(object), object sapDataColumnDelimiter = default(object))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.ExcludeLastRequest = excludeLastRequest;
             this.BaseRequestId = baseRequestId;

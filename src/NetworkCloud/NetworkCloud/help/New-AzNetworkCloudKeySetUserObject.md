@@ -14,7 +14,7 @@ Create an in-memory object for KeySetUser.
 
 ```
 New-AzNetworkCloudKeySetUserObject -AzureUserName <String> -SshPublicKeyData <String> [-Description <String>]
- [-UserPrincipalName <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-UserPrincipalName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,21 +59,6 @@ The free-form description for this user.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SapCloudForCustomerSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -56,9 +59,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Type: string (or Expression with resultType string), pattern:
         /// ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
         /// </param>
-        public SapCloudForCustomerSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), string writeBehavior = default(string), object httpRequestTimeout = default(object))
+        public SapCloudForCustomerSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), string writeBehavior = default(string), object httpRequestTimeout = default(object))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.WriteBehavior = writeBehavior;
             this.HttpRequestTimeout = httpRequestTimeout;

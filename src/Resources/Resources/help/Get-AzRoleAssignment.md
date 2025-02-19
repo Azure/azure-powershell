@@ -56,14 +56,14 @@ Get-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -ResourceNam
 
 ### ScopeWithObjectIdParameterSet
 ```
-Get-AzRoleAssignment -ObjectId <String> [-RoleDefinitionName <String>] -Scope <String>
+Get-AzRoleAssignment -ObjectId <String> [-RoleDefinitionName <String>] -Scope <String> [-AtScope]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
-Get-AzRoleAssignment [-ObjectId <String>] -RoleDefinitionId <Guid> [-Scope <String>]
+Get-AzRoleAssignment [-ObjectId <String>] -RoleDefinitionId <Guid> [-Scope <String>] [-AtScope]
  [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
@@ -85,7 +85,7 @@ Get-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceN
 
 ### ScopeWithSignInNameParameterSet
 ```
-Get-AzRoleAssignment -SignInName <String> [-RoleDefinitionName <String>] -Scope <String>
+Get-AzRoleAssignment -SignInName <String> [-RoleDefinitionName <String>] -Scope <String> [-AtScope]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
@@ -114,7 +114,7 @@ Get-AzRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> 
 
 ### ScopeWithSPNParameterSet
 ```
-Get-AzRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String>] -Scope <String>
+Get-AzRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String>] -Scope <String> [-AtScope]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
@@ -143,7 +143,7 @@ Get-AzRoleAssignment -ResourceGroupName <String> -ResourceName <String> -Resourc
 
 ### ScopeParameterSet
 ```
-Get-AzRoleAssignment [-RoleDefinitionName <String>] -Scope <String> [-IncludeClassicAdministrators]
+Get-AzRoleAssignment [-RoleDefinitionName <String>] -Scope <String> [-AtScope] [-IncludeClassicAdministrators]
  [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
@@ -203,7 +203,30 @@ Get-AzRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83
 
 Gets role assignments at the 'site1' website scope.
 
+### Example 5
+```powershell
+$ApplicationObject = Get-AzADServicePrincipal -DisplayName 'ApplicationDisplayName'
+Get-AzRoleAssignment -ServicePrincipalName $ApplicationObject.AppId
+```
+
+Gets role assignments for the specified Service Principal using Get-AzAdServicePrincipal.
+
 ## PARAMETERS
+
+### -AtScope
+If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ScopeWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet, ScopeParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure

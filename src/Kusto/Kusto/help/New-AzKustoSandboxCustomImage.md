@@ -17,14 +17,14 @@ Creates or updates a sandbox custom image.
 New-AzKustoSandboxCustomImage -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-BaseImageName <String>] [-LanguageVersion <String>]
  [-RequirementsFileContent <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzKustoSandboxCustomImage -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Parameter <ISandboxCustomImage> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,21 +169,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.1
+* Removed "Microsoft.Azure.Management.Authorization" Version "2.13.0-preview" package reference
+
+## Version 2.4.0
 * Upgraded nuget package to signed package.
 
 ## Version 2.3.1

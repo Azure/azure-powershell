@@ -1,7 +1,7 @@
 @secure()
 param kubeConfig string
 
-provider kubernetes with {
+extension kubernetes with {
   kubeConfig: kubeConfig
   namespace: 'default'
 }

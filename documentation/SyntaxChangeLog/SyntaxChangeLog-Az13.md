@@ -1,3 +1,119 @@
+## 13.2.0 - February 2025
+#### Az.Compute 9.1.0 
+* Modified cmdlet `New-AzVMConfig`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `Set-AzVMDiskEncryptionExtension`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `Set-AzVmssDiskEncryptionExtension`
+   - Added parameter `-EncryptionIdentity`
+#### Az.EventHub 5.2.0 
+* Modified cmdlet `New-AzEventHub`
+   - Added parameters `-MinCompactionLagInMin`, `-TimestampType`, `-UserMetadata`
+* Modified cmdlet `Set-AzEventHub`
+   - Added parameters `-UserMetadata`, `-MinCompactionLagInMin`, `-TimestampType`
+#### Az.Network 7.14.0 
+* Modified cmdlet `New-AzRouteServer`
+   - Added parameter `-VirtualRouterAutoScaleConfiguration`
+* Modified cmdlet `Update-AzRouteServer`
+   - Added parameter `-VirtualRouterAutoScaleConfiguration`
+#### Az.RecoveryServices 7.5.0 
+* Modified cmdlet `Set-AzRecoveryServicesVaultProperty`
+   - Added parameter `-SoftDeleteRetentionPeriodInDays`
+* Added cmdlet `Undo-AzRecoveryServicesBackupContainerDeletion`
+
+## 13.1.0 - January 2025
+#### Az.Databricks 1.10.0 
+* Modified cmdlet `New-AzDatabricksWorkspace`
+   - Removed parameters `-EnhancedSecurityMonitoringValue`, `-AutomaticClusterUpdateValue`, `-ComplianceSecurityProfileComplianceStandard`, `-ComplianceSecurityProfileValue`
+   - Added parameters `-EnhancedSecurityMonitoring`, `-AutomaticClusterUpdate`, `-ComplianceStandard`, `-EnhancedSecurityCompliance`
+* Modified cmdlet `Update-AzDatabricksWorkspace`
+   - Removed parameters `-EnhancedSecurityMonitoringValue`, `-AutomaticClusterUpdateValue`, `-ComplianceSecurityProfileComplianceStandard`, `-ComplianceSecurityProfileValue`
+   - Added parameters `-EnhancedSecurityMonitoring`, `-AutomaticClusterUpdate`, `-ComplianceStandard`, `-EnhancedSecurityCompliance`
+#### Az.DataProtection 2.6.0 
+* Modified cmdlet `Initialize-AzDataProtectionBackupInstance`
+   - Added parameters `-UseSystemAssignedIdentity`, `-UserAssignedIdentityArmId`
+* Modified cmdlet `New-AzDataProtectionBackupVault`
+   - Added parameter alias `AssignUserIdentity` to parameter `-IdentityUserAssignedIdentity`
+* Modified cmdlet `Set-AzDataProtectionMSIPermission`
+   - Added parameter `-UserAssignedIdentityARMId`
+* Modified cmdlet `Update-AzDataProtectionBackupInstance`
+   - Added parameters `-UseSystemAssignedIdentity`, `-UserAssignedIdentityArmId`
+* Modified cmdlet `Update-AzDataProtectionBackupVault`
+   - Added parameter alias `AssignUserIdentity` to parameter `-IdentityUserAssignedIdentity`
+#### Az.Kusto 2.4.0 
+* Modified cmdlet `New-AzKustoCluster`
+   - Added parameter `-CalloutPolicy`
+* Modified cmdlet `New-AzKustoSandboxCustomImage`
+   - Added parameter `-BaseImageName`
+* Modified cmdlet `New-AzKustoScript`
+   - Added parameters `-PrincipalPermissionsAction`, `-ScriptLevel`
+* Modified cmdlet `Update-AzKustoCluster`
+   - Added parameter `-CalloutPolicy`
+* Modified cmdlet `Update-AzKustoSandboxCustomImage`
+   - Added parameter `-BaseImageName`
+* Modified cmdlet `Update-AzKustoScript`
+   - Added parameters `-PrincipalPermissionsAction`, `-ScriptLevel`
+* Added cmdlet `Add-AzKustoClusterCalloutPolicy`, `Get-AzKustoClusterCalloutPolicy`, `Get-AzKustoClusterFollowerDatabaseGet`, `Remove-AzKustoClusterCalloutPolicy`
+#### Az.Network 7.12.0 
+* Modified cmdlet `Add-AzVirtualNetworkSubnetConfig`
+   - Added parameter `-IpamPoolPrefixAllocation`
+   - Parameter `-AddressPrefix` ValidateNotNullOrEmpty changed from `True` to `False`
+* Modified cmdlet `New-AzFirewall`
+   - Added parameters `-MinCapacity`, `-MaxCapacity`
+* Modified cmdlet `New-AzNetworkManagerSecurityAdminConfiguration`
+   - Added parameter `-NetworkGroupAddressSpaceAggregationOption`
+* Modified cmdlet `New-AzVirtualNetwork`
+   - Added parameter `-IpamPoolPrefixAllocation`
+   - Parameter `-AddressPrefix` ValidateNotNullOrEmpty changed from `True` to `False`
+* Modified cmdlet `New-AzVirtualNetworkGateway`
+   - Added parameter `-ResiliencyModel`
+* Modified cmdlet `New-AzVirtualNetworkSubnetConfig`
+   - Added parameter `-IpamPoolPrefixAllocation`
+   - Parameter `-AddressPrefix` ValidateNotNullOrEmpty changed from `True` to `False`
+* Modified cmdlet `Set-AzVirtualNetworkGateway`
+   - Added parameter `-ResiliencyModel`
+* Modified cmdlet `Set-AzVirtualNetworkSubnetConfig`
+   - Added parameter `-IpamPoolPrefixAllocation`
+   - Parameter `-AddressPrefix` ValidateNotNullOrEmpty changed from `True` to `False`
+* Added cmdlet `Get-AzNetworkManagerAssociatedResourcesList`, `Get-AzNetworkManagerIpamPool`, `Get-AzNetworkManagerIpamPoolStaticCidr`, `Get-AzNetworkManagerIpamPoolUsage`, `Get-AzNetworkManagerVerifierWorkspace`, `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`, `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`, `New-AzNetworkManagerIpamPool`, `New-AzNetworkManagerIpamPoolStaticCidr`, `New-AzNetworkManagerIPTraffic`, `New-AzNetworkManagerVerifierWorkspace`, `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`, `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`, `Remove-AzNetworkManagerIpamPool`, `Remove-AzNetworkManagerIpamPoolStaticCidr`, `Remove-AzNetworkManagerVerifierWorkspace`, `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`, `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`, `Set-AzNetworkManagerIpamPool`, `Set-AzNetworkManagerVerifierWorkspace`
+#### Az.NetworkCloud 1.1.0 
+* Modified cmdlet `New-AzNetworkCloudAgentPool`
+   - Added parameters `-UpgradeSettingDrainTimeout`, `-UpgradeSettingMaxUnavailable`
+* Modified cmdlet `New-AzNetworkCloudCluster`
+   - Added parameters `-AssociatedIdentityType`, `-AssociatedIdentityUserAssignedIdentityResourceId`, `-CommandOutputSettingContainerUrl`, `-IdentityType`, `-IdentityUserAssignedIdentity`, `-RuntimeProtectionConfigurationEnforcementLevel`, `-SecretArchiveKeyVaultId`, `-SecretArchiveUseKeyVault`, `-UpdateStrategyMaxUnavailable`, `-UpdateStrategyThresholdType`, `-UpdateStrategyThresholdValue`, `-UpdateStrategyType`, `-UpdateStrategyWaitTimeMinute`
+* Modified cmdlet `New-AzNetworkCloudClusterManager`
+   - Added parameters `-IdentityType`, `-IdentityUserAssignedIdentity`
+* Modified cmdlet `New-AzNetworkCloudInitialAgentPoolConfigurationObject`
+   - Added parameters `-UpgradeSettingDrainTimeout`, `-UpgradeSettingMaxUnavailable`
+* Modified cmdlet `New-AzNetworkCloudKeySetUserObject`
+   - Added parameter `-UserPrincipalName`
+* Modified cmdlet `New-AzNetworkCloudKubernetesCluster`
+   - Added parameter `-L2ServiceLoadBalancerConfigurationIPAddressPool`
+* Modified cmdlet `Update-AzNetworkCloudAgentPool`
+   - Added parameters `-AdministratorConfigurationSshPublicKey`, `-UpgradeSettingDrainTimeout`, `-UpgradeSettingMaxUnavailable`
+* Modified cmdlet `Update-AzNetworkCloudCluster`
+   - Added parameters `-AssociatedIdentityType`, `-AssociatedIdentityUserAssignedIdentityResourceId`, `-CommandOutputSettingContainerUrl`, `-IdentityType`, `-IdentityUserAssignedIdentity`, `-RuntimeProtectionConfigurationEnforcementLevel`, `-SecretArchiveKeyVaultId`, `-SecretArchiveUseKeyVault`, `-UpdateStrategyMaxUnavailable`, `-UpdateStrategyThresholdType`, `-UpdateStrategyThresholdValue`, `-UpdateStrategyType`, `-UpdateStrategyWaitTimeMinute`
+* Modified cmdlet `Update-AzNetworkCloudClusterManager`
+   - Added parameters `-IdentityType`, `-IdentityUserAssignedIdentity`
+* Modified cmdlet `Update-AzNetworkCloudKubernetesCluster`
+   - Added parameters `-ControlPlaneNodeConfigurationAdminPublicKey`, `-SshPublicKey`
+* Added cmdlet `Get-AzNetworkCloudKubernetesClusterFeature`, `Invoke-AzNetworkCloudClusterContinueVersionUpdate`, `Invoke-AzNetworkCloudScanClusterRuntime`, `New-AzNetworkCloudKubernetesClusterFeature`, `Remove-AzNetworkCloudKubernetesClusterFeature`, `Update-AzNetworkCloudKubernetesClusterFeature`
+#### Az.RecoveryServices 7.4.0 
+* Modified cmdlet `Get-AzRecoveryServicesBackupRetentionPolicyObject`
+   - Added parameter `-BackupTier`
+#### Az.RedisCache 1.11.0 
+* Modified cmdlet `New-AzRedisCache`
+   - Added parameter `-ZonalAllocationPolicy`
+* Modified cmdlet `Set-AzRedisCache`
+   - Added parameter `-ZonalAllocationPolicy`
+#### Az.Resources 7.8.0 
+* Modified cmdlet `New-AzADApplication`
+   - Added parameter `-RequestedAccessTokenVersion`
+* Modified cmdlet `Update-AzADApplication`
+   - Added parameter `-RequestedAccessTokenVersion`
+
 ## 13.0.0 - November 2024
 #### Az.Accounts 4.0.0 
 * Modified cmdlet `Invoke-AzRestMethod`
@@ -290,5 +406,7 @@
    - Added parameter alias `DestFile` to parameter `-DestShareFileClient`
 * Modified cmdlet `Stop-AzStorageFileCopy`
    - Removed parameter `-File`
+
+
 
 

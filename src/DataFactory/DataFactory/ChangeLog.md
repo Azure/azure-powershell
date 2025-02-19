@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added more support for Oracle connection properties.
+* Added more support for Teradata connection properties.
+* Added more support for AzurePostgreSql connection properties.
+
+## Version 1.19.0
 * Upgraded nuget package to signed package.
 * Added support for additional MySQL connection properties.
 * Added support for Azure PostgreSQL v2, updated connection strings, and corrected Linked JSON configurations.

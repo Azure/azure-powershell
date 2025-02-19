@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added support for Cosmos DB Table role definition and role assignment related cmdlets.
+
+## Version 1.16.0
 * Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 
