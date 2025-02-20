@@ -309,7 +309,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
-        /// <param name="handlers"></param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>

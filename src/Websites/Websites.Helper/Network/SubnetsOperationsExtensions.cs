@@ -78,7 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name="subnetParameters"></param>
         public static Subnet CreateOrUpdate(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, Subnet subnetParameters)
         {
                 return ((ISubnetsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkName, subnetName, subnetParameters).GetAwaiter().GetResult();
@@ -99,7 +98,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name="subnetParameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
@@ -125,7 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name="subnetParameters"></param>
         public static Subnet BeginCreateOrUpdate(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, Subnet subnetParameters)
         {
                 return ((ISubnetsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, virtualNetworkName, subnetName, subnetParameters).GetAwaiter().GetResult();
@@ -146,7 +143,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name="subnetParameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>

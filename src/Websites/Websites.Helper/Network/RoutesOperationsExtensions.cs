@@ -114,7 +114,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeName'>
         /// The name of the route.
         /// </param>
-        /// <param name="routeParameters"></param>
         public static Route CreateOrUpdate(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, Route routeParameters)
         {
                 return ((IRoutesOperations)operations).CreateOrUpdateAsync(resourceGroupName, routeTableName, routeName, routeParameters).GetAwaiter().GetResult();
@@ -135,7 +134,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeName'>
         /// The name of the route.
         /// </param>
-        /// <param name="routeParameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
@@ -242,7 +240,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeName'>
         /// The name of the route.
         /// </param>
-        /// <param name="routeParameters"></param>
         public static Route BeginCreateOrUpdate(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, Route routeParameters)
         {
                 return ((IRoutesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, routeTableName, routeName, routeParameters).GetAwaiter().GetResult();
@@ -263,7 +260,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeName'>
         /// The name of the route.
         /// </param>
-        /// <param name="routeParameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>

@@ -32,7 +32,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='relativeRecordSetName'>
         /// The name of the record set, relative to the name of the zone.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the record set. Omit this value to always overwrite the current
         /// record set. Specify the last-seen ETag value to prevent accidentally
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='relativeRecordSetName'>
         /// The name of the record set, relative to the name of the zone.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the record set. Omit this value to always overwrite the current
         /// record set. Specify the last-seen ETag value to prevent accidentally

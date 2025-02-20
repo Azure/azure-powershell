@@ -25,7 +25,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='privateZoneName'>
         /// The name of the Private DNS zone (without a terminating dot).
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the Private DNS zone. Omit this value to always overwrite the
         /// current zone. Specify the last-seen ETag value to prevent accidentally
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='privateZoneName'>
         /// The name of the Private DNS zone (without a terminating dot).
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the Private DNS zone. Omit this value to always overwrite the
         /// current zone. Specify the last-seen ETag value to prevent accidentally
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='privateZoneName'>
         /// The name of the Private DNS zone (without a terminating dot).
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the Private DNS zone. Omit this value to always overwrite the
         /// current zone. Specify the last-seen ETag value to prevent accidentally
@@ -114,7 +111,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='privateZoneName'>
         /// The name of the Private DNS zone (without a terminating dot).
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the Private DNS zone. Omit this value to always overwrite the
         /// current zone. Specify the last-seen ETag value to prevent accidentally

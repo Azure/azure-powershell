@@ -24,7 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        /// <param name="parameters"></param>
         public static PrivateEndpoint CreateOrUpdate(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters)
         {
                 return ((IPrivateEndpointsOperations)operations).CreateOrUpdateAsync(resourceGroupName, privateEndpointName, parameters).GetAwaiter().GetResult();
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        /// <param name="parameters"></param>
         public static PrivateEndpoint BeginCreateOrUpdate(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters)
         {
                 return ((IPrivateEndpointsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, privateEndpointName, parameters).GetAwaiter().GetResult();
@@ -83,7 +80,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>

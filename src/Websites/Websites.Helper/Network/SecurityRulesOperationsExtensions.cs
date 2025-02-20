@@ -114,7 +114,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='securityRuleName'>
         /// The name of the security rule.
         /// </param>
-        /// <param name="securityRuleParameters"></param>
         public static SecurityRule CreateOrUpdate(this ISecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, string securityRuleName, SecurityRule securityRuleParameters)
         {
                 return ((ISecurityRulesOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, securityRuleName, securityRuleParameters).GetAwaiter().GetResult();
@@ -135,7 +134,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='securityRuleName'>
         /// The name of the security rule.
         /// </param>
-        /// <param name="securityRuleParameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
@@ -242,7 +240,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='securityRuleName'>
         /// The name of the security rule.
         /// </param>
-        /// <param name="securityRuleParameters"></param>
         public static SecurityRule BeginCreateOrUpdate(this ISecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, string securityRuleName, SecurityRule securityRuleParameters)
         {
                 return ((ISecurityRulesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, securityRuleName, securityRuleParameters).GetAwaiter().GetResult();
@@ -263,7 +260,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='securityRuleName'>
         /// The name of the security rule.
         /// </param>
-        /// <param name="securityRuleParameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>

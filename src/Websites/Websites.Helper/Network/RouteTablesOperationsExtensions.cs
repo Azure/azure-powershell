@@ -105,7 +105,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeTableName'>
         /// The name of the route table.
         /// </param>
-        /// <param name="parameters"></param>
         public static RouteTable CreateOrUpdate(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, RouteTable parameters)
         {
                 return ((IRouteTablesOperations)operations).CreateOrUpdateAsync(resourceGroupName, routeTableName, parameters).GetAwaiter().GetResult();
@@ -123,7 +122,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeTableName'>
         /// The name of the route table.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
@@ -146,7 +144,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeTableName'>
         /// The name of the route table.
         /// </param>
-        /// <param name="tags"></param>
         public static RouteTable UpdateTags(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
         {
                 return ((IRouteTablesOperations)operations).UpdateTagsAsync(resourceGroupName, routeTableName, tags).GetAwaiter().GetResult();
@@ -164,7 +161,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeTableName'>
         /// The name of the route table.
         /// </param>
-        /// <param name="tags"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
@@ -283,7 +279,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeTableName'>
         /// The name of the route table.
         /// </param>
-        /// <param name="parameters"></param>
         public static RouteTable BeginCreateOrUpdate(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, RouteTable parameters)
         {
                 return ((IRouteTablesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, routeTableName, parameters).GetAwaiter().GetResult();
@@ -301,7 +296,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='routeTableName'>
         /// The name of the route table.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>

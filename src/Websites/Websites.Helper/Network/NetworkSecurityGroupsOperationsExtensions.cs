@@ -106,7 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        /// <param name="parameters"></param>
         public static NetworkSecurityGroup CreateOrUpdate(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, NetworkSecurityGroup parameters)
         {
                 return ((INetworkSecurityGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
@@ -125,7 +124,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
@@ -148,7 +146,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        /// <param name="tags"></param>
         public static NetworkSecurityGroup UpdateTags(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
         {
                 return ((INetworkSecurityGroupsOperations)operations).UpdateTagsAsync(resourceGroupName, networkSecurityGroupName, tags).GetAwaiter().GetResult();
@@ -166,7 +163,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        /// <param name="tags"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
@@ -286,7 +282,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        /// <param name="parameters"></param>
         public static NetworkSecurityGroup BeginCreateOrUpdate(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, NetworkSecurityGroup parameters)
         {
                 return ((INetworkSecurityGroupsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
@@ -305,7 +300,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>

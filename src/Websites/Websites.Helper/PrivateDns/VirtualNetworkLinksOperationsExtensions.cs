@@ -28,7 +28,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='virtualNetworkLinkName'>
         /// The name of the virtual network link.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the virtual network link to the Private DNS zone. Omit this
         /// value to always overwrite the current virtual network link. Specify the
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='virtualNetworkLinkName'>
         /// The name of the virtual network link.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the virtual network link to the Private DNS zone. Omit this
         /// value to always overwrite the current virtual network link. Specify the
@@ -146,7 +144,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='virtualNetworkLinkName'>
         /// The name of the virtual network link.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the virtual network link to the Private DNS zone. Omit this
         /// value to always overwrite the current virtual network link. Specify the
@@ -179,7 +176,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns
         /// <param name='virtualNetworkLinkName'>
         /// The name of the virtual network link.
         /// </param>
-        /// <param name="parameters"></param>
         /// <param name='ifMatch'>
         /// The ETag of the virtual network link to the Private DNS zone. Omit this
         /// value to always overwrite the current virtual network link. Specify the
