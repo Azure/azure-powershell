@@ -830,7 +830,7 @@ function Attestation-Error-Handling {
       $actualCode = $_.Exception.Body.error.Code
 
       Assert-AreEqual $codecompare $actualCode
-      if ($actualMessage.Contains($messagecompare) -and ($null -ne $messagecompare)) {
+      if ($actualMessage.Contains($messagecompare)) {
          return $true
       }
       else {
