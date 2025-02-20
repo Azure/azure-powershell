@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSStorageAccountKey(StorageModels.StorageAccountKey storageAccountKey)
         {
             this.KeyName = storageAccountKey.KeyName;
-            this.Value = storageAccountKey.Value;
             this.ValueSecure = storageAccountKey.Value.ConvertToSecureString();
             this.Permissions = storageAccountKey.Permissions.ParseKeyPermission();
             this.CreationTime = storageAccountKey.CreationTime;
@@ -60,9 +59,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         [Newtonsoft.Json.JsonProperty(PropertyName = "keyName")]
         public string KeyName { get; private set; }
-
-        [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
-        public string Value { get; private set; }
 
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Security.SecureString ValueSecure { get; private set; }
