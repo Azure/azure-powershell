@@ -3713,7 +3713,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>update the properties of a local user associated with the storage account</summary>
+        /// <summary>
+        /// update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
+        /// groups cannot be set with other properties.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -3767,14 +3770,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-<<<<<<< HEAD
         /// <summary>
-        /// Update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
+        /// update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
         /// groups cannot be set with other properties.
         /// </summary>
-=======
-        /// <summary>update the properties of a local user associated with the storage account</summary>
->>>>>>> origin/legacy-main-tools-2025-02-14
         /// <param name="viaIdentity"></param>
         /// <param name="body">The local user associated with a storage account.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3836,14 +3835,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-<<<<<<< HEAD
         /// <summary>
-        /// Update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
+        /// update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
         /// groups cannot be set with other properties.
         /// </summary>
-=======
-        /// <summary>update the properties of a local user associated with the storage account</summary>
->>>>>>> origin/legacy-main-tools-2025-02-14
         /// <param name="viaIdentity"></param>
         /// <param name="body">The local user associated with a storage account.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3903,14 +3898,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-<<<<<<< HEAD
         /// <summary>
-        /// Update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
+        /// update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
         /// groups cannot be set with other properties.
         /// </summary>
-=======
-        /// <summary>update the properties of a local user associated with the storage account</summary>
->>>>>>> origin/legacy-main-tools-2025-02-14
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -3963,14 +3954,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-<<<<<<< HEAD
         /// <summary>
-        /// Update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
+        /// update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
         /// groups cannot be set with other properties.
         /// </summary>
-=======
-        /// <summary>update the properties of a local user associated with the storage account</summary>
->>>>>>> origin/legacy-main-tools-2025-02-14
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -4021,14 +4008,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-<<<<<<< HEAD
         /// <summary>
-        /// Update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
+        /// update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended
         /// groups cannot be set with other properties.
         /// </summary>
-=======
-        /// <summary>update the properties of a local user associated with the storage account</summary>
->>>>>>> origin/legacy-main-tools-2025-02-14
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -10405,7 +10388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StartAccountMigration(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10458,7 +10441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StartAccountMigrationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10525,7 +10508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StartAccountMigrationViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12041,362 +12024,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-<<<<<<< HEAD
-        /// <summary>
-        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates
-        /// the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability
-        /// and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
-        /// zones in the primary region.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
-        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
-        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
-        /// <param name="body">The request parameters required to perform storage account migration.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode"/>.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task StorageAccountsCustomerInitiatedMigration(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
-        {
-            var apiVersion = @"2023-05-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Storage/storageAccounts/"
-                        + global::System.Uri.EscapeDataString(accountName)
-                        + "/startAccountMigration"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.StorageAccountsCustomerInitiatedMigration_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates
-        /// the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability
-        /// and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
-        /// zones in the primary region.
-        /// </summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="body">The request parameters required to perform storage account migration.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode"/>.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task StorageAccountsCustomerInitiatedMigrationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
-        {
-            var apiVersion = @"2023-05-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Storage/storageAccounts/(?<accountName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var accountName = _match.Groups["accountName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.Storage/storageAccounts/"
-                        + accountName
-                        + "/startAccountMigration"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.StorageAccountsCustomerInitiatedMigration_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates
-        /// the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability
-        /// and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
-        /// zones in the primary region.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
-        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
-        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
-        /// <param name="jsonString">Json string supplied to the StorageAccountsCustomerInitiatedMigration operation</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task StorageAccountsCustomerInitiatedMigrationViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2023-05-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Storage/storageAccounts/"
-                        + global::System.Uri.EscapeDataString(accountName)
-                        + "/startAccountMigration"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.StorageAccountsCustomerInitiatedMigration_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// Actual wire call for <see cref= "StorageAccountsCustomerInitiatedMigration" /> method.
-        /// </summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageAccountsCustomerInitiatedMigration_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-                        // delay before making the next polling request
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
-                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                          // if we got back an OK, take a peek inside and see if it's done
-                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                          {
-                              var error = false;
-                              try {
-                                  if( Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject json)
-                                  {
-                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("status");
-                                      if( state is null )
-                                      {
-                                          // the body doesn't contain any information that has the state of the LRO
-                                          // we're going to just get out, and let the consumer have the result
-                                          break;
-                                      }
-
-                                      switch( state?.ToString()?.ToLower() )
-                                      {
-                                        case "failed":
-                                            error = true;
-                                            break;
-                                        case "succeeded":
-                                        case "canceled":
-                                          // we're done polling.
-                                          break;
-
-                                        default:
-                                          // need to keep polling!
-                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                          continue;
-                                      }
-                                  }
-                              } catch {
-                                  // if we run into a problem peeking into the result,
-                                  // we really don't want to do anything special.
-                              }
-                              if (error) {
-                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.UndeclaredResponseException(_response);
-                              }
-                          }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                        break;
-                    }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response);
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ErrorResponseAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="StorageAccountsCustomerInitiatedMigration" /> method. Call this like the actual call,
-        /// but you will get validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
-        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
-        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
-        /// <param name="body">The request parameters required to perform storage account migration.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageAccountsCustomerInitiatedMigration_Validate(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName), resourceGroupName, @"^[-\w\._\(\)]+$");
-                await eventListener.AssertNotNull(nameof(accountName),accountName);
-                await eventListener.AssertMinimumLength(nameof(accountName),accountName,3);
-                await eventListener.AssertMaximumLength(nameof(accountName),accountName,24);
-                await eventListener.AssertRegEx(nameof(accountName), accountName, @"^[a-z0-9]+$");
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
-            }
-        }
-
-=======
->>>>>>> origin/legacy-main-tools-2025-02-14
         /// <summary>Deletes a storage account in Microsoft Azure.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -16870,7 +16497,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>
         /// <summary>Fetch the report summary of a single storage task assignment's instances</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -17656,10 +17282,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
+        /// Asynchronously create a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
         /// is already created and a subsequent create request is issued with different properties, the storage task assignment properties
-        /// will be updated. If a storage task assignment is already created and a subsequent create or update request is issued with
-        /// the exact same set of properties, the request will succeed.
+        /// will be updated. If a storage task assignment is already created and a subsequent create request is issued with the exact
+        /// same set of properties, the request will succeed.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -17715,10 +17341,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
+        /// Asynchronously create a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
         /// is already created and a subsequent create request is issued with different properties, the storage task assignment properties
-        /// will be updated. If a storage task assignment is already created and a subsequent create or update request is issued with
-        /// the exact same set of properties, the request will succeed.
+        /// will be updated. If a storage task assignment is already created and a subsequent create request is issued with the exact
+        /// same set of properties, the request will succeed.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The parameters to create a Storage Task Assignment.</param>
@@ -17782,10 +17408,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
+        /// Asynchronously create a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
         /// is already created and a subsequent create request is issued with different properties, the storage task assignment properties
-        /// will be updated. If a storage task assignment is already created and a subsequent create or update request is issued with
-        /// the exact same set of properties, the request will succeed.
+        /// will be updated. If a storage task assignment is already created and a subsequent create request is issued with the exact
+        /// same set of properties, the request will succeed.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The parameters to create a Storage Task Assignment.</param>
@@ -17847,10 +17473,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
+        /// Asynchronously create a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
         /// is already created and a subsequent create request is issued with different properties, the storage task assignment properties
-        /// will be updated. If a storage task assignment is already created and a subsequent create or update request is issued with
-        /// the exact same set of properties, the request will succeed.
+        /// will be updated. If a storage task assignment is already created and a subsequent create request is issued with the exact
+        /// same set of properties, the request will succeed.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -17905,10 +17531,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
+        /// Asynchronously create a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
         /// is already created and a subsequent create request is issued with different properties, the storage task assignment properties
-        /// will be updated. If a storage task assignment is already created and a subsequent create or update request is issued with
-        /// the exact same set of properties, the request will succeed.
+        /// will be updated. If a storage task assignment is already created and a subsequent create request is issued with the exact
+        /// same set of properties, the request will succeed.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -17961,10 +17587,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
+        /// Asynchronously create a new storage task assignment sub-resource with the specified parameters. If a storage task assignment
         /// is already created and a subsequent create request is issued with different properties, the storage task assignment properties
-        /// will be updated. If a storage task assignment is already created and a subsequent create or update request is issued with
-        /// the exact same set of properties, the request will succeed.
+        /// will be updated. If a storage task assignment is already created and a subsequent create request is issued with the exact
+        /// same set of properties, the request will succeed.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -19344,7 +18970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Update storage task assignment properties</summary>
+        /// <summary>update storage task assignment properties</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -19398,7 +19024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Update storage task assignment properties</summary>
+        /// <summary>update storage task assignment properties</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The parameters to update a Storage Task Assignment.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -19460,7 +19086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Update storage task assignment properties</summary>
+        /// <summary>update storage task assignment properties</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The parameters to update a Storage Task Assignment.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -19520,7 +19146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Update storage task assignment properties</summary>
+        /// <summary>update storage task assignment properties</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -19573,7 +19199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Update storage task assignment properties</summary>
+        /// <summary>update storage task assignment properties</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -19624,7 +19250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Update storage task assignment properties</summary>
+        /// <summary>update storage task assignment properties</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -20011,6 +19637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
+        /// <summary>
         /// Gets the current usage count and the limit for the resources of the location under the subscription.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>

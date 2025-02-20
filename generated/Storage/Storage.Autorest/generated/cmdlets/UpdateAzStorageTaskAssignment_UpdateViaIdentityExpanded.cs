@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update storage task assignment properties</summary>
+    /// <summary>update storage task assignment properties</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStorageTaskAssignment_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Update storage task assignment properties")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"update storage task assignment properties")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}", ApiVersion = "2023-05-01")]
     public partial class UpdateAzStorageTaskAssignment_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
