@@ -16,7 +16,6 @@
     <PackageReference Include="Azure.Analytics.Synapse.Artifacts" Version="1.0.0-preview.20" />
     <PackageReference Include="Azure.Analytics.Synapse.ManagedPrivateEndpoints" Version="1.0.0-beta.5" />
     <PackageReference Include="Azure.Analytics.Synapse.Spark" Version="1.0.0-preview.7" />
-    <PackageReference Include="Microsoft.Azure.Management.Synapse" Version="2.6.0-preview" />
     <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="5.29.8499.2" />
     <!-- Include the following DLLs for security issue -->
     <PackageReference Include="System.Security.Cryptography.Xml" Version="4.7.1" />
@@ -44,6 +43,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Models\ManagementModels\AdvancedThreatProtection\Templates\DeployWorkspaceVaTemplate.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Synapse.Management.Sdk\Synapse.Management.Sdk.csproj" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.0
+* Upgraded nuget package to signed package.
+
 ## Version 4.1.1
 * Used `Get-AzAccessToken -AsSecureString` inside the `Functions` for the plain text version is going to be deprecate in the next release.
 
