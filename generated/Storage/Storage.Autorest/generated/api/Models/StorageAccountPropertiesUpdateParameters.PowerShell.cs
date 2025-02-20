@@ -158,6 +158,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).IsLocalUserEnabled = (bool?) content.GetValueForProperty("IsLocalUserEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).IsLocalUserEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("EnableExtendedGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).EnableExtendedGroup = (bool?) content.GetValueForProperty("EnableExtendedGroup",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).EnableExtendedGroup, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("LargeFileSharesState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).LargeFileSharesState = (string) content.GetValueForProperty("LargeFileSharesState",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).LargeFileSharesState, global::System.Convert.ToString);
@@ -374,6 +378,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("IsLocalUserEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).IsLocalUserEnabled = (bool?) content.GetValueForProperty("IsLocalUserEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).IsLocalUserEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableExtendedGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).EnableExtendedGroup = (bool?) content.GetValueForProperty("EnableExtendedGroup",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)this).EnableExtendedGroup, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LargeFileSharesState"))
             {
