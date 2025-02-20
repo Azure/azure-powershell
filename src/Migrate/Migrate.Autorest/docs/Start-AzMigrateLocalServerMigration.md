@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratehciservermigration
+online version: https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratelocalservermigration
 schema: 2.0.0
 ---
 
-# Start-AzMigrateHCIServerMigration
+# Start-AzMigrateLocalServerMigration
 
 ## SYNOPSIS
 Starts the migration for the replicating server.
@@ -14,13 +14,13 @@ Starts the migration for the replicating server.
 
 ### ByID (Default)
 ```
-Start-AzMigrateHCIServerMigration -TargetObjectID <String> [-SubscriptionId <String>] [-TurnOffSourceServer]
+Start-AzMigrateLocalServerMigration -TargetObjectID <String> [-SubscriptionId <String>] [-TurnOffSourceServer]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Start-AzMigrateHCIServerMigration -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
+Start-AzMigrateLocalServerMigration -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
  [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,16 +31,13 @@ Starts the migration for the replicating server.
 
 ### Example 1: Start migration by Id
 ```powershell
-Start-AzMigrateHCIServerMigration -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+Start-AzMigrateLocalServerMigration -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api2021
-                                     0216Preview.WorkflowModelCustomPropertiesAffectedObjectDe
-                                     tails
-CustomPropertyInstanceType         : FailoverWorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Planned failover
 EndTime                            :
 Error                              : {}
@@ -64,32 +61,27 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api2021
-                                     0216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Turning off resource on primary,
                                      Starting failover, Preparing protected entities...}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
 ```
 
-Start AzStackHCI server migration by Id.
+Start AzLocal server migration by Id.
 
 ### Example 2: Start migration by input object
 ```powershell
-$InputObject = Get-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+$InputObject = Get-AzMigrateLocalServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 
-Start-AzMigrateHCIServerMigration -InputObject $InputObject
+Start-AzMigrateLocalServerMigration -InputObject $InputObject
 
-$InputObject | Start-AzMigrateHCIServerMigration
+$InputObject | Start-AzMigrateLocalServerMigration
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api2021
-                                     0216Preview.WorkflowModelCustomPropertiesAffectedObjectDe
-                                     tails
-CustomPropertyInstanceType         : FailoverWorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Planned failover
 EndTime                            :
 Error                              : {}
@@ -113,15 +105,13 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api2021
-                                     0216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Turning off resource on primary,
                                      Starting failover, Preparing protected entities...}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
 ```
 
-Start AzStackHCI server migration by replication input object.
+Start AzLocal server migration by replication input object.
 
 ## PARAMETERS
 
@@ -142,7 +132,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Specifies the replicating server for which migration needs to be initiated.
-The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+The server object can be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -174,7 +164,7 @@ Accept wildcard characters: False
 
 ### -TargetObjectID
 Specifies the replcating server for which migration needs to be initiated.
-The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+The ID should be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
 
 ```yaml
 Type: System.String
@@ -243,7 +233,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
 
 ## NOTES
 

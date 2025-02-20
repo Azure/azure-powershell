@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehcijob
+online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocaljob
 schema: 2.0.0
 ---
 
-# Get-AzMigrateHCIJob
+# Get-AzMigrateLocalJob
 
 ## SYNOPSIS
 Retrieves the status of an Azure Migrate job.
@@ -14,48 +14,48 @@ Retrieves the status of an Azure Migrate job.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateHCIJob -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzMigrateLocalJob -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetById
 ```
-Get-AzMigrateHCIJob -ID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateLocalJob -ID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
-Get-AzMigrateHCIJob -InputObject <IMigrateIdentity> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+Get-AzMigrateLocalJob -InputObject <IMigrateIdentity> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzMigrateHCIJob -Name <String> -ProjectName <String> -ResourceGroupName <String>
+Get-AzMigrateLocalJob -Name <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
-Get-AzMigrateHCIJob -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
+Get-AzMigrateLocalJob -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzMigrateHCIJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateLocalJob cmdlet retrives the status of an Azure Migrate job.
 
 ## EXAMPLES
 
 ### Example 1: Get by job Id
 ```powershell
-Get-AzMigrateHCIJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
+Get-AzMigrateLocalJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Delete protected item
 EndTime                            :
 Error                              : {}
@@ -78,7 +78,6 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Deleting protected item}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
@@ -88,14 +87,13 @@ Retrieves a job by its Id.
 
 ### Example 2: Get by job name
 ```powershell
-Get-AzMigrateHCIJob -ResourceGroupName "test-rg" -ProjectName "testproj" -Name "0203aa1b-1dff-4653-89a9-b90a76d1601a"
+Get-AzMigrateLocalJob -ResourceGroupName "test-rg" -ProjectName "testproj" -Name "0203aa1b-1dff-4653-89a9-b90a76d1601a"
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Delete protected item
 EndTime                            :
 Error                              : {}
@@ -118,7 +116,6 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Deleting protected item}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
@@ -128,18 +125,17 @@ Retrieves a job by its name.
 
 ### Example 3: Get by job input object
 ```powershell
-$InputObject = Get-AzMigrateHCIJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
+$InputObject = Get-AzMigrateLocalJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
 
-Get-AzMigrateHCIJob -InputObject $InputObject
+Get-AzMigrateLocalJob -InputObject $InputObject
 
-$InputObject | Get-AzMigrateHCIJob
+$InputObject | Get-AzMigrateLocalJob
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Delete protected item
 EndTime                            :
 Error                              : {}
@@ -162,7 +158,6 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Deleting protected item}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
@@ -172,14 +167,13 @@ Retrieves a job by the job itself as an input object.
 
 ### Example 4: List by resource group Id and project Id.
 ```powershell
-Get-AzMigrateHCIJob -ResourceGroupID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg" -ProjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Migrate/MigrateProjects/testproj"
+Get-AzMigrateLocalJob -ResourceGroupID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg" -ProjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Migrate/MigrateProjects/testproj"
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Delete protected item
 EndTime                            :
 Error                              : {}
@@ -202,14 +196,13 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Deleting protected item}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
 
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 CustomPropertyInstanceType         :
 DisplayName                        : Planned failover
 EndTime                            : 8/11/2023 10:09:18 PM
@@ -233,7 +226,6 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               :
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
@@ -243,14 +235,13 @@ Retrieves all the jobs from a project in some resource group by Ids.
 
 ### Example 5: List by resource group name and project name.
 ```powershell
-Get-AzMigrateHCIJob -ResourceGroupName "test-rg" -ProjectName "testproj"
+Get-AzMigrateLocalJob -ResourceGroupName "test-rg" -ProjectName "testproj"
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Delete protected item
 EndTime                            :
 Error                              : {}
@@ -273,14 +264,13 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Deleting protected item}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
 
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 CustomPropertyInstanceType         :
 DisplayName                        : Planned failover
 EndTime                            : 8/11/2023 10:09:18 PM
@@ -304,7 +294,6 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               :
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
@@ -459,7 +448,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
 
 ## NOTES
 

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehciserverreplication
+online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserverreplication
 schema: 2.0.0
 ---
 
-# New-AzMigrateHCIServerReplication
+# New-AzMigrateLocalServerReplication
 
 ## SYNOPSIS
 Starts replication for the specified server.
@@ -14,7 +14,7 @@ Starts replication for the specified server.
 
 ### ByIdDefaultUser (Default)
 ```
-New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -TargetResourceGroupId <String>
+New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -TargetResourceGroupId <String>
  -TargetStoragePathId <String> -TargetVirtualSwitchId <String> -TargetVMName <String>
  [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>]
  [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -23,28 +23,27 @@ New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -Target
 
 ### ByIdPowerUser
 ```
-New-AzMigrateHCIServerReplication -DiskToInclude <AzStackHCIDiskInput[]> -MachineId <String>
- -NicToInclude <AzStackHCINicInput[]> -TargetResourceGroupId <String> -TargetStoragePathId <String>
+New-AzMigrateLocalServerReplication -DiskToInclude <AzLocalDiskInput[]> -MachineId <String>
+ -NicToInclude <AzLocalNicInput[]> -TargetResourceGroupId <String> -TargetStoragePathId <String>
  -TargetVMName <String> [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>]
  [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzMigrateHCIServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
+The New-AzMigrateLocalServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 
 ## EXAMPLES
 
 ### Example 1: When there is only OS disk to migrate
 ```powershell
-New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -OSDiskID "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM"
+New-AzMigrateLocalServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -OSDiskID "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM"
 ```
 
 ```output
 ActivityId                         : ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Create or update protected item
 EndTime                            : 1/1/1900 8:54:47 PM
 Error                              : {}
@@ -65,7 +64,6 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           : 
 SystemDataLastModifiedBy           : 
 SystemDataLastModifiedByType       : 
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Creating or updating the protected item, Initializing Protection, Enabling Protection, Starting Replication}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs	
@@ -75,24 +73,23 @@ This is for the scenario, when there is only one single disk that has to be prot
 
 ### Example 2: When there are multiple disks or NICs to migrate
 ```powershell
-[AzStackHCIDiskInput[]]$DisksToInclude = @()
-$OSDisk = New-AzMigrateHCIDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -IsOSDisk true -IsDynamic true -Size 42 -Format VHD
-$DataDisk = New-AzMigrateHCIDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\C92FAB89-DA8B-47E9-92F3-364642ECDF39\0\0\L" -IsOSDisk false -IsDynamic true -Size 5 -Format VHD
+[AzLocalDiskInput[]]$DisksToInclude = @()
+$OSDisk = New-AzMigrateLocalDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -IsOSDisk true -IsDynamic true -Size 42 -Format VHD
+$DataDisk = New-AzMigrateLocalDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\C92FAB89-DA8B-47E9-92F3-364642ECDF39\0\0\L" -IsOSDisk false -IsDynamic true -Size 5 -Format VHD
 $DisksToInclude += $OSDisk
 $DisksToInclude += $DataDisk
 
-[AzStackHCINicInput[]]$NicsToInclude = @()
-$Nic = New-AzMigrateHCINicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
+[AzLocalNicInput[]]$NicsToInclude = @()
+$Nic = New-AzMigrateLocalNicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
 $NicsToInclude += $Nic
 
-New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM" -DiskToInclude $DisksToInclude -NicToInclude $NicsToInclude
+New-AzMigrateLocalServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM" -DiskToInclude $DisksToInclude -NicToInclude $NicsToInclude
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Create or update protected item
 EndTime                            : 1/1/1900 2:27:14 PM
 Error                              : {}
@@ -113,7 +110,6 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           : 
 SystemDataLastModifiedBy           : 
 SystemDataLastModifiedByType       : 
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Creating or updating the protected item, Initializing Protection, Enabling Protection, Starting Replication}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
@@ -142,7 +138,7 @@ Accept wildcard characters: False
 Specifies the disks on the source server to be included for replication.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput[]
 Parameter Sets: ByIdPowerUser
 Aliases:
 
@@ -187,7 +183,7 @@ Accept wildcard characters: False
 Specifies the NICs on the source server to be included for replication.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]
 Parameter Sets: ByIdPowerUser
 Aliases:
 
@@ -371,7 +367,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
 
 ## NOTES
 

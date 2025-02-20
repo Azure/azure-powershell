@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmappingobject
+online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocaldiskmappingobject
 schema: 2.0.0
 ---
 
-# New-AzMigrateHCIDiskMappingObject
+# New-AzMigrateLocalDiskMappingObject
 
 ## SYNOPSIS
 Creates a new disk mapping
@@ -13,18 +13,18 @@ Creates a new disk mapping
 ## SYNTAX
 
 ```
-New-AzMigrateHCIDiskMappingObject -DiskID <String> -Format <String> -IsDynamic <String> -IsOSDisk <String>
- -Size <Int64> [<CommonParameters>]
+New-AzMigrateLocalDiskMappingObject -DiskID <String> -Format <String> -IsDynamic <String> -IsOSDisk <String>
+ -Size <Int64> [-PhysicalSectorSize <Int64>] [-TargetStoragePathId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzMigrateHCIDiskMappingObject cmdlet creates a mapping of the source disk attached to the server to be migrated
+The New-AzMigrateLocalDiskMappingObject cmdlet creates a mapping of the source disk attached to the server to be migrated
 
 ## EXAMPLES
 
 ### Example 1: Creates Disk to migrate
 ```powershell
-New-AzMigrateHCIDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
+New-AzMigrateLocalDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
 ```
 
 ```output
@@ -36,7 +36,7 @@ IsOSDisk           : True
 StorageContainerId : 
 ```
 
-Get disk object to provide input for New-AzMigrateHCIServerReplication
+Get disk object to provide input for New-AzMigrateLocalServerReplication
 
 ## PARAMETERS
 
@@ -100,6 +100,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PhysicalSectorSize
+Specifies the disk physical sector size in bytes.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Size
 Specifies the disk size in GB.
 
@@ -115,6 +130,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetStoragePathId
+Specifies the storage path ARM ID where the disk will be stored.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -122,7 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput
 
 ## NOTES
 

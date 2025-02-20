@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject
+online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalnicmappingobject
 schema: 2.0.0
 ---
 
-# New-AzMigrateHCINicMappingObject
+# New-AzMigrateLocalNicMappingObject
 
 ## SYNOPSIS
 Creates an object to update NIC properties of a replicating server.
@@ -13,19 +13,19 @@ Creates an object to update NIC properties of a replicating server.
 ## SYNTAX
 
 ```
-New-AzMigrateHCINicMappingObject -NicID <String> [-CreateAtTarget <String>]
+New-AzMigrateLocalNicMappingObject -NicID <String> [-CreateAtTarget <String>]
  [-TargetTestVirtualSwitchId <String>] [-TargetVirtualSwitchId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzMigrateHCINicMappingObject cmdlet creates a mapping of the source NIC attached to the server to be migrated.
+The New-AzMigrateLocalNicMappingObject cmdlet creates a mapping of the source NIC attached to the server to be migrated.
 This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 
 ## EXAMPLES
 
 ### Example 1: Create NIC to migrate
 ```powershell
-New-AzMigrateHCINicMappingObject -NicID a -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
+New-AzMigrateLocalNicMappingObject -NicID a -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
 ```
 
 ```output
@@ -35,12 +35,12 @@ TestNetworkId            : /subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/
 SelectionTypeForFailover : SelectedByUser
 ```
 
-Get NIC object to provide input for New-AzMigrateHCIServerReplication and Set-AzMigrateHCIServerReplication
+Get NIC object to provide input for New-AzMigrateLocalServerReplication and Set-AzMigrateLocalServerReplication
 
 ## PARAMETERS
 
 ### -CreateAtTarget
-Specifies whether the this Nic should be created at target.
+Specifies whether this Nic should be created at target.
 
 ```yaml
 Type: System.String
@@ -106,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput
 
 ## NOTES
 

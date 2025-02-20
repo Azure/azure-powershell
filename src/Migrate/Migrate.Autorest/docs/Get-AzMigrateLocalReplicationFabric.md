@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehcireplicationfabric
+online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalreplicationfabric
 schema: 2.0.0
 ---
 
-# Get-AzMigrateHCIReplicationFabric
+# Get-AzMigrateLocalReplicationFabric
 
 ## SYNOPSIS
 Gets the details of the fabric.
@@ -14,25 +14,25 @@ Gets the details of the fabric.
 
 ### List (Default)
 ```
-Get-AzMigrateHCIReplicationFabric [-SubscriptionId <String[]>] [-ContinuationToken <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateLocalReplicationFabric [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMigrateHCIReplicationFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzMigrateLocalReplicationFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMigrateHCIReplicationFabric -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
+Get-AzMigrateLocalReplicationFabric -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzMigrateHCIReplicationFabric -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzMigrateLocalReplicationFabric -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-ContinuationToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -43,21 +43,20 @@ Gets the details of the fabric.
 
 ### Example 1: Get by fabric name
 ```powershell
-Get-AzMigrateHCIReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
+Get-AzMigrateLocalReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
 ```
 
 ```output
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationFabrics/testsrcappreplicationfabric
 Location                     : southeastasia
 Name                         : testsrcappreplicationfabric
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricModelProperties
 SystemDataCreatedAt          : 8/11/2023 6:39:04 PM
 SystemDataCreatedBy          : testuser@example.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 8/11/2023 6:48:29 PM
 SystemDataLastModifiedBy     : testuser@example.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelTags
 Type                         : Microsoft.DataReplication/replicationFabrics
 ```
 
@@ -65,25 +64,24 @@ Retrieves a fabric by its name.
 
 ### Example 2: Get by fabric input object
 ```powershell
-$InputObject = Get-AzMigrateHCIReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
+$InputObject = Get-AzMigrateLocalReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
 
-Get-AzMigrateHCIReplicationFabric -InputObject $InputObject
+Get-AzMigrateLocalReplicationFabric -InputObject $InputObject
 
-$InputObject | Get-AzMigrateHCIReplicationFabric
+$InputObject | Get-AzMigrateLocalReplicationFabric
 ```
 
 ```output
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationFabrics/testsrcappreplicationfabric
 Location                     : southeastasia
 Name                         : testsrcappreplicationfabric
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricModelProperties
 SystemDataCreatedAt          : 8/11/2023 6:39:04 PM
 SystemDataCreatedBy          : testuser@example.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 8/11/2023 6:48:29 PM
 SystemDataLastModifiedBy     : testuser@example.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelTags
 Type                         : Microsoft.DataReplication/replicationFabrics
 ```
 
@@ -91,34 +89,32 @@ Retrieves a fabric by the fabric itself as an input object.
 
 ### Example 3: List by resource group name
 ```powershell
-Get-AzMigrateHCIReplicationFabric -ResourceGroupName "test-rg"
+Get-AzMigrateLocalReplicationFabric -ResourceGroupName "test-rg"
 ```
 
 ```output
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationFabrics/testsrcappreplicationfabric
 Location                     : southeastasia
 Name                         : testsrcappreplicationfabric
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricModelProperties
 SystemDataCreatedAt          : 8/11/2023 6:39:04 PM
 SystemDataCreatedBy          : testuser@example.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 8/11/2023 6:48:29 PM
 SystemDataLastModifiedBy     : testuser@example.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelTags
 Type                         : Microsoft.DataReplication/replicationFabrics
 
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationFabrics/testtgtappreplicationfabric
 Location                     : southeastasia
 Name                         : testtgtappreplicationfabric
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricModelProperties
 SystemDataCreatedAt          : 8/11/2023 9:16:46 PM
 SystemDataCreatedBy          : testuser@example.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 8/11/2023 9:16:46 PM
 SystemDataLastModifiedBy     : testuser@example.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelTags
 Type                         : Microsoft.DataReplication/replicationFabrics
 ```
 
@@ -126,34 +122,32 @@ Retrieves all fabrics from a resource group by name.
 
 ### Example 4: List all fabircs
 ```powershell
-Get-AzMigrateHCIReplicationFabric
+Get-AzMigrateLocalReplicationFabric
 ```
 
 ```output
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationFabrics/testsrcappreplicationfabric
 Location                     : southeastasia
 Name                         : testsrcappreplicationfabric
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricModelProperties
 SystemDataCreatedAt          : 8/11/2023 6:39:04 PM
 SystemDataCreatedBy          : testuser@example.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 8/11/2023 6:48:29 PM
 SystemDataLastModifiedBy     : testuser@example.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelTags
 Type                         : Microsoft.DataReplication/replicationFabrics
 
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationFabrics/testtgtappreplicationfabric
 Location                     : southeastasia
 Name                         : testtgtappreplicationfabric
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricModelProperties
 SystemDataCreatedAt          : 8/11/2023 9:16:46 PM
 SystemDataCreatedBy          : testuser@example.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 8/11/2023 9:16:46 PM
 SystemDataLastModifiedBy     : testuser@example.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.FabricModelTags
 Type                         : Microsoft.DataReplication/replicationFabrics
 
 ...
@@ -168,7 +162,7 @@ Continuation token from the previous call.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, List1
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -265,7 +259,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IFabricModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricModel
 
 ## NOTES
 

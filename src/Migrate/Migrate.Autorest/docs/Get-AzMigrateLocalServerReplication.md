@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehciserverreplication
+online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalserverreplication
 schema: 2.0.0
 ---
 
-# Get-AzMigrateHCIServerReplication
+# Get-AzMigrateLocalServerReplication
 
 ## SYNOPSIS
 Retrieves the details of the replicating server.
@@ -14,61 +14,60 @@ Retrieves the details of the replicating server.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateHCIServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateLocalServerReplication -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
-Get-AzMigrateHCIServerReplication -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
+Get-AzMigrateLocalServerReplication -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByItemID
 ```
-Get-AzMigrateHCIServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
+Get-AzMigrateLocalServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByMachineName
 ```
-Get-AzMigrateHCIServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+Get-AzMigrateLocalServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetBySDSID
 ```
-Get-AzMigrateHCIServerReplication -DiscoveredMachineId <String> [-SubscriptionId <String>]
+Get-AzMigrateLocalServerReplication -DiscoveredMachineId <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
-Get-AzMigrateHCIServerReplication -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
+Get-AzMigrateLocalServerReplication -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzMigrateHCIServerReplication cmdlet retrieves the object for the replicating server.
+The Get-AzMigrateLocalServerReplication cmdlet retrieves the object for the replicating server.
 
 ## EXAMPLES
 
 ### Example 1: Get details by id
 ```powershell
-Get-AzMigrateHCIServerReplication -TargetObjectID '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5'
+Get-AzMigrateLocalServerReplication -TargetObjectID '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5'
 ```
 
 ```output
 Id                           : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5
 Name                         : 503a4f02-916c-d6b0-8d14-222bbd4767e5
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
 SystemDataLastModifiedAt     : 
 SystemDataLastModifiedBy     : 
 SystemDataLastModifiedByType : 
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelTags
 Type                         : Microsoft.DataReplication/replicationVaults/protectedItems
 ```
 
@@ -76,21 +75,20 @@ Get by id.
 
 ### Example 2: Get detail by discovered machine id
 ```powershell
-Get-AzMigrateHCIServerReplication -DiscoveredMachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/siteName1/machines/503a4f02-916c-d6b0-8d14-222bbd4767e5" 
+Get-AzMigrateLocalServerReplication -DiscoveredMachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/siteName1/machines/503a4f02-916c-d6b0-8d14-222bbd4767e5" 
 
 ```
 
 ```output
 Id                           : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5
 Name                         : 503a4f02-916c-d6b0-8d14-222bbd4767e5
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
 SystemDataLastModifiedAt     : 
 SystemDataLastModifiedBy     : 
 SystemDataLastModifiedByType : 
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelTags
 Type                         : Microsoft.DataReplication/replicationVaults/protectedItems
 ```
 
@@ -105,26 +103,24 @@ Get-AzMigrateServerReplication -ResourceGroupName testResourceGroup -ProjectName
 
 Id                           : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5
 Name                         : 503a4f02-916c-d6b0-8d14-222bbd4767e5
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
 SystemDataLastModifiedAt     : 
 SystemDataLastModifiedBy     : 
 SystemDataLastModifiedByType : 
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelTags
 Type                         : Microsoft.DataReplication/replicationVaults/protectedItems
 
 Id                           : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/d758f4fb-ae5e-4ac8-bb97-1e114555fe9f
 Name                         : d758f4fb-ae5e-4ac8-bb97-1e114555fe9f
-Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelProperties
+Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
 SystemDataLastModifiedAt     : 
 SystemDataLastModifiedBy     : 
 SystemDataLastModifiedByType : 
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelTags
 Type                         : Microsoft.DataReplication/replicationVaults/protectedItems
 ```
 
@@ -292,7 +288,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel
 
 ## NOTES
 
