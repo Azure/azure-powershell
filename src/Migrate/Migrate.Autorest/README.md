@@ -381,13 +381,13 @@ directive:
       verb: Get
       subject: ^Fabric$
     set:
-      subject: HCIReplicationFabric
+      subject: LocalReplicationFabric
   - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^Job$
     set:
-      subject: HCIReplicationJob      
+      subject: LocalReplicationJob      
   # Hide cmldets used by custom
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
