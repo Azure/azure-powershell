@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`. 
+* Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
 
 ## Version 7.8.1
 * Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
