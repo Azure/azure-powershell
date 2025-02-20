@@ -80,6 +80,13 @@ New-AzDnsRecordConfig -Usage <Int32> -Selector <Int32> -MatchingType <Int32>
  [<CommonParameters>]
 ```
 
+### Naptr
+```
+New-AzDnsRecordConfig -Flags <UInt16> -Order <UInt16> -Preference <UInt16> -Services <String>
+ -Regexp <String> -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzDnsRecordConfig** cmdlet creates a local **DnsRecord** object.
 An array of these objects is passed to the New-AzDnsRecordSet cmdlet using the *DnsRecords* parameter to specify the records to create in the record set.
@@ -218,6 +225,19 @@ This command creates a **RecordSet** named _443._tcp.www in the zone myzone.com.
 The record set is of type TLSA and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
 The record data contains the usage, selector, and matching type of the certificate association data.
+To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 11: Create a RecordSet of type NAPTR
+```powershell
+$Records = @()
+$Records += New-AzDnsRecordConfig -Flags 0 -Order 100 -Preference 100 -Services "SIP+D2U" -Regexp "" -Replacement "example.com"
+$RecordSet = New-AzDnsRecordSet -Name "naptr123" -RecordType NAPTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -DnsRecords $Records
+```
+
+This command creates a **RecordSet** named naptr123 in the zone myzone.com.
+The record set is of type NAPTR and has a TTL of 1 hour (3600 seconds).
+It contains a single DNS record.
+The record data contains the order, preference, flags, services, regexp, and replacement fields.
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ## PARAMETERS
@@ -372,6 +392,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Flags
+Specifies the flags for a NAPTR record.
+
+```yaml
+Type: System.UInt16
+Parameter Sets: Naptr
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Ipv4Address
 Specifies an IPv4 address for an A record.
 
@@ -447,6 +482,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Order
+Specifies the order for a NAPTR record.
+
+```yaml
+Type: System.UInt16
+Parameter Sets: Naptr
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Port
 Specifies the port for a service (SRV) record.
 
@@ -463,11 +513,11 @@ Accept wildcard characters: False
 ```
 
 ### -Preference
-Specifies the preference for an MX record.
+Specifies the preference for an MX/NAPTR record.
 
 ```yaml
 Type: System.UInt16
-Parameter Sets: Mx
+Parameter Sets: Mx, NAPTR
 Aliases:
 
 Required: True
@@ -498,6 +548,51 @@ Specifies the target domain name of a pointer resource (PTR) record.
 ```yaml
 Type: System.String
 Parameter Sets: Ptr
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Regexp
+Specifies the regexp for a NAPTR record.
+
+```yaml
+Type: System.String
+Parameter Sets: Naptr
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Replacement
+Specifies the replacement for a NAPTR record.
+
+```yaml
+Type: System.String
+Parameter Sets: Naptr
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Services
+Specifies the services for a NAPTR record.
+
+```yaml
+Type: System.String
+Parameter Sets: Naptr
 Aliases:
 
 Required: True

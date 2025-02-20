@@ -148,6 +148,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// on an account.
         /// </param>
 
+        /// <param name="capacityMode">Indicates the capacityMode of the Cosmos DB account.
+        /// Possible values include: &#39;None&#39;, &#39;Provisioned&#39;, &#39;Serverless&#39;</param>
+
+        /// <param name="capacityModeChangeTransitionState">The object that represents the migration state for the CapacityMode of the
+        /// Cosmos DB account.
+        /// </param>
+
         /// <param name="enableMaterializedViews">Flag to indicate whether to enable MaterializedViews on the Cosmos DB
         /// account
         /// </param>
@@ -183,7 +190,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="enablePerRegionPerPartitionAutoscale">Flag to indicate enabling/disabling of Per-Region Per-partition autoscale
         /// Preview feature on the account
         /// </param>
-        public DatabaseAccountGetProperties(string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<Location> writeLocations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<Location> readLocations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<FailoverPolicy> failoverPolicies = default(System.Collections.Generic.IList<FailoverPolicy>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), string instanceId = default(string), string createMode = default(string), RestoreParameters restoreParameters = default(RestoreParameters), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?))
+        public DatabaseAccountGetProperties(string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<Location> writeLocations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<Location> readLocations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<FailoverPolicy> failoverPolicies = default(System.Collections.Generic.IList<FailoverPolicy>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), string instanceId = default(string), string createMode = default(string), RestoreParameters restoreParameters = default(RestoreParameters), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), string capacityMode = default(string), CapacityModeChangeTransitionState capacityModeChangeTransitionState = default(CapacityModeChangeTransitionState), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?))
 
         {
             this.ProvisioningState = provisioningState;
@@ -221,6 +228,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.DiagnosticLogSettings = diagnosticLogSettings;
             this.DisableLocalAuth = disableLocalAuth;
             this.Capacity = capacity;
+            this.CapacityMode = capacityMode;
+            this.CapacityModeChangeTransitionState = capacityModeChangeTransitionState;
             this.EnableMaterializedViews = enableMaterializedViews;
             this.KeysMetadata = keysMetadata;
             this.EnablePartitionMerge = enablePartitionMerge;
@@ -477,6 +486,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public Capacity Capacity {get; set; }
 
         /// <summary>
+        /// Gets or sets indicates the capacityMode of the Cosmos DB account. Possible values include: &#39;None&#39;, &#39;Provisioned&#39;, &#39;Serverless&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "capacityMode")]
+        public string CapacityMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets the object that represents the migration state for the
+        /// CapacityMode of the Cosmos DB account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "capacityModeChangeTransitionState")]
+        public CapacityModeChangeTransitionState CapacityModeChangeTransitionState {get; set; }
+
+        /// <summary>
         /// Gets or sets flag to indicate whether to enable MaterializedViews on the
         /// Cosmos DB account
         /// </summary>
@@ -625,6 +647,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.Capacity.Validate();
             }
+
+
 
 
 

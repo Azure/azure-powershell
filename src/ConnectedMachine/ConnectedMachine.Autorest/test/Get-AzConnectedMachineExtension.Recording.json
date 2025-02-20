@@ -1,60 +1,17 @@
 {
-  "Get-AzConnectedMachineExtension+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions/customScript?api-version=2024-03-31-preview+1": {
+  "Get-AzConnectedMachineExtension+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions/networkWatcher?api-version=2024-07-31-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions/customScript?api-version=2024-03-31-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "afdd588f-c5cf-447c-b3ea-64a61cc69aaf" ],
-        "CommandName": [ "Get-AzConnectedMachineExtension" ],
-        "FullCommandName": [ "Get-AzConnectedMachineExtension_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "980b78e6-f535-4906-a592-97c9ad5eb713" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "b548d2da-fec7-4b8c-b2ba-06d56d10f89b" ],
-        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20240515T162516Z:b548d2da-fec7-4b8c-b2ba-06d56d10f89b" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 86D8AAB2DADA4E029D16B331BF46C4A0 Ref B: MNZ221060618035 Ref C: 2024-05-15T16:25:16Z" ],
-        "Date": [ "Wed, 15 May 2024 16:25:16 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "619" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions/customScript\",\"name\":\"customScript\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"centraluseuap\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"CommandToExecute\":\"dir\"},\"provisioningState\":\"Creating\",\"instanceView\":{\"name\":\"customScript\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{}}}}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzConnectedMachineExtension+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions?api-version=2024-03-31-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions?api-version=2024-03-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions/networkWatcher?api-version=2024-07-31-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "8638acb9-bc2f-4529-a643-9a60a41ce353" ],
+        "x-ms-client-request-id": [ "b576bdf6-ae91-4b4a-a536-678d85942e15" ],
         "CommandName": [ "Get-AzConnectedMachineExtension" ],
-        "FullCommandName": [ "Get-AzConnectedMachineExtension_List" ],
+        "FullCommandName": [ "Get-AzConnectedMachineExtension_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.ConnectedMachine/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -65,23 +22,66 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "e8989d1b-6e2c-439f-adbd-8917c0ff815b" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "9d337826-bddf-48b4-b957-dd959aa37354" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20240515T162517Z:9d337826-bddf-48b4-b957-dd959aa37354" ],
+        "x-ms-request-id": [ "268fb590-98d5-427b-a33e-6f422c3e7f89" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "35fb2b18-f2c0-43ca-8eef-3e53b4e91225" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241105T221145Z:35fb2b18-f2c0-43ca-8eef-3e53b4e91225" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3E2F0752937C4348A3A414ACE5362E40 Ref B: MNZ221060618035 Ref C: 2024-05-15T16:25:17Z" ],
-        "Date": [ "Wed, 15 May 2024 16:25:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AC98E830C5514F449FE7398A767310A6 Ref B: MNZ221060618009 Ref C: 2024-11-05T22:11:45Z" ],
+        "Date": [ "Tue, 05 Nov 2024 22:11:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "631" ],
+        "Content-Length": [ "747" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions/customScript\",\"name\":\"customScript\",\"location\":\"centraluseuap\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"CommandToExecute\":\"dir\"},\"provisioningState\":\"Creating\",\"instanceView\":{\"name\":\"customScript\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{}}}}]}",
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions/networkWatcher\",\"name\":\"networkWatcher\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus\",\"properties\":{\"publisher\":\"Microsoft.Azure.NetworkWatcher\",\"type\":\"NetworkWatcherAgentWindows\",\"typeHandlerVersion\":\"1.4.2798.3\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"CommandToExecute\":\"dir\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"networkWatcher\",\"type\":\"NetworkWatcherAgentWindows\",\"typeHandlerVersion\":\"1.4.2798.3\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Default configuration is in effect.\"}}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConnectedMachineExtension+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions?api-version=2024-07-31-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions?api-version=2024-07-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "68f955e5-9efc-492c-83ea-a460e10f67dd" ],
+        "CommandName": [ "Get-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Get-AzConnectedMachineExtension_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.ConnectedMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "17ed5958-0ec6-49ba-a16f-db6db09aaafc" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "772b69e6-4943-42bf-b50c-e17490e85cfb" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241105T221145Z:772b69e6-4943-42bf-b50c-e17490e85cfb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 624FE8BF0D154C1688E51389962EA787 Ref B: MNZ221060618009 Ref C: 2024-11-05T22:11:45Z" ],
+        "Date": [ "Tue, 05 Nov 2024 22:11:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "759" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/extensions/networkWatcher\",\"name\":\"networkWatcher\",\"location\":\"eastus\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"properties\":{\"publisher\":\"Microsoft.Azure.NetworkWatcher\",\"type\":\"NetworkWatcherAgentWindows\",\"typeHandlerVersion\":\"1.4.2798.3\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"CommandToExecute\":\"dir\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"networkWatcher\",\"type\":\"NetworkWatcherAgentWindows\",\"typeHandlerVersion\":\"1.4.2798.3\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Default configuration is in effect.\"}}}}]}",
       "isContentBase64": false
     }
   }

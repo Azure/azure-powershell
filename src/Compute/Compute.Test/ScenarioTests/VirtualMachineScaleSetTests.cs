@@ -423,5 +423,40 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetDefaultImgWhenStandard");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSkuProfile()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSkuProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResiliencyPolicyVMSS()
+        {
+            TestRunner.RunTestScript("Test-ResiliencyPolicyVMSS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSecurityPostureFeature()
+        {
+            TestRunner.RunTestScript("Test-SecurityPostureFeature");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddEncryptionIdentityInAzureVmssConfig()
+        {
+            TestRunner.RunTestScript("Test-AddEncryptionIdentityInAzureVmssConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionIdentityNotPartOfAzureVmssConfig()
+        {
+            TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAzureVmssConfig");
+        }
     }
 }

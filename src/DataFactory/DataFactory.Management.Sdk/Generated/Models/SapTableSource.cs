@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SapTableSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -87,9 +90,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="partitionSettings">The settings that will be leveraged for SAP table source partitioning.
         /// </param>
-        public SapTableSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object rowCount = default(object), object rowSkips = default(object), object rfcTableFields = default(object), object rfcTableOptions = default(object), object batchSize = default(object), object customRfcReadTableFunctionModule = default(object), object sapDataColumnDelimiter = default(object), object partitionOption = default(object), SapTablePartitionSettings partitionSettings = default(SapTablePartitionSettings))
+        public SapTableSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object rowCount = default(object), object rowSkips = default(object), object rfcTableFields = default(object), object rfcTableOptions = default(object), object batchSize = default(object), object customRfcReadTableFunctionModule = default(object), object sapDataColumnDelimiter = default(object), object partitionOption = default(object), SapTablePartitionSettings partitionSettings = default(SapTablePartitionSettings))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.RowCount = rowCount;
             this.RowSkips = rowSkips;

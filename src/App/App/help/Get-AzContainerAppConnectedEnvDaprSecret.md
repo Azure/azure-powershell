@@ -14,8 +14,8 @@ List secrets for a dapr component
 
 ```
 Get-AzContainerAppConnectedEnvDaprSecret -ConnectedEnvironmentName <String> -DaprName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

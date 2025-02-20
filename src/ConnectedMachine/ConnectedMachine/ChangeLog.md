@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Upgraded nuget package to signed package.
+
+## Version 1.1.0
+* Updated preview version api of HybridCompute to 2024-07-31
+
+## Version 1.0.0
+* General availability for module Az.ConnectedMachine
+
+## Version 0.10.0
+* Updated stable version api of HybridCompute to 2024-07-10
+
+## Version 0.9.0
+* Updated the API version to 2024-05-20-preview.
+
 ## Version 0.8.0
 * Updated the API version to 2024-03-31-preview.
 * Added cmdlets `Get-AzConnectedLicense`, `Get-AzConnectedNetworkSecurityPerimeterConfiguration`, `New-AzConnectedLicense`, `New-AzConnectedLicenseDetail`, `Remove-AzConnectedLicense` and `Set-AzConnectedLicense`.

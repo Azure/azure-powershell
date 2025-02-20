@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             
 
             // Execute the PUT AzureFirewall call
-            var headers = this.AzureFirewallClient.PacketCaptureAsync(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwParamsModel);
+            var headers = this.AzureFirewallClient.PacketCapture(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwParamsModel);
 
             WriteObject(headers);
         }

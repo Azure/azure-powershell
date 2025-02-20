@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 PSIotHub psIotHub = IotHubUtils.ToPSIotHub(iotHubDescription);
                 string failoverRegion = psIotHub.Properties.Locations.FirstOrDefault(loc => loc.Role.Equals("secondary", StringComparison.OrdinalIgnoreCase)).Location;
                 FailoverInput failoverInput = new FailoverInput(failoverRegion);
-                this.IotHubClient.IotHub.ManualFailover(this.Name, this.ResourceGroupName, failoverInput.FailoverRegion);
+                this.IotHubClient.IotHub.ManualFailover(this.Name, this.ResourceGroupName, failoverInput);
 
                 if (this.PassThru.IsPresent)
                 {

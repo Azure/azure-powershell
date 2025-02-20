@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.0
+* Upgraded nuget package to signed package.
+
+## Version 2.3.1
 * Fixed secrets exposure in example documentation.
 
 ## Version 2.3.0

@@ -19,6 +19,32 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.0.2
+* Fixed unsigned dll:
+    - `System.Buffers.dll`
+    - `System.Memory.dll`
+
+## Version 4.0.1
+* Upgraded nuget package to signed package.
+* Fixed the Managed Identity parameter set description of `AccountId` in `Connect-AzAccount`.
+* Made the breaking change warnings about `Get-AzAccessToken` not appear when `-AsSecureString` is used.
+* Fixed an issue that cmdlets may report warnings of "KeyNotFoundException". #26624
+* Fixed an issue that the `-AppliesTo` parameter of `Update-AzConfig` does not work as expected.
+* Upgraded Azure.Core to 1.44.1 and Azure.Identity to 1.13.0.
+* Updated Azure PowerShell intercept survey prompt.
+
+## Version 4.0.0
+* [Breaking Change] Removed alias `Resolve-Error` for the cmdlet `Resolve-AzError`.
+* Updated the `Get-AzAccessToken` breaking change warning message.
+* Added Long Running Operation Support for Invoke-AzRest command.
+
+## Version 3.0.5
+* Fixed the issue that `Export-AzSshConfig` and `Enter-AzVM` from Az.Ssh are not able to use when WAM is enabled.
+* Added breaking change preannouncement for the removal of alias `Resolve-Error`. #26189
+* Integrated new detection library to expand the scope of secrets.
+
+## Version 3.0.4
 * Added customized UserAgent for ARM telemetry.
 * Fixed secrets exposure in example documentation.
 * Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].

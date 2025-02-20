@@ -18,6 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.14.0
+* Upgraded nuget package to signed package.
+
+## Version 0.13.0
+* Fixed output type of cmdlet
+
+## Version 0.12.0
+* Corrected function that only worked on Windows.
+* Prevented unexpected value changes where parameters that were never set are unchanged but replayed back as part of Set-AzConnectedKubernetes processing.
+
+## Version 0.11.1
+* Fixed environment variable usage
+* Got rid of deprecated module and improved logging
+
+## Version 0.11.0
+* Added support for Workload Identity Federation and OIDC Issuer features to the ConnectedKubernetes cmdlets.
+* Added support for arc gateway feature in cmdlet New-AzConnectedKubernetes.
+* Added Set-AzConnectedKubernetes cmdlet to support updateing arc gateway features on existing resource.
+
+## Version 0.10.3
 * Fixed secrets exposure in example documentation.
 
 ## Version 0.10.2

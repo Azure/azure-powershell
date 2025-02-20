@@ -22,8 +22,7 @@ namespace VersionController.Netcore.Models
         {
             var srcDirs = Path.Combine(rootDirectory, @"src\");
             var toolsCommonDirs = Path.Combine(rootDirectory, @"tools\Tools.Common");
-            // bez: Will include psd1 files under test proj
-            var manifestFiles = Directory.EnumerateFiles(srcDirs, "*.psd1", SearchOption.AllDirectories)
+            var manifestFiles = Directory.EnumerateFiles(srcDirs, "Az.*.psd1", SearchOption.AllDirectories)
                                          .Where(file =>
                                              !Path.GetDirectoryName(file)
                                              .EndsWith("autorest", StringComparison.OrdinalIgnoreCase))

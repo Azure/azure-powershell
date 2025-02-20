@@ -47,12 +47,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the private link service resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="loadBalancerFrontendIPConfigurations">An array of references to the load balancer IP configurations.
         /// </param>
 
         /// <param name="ipConfigurations">An array of private link service IP configurations.
+        /// </param>
+
+        /// <param name="destinationIPAddress">The destination IP address of the private link service.
         /// </param>
 
         /// <param name="networkInterfaces">An array of references to the network interfaces created for this private
@@ -76,7 +80,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableProxyProtocol">Whether the private link service is enabled for proxy protocol or not.
         /// </param>
-        public PrivateLinkService(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<FrontendIPConfiguration> loadBalancerFrontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration>), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), PrivateLinkServicePropertiesVisibility visibility = default(PrivateLinkServicePropertiesVisibility), PrivateLinkServicePropertiesAutoApproval autoApproval = default(PrivateLinkServicePropertiesAutoApproval), System.Collections.Generic.IList<string> fqdns = default(System.Collections.Generic.IList<string>), string alias = default(string), bool? enableProxyProtocol = default(bool?))
+        public PrivateLinkService(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<FrontendIPConfiguration> loadBalancerFrontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration>), string destinationIPAddress = default(string), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), PrivateLinkServicePropertiesVisibility visibility = default(PrivateLinkServicePropertiesVisibility), PrivateLinkServicePropertiesAutoApproval autoApproval = default(PrivateLinkServicePropertiesAutoApproval), System.Collections.Generic.IList<string> fqdns = default(System.Collections.Generic.IList<string>), string alias = default(string), bool? enableProxyProtocol = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -85,6 +89,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ProvisioningState = provisioningState;
             this.LoadBalancerFrontendIPConfigurations = loadBalancerFrontendIPConfigurations;
             this.IPConfigurations = ipConfigurations;
+            this.DestinationIPAddress = destinationIPAddress;
             this.NetworkInterfaces = networkInterfaces;
             this.PrivateEndpointConnections = privateEndpointConnections;
             this.Visibility = visibility;
@@ -115,7 +120,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the private link service resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the private link service resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -131,6 +136,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipConfigurations")]
         public System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration> IPConfigurations {get; set; }
+
+        /// <summary>
+        /// Gets or sets the destination IP address of the private link service.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.destinationIPAddress")]
+        public string DestinationIPAddress {get; set; }
 
         /// <summary>
         /// Gets an array of references to the network interfaces created for this

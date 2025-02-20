@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string PublicKey { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specify the type of SSH key to generate. Allowed values are 'Ed25519' and 'RSA'.")]
+        [ValidateSet("Ed25519", "RSA")]
+        public string SshKeyType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -44,6 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 string resourceGroupName = this.ResourceGroupName;
                 string sshKeyName = this.Name;
+                string sshKeyType = this.SshKeyType;
                 SshPublicKeyResource result;
                 SshPublicKeyResource sshkey = new SshPublicKeyResource();
                 ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
@@ -61,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     WriteDebug("No public key is provided. A key pair is being generated for you.");
                     
                     result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
-                    SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
+                    SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName, sshKeyType);
                     result.PublicKey = keypair.PublicKey;
 
                     string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh" );

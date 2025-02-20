@@ -20,15 +20,17 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>] [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
  [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
- [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
- [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>] [-MinScaleUnit <Int32>]
+ [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
+ [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+ [-ResiliencyModel <String>]
 ```
 
 ### UpdateResourceWithTags
@@ -43,10 +45,12 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
- [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
- [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] -Tag <Hashtable> [-AsJob]
+ [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>] [-MinScaleUnit <Int32>]
+ [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
+ [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] -Tag <Hashtable> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResiliencyModel <String>]
 ```
 
 ## DESCRIPTION
@@ -470,8 +474,8 @@ $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowVirtualWanTraffic $true
 ```
-In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
+In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
 ### Example 10: Configure an ExpressRoute virtual network gateway to block communication over ExpressRoute with other ExpressRoute virtual network gateways in Virtual Wan networks.
 
@@ -485,8 +489,8 @@ $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowVirtualWanTraffic $false
 ```
-In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
+In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
 ### Example 11: Configure an ExpressRoute virtual network gateway to allow communication over ExpressRoute with other ExpressRoute virtual network gateways in other VNets.
 
@@ -500,8 +504,8 @@ $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowRemoteVnetTraffic $true
 ```
-In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
+In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
 ### Example 12: Configure an ExpressRoute virtual network gateway to block communication over ExpressRoute with other virtual network gateways in other VNets.
 
@@ -515,9 +519,8 @@ $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowRemoteVnetTraffic $false
 ```
+
 In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
-
-
 
 ## PARAMETERS
 
@@ -556,6 +559,52 @@ P2S AAD authentication option:AadTenantUri.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AdminState
+Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AllowRemoteVnetTraffic
+Determines whether this gateway should accept traffic from other VNets.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AllowVirtualWanTraffic
+Determines whether this gateway should accept traffic from other Virtual WAN networks.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -724,7 +773,7 @@ The virtual network gateway's SKU
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ, ErGwScale
 
 Required: False
 Position: Named
@@ -745,6 +794,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxScaleUnit
+Set max scale units for scalable gateways
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinScaleUnit
+Set min scale units for scalable gateways
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -835,6 +914,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResiliencyModel
+Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed/MultiHomed
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: SingleHomed, MultiHomed
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

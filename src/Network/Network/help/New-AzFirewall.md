@@ -16,6 +16,7 @@ Creates a new Firewall in a resource group.
 ### Default (Default)
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
+ [-PublicIpAddress <PSPublicIpAddress[]>]
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
@@ -23,20 +24,23 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableUDPLogOptimization]
- [-RouteServerId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### OldIpConfigurationParameterValues
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetworkName <String>
- [-PublicIpName <String>] [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
+ [-PublicIpName <String>] [-PublicIpAddress <PSPublicIpAddress[]>]
+ [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableUDPLogOptimization]
- [-RouteServerId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IpConfigurationParameterValues
@@ -50,7 +54,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableUDPLogOptimization]
- [-RouteServerId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,7 +276,7 @@ Allows Active FTP on the Firewall. By default it is disabled.
 
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -286,7 +291,7 @@ Accept wildcard characters: False
 Specifies the collections of application rules for the new Firewall.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection[]
+Type: PSAzureFirewallApplicationRuleCollection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -301,7 +306,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -316,7 +321,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -331,7 +336,7 @@ Accept wildcard characters: False
 The list of DNS Servers to be used for DNS resolution,
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -347,7 +352,7 @@ Enable DNS Proxy. By default it is disabled.
 
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -362,7 +367,7 @@ Accept wildcard characters: False
 Enable Fat Flow Logging. By default it is false.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -377,7 +382,7 @@ Accept wildcard characters: False
 Enable UDP Log Optimization. By default it is false.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -392,7 +397,7 @@ Accept wildcard characters: False
 The firewall policy attached to the firewall
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -407,7 +412,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -422,7 +427,7 @@ Accept wildcard characters: False
 The ip addresses for the firewall attached to a virtual hub
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallHubIpAddresses
+Type: PSAzureFirewallHubIpAddresses
 Parameter Sets: (All)
 Aliases:
 
@@ -437,7 +442,7 @@ Accept wildcard characters: False
 Specifies the region for the Firewall.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -452,7 +457,7 @@ Accept wildcard characters: False
 One or more Public IP Addresses to use for management traffic. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Type: PSPublicIpAddress
 Parameter Sets: IpConfigurationParameterValues
 Aliases:
 
@@ -463,11 +468,41 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -MaxCapacity
+The maximum number of capacity units for this azure firewall
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinCapacity
+The minimum number of capacity units for this azure firewall
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Azure Firewall that this cmdlet creates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -482,7 +517,7 @@ Accept wildcard characters: False
 The list of AzureFirewallNatRuleCollections
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection[]
+Type: PSAzureFirewallNatRuleCollection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -497,7 +532,7 @@ Accept wildcard characters: False
 The list of AzureFirewallNetworkRuleCollections
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection[]
+Type: PSAzureFirewallNetworkRuleCollection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -512,7 +547,7 @@ Accept wildcard characters: False
 The private IP ranges to which traffic won't be SNAT'ed
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -527,8 +562,8 @@ Accept wildcard characters: False
 One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall. No input needed for Forced Tunneling Firewalls. 
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress[]
-Parameter Sets: IpConfigurationParameterValues
+Type: PSPublicIpAddress[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -542,7 +577,7 @@ Accept wildcard characters: False
 Public Ip Name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: OldIpConfigurationParameterValues
 Aliases:
 
@@ -557,7 +592,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group to contain the Firewall.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -572,7 +607,7 @@ Accept wildcard characters: False
 The Route Server Id for the firewall
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -587,7 +622,7 @@ Accept wildcard characters: False
 The sku name for firewall
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Sku
 Accepted values: AZFW_Hub, AZFW_VNet
@@ -603,7 +638,7 @@ Accept wildcard characters: False
 The sku tier for firewall
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, Premium, Basic
@@ -621,7 +656,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -636,7 +671,7 @@ Accept wildcard characters: False
 Specifies the operation mode for Threat Intelligence. Default mode is Alert, not Off.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Alert, Deny, Off
@@ -652,7 +687,7 @@ Accept wildcard characters: False
 The allowlist for Threat Intelligence
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallThreatIntelWhitelist
+Type: PSAzureFirewallThreatIntelWhitelist
 Parameter Sets: (All)
 Aliases:
 
@@ -667,7 +702,7 @@ Accept wildcard characters: False
 The virtual hub that a firewall is attached to
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -682,7 +717,7 @@ Accept wildcard characters: False
 Virtual Network
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Type: PSVirtualNetwork
 Parameter Sets: IpConfigurationParameterValues
 Aliases:
 
@@ -697,7 +732,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network for which the Firewall will be deployed. Virtual network and Firewall must belong to the same resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: OldIpConfigurationParameterValues
 Aliases:
 
@@ -712,7 +747,7 @@ Accept wildcard characters: False
 A list of availability zones denoting where the firewall needs to come from.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -727,7 +762,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -743,7 +778,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

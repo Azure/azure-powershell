@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
         public bool RegistrationEnabled { get; set; }
 
         /// <summary>
+        /// Gets or sets the resolution policy of the virtual network link to the Private DNS
+        /// Possible values include: 'Default', 'NxDomainRedirect',
+        /// </summary>
+        public string ResolutionPolicy { get; set; }
+
+        /// <summary>
         /// Gets the status of the virtual network link to the Private DNS
         /// zone. Possible values are 'InProgress' and 'Completed'. This is a
         /// read-only property and any attempt to set this value will be

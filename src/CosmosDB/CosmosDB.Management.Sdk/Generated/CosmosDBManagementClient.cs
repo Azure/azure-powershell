@@ -33,11 +33,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set;}
@@ -491,7 +486,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.RestorableTableResources = new RestorableTableResourcesOperations(this);
             this.Service = new ServiceOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-02-15-preview";
+            this.ApiVersion = "2024-05-15-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -527,6 +522,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<DataTransferDataSourceSink>("component"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServiceResourceProperties>("serviceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ServiceResourceProperties>("serviceType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServiceResourceCreateUpdateProperties>("serviceType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ServiceResourceCreateUpdateProperties>("serviceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BaseCosmosDataTransferDataSourceSink>("component"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BaseCosmosDataTransferDataSourceSink>("component"));
             CustomInitialize();

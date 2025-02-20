@@ -69,6 +69,64 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LoadBalancingRule>> GetWithHttpMessagesAsync(string resourceGroupName, string loadBalancerName, string loadBalancingRuleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Get health details of a load balancing rule.
+        /// </summary>
+        /// <remarks>
+        /// Get health details of a load balancing rule.
+        /// </remarks>
+        /// <param name='groupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='loadBalancingRuleName'>
+        /// The name of the load balancing rule.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LoadBalancerHealthPerRule,LoadBalancerLoadBalancingRulesHealthHeaders>> HealthWithHttpMessagesAsync(string groupName, string loadBalancerName, string loadBalancingRuleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get health details of a load balancing rule.
+        /// </summary>
+        /// <remarks>
+        /// Get health details of a load balancing rule.
+        /// </remarks>
+        /// <param name='groupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='loadBalancingRuleName'>
+        /// The name of the load balancing rule.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LoadBalancerHealthPerRule,LoadBalancerLoadBalancingRulesHealthHeaders>> BeginHealthWithHttpMessagesAsync(string groupName, string loadBalancerName, string loadBalancingRuleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets all the load balancing rules in a load balancer.
         /// </summary>
         /// <remarks>

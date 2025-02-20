@@ -6,129 +6,104 @@
 
 - Cmdlet breaking-change will happen to all parameter sets
   - The Token property of the output type will be changed from String to SecureString. Add the [-AsSecureString] switch to avoid the impact of this upcoming breaking change.
-  - This change is expected to take effect from Az.Accounts version: 4.0.0 and Az version: 13.0.0
+  - This change is expected to take effect from Az.Accounts version: 5.0.0 and Az version: 14.0.0
 
-## Az.NetAppFiles
+## Az.Blueprint
 
-### `Get-AzNetAppFilesBackup`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-AccountBackupName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-PoolName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeObject`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-
-### `New-AzNetAppFilesBackup`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-Location`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-PoolName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeObject`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-
-### `Remove-AzNetAppFilesBackup`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-AccountBackupName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-PoolName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeObject`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-
-### `Restore-AzNetAppFilesBackupFile`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-PoolName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeObject`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-
-### `Update-AzNetAppFilesBackup`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-PoolName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeName`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-  - `-VolumeObject`
-    - Parameter is being deprecated without being replaced
-    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
-
-## Az.Sql
-
-### `Get-AzSqlInstanceLink`
+### `Export-AzBlueprintWithArtifact`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
-  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
-  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
-  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
 
-### `New-AzSqlInstanceLink`
+### `Get-AzBlueprint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
-  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
-  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
-  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `Get-AzBlueprintArtifact`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `Get-AzBlueprintAssignment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `Import-AzBlueprintWithArtifact`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `New-AzBlueprint`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `New-AzBlueprintArtifact`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `New-AzBlueprintAssignment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `Publish-AzBlueprint`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `Remove-AzBlueprintAssignment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `Set-AzBlueprint`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `Set-AzBlueprintArtifact`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+### `Set-AzBlueprintAssignment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
+  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+
+## Az.ContainerInstance
+
+### `New-AzContainerGroup`
 
 - Parameter breaking-change will happen to all parameter sets
-  - `-PrimaryAvailabilityGroupName`
-    - The parameter : 'PrimaryAvailabilityGroupName' is being replaced by parameter : 'PartnerAvailabilityGroupName'.
-    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
-  - `-SecondaryAvailabilityGroupName`
-    - The parameter : 'SecondaryAvailabilityGroupName' is being replaced by parameter : 'InstanceAvailabilityGroupName'.
-    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
-  - `-SourceEndpoint`
-    - The parameter : 'SourceEndpoint' is being replaced by parameter : 'PartnerEndpoint'.
-    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
-  - `-TargetDatabase`
-    - The parameter 'TargetDatabase' is being replaced by parameter 'Databases'. The type of new parameter is changing from 'String' to 'List<String>'
-    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - `-OSType`
+    - The parameter : 'OSType' is changing.
+    - This change will take effect on '5/21/2025'- The change is expected to take effect from Az version : '14.0.0'
+    - The change is expected to take effect from version : '5.0.0'
 
-### `Remove-AzSqlInstanceLink`
+### `New-AzContainerInstanceContainerGroupProfile`
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
-  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
-  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
-  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
-
-### `Update-AzSqlInstanceLink`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
-  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
-  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
-  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+- Parameter breaking-change will happen to all parameter sets
+  - `-OSType`
+    - The parameter : 'OSType' is changing.
+    - Change description : Removing the default value of OSType parameter. 
+    - This change will take effect on '5/21/2025'- The change is expected to take effect from Az version : '14.0.0'
+    - The change is expected to take effect from version : '5.0.0'
 

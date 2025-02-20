@@ -18,7 +18,8 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-IncludedNamespace <String[]>] [-LabelSelector <String[]>] [-IncludeClusterScopeResource <Boolean>]
  [-ConflictPolicy <String>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
  [-PersistentVolumeRestoreMode <String>] [-RestoreHookReference <NamespacedNameResource[]>]
- [<CommonParameters>]
+ [-ResourceModifierReference <NamespacedNameResource>] [-StagingResourceGroupId <String>]
+ [-StagingStorageAccountId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -199,12 +200,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceModifierReference
+Resource modifier reference to be executed during restore.
+To construct, see NOTES section for RESOURCEMODIFIERREFERENCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RestoreHookReference
 Hook reference to be executed during restore.
 To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingResourceGroupId
+Staging resource group Id for restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingStorageAccountId
+Staging storage account Id for restore.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

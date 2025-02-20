@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new UserAssignedIdentity());
                 }
-                if (StorageAccountManagedIdentity != null)
+                if (StorageAccountManagedIdentity != null && !clusterIdentity.UserAssignedIdentities.ContainsKey(StorageAccountManagedIdentity))
                 {
                     clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new UserAssignedIdentity());
                 }
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             ClusterCreateParametersExtended createParams = new ClusterCreateParametersExtended
             {
                 Location = Location,
-                //Tags = Tags,  //To Do add this Tags parameter
+                //Tags = Tags, //To Do add this Tags parameter
                 Zones = Zone,
                 Properties = new ClusterCreateProperties
                 {

@@ -19,6 +19,17 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.3.1
+* Upgraded nuget package to signed package.
+
+## Version 6.3.0
+* Changed the type of parameter `-IdentityId` in command `Update-AzHDInsightCluster` from `string`  to `string[]`.
+
+## Version 6.2.1
+* Fixed a bug: Error occurs when setting the same assigned identity for storage and esp configurations.
+
+## Version 6.2.0
 * Added new feature: Enable adding public IP tags to clusters. 
 * Added commands for manage Azure Monitor Agent
     - Command `Get-AzHDInsightAzureMonitorAgent` to get the Azure Monitor Agent status of HDInsight cluster.

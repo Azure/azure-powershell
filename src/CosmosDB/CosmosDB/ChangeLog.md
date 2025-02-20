@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for Cosmos DB Table role definition and role assignment related cmdlets.
 
 ## Version 2.0.6
 * Added capability to provide Min/Max Throughput RU Consumption
@@ -29,10 +30,12 @@
 * Added new property `CustomerManagedKeyStatus` to `Get-AzCosmosDBAccount`.
 * Added new parameter `EnablePartitionMerge` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 * Added new parameter `EnablePerRegionPerPartitionAutoscale` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
-* Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
 
 ## Version 2.0.5
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
+
+## Version 1.15.0
+* Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
 
 ## Version 1.14.5
 * Fixed secrets exposure in example documentation.

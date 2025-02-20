@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 4.3.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+
 ## Version 4.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

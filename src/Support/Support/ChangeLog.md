@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 2.1.0
+* Upgraded nuget package to signed package.
+
 ## Version 2.0.0
 * Converted Az.Support to autorest-based module.
 

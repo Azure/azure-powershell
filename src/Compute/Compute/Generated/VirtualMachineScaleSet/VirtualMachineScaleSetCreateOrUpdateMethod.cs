@@ -70,6 +70,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
                         {
+                            if (this.VirtualMachineScaleSet != null)
+                            {
+                                PSVirtualMachineScaleSetVMProfile vmProfile = this.VirtualMachineScaleSet.VirtualMachineProfile;
+                                if (vmProfile != null && vmProfile.SecurityProfile != null && vmProfile.SecurityProfile.EncryptionIdentity != null &&
+                                    vmProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
+                                {
+                                    if (VirtualMachineScaleSet.Identity == null || VirtualMachineScaleSet.Identity.UserAssignedIdentities == null ||
+                                        !VirtualMachineScaleSet.Identity.UserAssignedIdentities.ContainsKey(
+                                            vmProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId))
+                                    {
+                                        throw new Exception("Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource");
+                                    }
+                                }
+                            }  
                             if (this.VirtualMachineScaleSet?.VirtualMachineProfile != null)
                             {
                                 // TL defaulting for default param set, config object.
@@ -122,8 +136,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                                 flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
-                            }
-                            
+                            }                                                       
+
                             if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                             {
                                 if (parameters.VirtualMachineProfile?.SecurityProfile?.UefiSettings != null)
@@ -420,4 +434,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string IfNoneMatch { get; set; }
     }
 }
-

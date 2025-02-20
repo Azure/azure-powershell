@@ -15,7 +15,7 @@ Updates a Management Group
 ### GroupOperations (Default)
 ```
 Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-ParentId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-ParentId 
 ```
 Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>]
  [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup>
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupObject
 ```
 Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>] [-ParentId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
 Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-DefaultProfile <IAzureContextContainer>]
- -ParentObject <PSManagementGroup> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -204,21 +204,6 @@ Parameter Sets: ParentAndManagementGroupObject, ParentGroupObject
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

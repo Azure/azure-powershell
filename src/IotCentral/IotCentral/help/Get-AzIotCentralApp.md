@@ -26,7 +26,8 @@ Get-AzIotCentralApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProf
 
 ### ResourceIdParameterSet
 ```
-Get-AzIotCentralApp -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotCentralApp -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +56,9 @@ SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 ```
+
 Gets the metadata for the specified IoT Central Application.
+
 ### Example 2 Get IoT Central Applications in Subscription.
 ```powershell
 Get-AzIotCentralApp
@@ -92,7 +95,9 @@ SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName2
 Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 ```
+
 Gets the metadata for all the IoT Central Applications in the current Subscription.
+
 ### Example 3 Get IoT Central Applications in Resource Group.
 ```powershell
 Get-AzIotCentralApp -ResourceGroupName "MyResourceGroupName"
@@ -129,6 +134,7 @@ SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 ```
+
 Gets the metadata for all IoT Central Applications in the provided Resource Group.
 
 ## PARAMETERS

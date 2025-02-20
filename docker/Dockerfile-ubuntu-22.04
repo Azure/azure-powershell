@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/powershell:ubuntu-22.04
+RUN apt-get update && apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ARG REPOSITORY=PSGallery
 ARG MODULE=Az
@@ -37,6 +38,8 @@ RUN if [ "${LATEST}" = True ] ; then \
         mkdir latest  && \
         tar -zxvf ./latest.tar.gz -C ./latest  && \
         pwsh -Command ./latest/InstallModule.ps1 -Scope AllUsers;\
+        rm -fr latest &&\
+        rm -f latest.tar.gz ;\
     else \
         # install old azure-powershell from PSGallery
         pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \

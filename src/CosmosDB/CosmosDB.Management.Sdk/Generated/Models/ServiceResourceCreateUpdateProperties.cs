@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// <summary>
     /// Properties in ServiceResourceCreateUpdateParameters.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ServiceResourceCreateUpdateProperties")]
     public partial class ServiceResourceCreateUpdateProperties
     {
         /// <summary>
@@ -29,16 +30,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="instanceCount">Instance count for the service.
         /// </param>
-
-        /// <param name="serviceType">ServiceType for the service.
-        /// Possible values include: &#39;SqlDedicatedGateway&#39;, &#39;DataTransfer&#39;,
-        /// &#39;GraphAPICompute&#39;, &#39;MaterializedViewsBuilder&#39;</param>
-        public ServiceResourceCreateUpdateProperties(string instanceSize = default(string), int? instanceCount = default(int?), string serviceType = default(string))
+        public ServiceResourceCreateUpdateProperties(string instanceSize = default(string), int? instanceCount = default(int?))
 
         {
             this.InstanceSize = instanceSize;
             this.InstanceCount = instanceCount;
-            this.ServiceType = serviceType;
             CustomInit();
         }
 
@@ -59,12 +55,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "instanceCount")]
         public int? InstanceCount {get; set; }
-
-        /// <summary>
-        /// Gets or sets serviceType for the service. Possible values include: &#39;SqlDedicatedGateway&#39;, &#39;DataTransfer&#39;, &#39;GraphAPICompute&#39;, &#39;MaterializedViewsBuilder&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceType")]
-        public string ServiceType {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -81,7 +71,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "InstanceCount", 0);
                 }
             }
-
         }
     }
 }

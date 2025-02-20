@@ -21,7 +21,8 @@ Get-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String
 ### Get
 ```
 Get-AzContainerAppRevision -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityContainerApp
@@ -32,7 +33,8 @@ Get-AzContainerAppRevision -Name <String> -ContainerAppInputObject <IAppIdentity
 
 ### GetViaIdentity
 ```
-Get-AzContainerAppRevision -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzContainerAppRevision -InputObject <IAppIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +86,6 @@ Get a revision by Container App.
 
 ### -ContainerAppInputObject
 Identity Parameter
-To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -146,7 +147,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

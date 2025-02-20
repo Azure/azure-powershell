@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSExtendedLocation ExtendedLocation { get; set; }
 
+        public string DestinationIPAddress { get; set; }
+
         [JsonIgnore]
         public string LoadBalancerFrontendIpConfigurationsText
         {
