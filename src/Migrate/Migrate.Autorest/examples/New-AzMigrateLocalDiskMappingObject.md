@@ -1,6 +1,6 @@
 ### Example 1: Creates Disk to migrate
 ```powershell
-New-AzMigrateHCIDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
+New-AzMigrateLocalDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
 ```
 
 ```output
@@ -12,4 +12,4 @@ IsOSDisk           : True
 StorageContainerId : 
 ```
 
-Get disk object to provide input for New-AzMigrateHCIServerReplication
+Get disk object to provide input for New-AzMigrateLocalServerReplication
