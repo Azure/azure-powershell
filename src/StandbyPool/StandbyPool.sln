@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandbyPool", "StandbyPool\StandbyPool.csproj", "{EBCF154F-1A60-4154-8115-EB40B610627B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StandbyPool", "StandbyPool.Autorest\Az.StandbyPool.csproj", "{87895304-828A-4B90-A95B-02570CD70722}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StandbyPool", "..\..\generated\StandbyPool\StandbyPool.Autorest\Az.StandbyPool.csproj", "{0E2CD561-1A09-4C69-A165-BA99E67C0532}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{EBCF154F-1A60-4154-8115-EB40B610627B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBCF154F-1A60-4154-8115-EB40B610627B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBCF154F-1A60-4154-8115-EB40B610627B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87895304-828A-4B90-A95B-02570CD70722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87895304-828A-4B90-A95B-02570CD70722}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87895304-828A-4B90-A95B-02570CD70722}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87895304-828A-4B90-A95B-02570CD70722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E2CD561-1A09-4C69-A165-BA99E67C0532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E2CD561-1A09-4C69-A165-BA99E67C0532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E2CD561-1A09-4C69-A165-BA99E67C0532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E2CD561-1A09-4C69-A165-BA99E67C0532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7AFA4583-9CED-4F25-B9C0-53FF733A304D} = {C2B1E822-1F21-4F2E-8652-DC0941255142}

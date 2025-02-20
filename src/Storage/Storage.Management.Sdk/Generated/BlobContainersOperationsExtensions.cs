@@ -461,9 +461,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         public static ImmutabilityPolicy CreateOrUpdateImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), ImmutabilityPolicy parameters = default(ImmutabilityPolicy))
         {
@@ -493,9 +493,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -530,9 +530,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         public static ImmutabilityPolicy GetImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch = default(string))
         {
@@ -562,9 +562,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -602,9 +602,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         public static ImmutabilityPolicy DeleteImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch)
         {
@@ -637,9 +637,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -675,9 +675,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         public static ImmutabilityPolicy LockImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch)
         {
@@ -708,9 +708,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -746,9 +746,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         public static ImmutabilityPolicy ExtendImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch, ImmutabilityPolicy parameters = default(ImmutabilityPolicy))
         {
@@ -779,9 +779,9 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
