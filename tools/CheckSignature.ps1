@@ -15,13 +15,21 @@ Param
     [Parameter(ParameterSetName="GalleryInstall", Mandatory=$true)]
     [switch]$GalleryInstall,
     [Parameter(ParameterSetName="CustomPath", Mandatory=$true)]
-    [string]$CustomPath
+    [string]$CustomPath,
+    [Parameter(ParameterSetName="CurrentDirectory")]
+    [string]$OutputFilePath
 )
 
 function Check-StrongName {
     [CmdletBinding()]
     param([Parameter(ValueFromPipeline=$true)][string]$path)
+    Write-Output "Checking strong name for $path" | Out-File -Append $OutputFilePath
     $output = & "sn.exe" -vf $path
+    if ($output -match "is valid") {
+        Write-Output "Result: Valid" | Out-File -Append $OutputFilePath
+    } else {
+        Write-Output "Result: Invalid" | Out-File -Append $OutputFilePath
+    }
     $length = $output.Length - 1
     if (-not $output[$length].Contains("is valid")) {
         Write-Output "$path has an invalid strong name."
@@ -31,7 +39,13 @@ function Check-StrongName {
 function Check-AuthenticodeSignature {
     [CmdletBinding()]
     param([Parameter(ValueFromPipeline=$true)][string]$path)
+    Write-Output "Checking authenticode signature for $path" | Out-File -Append $OutputFilePath
     $output = Get-AuthenticodeSignature $path
+    if ($output.Status -like "Valid") {
+        Write-Output "Result: Valid" | Out-File -Append $OutputFilePath
+    } else {
+        Write-Output "Result: Invalid" | Out-File -Append $OutputFilePath
+    }
     if (-not ($output.Status -like "Valid")) {
         Write-Output "$path has an invalid authenticode signature. Status is $($output.Status)"
     }
