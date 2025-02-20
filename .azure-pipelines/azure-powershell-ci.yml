@@ -117,7 +117,7 @@ jobs:
           Write-Host "##vso[task.logissue type=error]Invalid trigger: $(Build.reason)."
           exit 1
         }
-        $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
+        $filesChanged | Select-Object -Unique | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
         
         $sourceBranchName = "$(Build.SourceBranch)".Replace("refs/heads/","")
         $baseBranchName = "origin/$sourceBranchName"
