@@ -16,20 +16,20 @@ Migrate an existing Storage blob containers to enable immutable Storage with ver
 ```
 Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration [-ResourceGroupName] <String>
  [-StorageAccountName] <String> -Name <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration -Name <String>
  -StorageAccount <PSStorageAccount> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerObject
 ```
 Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration -InputObject <PSContainer> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -109,6 +109,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

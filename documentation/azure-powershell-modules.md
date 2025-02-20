@@ -38,7 +38,6 @@
 | Content Delivery Network       | `Az.Cdn`                        | [![Cdn]][CdnGallery]                                               | [Changelog][CdnChangeLog]                        |
 | Change Analysis                | `Az.ChangeAnalysis`             | [![ChangeAnalysis]][ChangeAnalysisGallery]                         | [Changelog][ChangeAnalysisChangeLog]             |
 | Cloud Service                  | `Az.CloudService`               | [![CloudService]][CloudServiceGallery]                             | [Changelog][CloudServiceChangeLog]               |
-| CodeSigning                    | `Az.CodeSigning`                | [![CodeSigning]][CodeSigningGallery]                               | [Changelog][CodeSigningChangeLog]                |
 | Cognitive Services             | `Az.CognitiveServices`          | [![CognitiveServices]][CognitiveServicesGallery]                   | [Changelog][CognitiveServicesChangeLog]          |
 | Communication                  | `Az.Communication`              | [![Communication]][CommunicationGallery]                           | [Changelog][CommunicationChangeLog]              |
 | Compute                        | `Az.Compute`                    | [![Compute]][ComputeGallery]                                       | [Changelog][ComputeChangeLog]                    |
@@ -109,8 +108,7 @@
 | Kusto                          | `Az.Kusto`                      | [![Kusto]][KustoGallery]                                           | [Changelog][KustoChangeLog]                      |
 | Lab Services                   | `Az.LabServices`                | [![LabServices]][LabServicesGallery]                               | [Changelog][LabServicesChangeLog]                |
 | Load Testing                   | `Az.LoadTesting`                | [![LoadTesting]][LoadTestingGallery]                               | [Changelog][LoadTestingChangeLog]                |
-| Logic App                      | `Az.LogicApp`                   | [![LogicApp]][LogicAppGallery]                                     | [Changelog][LogicAppChangeLog]                   |
-| Logz.io                        | `Az.Logz`                       | [![Logz]][LogzGallery]                                             | [Changelog][LogzChangeLog]                       |
+| Logic App                      | `Az.LogicApp`                   | [![LogicApp]][LogicAppGallery]                                     | [Changelog][LogicAppChangeLog]                   |                      |
 | Machine Learning               | `Az.MachineLearning`            | [![MachineLearning]][MachineLearningGallery]                       | [Changelog][MachineLearningChangeLog]            |
 | Machine Learning Services      | `Az.MachineLearningServices`    | [![MachineLearningServices]][MachineLearningServicesGallery]       | [Changelog][MachineLearningServicesChangeLog]    |
 | Maintenance                    | `Az.Maintenance`                | [![Maintenance]][MaintenanceGallery]                               | [Changelog][MaintenanceChangeLog]                |
@@ -226,7 +224,6 @@
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [ChangeAnalysis]:             https://img.shields.io/powershellgallery/v/Az.ChangeAnalysis.svg?style=flat-square&label=Az.ChangeAnalysis
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
-[CodeSigning]:                https://img.shields.io/powershellgallery/v/Az.CodeSigning.svg?style=flat-square&label=Az.CodeSigning
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
@@ -298,7 +295,6 @@
 [LabServices]:                https://img.shields.io/powershellgallery/v/Az.LabServices.svg?style=flat-square&label=Az.LabServices
 [LoadTesting]:                https://img.shields.io/powershellgallery/v/Az.LoadTesting.svg?style=flat-square&label=Az.LoadTesting
 [LogicApp]:                   https://img.shields.io/powershellgallery/v/Az.LogicApp.svg?style=flat-square&label=Az.LogicApp
-[Logz]:                       https://img.shields.io/powershellgallery/v/Az.Logz.svg?style=flat-square&label=Az.Logz
 [MachineLearning]:            https://img.shields.io/powershellgallery/v/Az.MachineLearning.svg?style=flat-square&label=Az.MachineLearning
 [MachineLearningServices]:    https://img.shields.io/powershellgallery/v/Az.MachineLearningServices.svg?style=flat-square&label=Az.MachineLearningServices
 [Maintenance]:                https://img.shields.io/powershellgallery/v/Az.Maintenance.svg?style=flat-square&label=Az.Maintenance
@@ -410,7 +406,6 @@
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [ChangeAnalysisGallery]:             https://www.powershellgallery.com/packages/Az.ChangeAnalysis/
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
-[CodeSigningGallery]:                https://www.powershellgallery.com/packages/Az.CodeSigning/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
@@ -482,7 +477,6 @@
 [LabServicesGallery]:                https://www.powershellgallery.com/packages/Az.LabServices/
 [LoadTestingGallery]:                https://www.powershellgallery.com/packages/Az.LoadTesting/
 [LogicAppGallery]:                   https://www.powershellgallery.com/packages/Az.LogicApp/
-[LogzGallery]:                       https://www.powershellgallery.com/packages/Az.Logz/
 [MachineLearningGallery]:            https://www.powershellgallery.com/packages/Az.MachineLearning/
 [MachineLearningServicesGallery]:    https://www.powershellgallery.com/packages/Az.MachineLearningServices/
 [MaintenanceGallery]:                https://www.powershellgallery.com/packages/Az.Maintenance/
@@ -592,7 +586,6 @@
 [CdnChangeLog]:                        ../src/Cdn/Cdn/ChangeLog.md
 [ChangeAnalysisChangeLog]:             ../src/ChangeAnalysis/ChangeAnalysis/ChangeLog.md
 [CloudServiceChangeLog]:               ../src/CloudService/CloudService/ChangeLog.md
-[CodeSigningChangeLog]:                ../src/CodeSigning/CodeSigning/ChangeLog.md
 [CognitiveServicesChangeLog]:          ../src/CognitiveServices/CognitiveServices/ChangeLog.md
 [CommunicationChangeLog]:              ../src/Communication/Communication/ChangeLog.md
 [ComputeChangeLog]:                    ../src/Compute/Compute/ChangeLog.md
@@ -664,7 +657,6 @@
 [LabServicesChangeLog]:                ../src/LabServices/LabServices/ChangeLog.md
 [LoadTestingChangeLog]:                ../src/LoadTesting/LoadTesting/ChangeLog.md
 [LogicAppChangeLog]:                   ../src/LogicApp/LogicApp/ChangeLog.md
-[LogzChangeLog]:                       ../src/Logz/Logz/ChangeLog.md
 [MachineLearningChangeLog]:            ../src/MachineLearning/MachineLearning/ChangeLog.md
 [MachineLearningServicesChangeLog]:    ../src/MachineLearningServices/MachineLearningServices/ChangeLog.md
 [MaintenanceChangeLog]:                ../src/Maintenance/Maintenance/ChangeLog.md

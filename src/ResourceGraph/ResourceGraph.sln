@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{0EAADCB8-1F3C-4802-8AD8-D78F57CFFC86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ResourceGraph", "ResourceGraph.Autorest\Az.ResourceGraph.csproj", "{2A437352-76D2-480A-81FB-3F1B955C0401}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{984FDC49-E443-4705-BC90-2C20622D4083}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceGraph.Test", "ResourceGraph.Test\ResourceGraph.Test.csproj", "{FE441B52-EC18-4E9F-B026-EB3E52F57877}"
@@ -28,6 +26,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{4C4B627A-4C87-4011-B6E8-8511315EE915}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceGraph.Management.Sdk", "ResourceGraph.Management.Sdk\ResourceGraph.Management.Sdk.csproj", "{21C663FD-ABAA-48A5-A566-CE45ABE6CE06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ResourceGraph", "..\..\generated\ResourceGraph\ResourceGraph.Autorest\Az.ResourceGraph.csproj", "{BA21EB9C-A597-4559-8704-38D7EAB8B104}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,6 @@ Global
 		{0EAADCB8-1F3C-4802-8AD8-D78F57CFFC86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EAADCB8-1F3C-4802-8AD8-D78F57CFFC86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EAADCB8-1F3C-4802-8AD8-D78F57CFFC86}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A437352-76D2-480A-81FB-3F1B955C0401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A437352-76D2-480A-81FB-3F1B955C0401}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A437352-76D2-480A-81FB-3F1B955C0401}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A437352-76D2-480A-81FB-3F1B955C0401}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE441B52-EC18-4E9F-B026-EB3E52F57877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE441B52-EC18-4E9F-B026-EB3E52F57877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE441B52-EC18-4E9F-B026-EB3E52F57877}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,6 +75,10 @@ Global
 		{21C663FD-ABAA-48A5-A566-CE45ABE6CE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21C663FD-ABAA-48A5-A566-CE45ABE6CE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21C663FD-ABAA-48A5-A566-CE45ABE6CE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA21EB9C-A597-4559-8704-38D7EAB8B104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA21EB9C-A597-4559-8704-38D7EAB8B104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA21EB9C-A597-4559-8704-38D7EAB8B104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA21EB9C-A597-4559-8704-38D7EAB8B104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
