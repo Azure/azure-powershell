@@ -21,6 +21,10 @@ using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Security;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -59,13 +63,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage blob (eg. txt file) sas url into which serial console logs for requested VM instance is copied")]
-        public string SerialConsoleStorageSasUrl { get; set; }
+        public SecureString SerialConsoleStorageSasUrl { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage blob (eg. png file) sas url into which console screen shot for requested VM instance is copied")]
-        public string ConsoleScreenshotStorageSasUrl { get; set; }
+        public SecureString ConsoleScreenshotStorageSasUrl { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -108,8 +112,8 @@ namespace Microsoft.Azure.Commands.Network
                 var bootDiagParams = new NetworkVirtualApplianceBootDiagnosticParameters()
                 {
                     InstanceId = instanceId,
-                    SerialConsoleStorageSasUrl = this.SerialConsoleStorageSasUrl,
-                    ConsoleScreenshotStorageSasUrl = this.ConsoleScreenshotStorageSasUrl
+                    SerialConsoleStorageSasUrl = this.SerialConsoleStorageSasUrl?.ConvertToString(),
+                    ConsoleScreenshotStorageSasUrl = this.ConsoleScreenshotStorageSasUrl?.ConvertToString()
                 };
 
                 var result = this.NetworkVirtualAppliancesClient.GetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName: this.ResourceGroupName, networkVirtualApplianceName: this.Name, request: bootDiagParams).GetAwaiter().GetResult();
