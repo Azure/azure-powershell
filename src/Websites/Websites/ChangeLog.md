@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* The source code in the Websites.Helper folder was regenerated using autorest.powershell.
 
 ## Version 3.3.0
 * Fixd the source app retrival from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
