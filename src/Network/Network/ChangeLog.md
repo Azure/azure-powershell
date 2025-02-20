@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* This is a test commit!
 * Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
     - `Get-AzNetworkVirtualApplianceBootDiagnostics`
 * Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
