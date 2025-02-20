@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.3
+* Upgraded nuget package to signed package.
+
 ## Version 0.10.2
 * Removed Microsoft.Azure.Management.IotCentral 4.0.0 dependencies
 * Added Microsoft.Azure.PowerShell.IotCentral.Management.Sdk

@@ -17,14 +17,14 @@ This operation will stop backup for a backup instance and retains the backup dat
 Suspend-AzDataProtectionBackupInstanceBackup -ResourceGroupName <String> -BackupInstanceName <String>
  -VaultName <String> [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
  [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SuspendViaIdentity
 ```
 Suspend-AzDataProtectionBackupInstanceBackup [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
  [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- -InputObject <IDataProtectionIdentity> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -InputObject <IDataProtectionIdentity> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -132,21 +132,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group where the backup vault is present
 
@@ -210,8 +195,8 @@ Accept wildcard characters: False
 ```
 
 ### -Token
-Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
+Parameter deprecate.
+Please use SecureToken instead.
 
 ```yaml
 Type: System.String

@@ -175,6 +175,7 @@ function Set-AzServiceBusNamespace{
                 $hasTag = $PSBoundParameters.Remove('Tag')
                 $hasDefaultProfile = $PSBoundParameters.Remove('DefaultProfile')
                 $hasAsJob = $PSBoundParameters.Remove('AsJob')
+                $hasNoWait = $PSBoundParameters.Remove('NoWait')
                 $null = $PSBoundParameters.Remove('WhatIf')
                 $null = $PSBoundParameters.Remove('Confirm')
                 $serviceBusNamespace = Get-AzServiceBusNamespace @PSBoundParameters
@@ -225,6 +226,10 @@ function Set-AzServiceBusNamespace{
                }
                if ($hasAsJob) {
                     $PSBoundParameters.Add('AsJob', $true)
+               }
+
+               if ($hasNoWait) {
+                    $PSBoundParameters.Add('NoWait', $true)
                }
 
                if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {

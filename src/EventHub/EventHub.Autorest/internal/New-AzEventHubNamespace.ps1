@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-Create a namespace.
+create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-Create a namespace.
+create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example

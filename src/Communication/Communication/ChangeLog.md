@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.2
+* Upgraded nuget package to signed package.
+
 ## Version 0.4.1
 * Added support for inline attachments in the send mail operation.
     - This update introduced a new property in the EmailAttachment object called contentId, which serves as a unique identifier in the HTML content.

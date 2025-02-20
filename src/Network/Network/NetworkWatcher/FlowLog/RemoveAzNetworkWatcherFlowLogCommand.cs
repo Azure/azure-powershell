@@ -146,11 +146,19 @@ namespace Microsoft.Azure.Commands.Network
             this.Name,
             () =>
             {
-                this.FlowLogs.Delete(this.ResourceGroupName, this.NetworkWatcherName, this.Name);
-
+                try
+                {
+                    this.FlowLogs.Delete(this.ResourceGroupName, this.NetworkWatcherName, this.Name);
+                    WriteObject(true);
+                }
+                catch (Exception ex)
+                {
+                    WriteObject(false);
+                    throw ex;
+                }
                 if (PassThru)
                 {
-                    WriteObject(true);
+                    WriteObject("PassThru: " + true);
                 }
             });
         }

@@ -209,6 +209,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         Registered = 1,
         NotRegistered = 2,
+        SoftDeleted
     }
 
     /// <summary>
