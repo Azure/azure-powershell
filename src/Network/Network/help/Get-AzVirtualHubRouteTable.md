@@ -15,19 +15,19 @@ Gets a Virtual Hub Route Table in a virtual hub or lists all route tables in a v
 ### ByVirtualHubName (Default)
 ```
 Get-AzVirtualHubRouteTable -ResourceGroupName <String> -HubName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Get-AzVirtualHubRouteTable -VirtualHub <PSVirtualHub> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 Get-AzVirtualHubRouteTable -ParentResourceId <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,21 +130,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

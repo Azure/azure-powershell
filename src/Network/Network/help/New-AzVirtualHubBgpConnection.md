@@ -16,48 +16,42 @@ The New-AzVirtualHubBgpConnection cmdlet creates a HubBgpConnection resource tha
 ```
 New-AzVirtualHubBgpConnection -ResourceGroupName <String> -VirtualHubName <String> -PeerIp <String>
  -PeerAsn <UInt32> -Name <String> -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubNameByHubVirtualNetworkConnectionResourceId
 ```
 New-AzVirtualHubBgpConnection -ResourceGroupName <String> -VirtualHubName <String> -PeerIp <String>
  -PeerAsn <UInt32> -Name <String> -VirtualHubVnetConnectionId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByHubVirtualNetworkConnectionObject
 ```
 New-AzVirtualHubBgpConnection -PeerIp <String> -PeerAsn <UInt32> -Name <String>
  -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> -VirtualHub <PSVirtualHub> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceIdByHubVirtualNetworkConnectionObject
 ```
 New-AzVirtualHubBgpConnection -PeerIp <String> -PeerAsn <UInt32> -Name <String>
  -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> -VirtualHubId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByHubVirtualNetworkConnectionResourceId
 ```
 New-AzVirtualHubBgpConnection -PeerIp <String> -PeerAsn <UInt32> -Name <String>
  -VirtualHubVnetConnectionId <String> -VirtualHub <PSVirtualHub> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceIdByHubVirtualNetworkConnectionResourceId
 ```
 New-AzVirtualHubBgpConnection -PeerIp <String> -PeerAsn <UInt32> -Name <String>
  -VirtualHubVnetConnectionId <String> -VirtualHubId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,21 +168,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

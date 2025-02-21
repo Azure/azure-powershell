@@ -19,8 +19,7 @@ New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtu
  [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
  [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
@@ -30,8 +29,7 @@ New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <Strin
  [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
  [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -270,21 +268,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: ExpressRoute, VpnGateway
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

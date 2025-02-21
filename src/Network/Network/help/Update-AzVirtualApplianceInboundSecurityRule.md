@@ -17,8 +17,7 @@ Update the Inbound Security Rule of a Network Virtual Appliance Resource
 Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -VirtualApplianceName <String>
  -Name <String> [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
@@ -26,8 +25,7 @@ Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -Virtua
 Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
  [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -35,8 +33,7 @@ Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtual
 Update-AzVirtualApplianceInboundSecurityRule -VirtualApplianceResourceId <String> -Name <String>
  [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,21 +100,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

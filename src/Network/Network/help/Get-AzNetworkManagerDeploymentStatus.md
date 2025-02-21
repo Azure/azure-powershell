@@ -15,7 +15,7 @@ Lists Deployment Status in a network manager.
 ```
 Get-AzNetworkManagerDeploymentStatus -NetworkManagerName <String> -ResourceGroupName <String>
  [-Region <String[]>] [-DeploymentType <String[]>] [-SkipToken <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,21 +93,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -Region

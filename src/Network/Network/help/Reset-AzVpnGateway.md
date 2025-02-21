@@ -16,22 +16,19 @@ Resets the scalable VPN gateway.
 ### ByVpnGatewayName (Default)
 ```
 Reset-AzVpnGateway -ResourceGroupName <String> -Name <String> [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
 ```
 Reset-AzVpnGateway -InputObject <PSVpnGateway> [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
 ```
 Reset-AzVpnGateway -ResourceId <String> [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,21 +113,6 @@ Parameter Sets: ByVpnGatewayName
 Aliases: ResourceName, VpnGatewayName, GatewayName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

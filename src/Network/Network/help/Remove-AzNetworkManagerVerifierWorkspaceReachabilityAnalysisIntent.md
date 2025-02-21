@@ -9,34 +9,31 @@ schema: 2.0.0
 
 ## SYNOPSIS
 To remove network manager verifier workspace reachability analysis intent. 
-
 ## SYNTAX
 
 ### ByName (Default)
+
 ```
 Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
-
 ### ByInputObject
 ```
-Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -InputObject <PSReachabilityAnalysisIntent>
- [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -InputObject <PSReachabilityAnalysisIntent> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceId <String> [-Force] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceId <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
-
 ## DESCRIPTION
 **Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet removes a given Verifier Workspace Reachability Analysis Intent
-
 ## EXAMPLES
 
 ### Example 1
@@ -99,22 +96,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The Verifier Workspace Analysis Intent.
-
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisIntent
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
@@ -127,6 +108,20 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The Verifier Workspace Analysis Intent.
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisIntent
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -160,21 +155,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 
@@ -190,23 +170,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id.
-
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VerifierWorkspaceName
+### -WorkspaceName
 The verifier workspace name.
 
 ```yaml
@@ -219,6 +183,19 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+### -ResourceId
+The resource id.
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Confirm
@@ -266,7 +243,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](./Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)
 
 [New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](./New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)

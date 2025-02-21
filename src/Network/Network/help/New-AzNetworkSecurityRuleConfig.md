@@ -19,8 +19,7 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>] [-SourceAddressPrefix <String[]>]
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-DestinationApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -29,8 +28,7 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>] [-SourceAddressPrefix <String[]>]
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroupId <String[]>]
  [-DestinationApplicationSecurityGroupId <String[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,21 +214,6 @@ The lower the priority number, the higher the priority of the rule.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

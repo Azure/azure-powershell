@@ -18,8 +18,8 @@ New-AzNetworkManagerSecurityUserRule -Name <String> -RuleCollectionName <String>
  [-Description <String>] -Protocol <String> -Direction <String>
  [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
- [-DestinationPortRange <String[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DestinationPortRange <String[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,21 +217,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -Protocol

@@ -19,8 +19,8 @@ New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleU
  [-VpnClientAddressPool <String[]>] [-CustomDnsServer <String[]>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
  [-EnableRoutingPreferenceInternetFlag] [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubNameByVpnServerConfigurationResourceId
@@ -30,8 +30,7 @@ New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleU
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByVpnServerConfigurationObject
@@ -41,8 +40,8 @@ New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleU
  [-VpnClientAddressPool <String[]>] [-CustomDnsServer <String[]>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
  [-EnableRoutingPreferenceInternetFlag] [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByVpnServerConfigurationResourceId
@@ -52,8 +51,7 @@ New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleU
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceIdByVpnServerConfigurationObject
@@ -63,8 +61,7 @@ New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleU
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceIdByVpnServerConfigurationResourceId
@@ -74,8 +71,7 @@ New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleU
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -254,21 +250,6 @@ The list of P2SConnectionConfigurations that this P2SVpnGateway needs to have.
 Type: Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

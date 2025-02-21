@@ -15,7 +15,7 @@ Creates an exclusion on the Firewall Policy
 ```
 New-AzApplicationGatewayFirewallPolicyExclusion -MatchVariable <String> -SelectorMatchOperator <String>
  -Selector <String> [-ExclusionManagedRuleSet <PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,21 +86,6 @@ Aliases:
 Accepted values: RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestHeaderKeys, RequestCookieKeys, RequestArgKeys, RequestHeaderValues, RequestCookieValues, RequestArgValues
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

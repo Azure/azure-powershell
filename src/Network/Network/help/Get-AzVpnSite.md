@@ -16,14 +16,13 @@ This is an RM representation of customer branches that are uploaded to Azure for
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzVpnSite [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Get-AzVpnSite [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName
 ```
 Get-AzVpnSite [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,21 +123,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

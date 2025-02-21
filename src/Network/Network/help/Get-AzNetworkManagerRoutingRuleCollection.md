@@ -15,21 +15,20 @@ Gets a routing rule collection in a network manager.
 ### ByList (Default)
 ```
 Get-AzNetworkManagerRoutingRuleCollection -RoutingConfigurationName <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzNetworkManagerRoutingRuleCollection -Name <String> -RoutingConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Get-AzNetworkManagerRoutingRuleCollection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,21 +161,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

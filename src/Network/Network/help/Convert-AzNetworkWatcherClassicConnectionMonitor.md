@@ -14,8 +14,7 @@ Convert a classic connection monitor into connection monitor v2 with specified n
 
 ```
 Convert-AzNetworkWatcherClassicConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,21 +87,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

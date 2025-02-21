@@ -15,29 +15,26 @@ Updates a routing intent resource associated with a VirtualHub.
 ### ByRoutingIntentName (Default)
 ```
 Set-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Set-AzRoutingIntent -Name <String> -ParentObject <PSVirtualHub> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRoutingIntentObject
 ```
 Set-AzRoutingIntent -InputObject <PSRoutingIntent> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRoutingIntentResourceId
 ```
 Set-AzRoutingIntent -ResourceId <String> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,21 +170,6 @@ Parameter Sets: ByRoutingIntentName
 Aliases: VirtualHubName, ParentVirtualHubName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

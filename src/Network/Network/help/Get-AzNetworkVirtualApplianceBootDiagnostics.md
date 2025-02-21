@@ -16,16 +16,14 @@ Retrieves boot diagnostic logs for a given NetworkVirtualAppliance VM instance
 ```
 Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName <String> -Name <String> [-InstanceId <Int32>]
  [-SerialConsoleStorageSasUrl <SecureString>] [-ConsoleScreenshotStorageSasUrl <SecureString>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Get-AzNetworkVirtualApplianceBootDiagnostics [-InstanceId <Int32>] [-SerialConsoleStorageSasUrl <SecureString>]
  [-ConsoleScreenshotStorageSasUrl <SecureString>] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,9 +44,24 @@ This command retrieves boot diagnostic logs including the "serial console logs" 
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -62,7 +75,7 @@ Storage blob (eg.
 png file) sas url into which console screen shot for requested VM instance is copied
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,7 +105,7 @@ Accept wildcard characters: False
 Network Virtual Appliance instance id to retrieve boot diagnostics for
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +120,7 @@ Accept wildcard characters: False
 The Network Virtual Appliance name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceNameParameterSet
 Aliases: VirtualApplianceName, NvaName, NetworkVirtualApplianceName
 
@@ -118,26 +131,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -152,7 +150,7 @@ Accept wildcard characters: False
 The resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -168,7 +166,7 @@ Storage blob (eg.
 txt file) sas url into which serial console logs for requested VM instance is copied
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -179,27 +177,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

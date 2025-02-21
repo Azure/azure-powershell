@@ -60,15 +60,13 @@ function Test-NetworkVirtualApplianceBootDiagnostics
 
         # Generate SAS token for the existing Blob
         #$sasToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Context $storageAccountContext -Permission "rw" -ExpiryTime ([System.DateTime]::UtcNow).AddDays(1) -StartTime ([System.DateTime]::UtcNow).AddHours(-1) -FullUri
-        $sasToken = "******"
+        $sasToken = "placeholder"
         Assert-NotNull $sasToken
         Write-Host "SAS uri for the blob '$blobName' is: $sasToken"
-        $sasTokenEncrypt = ConvertTo-SecureString -String $sasToken -AsPlainText -Force
 
-        $sasUrlScreenShot = "******"
-        $sasUrlScreenShotEncrypt = ConvertTo-SecureString -String $sasUrlScreenShot -AsPlainText -Force
+        $sasUrlScreenShot = "placeholder"
 
-        $nvabootdiagnostics = Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName $rgname -Name $nvaname -InstanceId 0 -SerialConsoleStorageSasUrl $sasTokenEncrypt -ConsoleScreenshotStorageSasUrl $sasUrlScreenShotEncrypt
+        $nvabootdiagnostics = Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName $rgname -Name $nvaname -InstanceId 0 -SerialConsoleStorageSasUrl $sasToken -ConsoleScreenshotStorageSasUrl $sasUrlScreenShot
         Assert-AreEqual $nvabootdiagnostics.Status "Succeeded"
    	} 
     finally{

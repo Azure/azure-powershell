@@ -17,8 +17,7 @@ Creates a NAT rule on a VpnGateway which can be associated with VpnSiteLinkConne
 New-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-Type <String>] [-Mode <String>] -InternalMapping <String[]> -ExternalMapping <String[]>
  [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
@@ -26,8 +25,7 @@ New-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String>
 New-AzVpnGatewayNatRule -ParentObject <PSVpnGateway> -Name <String> [-Type <String>] [-Mode <String>]
  -InternalMapping <String[]> -ExternalMapping <String[]> [-InternalPortRange <String[]>]
  [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
@@ -35,8 +33,7 @@ New-AzVpnGatewayNatRule -ParentObject <PSVpnGateway> -Name <String> [-Type <Stri
 New-AzVpnGatewayNatRule -ParentResourceId <String> -Name <String> [-Type <String>] [-Mode <String>]
  -InternalMapping <String[]> -ExternalMapping <String[]> [-InternalPortRange <String[]>]
  [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -252,21 +249,6 @@ Parameter Sets: ByVpnGatewayName
 Aliases: ParentVpnGatewayName, VpnGatewayName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

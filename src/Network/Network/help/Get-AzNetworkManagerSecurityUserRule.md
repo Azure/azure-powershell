@@ -16,20 +16,20 @@ Gets a security user rule in a network manager.
 ```
 Get-AzNetworkManagerSecurityUserRule -RuleCollectionName <String> -SecurityUserConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzNetworkManagerSecurityUserRule -Name <String> -RuleCollectionName <String>
  -SecurityUserConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Get-AzNetworkManagerSecurityUserRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,21 +211,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

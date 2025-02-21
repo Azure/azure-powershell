@@ -16,8 +16,7 @@ Creates a routing rule collection.
 New-AzNetworkManagerRoutingRuleCollection -Name <String> -RoutingConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-Description <String>]
  -AppliesTo <PSNetworkManagerRoutingGroupItem[]> -DisableBgpRoutePropagation <String> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,21 +178,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

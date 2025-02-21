@@ -16,7 +16,7 @@ Creates an Azure IpAllocation.
 New-AzIpAllocation -Name <String> -ResourceGroupName <String> -Location <String> -IpAllocationType <String>
  [-Prefix <String>] [-PrefixLength <Int32>] [-PrefixType <String>] [-IpamAllocationId <String>]
  [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,21 +200,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

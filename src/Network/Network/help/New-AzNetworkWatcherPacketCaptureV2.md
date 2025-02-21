@@ -18,8 +18,7 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <St
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByName
@@ -28,8 +27,7 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupN
  -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocation
@@ -38,8 +36,7 @@ New-AzNetworkWatcherPacketCaptureV2 -Location <String> -Name <String> -TargetId 
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -344,21 +341,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -13,9 +13,9 @@ To create network manager verifier workspace reachability analysis run
 ## SYNTAX
 
 ```
-New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun [-Name <String>] -NetworkManagerName <String>
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-Description <String>] -IntentId <String>
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun [-Name <String>] -N
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName "testRG"  -VerifierWorkspaceName "paigeVNV" -Name "TestReachabilityAnalysisRun3" -NetworkManagerName "testNM" -IntentId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/paigeVNV/reachabilityAnalysisIntents/test"
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName "testRG"  -VerifierWorkspaceName "paigeVNV" -Name "TestReachabilityAnalysisRun3" -NetworkManagerName "testNM" -IntentId “/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/paigeVNV/reachabilityAnalysisIntents/test”
 ```
 
 ```output
@@ -136,7 +136,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -155,21 +155,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -248,7 +233,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
 
 [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)

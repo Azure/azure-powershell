@@ -15,7 +15,7 @@ Create a private link service ip configuration.
 ```
 New-AzPrivateLinkServiceIpConfig -Name <String> [-PrivateIpAddressVersion <String>]
  [-PrivateIpAddress <String>] [-PublicIpAddress <PSPublicIpAddress>] [-Subnet <PSSubnet>] [-Primary]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,21 +111,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IPv4, IPv6
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

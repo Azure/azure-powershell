@@ -20,7 +20,7 @@ Add-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSEx
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
  [-MicrosoftConfigRoutingRegistryName <String>] [-PeerAddressType <String>] [-LegacyMode <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfigRoutFilterId
@@ -30,8 +30,7 @@ Add-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSEx
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
  [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String> [-PeerAddressType <String>]
- [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfigRoutFilter
@@ -41,8 +40,7 @@ Add-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSEx
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
  [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilter <PSRouteFilter> [-PeerAddressType <String>]
- [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -253,21 +251,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

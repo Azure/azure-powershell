@@ -15,7 +15,7 @@ To create network manager verifier workspace.
 ```
 New-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
  -Location <String> [-Description <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -144,7 +144,7 @@ Aliases: ResourceName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -160,21 +160,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -197,7 +182,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: HSystem.Collections.Hashtableashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +240,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerVerifierWorkspace](./Get-AzNetworkManagerVerifierWorkspace.md)
 
 [Set-AzNetworkManagerVerifierWorkspace](./Set-AzNetworkManagerVerifierWorkspace.md)

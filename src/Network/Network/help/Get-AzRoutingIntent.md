@@ -15,19 +15,19 @@ Retrieves a routing intent resource associated with a VirtualHub.
 ### ByVirtualHubName (Default)
 ```
 Get-AzRoutingIntent -ResourceGroupName <String> -HubName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Get-AzRoutingIntent -VirtualHub <PSVirtualHub> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 Get-AzRoutingIntent -ParentResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,21 +184,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

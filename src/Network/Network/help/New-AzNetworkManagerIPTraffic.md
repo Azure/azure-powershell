@@ -9,21 +9,19 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Create a new instance of IP Traffic
-
 ## SYNTAX
 
 ```
-New-AzNetworkManagerIPTraffic -SourceIp <System.Collections.Generic.List`1[System.String]>
- -DestinationIp <System.Collections.Generic.List`1[System.String]>
- -SourcePort <System.Collections.Generic.List`1[System.String]>
- -DestinationPort <System.Collections.Generic.List`1[System.String]>
- -Protocol <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkManagerIPTraffic -SourceIp <System.Collections.Generic.IList`1[System.String]>
+ -DestinationIp <System.Collections.Generic.IList`1[System.String]>
+ -SourcePort <System.Collections.Generic.IList`1[System.String]>
+ -DestinationPort <System.Collections.Generic.IList`1[System.String]>
+ -Protocol <System.Collections.Generic.IList`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 **New-AzNetworkManagerIPTraffic** cmdlet creates a new instance of IP Traffic
-
 ## EXAMPLES
 
 ### Example 1
@@ -54,17 +52,18 @@ IpTrafficText    : {
                        "TCP"
                      ]
                    }
+
 ```
 
-Created a new instance of IP Traffic
 
+Created a new instance of IP Traffic
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -79,7 +78,7 @@ Accept wildcard characters: False
 The destination IPs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.Collections.Generic.IList`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +93,7 @@ Accept wildcard characters: False
 The destination ports.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.Collections.Generic.IList`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -105,26 +104,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Protocol
 The protocols (e.g., TCP, UDP).
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.Collections.Generic.IList`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +123,7 @@ Accept wildcard characters: False
 The source IPs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.Collections.Generic.IList`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +138,7 @@ Accept wildcard characters: False
 The source ports.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.Collections.Generic.IList`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +153,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +169,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

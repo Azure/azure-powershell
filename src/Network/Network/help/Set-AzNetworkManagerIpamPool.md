@@ -9,12 +9,11 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates an IPAM pool.
-
 ## SYNTAX
 
 ```
 Set-AzNetworkManagerIpamPool -InputObject <PSIpamPool> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +71,7 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 
 Update the IPAM pool's addressPrefixes.
 
+
 ### Example 2
 ```powershell
 $ResourceGroupName = "testRG"
@@ -121,14 +121,13 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 ```
 
 Gives the IPAM pool 'testPool' Display Name of 'My Test Pool'
-
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +142,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -158,7 +157,7 @@ Accept wildcard characters: False
 The Ipam Pool
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSIpamPool
+Type: PSIpamPool
 Parameter Sets: (All)
 Aliases:
 
@@ -169,26 +168,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -204,7 +188,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -229,7 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzNetworkManagerIpamPool](./New-AzNetworkManagerIpamPool.md)
 
 [Get-AzNetworkManagerIpamPool](./Get-AzNetworkManagerIpamPool.md)

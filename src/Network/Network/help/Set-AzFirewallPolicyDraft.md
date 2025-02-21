@@ -20,8 +20,7 @@ Set-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <
  [-SqlSetting <PSAzureFirewallPolicySqlSetting>] [-Tag <Hashtable>]
  [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
  [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -31,8 +30,7 @@ Set-AzFirewallPolicyDraft -InputObject <PSAzureFirewallPolicyDraft> [-AsJob] [-T
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
  [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentInputObjectParameterSet
@@ -42,8 +40,7 @@ Set-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy> [-AsJob]
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
  [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -53,8 +50,7 @@ Set-AzFirewallPolicyDraft [-AsJob] -ResourceId <String> [-ThreatIntelMode <Strin
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
  [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,21 +264,6 @@ The Private IP Range
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

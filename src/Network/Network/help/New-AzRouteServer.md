@@ -17,7 +17,7 @@ New-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> -HostedS
  [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
  [-HubRoutingPreference <String>] [-AllowBranchToBranchTraffic]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,6 @@ $publicIpAddress = New-AzPublicIpAddress -Name myRouteServerIP -ResourceGroupNam
 
 New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName myResourceGroup -Location eastus -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress
 ```
-
 The above will create a resource group "myResourceGroup", a Virtual Network with a RouteServerSubnet, a Public IP Address, and a Route Server in East US in that resource group in Azure. The Route Server will be created with the default settings.
 
 ### Example 2
@@ -52,7 +51,6 @@ $publicIpAddress = New-AzPublicIpAddress -Name myRouteServerIP -ResourceGroupNam
 $autoscale = New-AzVirtualRouterAutoScaleConfiguration -MinCapacity 3
 New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName myResourceGroup -Location eastus -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress -VirtualRouterAutoScaleConfiguration $autoscale
 ```
-
 The above will create a resource group "myResourceGroup", a Virtual Network with a RouteServerSubnet, a Public IP Address, and a Route Server in East US in that resource group in Azure. 
 
 This example is similar to Example 2, but the Route Server will be created with a minCapacity of 3 meaning that it will have 3 Routing Infrastructure Units.
@@ -162,21 +160,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
