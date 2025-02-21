@@ -135,7 +135,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string EncryptionScope { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("AsSecureString", "14.0.0", "9.0.0", ChangeDescription = "The parameter will be derepcated and the default output type will be System.Security.SecureString.")]
         [Parameter(Mandatory = false, HelpMessage = "Specify to convert output token as a secure string.")]
         public SwitchParameter AsSecureString { get; set; }
 
