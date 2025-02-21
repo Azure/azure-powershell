@@ -116,6 +116,16 @@ directive:
       verb: Invoke
       subject: Command
     hide: true
+  # Breaking change for OSType parameter
+  - where:
+      parameter-name: OSType
+    set:
+      breaking-change:
+        become-mandatory: false
+        change-description: Removing the default value of OSType parameter.
+        deprecated-by-version: 5.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/05/21
   # Alias long name: Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
   - where:
       verb: Get

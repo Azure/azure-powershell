@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IotHub", "..\IotHub\IotHub\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{51720851-AA01-44F8-A7BE-F156AF3F6215}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IotHub.Management.Sdk", "..\IotHub\IotHub.Management.Sdk\IotHub.Management.Sdk.csproj", "{A8E126DB-A57F-4CD1-A44A-EB5CFE7D5377}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{51720851-AA01-44F8-A7BE-F156AF3F6215}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51720851-AA01-44F8-A7BE-F156AF3F6215}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51720851-AA01-44F8-A7BE-F156AF3F6215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8E126DB-A57F-4CD1-A44A-EB5CFE7D5377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E126DB-A57F-4CD1-A44A-EB5CFE7D5377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8E126DB-A57F-4CD1-A44A-EB5CFE7D5377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8E126DB-A57F-4CD1-A44A-EB5CFE7D5377}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,5 +102,6 @@ Global
 		{2AB0D122-1637-4C97-9D5E-B6556B8E4934} = {5BB1310C-0A43-4676-978A-E2F59FFE7C65}
 		{9FD5A2AF-5CD4-421F-BDBE-9456831D4E25} = {2AB0D122-1637-4C97-9D5E-B6556B8E4934}
 		{51720851-AA01-44F8-A7BE-F156AF3F6215} = {5BB1310C-0A43-4676-978A-E2F59FFE7C65}
+		{A8E126DB-A57F-4CD1-A44A-EB5CFE7D5377} = {2AB0D122-1637-4C97-9D5E-B6556B8E4934}
 	EndGlobalSection
 EndGlobal

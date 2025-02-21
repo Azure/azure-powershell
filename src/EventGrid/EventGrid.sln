@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventGrid", "EventGrid\EventGrid.csproj", "{C36894FB-34EA-4344-A06C-FAA8C9963641}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventGrid", "EventGrid.Autorest\Az.EventGrid.csproj", "{9389E1AA-3D25-495D-AD46-768A47868742}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventGrid", "..\..\generated\EventGrid\EventGrid.Autorest\Az.EventGrid.csproj", "{AA258ED3-AA49-440B-825F-6B05B7F1EA6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{C36894FB-34EA-4344-A06C-FAA8C9963641}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C36894FB-34EA-4344-A06C-FAA8C9963641}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C36894FB-34EA-4344-A06C-FAA8C9963641}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9389E1AA-3D25-495D-AD46-768A47868742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9389E1AA-3D25-495D-AD46-768A47868742}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9389E1AA-3D25-495D-AD46-768A47868742}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9389E1AA-3D25-495D-AD46-768A47868742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA258ED3-AA49-440B-825F-6B05B7F1EA6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA258ED3-AA49-440B-825F-6B05B7F1EA6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA258ED3-AA49-440B-825F-6B05B7F1EA6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA258ED3-AA49-440B-825F-6B05B7F1EA6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ACE34B85-F2BD-47C9-9F32-3B3D4D80A370} = {C9695DE7-DDE6-4DEF-8C03-D419C06945E6}

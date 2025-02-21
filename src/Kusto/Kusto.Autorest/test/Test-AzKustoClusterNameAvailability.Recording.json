@@ -1,9 +1,9 @@
 {
-  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2023-08-15+1": {
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2023-08-15",
-      "Content": "{\r\n  \"name\": \"pssdk3w8cj7\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2024-04-13",
+      "Content": "{\r\n  \"name\": \"pssdk2ekhd9\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,21 +17,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "29688c2a-79da-4180-9b36-1ab56e24c822" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
-        "x-ms-correlation-request-id": [ "2ea500c4-ea7a-4ca2-b73c-5fea99ad5058" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T225504Z:2ea500c4-ea7a-4ca2-b73c-5fea99ad5058" ],
+        "x-ms-request-id": [ "9970d3c5-4246-4011-95a3-cd9c98cc0e49" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-correlation-request-id": [ "e97ad43e-3e73-42bc-82cd-17319b6759fb" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T031032Z:e97ad43e-3e73-42bc-82cd-17319b6759fb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 22:55:03 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 931EB90DC35F4F21ACE17D975A322432 Ref B: MRS211050315025 Ref C: 2024-12-01T03:10:31Z" ],
+        "Date": [ "Sun, 01 Dec 2024 03:10:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "142" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"pssdk3w8cj7\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdk3w8cj7\u0027 with type Engine is already taken. Please specify a different name\"}",
+      "Content": "{\"name\":\"pssdk2ekhd9\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdk2ekhd9\u0027 with type Engine is already taken. Please specify a different name\"}",
       "isContentBase64": false
     }
   }

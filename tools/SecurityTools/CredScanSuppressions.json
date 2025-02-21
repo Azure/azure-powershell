@@ -1365,5 +1365,8 @@
       "file": "src\\ServiceFabric\\ServiceFabric.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\\TestAddAzureRmServiceFabricNodeType.json",
       "_justification": "False positive, there are no cred in this file."
     },
+      "file": "src\\RecoveryServices\\RecoveryServices.Backup.Providers\\Providers\\IaasVmPsBackupProvider.cs",
+      "_justification": "False positive, there are no cred in this file."
+    }
   ]
 }

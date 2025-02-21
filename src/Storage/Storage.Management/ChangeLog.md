@@ -18,6 +18,33 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported new SkuName when create/update Storage account for Files Provisioned v2 account type:  "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS"
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Get File Service Usage on Files Provisioned v2 account type.
+    - `Get-AzStorageFileServiceUsage`
+* Supported create/update file share on new parameters on Files Provisioned v2 account type with new parameter: "-ProvisionedBandwidthMibps", "-ProvisionedIops""
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+* Supported create/update/Get file share on new parameters on Files Provisioned v1 account type with new parameter: "-PaidBurstingEnabled", "-PaidBurstingMaxBandwidthMibps", "-PaidBurstingMaxIops"
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+    - `Get-AzStorageFileServiceUsage`
+* Supported get file share new properties for Files Provisioned v1/v2 account type
+    - `Get-AzStorageFileServiceUsage`
+
+## Version 8.1.0
+* Upgraded nuget package to signed package.
+* Added warning message for account migration cmdlet.
+    - `Start-AzStorageAccountMigration`
+* Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
+    - `New-AzStorageContext`
+* Upgraded Azure.Storage.Blobs to 12.23.0
+* Upgraded Azure.Storage.Files.Shares to 12.21.0
+* Upgraded Azure.Storage.Files.DataLake to 12.21.0
+* Upgraded Azure.Storage.Queues to 12.21.0
+* Supported ClientName property when listing file handles 
+    - `Get-AzStorageFileHandle`
 * Upgraded Azure.Core to 1.44.1.
 
 ## Version 8.0.0

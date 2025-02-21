@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;1&#39;, &#39;2&#39;, &#39;3&#39;</param>
 
         /// <param name="direction">Describes in which direction signature is being enforced: 0 - OutBound, 1 -
-        /// InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound
-        /// Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;</param>
+        /// InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound, 5 - InternalInbound
+        /// Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;</param>
 
         /// <param name="group">Describes the groups the signature belongs to
         /// </param>
@@ -99,7 +99,8 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets describes in which direction signature is being enforced: 0 -
-        /// OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;
+        /// OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound, 5 -
+        /// InternalInbound Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "direction")]
         public int? Direction {get; set; }

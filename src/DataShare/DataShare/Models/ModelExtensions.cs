@@ -169,15 +169,15 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
                     return blobContainerDataSet.ToPsObject();
                 case BlobFolderDataSet blobFolderDataSet:
                     return blobFolderDataSet.ToPsObject();
-                case ADLSGen2FileDataSet adlsGen2FileDataSet:
+                case AdlsGen2FileDataSet adlsGen2FileDataSet:
                     return adlsGen2FileDataSet.ToPsObject();
-                case ADLSGen2FileSystemDataSet adlsGen2FileSystemDataSet:
+                case AdlsGen2FileSystemDataSet adlsGen2FileSystemDataSet:
                     return adlsGen2FileSystemDataSet.ToPsObject();
-                case ADLSGen2FolderDataSet adlsGen2FolderDataSet:
+                case AdlsGen2FolderDataSet adlsGen2FolderDataSet:
                     return adlsGen2FolderDataSet.ToPsObject();
-                case ADLSGen1FileDataSet adlsGen1FileDataSet:
+                case AdlsGen1FileDataSet adlsGen1FileDataSet:
                     return adlsGen1FileDataSet.ToPsObject();
-                case ADLSGen1FolderDataSet adlsGen1FolderDataSet:
+                case AdlsGen1FolderDataSet adlsGen1FolderDataSet:
                     return adlsGen1FolderDataSet.ToPsObject();
                 default: return null;
             }
@@ -193,11 +193,11 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
                     return blobContainerDataSet.ToPsObject();
                 case BlobFolderDataSetMapping blobFolderDataSet:
                     return blobFolderDataSet.ToPsObject();
-                case ADLSGen2FileDataSetMapping adlsGen2FileDataSet:
+                case AdlsGen2FileDataSetMapping adlsGen2FileDataSet:
                     return adlsGen2FileDataSet.ToPsObject();
-                case ADLSGen2FileSystemDataSetMapping adlsGen2FileSystemDataSet:
+                case AdlsGen2FileSystemDataSetMapping adlsGen2FileSystemDataSet:
                     return adlsGen2FileSystemDataSet.ToPsObject();
-                case ADLSGen2FolderDataSetMapping adlsGen2FolderDataSet:
+                case AdlsGen2FolderDataSetMapping adlsGen2FolderDataSet:
                     return adlsGen2FolderDataSet.ToPsObject();
                 default: return null;
             }
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAdlsGen2FileDataSet ToPsObject(this ADLSGen2FileDataSet adlsGen2FileDataSet)
+        public static PSAdlsGen2FileDataSet ToPsObject(this AdlsGen2FileDataSet adlsGen2FileDataSet)
         {
             return new PSAdlsGen2FileDataSet
             {
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAdlsGen2FileSystemDataSet ToPsObject(this ADLSGen2FileSystemDataSet adlsGen2FileSystemDataSet)
+        public static PSAdlsGen2FileSystemDataSet ToPsObject(this AdlsGen2FileSystemDataSet adlsGen2FileSystemDataSet)
         {
             return new PSAdlsGen2FileSystemDataSet
             {
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAdlsGen2FolderDataSet ToPsObject(this ADLSGen2FolderDataSet adlsGen2FolderDataSet)
+        public static PSAdlsGen2FolderDataSet ToPsObject(this AdlsGen2FolderDataSet adlsGen2FolderDataSet)
         {
             return new PSAdlsGen2FolderDataSet
             {
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAdlsGen2FileDataSetMapping ToPsObject(this ADLSGen2FileDataSetMapping adlsGen2FileDataSetMapping)
+        public static PSAdlsGen2FileDataSetMapping ToPsObject(this AdlsGen2FileDataSetMapping adlsGen2FileDataSetMapping)
         {
             return new PSAdlsGen2FileDataSetMapping
             {
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAdlsGen2FileSystemDataSetMapping ToPsObject(this ADLSGen2FileSystemDataSetMapping adlsGen2FileSystemDataSetMapping)
+        public static PSAdlsGen2FileSystemDataSetMapping ToPsObject(this AdlsGen2FileSystemDataSetMapping adlsGen2FileSystemDataSetMapping)
         {
             return new PSAdlsGen2FileSystemDataSetMapping
             {
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAdlsGen2FolderDataSetMapping ToPsObject(this ADLSGen2FolderDataSetMapping adlsGen2FolderDataSetMapping)
+        public static PSAdlsGen2FolderDataSetMapping ToPsObject(this AdlsGen2FolderDataSetMapping adlsGen2FolderDataSetMapping)
         {
             return new PSAdlsGen2FolderDataSetMapping
             {
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAdlsGen1FileDataSet ToPsObject(this ADLSGen1FileDataSet adlsGen1FileDataSet)
+        public static PSAdlsGen1FileDataSet ToPsObject(this AdlsGen1FileDataSet adlsGen1FileDataSet)
         {
             return new PSAdlsGen1FileDataSet
             {
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAdlsGen1FolderDataSet ToPsObject(this ADLSGen1FolderDataSet adlsGen1FolderDataSet)
+        public static PSAdlsGen1FolderDataSet ToPsObject(this AdlsGen1FolderDataSet adlsGen1FolderDataSet)
         {
             return new PSAdlsGen1FolderDataSet
             {
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
         {
             return new PSDataShareSubscriptionSynchronization
             {
-                DurationMs = sync.DurationMs,
+                DurationMs = sync.DurationMS,
                 StartTime = sync.StartTime,
                 EndTime = sync.EndTime,
                 Message = sync.Message,
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             return new PSDataShareSynchronization
             {
                 Company = shareSynchronization.ConsumerTenantName,
-                DurationMs = shareSynchronization.DurationMs,
+                DurationMs = shareSynchronization.DurationMS,
                 StartTime = shareSynchronization.StartTime,
                 EndTime = shareSynchronization.EndTime,
                 Message = shareSynchronization.Message,
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
                 Name = synchronizationDetails.Name,
                 DataSetId = synchronizationDetails.DataSetId,
                 DataSetType = synchronizationDetails.DataSetType,
-                DurationMs = synchronizationDetails.DurationMs,
+                DurationMs = synchronizationDetails.DurationMS,
                 StartTime = synchronizationDetails.StartTime,
                 EndTime = synchronizationDetails.EndTime,
                 Status = synchronizationDetails.Status,

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.15.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.14.1
 * Updated SDK via autorest.powershell.
 

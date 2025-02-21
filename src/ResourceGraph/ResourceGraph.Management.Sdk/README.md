@@ -35,9 +35,9 @@ message-format: json
 
 ###
 ``` yaml
-commit: 413612b5f24da120e83eac227264f2e0b262ed8a
+commit: cb843b318ece878394d127733abe5da858466daf
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2021-03-01/resourcegraph.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2024-04-01/resourcegraph.json
 
 output-folder: Generated
 
@@ -59,4 +59,8 @@ directive:
     where: $.definitions.ResourceChangesRequestParameters.properties.fetchPropertyChanges
     from: resourcegraph.json
     reason: This is a clear scenario for a boolean and will not have more than 2 values in the future.
+  - suppress: XmsIdentifierValidation
+    from: resourcecopilot.json
+    where: $.definitions.Error.properties.details
+    reason: Adding x-ms-identifiers to Error details array results in SDK breaking changes.
 ```

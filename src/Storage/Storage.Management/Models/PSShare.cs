@@ -46,6 +46,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AccessTierChangeTime = share.AccessTierChangeTime;
             this.AccessTierStatus = share.AccessTierStatus;
             this.SnapshotTime = share.SnapshotTime;
+            this.ProvisionedIops = share.ProvisionedIops;
+            this.ProvisionedBandwidthMibps = share.ProvisionedBandwidthMibps;
+            this.IncludedBurstIops = share.IncludedBurstIops;
+            this.MaxBurstCreditsForIops = share.MaxBurstCreditsForIops;
+            this.NextAllowedProvisionedBandwidthDowngradeTime = share.NextAllowedProvisionedBandwidthDowngradeTime;
+            this.NextAllowedProvisionedIopsDowngradeTime = share.NextAllowedProvisionedIopsDowngradeTime;
+            this.NextAllowedQuotaDowngradeTime = share.NextAllowedQuotaDowngradeTime;
+            this.FileSharePaidBursting = share.FileSharePaidBursting is null ? null : new PSFileSharePropertiesFileSharePaidBursting(share.FileSharePaidBursting);
         }
 
         public PSShare(FileShareItem share)
@@ -72,6 +80,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AccessTierChangeTime = share.AccessTierChangeTime;
             this.AccessTierStatus = share.AccessTierStatus;
             this.SnapshotTime = share.SnapshotTime;
+            this.ProvisionedIops = share.ProvisionedIops;
+            this.ProvisionedBandwidthMibps = share.ProvisionedBandwidthMibps;
+            this.IncludedBurstIops = share.IncludedBurstIops;
+            this.MaxBurstCreditsForIops = share.MaxBurstCreditsForIops;
+            this.NextAllowedProvisionedBandwidthDowngradeTime = share.NextAllowedProvisionedBandwidthDowngradeTime;
+            this.NextAllowedProvisionedIopsDowngradeTime = share.NextAllowedProvisionedIopsDowngradeTime;
+            this.NextAllowedQuotaDowngradeTime = share.NextAllowedQuotaDowngradeTime;
+            this.FileSharePaidBursting = share.FileSharePaidBursting is null ? null : new PSFileSharePropertiesFileSharePaidBursting(share.FileSharePaidBursting);
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
@@ -114,8 +130,37 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string AccessTierStatus { get; }
 
         public long? ShareUsageBytes { get; }
-
         public DateTime? SnapshotTime { get; private set; }
+        public int? ProvisionedIops { get; set; }
+        public int? ProvisionedBandwidthMibps { get; set; }
+        public int? IncludedBurstIops { get; private set; }
+        public long? MaxBurstCreditsForIops { get; private set; }
+        public System.DateTime? NextAllowedQuotaDowngradeTime { get; private set; }
+        public System.DateTime? NextAllowedProvisionedIopsDowngradeTime { get; private set; }
+        public System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime { get; private set; }
+        public PSFileSharePropertiesFileSharePaidBursting FileSharePaidBursting { get; set; }
+
+        public class PSFileSharePropertiesFileSharePaidBursting
+        {
+            public PSFileSharePropertiesFileSharePaidBursting() { }
+
+            public PSFileSharePropertiesFileSharePaidBursting(FileSharePropertiesFileSharePaidBursting paidBursting)
+            {
+                if (paidBursting == null)
+                {
+                    return;
+                }
+
+                this.PaidBurstingEnabled = paidBursting.PaidBurstingEnabled;
+                this.PaidBurstingMaxIops = paidBursting.PaidBurstingMaxIops;
+                this.PaidBurstingMaxBandwidthMibps = paidBursting.PaidBurstingMaxBandwidthMibps;
+            }
+
+            public bool? PaidBurstingEnabled { get; set; }
+            public int? PaidBurstingMaxIops { get; set; }
+            public int? PaidBurstingMaxBandwidthMibps { get; set; }
+        }
+
         public static string ParseResourceGroupFromId(string idFromServer)
         {
             if (!string.IsNullOrEmpty(idFromServer))
