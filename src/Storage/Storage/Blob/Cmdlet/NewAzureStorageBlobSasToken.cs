@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Security;
     using Microsoft.WindowsAzure.Commands.Common;
 
-    [CmdletOutputBreakingChangeWithVersion(typeof(SecureString), "14.0.0", "9.0.0")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(String), "14.0.0", "9.0.0", ReplacementCmdletOutputTypeName = "System.Security.SecureString")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(String), typeof(SecureString))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {
@@ -135,6 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string EncryptionScope { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("AsSecureString", "14.0.0", "9.0.0", ChangeDescription = "The parameter will be derepcated and the default output type will be System.Security.SecureString.")]
         [Parameter(Mandatory = false, HelpMessage = "Specify to convert output token as a secure string.")]
         public SwitchParameter AsSecureString { get; set; }
 
