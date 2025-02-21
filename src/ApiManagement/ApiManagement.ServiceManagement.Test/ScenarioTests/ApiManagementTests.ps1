@@ -2270,12 +2270,12 @@ function Cache-CrudTest {
     Assert-AreEqual 0 $caches.Count
 
     $cacheDescription = getAssetName
-    $cacheConnectionString = 'teamdemo.redis.cache.windows.net:6380,password=xxxxxx+xxxxx=,ssl=True,abortConnect=False'
+    $cacheConnectionString = 'teamdemo.redis.cache.windows.net:6380,password=xxxxxx+xxxxx=,ssl=True,abortConnect=False' | ConvertTo-SecureString -AsPlainText
 
     $cacheId = "default"
     try {
         # create a new cache
-        $cache = New-AzApiManagementCache -Context $context -CacheId $cacheId -ConnectionString $cacheConnectionString -Description $cacheDescription
+        $cache = New-AzApiManagementCache -Context $context -CacheId $cacheId -ConnectionStringSecure $cacheConnectionString -Description $cacheDescription
 
         Assert-AreEqual $cacheId $cache.CacheId
         Assert-NotNull $cache.ConnectionString
