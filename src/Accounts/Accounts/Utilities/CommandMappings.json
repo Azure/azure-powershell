@@ -6216,6 +6216,7 @@
       "Stop-AzRecoveryServicesAsrJob": {},
       "Stop-AzRecoveryServicesBackupJob": {},
       "Test-AzRecoveryServicesDSMove": {},
+      "Undo-AzRecoveryServicesBackupContainerDeletion": {},
       "Undo-AzRecoveryServicesBackupItemDeletion": {},
       "Unregister-AzRecoveryServicesBackupContainer": {},
       "Unregister-AzRecoveryServicesBackupManagementServer": {},

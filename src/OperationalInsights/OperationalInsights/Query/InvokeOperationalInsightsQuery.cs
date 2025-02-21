@@ -22,6 +22,7 @@ using System.Net;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Threading;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Net.Security;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Query
 {
@@ -92,9 +93,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
 
                     this._operationalInsightsDataClient.BaseUri = targetUri;
 
-                    if (targetUri.AbsoluteUri.Contains("localhost"))
+                    if (targetUri.Host.Equals("localhost", StringComparison.OrdinalIgnoreCase))
                     {
-                        ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                        ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+                        {
+                            if (sslPolicyErrors == SslPolicyErrors.None)
+                                return true;
+
+                            // Bypass certificate validation for localhost
+                            if (sender is HttpWebRequest request)
+                                return request.RequestUri.IsLoopback;
+
+                            return false;
+                        };
                     }
                 }
 

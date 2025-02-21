@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{A97A71D7-962B-49B5-AF0B-E2513F6FF4F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EdgeOrder", "EdgeOrder.Autorest\Az.EdgeOrder.csproj", "{10A7352E-569A-4129-A9A3-18B8A1206DAA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdgeOrder", "EdgeOrder\EdgeOrder.csproj", "{A274AC6B-D42A-47BC-88B1-88C7B9BC782C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EdgeOrder", "..\..\generated\EdgeOrder\EdgeOrder.Autorest\Az.EdgeOrder.csproj", "{E4263649-3BFC-4023-A87B-9EE22DE94FC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,14 +54,14 @@ Global
 		{A97A71D7-962B-49B5-AF0B-E2513F6FF4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A97A71D7-962B-49B5-AF0B-E2513F6FF4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A97A71D7-962B-49B5-AF0B-E2513F6FF4F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10A7352E-569A-4129-A9A3-18B8A1206DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10A7352E-569A-4129-A9A3-18B8A1206DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10A7352E-569A-4129-A9A3-18B8A1206DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10A7352E-569A-4129-A9A3-18B8A1206DAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A274AC6B-D42A-47BC-88B1-88C7B9BC782C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A274AC6B-D42A-47BC-88B1-88C7B9BC782C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A274AC6B-D42A-47BC-88B1-88C7B9BC782C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A274AC6B-D42A-47BC-88B1-88C7B9BC782C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4263649-3BFC-4023-A87B-9EE22DE94FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4263649-3BFC-4023-A87B-9EE22DE94FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4263649-3BFC-4023-A87B-9EE22DE94FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4263649-3BFC-4023-A87B-9EE22DE94FC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7C2BFC09-AB0B-4063-AE7D-104A100606A4} = {8EDA1268-1F73-48A0-B1D4-35B9F0637856}

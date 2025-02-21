@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Migrated SDK generation from autorest csharp to autorest powershell.
 
 ## Version 1.5.0
 * Upgraded nuget package to signed package.

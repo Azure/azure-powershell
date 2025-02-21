@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System;
 using System.Collections.Generic;
 using Xunit.Abstractions;
 
@@ -76,15 +75,8 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
 
         private static KeyVaultClient GetKeyVaultClient(MockContext context)
         {
-            string accessToken = "fakefakefake";
-
-            // When recording, we should have a connection string passed into the code from the environment
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(new[] { "https://vault.azure.net/.default" });
-            }
-
-            return new KeyVaultClient(new TokenCredentials(accessToken), HttpMockServer.CreateInstance());
+            var creds = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId);
+            return new KeyVaultClient(creds, HttpMockServer.CreateInstance());
         }
     }
 }

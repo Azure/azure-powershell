@@ -494,7 +494,7 @@ function Test-RemoveReplicationProtectedItemDisk {
     $HealthQueryWaitTimeInSeconds = 10
     do {
         $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
-        $healthError = $pe.ReplicationHealthErrors | where-object { $_.ErrorCode -eq 153039 }
+        $healthError = $pe.ReplicationHealthErrors | Where-Object { $_.ErrorCode -eq 153039 }
 
         if ($healthError -eq $null) {
             Write-Host $("Waiting for Add-Disk health warning...") -ForegroundColor Yellow
@@ -516,7 +516,7 @@ function Test-RemoveReplicationProtectedItemDisk {
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
 
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
-    $removeDisk = $pe.ProviderSpecificDetails.A2ADiskDetails | where-object { $_.AllowedDiskLevelOperations.Count -ne 0 }
+    $removeDisk = $pe.ProviderSpecificDetails.A2ADiskDetails | Where-Object { $_.AllowedDiskLevelOperations.Count -ne 0 }
 
     Assert-NotNull($removeDisk)
     $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
