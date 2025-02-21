@@ -54,6 +54,9 @@
 * Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
 * Added support for `AutoscaleConfiguration` property in `AzureFirewall` model for `New-AzFirewall` and `Set-AzFirewall` commands
 * Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` command for ExpressRoute
+* Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
+    - `Get-AzNetworkVirtualAppliance`
+
 
 ## Version 7.11.0
 * Updated Device Update Private Link provider configuration
