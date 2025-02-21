@@ -17,7 +17,8 @@ Adds a front-end IP configuration to an application gateway.
 ```
 Add-AzApplicationGatewayFrontendIPConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-PrivateIPAddress <String>] [-SubnetId <String>] [-PublicIPAddressId <String>]
- [-PrivateLinkConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PrivateLinkConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,7 +26,7 @@ Add-AzApplicationGatewayFrontendIPConfig -ApplicationGateway <PSApplicationGatew
 Add-AzApplicationGatewayFrontendIPConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-PrivateIPAddress <String>] [-Subnet <PSSubnet>] [-PublicIPAddress <PSPublicIpAddress>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,6 +161,21 @@ PrivateLinkConfigurationId
 Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
