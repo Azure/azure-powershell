@@ -41,11 +41,15 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="properties">Represents the Reachability Analysis Intent properties.
         /// </param>
-        public ReachabilityAnalysisIntent(ReachabilityAnalysisIntentProperties properties, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
+
+        /// <param name="etag">String representing unique etag for the resource document.
+        /// </param>
+        public ReachabilityAnalysisIntent(ReachabilityAnalysisIntentProperties properties, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string))
 
         : base(id, name, type, systemData)
         {
             this.Properties = properties;
+            this.Etag = etag;
             CustomInit();
         }
 
@@ -60,6 +64,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public ReachabilityAnalysisIntentProperties Properties {get; set; }
+
+        /// <summary>
+        /// Gets string representing unique etag for the resource document.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -76,6 +86,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.Properties.Validate();
             }
+
         }
     }
 }
