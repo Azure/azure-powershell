@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new rule and updates an existing rule</summary>
+    /// <summary>create a new rule and create an existing rule</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzServiceBusRule_CreateViaIdentityNamespaceExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Create a new rule and updates an existing rule")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"create a new rule and create an existing rule")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}", ApiVersion = "2022-10-01-preview")]
     public partial class NewAzServiceBusRule_CreateViaIdentityNamespaceExpanded : global::System.Management.Automation.PSCmdlet,

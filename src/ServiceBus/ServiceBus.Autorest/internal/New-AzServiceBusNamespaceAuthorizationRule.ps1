@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create an authorization rule for a namespace.
+create an authorization rule for a namespace.
 .Description
-Create an authorization rule for a namespace.
+create an authorization rule for a namespace.
 .Example
 {{ Add code here }}
 .Example

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new Event Hub as a nested resource within a Namespace.
+create a new Event Hub as a nested resource within a Namespace.
 .Description
-Create a new Event Hub as a nested resource within a Namespace.
+create a new Event Hub as a nested resource within a Namespace.
 .Example
 New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -RetentionTimeInHour 168 -PartitionCount 5 -CleanupPolicy Delete
 .Example
@@ -65,14 +65,17 @@ PARAMETER <IEventhub>: Single item in List or Get Event Hub operation
   [IdentityType <String>]: Type of Azure Active Directory Managed Identity.
   [IntervalInSeconds <Int32?>]: The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
   [MessageRetentionInDay <Int64?>]: Number of days to retain the events for this Event Hub, value should be 1 to 7 days
+  [MinCompactionLagInMin <Int64?>]: The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.
   [PartitionCount <Int64?>]: Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
-  [RetentionTimeInHour <Int64?>]: Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue 
+  [RetentionTimeInHour <Int64?>]: Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
   [SizeLimitInBytes <Int32?>]: The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
   [SkipEmptyArchive <Boolean?>]: A value that indicates whether to Skip Empty Archives
   [Status <String>]: Enumerates the possible values for the status of the Event Hub.
   [StorageAccountResourceId <String>]: Resource id of the storage account to be used to create the blobs
-  [TombstoneRetentionTimeInHour <Int32?>]: Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+  [TimestampType <String>]: Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+  [TombstoneRetentionTimeInHour <Int32?>]: Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
   [UserAssignedIdentityId <String>]: ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+  [UserMetadata <String>]: Gets and Sets Metadata of User.
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhub
 #>

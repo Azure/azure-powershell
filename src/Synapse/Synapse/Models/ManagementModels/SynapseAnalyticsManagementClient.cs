@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 {
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
-                return _synapseManagementClient.IpFirewallRules.CreateOrUpdate(
+                return _synapseManagementClient.IPFirewallRules.CreateOrUpdate(
                     resourceGroupName,
                     workspaceName,
                     ruleName,
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                return _synapseManagementClient.IpFirewallRules.Get(resourceGroupName, workspaceName, ruleName);
+                return _synapseManagementClient.IPFirewallRules.Get(resourceGroupName, workspaceName, ruleName);
             }
             catch (ErrorResponseException ex)
             {
@@ -292,8 +292,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                var firstPage = _synapseManagementClient.IpFirewallRules.ListByWorkspace(resourceGroupName, workspaceName);
-                return ListResources(firstPage, _synapseManagementClient.IpFirewallRules.ListByWorkspaceNext);
+                var firstPage = _synapseManagementClient.IPFirewallRules.ListByWorkspace(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.IPFirewallRules.ListByWorkspaceNext);
             }
             catch
             {
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             try
             {
-                _synapseManagementClient.IpFirewallRules.Delete(resourceGroupName, workspaceName, ruleName);
+                _synapseManagementClient.IPFirewallRules.Delete(resourceGroupName, workspaceName, ruleName);
             }
             catch (CloudException ex)
             {
@@ -2078,7 +2078,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                return await _synapseManagementClient.IntegrationRuntimeNodeIpAddress.GetWithHttpMessagesAsync(
+                return await _synapseManagementClient.IntegrationRuntimeNodeIPAddress.GetWithHttpMessagesAsync(
                 resourceGroupName,
                 workspaceName,
                 integrationRuntimeName,
@@ -2606,8 +2606,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 {
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
-                var firstPage = this._synapseManagementClient.AzureADOnlyAuthentications.List(resourceGroupName, workspaceName);
-                return ListResources(firstPage, _synapseManagementClient.AzureADOnlyAuthentications.ListNext);
+                var firstPage = this._synapseManagementClient.AzureAdOnlyAuthentications.List(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.AzureAdOnlyAuthentications.ListNext);
             }
             catch (ErrorResponseException ex)
             {
@@ -2624,7 +2624,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }            
 
-                return this._synapseManagementClient.AzureADOnlyAuthentications.Create(resourceGroupName, workspaceName, azureADOnlyAuthentication);
+                return this._synapseManagementClient.AzureAdOnlyAuthentications.Create(resourceGroupName, workspaceName, azureADOnlyAuthentication);
             }
             catch (ErrorResponseException ex)
             {

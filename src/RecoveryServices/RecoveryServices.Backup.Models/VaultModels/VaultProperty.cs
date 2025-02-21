@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string SoftDeleteFeatureState { get; set; }
 
+        /// <summary>
+        /// Gets or sets the retention period in days for soft delete.
+        /// </summary>
+        public int? SoftDeleteRetentionPeriodInDays { get; set; }
+
         public EncryptionConfig encryptionProperties { get; set; }
 
         public VaultProperty(BackupResourceVaultConfig vaultConfig, BackupResourceEncryptionConfigExtendedResource vaultEncryptionSetting)
@@ -57,6 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             StorageModelType = vaultConfig.StorageModelType;
             EnhancedSecurityState = vaultConfig.EnhancedSecurityState;
             SoftDeleteFeatureState = vaultConfig.SoftDeleteFeatureState;
+            SoftDeleteRetentionPeriodInDays = vaultConfig.SoftDeleteRetentionPeriodInDays;
 
             // Initialize encryption properties
             encryptionProperties = new EncryptionConfig();            
