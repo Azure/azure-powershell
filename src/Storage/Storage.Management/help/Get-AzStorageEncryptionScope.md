@@ -16,14 +16,14 @@ Get or list encryption scopes from a Storage account.
 ```
 Get-AzStorageEncryptionScope [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-EncryptionScopeName <String>] [-MaxPageSize <Int32>] [-Filter <String>] [-Include <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Get-AzStorageEncryptionScope -StorageAccount <PSStorageAccount> [-EncryptionScopeName <String>]
  [-MaxPageSize <Int32>] [-Filter <String>] [-Include <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,6 +168,21 @@ The maximum number of encryption scopes that will be included in the list respon
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
