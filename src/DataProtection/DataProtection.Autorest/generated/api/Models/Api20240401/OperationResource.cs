@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401
 
         /// <summary>The error additional info.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo[] AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).AdditionalInfo; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo[] AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).AdditionalInfo; }
 
         /// <summary>The error code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo[] Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationResourceInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).AdditionalInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo[] Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationResourceInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).AdditionalInfo = value; }
 
         /// <summary>Internal Acessors for Code</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationResourceInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IErrorInternal)Error).Code = value; }
@@ -130,8 +130,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401
         ReadOnly = true,
         Description = @"The error additional info.",
         SerializedName = @"additionalInfo",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo[] AdditionalInfo { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo[] AdditionalInfo { get;  }
         /// <summary>The error code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401
 
     {
         /// <summary>The error additional info.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IErrorAdditionalInfo[] AdditionalInfo { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfo[] AdditionalInfo { get; set; }
         /// <summary>The error code.</summary>
         string Code { get; set; }
         /// <summary>The error details.</summary>

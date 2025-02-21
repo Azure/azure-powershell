@@ -52,7 +52,7 @@ function Test-SynapseSqlPool
  
 		# Wait for 3 minutes for the update completion
 		# Without this, the test will pass non-deterministically
-		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)
+		Wait-Seconds 180
         $sqlPoolUpdated = Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 
         Assert-AreEqual $sqlPoolName $sqlPoolUpdated.Name
@@ -170,6 +170,9 @@ function Test-SynapseSqlPool-Security
         # Remove SQL Pool Auditing
         Assert-True {Remove-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
 
+        # Wait for 3 minutes for the update completion
+        Wait-Seconds 180
+
         # Verify that SQL Pool Auditing was deleted
         $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 
@@ -214,11 +217,11 @@ function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
 			  storageAccountName = "sqlstorage" + $testSuffix;
 			  fileSystemName = "sqlcmdletfs" + $testSuffix;
 			  loginName = "testlogin";
-			  pwd = "testp@ssMakingIt1007Longer";
+			  pwd = Get-TestPassword;
 			  perfLevel = 'DW200c';
-              location = "eastus";
-              tags = @{"NewSqlPoolTag" = "TestTagToNewCommand"}
-              storageAccountType = "LRS" 
+			  location = "eastus";
+			  tags = @{"NewSqlPoolTag" = "TestTagToNewCommand"}
+			  storageAccountType = "LRS" 
 	}
 }
 

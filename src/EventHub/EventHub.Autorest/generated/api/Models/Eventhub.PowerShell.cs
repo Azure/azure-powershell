@@ -142,6 +142,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
+            if (content.Contains("MessageTimestampDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).MessageTimestampDescription = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription) content.GetValueForProperty("MessageTimestampDescription",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).MessageTimestampDescription, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.MessageTimestampDescriptionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PartitionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).PartitionId = (System.Collections.Generic.List<string>) content.GetValueForProperty("PartitionId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).PartitionId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -166,9 +170,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).Status, global::System.Convert.ToString);
             }
+            if (content.Contains("Identifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).Identifier = (string) content.GetValueForProperty("Identifier",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).Identifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserMetadata"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).UserMetadata = (string) content.GetValueForProperty("UserMetadata",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).UserMetadata, global::System.Convert.ToString);
+            }
             if (content.Contains("CaptureDescriptionDestination"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).CaptureDescriptionDestination = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestination) content.GetValueForProperty("CaptureDescriptionDestination",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).CaptureDescriptionDestination, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.DestinationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TimestampType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).TimestampType = (string) content.GetValueForProperty("TimestampType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).TimestampType, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
@@ -221,6 +237,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("RetentionTimeInHour"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).RetentionTimeInHour = (long?) content.GetValueForProperty("RetentionTimeInHour",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).RetentionTimeInHour, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MinCompactionLagInMin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).MinCompactionLagInMin = (long?) content.GetValueForProperty("MinCompactionLagInMin",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).MinCompactionLagInMin, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TombstoneRetentionTimeInHour"))
             {
@@ -319,6 +339,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
+            if (content.Contains("MessageTimestampDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).MessageTimestampDescription = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMessageTimestampDescription) content.GetValueForProperty("MessageTimestampDescription",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).MessageTimestampDescription, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.MessageTimestampDescriptionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PartitionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).PartitionId = (System.Collections.Generic.List<string>) content.GetValueForProperty("PartitionId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).PartitionId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -343,9 +367,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).Status, global::System.Convert.ToString);
             }
+            if (content.Contains("Identifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).Identifier = (string) content.GetValueForProperty("Identifier",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).Identifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserMetadata"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).UserMetadata = (string) content.GetValueForProperty("UserMetadata",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).UserMetadata, global::System.Convert.ToString);
+            }
             if (content.Contains("CaptureDescriptionDestination"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).CaptureDescriptionDestination = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestination) content.GetValueForProperty("CaptureDescriptionDestination",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).CaptureDescriptionDestination, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.DestinationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TimestampType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).TimestampType = (string) content.GetValueForProperty("TimestampType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).TimestampType, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
@@ -398,6 +434,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("RetentionTimeInHour"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).RetentionTimeInHour = (long?) content.GetValueForProperty("RetentionTimeInHour",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).RetentionTimeInHour, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MinCompactionLagInMin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).MinCompactionLagInMin = (long?) content.GetValueForProperty("MinCompactionLagInMin",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubInternal)this).MinCompactionLagInMin, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TombstoneRetentionTimeInHour"))
             {

@@ -20,6 +20,16 @@
 
 ## Upcoming Release
 
+## Version 7.8.1
+* Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
+
+## Version 7.8.0
+* Upgraded nuget package to signed package.
+* Added DefaultApiVersion to the returned properties of the `Get-AzResourceProvider` cmdlet's Resource Type array
+* Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
+* Fixed bug unexpected type issue: [#26752]
+* Added parameter `RequestedAccessTokenVersion` for `New-AzADApplication` and `Update-AzADApplication`
+
 ## Version 7.7.0
 * Updated Resources SDK to 2024-07-01.
 * Fixed overriding of Bicep parameters in Deployment Stack cmdlets to support SecureString parameters.
@@ -46,7 +56,7 @@
     * `New-AzPolicyExemption`
     * `Update-AzPolicyAssignment`
     * `Update-AzPolicyExemption`
-* Fixed bug deserializing property: `policyDefinitionReferenceId` [#25112] 
+* Fixed bug deserializing property: `policyDefinitionReferenceId` [#25112]
 * Fixed overriding of Bicep parameters in Deployment cmdlets to support `SecureString` parameters.
 * Added Test cmdlets for Deployment Stacks.
 

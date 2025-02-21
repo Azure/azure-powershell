@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Description(@"create a DeidService")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}", ApiVersion = "2024-02-28-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}", ApiVersion = "2024-09-20")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.NotSuggestDefaultParameterSet]
     public partial class NewAzDeidService_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener,

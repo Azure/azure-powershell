@@ -15,7 +15,7 @@
 
 
 function New-AzPortalDashboard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard])]
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateByFile', Mandatory)]
@@ -112,9 +112,9 @@ begin {
         if (Test-Path $dashboardPath)
         {
             $content = (Get-content -Path $dashboardPath)
-            $deserializedContent = [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.Dashboard]::FromJsonString($content)
+            $deserializedContent = [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.Dashboard]::FromJsonString($content)
             $PSBoundParameters.Remove('DashboardPath') | Out-Null
-            $PSBoundParameters.Add('Dashboard', $deserializedContent) | Out-Null
+            $PSBoundParameters.Add('Resource', $deserializedContent) | Out-Null
             $scriptCmd = {& $wrappedCmd @PSBoundParameters}
             $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
             $steppablePipeline.Begin($PSCmdlet)
