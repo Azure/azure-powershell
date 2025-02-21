@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcGateway", "ArcGateway\ArcGateway.csproj", "{6DE674D7-1119-4D7E-9B74-8B75C7B6832E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ArcGateway", "ArcGateway.Autorest\Az.ArcGateway.csproj", "{E486C9DB-9DE8-45C0-BA2D-240DD35A38E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ArcGateway", "..\..\generated\ArcGateway\ArcGateway.Autorest\Az.ArcGateway.csproj", "{471DA692-B174-4C1D-9D9A-055C826F00F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{6DE674D7-1119-4D7E-9B74-8B75C7B6832E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DE674D7-1119-4D7E-9B74-8B75C7B6832E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DE674D7-1119-4D7E-9B74-8B75C7B6832E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E486C9DB-9DE8-45C0-BA2D-240DD35A38E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E486C9DB-9DE8-45C0-BA2D-240DD35A38E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E486C9DB-9DE8-45C0-BA2D-240DD35A38E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E486C9DB-9DE8-45C0-BA2D-240DD35A38E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{471DA692-B174-4C1D-9D9A-055C826F00F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471DA692-B174-4C1D-9D9A-055C826F00F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471DA692-B174-4C1D-9D9A-055C826F00F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471DA692-B174-4C1D-9D9A-055C826F00F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{57076934-3145-46DB-8D84-9778FDF17037} = {88B889BE-1F25-4A70-905A-39603EB4D7DD}

@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chaos", "Chaos\Chaos.csproj", "{20B25217-84CD-4E2B-9D23-A86864870A29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Chaos", "Chaos.Autorest\Az.Chaos.csproj", "{15E2E5B1-A5A9-4917-B4D0-FF35D62C6D21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Chaos", "..\..\generated\Chaos\Chaos.Autorest\Az.Chaos.csproj", "{7DDAA3C2-7890-422E-9757-1631B262B9EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{20B25217-84CD-4E2B-9D23-A86864870A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20B25217-84CD-4E2B-9D23-A86864870A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20B25217-84CD-4E2B-9D23-A86864870A29}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15E2E5B1-A5A9-4917-B4D0-FF35D62C6D21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15E2E5B1-A5A9-4917-B4D0-FF35D62C6D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15E2E5B1-A5A9-4917-B4D0-FF35D62C6D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15E2E5B1-A5A9-4917-B4D0-FF35D62C6D21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DDAA3C2-7890-422E-9757-1631B262B9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DDAA3C2-7890-422E-9757-1631B262B9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DDAA3C2-7890-422E-9757-1631B262B9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DDAA3C2-7890-422E-9757-1631B262B9EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7AEDDDE4-B89A-47BE-A2F2-21D8D3B5C9BD} = {C5482DB2-95EF-465E-9601-0320148867A0}

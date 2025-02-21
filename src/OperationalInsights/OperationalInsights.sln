@@ -28,6 +28,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Storage", "..\Storage\Storage.Autorest\Az.Storage.csproj", "{185FA7C2-EDC3-458D-8C3D-DB42DBE99EBE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management.Sdk", "..\Storage\Storage.Management.Sdk\Storage.Management.Sdk.csproj", "{3FDF69B9-5F16-4921-AACF-ABB660040E95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Management.Sdk", "..\Storage\Storage.Management.Sdk\Storage.Management.Sdk.csproj", "{3FDF69B9-5F16-4921-AACF-ABB660040E95}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{B6467B71-8B8E-4A29-8159-EC8DBACF4691}"
 EndProject
@@ -38,6 +39,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{7A67C3ED-5F2E-4B1A-A96A-2A0757041078}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights.Management.Sdk", "OperationalInsights.Management.Sdk\OperationalInsights.Management.Sdk.csproj", "{131963B1-37FC-439C-A29A-9CC1BF264771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,10 +80,6 @@ Global
 		{42DF21A7-1002-488D-AE91-973EE23F3112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42DF21A7-1002-488D-AE91-973EE23F3112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42DF21A7-1002-488D-AE91-973EE23F3112}.Release|Any CPU.Build.0 = Release|Any CPU
-		{185FA7C2-EDC3-458D-8C3D-DB42DBE99EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{185FA7C2-EDC3-458D-8C3D-DB42DBE99EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{185FA7C2-EDC3-458D-8C3D-DB42DBE99EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{185FA7C2-EDC3-458D-8C3D-DB42DBE99EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3FDF69B9-5F16-4921-AACF-ABB660040E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3FDF69B9-5F16-4921-AACF-ABB660040E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FDF69B9-5F16-4921-AACF-ABB660040E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -108,6 +107,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+		{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E768E7C5-5F2D-4BE1-852A-3A36DF0E82C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C893888E-9690-4DE5-9158-164C21009FB8} = {AD3998BD-3E51-44D1-A055-D7A9033ADB5D}
@@ -118,7 +121,6 @@ Global
 		{E18F35D9-2F59-4668-9F74-F8A9BC1B3AEE} = {AD3998BD-3E51-44D1-A055-D7A9033ADB5D}
 		{09EAF805-4AE7-4EC1-B76C-DD2808738AC9} = {F1010D34-3CBD-4B21-96CB-6153B422A0EE}
 		{77B64301-6B96-4D75-B914-B4F3751E0F44} = {F1010D34-3CBD-4B21-96CB-6153B422A0EE}
-		{185FA7C2-EDC3-458D-8C3D-DB42DBE99EBE} = {77B64301-6B96-4D75-B914-B4F3751E0F44}
 		{3FDF69B9-5F16-4921-AACF-ABB660040E95} = {77B64301-6B96-4D75-B914-B4F3751E0F44}
 		{B6467B71-8B8E-4A29-8159-EC8DBACF4691} = {77B64301-6B96-4D75-B914-B4F3751E0F44}
 		{9938F31A-07ED-4820-9CC2-4E7CB72D306B} = {77B64301-6B96-4D75-B914-B4F3751E0F44}
