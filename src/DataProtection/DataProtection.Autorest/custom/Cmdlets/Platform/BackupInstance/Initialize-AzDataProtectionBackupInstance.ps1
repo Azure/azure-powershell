@@ -42,7 +42,16 @@
                 
         [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService,AzureBlob.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupDatasourceParameters]
-        ${BackupConfiguration}
+        ${BackupConfiguration},
+
+        [Parameter(Mandatory=$false, HelpMessage='Use system assigned identity')]
+        [System.Nullable[System.Boolean]]
+        ${UseSystemAssignedIdentity},
+
+        [Parameter(Mandatory=$false, HelpMessage='User assigned identity ARM Id')]
+        [Alias('AssignUserIdentity')]
+        [System.String]
+        ${UserAssignedIdentityArmId}
     )
 
     process {
@@ -94,6 +103,22 @@
         if($PSBoundParameters.ContainsKey("PolicyId"))
         {
             $backupInstance.PolicyInfo.PolicyId = $PolicyId
+        }
+
+        $hasUseSystemAssignedIdentity = $PSBoundParameters.Remove("UseSystemAssignedIdentity")
+        $hasUserAssignedIdentityArmId = $PSBoundParameters.Remove("UserAssignedIdentityArmId")
+        if ($hasUseSystemAssignedIdentity -or $hasUserAssignedIdentityArmId) {
+            
+            if ($hasUserAssignedIdentityArmId -and (!$hasUseSystemAssignedIdentity -or $UseSystemAssignedIdentity)) {
+                throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
+            }
+            
+            $backupInstance.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IdentityDetails]::new()
+            $backupInstance.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
+
+            if ($hasUserAssignedIdentityArmId) {
+                $instance.Property.IdentityDetail.UserAssignedIdentityArmUrl = $UserAssignedIdentityArmId
+            }
         }
 
         # secret store authentication

@@ -23,12 +23,12 @@ Creates or updates a Dashboard.
 Set-AzPortalDashboard -DashboardPath .\resources\dash1-update.json -ResourceGroupName my-rg -DashboardName dashbase03
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
 .Link
 https://learn.microsoft.com/powershell/module/az.portal/set-azportaldashboard
 #>
 function Set-AzPortalDashboard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

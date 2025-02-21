@@ -1,17 +1,17 @@
 {
-  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15+1": {
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-2ekhd9/providers/Microsoft.Kusto/Clusters/pssdk2ekhd9/Databases/TestDb/listPrincipals?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-2ekhd9/providers/Microsoft.Kusto/Clusters/pssdk2ekhd9/Databases/TestDb/listPrincipals?api-version=2024-04-13",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "100" ],
-        "x-ms-client-request-id": [ "43335954-e6d0-4bfe-a267-7f76a944b778" ],
+        "x-ms-unique-id": [ "139" ],
+        "x-ms-client-request-id": [ "9a36744a-b9d6-4bba-88e6-2b67613f85c0" ],
         "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
         "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Kusto/0.1.4" ],
+        "User-Agent": [ "AzurePowershell/v12.5.0", "PSVersion/v7.4.6", "Az.Kusto/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,21 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f095f7eb-948d-418e-a7d5-1967da6f2bdd" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-correlation-request-id": [ "7179f3bd-a653-404a-9ecb-24e51ae2afab" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T194355Z:7179f3bd-a653-404a-9ecb-24e51ae2afab" ],
+        "x-ms-request-id": [ "e99d297a-037d-4f76-9d51-1202bc645725" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "b1aeeef7-f27e-4d3c-98bc-dbc7aa128ae6" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T001630Z:b1aeeef7-f27e-4d3c-98bc-dbc7aa128ae6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 19:43:55 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A68624374C594CC6820F443DE4405D15 Ref B: MRS211050315025 Ref C: 2024-12-01T00:16:28Z" ],
+        "Date": [ "Sun, 01 Dec 2024 00:16:29 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "493" ],
+        "Content-Length": [ "472" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"Michael Shikh (michaelshikh@microsoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=820e4e6a-1583-44fd-879c-e3f7fa9997ca;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"michaelshikh@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"},{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"}]}",
+      "Content": "{\"value\":[{\"name\":\"Ran Houdine (ranhoudine@microsoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=0a6b1d4f-b679-4c5d-b7f8-8c4c13adb618;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"ranhoudine@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"},{\"name\":\"rpe2euser\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=3c5cd8d1-b5a2-41e9-b592-533bc0a146d0;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"3c5cd8d1-b5a2-41e9-b592-533bc0a146d0\",\"tenantName\":\"Microsoft\"}]}",
       "isContentBase64": false
     }
   }

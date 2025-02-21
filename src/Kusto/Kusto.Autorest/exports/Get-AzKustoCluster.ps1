@@ -27,7 +27,7 @@ Get-AzKustoCluster -ResourceGroupName testrg
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +53,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustocluster
 #>
 function Get-AzKustoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

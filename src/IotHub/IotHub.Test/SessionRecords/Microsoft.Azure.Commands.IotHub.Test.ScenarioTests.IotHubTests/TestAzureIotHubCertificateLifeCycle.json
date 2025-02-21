@@ -1,39 +1,45 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Devices?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "84853e61-c104-47cf-b550-aee97a098429"
+          "e8b6349d-afa4-4fc0-97c4-062e41c7ab11"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.102"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "aff5bbf7-ed43-4e9b-89a3-6990a93aada5"
+          "4e551abd-056d-4fb8-9a67-d3fa9916d408"
         ],
         "x-ms-correlation-request-id": [
-          "aff5bbf7-ed43-4e9b-89a3-6990a93aada5"
+          "4e551abd-056d-4fb8-9a67-d3fa9916d408"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T193820Z:aff5bbf7-ed43-4e9b-89a3-6990a93aada5"
+          "JAPANEAST:20241206T023547Z:4e551abd-056d-4fb8-9a67-d3fa9916d408"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -41,14 +47,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 04CC016D0974414B93F86ED65C94A546 Ref B: TYO201151001052 Ref C: 2024-12-06T02:35:47Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:38:20 GMT"
+          "Fri, 06 Dec 2024 02:35:46 GMT"
         ],
         "Content-Length": [
-          "3084"
+          "10031"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -57,26 +66,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices\",\r\n  \"namespace\": \"Microsoft.Devices\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkProvisioningServiceNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-08-21-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"usages\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22-preview\",\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-09-25-preview\",\r\n        \"2017-08-21-preview\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Brazil South\",\r\n        \"South Central US\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs/eventGridFilters\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Brazil South\",\r\n        \"South Central US\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-07-31\",\r\n        \"2018-01-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"ProvisioningServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-08-21-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"ElasticPools\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"West Central US\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-01-22-preview\",\r\n        \"2017-09-25-preview\",\r\n        \"2017-07-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"ElasticPools/IotHubTenants\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"West Central US\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-01-22-preview\",\r\n        \"2017-09-25-preview\",\r\n        \"2017-07-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Devices\",\r\n  \"namespace\": \"Microsoft.Devices\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"0cd79364-7a90-4354-9984-6e36c841418d\",\r\n      \"roleDefinitionId\": \"C121DF10-FE58-4BC4-97F9-8296879F7BBB\"\r\n    },\r\n    {\r\n      \"applicationId\": \"29f411f1-b2cf-4043-8ac8-2185d7316811\",\r\n      \"roleDefinitionId\": \"d04fc6c0-fc10-4ab8-b7de-c979247c3b65\"\r\n    },\r\n    {\r\n      \"applicationId\": \"89d10474-74af-4874-99a7-c23c2f643083\",\r\n      \"roleDefinitionId\": \"7df22794-26e3-4f94-9d50-a4f0f6e1cb41\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-06-30-preview\",\r\n        \"2023-06-30\",\r\n        \"2022-04-30-preview\",\r\n        \"2021-07-15-preview\",\r\n        \"2021-07-02-preview\",\r\n        \"2021-07-02\",\r\n        \"2021-07-01-preview\",\r\n        \"2021-07-01\",\r\n        \"2021-03-31\",\r\n        \"2021-03-03-preview\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2019-11-04\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/notifyNetworkSecurityPerimeterUpdatesAvailable\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkProvisioningServiceNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-03-01-preview\",\r\n        \"2022-12-12\",\r\n        \"2022-02-05\",\r\n        \"2021-10-15\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-08-21-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"usages\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-06-30-preview\",\r\n        \"2023-06-30\",\r\n        \"2022-04-30-preview\",\r\n        \"2021-07-02-preview\",\r\n        \"2021-07-02\",\r\n        \"2021-07-01-preview\",\r\n        \"2021-07-01\",\r\n        \"2021-03-31\",\r\n        \"2021-03-03-preview\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2019-11-04\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-06-30-preview\",\r\n        \"2023-06-30\",\r\n        \"2022-04-30-preview\",\r\n        \"2021-07-02-preview\",\r\n        \"2021-07-02\",\r\n        \"2021-07-01-preview\",\r\n        \"2021-07-01\",\r\n        \"2021-03-31\",\r\n        \"2021-03-03-preview\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2019-11-04\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"provisioningServiceOperationResults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-03-01-preview\",\r\n        \"2022-12-12\",\r\n        \"2022-02-05\",\r\n        \"2021-10-15\",\r\n        \"2020-09-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-08-21-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/provisioningServiceOperationResults\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"France South\",\r\n        \"Korea South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Southeast Asia\",\r\n        \"West Europe\",\r\n        \"UK South\",\r\n        \"South Central US\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Central India\",\r\n        \"East Asia\",\r\n        \"France Central\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"North Central US\",\r\n        \"East US 2\",\r\n        \"West US 3\",\r\n        \"Germany West Central\",\r\n        \"UAE North\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-03-01-preview\",\r\n        \"2022-12-12\",\r\n        \"2022-02-05\",\r\n        \"2021-10-15\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-08-21-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-06-30-preview\",\r\n        \"2023-06-30\",\r\n        \"2022-04-30-preview\",\r\n        \"2021-07-02-preview\",\r\n        \"2021-07-02\",\r\n        \"2021-07-01-preview\",\r\n        \"2021-07-01\",\r\n        \"2021-03-31\",\r\n        \"2021-03-03-preview\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2019-11-04\",\r\n        \"2019-09-01\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22-preview\",\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-09-25-preview\",\r\n        \"2017-08-21-preview\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"Germany West Central\",\r\n        \"Korea South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"Southeast Asia\",\r\n        \"West Europe\",\r\n        \"Norway West\",\r\n        \"West US 3\",\r\n        \"Norway EAST\",\r\n        \"UK South\",\r\n        \"South Central US\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Central India\",\r\n        \"East Asia\",\r\n        \"France Central\",\r\n        \"Germany North\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"South Africa North\",\r\n        \"UAE Central\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"North Central US\",\r\n        \"East US 2\",\r\n        \"Qatar Central\",\r\n        \"Switzerland North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-06-30-preview\",\r\n        \"2023-06-30\",\r\n        \"2022-04-30-preview\",\r\n        \"2021-07-02-preview\",\r\n        \"2021-07-02\",\r\n        \"2021-07-01-preview\",\r\n        \"2021-07-01\",\r\n        \"2021-03-31\",\r\n        \"2021-03-03-preview\",\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2019-11-04\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"Germany West Central\",\r\n        \"Korea South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"Southeast Asia\",\r\n        \"West Europe\",\r\n        \"Norway West\",\r\n        \"West US 3\",\r\n        \"Norway East\",\r\n        \"UK South\",\r\n        \"South Central US\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Central India\",\r\n        \"East Asia\",\r\n        \"France Central\",\r\n        \"Germany North\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"South Africa North\",\r\n        \"UAE Central\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"North Central US\",\r\n        \"East US 2\",\r\n        \"Qatar Central\",\r\n        \"Switzerland North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-06-30-preview\",\r\n        \"2023-06-30\",\r\n        \"2022-04-30-preview\",\r\n        \"2021-07-02-preview\",\r\n        \"2021-07-02\",\r\n        \"2021-07-01-preview\",\r\n        \"2021-07-01\",\r\n        \"2021-03-31\",\r\n        \"2021-03-03-preview\",\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2019-11-04\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs/eventGridFilters\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"Germany West Central\",\r\n        \"Korea South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"Southeast Asia\",\r\n        \"West Europe\",\r\n        \"Norway West\",\r\n        \"West US 3\",\r\n        \"Norway East\",\r\n        \"UK South\",\r\n        \"South Central US\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Central India\",\r\n        \"East Asia\",\r\n        \"France Central\",\r\n        \"Germany North\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"South Africa North\",\r\n        \"UAE Central\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"North Central US\",\r\n        \"East US 2\",\r\n        \"Qatar Central\",\r\n        \"Switzerland North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-07-31\",\r\n        \"2018-01-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs/failover\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"Germany West Central\",\r\n        \"Korea South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"Southeast Asia\",\r\n        \"West Europe\",\r\n        \"Norway West\",\r\n        \"West US 3\",\r\n        \"Norway East\",\r\n        \"UK South\",\r\n        \"South Central US\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Central India\",\r\n        \"East Asia\",\r\n        \"France Central\",\r\n        \"Germany North\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"South Africa North\",\r\n        \"UAE Central\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"North Central US\",\r\n        \"East US 2\",\r\n        \"Qatar Central\",\r\n        \"Switzerland North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-06-30-preview\",\r\n        \"2023-06-30\",\r\n        \"2022-04-30-preview\",\r\n        \"2021-07-02-preview\",\r\n        \"2021-07-02\",\r\n        \"2021-07-01-preview\",\r\n        \"2021-07-01\",\r\n        \"2021-03-31\",\r\n        \"2021-03-03-preview\",\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2019-11-04\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"ProvisioningServices\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"France South\",\r\n        \"Korea South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Southeast Asia\",\r\n        \"West Europe\",\r\n        \"UK South\",\r\n        \"South Central US\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Central India\",\r\n        \"East Asia\",\r\n        \"France Central\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"North Central US\",\r\n        \"East US 2\",\r\n        \"West US 3\",\r\n        \"Germany West Central\",\r\n        \"UAE North\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-03-01-preview\",\r\n        \"2022-12-12\",\r\n        \"2022-02-05\",\r\n        \"2021-10-15\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-08-21-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs/securitySettings\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US\",\r\n        \"Germany West Central\",\r\n        \"Korea South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"Southeast Asia\",\r\n        \"West Europe\",\r\n        \"Norway West\",\r\n        \"West US 3\",\r\n        \"Norway East\",\r\n        \"UK South\",\r\n        \"South Central US\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Central India\",\r\n        \"East Asia\",\r\n        \"France Central\",\r\n        \"Germany North\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"South Africa North\",\r\n        \"UAE Central\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"North Central US\",\r\n        \"East US 2\",\r\n        \"Qatar Central\",\r\n        \"Switzerland North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourcegroups/ps4366?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlZ3JvdXBzL3BzNDM2Nj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ps1847?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlZ3JvdXBzL3BzMTg0Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "63bc7c5d-0714-4a46-9fff-303f7fe754c3"
+          "37b942f4-9945-453a-9dcc-ab1db69e38b6"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.102"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -85,21 +93,28 @@
           "29"
         ]
       },
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
         ],
         "x-ms-request-id": [
-          "90c5b7f9-c9af-4bf9-ad27-f8460be1af04"
+          "f8c105bb-96ff-45c0-9b0b-3620484cb56e"
         ],
         "x-ms-correlation-request-id": [
-          "90c5b7f9-c9af-4bf9-ad27-f8460be1af04"
+          "f8c105bb-96ff-45c0-9b0b-3620484cb56e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T193821Z:90c5b7f9-c9af-4bf9-ad27-f8460be1af04"
+          "JAPANEAST:20241206T023550Z:f8c105bb-96ff-45c0-9b0b-3620484cb56e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -107,11 +122,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 468551ECDBDB4DD5B79A5583B439A8CD Ref B: TYO201151003034 Ref C: 2024-12-06T02:35:47Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:38:21 GMT"
+          "Fri, 06 Dec 2024 02:35:50 GMT"
         ],
         "Content-Length": [
           "165"
@@ -123,26 +141,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366\",\r\n  \"name\": \"ps4366\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847\",\r\n  \"name\": \"ps1847\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDg/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847/providers/Microsoft.Devices/IotHubs/ps5481?api-version=2021-07-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTg0Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczU0ODE/YXBpLXZlcnNpb249MjAyMS0wNy0wMg==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"capacity\": 1\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f1ca8e55-c8e0-43aa-b362-6186e240def8"
+          "240b794f-1b53-4aff-88d9-ed24b3775810"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.IotHub.IotHubClient/0.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -151,24 +168,28 @@
           "85"
         ]
       },
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"capacity\": 1\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "ResponseHeaders": {
-        "Pragma": [
+        "Cache-Control": [
           "no-cache"
         ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYmNjYWQyZGItYjI3OC00NWEyLWIxYzMtNmIyMTFlZDVkYjgy?api-version=2018-04-01&operationSource=os_ih&asyncinfo"
+        "Pragma": [
+          "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "4999"
         ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Devices/locations/westus/operationResults/b3NfaWhfMzUyZTg1MDItMTEyZC00ZjI0LTljMzUtMTk3ZTI5ZWUyZGEy?api-version=2021-07-02&operationSource=os_ih&asyncinfo&t=638690493832411940&c=MIIHhzCCBm-gAwIBAgITfAWHizdXQLRDd48J5AAABYeLNzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwOTIyMTIwNDAzWhcNMjUwMzIxMTIwNDAzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL3CpUYjuxooJSSrwK19FjzhBOC6rpM2nxEk8ZwpswjmQSs4371lD9cjpzoi1V66izrOAQO5dR4T7CBAdxC_T1La7B_GC0BLToEfDbOMLuij5eJKkGy743BYmNo5FXMcmO2f2PyZA8Q8FMkBzYwcpUlCBt0ofvjmFjb0o14-l_wkV8cVq6NA5rj5vzYRXrcBBDx0DXZzx0ey-DalD8BI5Efxzl0sFnA-qqtfi2y6thqMlNPWuGqiYFNmkko5caGs3a7hQy_mx3XdCDy2aWq0YXIqdiyYCA4MGA_vLQtjCUcC4EnHaLnPm-9OGFhKZHQZ2hQEFIYnnCNvsSRVaHBIatkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBR539nE3pOaYqC09YY5sInoMk2T-DAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFQ1zkLj2l7rlyrM4j2l8rtJkHitIxnUkLkyeLRrVxZPkfV1_ABjrmrKVHwks1TT5vv190Z1rSszJ8F3BMbapuqZk7TG_eHqRVKnkNYrwXEAn99VULWloNnmsKbnii5qgA26KvYkNcrxJ4L_9pCm3mT47A_mvHkzKnovgy4XLdvqRPL1QGC_Itw4Y4QCb11tEdDabhFYx2hY0zhM3voH4pW_42NbuG3xwNLFeA2LThOsGcf_4F8bzQ6Pm__uo-XrnBE13ERimgL86M-z9h6W2bQUcKXqAf_RhKjv5ai9GEnITD2aoXBO8tu85DelvTvuH12hn2s2xEeYNMURYXNCzYc&s=p6NquuBdAZsqQCMz-K6tHA0IQKIJh-Lyxd78yOnistTmQJKJNGLmpJYaei7JLxfxlGA_xmWMQELBcehcqKzuFWvbO8QemLdKttioecl2Lks8urIDq3n6AhpemJ2rAofowWtKfQy6IzKyAvDT8Bll6wJmXgPbgPTt7eBd8JrHMhFN3yPA534BC2mlXHTYuWas3oDEFuQAMN_nLUW_YEc_y4kMerOsJvvEppieMpjr38iZ_qj4t9hdXMiy8oo75u4SvymrLVoKvI1e8Jj2E3TqG-x9_hJjzkAUe8duULplOIjZCe4B6CZ0eDA9bOXzfu1b4OpEx6PfiHVgyHCIw0cYqw&h=zlw7alT-hDJdJHGzYiGq7yGnXKNyHuW8bxiDnuJtiMA"
+        ],
         "x-ms-request-id": [
-          "705730b7-0aca-4525-9210-f8d1e88cc49d"
+          "bfa2c683-8366-40ed-9b31-ea8acd5a4758"
         ],
         "x-ms-correlation-request-id": [
-          "705730b7-0aca-4525-9210-f8d1e88cc49d"
+          "bfa2c683-8366-40ed-9b31-ea8acd5a4758"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T193825Z:705730b7-0aca-4525-9210-f8d1e88cc49d"
+          "JAPANEAST:20241206T023623Z:bfa2c683-8366-40ed-9b31-ea8acd5a4758"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -176,17 +197,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 7C273614ED564851906040879BDA6F84 Ref B: TYO201100116047 Ref C: 2024-12-06T02:35:51Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:38:24 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 06 Dec 2024 02:36:22 GMT"
         ],
         "Content-Length": [
-          "619"
+          "462"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -195,37 +216,46 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008\",\r\n  \"name\": \"ps2008\",\r\n  \"type\": \"Microsoft.Devices/IotHubs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"subscriptionid\": \"91d12660-3dec-467a-be2a-213b5544ddc0\",\r\n  \"resourcegroup\": \"ps4366\",\r\n  \"properties\": {\r\n    \"state\": \"Activating\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"enableFileUploadNotifications\": false,\r\n    \"cloudToDevice\": {\r\n      \"maxDeliveryCount\": 10,\r\n      \"defaultTtlAsIso8601\": \"PT1H\",\r\n      \"feedback\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"features\": \"None\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847/providers/Microsoft.Devices/IotHubs/ps5481\",\r\n  \"name\": \"ps5481\",\r\n  \"type\": \"Microsoft.Devices/IotHubs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"subscriptionid\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n  \"resourcegroup\": \"ps1847\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"enableFileUploadNotifications\": false,\r\n    \"features\": \"None\",\r\n    \"allowedFqdnList\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYmNjYWQyZGItYjI3OC00NWEyLWIxYzMtNmIyMTFlZDVkYjgy?api-version=2018-04-01&operationSource=os_ih&asyncinfo",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9vcGVyYXRpb25SZXN1bHRzL2IzTmZhV2hmWW1OallXUXlaR0l0WWpJM09DMDBOV0V5TFdJeFl6TXRObUl5TVRGbFpEVmtZamd5P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDEmb3BlcmF0aW9uU291cmNlPW9zX2loJmFzeW5jaW5mbw==",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Devices/locations/westus/operationResults/b3NfaWhfMzUyZTg1MDItMTEyZC00ZjI0LTljMzUtMTk3ZTI5ZWUyZGEy?api-version=2021-07-02&operationSource=os_ih&asyncinfo&t=638690493832411940&c=MIIHhzCCBm-gAwIBAgITfAWHizdXQLRDd48J5AAABYeLNzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwOTIyMTIwNDAzWhcNMjUwMzIxMTIwNDAzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL3CpUYjuxooJSSrwK19FjzhBOC6rpM2nxEk8ZwpswjmQSs4371lD9cjpzoi1V66izrOAQO5dR4T7CBAdxC_T1La7B_GC0BLToEfDbOMLuij5eJKkGy743BYmNo5FXMcmO2f2PyZA8Q8FMkBzYwcpUlCBt0ofvjmFjb0o14-l_wkV8cVq6NA5rj5vzYRXrcBBDx0DXZzx0ey-DalD8BI5Efxzl0sFnA-qqtfi2y6thqMlNPWuGqiYFNmkko5caGs3a7hQy_mx3XdCDy2aWq0YXIqdiyYCA4MGA_vLQtjCUcC4EnHaLnPm-9OGFhKZHQZ2hQEFIYnnCNvsSRVaHBIatkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBR539nE3pOaYqC09YY5sInoMk2T-DAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFQ1zkLj2l7rlyrM4j2l8rtJkHitIxnUkLkyeLRrVxZPkfV1_ABjrmrKVHwks1TT5vv190Z1rSszJ8F3BMbapuqZk7TG_eHqRVKnkNYrwXEAn99VULWloNnmsKbnii5qgA26KvYkNcrxJ4L_9pCm3mT47A_mvHkzKnovgy4XLdvqRPL1QGC_Itw4Y4QCb11tEdDabhFYx2hY0zhM3voH4pW_42NbuG3xwNLFeA2LThOsGcf_4F8bzQ6Pm__uo-XrnBE13ERimgL86M-z9h6W2bQUcKXqAf_RhKjv5ai9GEnITD2aoXBO8tu85DelvTvuH12hn2s2xEeYNMURYXNCzYc&s=p6NquuBdAZsqQCMz-K6tHA0IQKIJh-Lyxd78yOnistTmQJKJNGLmpJYaei7JLxfxlGA_xmWMQELBcehcqKzuFWvbO8QemLdKttioecl2Lks8urIDq3n6AhpemJ2rAofowWtKfQy6IzKyAvDT8Bll6wJmXgPbgPTt7eBd8JrHMhFN3yPA534BC2mlXHTYuWas3oDEFuQAMN_nLUW_YEc_y4kMerOsJvvEppieMpjr38iZ_qj4t9hdXMiy8oo75u4SvymrLVoKvI1e8Jj2E3TqG-x9_hJjzkAUe8duULplOIjZCe4B6CZ0eDA9bOXzfu1b4OpEx6PfiHVgyHCIw0cYqw&h=zlw7alT-hDJdJHGzYiGq7yGnXKNyHuW8bxiDnuJtiMA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvYjNOZmFXaGZNelV5WlRnMU1ESXRNVEV5WkMwMFpqSTBMVGxqTXpVdE1UazNaVEk1WldVeVpHRXk/YXBpLXZlcnNpb249MjAyMS0wNy0wMiZvcGVyYXRpb25Tb3VyY2U9b3NfaWgmYXN5bmNpbmZvJnQ9NjM4NjkwNDkzODMyNDExOTQwJmM9TUlJSGh6Q0NCbS1nQXdJQkFnSVRmQVdIaXpkWFFMUkRkNDhKNUFBQUJZZUxOekFOQmdrcWhraUc5dzBCQVFzRkFEQkVNUk13RVFZS0NaSW1pWlB5TEdRQkdSWURSMEpNTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUVUxRk1SZ3dGZ1lEVlFRREV3OUJUVVVnU1c1bWNtRWdRMEVnTURVd0hoY05NalF3T1RJeU1USXdOREF6V2hjTk1qVXdNekl4TVRJd05EQXpXakJBTVQ0d1BBWURWUVFERXpWaGMzbHVZMjl3WlhKaGRHbHZibk5wWjI1cGJtZGpaWEowYVdacFkyRjBaUzV0WVc1aFoyVnRaVzUwTG1GNmRYSmxMbU52YlRDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTDNDcFVZanV4b29KU1Nyd0sxOUZqemhCT0M2cnBNMm54RWs4Wndwc3dqbVFTczQzNzFsRDljanB6b2kxVjY2aXpyT0FRTzVkUjRUN0NCQWR4Q19UMUxhN0JfR0MwQkxUb0VmRGJPTUx1aWo1ZUpLa0d5NzQzQlltTm81RlhNY21PMmYyUHlaQThROEZNa0J6WXdjcFVsQ0J0MG9mdmptRmpiMG8xNC1sX3drVjhjVnE2TkE1cmo1dnpZUlhyY0JCRHgwRFhaengwZXktRGFsRDhCSTVFZnh6bDBzRm5BLXFxdGZpMnk2dGhxTWxOUFd1R3FpWUZObWtrbzVjYUdzM2E3aFF5X214M1hkQ0R5MmFXcTBZWElxZGl5WUNBNE1HQV92TFF0akNVY0M0RW5IYUxuUG0tOU9HRmhLWkhRWjJoUUVGSVlubkNOdnNTUlZhSEJJYXRrQ0F3RUFBYU9DQkhRd2dnUndNQ2NHQ1NzR0FRUUJnamNWQ2dRYU1CZ3dDZ1lJS3dZQkJRVUhBd0V3Q2dZSUt3WUJCUVVIQXdJd1BRWUpLd1lCQkFHQ054VUhCREF3TGdZbUt3WUJCQUdDTnhVSWhwRGpEWVRWdEhpRThZcy1oWnZkRnM2ZEVvRmdoZm1SUzRXc21UUUNBV1FDQVFjd2dnSExCZ2dyQmdFRkJRY0JBUVNDQWIwd2dnRzVNR01HQ0NzR0FRVUZCekFDaGxkb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2Y0d0cGFXNW1jbUV2UTJWeWRITXZRMDh4VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd05TNWpjblF3VXdZSUt3WUJCUVVITUFLR1IyaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBOUE1WQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKME1GTUdDQ3NHQVFVRkJ6QUNoa2RvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOURUekZRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBMUxtTnlkREJUQmdnckJnRUZCUWN3QW9aSGFIUjBjRG92TDJOeWJETXVZVzFsTG1kaWJDOWhhV0V2UTA4eFVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOUzVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwTlBNVkJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSjBNQjBHQTFVZERnUVdCQlI1MzluRTNwT2FZcUMwOVlZNXNJbm9NazJULURBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFbUJnTlZIUjhFZ2dFZE1JSUJHVENDQVJXZ2dnRVJvSUlCRFlZX2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNUzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzaGpGb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSnNoakZvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNOQzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdFd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JSNjFobUZLSGxzY1hZZVlQanpTLS1pQlVJV0hUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUZRMXprTGoybDdybHlyTTRqMmw4cnRKa0hpdEl4blVrTGt5ZUxSclZ4WlBrZlYxX0FCanJtcktWSHdrczFUVDV2djE5MFoxclNzeko4RjNCTWJhcHVxWms3VEdfZUhxUlZLbmtOWXJ3WEVBbjk5VlVMV2xvTm5tc0tibmlpNXFnQTI2S3ZZa05jcnhKNExfOXBDbTNtVDQ3QV9tdkhrektub3ZneTRYTGR2cVJQTDFRR0NfSXR3NFk0UUNiMTF0RWREYWJoRll4MmhZMHpoTTN2b0g0cFdfNDJOYnVHM3h3TkxGZUEyTFRoT3NHY2ZfNEY4YnpRNlBtX191by1Ycm5CRTEzRVJpbWdMODZNLXo5aDZXMmJRVWNLWHFBZl9SaEtqdjVhaTlHRW5JVEQyYW9YQk84dHU4NURlbHZUdnVIMTJobjJzMnhFZVlOTVVSWVhOQ3pZYyZzPXA2TnF1dUJkQVpzcVFDTXotSzZ0SEEwSVFLSUpoLUx5eGQ3OHlPbmlzdFRtUUpLSk5HTG1wSllhZWk3Skx4ZnhsR0FfeG1XTVFFTEJjZWhjcUt6dUZXdmJPOFFlbUxkS3R0aW9lY2wyTGtzOHVySURxM242QWhwZW1KMnJBb2Zvd1d0S2ZReTZJekt5QXZEVDhCbGw2d0ptWGdQYmdQVHQ3ZUJkOEpySE1oRk4zeVBBNTM0QkMybWxYSFRZdVdhczNvREVGdVFBTU5fbkxVV19ZRWNfeTRrTWVyT3NKdnZFcHBpZU1wanIzOGlaX3FqNHQ5aGRYTWl5OG9vNzV1NFN2eW1yTFZvS3ZJMWU4SmoyRTNUcUcteDlfaEpqemtBVWU4ZHVVTHBsT0lqWkNlNEI2Q1owZURBOWJPWHpmdTFiNE9wRXg2UGZpSFZneUhDSXcwY1lxdyZoPXpsdzdhbFQtaERKZEpIR3pZaUdxN3lHblhLTnlIdVc4YnhpRG51SnRpTUE=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "240b794f-1b53-4aff-88d9-ed24b3775810"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.IotHub.IotHubClient/0.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "b0d0d433-f62e-4422-97d9-61dc94ef3a05"
+          "53cd61e0-fb3a-4dbb-83c0-fd17b8bf9ba8"
         ],
         "x-ms-correlation-request-id": [
-          "b0d0d433-f62e-4422-97d9-61dc94ef3a05"
+          "53cd61e0-fb3a-4dbb-83c0-fd17b8bf9ba8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T193855Z:b0d0d433-f62e-4422-97d9-61dc94ef3a05"
+          "JAPANEAST:20241206T023653Z:53cd61e0-fb3a-4dbb-83c0-fd17b8bf9ba8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -233,14 +263,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: AA51DB5C52EA45D09B150CC64C693349 Ref B: TYO201100116047 Ref C: 2024-12-06T02:36:53Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:38:54 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 06 Dec 2024 02:36:53 GMT"
         ],
         "Content-Length": [
           "20"
@@ -256,33 +286,42 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYmNjYWQyZGItYjI3OC00NWEyLWIxYzMtNmIyMTFlZDVkYjgy?api-version=2018-04-01&operationSource=os_ih&asyncinfo",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9vcGVyYXRpb25SZXN1bHRzL2IzTmZhV2hmWW1OallXUXlaR0l0WWpJM09DMDBOV0V5TFdJeFl6TXRObUl5TVRGbFpEVmtZamd5P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDEmb3BlcmF0aW9uU291cmNlPW9zX2loJmFzeW5jaW5mbw==",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Devices/locations/westus/operationResults/b3NfaWhfMzUyZTg1MDItMTEyZC00ZjI0LTljMzUtMTk3ZTI5ZWUyZGEy?api-version=2021-07-02&operationSource=os_ih&asyncinfo&t=638690493832411940&c=MIIHhzCCBm-gAwIBAgITfAWHizdXQLRDd48J5AAABYeLNzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwOTIyMTIwNDAzWhcNMjUwMzIxMTIwNDAzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL3CpUYjuxooJSSrwK19FjzhBOC6rpM2nxEk8ZwpswjmQSs4371lD9cjpzoi1V66izrOAQO5dR4T7CBAdxC_T1La7B_GC0BLToEfDbOMLuij5eJKkGy743BYmNo5FXMcmO2f2PyZA8Q8FMkBzYwcpUlCBt0ofvjmFjb0o14-l_wkV8cVq6NA5rj5vzYRXrcBBDx0DXZzx0ey-DalD8BI5Efxzl0sFnA-qqtfi2y6thqMlNPWuGqiYFNmkko5caGs3a7hQy_mx3XdCDy2aWq0YXIqdiyYCA4MGA_vLQtjCUcC4EnHaLnPm-9OGFhKZHQZ2hQEFIYnnCNvsSRVaHBIatkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBR539nE3pOaYqC09YY5sInoMk2T-DAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFQ1zkLj2l7rlyrM4j2l8rtJkHitIxnUkLkyeLRrVxZPkfV1_ABjrmrKVHwks1TT5vv190Z1rSszJ8F3BMbapuqZk7TG_eHqRVKnkNYrwXEAn99VULWloNnmsKbnii5qgA26KvYkNcrxJ4L_9pCm3mT47A_mvHkzKnovgy4XLdvqRPL1QGC_Itw4Y4QCb11tEdDabhFYx2hY0zhM3voH4pW_42NbuG3xwNLFeA2LThOsGcf_4F8bzQ6Pm__uo-XrnBE13ERimgL86M-z9h6W2bQUcKXqAf_RhKjv5ai9GEnITD2aoXBO8tu85DelvTvuH12hn2s2xEeYNMURYXNCzYc&s=p6NquuBdAZsqQCMz-K6tHA0IQKIJh-Lyxd78yOnistTmQJKJNGLmpJYaei7JLxfxlGA_xmWMQELBcehcqKzuFWvbO8QemLdKttioecl2Lks8urIDq3n6AhpemJ2rAofowWtKfQy6IzKyAvDT8Bll6wJmXgPbgPTt7eBd8JrHMhFN3yPA534BC2mlXHTYuWas3oDEFuQAMN_nLUW_YEc_y4kMerOsJvvEppieMpjr38iZ_qj4t9hdXMiy8oo75u4SvymrLVoKvI1e8Jj2E3TqG-x9_hJjzkAUe8duULplOIjZCe4B6CZ0eDA9bOXzfu1b4OpEx6PfiHVgyHCIw0cYqw&h=zlw7alT-hDJdJHGzYiGq7yGnXKNyHuW8bxiDnuJtiMA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvYjNOZmFXaGZNelV5WlRnMU1ESXRNVEV5WkMwMFpqSTBMVGxqTXpVdE1UazNaVEk1WldVeVpHRXk/YXBpLXZlcnNpb249MjAyMS0wNy0wMiZvcGVyYXRpb25Tb3VyY2U9b3NfaWgmYXN5bmNpbmZvJnQ9NjM4NjkwNDkzODMyNDExOTQwJmM9TUlJSGh6Q0NCbS1nQXdJQkFnSVRmQVdIaXpkWFFMUkRkNDhKNUFBQUJZZUxOekFOQmdrcWhraUc5dzBCQVFzRkFEQkVNUk13RVFZS0NaSW1pWlB5TEdRQkdSWURSMEpNTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUVUxRk1SZ3dGZ1lEVlFRREV3OUJUVVVnU1c1bWNtRWdRMEVnTURVd0hoY05NalF3T1RJeU1USXdOREF6V2hjTk1qVXdNekl4TVRJd05EQXpXakJBTVQ0d1BBWURWUVFERXpWaGMzbHVZMjl3WlhKaGRHbHZibk5wWjI1cGJtZGpaWEowYVdacFkyRjBaUzV0WVc1aFoyVnRaVzUwTG1GNmRYSmxMbU52YlRDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTDNDcFVZanV4b29KU1Nyd0sxOUZqemhCT0M2cnBNMm54RWs4Wndwc3dqbVFTczQzNzFsRDljanB6b2kxVjY2aXpyT0FRTzVkUjRUN0NCQWR4Q19UMUxhN0JfR0MwQkxUb0VmRGJPTUx1aWo1ZUpLa0d5NzQzQlltTm81RlhNY21PMmYyUHlaQThROEZNa0J6WXdjcFVsQ0J0MG9mdmptRmpiMG8xNC1sX3drVjhjVnE2TkE1cmo1dnpZUlhyY0JCRHgwRFhaengwZXktRGFsRDhCSTVFZnh6bDBzRm5BLXFxdGZpMnk2dGhxTWxOUFd1R3FpWUZObWtrbzVjYUdzM2E3aFF5X214M1hkQ0R5MmFXcTBZWElxZGl5WUNBNE1HQV92TFF0akNVY0M0RW5IYUxuUG0tOU9HRmhLWkhRWjJoUUVGSVlubkNOdnNTUlZhSEJJYXRrQ0F3RUFBYU9DQkhRd2dnUndNQ2NHQ1NzR0FRUUJnamNWQ2dRYU1CZ3dDZ1lJS3dZQkJRVUhBd0V3Q2dZSUt3WUJCUVVIQXdJd1BRWUpLd1lCQkFHQ054VUhCREF3TGdZbUt3WUJCQUdDTnhVSWhwRGpEWVRWdEhpRThZcy1oWnZkRnM2ZEVvRmdoZm1SUzRXc21UUUNBV1FDQVFjd2dnSExCZ2dyQmdFRkJRY0JBUVNDQWIwd2dnRzVNR01HQ0NzR0FRVUZCekFDaGxkb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2Y0d0cGFXNW1jbUV2UTJWeWRITXZRMDh4VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd05TNWpjblF3VXdZSUt3WUJCUVVITUFLR1IyaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBOUE1WQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKME1GTUdDQ3NHQVFVRkJ6QUNoa2RvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOURUekZRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBMUxtTnlkREJUQmdnckJnRUZCUWN3QW9aSGFIUjBjRG92TDJOeWJETXVZVzFsTG1kaWJDOWhhV0V2UTA4eFVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOUzVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwTlBNVkJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSjBNQjBHQTFVZERnUVdCQlI1MzluRTNwT2FZcUMwOVlZNXNJbm9NazJULURBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFbUJnTlZIUjhFZ2dFZE1JSUJHVENDQVJXZ2dnRVJvSUlCRFlZX2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNUzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzaGpGb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSnNoakZvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNOQzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdFd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JSNjFobUZLSGxzY1hZZVlQanpTLS1pQlVJV0hUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUZRMXprTGoybDdybHlyTTRqMmw4cnRKa0hpdEl4blVrTGt5ZUxSclZ4WlBrZlYxX0FCanJtcktWSHdrczFUVDV2djE5MFoxclNzeko4RjNCTWJhcHVxWms3VEdfZUhxUlZLbmtOWXJ3WEVBbjk5VlVMV2xvTm5tc0tibmlpNXFnQTI2S3ZZa05jcnhKNExfOXBDbTNtVDQ3QV9tdkhrektub3ZneTRYTGR2cVJQTDFRR0NfSXR3NFk0UUNiMTF0RWREYWJoRll4MmhZMHpoTTN2b0g0cFdfNDJOYnVHM3h3TkxGZUEyTFRoT3NHY2ZfNEY4YnpRNlBtX191by1Ycm5CRTEzRVJpbWdMODZNLXo5aDZXMmJRVWNLWHFBZl9SaEtqdjVhaTlHRW5JVEQyYW9YQk84dHU4NURlbHZUdnVIMTJobjJzMnhFZVlOTVVSWVhOQ3pZYyZzPXA2TnF1dUJkQVpzcVFDTXotSzZ0SEEwSVFLSUpoLUx5eGQ3OHlPbmlzdFRtUUpLSk5HTG1wSllhZWk3Skx4ZnhsR0FfeG1XTVFFTEJjZWhjcUt6dUZXdmJPOFFlbUxkS3R0aW9lY2wyTGtzOHVySURxM242QWhwZW1KMnJBb2Zvd1d0S2ZReTZJekt5QXZEVDhCbGw2d0ptWGdQYmdQVHQ3ZUJkOEpySE1oRk4zeVBBNTM0QkMybWxYSFRZdVdhczNvREVGdVFBTU5fbkxVV19ZRWNfeTRrTWVyT3NKdnZFcHBpZU1wanIzOGlaX3FqNHQ5aGRYTWl5OG9vNzV1NFN2eW1yTFZvS3ZJMWU4SmoyRTNUcUcteDlfaEpqemtBVWU4ZHVVTHBsT0lqWkNlNEI2Q1owZURBOWJPWHpmdTFiNE9wRXg2UGZpSFZneUhDSXcwY1lxdyZoPXpsdzdhbFQtaERKZEpIR3pZaUdxN3lHblhLTnlIdVc4YnhpRG51SnRpTUE=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "240b794f-1b53-4aff-88d9-ed24b3775810"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.IotHub.IotHubClient/0.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "a11798d6-8288-4bdd-ab4a-874fb192d712"
+          "d5d1ff09-11d0-4843-a827-395d7984f490"
         ],
         "x-ms-correlation-request-id": [
-          "a11798d6-8288-4bdd-ab4a-874fb192d712"
+          "d5d1ff09-11d0-4843-a827-395d7984f490"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T193925Z:a11798d6-8288-4bdd-ab4a-874fb192d712"
+          "JAPANEAST:20241206T023724Z:d5d1ff09-11d0-4843-a827-395d7984f490"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -290,14 +329,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 50629E373A2249A585C2541168997EF2 Ref B: TYO201100116047 Ref C: 2024-12-06T02:37:24Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:39:25 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 06 Dec 2024 02:37:23 GMT"
         ],
         "Content-Length": [
           "20"
@@ -313,33 +352,42 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYmNjYWQyZGItYjI3OC00NWEyLWIxYzMtNmIyMTFlZDVkYjgy?api-version=2018-04-01&operationSource=os_ih&asyncinfo",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9vcGVyYXRpb25SZXN1bHRzL2IzTmZhV2hmWW1OallXUXlaR0l0WWpJM09DMDBOV0V5TFdJeFl6TXRObUl5TVRGbFpEVmtZamd5P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDEmb3BlcmF0aW9uU291cmNlPW9zX2loJmFzeW5jaW5mbw==",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Devices/locations/westus/operationResults/b3NfaWhfMzUyZTg1MDItMTEyZC00ZjI0LTljMzUtMTk3ZTI5ZWUyZGEy?api-version=2021-07-02&operationSource=os_ih&asyncinfo&t=638690493832411940&c=MIIHhzCCBm-gAwIBAgITfAWHizdXQLRDd48J5AAABYeLNzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwOTIyMTIwNDAzWhcNMjUwMzIxMTIwNDAzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL3CpUYjuxooJSSrwK19FjzhBOC6rpM2nxEk8ZwpswjmQSs4371lD9cjpzoi1V66izrOAQO5dR4T7CBAdxC_T1La7B_GC0BLToEfDbOMLuij5eJKkGy743BYmNo5FXMcmO2f2PyZA8Q8FMkBzYwcpUlCBt0ofvjmFjb0o14-l_wkV8cVq6NA5rj5vzYRXrcBBDx0DXZzx0ey-DalD8BI5Efxzl0sFnA-qqtfi2y6thqMlNPWuGqiYFNmkko5caGs3a7hQy_mx3XdCDy2aWq0YXIqdiyYCA4MGA_vLQtjCUcC4EnHaLnPm-9OGFhKZHQZ2hQEFIYnnCNvsSRVaHBIatkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBR539nE3pOaYqC09YY5sInoMk2T-DAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFQ1zkLj2l7rlyrM4j2l8rtJkHitIxnUkLkyeLRrVxZPkfV1_ABjrmrKVHwks1TT5vv190Z1rSszJ8F3BMbapuqZk7TG_eHqRVKnkNYrwXEAn99VULWloNnmsKbnii5qgA26KvYkNcrxJ4L_9pCm3mT47A_mvHkzKnovgy4XLdvqRPL1QGC_Itw4Y4QCb11tEdDabhFYx2hY0zhM3voH4pW_42NbuG3xwNLFeA2LThOsGcf_4F8bzQ6Pm__uo-XrnBE13ERimgL86M-z9h6W2bQUcKXqAf_RhKjv5ai9GEnITD2aoXBO8tu85DelvTvuH12hn2s2xEeYNMURYXNCzYc&s=p6NquuBdAZsqQCMz-K6tHA0IQKIJh-Lyxd78yOnistTmQJKJNGLmpJYaei7JLxfxlGA_xmWMQELBcehcqKzuFWvbO8QemLdKttioecl2Lks8urIDq3n6AhpemJ2rAofowWtKfQy6IzKyAvDT8Bll6wJmXgPbgPTt7eBd8JrHMhFN3yPA534BC2mlXHTYuWas3oDEFuQAMN_nLUW_YEc_y4kMerOsJvvEppieMpjr38iZ_qj4t9hdXMiy8oo75u4SvymrLVoKvI1e8Jj2E3TqG-x9_hJjzkAUe8duULplOIjZCe4B6CZ0eDA9bOXzfu1b4OpEx6PfiHVgyHCIw0cYqw&h=zlw7alT-hDJdJHGzYiGq7yGnXKNyHuW8bxiDnuJtiMA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvYjNOZmFXaGZNelV5WlRnMU1ESXRNVEV5WkMwMFpqSTBMVGxqTXpVdE1UazNaVEk1WldVeVpHRXk/YXBpLXZlcnNpb249MjAyMS0wNy0wMiZvcGVyYXRpb25Tb3VyY2U9b3NfaWgmYXN5bmNpbmZvJnQ9NjM4NjkwNDkzODMyNDExOTQwJmM9TUlJSGh6Q0NCbS1nQXdJQkFnSVRmQVdIaXpkWFFMUkRkNDhKNUFBQUJZZUxOekFOQmdrcWhraUc5dzBCQVFzRkFEQkVNUk13RVFZS0NaSW1pWlB5TEdRQkdSWURSMEpNTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUVUxRk1SZ3dGZ1lEVlFRREV3OUJUVVVnU1c1bWNtRWdRMEVnTURVd0hoY05NalF3T1RJeU1USXdOREF6V2hjTk1qVXdNekl4TVRJd05EQXpXakJBTVQ0d1BBWURWUVFERXpWaGMzbHVZMjl3WlhKaGRHbHZibk5wWjI1cGJtZGpaWEowYVdacFkyRjBaUzV0WVc1aFoyVnRaVzUwTG1GNmRYSmxMbU52YlRDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTDNDcFVZanV4b29KU1Nyd0sxOUZqemhCT0M2cnBNMm54RWs4Wndwc3dqbVFTczQzNzFsRDljanB6b2kxVjY2aXpyT0FRTzVkUjRUN0NCQWR4Q19UMUxhN0JfR0MwQkxUb0VmRGJPTUx1aWo1ZUpLa0d5NzQzQlltTm81RlhNY21PMmYyUHlaQThROEZNa0J6WXdjcFVsQ0J0MG9mdmptRmpiMG8xNC1sX3drVjhjVnE2TkE1cmo1dnpZUlhyY0JCRHgwRFhaengwZXktRGFsRDhCSTVFZnh6bDBzRm5BLXFxdGZpMnk2dGhxTWxOUFd1R3FpWUZObWtrbzVjYUdzM2E3aFF5X214M1hkQ0R5MmFXcTBZWElxZGl5WUNBNE1HQV92TFF0akNVY0M0RW5IYUxuUG0tOU9HRmhLWkhRWjJoUUVGSVlubkNOdnNTUlZhSEJJYXRrQ0F3RUFBYU9DQkhRd2dnUndNQ2NHQ1NzR0FRUUJnamNWQ2dRYU1CZ3dDZ1lJS3dZQkJRVUhBd0V3Q2dZSUt3WUJCUVVIQXdJd1BRWUpLd1lCQkFHQ054VUhCREF3TGdZbUt3WUJCQUdDTnhVSWhwRGpEWVRWdEhpRThZcy1oWnZkRnM2ZEVvRmdoZm1SUzRXc21UUUNBV1FDQVFjd2dnSExCZ2dyQmdFRkJRY0JBUVNDQWIwd2dnRzVNR01HQ0NzR0FRVUZCekFDaGxkb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2Y0d0cGFXNW1jbUV2UTJWeWRITXZRMDh4VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd05TNWpjblF3VXdZSUt3WUJCUVVITUFLR1IyaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBOUE1WQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKME1GTUdDQ3NHQVFVRkJ6QUNoa2RvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOURUekZRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBMUxtTnlkREJUQmdnckJnRUZCUWN3QW9aSGFIUjBjRG92TDJOeWJETXVZVzFsTG1kaWJDOWhhV0V2UTA4eFVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOUzVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwTlBNVkJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSjBNQjBHQTFVZERnUVdCQlI1MzluRTNwT2FZcUMwOVlZNXNJbm9NazJULURBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFbUJnTlZIUjhFZ2dFZE1JSUJHVENDQVJXZ2dnRVJvSUlCRFlZX2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNUzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzaGpGb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSnNoakZvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNOQzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdFd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JSNjFobUZLSGxzY1hZZVlQanpTLS1pQlVJV0hUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUZRMXprTGoybDdybHlyTTRqMmw4cnRKa0hpdEl4blVrTGt5ZUxSclZ4WlBrZlYxX0FCanJtcktWSHdrczFUVDV2djE5MFoxclNzeko4RjNCTWJhcHVxWms3VEdfZUhxUlZLbmtOWXJ3WEVBbjk5VlVMV2xvTm5tc0tibmlpNXFnQTI2S3ZZa05jcnhKNExfOXBDbTNtVDQ3QV9tdkhrektub3ZneTRYTGR2cVJQTDFRR0NfSXR3NFk0UUNiMTF0RWREYWJoRll4MmhZMHpoTTN2b0g0cFdfNDJOYnVHM3h3TkxGZUEyTFRoT3NHY2ZfNEY4YnpRNlBtX191by1Ycm5CRTEzRVJpbWdMODZNLXo5aDZXMmJRVWNLWHFBZl9SaEtqdjVhaTlHRW5JVEQyYW9YQk84dHU4NURlbHZUdnVIMTJobjJzMnhFZVlOTVVSWVhOQ3pZYyZzPXA2TnF1dUJkQVpzcVFDTXotSzZ0SEEwSVFLSUpoLUx5eGQ3OHlPbmlzdFRtUUpLSk5HTG1wSllhZWk3Skx4ZnhsR0FfeG1XTVFFTEJjZWhjcUt6dUZXdmJPOFFlbUxkS3R0aW9lY2wyTGtzOHVySURxM242QWhwZW1KMnJBb2Zvd1d0S2ZReTZJekt5QXZEVDhCbGw2d0ptWGdQYmdQVHQ3ZUJkOEpySE1oRk4zeVBBNTM0QkMybWxYSFRZdVdhczNvREVGdVFBTU5fbkxVV19ZRWNfeTRrTWVyT3NKdnZFcHBpZU1wanIzOGlaX3FqNHQ5aGRYTWl5OG9vNzV1NFN2eW1yTFZvS3ZJMWU4SmoyRTNUcUcteDlfaEpqemtBVWU4ZHVVTHBsT0lqWkNlNEI2Q1owZURBOWJPWHpmdTFiNE9wRXg2UGZpSFZneUhDSXcwY1lxdyZoPXpsdzdhbFQtaERKZEpIR3pZaUdxN3lHblhLTnlIdVc4YnhpRG51SnRpTUE=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "240b794f-1b53-4aff-88d9-ed24b3775810"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.IotHub.IotHubClient/0.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "3a808468-6d87-4b0d-a10a-005f16bf36a9"
+          "e5e8797b-738b-4ec9-af15-2773c9ac8199"
         ],
         "x-ms-correlation-request-id": [
-          "3a808468-6d87-4b0d-a10a-005f16bf36a9"
+          "e5e8797b-738b-4ec9-af15-2773c9ac8199"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T193956Z:3a808468-6d87-4b0d-a10a-005f16bf36a9"
+          "JAPANEAST:20241206T023755Z:e5e8797b-738b-4ec9-af15-2773c9ac8199"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -347,14 +395,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F61CB65CDF684204B07F5220CB14C788 Ref B: TYO201100116047 Ref C: 2024-12-06T02:37:54Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:39:55 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 06 Dec 2024 02:37:54 GMT"
         ],
         "Content-Length": [
           "20"
@@ -370,33 +418,42 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYmNjYWQyZGItYjI3OC00NWEyLWIxYzMtNmIyMTFlZDVkYjgy?api-version=2018-04-01&operationSource=os_ih&asyncinfo",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9vcGVyYXRpb25SZXN1bHRzL2IzTmZhV2hmWW1OallXUXlaR0l0WWpJM09DMDBOV0V5TFdJeFl6TXRObUl5TVRGbFpEVmtZamd5P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDEmb3BlcmF0aW9uU291cmNlPW9zX2loJmFzeW5jaW5mbw==",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Devices/locations/westus/operationResults/b3NfaWhfMzUyZTg1MDItMTEyZC00ZjI0LTljMzUtMTk3ZTI5ZWUyZGEy?api-version=2021-07-02&operationSource=os_ih&asyncinfo&t=638690493832411940&c=MIIHhzCCBm-gAwIBAgITfAWHizdXQLRDd48J5AAABYeLNzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwOTIyMTIwNDAzWhcNMjUwMzIxMTIwNDAzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL3CpUYjuxooJSSrwK19FjzhBOC6rpM2nxEk8ZwpswjmQSs4371lD9cjpzoi1V66izrOAQO5dR4T7CBAdxC_T1La7B_GC0BLToEfDbOMLuij5eJKkGy743BYmNo5FXMcmO2f2PyZA8Q8FMkBzYwcpUlCBt0ofvjmFjb0o14-l_wkV8cVq6NA5rj5vzYRXrcBBDx0DXZzx0ey-DalD8BI5Efxzl0sFnA-qqtfi2y6thqMlNPWuGqiYFNmkko5caGs3a7hQy_mx3XdCDy2aWq0YXIqdiyYCA4MGA_vLQtjCUcC4EnHaLnPm-9OGFhKZHQZ2hQEFIYnnCNvsSRVaHBIatkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBR539nE3pOaYqC09YY5sInoMk2T-DAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFQ1zkLj2l7rlyrM4j2l8rtJkHitIxnUkLkyeLRrVxZPkfV1_ABjrmrKVHwks1TT5vv190Z1rSszJ8F3BMbapuqZk7TG_eHqRVKnkNYrwXEAn99VULWloNnmsKbnii5qgA26KvYkNcrxJ4L_9pCm3mT47A_mvHkzKnovgy4XLdvqRPL1QGC_Itw4Y4QCb11tEdDabhFYx2hY0zhM3voH4pW_42NbuG3xwNLFeA2LThOsGcf_4F8bzQ6Pm__uo-XrnBE13ERimgL86M-z9h6W2bQUcKXqAf_RhKjv5ai9GEnITD2aoXBO8tu85DelvTvuH12hn2s2xEeYNMURYXNCzYc&s=p6NquuBdAZsqQCMz-K6tHA0IQKIJh-Lyxd78yOnistTmQJKJNGLmpJYaei7JLxfxlGA_xmWMQELBcehcqKzuFWvbO8QemLdKttioecl2Lks8urIDq3n6AhpemJ2rAofowWtKfQy6IzKyAvDT8Bll6wJmXgPbgPTt7eBd8JrHMhFN3yPA534BC2mlXHTYuWas3oDEFuQAMN_nLUW_YEc_y4kMerOsJvvEppieMpjr38iZ_qj4t9hdXMiy8oo75u4SvymrLVoKvI1e8Jj2E3TqG-x9_hJjzkAUe8duULplOIjZCe4B6CZ0eDA9bOXzfu1b4OpEx6PfiHVgyHCIw0cYqw&h=zlw7alT-hDJdJHGzYiGq7yGnXKNyHuW8bxiDnuJtiMA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvYjNOZmFXaGZNelV5WlRnMU1ESXRNVEV5WkMwMFpqSTBMVGxqTXpVdE1UazNaVEk1WldVeVpHRXk/YXBpLXZlcnNpb249MjAyMS0wNy0wMiZvcGVyYXRpb25Tb3VyY2U9b3NfaWgmYXN5bmNpbmZvJnQ9NjM4NjkwNDkzODMyNDExOTQwJmM9TUlJSGh6Q0NCbS1nQXdJQkFnSVRmQVdIaXpkWFFMUkRkNDhKNUFBQUJZZUxOekFOQmdrcWhraUc5dzBCQVFzRkFEQkVNUk13RVFZS0NaSW1pWlB5TEdRQkdSWURSMEpNTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUVUxRk1SZ3dGZ1lEVlFRREV3OUJUVVVnU1c1bWNtRWdRMEVnTURVd0hoY05NalF3T1RJeU1USXdOREF6V2hjTk1qVXdNekl4TVRJd05EQXpXakJBTVQ0d1BBWURWUVFERXpWaGMzbHVZMjl3WlhKaGRHbHZibk5wWjI1cGJtZGpaWEowYVdacFkyRjBaUzV0WVc1aFoyVnRaVzUwTG1GNmRYSmxMbU52YlRDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTDNDcFVZanV4b29KU1Nyd0sxOUZqemhCT0M2cnBNMm54RWs4Wndwc3dqbVFTczQzNzFsRDljanB6b2kxVjY2aXpyT0FRTzVkUjRUN0NCQWR4Q19UMUxhN0JfR0MwQkxUb0VmRGJPTUx1aWo1ZUpLa0d5NzQzQlltTm81RlhNY21PMmYyUHlaQThROEZNa0J6WXdjcFVsQ0J0MG9mdmptRmpiMG8xNC1sX3drVjhjVnE2TkE1cmo1dnpZUlhyY0JCRHgwRFhaengwZXktRGFsRDhCSTVFZnh6bDBzRm5BLXFxdGZpMnk2dGhxTWxOUFd1R3FpWUZObWtrbzVjYUdzM2E3aFF5X214M1hkQ0R5MmFXcTBZWElxZGl5WUNBNE1HQV92TFF0akNVY0M0RW5IYUxuUG0tOU9HRmhLWkhRWjJoUUVGSVlubkNOdnNTUlZhSEJJYXRrQ0F3RUFBYU9DQkhRd2dnUndNQ2NHQ1NzR0FRUUJnamNWQ2dRYU1CZ3dDZ1lJS3dZQkJRVUhBd0V3Q2dZSUt3WUJCUVVIQXdJd1BRWUpLd1lCQkFHQ054VUhCREF3TGdZbUt3WUJCQUdDTnhVSWhwRGpEWVRWdEhpRThZcy1oWnZkRnM2ZEVvRmdoZm1SUzRXc21UUUNBV1FDQVFjd2dnSExCZ2dyQmdFRkJRY0JBUVNDQWIwd2dnRzVNR01HQ0NzR0FRVUZCekFDaGxkb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2Y0d0cGFXNW1jbUV2UTJWeWRITXZRMDh4VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd05TNWpjblF3VXdZSUt3WUJCUVVITUFLR1IyaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBOUE1WQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKME1GTUdDQ3NHQVFVRkJ6QUNoa2RvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOURUekZRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBMUxtTnlkREJUQmdnckJnRUZCUWN3QW9aSGFIUjBjRG92TDJOeWJETXVZVzFsTG1kaWJDOWhhV0V2UTA4eFVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOUzVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwTlBNVkJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSjBNQjBHQTFVZERnUVdCQlI1MzluRTNwT2FZcUMwOVlZNXNJbm9NazJULURBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFbUJnTlZIUjhFZ2dFZE1JSUJHVENDQVJXZ2dnRVJvSUlCRFlZX2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNUzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzaGpGb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSnNoakZvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNOQzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdFd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JSNjFobUZLSGxzY1hZZVlQanpTLS1pQlVJV0hUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUZRMXprTGoybDdybHlyTTRqMmw4cnRKa0hpdEl4blVrTGt5ZUxSclZ4WlBrZlYxX0FCanJtcktWSHdrczFUVDV2djE5MFoxclNzeko4RjNCTWJhcHVxWms3VEdfZUhxUlZLbmtOWXJ3WEVBbjk5VlVMV2xvTm5tc0tibmlpNXFnQTI2S3ZZa05jcnhKNExfOXBDbTNtVDQ3QV9tdkhrektub3ZneTRYTGR2cVJQTDFRR0NfSXR3NFk0UUNiMTF0RWREYWJoRll4MmhZMHpoTTN2b0g0cFdfNDJOYnVHM3h3TkxGZUEyTFRoT3NHY2ZfNEY4YnpRNlBtX191by1Ycm5CRTEzRVJpbWdMODZNLXo5aDZXMmJRVWNLWHFBZl9SaEtqdjVhaTlHRW5JVEQyYW9YQk84dHU4NURlbHZUdnVIMTJobjJzMnhFZVlOTVVSWVhOQ3pZYyZzPXA2TnF1dUJkQVpzcVFDTXotSzZ0SEEwSVFLSUpoLUx5eGQ3OHlPbmlzdFRtUUpLSk5HTG1wSllhZWk3Skx4ZnhsR0FfeG1XTVFFTEJjZWhjcUt6dUZXdmJPOFFlbUxkS3R0aW9lY2wyTGtzOHVySURxM242QWhwZW1KMnJBb2Zvd1d0S2ZReTZJekt5QXZEVDhCbGw2d0ptWGdQYmdQVHQ3ZUJkOEpySE1oRk4zeVBBNTM0QkMybWxYSFRZdVdhczNvREVGdVFBTU5fbkxVV19ZRWNfeTRrTWVyT3NKdnZFcHBpZU1wanIzOGlaX3FqNHQ5aGRYTWl5OG9vNzV1NFN2eW1yTFZvS3ZJMWU4SmoyRTNUcUcteDlfaEpqemtBVWU4ZHVVTHBsT0lqWkNlNEI2Q1owZURBOWJPWHpmdTFiNE9wRXg2UGZpSFZneUhDSXcwY1lxdyZoPXpsdzdhbFQtaERKZEpIR3pZaUdxN3lHblhLTnlIdVc4YnhpRG51SnRpTUE=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "240b794f-1b53-4aff-88d9-ed24b3775810"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.IotHub.IotHubClient/0.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "a09099cd-9cf5-425e-b22b-b423d9563733"
+          "193bc084-ed4a-4c51-a888-497f37599283"
         ],
         "x-ms-correlation-request-id": [
-          "a09099cd-9cf5-425e-b22b-b423d9563733"
+          "193bc084-ed4a-4c51-a888-497f37599283"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194026Z:a09099cd-9cf5-425e-b22b-b423d9563733"
+          "JAPANEAST:20241206T023825Z:193bc084-ed4a-4c51-a888-497f37599283"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -404,128 +461,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: ABB0155D7F544BF1B1E75CFD263A98AE Ref B: TYO201100116047 Ref C: 2024-12-06T02:38:25Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:40:26 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "20"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Running\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYmNjYWQyZGItYjI3OC00NWEyLWIxYzMtNmIyMTFlZDVkYjgy?api-version=2018-04-01&operationSource=os_ih&asyncinfo",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9vcGVyYXRpb25SZXN1bHRzL2IzTmZhV2hmWW1OallXUXlaR0l0WWpJM09DMDBOV0V5TFdJeFl6TXRObUl5TVRGbFpEVmtZamd5P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDEmb3BlcmF0aW9uU291cmNlPW9zX2loJmFzeW5jaW5mbw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
-        ],
-        "x-ms-request-id": [
-          "52b35beb-f294-43c2-999b-05e05ae0082d"
-        ],
-        "x-ms-correlation-request-id": [
-          "52b35beb-f294-43c2-999b-05e05ae0082d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194056Z:52b35beb-f294-43c2-999b-05e05ae0082d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:40:55 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "20"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Running\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYmNjYWQyZGItYjI3OC00NWEyLWIxYzMtNmIyMTFlZDVkYjgy?api-version=2018-04-01&operationSource=os_ih&asyncinfo",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9vcGVyYXRpb25SZXN1bHRzL2IzTmZhV2hmWW1OallXUXlaR0l0WWpJM09DMDBOV0V5TFdJeFl6TXRObUl5TVRGbFpEVmtZamd5P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDEmb3BlcmF0aW9uU291cmNlPW9zX2loJmFzeW5jaW5mbw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
-        ],
-        "x-ms-request-id": [
-          "6993b124-138d-491f-8fca-453321b381d0"
-        ],
-        "x-ms-correlation-request-id": [
-          "6993b124-138d-491f-8fca-453321b381d0"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194126Z:6993b124-138d-491f-8fca-453321b381d0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:26 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 06 Dec 2024 02:38:25 GMT"
         ],
         "Content-Length": [
           "22"
@@ -541,33 +484,42 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDg/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847/providers/Microsoft.Devices/IotHubs/ps5481?api-version=2021-07-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTg0Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczU0ODE/YXBpLXZlcnNpb249MjAyMS0wNy0wMg==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "240b794f-1b53-4aff-88d9-ed24b3775810"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.IotHub.IotHubClient/0.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "925aea0e-7881-4f25-bf94-833fe8265943"
+          "3fb90637-402b-48a3-8cd4-4912c70cc3b4"
         ],
         "x-ms-correlation-request-id": [
-          "925aea0e-7881-4f25-bf94-833fe8265943"
+          "3fb90637-402b-48a3-8cd4-4912c70cc3b4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194127Z:925aea0e-7881-4f25-bf94-833fe8265943"
+          "JAPANEAST:20241206T023826Z:3fb90637-402b-48a3-8cd4-4912c70cc3b4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -575,17 +527,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B14687F897944EFFB9C31827C4647098 Ref B: TYO201100116047 Ref C: 2024-12-06T02:38:25Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:41:26 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 06 Dec 2024 02:38:26 GMT"
         ],
         "Content-Length": [
-          "1792"
+          "1580"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -594,43 +546,49 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008\",\r\n  \"name\": \"ps2008\",\r\n  \"type\": \"Microsoft.Devices/IotHubs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"subscriptionid\": \"91d12660-3dec-467a-be2a-213b5544ddc0\",\r\n  \"resourcegroup\": \"ps4366\",\r\n  \"etag\": \"AAAAAAQFk0Y=\",\r\n  \"properties\": {\r\n    \"operationsMonitoringProperties\": {\r\n      \"events\": {\r\n        \"None\": \"None\",\r\n        \"Connections\": \"None\",\r\n        \"DeviceTelemetry\": \"None\",\r\n        \"C2DCommands\": \"None\",\r\n        \"DeviceIdentityOperations\": \"None\",\r\n        \"FileUploadOperations\": \"None\",\r\n        \"Routes\": \"None\"\r\n      }\r\n    },\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipFilterRules\": [],\r\n    \"hostName\": \"ps2008.azure-devices.net\",\r\n    \"eventHubEndpoints\": {\r\n      \"events\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps2008\",\r\n        \"endpoint\": \"sb://iothub-ns-ps2008-1107571-a509100820.servicebus.windows.net/\"\r\n      },\r\n      \"operationsMonitoringEvents\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps2008-operationmonitoring\",\r\n        \"endpoint\": \"sb://iothub-ns-ps2008-1107571-a509100820.servicebus.windows.net/\"\r\n      }\r\n    },\r\n    \"routing\": {\r\n      \"endpoints\": {\r\n        \"serviceBusQueues\": [],\r\n        \"serviceBusTopics\": [],\r\n        \"eventHubs\": [],\r\n        \"storageContainers\": []\r\n      },\r\n      \"routes\": [],\r\n      \"fallbackRoute\": {\r\n        \"name\": \"$fallback\",\r\n        \"source\": \"DeviceMessages\",\r\n        \"condition\": \"true\",\r\n        \"endpointNames\": [\r\n          \"events\"\r\n        ],\r\n        \"isEnabled\": true\r\n      }\r\n    },\r\n    \"storageEndpoints\": {\r\n      \"$default\": {\r\n        \"sasTtlAsIso8601\": \"PT1H\",\r\n        \"connectionString\": \"\",\r\n        \"containerName\": \"\"\r\n      }\r\n    },\r\n    \"messagingEndpoints\": {\r\n      \"fileNotifications\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"enableFileUploadNotifications\": false,\r\n    \"cloudToDevice\": {\r\n      \"maxDeliveryCount\": 10,\r\n      \"defaultTtlAsIso8601\": \"PT1H\",\r\n      \"feedback\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"features\": \"None\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847/providers/Microsoft.Devices/IotHubs/ps5481\",\r\n  \"name\": \"ps5481\",\r\n  \"type\": \"Microsoft.Devices/IotHubs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"subscriptionid\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n  \"resourcegroup\": \"ps1847\",\r\n  \"etag\": \"AAAAAAYAAAA=\",\r\n  \"properties\": {\r\n    \"locations\": [\r\n      {\r\n        \"location\": \"West US\",\r\n        \"role\": \"primary\"\r\n      },\r\n      {\r\n        \"location\": \"East US\",\r\n        \"role\": \"secondary\"\r\n      }\r\n    ],\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipFilterRules\": [],\r\n    \"hostName\": \"ps5481.azure-devices.net\",\r\n    \"eventHubEndpoints\": {\r\n      \"events\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps5481\",\r\n        \"endpoint\": \"sb://iothub-ns-ps5481-63332361-37a4758e5e.servicebus.windows.net/\"\r\n      }\r\n    },\r\n    \"routing\": {\r\n      \"endpoints\": {\r\n        \"serviceBusQueues\": [],\r\n        \"serviceBusTopics\": [],\r\n        \"eventHubs\": [],\r\n        \"storageContainers\": []\r\n      },\r\n      \"routes\": [],\r\n      \"fallbackRoute\": {\r\n        \"name\": \"$fallback\",\r\n        \"source\": \"DeviceMessages\",\r\n        \"condition\": \"true\",\r\n        \"endpointNames\": [\r\n          \"events\"\r\n        ],\r\n        \"isEnabled\": true\r\n      }\r\n    },\r\n    \"storageEndpoints\": {\r\n      \"$default\": {\r\n        \"sasTtlAsIso8601\": \"PT1H\",\r\n        \"connectionString\": \"\",\r\n        \"containerName\": \"\"\r\n      }\r\n    },\r\n    \"messagingEndpoints\": {\r\n      \"fileNotifications\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"enableFileUploadNotifications\": false,\r\n    \"cloudToDevice\": {\r\n      \"maxDeliveryCount\": 10,\r\n      \"defaultTtlAsIso8601\": \"PT1H\",\r\n      \"feedback\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"features\": \"RootCertificateV2\",\r\n    \"allowedFqdnList\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2024-12-06T02:36:22.3533333Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDg/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847/providers/Microsoft.Devices/IotHubs/ps5481?api-version=2021-07-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTg0Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczU0ODE/YXBpLXZlcnNpb249MjAyMS0wNy0wMg==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "94da6829-d2bb-4d4d-8b91-1b6b8f80aab3"
+          "240b794f-1b53-4aff-88d9-ed24b3775810"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.IotHub.IotHubClient/0.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "56536acd-c9c3-448d-9604-58bde51aab4f"
+          "155365f0-b86a-4a15-961c-e1fc26469260"
         ],
         "x-ms-correlation-request-id": [
-          "56536acd-c9c3-448d-9604-58bde51aab4f"
+          "155365f0-b86a-4a15-961c-e1fc26469260"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194127Z:56536acd-c9c3-448d-9604-58bde51aab4f"
+          "JAPANEAST:20241206T023828Z:155365f0-b86a-4a15-961c-e1fc26469260"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -638,17 +596,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 45EFF34DC55348FCADB667FDAFEB129B Ref B: TYO201100116047 Ref C: 2024-12-06T02:38:26Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:41:27 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 06 Dec 2024 02:38:27 GMT"
         ],
         "Content-Length": [
-          "1792"
+          "1580"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -657,43 +615,49 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008\",\r\n  \"name\": \"ps2008\",\r\n  \"type\": \"Microsoft.Devices/IotHubs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"subscriptionid\": \"91d12660-3dec-467a-be2a-213b5544ddc0\",\r\n  \"resourcegroup\": \"ps4366\",\r\n  \"etag\": \"AAAAAAQFk0Y=\",\r\n  \"properties\": {\r\n    \"operationsMonitoringProperties\": {\r\n      \"events\": {\r\n        \"None\": \"None\",\r\n        \"Connections\": \"None\",\r\n        \"DeviceTelemetry\": \"None\",\r\n        \"C2DCommands\": \"None\",\r\n        \"DeviceIdentityOperations\": \"None\",\r\n        \"FileUploadOperations\": \"None\",\r\n        \"Routes\": \"None\"\r\n      }\r\n    },\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipFilterRules\": [],\r\n    \"hostName\": \"ps2008.azure-devices.net\",\r\n    \"eventHubEndpoints\": {\r\n      \"events\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps2008\",\r\n        \"endpoint\": \"sb://iothub-ns-ps2008-1107571-a509100820.servicebus.windows.net/\"\r\n      },\r\n      \"operationsMonitoringEvents\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps2008-operationmonitoring\",\r\n        \"endpoint\": \"sb://iothub-ns-ps2008-1107571-a509100820.servicebus.windows.net/\"\r\n      }\r\n    },\r\n    \"routing\": {\r\n      \"endpoints\": {\r\n        \"serviceBusQueues\": [],\r\n        \"serviceBusTopics\": [],\r\n        \"eventHubs\": [],\r\n        \"storageContainers\": []\r\n      },\r\n      \"routes\": [],\r\n      \"fallbackRoute\": {\r\n        \"name\": \"$fallback\",\r\n        \"source\": \"DeviceMessages\",\r\n        \"condition\": \"true\",\r\n        \"endpointNames\": [\r\n          \"events\"\r\n        ],\r\n        \"isEnabled\": true\r\n      }\r\n    },\r\n    \"storageEndpoints\": {\r\n      \"$default\": {\r\n        \"sasTtlAsIso8601\": \"PT1H\",\r\n        \"connectionString\": \"\",\r\n        \"containerName\": \"\"\r\n      }\r\n    },\r\n    \"messagingEndpoints\": {\r\n      \"fileNotifications\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"enableFileUploadNotifications\": false,\r\n    \"cloudToDevice\": {\r\n      \"maxDeliveryCount\": 10,\r\n      \"defaultTtlAsIso8601\": \"PT1H\",\r\n      \"feedback\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"features\": \"None\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847/providers/Microsoft.Devices/IotHubs/ps5481\",\r\n  \"name\": \"ps5481\",\r\n  \"type\": \"Microsoft.Devices/IotHubs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"subscriptionid\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n  \"resourcegroup\": \"ps1847\",\r\n  \"etag\": \"AAAAAAYAAAA=\",\r\n  \"properties\": {\r\n    \"locations\": [\r\n      {\r\n        \"location\": \"West US\",\r\n        \"role\": \"primary\"\r\n      },\r\n      {\r\n        \"location\": \"East US\",\r\n        \"role\": \"secondary\"\r\n      }\r\n    ],\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipFilterRules\": [],\r\n    \"hostName\": \"ps5481.azure-devices.net\",\r\n    \"eventHubEndpoints\": {\r\n      \"events\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps5481\",\r\n        \"endpoint\": \"sb://iothub-ns-ps5481-63332361-37a4758e5e.servicebus.windows.net/\"\r\n      }\r\n    },\r\n    \"routing\": {\r\n      \"endpoints\": {\r\n        \"serviceBusQueues\": [],\r\n        \"serviceBusTopics\": [],\r\n        \"eventHubs\": [],\r\n        \"storageContainers\": []\r\n      },\r\n      \"routes\": [],\r\n      \"fallbackRoute\": {\r\n        \"name\": \"$fallback\",\r\n        \"source\": \"DeviceMessages\",\r\n        \"condition\": \"true\",\r\n        \"endpointNames\": [\r\n          \"events\"\r\n        ],\r\n        \"isEnabled\": true\r\n      }\r\n    },\r\n    \"storageEndpoints\": {\r\n      \"$default\": {\r\n        \"sasTtlAsIso8601\": \"PT1H\",\r\n        \"connectionString\": \"\",\r\n        \"containerName\": \"\"\r\n      }\r\n    },\r\n    \"messagingEndpoints\": {\r\n      \"fileNotifications\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"enableFileUploadNotifications\": false,\r\n    \"cloudToDevice\": {\r\n      \"maxDeliveryCount\": 10,\r\n      \"defaultTtlAsIso8601\": \"PT1H\",\r\n      \"feedback\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"features\": \"RootCertificateV2\",\r\n    \"allowedFqdnList\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2024-12-06T02:36:22.3533333Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDg/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
+      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847/providers/Microsoft.Devices/IotHubs/ps5481?api-version=2021-07-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3BzMTg0Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczU0ODE/YXBpLXZlcnNpb249MjAyMS0wNy0wMg==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "48a5dad0-d5b5-4d4d-8f4e-10684d4e5b15"
+          "7be80100-3943-40b3-804a-1fdb5806dc17"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3260.0",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.IotHub.IotHubClient/0.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "6cfc9f26-2785-405f-98e6-13f596c765ff"
+          "7b09e5cf-4536-47f7-8b97-ae27883c0fc2"
         ],
         "x-ms-correlation-request-id": [
-          "6cfc9f26-2785-405f-98e6-13f596c765ff"
+          "7b09e5cf-4536-47f7-8b97-ae27883c0fc2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194128Z:6cfc9f26-2785-405f-98e6-13f596c765ff"
+          "JAPANEAST:20241206T023829Z:7b09e5cf-4536-47f7-8b97-ae27883c0fc2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -701,17 +665,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6DA656D0C51B43E0BB764858E0B645BA Ref B: TYO201100116019 Ref C: 2024-12-06T02:38:28Z"
         ],
         "Date": [
-          "Thu, 20 Dec 2018 19:41:27 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 06 Dec 2024 02:38:29 GMT"
         ],
         "Content-Length": [
-          "1792"
+          "1580"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -720,946 +684,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008\",\r\n  \"name\": \"ps2008\",\r\n  \"type\": \"Microsoft.Devices/IotHubs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"subscriptionid\": \"91d12660-3dec-467a-be2a-213b5544ddc0\",\r\n  \"resourcegroup\": \"ps4366\",\r\n  \"etag\": \"AAAAAAQFk0Y=\",\r\n  \"properties\": {\r\n    \"operationsMonitoringProperties\": {\r\n      \"events\": {\r\n        \"None\": \"None\",\r\n        \"Connections\": \"None\",\r\n        \"DeviceTelemetry\": \"None\",\r\n        \"C2DCommands\": \"None\",\r\n        \"DeviceIdentityOperations\": \"None\",\r\n        \"FileUploadOperations\": \"None\",\r\n        \"Routes\": \"None\"\r\n      }\r\n    },\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipFilterRules\": [],\r\n    \"hostName\": \"ps2008.azure-devices.net\",\r\n    \"eventHubEndpoints\": {\r\n      \"events\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps2008\",\r\n        \"endpoint\": \"sb://iothub-ns-ps2008-1107571-a509100820.servicebus.windows.net/\"\r\n      },\r\n      \"operationsMonitoringEvents\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps2008-operationmonitoring\",\r\n        \"endpoint\": \"sb://iothub-ns-ps2008-1107571-a509100820.servicebus.windows.net/\"\r\n      }\r\n    },\r\n    \"routing\": {\r\n      \"endpoints\": {\r\n        \"serviceBusQueues\": [],\r\n        \"serviceBusTopics\": [],\r\n        \"eventHubs\": [],\r\n        \"storageContainers\": []\r\n      },\r\n      \"routes\": [],\r\n      \"fallbackRoute\": {\r\n        \"name\": \"$fallback\",\r\n        \"source\": \"DeviceMessages\",\r\n        \"condition\": \"true\",\r\n        \"endpointNames\": [\r\n          \"events\"\r\n        ],\r\n        \"isEnabled\": true\r\n      }\r\n    },\r\n    \"storageEndpoints\": {\r\n      \"$default\": {\r\n        \"sasTtlAsIso8601\": \"PT1H\",\r\n        \"connectionString\": \"\",\r\n        \"containerName\": \"\"\r\n      }\r\n    },\r\n    \"messagingEndpoints\": {\r\n      \"fileNotifications\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"enableFileUploadNotifications\": false,\r\n    \"cloudToDevice\": {\r\n      \"maxDeliveryCount\": 10,\r\n      \"defaultTtlAsIso8601\": \"PT1H\",\r\n      \"feedback\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"features\": \"None\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDgvY2VydGlmaWNhdGVzL0NlcnRpZmljYXRlMT9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
-      "RequestMethod": "PUT",
-	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-      "RequestBody": "{\r\n  \"certificate\": \"MIIDPzCCAiegAwIBAgIQQ1/RwSPgy4ROJ0mf0sbl9jANBgkqhkiG9w0BAQsFADAaMRgwFgYDVQQDDA9UZXN0Q2VydGlmaWNhdGUwHhcNMTgxMjIwMTkzMTI4WhcNMTkwMTE5MTk0MTI4WjAaMRgwFgYDVQQDDA9UZXN0Q2VydGlmaWNhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC4qnkzThXyLGuRH+xlgCPdrpZzgPv1iLnjC0AesfzY+MggJxIRhSDKsFHTKIjQGdHK3ydch7Ki26QZ92K8gvaN51UMIpI/9J4samvA7JLB02iLA8+547dG8gXUF7qT7mjYp1n1oe0DcnwfqexTpMeeXXQ7xQqVaaarWvrWpqIe/6SLgTRMANqUSjd4LKUmJxx4x76QyiHyw1RA2CAxMHxC8JSTMoyRbXgihVSUPH7htS0sOJAd6AYVOUxrP8Ws2FBCZw7RQ9I5WV1ScZUtEXl7+fTEd/R0tNdNJ5LwGVgLQbPAkWHkLWSuHOyiALNJBuSB34CXdVAI0s2QfcOXlr8dAgMBAAGjgYAwfjAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMBoGA1UdEQQTMBGCD1Rlc3RDZXJ0aWZpY2F0ZTASBgNVHRMBAf8ECDAGAQH/AgEMMB0GA1UdDgQWBBTTCZAwTLqBFxksKoMc0kz22NiuNjANBgkqhkiG9w0BAQsFAAOCAQEAFCRJIz2v3jbjAZrNPLSuCsRB0aOVBoio6zUj1LVUkr3CxIXYDvf9t7TcmEVZqlr76HzNzrVpSl3LBNaiBIlhheYRyHPXoirvK5MjfsV9vTra36LoqQkuXPGNezyZw2yEzjWFQWP3KLzHOPb5hNUZx+OnwV9uE8UJraBvJ5+8Q/H2OLTn5RT/2DWCvGe7fi+4TaCtx7e14gFRvi2F4pzKGKjbrWFYUtu617+z5KwqqYQF+iJy+gJxP0uoYcSyY5oWv68pGMCnz1O2xHAugkPMujGFTBPlCFLctyDSzJQplxPLQRoxJRFAbTW73CW4fKIN+O+DLwjdH+oTOQ6KDcvzSw==\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "948f5dc2-c39f-40d1-91f5-62e6a9bccddf"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "1141"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
-        ],
-        "x-ms-request-id": [
-          "9c00367b-1043-4028-98e4-59f8dbfe4c10"
-        ],
-        "x-ms-correlation-request-id": [
-          "9c00367b-1043-4028-98e4-59f8dbfe4c10"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194130Z:9c00367b-1043-4028-98e4-59f8dbfe4c10"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:29 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "1619"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"subject\": \"TestCertificate\",\r\n    \"expiry\": \"Sat, 19 Jan 2019 19:41:28 GMT\",\r\n    \"thumbprint\": \"32B26B639D72C9FDB07493317BF3C6236E8FC848\",\r\n    \"isVerified\": false,\r\n    \"created\": \"Thu, 20 Dec 2018 19:41:30 GMT\",\r\n    \"updated\": \"Thu, 20 Dec 2018 19:41:30 GMT\",\r\n    \"certificate\": \"MIIDPzCCAiegAwIBAgIQQ1/RwSPgy4ROJ0mf0sbl9jANBgkqhkiG9w0BAQsFADAaMRgwFgYDVQQDDA9UZXN0Q2VydGlmaWNhdGUwHhcNMTgxMjIwMTkzMTI4WhcNMTkwMTE5MTk0MTI4WjAaMRgwFgYDVQQDDA9UZXN0Q2VydGlmaWNhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC4qnkzThXyLGuRH+xlgCPdrpZzgPv1iLnjC0AesfzY+MggJxIRhSDKsFHTKIjQGdHK3ydch7Ki26QZ92K8gvaN51UMIpI/9J4samvA7JLB02iLA8+547dG8gXUF7qT7mjYp1n1oe0DcnwfqexTpMeeXXQ7xQqVaaarWvrWpqIe/6SLgTRMANqUSjd4LKUmJxx4x76QyiHyw1RA2CAxMHxC8JSTMoyRbXgihVSUPH7htS0sOJAd6AYVOUxrP8Ws2FBCZw7RQ9I5WV1ScZUtEXl7+fTEd/R0tNdNJ5LwGVgLQbPAkWHkLWSuHOyiALNJBuSB34CXdVAI0s2QfcOXlr8dAgMBAAGjgYAwfjAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMBoGA1UdEQQTMBGCD1Rlc3RDZXJ0aWZpY2F0ZTASBgNVHRMBAf8ECDAGAQH/AgEMMB0GA1UdDgQWBBTTCZAwTLqBFxksKoMc0kz22NiuNjANBgkqhkiG9w0BAQsFAAOCAQEAFCRJIz2v3jbjAZrNPLSuCsRB0aOVBoio6zUj1LVUkr3CxIXYDvf9t7TcmEVZqlr76HzNzrVpSl3LBNaiBIlhheYRyHPXoirvK5MjfsV9vTra36LoqQkuXPGNezyZw2yEzjWFQWP3KLzHOPb5hNUZx+OnwV9uE8UJraBvJ5+8Q/H2OLTn5RT/2DWCvGe7fi+4TaCtx7e14gFRvi2F4pzKGKjbrWFYUtu617+z5KwqqYQF+iJy+gJxP0uoYcSyY5oWv68pGMCnz1O2xHAugkPMujGFTBPlCFLctyDSzJQplxPLQRoxJRFAbTW73CW4fKIN+O+DLwjdH+oTOQ6KDcvzSw==\"\r\n  },\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1\",\r\n  \"name\": \"Certificate1\",\r\n  \"type\": \"Microsoft.Devices/IotHubs/Certificates\",\r\n  \"etag\": \"AAAAAAQFk6s=\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDgvY2VydGlmaWNhdGVzP2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "818884c8-3f25-4db7-8cc8-663f28ace9aa"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
-        ],
-        "x-ms-request-id": [
-          "f192171d-e343-47e3-95f1-03299572a681"
-        ],
-        "x-ms-correlation-request-id": [
-          "f192171d-e343-47e3-95f1-03299572a681"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194130Z:f192171d-e343-47e3-95f1-03299572a681"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:29 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "517"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"subject\": \"TestCertificate\",\r\n        \"expiry\": \"Sat, 19 Jan 2019 19:41:28 GMT\",\r\n        \"thumbprint\": \"32B26B639D72C9FDB07493317BF3C6236E8FC848\",\r\n        \"isVerified\": false,\r\n        \"created\": \"Thu, 20 Dec 2018 19:41:30 GMT\",\r\n        \"updated\": \"Thu, 20 Dec 2018 19:41:30 GMT\",\r\n        \"certificate\": null\r\n      },\r\n      \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1\",\r\n      \"name\": \"Certificate1\",\r\n      \"type\": \"Microsoft.Devices/IotHubs/Certificates\",\r\n      \"etag\": \"AAAAAAQFk6s=\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDgvY2VydGlmaWNhdGVzP2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "a742965c-0dca-4268-a11f-7817f7062c01"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
-        ],
-        "x-ms-request-id": [
-          "7df6962d-0b63-4ed5-b368-5aa956c938db"
-        ],
-        "x-ms-correlation-request-id": [
-          "7df6962d-0b63-4ed5-b368-5aa956c938db"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194133Z:7df6962d-0b63-4ed5-b368-5aa956c938db"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:33 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "12"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDgvY2VydGlmaWNhdGVzL0NlcnRpZmljYXRlMT9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "752521ec-261c-424c-a5ad-0ac1e44cc5ea"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11983"
-        ],
-        "x-ms-request-id": [
-          "3057da63-c9c6-4692-bce6-0da98d4ea3e2"
-        ],
-        "x-ms-correlation-request-id": [
-          "3057da63-c9c6-4692-bce6-0da98d4ea3e2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194130Z:3057da63-c9c6-4692-bce6-0da98d4ea3e2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:30 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "505"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"subject\": \"TestCertificate\",\r\n    \"expiry\": \"Sat, 19 Jan 2019 19:41:28 GMT\",\r\n    \"thumbprint\": \"32B26B639D72C9FDB07493317BF3C6236E8FC848\",\r\n    \"isVerified\": false,\r\n    \"created\": \"Thu, 20 Dec 2018 19:41:30 GMT\",\r\n    \"updated\": \"Thu, 20 Dec 2018 19:41:30 GMT\",\r\n    \"certificate\": null\r\n  },\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1\",\r\n  \"name\": \"Certificate1\",\r\n  \"type\": \"Microsoft.Devices/IotHubs/Certificates\",\r\n  \"etag\": \"AAAAAAQFk6s=\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1/generateVerificationCode?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDgvY2VydGlmaWNhdGVzL0NlcnRpZmljYXRlMS9nZW5lcmF0ZVZlcmlmaWNhdGlvbkNvZGU/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
-      "RequestMethod": "POST",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "73a1df5c-1872-4142-91d2-cffd427441e2"
-        ],
-        "If-Match": [
-          "AAAAAAQFk6s="
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-request-id": [
-          "9c429e76-0f9e-4c78-9d0f-a101044af00d"
-        ],
-        "x-ms-correlation-request-id": [
-          "9c429e76-0f9e-4c78-9d0f-a101044af00d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194131Z:9c429e76-0f9e-4c78-9d0f-a101044af00d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:30 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "575"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"verificationCode\": \"D1ACACFEF66C7944E00906F6E9E313E9E50D00589CC63897\",\r\n    \"subject\": \"TestCertificate\",\r\n    \"expiry\": \"Sat, 19 Jan 2019 19:41:28 GMT\",\r\n    \"thumbprint\": \"32B26B639D72C9FDB07493317BF3C6236E8FC848\",\r\n    \"isVerified\": false,\r\n    \"created\": \"Thu, 20 Dec 2018 19:41:30 GMT\",\r\n    \"updated\": \"Thu, 20 Dec 2018 19:41:31 GMT\",\r\n    \"certificate\": null\r\n  },\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1\",\r\n  \"name\": \"Certificate1\",\r\n  \"type\": \"Microsoft.Devices/IotHubs/Certificates\",\r\n  \"etag\": \"AAAAAAQFk7k=\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1/verify?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDgvY2VydGlmaWNhdGVzL0NlcnRpZmljYXRlMS92ZXJpZnk/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
-      "RequestMethod": "POST",
-	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-      "RequestBody": "{\r\n  \"certificate\": \"MIIDoDCCAoigAwIBAgIQKkLlYrGI7bpOmUMQJjNVnTANBgkqhkiG9w0BAQsFADAaMRgwFgYDVQQDDA9UZXN0Q2VydGlmaWNhdGUwHhcNMTgxMjIwMTkzMTMxWhcNMTkwMTE5MTk0MTMxWjA7MTkwNwYDVQQDDDBEMUFDQUNGRUY2NkM3OTQ0RTAwOTA2RjZFOUUzMTNFOUU1MEQwMDU4OUNDNjM4OTcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDMHb3J2dlRE3HZ6UW/2LUykm6/38UXRm7X7DIXPXqsLQEegpURLYgwboZdRAZcQtWV8AYHZHlcUBoEIKJKgsATjZ+9ezvSu7FO/Ieo/1i1Cz09RiQluJtCs90YJkuQp15MTiCiVYf8nsWxHSCxxyh01TuIaHBAzE0PSc8ZtQLfEMWIymMT6EerxQJGrMYq4ALxtKoMhHf6SjbIB0cV0dXKJ96c3RayQDZIRsq1PdjYT2NIcGhTVjxOSEJ11YCXPbGuH3sjyFKngZAB/PIDaGSaUEMIruIYhhqePqjR0/xxt2dZ0fK3srTlNpCmoHK2ZuDVV9R79P+bps93YB2JLUjFAgMBAAGjgcAwgb0wDgYDVR0PAQH/BAQDAgWgMDsGA1UdEQQ0MDKCMEQxQUNBQ0ZFRjY2Qzc5NDRFMDA5MDZGNkU5RTMxM0U5RTUwRDAwNTg5Q0M2Mzg5NzAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwIBADAfBgNVHSMEGDAWgBTTCZAwTLqBFxksKoMc0kz22NiuNjAdBgNVHQ4EFgQUteiY5yF4WmHn6Ij5OQ2jwTxWlKMwDQYJKoZIhvcNAQELBQADggEBAJjrnytmiA+z706Pxo1sO6acO8qoSh+s2ntqiU63Bso3ZonxH7GycPnmUP8GLbbkThfq4jC5T3juWmsGDv7fKs6dNDgOWNNUnK81Vb+k+qFQozdKS1ZQgHDwEoIfaYGq6WjBz7NR/vEcTtZ69d5nlvSX+1jdgvg1wXdS81/dviX2nJco2D3vYnPuJ7fLyEyw/f7Fa8axX+cMwQEOOXKHsQLr87ObeZNUksT4ylLiW0gaJe84ZXKAAwsizSu6W9/W4VGEp8pOSLlvassfkPW8mByA2FzkKVqSi4f8NlVcno45rgxnrXBO797O+1GghWKaOdWlcSNTI/TXYobHAXyjQe8=\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "e0be41da-5bda-4d11-9658-6e9e5ec53fbd"
-        ],
-        "If-Match": [
-          "AAAAAAQFk7k="
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "1269"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-request-id": [
-          "1f9bbfc0-218b-4967-8719-3a9e06aad204"
-        ],
-        "x-ms-correlation-request-id": [
-          "1f9bbfc0-218b-4967-8719-3a9e06aad204"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194132Z:1f9bbfc0-218b-4967-8719-3a9e06aad204"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:32 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "504"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"subject\": \"TestCertificate\",\r\n    \"expiry\": \"Sat, 19 Jan 2019 19:41:28 GMT\",\r\n    \"thumbprint\": \"32B26B639D72C9FDB07493317BF3C6236E8FC848\",\r\n    \"isVerified\": true,\r\n    \"created\": \"Thu, 20 Dec 2018 19:41:30 GMT\",\r\n    \"updated\": \"Thu, 20 Dec 2018 19:41:32 GMT\",\r\n    \"certificate\": null\r\n  },\r\n  \"id\": \"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1\",\r\n  \"name\": \"Certificate1\",\r\n  \"type\": \"Microsoft.Devices/IotHubs/Certificates\",\r\n  \"etag\": \"AAAAAAQFk8g=\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008/certificates/Certificate1?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDgvY2VydGlmaWNhdGVzL0NlcnRpZmljYXRlMT9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fa3f0eb9-f938-4fa0-93ad-29f925d1a845"
-        ],
-        "If-Match": [
-          "AAAAAAQFk8g="
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-request-id": [
-          "78de7d9f-e96b-4e8a-a0ff-f780537221c8"
-        ],
-        "x-ms-correlation-request-id": [
-          "78de7d9f-e96b-4e8a-a0ff-f780537221c8"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194133Z:78de7d9f-e96b-4e8a-a0ff-f780537221c8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:33 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/ps4366/providers/Microsoft.Devices/IotHubs/ps2008?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlR3JvdXBzL3BzNDM2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkRldmljZXMvSW90SHVicy9wczIwMDg/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "eb95549a-0036-4649-af90-7b68305e5f3d"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYjQ5YjFiZGItZDEzYy00NmU2LTg1MTAtNDI4NjViMWIyMGQz?api-version=2018-04-01&operationSource=os_ih&asyncinfo"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
-        ],
-        "x-ms-request-id": [
-          "88009eb6-b090-45ba-8ca5-371307b46270"
-        ],
-        "x-ms-correlation-request-id": [
-          "88009eb6-b090-45ba-8ca5-371307b46270"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194134Z:88009eb6-b090-45ba-8ca5-371307b46270"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:34 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYjQ5YjFiZGItZDEzYy00NmU2LTg1MTAtNDI4NjViMWIyMGQz?api-version=2018-04-01&operationSource=os_ih"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "4"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "null",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYjQ5YjFiZGItZDEzYy00NmU2LTg1MTAtNDI4NjViMWIyMGQz?api-version=2018-04-01&operationSource=os_ih&asyncinfo",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9vcGVyYXRpb25SZXN1bHRzL2IzTmZhV2hmWWpRNVlqRmlaR0l0WkRFell5MDBObVUyTFRnMU1UQXROREk0TmpWaU1XSXlNR1F6P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDEmb3BlcmF0aW9uU291cmNlPW9zX2loJmFzeW5jaW5mbw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
-        ],
-        "x-ms-request-id": [
-          "e3a207f9-a5fd-429d-b651-94f21722b5d9"
-        ],
-        "x-ms-correlation-request-id": [
-          "e3a207f9-a5fd-429d-b651-94f21722b5d9"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194150Z:e3a207f9-a5fd-429d-b651-94f21722b5d9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:49 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "22"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYjQ5YjFiZGItZDEzYy00NmU2LTg1MTAtNDI4NjViMWIyMGQz?api-version=2018-04-01&operationSource=os_ih",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9vcGVyYXRpb25SZXN1bHRzL2IzTmZhV2hmWWpRNVlqRmlaR0l0WkRFell5MDBObVUyTFRnMU1UQXROREk0TmpWaU1XSXlNR1F6P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDEmb3BlcmF0aW9uU291cmNlPW9zX2lo",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.IotHub.IotHubClient/2.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
-        ],
-        "x-ms-request-id": [
-          "b3b50d92-69fe-433e-ac4e-6ba06924822e"
-        ],
-        "x-ms-correlation-request-id": [
-          "b3b50d92-69fe-433e-ac4e-6ba06924822e"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194150Z:b3b50d92-69fe-433e-ac4e-6ba06924822e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:49 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/operationResults/b3NfaWhfYjQ5YjFiZGItZDEzYy00NmU2LTg1MTAtNDI4NjViMWIyMGQz?api-version=2018-04-01&operationSource=os_ih"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourcegroups/ps4366?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL3Jlc291cmNlZ3JvdXBzL3BzNDM2Nj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1c3fb290-5427-460f-8e2a-e3b6374b342b"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-request-id": [
-          "8be62ec0-c7d9-4aa1-9950-2abc0c506a90"
-        ],
-        "x-ms-correlation-request-id": [
-          "8be62ec0-c7d9-4aa1-9950-2abc0c506a90"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194150Z:8be62ec0-c7d9-4aa1-9950-2abc0c506a90"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:41:50 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQzNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQzNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRek5qWXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-request-id": [
-          "80986898-9783-44ac-b098-2541d0b53db8"
-        ],
-        "x-ms-correlation-request-id": [
-          "80986898-9783-44ac-b098-2541d0b53db8"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194206Z:80986898-9783-44ac-b098-2541d0b53db8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:42:05 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQzNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQzNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRek5qWXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-request-id": [
-          "de26dd72-608d-48b5-b3e0-a713acadcb1f"
-        ],
-        "x-ms-correlation-request-id": [
-          "de26dd72-608d-48b5-b3e0-a713acadcb1f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194221Z:de26dd72-608d-48b5-b3e0-a713acadcb1f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:42:20 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQzNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQzNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRek5qWXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-request-id": [
-          "aa88e454-930c-410f-80ed-09eaf7e6a8eb"
-        ],
-        "x-ms-correlation-request-id": [
-          "aa88e454-930c-410f-80ed-09eaf7e6a8eb"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194236Z:aa88e454-930c-410f-80ed-09eaf7e6a8eb"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:42:35 GMT"
-        ],
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQzNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTFkMTI2NjAtM2RlYy00NjdhLWJlMmEtMjEzYjU1NDRkZGMwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRek5qWXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3260.0",
-          "OSName/Windows",
-          "OSVersion/10.0.17134.0",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-request-id": [
-          "f1837528-8d46-4c9c-b049-cda965e0d3cf"
-        ],
-        "x-ms-correlation-request-id": [
-          "f1837528-8d46-4c9c-b049-cda965e0d3cf"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181220T194236Z:f1837528-8d46-4c9c-b049-cda965e0d3cf"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 20 Dec 2018 19:42:35 GMT"
-        ],
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1847/providers/Microsoft.Devices/IotHubs/ps5481\",\r\n  \"name\": \"ps5481\",\r\n  \"type\": \"Microsoft.Devices/IotHubs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"subscriptionid\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n  \"resourcegroup\": \"ps1847\",\r\n  \"etag\": \"AAAAAAYAAAA=\",\r\n  \"properties\": {\r\n    \"locations\": [\r\n      {\r\n        \"location\": \"West US\",\r\n        \"role\": \"primary\"\r\n      },\r\n      {\r\n        \"location\": \"East US\",\r\n        \"role\": \"secondary\"\r\n      }\r\n    ],\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipFilterRules\": [],\r\n    \"hostName\": \"ps5481.azure-devices.net\",\r\n    \"eventHubEndpoints\": {\r\n      \"events\": {\r\n        \"retentionTimeInDays\": 1,\r\n        \"partitionCount\": 4,\r\n        \"partitionIds\": [\r\n          \"0\",\r\n          \"1\",\r\n          \"2\",\r\n          \"3\"\r\n        ],\r\n        \"path\": \"ps5481\",\r\n        \"endpoint\": \"sb://iothub-ns-ps5481-63332361-37a4758e5e.servicebus.windows.net/\"\r\n      }\r\n    },\r\n    \"routing\": {\r\n      \"endpoints\": {\r\n        \"serviceBusQueues\": [],\r\n        \"serviceBusTopics\": [],\r\n        \"eventHubs\": [],\r\n        \"storageContainers\": []\r\n      },\r\n      \"routes\": [],\r\n      \"fallbackRoute\": {\r\n        \"name\": \"$fallback\",\r\n        \"source\": \"DeviceMessages\",\r\n        \"condition\": \"true\",\r\n        \"endpointNames\": [\r\n          \"events\"\r\n        ],\r\n        \"isEnabled\": true\r\n      }\r\n    },\r\n    \"storageEndpoints\": {\r\n      \"$default\": {\r\n        \"sasTtlAsIso8601\": \"PT1H\",\r\n        \"connectionString\": \"\",\r\n        \"containerName\": \"\"\r\n      }\r\n    },\r\n    \"messagingEndpoints\": {\r\n      \"fileNotifications\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"enableFileUploadNotifications\": false,\r\n    \"cloudToDevice\": {\r\n      \"maxDeliveryCount\": 10,\r\n      \"defaultTtlAsIso8601\": \"PT1H\",\r\n      \"feedback\": {\r\n        \"lockDurationAsIso8601\": \"PT1M\",\r\n        \"ttlAsIso8601\": \"PT1H\",\r\n        \"maxDeliveryCount\": 10\r\n      }\r\n    },\r\n    \"features\": \"RootCertificateV2\",\r\n    \"allowedFqdnList\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2024-12-06T02:36:22.3533333Z\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {
     "Test-AzureRmIotHubCertificateLifecycle": [
-      "ps2008",
-      "ps4366"
+      "ps5481",
+      "ps1847"
     ]
   },
   "Variables": {
-    "SubscriptionId": "91d12660-3dec-467a-be2a-213b5544ddc0"
+    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
   }
 }

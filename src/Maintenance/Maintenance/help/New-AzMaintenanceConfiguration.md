@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -LinuxParameterClassificationToInclude
-List of linux patch classifications
+List of linux patch classifications. Allowed values are 'Critical', 'Security', and 'Other'.
 
 ```yaml
 Type: System.Collections.Generic.HashSet`1[System.String]
@@ -392,7 +392,7 @@ Accept wildcard characters: False
 ```
 
 ### -WindowParameterClassificationToInclude
-List of windows patch classification
+List of windows patch classification. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
 
 ```yaml
 Type: System.Collections.Generic.HashSet`1[System.String]
