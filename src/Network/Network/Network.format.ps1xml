@@ -5358,6 +5358,14 @@
 							  <PropertyName>ResourceGuid</PropertyName>
 						  </ListItem>
 						  <ListItem>
+						      <Label>Name</Label>
+						      <PropertyName>Name</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Id</Label>
+							  <PropertyName>Id</PropertyName>
+						  </ListItem>
+						  <ListItem>
 							  <Label>Type</Label>
 							  <PropertyName>Type</PropertyName>
 						  </ListItem>
