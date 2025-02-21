@@ -29,8 +29,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Collections.Generic;
     using global::Azure.Storage;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System.Security;
+    using Microsoft.WindowsAzure.Commands.Common;
 
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(String))]
+    [CmdletOutputBreakingChangeWithVersion(typeof(SecureString), "14.0.0", "9.0.0")]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(String), typeof(SecureString))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -132,6 +135,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string EncryptionScope { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specify to convert output token as a secure string.")]
+        public SwitchParameter AsSecureString { get; set; }
+
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
@@ -222,11 +228,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (FullUri)
             {
                 string fullUri = SasTokenHelper.GetFullUriWithSASToken(blobClient.Uri.ToString(), sasToken);
-                WriteObject(fullUri);
+                if (AsSecureString)
+                {
+                    WriteObject(fullUri.ConvertToSecureString());
+                }
+                else
+                {
+                    WriteObject(fullUri);
+                }
+                
             }
             else
             {
-                WriteObject(sasToken);
+                if (AsSecureString)
+                {
+                    WriteObject(sasToken.ConvertToSecureString());
+                }
+                else
+                {
+                    WriteObject(sasToken);
+                }
             }
         }
 
