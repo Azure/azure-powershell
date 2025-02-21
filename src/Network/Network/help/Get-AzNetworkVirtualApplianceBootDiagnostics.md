@@ -15,14 +15,14 @@ Retrieves boot diagnostic logs for a given NetworkVirtualAppliance VM instance
 ### ResourceNameParameterSet (Default)
 ```
 Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName <String> -Name <String> [-InstanceId <Int32>]
- [-SerialConsoleStorageSasUrl <String>] [-ConsoleScreenshotStorageSasUrl <String>] [-AsJob]
+ [-SerialConsoleStorageSasUrl <SecureString>] [-ConsoleScreenshotStorageSasUrl <SecureString>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzNetworkVirtualApplianceBootDiagnostics [-InstanceId <Int32>] [-SerialConsoleStorageSasUrl <String>]
- [-ConsoleScreenshotStorageSasUrl <String>] -ResourceId <String> [-AsJob]
+Get-AzNetworkVirtualApplianceBootDiagnostics [-InstanceId <Int32>] [-SerialConsoleStorageSasUrl <SecureString>]
+ [-ConsoleScreenshotStorageSasUrl <SecureString>] -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -75,7 +75,7 @@ Storage blob (eg.
 png file) sas url into which console screen shot for requested VM instance is copied
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +166,7 @@ Storage blob (eg.
 txt file) sas url into which serial console logs for requested VM instance is copied
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
