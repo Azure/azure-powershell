@@ -17,7 +17,7 @@ Generates a SAS token for an Azure storage blob.
 ```
 New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-AsSecureString] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <S
 ```
 New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-AsSecureString] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClien
 ```
 New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-AsSecureString] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -44,7 +44,7 @@ New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClien
 ```
 New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-AsSecureString] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -81,6 +81,21 @@ New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permissio
 This example generates a User Identity blob SAS token with storage context based on OAuth authentication
 
 ## PARAMETERS
+
+### -AsSecureString
+Specify to convert output token as a secure string.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Blob
 Specifies the storage blob name.
@@ -359,6 +374,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+
+### System.Security.SecureString
 
 ## NOTES
 
