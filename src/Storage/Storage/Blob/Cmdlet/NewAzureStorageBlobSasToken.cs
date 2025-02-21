@@ -28,12 +28,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage.Blobs;
     using System.Collections.Generic;
     using global::Azure.Storage;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System.Security;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [CmdletOutputBreakingChangeWithVersion(typeof(String), "14.0.0", "9.0.0", ReplacementCmdletOutputTypeName = "System.Security.SecureString")]
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(String), typeof(SecureString))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(SecureString))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -135,7 +134,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string EncryptionScope { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specify to convert output token as a secure string.")]
+        [CmdletParameterBreakingChangeWithVersion("AsSecureString", "15.0.0", "10.0.0", ChangeDescription = "This parameter is drepacted. The output type is SecureString by default.")]
+        [Parameter(Mandatory = false, HelpMessage = "This parameter is drepacted. The output type is SecureString by default.")]
         public SwitchParameter AsSecureString { get; set; }
 
         // Overwrite the useless parameter
@@ -228,26 +228,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (FullUri)
             {
                 string fullUri = SasTokenHelper.GetFullUriWithSASToken(blobClient.Uri.ToString(), sasToken);
-                if (AsSecureString)
-                {
-                    WriteObject(fullUri.ConvertToSecureString());
-                }
-                else
-                {
-                    WriteObject(fullUri);
-                }
+                WriteObject(fullUri.ConvertToSecureString());
                 
             }
             else
             {
-                if (AsSecureString)
-                {
-                    WriteObject(sasToken.ConvertToSecureString());
-                }
-                else
-                {
-                    WriteObject(sasToken);
-                }
+                WriteObject(sasToken.ConvertToSecureString());
             }
         }
 
