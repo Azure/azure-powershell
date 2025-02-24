@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Synapse;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -79,8 +78,15 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         protected static SynapseClient GetSynapseClient(MockContext context)
         {
-            var creds = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointResourceId);
-            return new SynapseClient(creds, HttpMockServer.CreateInstance());
+            string accessToken = "fakefakefake";
+
+            // When recording, we should have a connection string passed into the code from the environment
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(new[] { "https://dev.azuresynapse.net/.default" });
+            }
+
+            return new SynapseClient(new TokenCredentials(accessToken), HttpMockServer.CreateInstance());
         }
     }
 }

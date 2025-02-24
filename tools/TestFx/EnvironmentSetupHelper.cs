@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Commands.TestFx
 {
     public class EnvironmentSetupHelper
     {
-        private const string TestFxEnvironmentName = "testfx-environment";
+        private const string TestFxEnvironmentName = "__testfx-environment";
 
-        private const string TestFxSubscriptionName = "testfx-subscription";
+        private const string TestFxSubscriptionName = "__testfx-subscription";
 
         private static string PackageDirectoryFromCommon { get; } = GetConfigDirectory();
 
@@ -77,17 +78,17 @@ namespace Microsoft.Azure.Commands.TestFx
             LogIfNotNull($"Insights Module path: {module}");
             RMInsightsModule = module;
             module = GetModuleManifest(RmDirectory, "Az.Storage");
-            LogIfNotNull($"Storage Module path: {module}");
+            LogIfNotNull($"Storage Management Module path: {module}");
             RMStorageModule = module;
+            module = GetModuleManifest(StorageDirectory, "Azure.Storage");
+            LogIfNotNull($"Storage Data Plane Module path: {module}");
+            RMStorageDataPlaneModule = module;
             module = GetModuleManifest(RmDirectory, "Az.OperationalInsights");
-            LogIfNotNull($"OperationalInsights Module path: {module}");
+            LogIfNotNull($"Storage Data Plane Module path: {module}");
             RMOperationalInsightsModule = module;
             module = GetModuleManifest(RmDirectory, "Az.Network");
             LogIfNotNull($"Network Module path: {module}");
             RMNetworkModule = module;
-            module = GetModuleManifest(RmDirectory, "Az.KeyVault");
-            LogIfNotNull($"KeyVault Module path: {module}");
-            RMKeyVaultModule = module;
             module = GetModuleManifest(RmDirectory, "Az.EventHub");
             LogIfNotNull($"EventHub Module path: {module}");
             RMEventHubModule = module;
@@ -101,8 +102,33 @@ namespace Microsoft.Azure.Commands.TestFx
             LogIfNotNull($"Stack Resources Module path: {module}");
             StackRMResourceModule = module;
             module = GetModuleManifest(StackRmDirectory, "Az.Storage");
-            LogIfNotNull($"Stack Storage Module path: {module}");
+            LogIfNotNull($"Stack Storage Management Plane Module path: {module}");
             StackRMStorageModule = module;
+            module = GetModuleManifest(StackStorageDirectory, "Azure.Storage");
+            LogIfNotNull($"Stack Storage Data Plane Module path: {module}");
+            StackRMStorageDataPlaneModule = module;
+            module = GetModuleManifest(RmDirectory, "Az.KeyVault");
+            LogIfNotNull($"KeyVault Module path: {module}");
+            RMKeyVaultModule = module;
+
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            IDataStore datastore = new MemoryDataStore();
+            if (AzureSession.Instance.DataStore != null && (AzureSession.Instance.DataStore is MemoryDataStore))
+            {
+                datastore = AzureSession.Instance.DataStore;
+            }
+
+            AzureSession.Instance.DataStore = datastore;
+            var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            rmprofile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.EnvironmentTable["foo"], new AzureTenant());
+            rmprofile.DefaultContext.Subscription.SetEnvironment("foo");
+            if (AzureRmProfileProvider.Instance.Profile == null)
+            {
+                AzureRmProfileProvider.Instance.Profile = rmprofile;
+            }
+
+            AzureSession.Instance.DataStore = datastore;
 
             if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName, "testcredentials.json")))
             {
@@ -124,6 +150,8 @@ namespace Microsoft.Azure.Commands.TestFx
 
         public string RMMonitorModule { get; private set; }
 
+        public string RMStorageDataPlaneModule { get; private set; }
+
         public string RMNetworkModule { get; private set; }
 
         public string StackRMProfileModule { get; private set; }
@@ -131,6 +159,8 @@ namespace Microsoft.Azure.Commands.TestFx
         public string StackRMResourceModule { get; private set; }
 
         public string StackRMStorageModule { get; private set; }
+
+        public string StackRMStorageDataPlaneModule { get; private set; }
 
         public string RMKeyVaultModule { get; private set; }
 
@@ -363,19 +393,15 @@ namespace Microsoft.Azure.Commands.TestFx
                 ResourceManagerUrl = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri,
                 ServiceManagementUrl = currentEnvironment.Endpoints.ServiceManagementUri.AbsoluteUri,
                 GalleryUrl = currentEnvironment.Endpoints.GalleryUri?.AbsoluteUri,
-                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""),
-                AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""),
+                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""), // because it is just a sufix
+                AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""), // because it is just a sufix
                 StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix,
                 AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix,
                 AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId
             };
             testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl, currentEnvironment.Endpoints.GraphUri.AbsoluteUri);
-            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, AzureEnvironmentConstants.AzureAttestationServiceEndpointSuffix);
-            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId);
-            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointSuffix);
-            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointResourceId);
-            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.AzureOperationalInsightsEndpoint);
-            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.AzureOperationalInsightsEndpointResourceId);
+            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, "https://api.loganalytics.io/v1");
+            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, "https://api.loganalytics.io");
             if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(TestFxEnvironmentName))
             {
                 AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[TestFxEnvironmentName] = testEnvironment;
@@ -415,13 +441,12 @@ namespace Microsoft.Azure.Commands.TestFx
             testAccount.SetSubscriptions(currentEnvironment.SubscriptionId);
             testAccount.SetTenants(currentEnvironment.TenantId);
 
-            AzureRmProfileProvider.Instance.Profile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureRmProfileProvider.Instance.Profile.DefaultContext = new AzureContext(testSubscription, testAccount, testEnvironment, testTenant);
         }
 
         private void SetAuthenticationFactory(TestEnvironment environment)
         {
-            if (environment.IsRunningMocked)
+            if (environment.TokenInfo.ContainsKey(TokenAudience.Management))
             {
                 var httpMessage = new HttpRequestMessage();
                 environment.TokenInfo[TokenAudience.Management]

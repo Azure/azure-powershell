@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.TestFx.DelegatingHandlers
     {
         private readonly Regex _resourceGroupPattern = new Regex(@"/subscriptions/[^/]+/resourcegroups/([^?]+)\?api-version");
         private readonly HashSet<string> _resourceGroupsCreated = new HashSet<string>();
-        private readonly ServiceClientCredentials _credentials;
+        private readonly TokenCredentials _tokenCredentials;
 
-        public ResourceCleanerDelegatingHandler(ServiceClientCredentials credentials)
+        public ResourceCleanerDelegatingHandler(TokenCredentials tokenCredentials)
         {
-            _credentials = credentials;
+            _tokenCredentials = tokenCredentials;
         }
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.TestFx.DelegatingHandlers
                     RequestUri = new Uri(resourceGroupUri)
                 };
 
-                _credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                _tokenCredentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
 
                 HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest).ConfigureAwait(false);
                 string groupName = _resourceGroupPattern.Match(resourceGroupUri).Groups[1].Value;

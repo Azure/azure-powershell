@@ -13,12 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.Commands.TestFx.Recorder;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,6 +30,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.TestFx
@@ -205,7 +210,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
         public ITestRunner Build()
         {
-            SetupAzureSession();
+            SetupSessionAndProfile();
             SetupMockServer();
             Helper.SetupModules(AzureModule.AzureResourceManager, BuildModulesList());
             return this;
@@ -285,9 +290,11 @@ namespace Microsoft.Azure.Commands.TestFx
             return allModules.ToArray();
         }
 
-        protected void SetupAzureSession()
+        protected void SetupSessionAndProfile()
         {
             AzureSessionInitializer.InitializeAzureSession();
+            AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             if (!(AzureSession.Instance?.DataStore is MemoryDataStore))
             {
                 AzureSession.Instance.DataStore = new MemoryDataStore();
