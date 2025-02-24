@@ -698,6 +698,7 @@ namespace Microsoft.Azure.Commands.Aks
                 if (cluster.Identity != null && cluster.Identity.Type == null)
                 {
                     cluster.Identity.Type = ResourceIdentityType.SystemAssigned;
+                    cluster.Identity.UserAssignedIdentities = null;
                 }
             }
 

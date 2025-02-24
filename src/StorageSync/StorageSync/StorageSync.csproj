@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Reference Include="System.Security" />
-    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.13.0-preview" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
     <PackageReference Include="System.Management" Version="4.5.0" />
 	</ItemGroup>
@@ -27,6 +26,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\StorageSync.Helpers\StorageSync.Helper.csproj" />
     <ProjectReference Include="..\StorageSync.Management.Sdk\StorageSync.Management.Sdk.csproj" />
   </ItemGroup>
   

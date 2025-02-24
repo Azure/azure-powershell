@@ -725,10 +725,6 @@
     "regex": "Elastic"
   },
   {
-    "regex": "Logz",
-    "alias": "Logz"
-  },
-  {
     "alias": "DiskPool",
     "regex": "DiskPool"
   },
@@ -865,10 +861,6 @@
     "alias": "Managed Network Fabric"
   },
   {
-    "module": "CodeSigning",
-    "alias": "Code Signing"
-  },
-  {
     "module": "FirmwareAnalysis",
     "alias": "FirmwareAnalysis"
   },
@@ -947,5 +939,9 @@
   {
     "module": "ComputeSchedule",
     "alias": "ComputeSchedule"
+  },
+  {
+    "module": "DeviceRegistry",
+    "alias": "DeviceRegistry"
   }
 ]

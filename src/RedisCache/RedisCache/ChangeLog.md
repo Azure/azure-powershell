@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.0
+* Upgraded nuget package to signed package.
 * Added support for choosing Zonal Allocation Policy
 
 ## Version 1.10.0

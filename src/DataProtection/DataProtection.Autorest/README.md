@@ -49,7 +49,7 @@ directive:
       parameter-name: XmsAuthorizationAuxiliary
     set:
       parameter-name: Token
-      parameter-description: Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+      parameter-description: Parameter deprecate. Please use SecureToken instead.
   - where:
       parameter-name: AzureMonitorAlertSettingAlertsForAllJobFailure
     set:

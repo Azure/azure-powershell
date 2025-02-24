@@ -15,7 +15,7 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 ```
 New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject [-BgpAdvertisement <IBgpAdvertisement[]>]
  [-BgpPeer <IServiceLoadBalancerBgpPeer[]>] [-FabricPeeringEnabled <FabricPeeringEnabled>]
- [-IPAddressPool <IIPAddressPool[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-IPAddressPool <IIPAddressPool[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,21 +104,6 @@ To construct, see NOTES section for IPADDRESSPOOL properties and create a hash t
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IIPAddressPool[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

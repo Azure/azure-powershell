@@ -1237,12 +1237,18 @@ The acceptable values for this parameter are:
 - Premium_ZRS. Premium zone-redundant storage.
 - Standard_GZRS - Geo-redundant zone-redundant storage.
 - Standard_RAGZRS - Read access geo-redundant zone-redundant storage.
+- StandardV2_LRS - Locally-redundant storage for File Provision v2.
+- StandardV2_GRS - Geo-redundant storage for File Provision v2.
+- StandardV2_ZRS - Zone-redundant storage for File Provision v2.
+- StandardV2_GZRS - Geo-redundant zone-redundant storage for File Provision v2.
+- PremiumV2_LRS - Premium locally-redundant storage for File Provision v2.
+- PremiumV2_ZRS - Premium zone-redundant storage for File Provision v2.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS, Standard_GZRS, Standard_RAGZRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS, Standard_GZRS, Standard_RAGZRS, StandardV2_LRS, StandardV2_ZRS, StandardV2_GZRS, StandardV2_GRS, PremiumV2_LRS, PremiumV2_ZRS
 
 Required: True
 Position: 2

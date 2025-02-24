@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.StandbyPool",
-  "ModuleVersion": "0.2.0",
+  "ModuleVersion": "0.2.1",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ContainerGroupPropertySubnetId": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet]",
               "ContainerGroupProfileRevision": "System.Nullable`1[System.Int64]",
@@ -68,7 +68,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -108,7 +108,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -118,7 +118,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -244,7 +244,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -260,7 +260,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -391,7 +391,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -407,7 +407,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -523,7 +523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -539,7 +539,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -605,7 +605,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -663,7 +663,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -679,7 +679,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -779,7 +779,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -795,7 +795,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -868,7 +868,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "InstanceCountSummary": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary]",
               "ProvisioningState": "System.String"
@@ -913,7 +913,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -931,7 +931,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -971,7 +971,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -981,7 +981,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1104,7 +1104,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1120,7 +1120,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1266,7 +1266,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1282,7 +1282,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1348,7 +1348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -1406,7 +1406,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1422,7 +1422,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1488,7 +1488,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -1546,7 +1546,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1562,7 +1562,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1662,7 +1662,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1678,7 +1678,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1751,7 +1751,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ElasticityProfileMaxReadyCapacity": "System.Nullable`1[System.Int64]",
               "ElasticityProfileMinReadyCapacity": "System.Nullable`1[System.Int64]",
@@ -1802,7 +1802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -1842,7 +1842,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1852,7 +1852,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1978,7 +1978,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1994,7 +1994,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2125,7 +2125,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2141,7 +2141,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2257,7 +2257,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2273,7 +2273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2339,7 +2339,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -2397,7 +2397,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2413,7 +2413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2513,7 +2513,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2529,7 +2529,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2602,7 +2602,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "InstanceCountSummary": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary]",
               "ProvisioningState": "System.String"
@@ -2647,7 +2647,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -2665,7 +2665,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -2705,7 +2705,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2715,7 +2715,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2838,7 +2838,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2854,7 +2854,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3000,7 +3000,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3016,7 +3016,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3082,7 +3082,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -3140,7 +3140,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3156,7 +3156,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3222,7 +3222,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -3280,7 +3280,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3296,7 +3296,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3396,7 +3396,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3412,7 +3412,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3485,7 +3485,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ContainerGroupPropertySubnetId": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet]",
               "ContainerGroupProfileRevision": "System.Nullable`1[System.Int64]",
@@ -3581,7 +3581,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet"
           },
           "ValidateNotNullOrEmpty": false
@@ -3649,7 +3649,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3659,7 +3659,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3808,7 +3808,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3824,7 +3824,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3980,7 +3980,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4108,7 +4108,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4124,7 +4124,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4317,7 +4317,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4333,7 +4333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4526,7 +4526,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4542,7 +4542,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4630,7 +4630,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ElasticityProfileMaxReadyCapacity": "System.Nullable`1[System.Int64]",
               "ElasticityProfileMinReadyCapacity": "System.Nullable`1[System.Int64]",
@@ -4783,7 +4783,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4793,7 +4793,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4942,7 +4942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4958,7 +4958,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5226,7 +5226,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5242,7 +5242,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5435,7 +5435,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5451,7 +5451,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5644,7 +5644,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5660,7 +5660,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5791,7 +5791,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -5840,7 +5840,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5850,7 +5850,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6008,7 +6008,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6024,7 +6024,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6120,7 +6120,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -6193,7 +6193,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6209,7 +6209,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6354,7 +6354,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6370,7 +6370,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6516,7 +6516,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -6565,7 +6565,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6575,7 +6575,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6733,7 +6733,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6749,7 +6749,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6845,7 +6845,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -6918,7 +6918,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6934,7 +6934,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7079,7 +7079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7095,7 +7095,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7198,7 +7198,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ContainerGroupPropertySubnetId": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet]",
               "ContainerGroupProfileRevision": "System.Nullable`1[System.Int64]",
@@ -7249,7 +7249,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -7303,7 +7303,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet"
           },
           "ValidateNotNullOrEmpty": false
@@ -7362,7 +7362,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7372,7 +7372,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7512,7 +7512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7528,7 +7528,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7691,7 +7691,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7707,7 +7707,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7881,7 +7881,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7946,7 +7946,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7962,7 +7962,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8028,7 +8028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -8112,7 +8112,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8177,7 +8177,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8193,7 +8193,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8293,7 +8293,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8309,7 +8309,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8382,7 +8382,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ElasticityProfileMaxReadyCapacity": "System.Nullable`1[System.Int64]",
               "ElasticityProfileMinReadyCapacity": "System.Nullable`1[System.Int64]",
@@ -8432,7 +8432,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -8535,7 +8535,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8545,7 +8545,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8685,7 +8685,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8701,7 +8701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8864,7 +8864,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8880,7 +8880,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9103,7 +9103,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9119,7 +9119,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9185,7 +9185,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -9318,7 +9318,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9334,7 +9334,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9434,7 +9434,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9450,7 +9450,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[], Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9556,7 +9556,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet"
       ]
@@ -9564,7 +9564,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       }
@@ -9580,7 +9580,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -9763,7 +9763,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary"
       ]
@@ -9771,7 +9771,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummary, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "InstanceCountsByState": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount]"
       }
@@ -9779,7 +9779,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount"
       ]
@@ -9787,7 +9787,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Count": "System.Int64",
         "State": "System.String"
@@ -9796,7 +9796,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary"
       ]
@@ -9804,7 +9804,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary, Az.StandbyPool.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummary, Az.StandbyPool.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "InstanceCountsByState": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount]",
         "Zone": "System.Nullable`1[System.Int64]"
