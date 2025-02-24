@@ -1158,7 +1158,7 @@ function Test-SubnetPeeringCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network1
-        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24
+        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24  -DefaultOutboundAccess $true
         $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
 
 
@@ -1169,7 +1169,7 @@ function Test-SubnetPeeringCRUD
         Assert-AreEqual $vnet1.Subnets[0].Name $subnet1.Name
 
         # Create the Virtual Network2
-        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24
+        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24  -DefaultOutboundAccess $true
         $vnet2 = New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
 
         Assert-AreEqual $vnet2.ResourceGroupName $rgname    
@@ -1909,7 +1909,7 @@ function Test-SyncSubnetPeeringCRUD
         
         # Create the Virtual Network1
 	$subnet0 = New-AzVirtualNetworkSubnetConfig -Name $subnet0Name -AddressPrefix 10.1.0.0/24
-        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.1.1.0/24
+        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.1.1.0/24 -DefaultOutboundAccess $true
         $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet0 $subnet1
 
 
@@ -1920,7 +1920,7 @@ function Test-SyncSubnetPeeringCRUD
         Assert-AreEqual $vnet1.Subnets[0].Name $subnet1.Name
 
         # Create the Virtual Network2
-        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.2.1.0/24
+        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.2.1.0/24 -DefaultOutboundAccess  $true
         $vnet2 = New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -Subnet $subnet2
 
         Assert-AreEqual $vnet2.ResourceGroupName $rgname    
