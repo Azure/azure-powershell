@@ -23,14 +23,14 @@ Invoke-AzKustoInviteDatabaseFollower -ClusterName <String> -DatabaseName <String
  [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
  [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
  [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Invite
 ```
 Invoke-AzKustoInviteDatabaseFollower -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Parameter <IDatabaseInviteFollowerRequest> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InviteViaIdentityExpanded
@@ -43,13 +43,13 @@ Invoke-AzKustoInviteDatabaseFollower -InputObject <IKustoIdentity> -InviteeEmail
  [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
  [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
  [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InviteViaIdentity
 ```
 Invoke-AzKustoInviteDatabaseFollower -InputObject <IKustoIdentity> -Parameter <IDatabaseInviteFollowerRequest>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,21 +156,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

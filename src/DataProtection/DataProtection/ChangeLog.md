@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 2.6.1
+* Updated Help Doc of Get-AzAccessToken Usage in DataProtection
+
+## Version 2.6.0
+* Upgraded nuget package to signed package.
 * Added support for UAMI in Backup Instance
 
 ## Version 2.5.0

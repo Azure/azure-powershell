@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 0.4.0
+* Upgraded nuget package to signed package.
 
 ## Version 0.3.0
 * Split Az.Workloads into two sub-modules

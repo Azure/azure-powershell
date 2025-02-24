@@ -14,25 +14,25 @@ Opt-in tenant to data boundary.
 
 ### PutExpanded (Default)
 ```
-Set-AzDataBoundary [-DataBoundary <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Set-AzDataBoundary [-DataBoundary <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Put
 ```
 Set-AzDataBoundary -DataBoundaryDefinition <IDataBoundaryDefinition> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PutViaJsonFilePath
 ```
-Set-AzDataBoundary -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Set-AzDataBoundary -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PutViaJsonString
 ```
-Set-AzDataBoundary -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Set-AzDataBoundary -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -127,21 +127,6 @@ Parameter Sets: PutViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

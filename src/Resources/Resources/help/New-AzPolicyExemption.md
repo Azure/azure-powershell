@@ -16,7 +16,7 @@ Creates or updates a policy exemption.
 New-AzPolicyExemption -Name <String> -ExemptionCategory <String> -PolicyAssignment <PSObject> [-Scope <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-DisplayName <String>]
  [-Description <String>] [-ExpiresOn <DateTime>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ The final command exempts the policy assignment in $Assignment at the level of t
 ```powershell
 $VM = Get-AzVM -Name 'SpecialVM'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
-New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $VM.Id -ExemptionCategory Waiver
 ```
 
 The first command gets a VM named SpecialVM by using the Get-AzVM cmdlet and stores it in the $VM variable.
@@ -246,21 +246,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

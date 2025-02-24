@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 5.2.0
+*  Added parameter `MinCompactionLagInMin`, `TimestampType` and `UserMetadata` to cmdlets `New-AzEventHub` and `Set-AzEventHub`
+*  Supported `DelectorCompact` policy in parameter `Cleanup-policy` of cmdlet `new-AzEventhub`
+
+## Version 5.1.0
+* Upgraded nuget package to signed package.
 
 ## Version 5.0.1
 * Migrated EventHub SDK to generated SDK

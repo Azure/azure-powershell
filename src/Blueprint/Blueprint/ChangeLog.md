@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 0.4.6
+* Deprecation of Blueprint cmdlets.
+
+## Version 0.4.5
+* Upgraded nuget package to signed package.
 
 ## Version 0.4.4
 * Removed Microsoft.Azure.Management.Blueprint 0.20.7-preview dependencies

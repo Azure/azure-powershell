@@ -19,7 +19,14 @@
 -->
 
 ## Upcoming Release
-* upgraded nuget package to signed package.
+* Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
+* Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`. 
+
+## Version 7.8.1
+* Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
+
+## Version 7.8.0
+* Upgraded nuget package to signed package.
 * Added DefaultApiVersion to the returned properties of the `Get-AzResourceProvider` cmdlet's Resource Type array
 * Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
 * Fixed bug unexpected type issue: [#26752]

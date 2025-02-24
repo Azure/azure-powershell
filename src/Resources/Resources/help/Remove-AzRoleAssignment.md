@@ -354,7 +354,7 @@ The ServicePrincipalName of the Microsoft Entra application
 ```yaml
 Type: System.String
 Parameter Sets: ResourceWithSPNParameterSet, ResourceGroupWithSPNParameterSet, ScopeWithSPNParameterSet
-Aliases: SPN
+Aliases: SPN, ApplicationId
 
 Required: True
 Position: Named

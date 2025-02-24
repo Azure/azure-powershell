@@ -19,7 +19,13 @@
 -->
 
 ## Upcoming Release
-* upgraded nuget package to signed package.
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.21.
+
+## Version 3.1.1
+* Removed "Microsoft.Azure.Management.Synapse" Version "2.6.0-preview" package reference 
+
+## Version 3.1.0
+* Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 
 ## Version 3.0.10

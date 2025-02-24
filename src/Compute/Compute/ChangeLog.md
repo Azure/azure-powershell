@@ -20,12 +20,16 @@
 
 -->
 ## Upcoming Release
-* Added `BlockDeletionBeforeEndOfLife` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` cmdlets.
-    - This optional boolean parameter prevents accidental deletions of GalleryImageVersion resources before their EndOfLife date when set to true.
+* Added new parameter `BlockDeletionBeforeEndOfLife` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` cmdlets.
+
+## Version 9.1.0
+* Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVmssDiskEncryptionExtension`
+* Added new parameter `EncryptionIdentity` to cmdlet `New-VmssConfig`
+* Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVMDiskEncryptionExtension`
+* Added new parameter `EncryptionIdentity` to cmdlet `New-AzVMConfig`
+
+## Version 9.0.1
 * Upgraded nuget package to signed package.
-* Upgraded Azure.Core to 1.44.1.
-* Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
-* upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
 * Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
 

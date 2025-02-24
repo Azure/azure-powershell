@@ -18,7 +18,7 @@ Update-AzPolicyExemption -Name <String> [-Scope <String>] [-ExemptionCategory <S
  [-PolicyDefinitionReferenceId <String[]>] [-DisplayName <String>] [-Description <String>]
  [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
  [-AssignmentScopeValidation <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
@@ -26,7 +26,7 @@ Update-AzPolicyExemption -Name <String> [-Scope <String>] [-ExemptionCategory <S
 Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] -Id <String>
  [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
  [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-AssignmentScopeValidation <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferen
  [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
  [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-AssignmentScopeValidation <String>]
  [-BackwardCompatible] -InputObject <IPolicyExemption> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,8 +47,8 @@ This operation updates a policy exemption with the given scope and name.
 ### Example 1: Update the display name
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
- $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -DisplayName 'Exempt VM creation limit'
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+Update-AzPolicyExemption -Id $PolicyExemption.Id -DisplayName 'Exempt VM creation limit'
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
@@ -61,7 +61,7 @@ The final command updates the display name on the policy exemption on the resour
 ```powershell
 $NextMonth = (Get-Date).AddMonths(1)
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ExpiresOn $NextMonth
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ExpiresOn $NextMonth
 ```
 
 The first command gets the current date time by using the Get-Date cmdlet and add 1 month to the current date time
@@ -73,7 +73,7 @@ The final command updates the expiration date time for the policy exemption on t
 ### Example 3: Clear the expiration date time
 ```powershell
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ClearExpiration
 ```
 
 The first command gets the policy exemption named PolicyExemption07 by using the Get-AzPolicyExemption cmdlet.
@@ -84,7 +84,7 @@ The updated exemption will never expire.
 ### Example 4: Update the expiration category
 ```powershell
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ExemptionCategory Mitigated
+Update-AzPolicyExemption -Id $PolicyExemption.Id -ExemptionCategory Mitigated
 ```
 
 The first command gets the policy exemption named PolicyExemption07 by using the Get-AzPolicyExemption cmdlet.
@@ -109,8 +109,8 @@ The final command updates the policy exemption named VirtualMachineExemption wit
 
 ### Example 6: [Backcompat] Clear the expiration date time
 ```powershell
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
-Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -BackwardCompatible
+Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration -BackwardCompatible
 ```
 
 The first command gets the policy exemption named PolicyExemption07 by using the Get-AzPolicyExemption cmdlet.
@@ -314,21 +314,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

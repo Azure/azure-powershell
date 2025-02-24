@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+* Updated Sql schema migration and version package to new url. 
+
+## Version 0.14.9
+* Upgraded nuget package to signed package.
 * Updated the URL to download the SQL Assessment Zip to `https://aka.ms/sqlassessmentpackage`
 
 ## Version 0.14.8

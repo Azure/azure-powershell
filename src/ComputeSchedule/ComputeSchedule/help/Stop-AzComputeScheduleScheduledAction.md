@@ -15,33 +15,33 @@ VirtualMachinesCancelOperations: Cancel a previously submitted (start/deallocate
 ### CancelExpanded (Default)
 ```
 Stop-AzComputeScheduleScheduledAction -Location <String> [-SubscriptionId <String>] -Correlationid <String>
- -OperationId <String[]> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -OperationId <String[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CancelViaJsonString
 ```
 Stop-AzComputeScheduleScheduledAction -Location <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CancelViaJsonFilePath
 ```
 Stop-AzComputeScheduleScheduledAction -Location <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Cancel
 ```
 Stop-AzComputeScheduleScheduledAction -Location <String> [-SubscriptionId <String>]
- -RequestBody <ICancelOperationsRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -RequestBody <ICancelOperationsRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CancelViaIdentity
 ```
 Stop-AzComputeScheduleScheduledAction -InputObject <IComputeScheduleIdentity>
- -RequestBody <ICancelOperationsRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -RequestBody <ICancelOperationsRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -195,21 +195,6 @@ Parameter Sets: CancelExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

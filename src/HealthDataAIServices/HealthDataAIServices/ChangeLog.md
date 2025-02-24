@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 1.0.0
+* General availability for module Az.HealthDataAIServices
+* Upgraded nuget package to signed package.
 * Upgraded API version to 2024-09-20
 
 ## Version 0.1.0

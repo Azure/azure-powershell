@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* upgraded nuget package to signed package.
+
+## Version 0.10.3
+* Upgraded nuget package to signed package.
 
 ## Version 0.10.2
 * Removed Microsoft.Azure.Management.IotCentral 4.0.0 dependencies
