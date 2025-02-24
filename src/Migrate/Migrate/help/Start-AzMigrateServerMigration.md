@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
 schema: 2.0.0
@@ -14,16 +14,14 @@ Starts the migration for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>] [-TurnOffSourceServer]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>]
+ [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Start-AzMigrateServerMigration [-OsUpgradeVersion <String>] [-TurnOffSourceServer] [-SubscriptionId <String>]
- -InputObject <IMigrationItem> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Start-AzMigrateServerMigration -InputObject <IMigrationItem> [-OsUpgradeVersion <String>]
+ [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,3 +167,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

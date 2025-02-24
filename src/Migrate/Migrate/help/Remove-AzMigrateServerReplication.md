@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
 schema: 2.0.0
@@ -20,7 +20,7 @@ Remove-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <Str
 
 ### ByInputObjectVMwareCbt
 ```
-Remove-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
+Remove-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
  [-ForceRemove <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -55,6 +55,7 @@ TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
 TargetObjectName                 : prsadhu-TestVM
 Task                             : {DisableProtectionOnPrimary, UpdateDraState}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
+
 ```
 
 Resync by id.
@@ -182,3 +183,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
