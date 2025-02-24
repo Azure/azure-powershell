@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
+    - `Get-AzNetworkVirtualAppliance`
 * Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
     - `Get-AzNetworkVirtualApplianceBootDiagnostics`
 * Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
