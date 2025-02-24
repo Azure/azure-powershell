@@ -26,5 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions
         public const string ConflictMongoDBRoleResourceId = "Role {0} with Id {1} already exists.";
         public const string NotFoundMongoDBRoleResourceId = "Role {0} with Id {1} does not exist.";
         public const string NotFoundMongoDBRoleResourceName = "Role {0} with Name {1} does not exist.";
+
+        public const string ConflictTableRoleResourceId = "Role {0} with Id [{1}] already exists.";
+        public const string NotFoundTableRoleResourceId = "Role {0} with Id [{1}] does not exist.";
+        public const string NotFoundTableRoleResourceName = "Role {0} with Name [{1}] does not exist.";
     }
 }

@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthDataAIServices", "HealthDataAIServices\HealthDataAIServices.csproj", "{1E9AFA72-1D15-459A-83DA-0B59885853AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.HealthDataAIServices", "HealthDataAIServices.Autorest\Az.HealthDataAIServices.csproj", "{7B62984D-F1A4-4D06-AD0F-9D7B445F2F31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.HealthDataAIServices", "..\..\generated\HealthDataAIServices\HealthDataAIServices.Autorest\Az.HealthDataAIServices.csproj", "{AE0F4FD7-28F0-4C20-85DA-7AE2266A2032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{1E9AFA72-1D15-459A-83DA-0B59885853AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E9AFA72-1D15-459A-83DA-0B59885853AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E9AFA72-1D15-459A-83DA-0B59885853AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B62984D-F1A4-4D06-AD0F-9D7B445F2F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B62984D-F1A4-4D06-AD0F-9D7B445F2F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B62984D-F1A4-4D06-AD0F-9D7B445F2F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B62984D-F1A4-4D06-AD0F-9D7B445F2F31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0F4FD7-28F0-4C20-85DA-7AE2266A2032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0F4FD7-28F0-4C20-85DA-7AE2266A2032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0F4FD7-28F0-4C20-85DA-7AE2266A2032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0F4FD7-28F0-4C20-85DA-7AE2266A2032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A54C09E1-DD2E-49AC-A2D5-FC0E45361048} = {E1127C8F-051C-4A65-845F-3E7AD288B79B}

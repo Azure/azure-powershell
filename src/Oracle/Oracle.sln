@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracle", "Oracle\Oracle.csproj", "{95866618-494F-4D82-901E-257FE6E092E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Oracle", "Oracle.Autorest\Az.Oracle.csproj", "{79ACF9B7-7F66-4812-9C70-0DBC59885AD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Oracle", "..\..\generated\Oracle\Oracle.Autorest\Az.Oracle.csproj", "{EA44AE46-2AFA-466D-B748-FA9DEF1D4EF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{95866618-494F-4D82-901E-257FE6E092E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95866618-494F-4D82-901E-257FE6E092E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95866618-494F-4D82-901E-257FE6E092E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79ACF9B7-7F66-4812-9C70-0DBC59885AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79ACF9B7-7F66-4812-9C70-0DBC59885AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79ACF9B7-7F66-4812-9C70-0DBC59885AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79ACF9B7-7F66-4812-9C70-0DBC59885AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA44AE46-2AFA-466D-B748-FA9DEF1D4EF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA44AE46-2AFA-466D-B748-FA9DEF1D4EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA44AE46-2AFA-466D-B748-FA9DEF1D4EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA44AE46-2AFA-466D-B748-FA9DEF1D4EF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{10629025-D047-43F5-B405-3FE95F3DDEA1} = {B93A569C-FC5D-49D9-B85D-6613B54CB5AF}
