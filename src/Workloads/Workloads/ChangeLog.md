@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* GA PowerShell module for Workloads's 2024-09-01 API
 
 ## Version 0.4.0
 * Upgraded nuget package to signed package.
@@ -39,4 +40,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.Workloads
-

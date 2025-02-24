@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWorkloadsSapSupporte
 }
 
 Describe 'Invoke-AzWorkloadsSapSupportedSku' {
-    It 'SapExpanded' -skip {
+    It 'InvokeExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'SapViaIdentityExpanded' -skip {
+    It 'Invoke' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'InvokeViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'InvokeViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
