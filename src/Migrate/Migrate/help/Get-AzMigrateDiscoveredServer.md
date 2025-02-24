@@ -15,7 +15,7 @@ Get All discovered servers in a migrate project.
 ### List (Default)
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-DisplayName <String>]
- [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-WhatIf]
+ [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> 
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-DisplayName <String>]
  [-SourceMachineType <String>] [-SubscriptionId <String[]>] -ApplianceName <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
- [-SubscriptionId <String[]>] -Name <String> [-WhatIf] [-Confirm]
+ [-SubscriptionId <String[]>] -Name <String> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### GetInSite
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
- [-SubscriptionId <String[]>] -Name <String> -ApplianceName <String>
+ [-SubscriptionId <String[]>] -Name <String> -ApplianceName <String> [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -217,6 +217,21 @@ Parameter Sets: Get, GetInSite
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

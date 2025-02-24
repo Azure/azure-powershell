@@ -14,17 +14,17 @@ Microsoft Azure PowerShell: Migrate cmdlets
 ### [Get-AzMigrateDiscoveredServer](Get-AzMigrateDiscoveredServer.md)
 Get All discovered servers in a migrate project.
 
-### [Get-AzMigrateHCIJob](Get-AzMigrateHCIJob.md)
-Retrieves the status of an Azure Migrate job.
-
-### [Get-AzMigrateHCIReplicationFabric](Get-AzMigrateHCIReplicationFabric.md)
-Gets the details of the fabric.
-
-### [Get-AzMigrateHCIServerReplication](Get-AzMigrateHCIServerReplication.md)
-Retrieves the details of the replicating server.
-
 ### [Get-AzMigrateJob](Get-AzMigrateJob.md)
 Retrieves the status of an Azure Migrate job.
+
+### [Get-AzMigrateLocalJob](Get-AzMigrateLocalJob.md)
+Retrieves the status of an Azure Migrate job.
+
+### [Get-AzMigrateLocalReplicationFabric](Get-AzMigrateLocalReplicationFabric.md)
+Gets the details of the fabric.
+
+### [Get-AzMigrateLocalServerReplication](Get-AzMigrateLocalServerReplication.md)
+Retrieves the details of the replicating server.
 
 ### [Get-AzMigrateProject](Get-AzMigrateProject.md)
 Method to get a migrate project.
@@ -56,7 +56,7 @@ Method to get a site.
 ### [Get-AzMigrateSolution](Get-AzMigrateSolution.md)
 Gets a solution in the migrate project.
 
-### [Initialize-AzMigrateHCIReplicationInfrastructure](Initialize-AzMigrateHCIReplicationInfrastructure.md)
+### [Initialize-AzMigrateLocalReplicationInfrastructure](Initialize-AzMigrateLocalReplicationInfrastructure.md)
 Initializes the infrastructure for the migrate project.
 
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
@@ -65,13 +65,13 @@ Initialises the infrastructure for the migrate project.
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
 Creates a new disk mapping
 
-### [New-AzMigrateHCIDiskMappingObject](New-AzMigrateHCIDiskMappingObject.md)
+### [New-AzMigrateLocalDiskMappingObject](New-AzMigrateLocalDiskMappingObject.md)
 Creates a new disk mapping
 
-### [New-AzMigrateHCINicMappingObject](New-AzMigrateHCINicMappingObject.md)
+### [New-AzMigrateLocalNicMappingObject](New-AzMigrateLocalNicMappingObject.md)
 Creates an object to update NIC properties of a replicating server.
 
-### [New-AzMigrateHCIServerReplication](New-AzMigrateHCIServerReplication.md)
+### [New-AzMigrateLocalServerReplication](New-AzMigrateLocalServerReplication.md)
 Starts replication for the specified server.
 
 ### [New-AzMigrateNicMapping](New-AzMigrateNicMapping.md)
@@ -95,7 +95,7 @@ Creates an object to update NIC properties of a test migrating server.
 ### [Register-AzMigrateProjectTool](Register-AzMigrateProjectTool.md)
 Registers a tool with the migrate project.
 
-### [Remove-AzMigrateHCIServerReplication](Remove-AzMigrateHCIServerReplication.md)
+### [Remove-AzMigrateLocalServerReplication](Remove-AzMigrateLocalServerReplication.md)
 Stops replication for the migrated server.
 
 ### [Remove-AzMigrateProject](Remove-AzMigrateProject.md)
@@ -114,13 +114,13 @@ Starts the replication that has been suspended.
 ### [Set-AzMigrateDiskMapping](Set-AzMigrateDiskMapping.md)
 Updates disk mapping
 
-### [Set-AzMigrateHCIServerReplication](Set-AzMigrateHCIServerReplication.md)
+### [Set-AzMigrateLocalServerReplication](Set-AzMigrateLocalServerReplication.md)
 Updates the target properties for the replicating server.
 
 ### [Set-AzMigrateServerReplication](Set-AzMigrateServerReplication.md)
 Updates the target properties for the replicating server.
 
-### [Start-AzMigrateHCIServerMigration](Start-AzMigrateHCIServerMigration.md)
+### [Start-AzMigrateLocalServerMigration](Start-AzMigrateLocalServerMigration.md)
 Starts the migration for the replicating server.
 
 ### [Start-AzMigrateServerMigration](Start-AzMigrateServerMigration.md)
