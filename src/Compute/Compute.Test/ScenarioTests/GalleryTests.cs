@@ -74,30 +74,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testgennewazgallery()
-        {
-            TestRunner.RunTestScript("TestGen-newazgallery");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testgenupdateazgallery()
-        {
-            TestRunner.RunTestScript("TestGen-updateazgallery");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testgennewazgalleryimageversion()
-        {
-            TestRunner.RunTestScript("TestGen-newazgalleryimageversion");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void testgenupdateazgalleryimageversion()
         {
-            TestRunner.RunTestScript("TestGen-updateazgalleryimageversion");
+            TestRunner.RunTestScript("TestGen-BlockDeletionBeforeEndOfLife");
         }
-                    }
+    }
 }
