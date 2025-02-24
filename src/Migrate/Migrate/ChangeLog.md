@@ -14,7 +14,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+  * Update Data.Replication to newer API version
+    - Updated Data.Replication to point to stable API version 2024-09-01
+  * Rebrand Data.Replication cmdlets
+    - Rebrand Data.Replication cmdlets from Azure Stack HCI to Azure Local
 ## Version 2.6.0
 * Upgraded nuget package to signed package.
 * Added support for PremiumV2 disk type.
