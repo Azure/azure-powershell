@@ -1,7 +1,7 @@
 @{
   GUID = '771bcd47-2561-4441-abe5-4149f359b483'
   RootModule = './Az.PipelineGroup.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.1.1'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
