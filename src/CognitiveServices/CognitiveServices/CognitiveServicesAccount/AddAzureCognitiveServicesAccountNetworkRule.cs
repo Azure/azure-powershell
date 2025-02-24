@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
     public class AddAzureCognitiveServicesAccountNetworkRuleCommand : CognitiveServicesAccountBaseCmdlet
     {
-        /// <summary>
+         /// <summary>
         /// NetWorkRule in String parameter set name
         /// </summary>
         private const string NetWorkRuleStringParameterSet = "NetWorkRuleString";
@@ -104,8 +104,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (accountACL == null)
                 {
                     accountACL = new NetworkRuleSet();
-                    // Deny is the default action value from server side, 
-                    // Specifically make default action Deny in client side as server side might want this value to be always provided in future.
                     accountACL.DefaultAction = NetworkRuleAction.Deny;
                 }
 
@@ -116,11 +114,23 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         {
                             accountACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         }
-
                         foreach (string s in VirtualNetworkResourceId)
                         {
-                            VirtualNetworkRule rule = new VirtualNetworkRule(s, null, true);
-                            accountACL.VirtualNetworkRules.Add(rule);
+                            bool ruleExist = false;
+                            foreach (VirtualNetworkRule originRule in accountACL.VirtualNetworkRules)
+                            {
+                                if (originRule.Id.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug($"Skip add VirtualNetworkRule as it already exists: {s}");
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                VirtualNetworkRule rule = new VirtualNetworkRule(s, null, true);
+                                accountACL.VirtualNetworkRules.Add(rule);
+                            }
                         }
                         break;
                     case IpRuleStringParameterSet:
@@ -128,11 +138,23 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         {
                             accountACL.IPRules = new List<IpRule>();
                         }
-
                         foreach (string s in IpAddressOrRange)
                         {
-                            IpRule rule = new IpRule(s);
-                            accountACL.IPRules.Add(rule);
+                            bool ruleExist = false;
+                            foreach (IpRule originRule in accountACL.IPRules)
+                            {
+                                if (originRule.Value.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug($"Skip add IpRule as it already exists: {s}");
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                IpRule rule = new IpRule(s);
+                                accountACL.IPRules.Add(rule);
+                            }
                         }
                         break;
                     case NetworkRuleObjectParameterSet:
@@ -140,10 +162,22 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         {
                             accountACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         }
-
                         foreach (PSVirtualNetworkRule rule in VirtualNetworkRule)
                         {
-                            accountACL.VirtualNetworkRules.Add(rule.ToVirtualNetworkRule());
+                            bool ruleExist = false;
+                            foreach (VirtualNetworkRule originRule in accountACL.VirtualNetworkRules)
+                            {
+                                if (originRule.Id.Equals(rule.Id, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug($"Skip add VirtualNetworkRule as it already exists: {rule.Id}");
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                accountACL.VirtualNetworkRules.Add(rule.ToVirtualNetworkRule());
+                            }
                         }
                         break;
                     case IpRuleObjectParameterSet:
@@ -151,10 +185,22 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         {
                             accountACL.IPRules = new List<IpRule>();
                         }
-
                         foreach (PSIpRule rule in IpRule)
                         {
-                            accountACL.IPRules.Add(rule.ToIpRule());
+                            bool ruleExist = false;
+                            foreach (IpRule originRule in accountACL.IPRules)
+                            {
+                                if (originRule.Value.Equals(rule.Value, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug($"Skip add IpRule as it already exists: {rule.Value}");
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                accountACL.IPRules.Add(rule.ToIpRule());
+                            }
                         }
                         break;
                 }
@@ -167,8 +213,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     new Account()
                     {
                         Properties = properties
-                    }
-                    );
+                    });
 
                 account = this.CognitiveServicesClient.Accounts.Get(this.ResourceGroupName, this.Name);
 
