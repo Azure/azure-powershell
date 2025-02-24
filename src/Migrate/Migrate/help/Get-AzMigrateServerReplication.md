@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 schema: 2.0.0
@@ -14,38 +14,40 @@ Retrieves the details of the replicating server.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByInputObject
-```
-Get-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetByMachineName
 ```
-Get-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetBySDSID
-```
-Get-AzMigrateServerReplication -DiscoveredMachineId <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetBySRSID
 ```
-Get-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerReplication [-SubscriptionId <String>] -TargetObjectID <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetBySDSID
+```
+Get-AzMigrateServerReplication [-SubscriptionId <String>] -DiscoveredMachineId <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetByInputObject
+```
+Get-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
-Get-AzMigrateServerReplication -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerReplication [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -252,7 +254,7 @@ OData filter options.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListById, ListByName
+Parameter Sets: ListByName, ListById
 Aliases:
 
 Required: False
@@ -293,6 +295,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectID
 Specifies the Azure Migrate Project in which servers are replicating.
 
@@ -313,7 +330,7 @@ Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByMachineName, ListByName
+Parameter Sets: ListByName, GetByMachineName
 Aliases:
 
 Required: True
@@ -343,7 +360,7 @@ Specifies the Resource Group of the Azure Migrate Project in the current subscri
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByMachineName, ListByName
+Parameter Sets: ListByName, GetByMachineName
 Aliases:
 
 Required: True
@@ -358,7 +375,7 @@ The pagination token.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListById, ListByName
+Parameter Sets: ListByName, ListById
 Aliases:
 
 Required: False
@@ -410,4 +427,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

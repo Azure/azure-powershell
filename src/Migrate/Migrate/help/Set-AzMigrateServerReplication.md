@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 schema: 2.0.0
@@ -14,30 +14,31 @@ Updates the target properties for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
- [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
- [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
- [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
+Set-AzMigrateServerReplication -TargetObjectID <String> [-TargetVMName <String>] [-TargetDiskName <String>]
+ [-TargetVMSize <String>] [-TargetNetworkId <String>] [-TestNetworkId <String>]
+ [-TargetResourceGroupID <String>] [-NicToUpdate <IVMwareCbtNicInput[]>]
+ [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>] [-TargetAvailabilitySet <String>]
+ [-TargetAvailabilityZone <String>] [-SqlServerLicenseType <String>] [-LinuxLicenseType <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
  [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
+ [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
- [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
- [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
- [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
- [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
+Set-AzMigrateServerReplication [-TargetVMName <String>] [-TargetDiskName <String>] [-TargetVMSize <String>]
+ [-TargetNetworkId <String>] [-TestNetworkId <String>] [-TargetResourceGroupID <String>]
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-SqlServerLicenseType <String>]
+ [-LinuxLicenseType <String>] [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
  [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
+ [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>] -InputObject <IMigrationItem>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,6 +184,21 @@ To construct, see NOTES section for NICTOUPDATE properties and create a hash tab
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -508,4 +524,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

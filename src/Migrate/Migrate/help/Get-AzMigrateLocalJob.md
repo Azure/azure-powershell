@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocaljob
 schema: 2.0.0
@@ -14,32 +14,32 @@ Retrieves the status of an Azure Migrate job.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateLocalJob -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetById
-```
-Get-AzMigrateLocalJob -ID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetByInputObject
-```
-Get-AzMigrateLocalJob -InputObject <IMigrateIdentity> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMigrateLocalJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzMigrateLocalJob -Name <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateLocalJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+ -Name <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetById
+```
+Get-AzMigrateLocalJob [-SubscriptionId <String>] -ID <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetByInputObject
+```
+Get-AzMigrateLocalJob [-SubscriptionId <String>] -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
-Get-AzMigrateLocalJob -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateLocalJob [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -364,6 +364,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectID
 Specifies the Azure Migrate Project in which servers are replicating.
 
@@ -384,7 +399,7 @@ The name of the migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByName
+Parameter Sets: ListByName, GetByName
 Aliases:
 
 Required: True
@@ -414,7 +429,7 @@ The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByName
+Parameter Sets: ListByName, GetByName
 Aliases:
 
 Required: True
@@ -453,4 +468,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
