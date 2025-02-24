@@ -1,3 +1,19 @@
+## 13.3.0 - February 2025
+#### Az.CosmosDB 1.17.0 
+* Added cmdlet `Get-AzCosmosDBTableRoleAssignment`, `Get-AzCosmosDBTableRoleDefinition`, `New-AzCosmosDBTableRoleAssignment`, `New-AzCosmosDBTableRoleDefinition`, `Remove-AzCosmosDBTableRoleAssignment`, `Remove-AzCosmosDBTableRoleDefinition`, `Update-AzCosmosDBTableRoleAssignment`, `Update-AzCosmosDBTableRoleDefinition`
+#### Az.Resources 7.9.0 
+* Modified cmdlet `Get-AzRoleAssignment`
+   - Added parameter `-AtScope`
+   - Added parameter alias `ApplicationId` to parameter `-ServicePrincipalName`
+* Modified cmdlet `Remove-AzRoleAssignment`
+   - Added parameter alias `ApplicationId` to parameter `-ServicePrincipalName`
+#### Az.Storage 8.2.0 
+* Modified cmdlet `New-AzRmStorageShare`
+   - Added parameters `-ProvisionedBandwidthMibps`, `-ProvisionedIops`, `-PaidBurstingEnabled`, `-PaidBurstingMaxIops`, `-PaidBurstingMaxBandwidthMibps`
+* Modified cmdlet `Update-AzRmStorageShare`
+   - Added parameters `-ProvisionedBandwidthMibps`, `-ProvisionedIops`, `-PaidBurstingEnabled`, `-PaidBurstingMaxIops`, `-PaidBurstingMaxBandwidthMibps`
+* Added cmdlet `Get-AzStorageFileServiceUsage`
+
 ## 13.2.0 - February 2025
 #### Az.Compute 9.1.0 
 * Modified cmdlet `New-AzVMConfig`
@@ -406,6 +422,7 @@
    - Added parameter alias `DestFile` to parameter `-DestShareFileClient`
 * Modified cmdlet `Stop-AzStorageFileCopy`
    - Removed parameter `-File`
+
 
 
 
