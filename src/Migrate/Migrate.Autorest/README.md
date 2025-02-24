@@ -332,41 +332,41 @@ directive:
       verb: New|Remove|Update
       subject: ^HyperV
     remove: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Test|Invoke
       subject: NameAvailability$|DeploymentPreflight
     remove: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get|New
       subject: ^EmailConfiguration
     remove: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^(FabricAgent|ProtectedItem|Vault|Job)OperationStatus$
     remove: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^FabricOperationsStatus$
     remove: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: New
       subject: ^(FabricAgent|Vault)
     remove: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Update
       subject: ^Vault
     remove: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       subject: OperationResult
     remove: true
@@ -376,13 +376,13 @@ directive:
       subject: ^PlannedReplication
     remove: true
   # Rename cmdlets for Azure Local
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^Fabric$
     set:
       subject: LocalReplicationFabric
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^Job$
@@ -482,7 +482,7 @@ directive:
       verb: New$
       variant: ^CreateViaIdentity
     hide: true
-  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get$|Invoke$|New$|Remove$|Test$|Update$
       subject: ^FabricAgent|^Fabric|^Policy|^EmailConfiguration|^ProtectedItem|^ReplicationExtension|^Vault
