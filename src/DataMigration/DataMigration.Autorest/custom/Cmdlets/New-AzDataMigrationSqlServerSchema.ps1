@@ -108,7 +108,7 @@ function New-AzDataMigrationSqlServerSchema
 
                 # Get latest console app version
                 Write-Host "Checking whether there is newer version...";
-                $VersionFileSource = "https://migrationapps.blob.core.windows.net/schemamigration/consoleappversion.json";
+                $VersionFileSource = "aka.ms/sqlschemamigrationversion";
                 $VersionFileDestination = Join-Path -Path $BaseFolder -ChildPath "consoleappversion.json";
                 Invoke-RestMethod -Uri $VersionFileSource -OutFile $VersionFileDestination;
                 $jsonObj = Get-Content $VersionFileDestination | Out-String | ConvertFrom-Json;
