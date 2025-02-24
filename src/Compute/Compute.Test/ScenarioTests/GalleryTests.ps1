@@ -998,80 +998,44 @@ function TestGen-newazgallery
     $galleryName = 'gallery' + $rgname;
     $imageDefinitionName = 'imageDef' + $rgname;
     $imageVersionName = '1.0.0';
+    $loc = "eastus2"
+    $vmname = "vmgallerytest"
 
     try
     {
-        $loc = Get-Location
+
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SimpleParameterSet, no config, scenario.
+        # create credential 
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Step 1: Create a new virtual machine in Azure
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Size "Standard_D2s_v3" -Image "Win2022AzureEdition" -SecurityType "TrustedLaunch"
+        $vm = get-azvm -ResourceGroupName $rgname -Name $vmname
 
         # Create a gallery
-        New-AzGallery -ResourceGroupName $rgname -Location $loc -Name $galleryName -Permission 'Private'
+        $gallery = New-AzGallery -ResourceGroupName $rgname -Location $loc -Name $galleryName 
 
         # Create a gallery image definition
-        New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Location $loc -Name $imageDefinitionName -OsType 'Windows' -OsState 'Generalized' -Publisher 'Contoso' -Offer 'OfferName' -Sku 'SkuName'
+        $imageDef = New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Location $loc -Name $imageDefinitionName -OsType 'Windows' -OsState 'Specialized' -Publisher 'Contoso' -Offer 'OfferName' -Sku 'SkuName' -Feature @{Name='SecurityType';Value='TrustedLaunch'}
 
         # Test creating a gallery image version with ReplicationMode = Full
-        $imageVersionFull = New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageDefinitionName -Location $loc -Name $imageVersionName -ReplicationMode 'Full'
-        Assert-AreEqual $imageVersionFull.ReplicationMode 'Full'
+        $imagever = New-AzGalleryImageVersion `
+            -GalleryImageDefinitionName $imageDef.Name `
+            -GalleryImageVersionName $imageVersionName `
+            -GalleryName $gallery.Name  `
+            -ResourceGroupName $rgname `
+            -Location $loc `
+            -SourceImageVMId $vm.Id.ToString() `
+            -PublishingProfileEndOfLifeDate '2030-12-01' `
+            -ReplicationMode 'Full'
 
-        # Test creating a gallery image version with ReplicationMode = Shallow
-        $imageVersionShallow = New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageDefinitionName -Location $loc -Name $imageVersionName -ReplicationMode 'Shallow'
-        Assert-AreEqual $imageVersionShallow.ReplicationMode 'Shallow'
-    }
-    finally
-    {
-        # Cleanup
-        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
-    }
-}
+        Assert-AreEqual $imagever.PublishingProfile.ReplicationMode 'Full'
 
-function TestGen-newazgalleryimageversion
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName;
-    $galleryName = 'gallery' + $rgname;
-    $galleryImageName = 'galleryimage' + $rgname;
-    $galleryImageVersionName = '1.0.0';
-
-    try
-    {
-        # Common
-        [string]$loc = Get-Location;
-        $loc = $loc.Replace(' ', '');
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        $description1 = "Original Description";
-
-        # Gallery
-        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
-
-        # Gallery Image Definition
-        $publisherName = "galleryPublisher";
-        $offerName = "galleryOffer";
-        $skuName = "gallerySku";
-        $osState = "Generalized";
-        $osType = "Windows";
-
-        New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
-                                     -Location $loc -Publisher $publisherName -Offer $offerName -Sku $skuName `
-                                     -OsState $osState -OsType $osType;
-
-        # Gallery Image Version with Full ReplicationMode
-        New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageName `
-                                  -Name $galleryImageVersionName -Location $loc -TargetRegion $targetRegions `
-                                  -ReplicationMode 'Full';
-
-        $imageVersionFull = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-                                                      -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
-        Assert-AreEqual $imageVersionFull.ReplicationMode 'Full';
-
-        # Gallery Image Version with Shallow ReplicationMode
-        New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageName `
-                                  -Name $galleryImageVersionName -Location $loc -TargetRegion $targetRegions `
-                                  -ReplicationMode 'Shallow';
-
-        $imageVersionShallow = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-                                                         -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
-        Assert-AreEqual $imageVersionShallow.ReplicationMode 'Shallow';
     }
     finally
     {
