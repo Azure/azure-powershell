@@ -1,11 +1,11 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratehciserverreplication
+online version: https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratelocalserverreplication
 schema: 2.0.0
 ---
 
-# Remove-AzMigrateHCIServerReplication
+# Remove-AzMigrateLocalServerReplication
 
 ## SYNOPSIS
 Stops replication for the migrated server.
@@ -14,33 +14,30 @@ Stops replication for the migrated server.
 
 ### ByID (Default)
 ```
-Remove-AzMigrateHCIServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
- [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzMigrateLocalServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzMigrateHCIServerReplication [-SubscriptionId <String>] -InputObject <IMigrateIdentity>
- [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzMigrateLocalServerReplication -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzMigrateHCIServerReplication cmdlet stops the replication for a migrated server.
+The Remove-AzMigrateLocalServerReplication cmdlet stops the replication for a migrated server.
 
 ## EXAMPLES
 
 ### Example 1: Remove replication by Id
 ```powershell
-Remove-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+Remove-AzMigrateLocalServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Delete protected item
 EndTime                            :
 Error                              : {}
@@ -61,28 +58,26 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Deleting protected item}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
 ```
 
-Remove AzStackHCI replication by Id.
+Remove AzLocal replication by Id.
 
 ### Example 2: Remove replication by input object
 ```powershell
-$InputObject = Get-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+$InputObject = Get-AzMigrateLocalServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 
-Remove-AzMigrateHCIServerReplication -InputObject $InputObject
+Remove-AzMigrateLocalServerReplication -InputObject $InputObject
 
-$InputObject | Remove-AzMigrateHCIServerReplication
+$InputObject | Remove-AzMigrateLocalServerReplication
 ```
 
 ```output
 ActivityId                         :  ActivityId: 00000000-0000-0000-0000-000000000000
 AllowedAction                      : {Cancel}
-CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
-CustomPropertyInstanceType         : WorkflowDetails
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails
 DisplayName                        : Delete protected item
 EndTime                            :
 Error                              : {}
@@ -103,13 +98,12 @@ SystemDataCreatedByType            :
 SystemDataLastModifiedAt           :
 SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       :
-Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Prerequisite check, Deleting protected item}
 Type                               : Microsoft.DataReplication/replicationVaults/jobs
 ```
 
-Remove AzStackHCI replication by replication input object.
+Remove AzLocal replication by replication input object.
 
 ## PARAMETERS
 
@@ -145,8 +139,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Specifies the replcating server for which the replication needs to be disabled.
-The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+Specifies the replicating server for which the replication needs to be disabled.
+The server object can be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -178,7 +172,7 @@ Accept wildcard characters: False
 
 ### -TargetObjectID
 Specifies the replcating server for which the replication needs to be disabled.
-The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+The ID should be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
 
 ```yaml
 Type: System.String
@@ -232,8 +226,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
 
 ## NOTES
 
 ## RELATED LINKS
+

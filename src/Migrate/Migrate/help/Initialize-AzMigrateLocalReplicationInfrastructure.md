@@ -1,11 +1,11 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratehcireplicationinfrastructure
+online version: https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure
 schema: 2.0.0
 ---
 
-# Initialize-AzMigrateHCIReplicationInfrastructure
+# Initialize-AzMigrateLocalReplicationInfrastructure
 
 ## SYNOPSIS
 Initializes the infrastructure for the migrate project.
@@ -13,41 +13,40 @@ Initializes the infrastructure for the migrate project.
 ## SYNTAX
 
 ```
-Initialize-AzMigrateHCIReplicationInfrastructure -ResourceGroupName <String> -ProjectName <String>
+Initialize-AzMigrateLocalReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
  -SourceApplianceName <String> -TargetApplianceName <String> [-CacheStorageAccountId <String>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Initialize-AzMigrateHCIReplicationInfrastructure cmdlet initializes the infrastructure for the migrate project in AzStackHCI scenario.
+The Initialize-AzMigrateLocalReplicationInfrastructure cmdlet initializes the infrastructure for the migrate project in AzLocal scenario.
 
 ## EXAMPLES
 
-### Example 1: Initialize AzStackHCI replication infrastructure
+### Example 1: Initialize AzLocal replication infrastructure
 ```powershell
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
+Initialize-AzMigrateLocalReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 ```
 
 ```output
 $true
 ```
 
-Initialize AzStackHCI replication infrastructure.
+Initialize AzLocal replication infrastructure.
 Cache storage account, replication policy, and replication extension will be created automatically.
 
-### Example 2: Initialize AzStackHCI replication infrastructure with custom cache storage account
+### Example 2: Initialize AzLocal replication infrastructure with custom cache storage account
 ```powershell
 $cacheStorageAccountId = "/subscriptions/xxx-xxx-xxxx/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/testSa"
 
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccountId -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
+Initialize-AzMigrateLocalReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccountId -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 ```
 
 ```output
 $true
 ```
 
-Initialize AzStackHCI replication infrastructure with custom cache storage account.
+Initialize AzLocal replication infrastructure with custom cache storage account.
 Replication policy and replication extension will be created automatically.
 
 ## PARAMETERS
@@ -128,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceApplianceName
-Specifies the source appliance name for the AzStackHCI scenario.
+Specifies the source appliance name for the AzLocal scenario.
 
 ```yaml
 Type: System.String
@@ -158,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetApplianceName
-Specifies the target appliance name for the AzStackHCI scenario.
+Specifies the target appliance name for the AzLocal scenario.
 
 ```yaml
 Type: System.String
@@ -215,3 +214,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -45,14 +45,14 @@ In this directory, run AutoRest:
 
 ``` yaml
 skip-semantics-validation: true
-commit: 3b19762dab3c48c857ae2355da351b32dde22eda
+commit: 473d98be4cc2fb14db8bddbba8d3184d0aa49636
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/migrate/resource-manager/Microsoft.OffAzure/stable/2020-01-01/migrate.json
   - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
   - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2024-01-01/service.json
-  - C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
 
 module-version: 3.0.10
 title: Migrate 
@@ -332,41 +332,41 @@ directive:
       verb: New|Remove|Update
       subject: ^HyperV
     remove: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Test|Invoke
       subject: NameAvailability$|DeploymentPreflight
     remove: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get|New
       subject: ^EmailConfiguration
     remove: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^(FabricAgent|ProtectedItem|Vault|Job)OperationStatus$
     remove: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^FabricOperationsStatus$
     remove: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: New
       subject: ^(FabricAgent|Vault)
     remove: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Update
       subject: ^Vault
     remove: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       subject: OperationResult
     remove: true
@@ -376,13 +376,13 @@ directive:
       subject: ^PlannedReplication
     remove: true
   # Rename cmdlets for Azure Local
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^Fabric$
     set:
       subject: LocalReplicationFabric
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^Job$
@@ -482,7 +482,7 @@ directive:
       verb: New$
       variant: ^CreateViaIdentity
     hide: true
-  - from: C:/repos/azure-rest-api-specs-pr/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get$|Invoke$|New$|Remove$|Test$|Update$
       subject: ^FabricAgent|^Fabric|^Policy|^EmailConfiguration|^ProtectedItem|^ReplicationExtension|^Vault
