@@ -40,7 +40,10 @@ variables:
 
 trigger:
   batch: true
-
+  branches:
+    include:
+    - main
+  
 jobs:
 - job: Build
   displayName: Build
@@ -107,9 +110,9 @@ jobs:
             Get-FilesChangedFromCommit -CommitId $_ | Foreach-Object { $filesChanged += $_ }
           }
         } elseif ("$(Build.reason)" -eq 'Manual') {
-          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate | ForEach-Object { 'src/' + $_ }
         } elseif ("$(Build.reason)" -eq 'Schedule') {
-          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate | ForEach-Object { 'src/' + $_ }
         } else {
           Write-Host "##vso[task.logissue type=error]Invalid trigger: $(Build.reason)."
           exit 1
