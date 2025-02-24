@@ -88,7 +88,7 @@ function New-AzDataMigrationSqlServerSchema
             $TestExePath =  Test-Path -Path $ExePath;
 
             #Console app download address
-            $ZipSource = "https://migrationapps.blob.core.windows.net/schemamigration/SqlSchemaMigration.zip";
+            $ZipSource = "https://aka.ms/sqlschemamigrationpackage";
             $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "SqlSchemaMigration.zip";
             
             if(-Not $TestExePath)
