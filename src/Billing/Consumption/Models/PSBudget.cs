@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Consumption.Models
 {
     public class PSBudget
     {
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
         public string Category { get; set; }
         public CurrentSpend CurrentSpend { get; set; }
         public string ETag { get; set; }
