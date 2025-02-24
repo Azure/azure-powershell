@@ -79,6 +79,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            WriteInformation("For more accurate output, use \"Get-AzComputeResourceSku\" instead. The REST API call used by Get-AzVMSize: \"Virtual Machine Sizes - List\" is deprecated. \n");
+
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
