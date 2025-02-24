@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateLocalServerRepli
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMigrateLocalServerReplication' {
+Describe 'New-AzMigrateLocalServerReplication' -Tag 'LiveOnly' {
     It 'ByIdDefaultUser' {
         $output = New-AzMigrateLocalServerReplication `
             -MachineId $env.hciSDSMachineId1 `

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Initialize-AzMigrateLocalRepl
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Initialize-AzMigrateLocalReplicationInfrastructure' {
+Describe 'Initialize-AzMigrateLocalReplicationInfrastructure' -Tag 'LiveOnly' {
     It 'Default' {
         $output = Initialize-AzMigrateLocalReplicationInfrastructure `
             -ProjectName $env.hciProjectName `

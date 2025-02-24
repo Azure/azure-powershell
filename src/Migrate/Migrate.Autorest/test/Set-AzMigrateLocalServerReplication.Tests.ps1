@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMigrateLocalServerRepli
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Set-AzMigrateLocalServerReplication' {
+Describe 'Set-AzMigrateLocalServerReplication' -Tag 'LiveOnly' {
     It 'ByID' {
         $output = Set-AzMigrateLocalServerReplication `
             -TargetObjectID $env.hciProtectedItem1 `

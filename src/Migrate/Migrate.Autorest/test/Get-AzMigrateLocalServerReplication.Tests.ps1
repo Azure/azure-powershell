@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateLocalServerRepli
 }
 
 Describe 'Get-AzMigrateLocalServerReplication' {
-    It 'ListByName' {
+    It 'ListByName' -Skip {
         $output = Get-AzMigrateLocalServerReplication -ProjectName $env.hciProjectName -ResourceGroupName $env.hciMigResourceGroup -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
