@@ -15,25 +15,46 @@ Param
     [Parameter(ParameterSetName="GalleryInstall", Mandatory=$true)]
     [switch]$GalleryInstall,
     [Parameter(ParameterSetName="CustomPath", Mandatory=$true)]
-    [string]$CustomPath
+    [string]$CustomPath,
+    [Parameter(Mandatory=$false)]
+    [string]$LogPath
 )
+
+function Write-Log {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$Message
+    )
+    if ($LogPath) {
+        $Message | Out-File -Append $LogPath
+    }
+}
 
 function Check-StrongName {
     [CmdletBinding()]
     param([Parameter(ValueFromPipeline=$true)][string]$path)
+    Write-Log "Checking strong name for $path"
     $output = & "sn.exe" -vf $path
     $length = $output.Length - 1
-    if (-not $output[$length].Contains("is valid")) {
+    if ($output[$length].Contains("is valid")) {
+        Write-Log "Valid"
+    } else {
         Write-Output "$path has an invalid strong name."
+        Write-Log "Invalid"
     }
 }
 
 function Check-AuthenticodeSignature {
     [CmdletBinding()]
     param([Parameter(ValueFromPipeline=$true)][string]$path)
+    Write-Log "Checking authenticode signature for $path"
     $output = Get-AuthenticodeSignature $path
-    if (-not ($output.Status -like "Valid")) {
+    if ($output.Status -like "Valid") {
+        Write-Log "Valid"
+    } else {
         Write-Output "$path has an invalid authenticode signature. Status is $($output.Status)"
+        Write-Log "Invalid"
     }
 }
 
@@ -104,6 +125,10 @@ function Check-All {
 }
 
 $path = ".\"
+
+if ($LogPath -and -not (Test-Path $LogPath -IsValid)) {
+    throw "Log path $LogPath is not valid."
+}
 
 if ($PSCmdlet.ParameterSetName -eq "AzurePowerShell")
 {
