@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrate", "Migrate\Migrate.csproj", "{1847EC8D-87A5-4772-9E75-1DEA1DC531EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Migrate", "..\..\generated\Migrate\Migrate.Autorest\Az.Migrate.csproj", "{BDEAE3A5-6B8F-4A10-83A5-69F7BAD8E94E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Migrate", "Migrate.Autorest\Az.Migrate.csproj", "{52D85AD9-BF2E-48F6-B7C9-D24C5F0E0BD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{1847EC8D-87A5-4772-9E75-1DEA1DC531EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1847EC8D-87A5-4772-9E75-1DEA1DC531EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1847EC8D-87A5-4772-9E75-1DEA1DC531EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BDEAE3A5-6B8F-4A10-83A5-69F7BAD8E94E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDEAE3A5-6B8F-4A10-83A5-69F7BAD8E94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BDEAE3A5-6B8F-4A10-83A5-69F7BAD8E94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDEAE3A5-6B8F-4A10-83A5-69F7BAD8E94E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D85AD9-BF2E-48F6-B7C9-D24C5F0E0BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52D85AD9-BF2E-48F6-B7C9-D24C5F0E0BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52D85AD9-BF2E-48F6-B7C9-D24C5F0E0BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52D85AD9-BF2E-48F6-B7C9-D24C5F0E0BD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{395019BE-8D3A-46E4-9CFB-7E298FEEB747} = {2D0176AD-AE30-4235-9D62-17043F0D4CD8}
