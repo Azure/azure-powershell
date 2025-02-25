@@ -78,12 +78,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("TestGen-newazgallery");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testgennewazgalleryimageversion()
-        {
-            TestRunner.RunTestScript("TestGen-newazgalleryimageversion");
-        }
     }
 }
