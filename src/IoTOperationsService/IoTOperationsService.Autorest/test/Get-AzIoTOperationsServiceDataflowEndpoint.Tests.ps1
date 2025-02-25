@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzIoTOperationsServiceDat
 }
 
 Describe 'Get-AzIoTOperationsServiceDataflowEndpoint' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $DataflowEndpoints = Get-AzIoTOperationsServiceDataflowEndpoint -InstanceName $env.InstanceName -ResourceGroupName $env.ResourceGroup
+        $DataflowEndpoints | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {

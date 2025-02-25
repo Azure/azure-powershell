@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzIoTOperationsServiceBro
 }
 
 Describe 'Get-AzIoTOperationsServiceBrokerAuthentication' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $BrokerAuthns = Get-AzIoTOperationsServiceBrokerAuthentication -BrokerName $env.BrokerName -InstanceName $env.InstanceName -ResourceGroupName $env.ResourceGroup
+        $BrokerAuthns | Should -Not -BeNullOrEmpty
     }
 
     It 'GetViaIdentityInstance' -skip {

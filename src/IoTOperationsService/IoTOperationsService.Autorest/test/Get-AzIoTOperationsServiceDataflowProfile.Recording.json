@@ -1,4 +1,48 @@
 {
+  "Get-AzIoTOperationsServiceDataflowProfile+[NoContext]+List+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143/dataflowProfiles?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143/dataflowProfiles?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "4868935a-bc9a-430b-b572-f42c5569495e" ],
+        "CommandName": [ "Get-AzIoTOperationsServiceDataflowProfile" ],
+        "FullCommandName": [ "Get-AzIoTOperationsServiceDataflowProfile_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "cfa0efd0-dc22-44a6-a679-cc64828ce785" ],
+        "x-ms-correlation-request-id": [ "6d7864a4-4db5-4161-ae13-ceca92b7a33e" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250225T233158Z:6d7864a4-4db5-4161-ae13-ceca92b7a33e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E468169CDE2940F0BD9B9969A6FF262F Ref B: CO6AA3150220027 Ref C: 2025-02-25T23:31:58Z" ],
+        "Date": [ "Tue, 25 Feb 2025 23:31:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "907" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143/dataflowProfiles/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/dataflowprofiles\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-02-25T02:29:58.2386042Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-02-25T02:58:58.1699045Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"instanceCount\":1,\"diagnostics\":{\"logs\":{\"level\":\"info\"},\"metrics\":{\"prometheusPort\":9600}}}}]}",
+      "isContentBase64": false
+    }
+  },
   "Get-AzIoTOperationsServiceDataflowProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143/dataflowProfiles/default?api-version=2024-11-01+1": {
     "Request": {
       "Method": "GET",
@@ -6,8 +50,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "610e8161-cfc6-48fb-a16c-1b2d242b9dd4" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "347389f7-9a4f-4221-9698-6d702f7abc2e" ],
         "CommandName": [ "Get-AzIoTOperationsServiceDataflowProfile" ],
         "FullCommandName": [ "Get-AzIoTOperationsServiceDataflowProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,15 +69,15 @@
         "ETag": [ "\"03018ba2-0000-0200-0000-67bd31f20000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "b9434001-1ee9-4a02-a3e2-a89920607066" ],
-        "x-ms-correlation-request-id": [ "5f3a92aa-080b-4173-87b3-3423c4c144f8" ],
+        "x-ms-request-id": [ "b7f3c3c9-d830-426c-9f07-f7593d4e64e9" ],
+        "x-ms-correlation-request-id": [ "ce6a08d2-4807-4dc1-8278-161ff1699e6e" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20250225T225902Z:5f3a92aa-080b-4173-87b3-3423c4c144f8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250225T233158Z:ce6a08d2-4807-4dc1-8278-161ff1699e6e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A7FA0F6A32EA4D84B06D3A9D6EFF67DD Ref B: CO6AA3150218037 Ref C: 2025-02-25T22:59:02Z" ],
-        "Date": [ "Tue, 25 Feb 2025 22:59:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 10AD67343F3E43729A2DFD6995FBCA73 Ref B: CO6AA3150220027 Ref C: 2025-02-25T23:31:58Z" ],
+        "Date": [ "Tue, 25 Feb 2025 23:31:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "895" ],
