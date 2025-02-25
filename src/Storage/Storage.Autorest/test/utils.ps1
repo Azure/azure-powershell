@@ -55,6 +55,7 @@ function setupEnv() {
     $env.TaskID = "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testtaskassignmentrg/providers/Microsoft.StorageActions/storageTasks/testtask1"
     $env.TaskAssignmentResourceGroup = "testtaskassignmentrg"
     $env.TaskAssignmentAccount = "testassignmentaccount"
+    $env.FilePV2AccountName = "pshtestaccountpv2"
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

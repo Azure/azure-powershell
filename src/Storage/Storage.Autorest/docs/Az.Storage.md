@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: Storage cmdlets
 ### [Get-AzStorageAccountMigration](Get-AzStorageAccountMigration.md)
 Gets the status of the ongoing migration for the specified storage account.
 
+### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
+Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
+
 ### [Get-AzStorageTaskAssignment](Get-AzStorageTaskAssignment.md)
 Get the storage task assignment properties
 

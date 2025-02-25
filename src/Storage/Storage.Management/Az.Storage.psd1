@@ -90,7 +90,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Storage.dll',
                'Storage.Autorest/Az.Storage.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzStorageAccountMigration', 'Get-AzStorageTaskAssignment', 
+FunctionsToExport = 'Get-AzStorageAccountMigration', 'Get-AzStorageFileServiceUsage','Get-AzStorageTaskAssignment', 
                'Get-AzStorageTaskAssignmentInstancesReport', 
                'New-AzStorageTaskAssignment', 'Remove-AzStorageTaskAssignment', 
                'Start-AzStorageAccountMigration', 'Update-AzStorageTaskAssignment'
