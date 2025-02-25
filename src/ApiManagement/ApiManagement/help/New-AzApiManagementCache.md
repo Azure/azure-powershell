@@ -13,9 +13,10 @@ Creates a new Cache entity
 ## SYNTAX
 
 ```
-New-AzApiManagementCache -Context <PsApiManagementContext> [-CacheId <String>] -ConnectionString <String>
- [-AzureRedisResourceId <String>] [-Description <String>] [-UseFromLocation <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzApiManagementCache -Context <PsApiManagementContext> [-CacheId <String>] [-ConnectionString <String>]
+ [-ConnectionStringSecure <SecureString>] [-AzureRedisResourceId <String>] [-Description <String>]
+ [-UseFromLocation <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +85,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ConnectionStringSecure
+Redis Connection String. This parameter is required.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
