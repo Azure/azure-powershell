@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.common", "Storage.common\Storage.common.csproj", "{612125D7-36AF-4889-AB38-9B4D0D37CF0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{0309D2E4-D164-48A0-BD22-985459188573}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{ED405A5C-704B-4C03-B93B-3B44B9185AE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,10 +93,10 @@ Global
 		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0309D2E4-D164-48A0-BD22-985459188573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0309D2E4-D164-48A0-BD22-985459188573}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0309D2E4-D164-48A0-BD22-985459188573}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0309D2E4-D164-48A0-BD22-985459188573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED405A5C-704B-4C03-B93B-3B44B9185AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED405A5C-704B-4C03-B93B-3B44B9185AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED405A5C-704B-4C03-B93B-3B44B9185AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED405A5C-704B-4C03-B93B-3B44B9185AE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
