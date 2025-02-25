@@ -15,11 +15,11 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzTrustedSigningCertific
 
 Describe 'Get-AzTrustedSigningCertificateProfile' {
     BeforeAll {
-        $accountName = 'azpstestprofileget'
+        $accountName = 'azpstestprofileget0'
         New-AzTrustedSigningAccount -ResourceGroupName $env.rg -AccountName $accountName -Location $env.location -SkuName 'Premium'
     }
     It 'Get' {
-        $profileName = 'azpstestprofile0'
+        $profileName = 'azpstestprofile1'
         New-AzTrustedSigningCertificateProfile -AccountName $accountName -ResourceGroupName $env.rg -ProfileName $profileName `
             -IdentityValidationId $env.IdentityValidationId -ProfileType:PublicTrustTest
 
@@ -31,8 +31,8 @@ Describe 'Get-AzTrustedSigningCertificateProfile' {
         $sut.IdentityValidationId | Should -Be $env.IdentityValidationId
     }
     It 'List' {
-        $profileName1 = 'azpstestprofile1'
-        $profileName2 = 'azpstestprofile2'
+        $profileName1 = 'azpstestprofile2'
+        $profileName2 = 'azpstestprofile3'
 
         New-AzTrustedSigningCertificateProfile -AccountName $accountName -ResourceGroupName $env.rg -ProfileName $profileName1 `
             -IdentityValidationId $env.IdentityValidationId -ProfileType:PublicTrustTest
