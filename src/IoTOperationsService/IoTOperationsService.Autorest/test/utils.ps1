@@ -43,6 +43,18 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    $env.add("ResourceGroup", "aio-validation-116116143")
+    $env.add("Location", "eastus2")
+    $env.add("InstanceName", "aio-116116143")
+    $env.add("BrokerName", "default")
+    $env.add("BrokerListenerName", "default")
+    $env.add("BrokerAuthorizationName", "default")
+    $env.add("BrokerAuthenticationName", "default")
+    $env.add("DataflowProfileName", "default")
+    $env.add("DataflowName", "default")
+    $env.add("DataflowEndpointName", "default")
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

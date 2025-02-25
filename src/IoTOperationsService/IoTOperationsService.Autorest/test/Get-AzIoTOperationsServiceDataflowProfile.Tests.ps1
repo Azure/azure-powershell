@@ -19,8 +19,9 @@ Describe 'Get-AzIoTOperationsServiceDataflowProfile' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $DataflowProfile = Get-AzIoTOperationsServiceDataflowProfile -Name $env.DataflowProfileName -InstanceName $env.InstanceName -ResourceGroupName $env.ResourceGroup
+        $DataflowProfile.Name | should -be $env.DataflowProfileName
     }
 
     It 'GetViaIdentityInstance' -skip {

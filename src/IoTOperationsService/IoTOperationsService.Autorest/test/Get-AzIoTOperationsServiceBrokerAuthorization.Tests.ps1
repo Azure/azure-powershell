@@ -28,7 +28,8 @@ Describe 'Get-AzIoTOperationsServiceBrokerAuthorization' {
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $BrokerAuthz = Get-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName $env.BrokerAuthorizationName -InstanceName $env.InstanceName -BrokerName $env.BrokerName -ResourceGroupName $env.ResourceGroup
+        $BrokerAuthz.Name | should -be $env.BrokerAuthorizationName
     }
 
     It 'GetViaIdentity' -skip {

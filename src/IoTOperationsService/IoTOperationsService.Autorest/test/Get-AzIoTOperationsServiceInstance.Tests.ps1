@@ -19,8 +19,9 @@ Describe 'Get-AzIoTOperationsServiceInstance' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $Instance = Get-AzIoTOperationsServiceInstance -Name $env.InstanceName -ResourceGroupName $env.ResourceGroup
+        $Instance.Name | should -be $env.InstanceName
     }
 
     It 'List1' -skip {

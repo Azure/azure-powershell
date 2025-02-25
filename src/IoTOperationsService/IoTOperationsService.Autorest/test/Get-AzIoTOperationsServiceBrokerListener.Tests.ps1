@@ -23,8 +23,9 @@ Describe 'Get-AzIoTOperationsServiceBrokerListener' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $BrokerListener = Get-AzIoTOperationsServiceBrokerListener -ListenerName $env.BrokerListenerName -InstanceName $env.InstanceName -BrokerName $env.BrokerName -ResourceGroupName $env.ResourceGroup
+        $BrokerListener.Name | should -be $env.BrokerListenerName
     }
 
     It 'GetViaIdentityBroker' -skip {

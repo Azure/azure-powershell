@@ -1,0 +1,47 @@
+{
+  "Get-AzIoTOperationsServiceBrokerAuthentication+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143/brokers/default/authentications/default?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143/brokers/default/authentications/default?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "31e0da89-97bb-4ca5-8068-67e23817e90b" ],
+        "CommandName": [ "Get-AzIoTOperationsServiceBrokerAuthentication" ],
+        "FullCommandName": [ "Get-AzIoTOperationsServiceBrokerAuthentication_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6c004725-0000-0200-0000-67bd31f20000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "87510e3f-8d09-422a-a652-3f0e37dee662" ],
+        "x-ms-correlation-request-id": [ "ae90a9fd-6f15-46d0-9805-076e654f1aa1" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250225T225828Z:ae90a9fd-6f15-46d0-9805-076e654f1aa1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CBD8E9418A2A4BFBB0EEC85664179366 Ref B: CO6AA3150218037 Ref C: 2025-02-25T22:58:28Z" ],
+        "Date": [ "Tue, 25 Feb 2025 22:58:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "945" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143/brokers/default/authentications/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/brokers/authentications\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-02-25T02:33:08.4202492Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-02-25T02:58:58.1790368Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"authenticationMethods\":[{\"method\":\"ServiceAccountToken\",\"serviceAccountTokenSettings\":{\"audiences\":[\"aio-internal\"]}}]}}",
+      "isContentBase64": false
+    }
+  }
+}

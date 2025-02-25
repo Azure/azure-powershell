@@ -19,8 +19,9 @@ Describe 'Get-AzIoTOperationsServiceDataflowEndpoint' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $DataflowEndpoint = Get-AzIoTOperationsServiceDataflowEndpoint -Name $env.DataflowEndpointName -InstanceName $env.InstanceName -ResourceGroupName $env.ResourceGroup
+        $DataflowEndpoint.Name | should -be $env.DataflowEndpointName
     }
 
     It 'GetViaIdentityInstance' -skip {
