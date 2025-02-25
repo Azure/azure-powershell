@@ -10,12 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct ResynchronizationState :
         System.IEquatable<ResynchronizationState>
     {
+        /// <summary>Resynchronization is not active.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResynchronizationState None = @"None";
 
+        /// <summary>Resynchronization has been completed successfully.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResynchronizationState ResynchronizationCompleted = @"ResynchronizationCompleted";
 
+        /// <summary>Resynchronization has failed and would need to be started again.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResynchronizationState ResynchronizationFailed = @"ResynchronizationFailed";
 
+        /// <summary>Resynchronization has been initiated.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResynchronizationState ResynchronizationInitiated = @"ResynchronizationInitiated";
 
         /// <summary>the value for an instance of the <see cref="ResynchronizationState" /> Enum.</summary>
