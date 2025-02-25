@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct EnqueueReplicationServerType :
         System.IEquatable<EnqueueReplicationServerType>
     {
+        /// <summary>Enqueue Replication server type 1.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.EnqueueReplicationServerType EnqueueReplicator1 = @"EnqueueReplicator1";
 
+        /// <summary>Enqueue Replication server type 2.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.EnqueueReplicationServerType EnqueueReplicator2 = @"EnqueueReplicator2";
 
         /// <summary>
