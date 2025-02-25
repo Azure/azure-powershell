@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Migrated SSH.Helper generation from autorest csharp to autorest powershell.
+* Migrated Ssh.Helper generation from autorest csharp to autorest powershell.
 
 ## Version 0.2.2
 * Upgraded nuget package to signed package.
