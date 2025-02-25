@@ -6,11 +6,17 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support
 {
 
-    /// <summary>Type of managed service identity (only None, UserAssigned types are allowed).</summary>
+    /// <summary>
+    /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    /// </summary>
     public partial struct ManagedServiceIdentityType :
         System.IEquatable<ManagedServiceIdentityType>
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType None = @"None";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType SystemAssigned = @"SystemAssigned";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType SystemAssignedUserAssigned = @"SystemAssigned,UserAssigned";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType UserAssigned = @"UserAssigned";
 
