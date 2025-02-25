@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of manage identity
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType
@@ -195,6 +195,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -224,7 +225,9 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User assigned identities dictionary
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -278,7 +281,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance
 
 ## NOTES
 
@@ -287,4 +290,3 @@ ALIASES
 Update-AzVIS
 
 ## RELATED LINKS
-
