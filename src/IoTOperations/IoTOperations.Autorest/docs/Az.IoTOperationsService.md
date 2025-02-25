@@ -1,6 +1,6 @@
 ---
 Module Name: Az.IoTOperationsService
-Module Guid: 6c73d7c0-3474-422d-849a-c5db4fb51edf
+Module Guid: 5da2f241-5ffc-4b2f-ba53-516fa4181c93
 Download Help Link: https://learn.microsoft.com/powershell/module/az.iotoperationsservice
 Help Version: 1.0.0.0
 Locale: en-US

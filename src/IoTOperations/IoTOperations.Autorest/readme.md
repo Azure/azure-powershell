@@ -26,9 +26,13 @@ For information on how to develop for `Az.IoTOperationsService`, see [how-to.md]
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
-``` yaml
+```yaml
+commit: 1c91368ace1631264d46bd6dbd01c947c660858c
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+# readme.azure.noprofile.md is the common configuration file
+  - $(this-folder)/../../readme.azure.noprofile.md
+  - $(repo)/specification/iotoperations/resource-manager/readme.md
 
-input-file: 
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/iotoperations/resource-manager/Microsoft.IoTOperations/stable/2024-11-01/iotoperations.json
+try-require: 
+  - $(repo)/specification/iotoperations/resource-manager/readme.powershell.md
+```
