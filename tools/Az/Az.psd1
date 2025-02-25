@@ -143,7 +143,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.2'; },
                @{ModuleName = 'Az.Support'; RequiredVersion = '2.1.0'; }, 
                @{ModuleName = 'Az.Synapse'; RequiredVersion = '3.1.1'; }, 
                @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.3.0'; }, 
-               @{ModuleName = 'Az.Websites'; RequiredVersion = '3.3.0'; })
+               @{ModuleName = 'Az.Websites'; RequiredVersion = '3.3.0'; },
+               @{ModuleName = 'Az.Workloads'; RequiredVersion = '0.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
