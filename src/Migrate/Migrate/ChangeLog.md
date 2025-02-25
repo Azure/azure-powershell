@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.7.0
   * Updated Data.Replication to newer API version
     - Updated Data.Replication to point to stable API version 2024-09-01
   * Rebranded Data.Replication cmdlets
