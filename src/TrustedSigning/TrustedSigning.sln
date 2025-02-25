@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustedSigning", "TrustedSigning\TrustedSigning.csproj", "{4A74133F-7767-4BF6-B0A6-D05A31A1F38D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TrustedSigning", "TrustedSigning.Autorest\Az.TrustedSigning.csproj", "{E08D2247-0618-47E4-AF4A-5164A9D2A743}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TrustedSigning", "..\..\generated\TrustedSigning\TrustedSigning.Autorest\Az.TrustedSigning.csproj", "{D92D1A0E-70FE-43FD-8AFD-67079FDDFD7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{4A74133F-7767-4BF6-B0A6-D05A31A1F38D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A74133F-7767-4BF6-B0A6-D05A31A1F38D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A74133F-7767-4BF6-B0A6-D05A31A1F38D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E08D2247-0618-47E4-AF4A-5164A9D2A743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E08D2247-0618-47E4-AF4A-5164A9D2A743}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E08D2247-0618-47E4-AF4A-5164A9D2A743}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E08D2247-0618-47E4-AF4A-5164A9D2A743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D92D1A0E-70FE-43FD-8AFD-67079FDDFD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D92D1A0E-70FE-43FD-8AFD-67079FDDFD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D92D1A0E-70FE-43FD-8AFD-67079FDDFD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D92D1A0E-70FE-43FD-8AFD-67079FDDFD7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3EE35FB0-341F-4232-9E1E-3768A3057A25} = {D150C1EF-6976-4624-9E69-6E57793805C5}
