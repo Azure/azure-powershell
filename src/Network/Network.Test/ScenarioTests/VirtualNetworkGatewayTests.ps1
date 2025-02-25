@@ -1798,4 +1798,68 @@ function Test-VirtualNetworkExpressRouteGatewayCRUDwithResiliencyModel
         # Cleanup
         Clean-ResourceGroup $rgname
      }
+
+     <#
+.SYNOPSIS
+High Bandwidth Vpn gateway creation test
+#>
+function Test-HighBandwidthVpnGatewayCreation
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rname2 = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $publicIpName2 = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "centraluseuap"
+    
+    try 
+    {
+      
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static 
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+      # Create ExpressRoute gateway
+      $expressRouteGateway = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance -ResiliencyModel MultiHomed
+      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual "ExpressRoute" $expected.GatewayType
+
+    # Get Circuit
+    $circuit = Get-AzExpressRouteCircuit -ResourceGroupName $rgname
+    Assert-AreEqual 1 @($circuit).Count
+	
+    # Create & Get VirtualNetworkGatewayConnection
+    $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $gw  -ConnectionType ExpressRoute -RoutingWeight 3 -PeerId $circuit.Id -ExpressRouteGatewayBypass true -EnablePrivateLinkFastPath true
+    $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+    Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+    Assert-AreEqual $expected.Name $actual.Name	
+    Assert-AreEqual "ExpressRoute" $expected.ConnectionType
+    Assert-AreEqual "3" $expected.RoutingWeight
+    Assert-AreEqual $True $expected.ExpressRouteGatewayBypass
+    Assert-AreEqual $True $expected.EnablePrivateLinkFastPath
+
+    }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
 }
