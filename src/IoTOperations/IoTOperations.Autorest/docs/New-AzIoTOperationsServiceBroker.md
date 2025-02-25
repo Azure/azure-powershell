@@ -29,60 +29,6 @@ New-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -Resource
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -ResourceGroupName <String>
- -Resource <IBrokerResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzIoTOperationsServiceBroker -InputObject <IIoTOperationsServiceIdentity> -Resource <IBrokerResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzIoTOperationsServiceBroker -InputObject <IIoTOperationsServiceIdentity> -ExtendedLocationName <String>
- [-AdvancedEncryptInternalTraffic <String>] [-BackendChainPartition <Int32>]
- [-BackendChainRedundancyFactor <Int32>] [-BackendChainWorker <Int32>] [-ClientMaxKeepAliveSecond <Int32>]
- [-ClientMaxMessageExpirySecond <Int32>] [-ClientMaxPacketSizeByte <Int32>] [-ClientMaxReceiveMaximum <Int32>]
- [-ClientMaxSessionExpirySecond <Int32>] [-DiskBackedMessageBuffer <IDiskBackedMessageBuffer>]
- [-FrontendReplica <Int32>] [-FrontendWorker <Int32>] [-GenerateResourceLimitCpu <String>]
- [-InternalCertDuration <String>] [-InternalCertRenewBefore <String>] [-LogLevel <String>]
- [-MemoryProfile <String>] [-MetricPrometheusPort <Int32>] [-PrivateKeyAlgorithm <String>]
- [-PrivateKeyRotationPolicy <String>] [-SelfCheckIntervalSecond <Int32>] [-SelfCheckMode <String>]
- [-SelfCheckTimeoutSecond <Int32>] [-SelfTracingIntervalSecond <Int32>] [-SelfTracingMode <String>]
- [-SubscriberQueueLimitLength <Int64>] [-SubscriberQueueLimitStrategy <String>]
- [-TraceCacheSizeMegabyte <Int32>] [-TraceMode <String>] [-TraceSpanChannelCapacity <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityInstance
-```
-New-AzIoTOperationsServiceBroker -InstanceInputObject <IIoTOperationsServiceIdentity> -Name <String>
- -Resource <IBrokerResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityInstanceExpanded
-```
-New-AzIoTOperationsServiceBroker -InstanceInputObject <IIoTOperationsServiceIdentity> -Name <String>
- -ExtendedLocationName <String> [-AdvancedEncryptInternalTraffic <String>] [-BackendChainPartition <Int32>]
- [-BackendChainRedundancyFactor <Int32>] [-BackendChainWorker <Int32>] [-ClientMaxKeepAliveSecond <Int32>]
- [-ClientMaxMessageExpirySecond <Int32>] [-ClientMaxPacketSizeByte <Int32>] [-ClientMaxReceiveMaximum <Int32>]
- [-ClientMaxSessionExpirySecond <Int32>] [-DiskBackedMessageBuffer <IDiskBackedMessageBuffer>]
- [-FrontendReplica <Int32>] [-FrontendWorker <Int32>] [-GenerateResourceLimitCpu <String>]
- [-InternalCertDuration <String>] [-InternalCertRenewBefore <String>] [-LogLevel <String>]
- [-MemoryProfile <String>] [-MetricPrometheusPort <Int32>] [-PrivateKeyAlgorithm <String>]
- [-PrivateKeyRotationPolicy <String>] [-SelfCheckIntervalSecond <Int32>] [-SelfCheckMode <String>]
- [-SelfCheckTimeoutSecond <Int32>] [-SelfTracingIntervalSecond <Int32>] [-SelfTracingMode <String>]
- [-SubscriberQueueLimitLength <Int64>] [-SubscriberQueueLimitStrategy <String>]
- [-TraceCacheSizeMegabyte <Int32>] [-TraceMode <String>] [-TraceSpanChannelCapacity <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -ResourceGroupName <String>
@@ -131,7 +77,7 @@ The setting to enable or disable encryption of internal Traffic.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -161,7 +107,7 @@ The desired number of physical backend partitions.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -176,7 +122,7 @@ The desired numbers of backend replicas (pods) in a physical partition.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -191,7 +137,7 @@ Number of logical backend workers per replica (pod).
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -206,7 +152,7 @@ Upper bound of a client's Keep Alive, in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -221,7 +167,7 @@ Upper bound of Message Expiry Interval, in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -236,7 +182,7 @@ Max message size for a packet in Bytes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -251,7 +197,7 @@ Upper bound of Receive Maximum that a client can request in the CONNECT packet.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -266,7 +212,7 @@ Upper bound of Session Expiry Interval, in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -297,7 +243,7 @@ Settings of Disk Backed Message Buffer.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDiskBackedMessageBuffer
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -312,7 +258,7 @@ The name of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -327,7 +273,7 @@ The desired number of frontend instances (pods).
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -342,7 +288,7 @@ Number of logical frontend workers per instance (pod).
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -357,7 +303,7 @@ The toggle to enable/disable cpu resource limits.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -367,42 +313,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceName
 Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -420,7 +336,7 @@ E.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -438,7 +354,7 @@ E.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -484,7 +400,7 @@ Examples - 'debug', 'info', 'warn', 'error', 'trace'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -499,7 +415,7 @@ Memory profile of Broker.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -514,7 +430,7 @@ The prometheus port to expose the metrics.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -529,7 +445,7 @@ Name of broker.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: BrokerName
 
 Required: True
@@ -559,7 +475,7 @@ algorithm for private key.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -574,7 +490,7 @@ cert-manager private key rotationPolicy.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -584,28 +500,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance broker resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerResource
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -620,7 +521,7 @@ The self check interval.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -635,7 +536,7 @@ The toggle to enable/disable self check.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -650,7 +551,7 @@ The timeout for self check.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -665,7 +566,7 @@ The self tracing interval.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -680,7 +581,7 @@ The toggle to enable/disable self tracing.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -695,7 +596,7 @@ The maximum length of the queue before messages start getting dropped.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -710,7 +611,7 @@ The strategy to use for dropping messages from the queue.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -726,7 +627,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -741,7 +642,7 @@ The cache size in megabytes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -756,7 +657,7 @@ The toggle to enable/disable traces.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -771,7 +672,7 @@ The span channel capacity.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -816,10 +717,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 
 ## OUTPUTS
 

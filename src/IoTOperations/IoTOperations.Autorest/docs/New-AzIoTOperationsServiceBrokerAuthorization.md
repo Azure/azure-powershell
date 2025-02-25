@@ -20,59 +20,6 @@ New-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -Broke
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -BrokerName <String>
- -InstanceName <String> -ResourceGroupName <String> -Resource <IBrokerAuthorizationResource>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzIoTOperationsServiceBrokerAuthorization -InputObject <IIoTOperationsServiceIdentity>
- -Resource <IBrokerAuthorizationResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityBroker
-```
-New-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String>
- -BrokerInputObject <IIoTOperationsServiceIdentity> -Resource <IBrokerAuthorizationResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityBrokerExpanded
-```
-New-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String>
- -BrokerInputObject <IIoTOperationsServiceIdentity> -ExtendedLocationName <String>
- [-AuthorizationPolicyCache <String>] [-AuthorizationPolicyRule <IAuthorizationRule[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzIoTOperationsServiceBrokerAuthorization -InputObject <IIoTOperationsServiceIdentity>
- -ExtendedLocationName <String> [-AuthorizationPolicyCache <String>]
- [-AuthorizationPolicyRule <IAuthorizationRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityInstance
-```
-New-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -BrokerName <String>
- -InstanceInputObject <IIoTOperationsServiceIdentity> -Resource <IBrokerAuthorizationResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityInstanceExpanded
-```
-New-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -BrokerName <String>
- -InstanceInputObject <IIoTOperationsServiceIdentity> -ExtendedLocationName <String>
- [-AuthorizationPolicyCache <String>] [-AuthorizationPolicyRule <IAuthorizationRule[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -BrokerName <String>
@@ -136,7 +83,7 @@ Name of Instance broker authorization resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityBroker, CreateViaIdentityBrokerExpanded, CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -151,7 +98,7 @@ Enable caching of the authorization rules.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityBrokerExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -167,7 +114,7 @@ If no rule is set, but Authorization Resource is used that would mean DenyAll.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IAuthorizationRule[]
-Parameter Sets: CreateExpanded, CreateViaIdentityBrokerExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -177,27 +124,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BrokerInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentityBroker, CreateViaIdentityBrokerExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -BrokerName
 Name of broker.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -228,7 +160,7 @@ The name of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityBrokerExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -238,42 +170,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceName
 Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -328,28 +230,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance broker authorizations resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthorizationResource
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityBroker, CreateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -365,7 +252,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -410,10 +297,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthorizationResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 
 ## OUTPUTS
 

@@ -20,28 +20,6 @@ Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -BrokerName <String>
- -InstanceName <String> -ResourceGroupName <String> -Resource <IBrokerAuthenticationResource>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzIoTOperationsServiceBrokerAuthentication -InputObject <IIoTOperationsServiceIdentity>
- -Resource <IBrokerAuthenticationResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityBroker
-```
-Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String>
- -BrokerInputObject <IIoTOperationsServiceIdentity> -Resource <IBrokerAuthenticationResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityBrokerExpanded
 ```
 Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String>
@@ -54,13 +32,6 @@ Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String>
 Update-AzIoTOperationsServiceBrokerAuthentication -InputObject <IIoTOperationsServiceIdentity>
  [-AuthenticationMethod <IBrokerAuthenticatorMethods[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityInstance
-```
-Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -BrokerName <String>
- -InstanceInputObject <IIoTOperationsServiceIdentity> -Resource <IBrokerAuthenticationResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityInstanceExpanded
@@ -120,7 +91,7 @@ For each array element one authenticator type supported.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorMethods[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityBrokerExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -135,7 +106,7 @@ Name of Instance broker authentication resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityBroker, UpdateViaIdentityBrokerExpanded, UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityBrokerExpanded, UpdateViaIdentityInstanceExpanded
 Aliases:
 
 Required: True
@@ -150,7 +121,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentityBroker, UpdateViaIdentityBrokerExpanded
+Parameter Sets: UpdateViaIdentityBrokerExpanded
 Aliases:
 
 Required: True
@@ -165,7 +136,7 @@ Name of broker.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityInstanceExpanded
 Aliases:
 
 Required: True
@@ -196,7 +167,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -211,7 +182,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateViaIdentityInstanceExpanded
 Aliases:
 
 Required: True
@@ -226,7 +197,7 @@ Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -251,28 +222,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance broker authentication resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticationResource
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityBroker, UpdateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -288,7 +244,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -333,8 +289,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticationResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 

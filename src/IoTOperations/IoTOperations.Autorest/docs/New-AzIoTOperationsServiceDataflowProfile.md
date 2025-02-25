@@ -20,41 +20,6 @@ New-AzIoTOperationsServiceDataflowProfile -InstanceName <String> -Name <String> 
  [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzIoTOperationsServiceDataflowProfile -InstanceName <String> -Name <String> -ResourceGroupName <String>
- -Resource <IDataflowProfileResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzIoTOperationsServiceDataflowProfile -InputObject <IIoTOperationsServiceIdentity>
- -Resource <IDataflowProfileResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzIoTOperationsServiceDataflowProfile -InputObject <IIoTOperationsServiceIdentity>
- -ExtendedLocationName <String> [-InstanceCount <Int32>] [-LogLevel <String>] [-MetricPrometheusPort <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityInstance
-```
-New-AzIoTOperationsServiceDataflowProfile -InstanceInputObject <IIoTOperationsServiceIdentity> -Name <String>
- -Resource <IDataflowProfileResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityInstanceExpanded
-```
-New-AzIoTOperationsServiceDataflowProfile -InstanceInputObject <IIoTOperationsServiceIdentity> -Name <String>
- -ExtendedLocationName <String> [-InstanceCount <Int32>] [-LogLevel <String>] [-MetricPrometheusPort <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzIoTOperationsServiceDataflowProfile -InstanceName <String> -Name <String> -ResourceGroupName <String>
@@ -134,7 +99,7 @@ The name of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -144,27 +109,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceCount
 To manually scale the dataflow profile, specify the maximum number of instances you want to run.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -174,27 +124,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceName
 Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -240,7 +175,7 @@ Examples - 'debug', 'info', 'warn', 'error', 'trace'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -255,7 +190,7 @@ The prometheus port to expose the metrics.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -270,7 +205,7 @@ Name of Instance dataflowProfile resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: DataflowProfileName
 
 Required: True
@@ -295,28 +230,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance dataflowProfile resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowProfileResource
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -332,7 +252,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -377,10 +297,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowProfileResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 
 ## OUTPUTS
 

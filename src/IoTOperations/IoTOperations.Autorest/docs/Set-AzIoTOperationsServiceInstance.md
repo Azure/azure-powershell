@@ -21,13 +21,6 @@ Set-AzIoTOperationsServiceInstance -Name <String> -ResourceGroupName <String> -E
  [<CommonParameters>]
 ```
 
-### Update
-```
-Set-AzIoTOperationsServiceInstance -Name <String> -ResourceGroupName <String> -Resource <IInstanceResource>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaJsonFilePath
 ```
 Set-AzIoTOperationsServiceInstance -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
@@ -222,21 +215,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-A Instance resource is a logical container for a set of child resources.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResource
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -350,8 +328,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResource
 
 ## OUTPUTS
 

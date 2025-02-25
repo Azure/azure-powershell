@@ -22,19 +22,6 @@ Update-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -Resou
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -ResourceGroupName <String>
- -Resource <IBrokerResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzIoTOperationsServiceBroker -InputObject <IIoTOperationsServiceIdentity> -Resource <IBrokerResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzIoTOperationsServiceBroker -InputObject <IIoTOperationsServiceIdentity> [-LogLevel <String>]
@@ -42,13 +29,6 @@ Update-AzIoTOperationsServiceBroker -InputObject <IIoTOperationsServiceIdentity>
  [-SelfCheckTimeoutSecond <Int32>] [-SelfTracingIntervalSecond <Int32>] [-SelfTracingMode <String>]
  [-TraceCacheSizeMegabyte <Int32>] [-TraceMode <String>] [-TraceSpanChannelCapacity <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityInstance
-```
-Update-AzIoTOperationsServiceBroker -InstanceInputObject <IIoTOperationsServiceIdentity> -Name <String>
- -Resource <IBrokerResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityInstanceExpanded
@@ -126,7 +106,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -141,7 +121,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateViaIdentityInstanceExpanded
 Aliases:
 
 Required: True
@@ -156,7 +136,7 @@ Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -172,7 +152,7 @@ Examples - 'debug', 'info', 'warn', 'error', 'trace'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -187,7 +167,7 @@ The prometheus port to expose the metrics.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,7 +182,7 @@ Name of broker.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityInstanceExpanded
 Aliases: BrokerName
 
 Required: True
@@ -227,28 +207,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance broker resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerResource
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -263,7 +228,7 @@ The self check interval.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -278,7 +243,7 @@ The toggle to enable/disable self check.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -293,7 +258,7 @@ The timeout for self check.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -308,7 +273,7 @@ The self tracing interval.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -323,7 +288,7 @@ The toggle to enable/disable self tracing.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -339,7 +304,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -354,7 +319,7 @@ The cache size in megabytes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -369,7 +334,7 @@ The toggle to enable/disable traces.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -384,7 +349,7 @@ The span channel capacity.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -429,8 +394,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 

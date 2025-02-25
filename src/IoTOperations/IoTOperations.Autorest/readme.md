@@ -26,6 +26,11 @@ For information on how to develop for `Az.IoTOperationsService`, see [how-to.md]
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
+title: IoTOperations
+
+# For new RP, the version is 0.1.0
+module-version: 0.1.0
+
 ```yaml
 commit: 1c91368ace1631264d46bd6dbd01c947c660858c
 require:
@@ -35,4 +40,16 @@ require:
 
 try-require: 
   - $(repo)/specification/iotoperations/resource-manager/readme.powershell.md
+
+directive:
+  # Following are common directives which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required
+  # Following two directives are v4 specific
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
 ```

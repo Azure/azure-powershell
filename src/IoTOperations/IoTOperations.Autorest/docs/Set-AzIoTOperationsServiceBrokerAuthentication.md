@@ -20,14 +20,6 @@ Set-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -Bro
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Set-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -BrokerName <String>
- -InstanceName <String> -ResourceGroupName <String> -Resource <IBrokerAuthenticationResource>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaJsonFilePath
 ```
 Set-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -BrokerName <String>
@@ -223,21 +215,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance broker authentication resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticationResource
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -305,8 +282,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticationResource
 
 ## OUTPUTS
 

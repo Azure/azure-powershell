@@ -20,58 +20,6 @@ New-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <Str
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <String> -ListenerName <String>
- -ResourceGroupName <String> -Resource <IBrokerListenerResource> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzIoTOperationsServiceBrokerListener -InputObject <IIoTOperationsServiceIdentity>
- -Resource <IBrokerListenerResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityBroker
-```
-New-AzIoTOperationsServiceBrokerListener -BrokerInputObject <IIoTOperationsServiceIdentity>
- -ListenerName <String> -Resource <IBrokerListenerResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityBrokerExpanded
-```
-New-AzIoTOperationsServiceBrokerListener -BrokerInputObject <IIoTOperationsServiceIdentity>
- -ListenerName <String> -ExtendedLocationName <String> [-Port <IListenerPort[]>] [-ServiceName <String>]
- [-ServiceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzIoTOperationsServiceBrokerListener -InputObject <IIoTOperationsServiceIdentity>
- -ExtendedLocationName <String> [-Port <IListenerPort[]>] [-ServiceName <String>] [-ServiceType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityInstance
-```
-New-AzIoTOperationsServiceBrokerListener -BrokerName <String>
- -InstanceInputObject <IIoTOperationsServiceIdentity> -ListenerName <String>
- -Resource <IBrokerListenerResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityInstanceExpanded
-```
-New-AzIoTOperationsServiceBrokerListener -BrokerName <String>
- -InstanceInputObject <IIoTOperationsServiceIdentity> -ListenerName <String> -ExtendedLocationName <String>
- [-Port <IListenerPort[]>] [-ServiceName <String>] [-ServiceType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <String> -ListenerName <String>
@@ -130,27 +78,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BrokerInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentityBroker, CreateViaIdentityBrokerExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -BrokerName
 Name of broker.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -181,7 +114,7 @@ The name of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityBrokerExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -191,42 +124,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceName
 Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -271,7 +174,7 @@ Name of Instance broker listener resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityBroker, CreateViaIdentityBrokerExpanded, CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -301,7 +204,7 @@ Ports on which this listener accepts client connections.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IListenerPort[]
-Parameter Sets: CreateExpanded, CreateViaIdentityBrokerExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -311,28 +214,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance broker resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerListenerResource
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityBroker, CreateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -347,7 +235,7 @@ Kubernetes Service name of this listener.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityBrokerExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -362,7 +250,7 @@ Kubernetes Service type of this listener.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityBrokerExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -378,7 +266,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -423,10 +311,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerListenerResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 
 ## OUTPUTS
 

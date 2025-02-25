@@ -41,85 +41,6 @@ New-AzIoTOperationsServiceDataflowEndpoint -InstanceName <String> -Name <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzIoTOperationsServiceDataflowEndpoint -InstanceName <String> -Name <String> -ResourceGroupName <String>
- -Resource <IDataflowEndpointResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzIoTOperationsServiceDataflowEndpoint -InputObject <IIoTOperationsServiceIdentity>
- -Resource <IDataflowEndpointResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzIoTOperationsServiceDataflowEndpoint -InputObject <IIoTOperationsServiceIdentity>
- -ExtendedLocationName <String> [-AccessTokenSettingSecretRef <String>]
- [-DataExplorerSettingDatabase <String>] [-DataExplorerSettingHost <String>]
- [-DataExplorerSettingsAuthenticationMethod <String>]
- [-DataExplorerSettingsAuthenticationSystemAssignedManagedIdentitySettingsAudience <String>]
- [-DataExplorerSettingsAuthenticationUserAssignedManagedIdentitySettingsClientId <String>]
- [-DataExplorerSettingsAuthenticationUserAssignedManagedIdentitySettingsScope <String>]
- [-DataExplorerSettingsAuthenticationUserAssignedManagedIdentitySettingsTenantId <String>]
- [-DataExplorerSettingsBatchingLatencySecond <Int32>] [-DataExplorerSettingsBatchingMaxMessage <Int32>]
- [-DataLakeStorageSettingHost <String>] [-DataLakeStorageSettingsAuthenticationMethod <String>]
- [-DataLakeStorageSettingsAuthenticationSystemAssignedManagedIdentitySettingsAudience <String>]
- [-DataLakeStorageSettingsAuthenticationUserAssignedManagedIdentitySettingsClientId <String>]
- [-DataLakeStorageSettingsAuthenticationUserAssignedManagedIdentitySettingsScope <String>]
- [-DataLakeStorageSettingsAuthenticationUserAssignedManagedIdentitySettingsTenantId <String>]
- [-DataLakeStorageSettingsBatchingLatencySecond <Int32>] [-DataLakeStorageSettingsBatchingMaxMessage <Int32>]
- [-EndpointType <String>] [-FabricOneLakeSettingHost <String>] [-FabricOneLakeSettingOneLakePathType <String>]
- [-FabricOneLakeSettingsAuthenticationMethod <String>]
- [-FabricOneLakeSettingsAuthenticationSystemAssignedManagedIdentitySettingsAudience <String>]
- [-FabricOneLakeSettingsAuthenticationUserAssignedManagedIdentitySettingsClientId <String>]
- [-FabricOneLakeSettingsAuthenticationUserAssignedManagedIdentitySettingsScope <String>]
- [-FabricOneLakeSettingsAuthenticationUserAssignedManagedIdentitySettingsTenantId <String>]
- [-FabricOneLakeSettingsBatchingLatencySecond <Int32>] [-FabricOneLakeSettingsBatchingMaxMessage <Int32>]
- [-KafkaSetting <IDataflowEndpointKafka>] [-LocalStorageSettingPersistentVolumeClaimRef <String>]
- [-MqttSetting <IDataflowEndpointMqtt>] [-NameLakehouseName <String>] [-NameWorkspaceName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityInstance
-```
-New-AzIoTOperationsServiceDataflowEndpoint -InstanceInputObject <IIoTOperationsServiceIdentity> -Name <String>
- -Resource <IDataflowEndpointResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityInstanceExpanded
-```
-New-AzIoTOperationsServiceDataflowEndpoint -InstanceInputObject <IIoTOperationsServiceIdentity> -Name <String>
- -ExtendedLocationName <String> [-AccessTokenSettingSecretRef <String>]
- [-DataExplorerSettingDatabase <String>] [-DataExplorerSettingHost <String>]
- [-DataExplorerSettingsAuthenticationMethod <String>]
- [-DataExplorerSettingsAuthenticationSystemAssignedManagedIdentitySettingsAudience <String>]
- [-DataExplorerSettingsAuthenticationUserAssignedManagedIdentitySettingsClientId <String>]
- [-DataExplorerSettingsAuthenticationUserAssignedManagedIdentitySettingsScope <String>]
- [-DataExplorerSettingsAuthenticationUserAssignedManagedIdentitySettingsTenantId <String>]
- [-DataExplorerSettingsBatchingLatencySecond <Int32>] [-DataExplorerSettingsBatchingMaxMessage <Int32>]
- [-DataLakeStorageSettingHost <String>] [-DataLakeStorageSettingsAuthenticationMethod <String>]
- [-DataLakeStorageSettingsAuthenticationSystemAssignedManagedIdentitySettingsAudience <String>]
- [-DataLakeStorageSettingsAuthenticationUserAssignedManagedIdentitySettingsClientId <String>]
- [-DataLakeStorageSettingsAuthenticationUserAssignedManagedIdentitySettingsScope <String>]
- [-DataLakeStorageSettingsAuthenticationUserAssignedManagedIdentitySettingsTenantId <String>]
- [-DataLakeStorageSettingsBatchingLatencySecond <Int32>] [-DataLakeStorageSettingsBatchingMaxMessage <Int32>]
- [-EndpointType <String>] [-FabricOneLakeSettingHost <String>] [-FabricOneLakeSettingOneLakePathType <String>]
- [-FabricOneLakeSettingsAuthenticationMethod <String>]
- [-FabricOneLakeSettingsAuthenticationSystemAssignedManagedIdentitySettingsAudience <String>]
- [-FabricOneLakeSettingsAuthenticationUserAssignedManagedIdentitySettingsClientId <String>]
- [-FabricOneLakeSettingsAuthenticationUserAssignedManagedIdentitySettingsScope <String>]
- [-FabricOneLakeSettingsAuthenticationUserAssignedManagedIdentitySettingsTenantId <String>]
- [-FabricOneLakeSettingsBatchingLatencySecond <Int32>] [-FabricOneLakeSettingsBatchingMaxMessage <Int32>]
- [-KafkaSetting <IDataflowEndpointKafka>] [-LocalStorageSettingPersistentVolumeClaimRef <String>]
- [-MqttSetting <IDataflowEndpointMqtt>] [-NameLakehouseName <String>] [-NameWorkspaceName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzIoTOperationsServiceDataflowEndpoint -InstanceName <String> -Name <String> -ResourceGroupName <String>
@@ -168,7 +89,7 @@ Token secret name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -198,7 +119,7 @@ Database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -213,7 +134,7 @@ Host of the Azure Data Explorer in the form of \<cluster\>.\<region\>.kusto.wind
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -228,7 +149,7 @@ Mode of Authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -244,7 +165,7 @@ Optional; defaults to the audience for Service host configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -259,7 +180,7 @@ Client ID for the user-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -274,7 +195,7 @@ Resource identifier (application ID URI) of the resource, affixed with the .defa
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -289,7 +210,7 @@ Tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -304,7 +225,7 @@ Batching latency in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -319,7 +240,7 @@ Maximum number of messages in a batch.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -334,7 +255,7 @@ Host of the Azure Data Lake in the form of \<account\>.blob.core.windows.net .
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -349,7 +270,7 @@ Mode of Authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -365,7 +286,7 @@ Optional; defaults to the audience for Service host configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -380,7 +301,7 @@ Client ID for the user-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -395,7 +316,7 @@ Resource identifier (application ID URI) of the resource, affixed with the .defa
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -410,7 +331,7 @@ Tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -425,7 +346,7 @@ Batching latency in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -440,7 +361,7 @@ Maximum number of messages in a batch.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -471,7 +392,7 @@ Endpoint Type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -486,7 +407,7 @@ The name of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -501,7 +422,7 @@ Host of the Microsoft Fabric in the form of https://\<host\>.fabric.microsoft.co
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -517,7 +438,7 @@ Can be either tables or files.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -532,7 +453,7 @@ Mode of Authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -548,7 +469,7 @@ Optional; defaults to the audience for Service host configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -563,7 +484,7 @@ Client ID for the user-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -578,7 +499,7 @@ Resource identifier (application ID URI) of the resource, affixed with the .defa
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -593,7 +514,7 @@ Tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -608,7 +529,7 @@ Batching latency in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -623,7 +544,7 @@ Maximum number of messages in a batch.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -633,42 +554,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceName
 Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -713,7 +604,7 @@ Kafka endpoint.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowEndpointKafka
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -728,7 +619,7 @@ Persistent volume claim name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -743,7 +634,7 @@ Broker endpoint.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowEndpointMqtt
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -758,7 +649,7 @@ Name of Instance dataflowEndpoint resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityInstance, CreateViaIdentityInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: DataflowEndpointName
 
 Required: True
@@ -773,7 +664,7 @@ Lakehouse name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -788,7 +679,7 @@ Workspace name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityInstanceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -813,28 +704,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance dataflowEndpoint resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowEndpointResource
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -850,7 +726,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -895,10 +771,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowEndpointResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 
 ## OUTPUTS
 

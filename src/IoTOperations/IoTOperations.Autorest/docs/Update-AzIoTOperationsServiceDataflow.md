@@ -19,27 +19,6 @@ Update-AzIoTOperationsServiceDataflow -InstanceName <String> -Name <String> -Pro
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzIoTOperationsServiceDataflow -InstanceName <String> -Name <String> -ProfileName <String>
- -ResourceGroupName <String> -Resource <IDataflowResource> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzIoTOperationsServiceDataflow -InputObject <IIoTOperationsServiceIdentity>
- -Resource <IDataflowResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityDataflowProfile
-```
-Update-AzIoTOperationsServiceDataflow -DataflowProfileInputObject <IIoTOperationsServiceIdentity>
- -Name <String> -Resource <IDataflowResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityDataflowProfileExpanded
 ```
 Update-AzIoTOperationsServiceDataflow -DataflowProfileInputObject <IIoTOperationsServiceIdentity>
@@ -52,13 +31,6 @@ Update-AzIoTOperationsServiceDataflow -DataflowProfileInputObject <IIoTOperation
 Update-AzIoTOperationsServiceDataflow -InputObject <IIoTOperationsServiceIdentity> [-Mode <String>]
  [-Operation <IDataflowOperation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### UpdateViaIdentityInstance
-```
-Update-AzIoTOperationsServiceDataflow -InstanceInputObject <IIoTOperationsServiceIdentity> -Name <String>
- -ProfileName <String> -Resource <IDataflowResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityInstanceExpanded
@@ -117,7 +89,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentityDataflowProfile, UpdateViaIdentityDataflowProfileExpanded
+Parameter Sets: UpdateViaIdentityDataflowProfileExpanded
 Aliases:
 
 Required: True
@@ -148,7 +120,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -163,7 +135,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateViaIdentityInstanceExpanded
 Aliases:
 
 Required: True
@@ -178,7 +150,7 @@ Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -194,7 +166,7 @@ Optional; defaults to Enabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityDataflowProfileExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -209,7 +181,7 @@ Name of Instance dataflowProfile dataflow resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityDataflowProfile, UpdateViaIdentityDataflowProfileExpanded, UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDataflowProfileExpanded, UpdateViaIdentityInstanceExpanded
 Aliases: DataflowName
 
 Required: True
@@ -239,7 +211,7 @@ List of operations including source and destination references as well as transf
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowOperation[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityDataflowProfileExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -254,7 +226,7 @@ Name of Instance dataflowProfile resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityInstanceExpanded
 Aliases: DataflowProfileName
 
 Required: True
@@ -264,28 +236,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance dataflowProfile dataflow resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowResource
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityDataflowProfile, UpdateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -301,7 +258,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -346,8 +303,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 

@@ -41,20 +41,6 @@ Update-AzIoTOperationsServiceDataflowEndpoint -InstanceName <String> -Name <Stri
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzIoTOperationsServiceDataflowEndpoint -InstanceName <String> -Name <String>
- -ResourceGroupName <String> -Resource <IDataflowEndpointResource> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzIoTOperationsServiceDataflowEndpoint -InputObject <IIoTOperationsServiceIdentity>
- -Resource <IDataflowEndpointResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzIoTOperationsServiceDataflowEndpoint -InputObject <IIoTOperationsServiceIdentity>
@@ -81,13 +67,6 @@ Update-AzIoTOperationsServiceDataflowEndpoint -InputObject <IIoTOperationsServic
  [-KafkaSetting <IDataflowEndpointKafka>] [-LocalStorageSettingPersistentVolumeClaimRef <String>]
  [-MqttSetting <IDataflowEndpointMqtt>] [-NameLakehouseName <String>] [-NameWorkspaceName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityInstance
-```
-Update-AzIoTOperationsServiceDataflowEndpoint -InstanceInputObject <IIoTOperationsServiceIdentity>
- -Name <String> -Resource <IDataflowEndpointResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityInstanceExpanded
@@ -152,7 +131,7 @@ Token secret name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -182,7 +161,7 @@ Database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,7 +176,7 @@ Host of the Azure Data Explorer in the form of \<cluster\>.\<region\>.kusto.wind
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,7 +191,7 @@ Mode of Authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -228,7 +207,7 @@ Optional; defaults to the audience for Service host configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -243,7 +222,7 @@ Client ID for the user-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -258,7 +237,7 @@ Resource identifier (application ID URI) of the resource, affixed with the .defa
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,7 +252,7 @@ Tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -288,7 +267,7 @@ Batching latency in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -303,7 +282,7 @@ Maximum number of messages in a batch.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -318,7 +297,7 @@ Host of the Azure Data Lake in the form of \<account\>.blob.core.windows.net .
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -333,7 +312,7 @@ Mode of Authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -349,7 +328,7 @@ Optional; defaults to the audience for Service host configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -364,7 +343,7 @@ Client ID for the user-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -379,7 +358,7 @@ Resource identifier (application ID URI) of the resource, affixed with the .defa
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -394,7 +373,7 @@ Tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -409,7 +388,7 @@ Batching latency in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -424,7 +403,7 @@ Maximum number of messages in a batch.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -455,7 +434,7 @@ Endpoint Type.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -470,7 +449,7 @@ Host of the Microsoft Fabric in the form of https://\<host\>.fabric.microsoft.co
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -486,7 +465,7 @@ Can be either tables or files.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -501,7 +480,7 @@ Mode of Authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -517,7 +496,7 @@ Optional; defaults to the audience for Service host configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -532,7 +511,7 @@ Client ID for the user-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -547,7 +526,7 @@ Resource identifier (application ID URI) of the resource, affixed with the .defa
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -562,7 +541,7 @@ Tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -577,7 +556,7 @@ Batching latency in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -592,7 +571,7 @@ Maximum number of messages in a batch.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -607,7 +586,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -622,7 +601,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
-Parameter Sets: UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateViaIdentityInstanceExpanded
 Aliases:
 
 Required: True
@@ -637,7 +616,7 @@ Name of instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -652,7 +631,7 @@ Kafka endpoint.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowEndpointKafka
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -667,7 +646,7 @@ Persistent volume claim name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -682,7 +661,7 @@ Broker endpoint.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowEndpointMqtt
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -697,7 +676,7 @@ Name of Instance dataflowEndpoint resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityInstance, UpdateViaIdentityInstanceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityInstanceExpanded
 Aliases: DataflowEndpointName
 
 Required: True
@@ -712,7 +691,7 @@ Lakehouse name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -727,7 +706,7 @@ Workspace name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityInstanceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -752,28 +731,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-Instance dataflowEndpoint resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowEndpointResource
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -789,7 +753,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -834,8 +798,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowEndpointResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
 
