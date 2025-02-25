@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "cc1cf474-2b55-4750-9200-add3fd2c1e4e" ],
+        "x-ms-client-request-id": [ "e4014ff1-2166-4ba7-b2ec-c12a7ec8e85b" ],
         "CommandName": [ "Get-AzIoTOperationsServiceBrokerListener" ],
         "FullCommandName": [ "Get-AzIoTOperationsServiceBrokerListener_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,15 +24,15 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "b5a2ffff-3118-4b2a-90b9-6f51791acebf" ],
-        "x-ms-correlation-request-id": [ "4fdf119e-2710-4467-9de8-1a1854f63102" ],
+        "x-ms-request-id": [ "c5c5f821-dfdc-4ad6-96ed-46dc25c76415" ],
+        "x-ms-correlation-request-id": [ "8d5c9dc4-9749-4a2e-9f21-91480b22dab8" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20250225T233137Z:4fdf119e-2710-4467-9de8-1a1854f63102" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250225T234537Z:8d5c9dc4-9749-4a2e-9f21-91480b22dab8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8D8212C4D0E347B3AAD9488BA2119AA7 Ref B: CO6AA3150220027 Ref C: 2025-02-25T23:31:36Z" ],
-        "Date": [ "Tue, 25 Feb 2025 23:31:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7DBF18DEE24F4D9A99064D0AE126B0DA Ref B: CO6AA3150217017 Ref C: 2025-02-25T23:45:37Z" ],
+        "Date": [ "Tue, 25 Feb 2025 23:45:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1185" ],
@@ -51,7 +51,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "a20516ac-9d33-4834-ae7c-59780f445006" ],
+        "x-ms-client-request-id": [ "278cff94-1faf-422d-a456-087d13db046f" ],
         "CommandName": [ "Get-AzIoTOperationsServiceBrokerListener" ],
         "FullCommandName": [ "Get-AzIoTOperationsServiceBrokerListener_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -69,15 +69,15 @@
         "ETag": [ "\"8b011a9e-0000-0200-0000-67bd31f20000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "997b02c5-6889-4fcb-8863-afa78469d433" ],
-        "x-ms-correlation-request-id": [ "c0fa7fa8-d60a-475a-8687-165d39342968" ],
+        "x-ms-request-id": [ "c4a04b61-b9ee-4562-b1ab-fb044106d4ef" ],
+        "x-ms-correlation-request-id": [ "20888fb9-4982-4a55-b53f-19211cac4ae6" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20250225T233137Z:c0fa7fa8-d60a-475a-8687-165d39342968" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250225T234538Z:20888fb9-4982-4a55-b53f-19211cac4ae6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D0A5967D64F7449192F10874B710E4B4 Ref B: CO6AA3150220027 Ref C: 2025-02-25T23:31:37Z" ],
-        "Date": [ "Tue, 25 Feb 2025 23:31:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1551AC62186C4D368A781A5381AEFF43 Ref B: CO6AA3150217017 Ref C: 2025-02-25T23:45:38Z" ],
+        "Date": [ "Tue, 25 Feb 2025 23:45:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1173" ],
