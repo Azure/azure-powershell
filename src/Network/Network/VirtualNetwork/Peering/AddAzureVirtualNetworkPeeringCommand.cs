@@ -47,22 +47,22 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to indicate whether this is a Vnet peering or subnet peering")]
-        public SwitchParameter PeerCompleteVnet { get; set; }
+        public bool? PeerCompleteVnets { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of local subnets to be peered")]
-        public string[] LocalSubnetName { get; set; }
+        public string[] LocalSubnetNames { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of remote subnets to be peered")]
-        public string[] RemoteSubnetName { get; set; }
+        public string[] RemoteSubnetNames { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to determine whether this is a IPv6 only peering")]
-        public SwitchParameter EnableOnlyIPv6Peering { get; set; }
+        public bool? EnableOnlyIPv6Peering { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            vnetPeering.PeerCompleteVnet = this.PeerCompleteVnet;
-            vnetPeering.LocalSubnetName = this.LocalSubnetName;
-            vnetPeering.RemoteSubnetName = this.RemoteSubnetName;
+            vnetPeering.PeerCompleteVnets = this.PeerCompleteVnets;
+            vnetPeering.LocalSubnetNames = this.LocalSubnetNames;
+            vnetPeering.RemoteSubnetNames = this.RemoteSubnetNames;
             vnetPeering.EnableOnlyIPv6Peering = this.EnableOnlyIPv6Peering;
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
             vnetPeering.AllowGatewayTransit = this.AllowGatewayTransit;
