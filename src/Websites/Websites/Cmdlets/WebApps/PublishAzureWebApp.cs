@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 var rec = new ErrorRecord(new Exception("Pull with MSI support is not yet available for Linux webapps"), string.Empty, ErrorCategory.InvalidArgument, null);
                 WriteError(rec);
-                return
+                return;
             }
 
             if (!string.IsNullOrEmpty(Type))
@@ -211,17 +211,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     //push based deployment
                     else if (string.IsNullOrEmpty(ArchiveURL) && !string.IsNullOrEmpty(ArchivePath))
                     {
-                        WriteObject("Start: " + ArchivePath);
                         if (!Path.IsPathRooted(ArchivePath))
                         {
                             ArchivePath = Path.Combine(this.SessionState.Path.CurrentFileSystemLocation.Path, ArchivePath);
                         }
-                        WriteObject("After: " + ArchivePath); 
                         using (var s = File.OpenRead(ArchivePath))
                         {
-                            WriteObject("file opened");
                             archiveContent = new StreamContent(s);
-                            WriteObject("stream content created");
                             archiveContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/zip");
                             r = client.PostAsync(deployUrl, archiveContent).Result;
                         }
