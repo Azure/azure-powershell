@@ -20,6 +20,7 @@ Create a in-memory object for Extension
 Create a in-memory object for Extension
 #>
 function New-AzCloudServiceExtensionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

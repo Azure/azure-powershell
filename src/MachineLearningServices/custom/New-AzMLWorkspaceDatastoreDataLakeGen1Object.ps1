@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AzureDataLakeG
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreDataLakeGen1Object
 #>
 function New-AzMLWorkspaceDatastoreDataLakeGen1Object {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AzureDataLakeGen1Datastore')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

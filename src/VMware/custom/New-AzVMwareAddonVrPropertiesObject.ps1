@@ -25,6 +25,7 @@
     https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
     #>
     function New-AzVMwareAddonVrPropertiesObject {
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.ModelCmdletAttribute()]
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonVrProperties')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(

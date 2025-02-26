@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface
 https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
 #>
 function New-AzConnectedNetworkInterfaceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

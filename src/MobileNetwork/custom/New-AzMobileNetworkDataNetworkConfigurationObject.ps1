@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkDataNetworkConfigurationObject
 #>
 function New-AzMobileNetworkDataNetworkConfigurationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

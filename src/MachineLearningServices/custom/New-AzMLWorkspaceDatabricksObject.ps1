@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Databricks
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatabricksObject
 #>
 function New-AzMLWorkspaceDatabricksObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Databricks')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

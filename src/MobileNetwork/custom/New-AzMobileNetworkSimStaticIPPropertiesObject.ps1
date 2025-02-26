@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPProperties
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSimStaticIPPropertiesObject
 #>
 function New-AzMobileNetworkSimStaticIPPropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

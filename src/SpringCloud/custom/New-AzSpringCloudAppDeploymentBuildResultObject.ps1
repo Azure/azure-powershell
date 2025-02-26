@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildResultUserSourceInfo
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentBuildResultObject
 #>
 function New-AzSpringCloudAppDeploymentBuildResultObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildResultUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

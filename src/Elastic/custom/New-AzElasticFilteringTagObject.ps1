@@ -25,6 +25,7 @@
     https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
     #>
     function New-AzElasticFilteringTagObject {
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.ModelCmdletAttribute()]
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.FilteringTag')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(

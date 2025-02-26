@@ -25,6 +25,7 @@
     https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
     #>
     function New-AzVMwarePSCredentialExecutionParameterObject {
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.ModelCmdletAttribute()]
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PSCredentialExecutionParameter')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(

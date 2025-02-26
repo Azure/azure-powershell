@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AmlCompute
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAmlComputeObject
 #>
 function New-AzMLWorkspaceAmlComputeObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AmlCompute')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

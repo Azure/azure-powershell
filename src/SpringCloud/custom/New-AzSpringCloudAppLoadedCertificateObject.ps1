@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.LoadedCertificate
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppLoadedCertificateObject
 #>
 function New-AzSpringCloudAppLoadedCertificateObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.LoadedCertificate')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

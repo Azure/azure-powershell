@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ContentCertificateProperti
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudContentCertificateObject
 #>
 function New-AzSpringCloudContentCertificateObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ContentCertificateProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

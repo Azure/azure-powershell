@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentBootstrapServer
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentbootstrapserverobject
 #>
 function New-AzServiceLinkerConfluentBootstrapServerObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentBootstrapServer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

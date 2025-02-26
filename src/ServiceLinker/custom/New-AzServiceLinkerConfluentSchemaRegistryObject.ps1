@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentSchemaRegistry
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentschemaregistryobject
 #>
 function New-AzServiceLinkerConfluentSchemaRegistryObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentSchemaRegistry')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

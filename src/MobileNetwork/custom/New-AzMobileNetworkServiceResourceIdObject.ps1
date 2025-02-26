@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceResourceId
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceResourceIdObject
 #>
 function New-AzMobileNetworkServiceResourceIdObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceResourceId')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

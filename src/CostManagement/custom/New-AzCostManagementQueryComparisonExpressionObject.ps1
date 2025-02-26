@@ -25,6 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpressi
 https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
 #>
 function New-AzCostManagementQueryComparisonExpressionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpression')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

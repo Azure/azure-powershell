@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat
 https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
 #>
 function New-AzConnectedNetworkAzureStackEdgeObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

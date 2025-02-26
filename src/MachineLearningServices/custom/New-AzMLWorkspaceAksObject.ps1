@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAksObject
 #>
 function New-AzMLWorkspaceAksObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

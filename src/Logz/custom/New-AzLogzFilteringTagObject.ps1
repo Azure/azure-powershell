@@ -25,6 +25,7 @@
     https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzFilteringTagObject
     #>
     function New-AzLogzFilteringTagObject {
+        [Microsoft.Azure.PowerShell.Cmdlets.Logz.ModelCmdletAttribute()]
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.FilteringTag')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(

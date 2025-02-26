@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CertificateDat
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreCredentialObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CertificateDatastoreCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

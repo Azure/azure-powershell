@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.FilteringTag
 https://learn.microsoft.com/powershell/module/az.Dynatrace/new-AzDynatraceMonitorFilteringTagObject
 #>
 function New-AzDynatraceMonitorFilteringTagObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.FilteringTag')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

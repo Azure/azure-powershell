@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.KeyVaultSecretUriSecretI
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerkeyvaultsecreturisecretinfoobject
 #>
 function New-AzServiceLinkerKeyVaultSecretUriSecretInfoObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExportAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.KeyVaultSecretUriSecretInfo')]
     [CmdletBinding(PositionalBinding=$false)]

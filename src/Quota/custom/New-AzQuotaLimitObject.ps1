@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject
 https://learn.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
 #>
 function New-AzQuotaLimitObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Quota.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

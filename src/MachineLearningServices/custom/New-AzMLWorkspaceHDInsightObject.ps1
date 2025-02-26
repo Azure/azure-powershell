@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.HDInsight
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceHDInsightObject
 #>
 function New-AzMLWorkspaceHDInsightObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.HDInsight')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

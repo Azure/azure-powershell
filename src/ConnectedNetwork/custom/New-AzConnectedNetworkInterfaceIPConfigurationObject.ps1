@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPCon
 https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
 #>
 function New-AzConnectedNetworkInterfaceIPConfigurationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

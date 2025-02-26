@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.DataLakeAnalyt
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDataLakeAnalyticsObject
 #>
 function New-AzMLWorkspaceDataLakeAnalyticsObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.DataLakeAnalytics')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

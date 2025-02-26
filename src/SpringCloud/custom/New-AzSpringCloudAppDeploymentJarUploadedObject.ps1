@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentJarUploadedObject
 #>
 function New-AzSpringCloudAppDeploymentJarUploadedObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.KeyVaultCertificatePropert
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudKeyVaultCertificateObject
 #>
 function New-AzSpringCloudKeyVaultCertificateObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.KeyVaultCertificateProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

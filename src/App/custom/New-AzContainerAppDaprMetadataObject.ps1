@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappdaprmetadataobject
 #>
 function New-AzContainerAppDaprMetadataObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

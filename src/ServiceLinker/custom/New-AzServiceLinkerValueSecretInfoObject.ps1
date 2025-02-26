@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ValueSecretInfo
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkervaluesecretinfoobject
 #>
 function New-AzServiceLinkerValueSecretInfoObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExportAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ValueSecretInfo')]
     [CmdletBinding(PositionalBinding=$false)]

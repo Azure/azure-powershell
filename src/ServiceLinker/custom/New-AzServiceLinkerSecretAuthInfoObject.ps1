@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SecretAuthInfo
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersecretauthinfoobject
 #>
 function New-AzServiceLinkerSecretAuthInfoObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SecretAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

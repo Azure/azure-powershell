@@ -24,6 +24,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.DriveStatus
 https://learn.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 #>
 function New-AzImportExportDriveListObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

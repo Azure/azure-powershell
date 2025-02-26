@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SynapseSpark
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSynapseSparkObject
 #>
 function New-AzMLWorkspaceSynapseSparkObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SynapseSpark')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

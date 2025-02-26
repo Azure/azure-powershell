@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.SourceUploadedUserSourceIn
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentSourceUploadedObject
 #>
 function New-AzSpringCloudAppDeploymentSourceUploadedObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.SourceUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

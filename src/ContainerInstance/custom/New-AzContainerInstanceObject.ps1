@@ -22,6 +22,7 @@ Create a in-memory object for Container
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
 #>
 function New-AzContainerInstanceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

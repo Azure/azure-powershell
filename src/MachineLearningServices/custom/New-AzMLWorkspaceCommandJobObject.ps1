@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CommandJob
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCommandJobObject
 #>
 function New-AzMLWorkspaceCommandJobObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CommandJob')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

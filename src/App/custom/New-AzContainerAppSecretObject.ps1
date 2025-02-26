@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappsecretobject
 #>
 function New-AzContainerAppSecretObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField
 https://learn.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestHeaderFieldObject
 #>
 function New-AzApplicationInsightsWebTestHeaderFieldObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

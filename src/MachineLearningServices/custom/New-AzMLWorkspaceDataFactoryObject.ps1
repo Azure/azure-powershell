@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.DataFactory
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDataFactoryObject
 #>
 function New-AzMLWorkspaceDataFactoryObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.DataFactory')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

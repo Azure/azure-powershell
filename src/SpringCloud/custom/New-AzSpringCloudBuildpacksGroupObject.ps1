@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildpacksGroupProperties
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpacksGroupObject
 #>
 function New-AzSpringCloudBuildpacksGroupObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildpacksGroupProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

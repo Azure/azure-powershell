@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendor
 https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionVendorConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionVendorConfigurationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

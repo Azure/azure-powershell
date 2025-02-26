@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.VirtualMachine
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceVirtualMachineObject
 #>
 function New-AzMLWorkspaceVirtualMachineObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.VirtualMachine')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

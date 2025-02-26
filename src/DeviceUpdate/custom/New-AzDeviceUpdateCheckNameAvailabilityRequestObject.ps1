@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.CheckNameAvailabilityRequ
 https://learn.microsoft.com/powershell/module/az.DeviceUpdate/new-AzDeviceUpdateCheckNameAvailabilityRequestObject
 #>
 function New-AzDeviceUpdateCheckNameAvailabilityRequestObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.CheckNameAvailabilityRequest')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AzureBlobDatas
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreBlobObject
 #>
 function New-AzMLWorkspaceDatastoreBlobObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AzureBlobDatastore')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

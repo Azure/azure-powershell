@@ -22,6 +22,7 @@ Create a in-memory object for VolumeMount
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceVolumeMountObject
 #>
 function New-AzContainerInstanceVolumeMountObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.VolumeMount')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

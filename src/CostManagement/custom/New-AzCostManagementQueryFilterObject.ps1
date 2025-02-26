@@ -25,6 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryFilter
 https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
 #>
 function New-AzCostManagementQueryFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

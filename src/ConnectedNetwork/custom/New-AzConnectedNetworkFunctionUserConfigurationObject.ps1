@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserCo
 https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionUserConfigurationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

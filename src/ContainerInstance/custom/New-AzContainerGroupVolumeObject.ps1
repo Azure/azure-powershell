@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Volume
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 #>
 function New-AzContainerGroupVolumeObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Volume')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

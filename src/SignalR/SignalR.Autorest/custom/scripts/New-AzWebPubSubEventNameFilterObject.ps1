@@ -27,6 +27,7 @@ https://learn.microsoft.com/powershell/module/az./new-AzWebPubSubEventNameFilter
 #>
 function New-AzWebPubSubEventNameFilterObject
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventNameFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

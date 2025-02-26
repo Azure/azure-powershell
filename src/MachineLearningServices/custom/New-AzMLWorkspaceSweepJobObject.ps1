@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SweepJob
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSweepJobObject
 #>
 function New-AzMLWorkspaceSweepJobObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SweepJob')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

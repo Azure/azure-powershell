@@ -22,6 +22,7 @@ Create a in-memory object for Port
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupPortObject
 #>
 function New-AzContainerGroupPortObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Port')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -25,6 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IPConfiguration
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
 #>
 function New-AzDnsResolverIPConfigurationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IPConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

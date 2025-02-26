@@ -20,6 +20,7 @@ Create a in-memory object for LoadBalancerFrontendIPConfiguration
 Create a in-memory object for LoadBalancerFrontendIPConfiguration
 #>
 function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerFrontendIPConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

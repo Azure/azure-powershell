@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSour
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
 #>
 function New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

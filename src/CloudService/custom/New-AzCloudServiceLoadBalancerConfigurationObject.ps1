@@ -20,6 +20,7 @@ Create a in-memory object for LoadBalancerConfiguration
 Create a in-memory object for LoadBalancerConfiguration
 #>
 function New-AzCloudServiceLoadBalancerConfigurationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

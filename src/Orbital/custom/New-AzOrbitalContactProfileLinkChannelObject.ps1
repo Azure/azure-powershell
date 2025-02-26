@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel
 https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
 #>
 function New-AzOrbitalContactProfileLinkChannelObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

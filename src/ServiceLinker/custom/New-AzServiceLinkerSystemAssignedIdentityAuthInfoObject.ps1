@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SystemAssignedIdentityAu
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersystemassignedidentityauthinfoobject
 #>
 function New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SystemAssignedIdentityAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
