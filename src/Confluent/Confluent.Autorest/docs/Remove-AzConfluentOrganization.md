@@ -36,7 +36,7 @@ Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluento
 
 ```output
 - This action cannot be undone.
-- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- This will permanently delete ‘\<resource_name\>’ and its Azure subscription
 - Stop billing for the selected Confluent organization through Azure Marketplace
 Do you want to proceed (Y/N)?: y
 ```
@@ -50,7 +50,7 @@ Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-
 
 ```output
 - This action cannot be undone.
-- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- This will permanently delete ‘\<resource_name\>’ and its Azure subscription
 - Stop billing for the selected Confluent organization through Azure Marketplace
 Do you want to proceed (Y/N)?: y
 ```
@@ -223,6 +223,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+  - `[ApiKeyId <String>]`: Confluent API Key id
+  - `[ClusterId <String>]`: Confluent kafka or schema registry cluster id
+  - `[ConnectorName <String>]`: Confluent connector name
+  - `[EnvironmentId <String>]`: Confluent environment id
+  - `[Id <String>]`: Resource identity path
+  - `[OrganizationName <String>]`: Organization resource name
+  - `[ResourceGroupName <String>]`: Resource group name
+  - `[RoleBindingId <String>]`: Confluent Role binding id
+  - `[SubscriptionId <String>]`: Microsoft Azure subscription id
+  - `[TopicName <String>]`: Confluent kafka or schema registry topic name
 
 ## RELATED LINKS
 
