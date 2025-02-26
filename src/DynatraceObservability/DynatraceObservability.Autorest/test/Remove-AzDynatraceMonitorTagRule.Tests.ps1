@@ -16,13 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDynatraceMonitorTagR
 
 Describe 'Remove-AzDynatraceMonitorTagRule' {
     It 'Delete' {
-        { Remove-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName02 } | Should -Not -Throw
+        { Remove-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         {             
             $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
-            $obj = New-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName02 -LogRuleFilteringTag $tagFilter
+            $obj = New-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -LogRuleFilteringTag $tagFilter
             Remove-AzDynatraceMonitorTagRule -InputObject $obj
         } | Should -Not -Throw
     }

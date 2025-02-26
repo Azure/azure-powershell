@@ -1,0 +1,49 @@
+{
+  "Get-AzDynatraceMonitorMetricStatus+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/9e28142e-8a8c-4a93-a280-41a2df3e0215/resourceGroups/dyobrgsyuzip/providers/Dynatrace.Observability/monitors/dyobyu41qb/getMetricStatus?api-version=2023-04-27+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e28142e-8a8c-4a93-a280-41a2df3e0215/resourceGroups/dyobrgsyuzip/providers/Dynatrace.Observability/monitors/dyobyu41qb/getMetricStatus?api-version=2023-04-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "ada2e463-b26e-4da5-8674-9745e8969b42" ],
+        "CommandName": [ "Get-AzDynatraceMonitorMetricStatus" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitorMetricStatus_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.0", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "486f2fcc-903d-4279-8f56-e6cbcd150e07" ],
+        "x-ms-correlation-request-id": [ "00c5ded6-67e6-4124-a169-bc5a153facc9" ],
+        "x-ms-client-request-id": [ "ada2e463-b26e-4da5-8674-9745e8969b42" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "f38af0ea-ef97-4453-affb-0152e9e515f6" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20250226T090901Z:00c5ded6-67e6-4124-a169-bc5a153facc9" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9013E23E121644208E77B277CB7782D2 Ref B: MAA201060516051 Ref C: 2025-02-26T09:09:00Z" ],
+        "Date": [ "Wed, 26 Feb 2025 09:09:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "23" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"azureResourceIds\":[]}",
+      "isContentBase64": false
+    }
+  }
+}
