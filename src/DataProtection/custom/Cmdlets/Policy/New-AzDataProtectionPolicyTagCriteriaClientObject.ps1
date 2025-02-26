@@ -1,4 +1,5 @@
 ﻿function New-AzDataProtectionPolicyTagCriteriaClientObject{
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IScheduleBasedBackupCriteria')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates a new criteria object')]

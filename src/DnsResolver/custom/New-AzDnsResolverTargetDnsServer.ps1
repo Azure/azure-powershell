@@ -25,6 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.TargetDnsServer
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
 #>
 function New-AzDnsResolverTargetDnsServerObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.TargetDnsServer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
