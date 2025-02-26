@@ -1,13 +1,17 @@
 ### Example 1: Create VM checkpoint
 ```powershell
-New-AzScVmmVMCheckpoint -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm"
+New-AzScVmmVMCheckpoint -Name "test-vm" -ResourceGroupName "test-rg-01" -CheckpointName "Test-01" -CheckpointDescription "Test-Desc-01"
 ```
 
-Creates a VM checkpoint. To get details of the created checkpoint perform a Get VM operation using `Get-AzScVmmVM`.
+Creates a VM checkpoint with given Name and Description values for Checkpoint. To get details of the created checkpoint perform a Get VM operation using `Get-AzScVmmVM`.
 
 ### Example 2: Create VM checkpoint
 ```powershell
-New-AzScVmmVMCheckpoint -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm" -Name "Checkpoint1" -Description "Test-Checkpoint"
+$CheckpointProperties = '{
+    "name": "Test-02",
+    "description": "Test-Desc-02"
+}'
+New-AzScVmmVMCheckpoint -Name "test-vm" -ResourceGroupName "test-rg-01" -JsonString $CheckpointProperties
 ```
 
-Creates a VM checkpoint with given Name and Description values for Checkpoint.  To get details of the created checkpoint perform a Get VM operation using `Get-AzScVmmVM`.
+Creates a VM checkpoint with Checkpoint name and description in JsonString. To get details of the created checkpoint perform a Get VM operation using `Get-AzScVmmVM`.

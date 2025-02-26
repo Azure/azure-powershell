@@ -419,6 +419,9 @@ directive:
       verb: New
       subject: VMGuestAgent
     hide: true
+  - where:
+      subject: VMCheckpoint
+    hide: true
 
   - where:
       parameter-name: ResourceName

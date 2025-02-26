@@ -8,47 +8,54 @@ schema: 2.0.0
 # New-AzScVmmVMCheckpoint
 
 ## SYNOPSIS
-create a checkpoint in virtual machine instance.
+create a checkpoint in virtual machine.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmVMCheckpoint -MachineId <String> [-Description <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVMCheckpoint -Name <String> -ResourceGroupName <String> -CheckpointDescription <String>
+ -CheckpointName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmVMCheckpoint -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVMCheckpoint -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmVMCheckpoint -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVMCheckpoint -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a checkpoint in virtual machine instance.
+create a checkpoint in virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Create VM checkpoint
 ```powershell
-New-AzScVmmVMCheckpoint -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm"
+New-AzScVmmVMCheckpoint -Name "test-vm" -ResourceGroupName "test-rg-01" -CheckpointName "Test-01" -CheckpointDescription "Test-Desc-01"
 ```
 
-Creates a VM checkpoint.
+Creates a VM checkpoint with given Name and Description values for Checkpoint.
 To get details of the created checkpoint perform a Get VM operation using `Get-AzScVmmVM`.
 
 ### Example 2: Create VM checkpoint
 ```powershell
-New-AzScVmmVMCheckpoint -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm" -Name "Checkpoint1" -Description "Test-Checkpoint"
+$CheckpointProperties = '{
+    "name": "Test-02",
+    "description": "Test-Desc-02"
+}'
+New-AzScVmmVMCheckpoint -Name "test-vm" -ResourceGroupName "test-rg-01" -JsonString $CheckpointProperties
 ```
 
-Creates a VM checkpoint with given Name and Description values for Checkpoint.
+Creates a VM checkpoint with Checkpoint name and description in JsonString.
 To get details of the created checkpoint perform a Get VM operation using `Get-AzScVmmVM`.
 
 ## PARAMETERS
@@ -68,6 +75,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CheckpointDescription
+Description of the checkpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CheckpointName
+Name of the checkpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -76,21 +113,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Description of the checkpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -129,30 +151,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineId
-The fully qualified Azure Resource manager identifier of the resource.
+### -Name
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: VMName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the checkpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -185,6 +192,38 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

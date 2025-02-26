@@ -8,45 +8,60 @@ schema: 2.0.0
 # Restore-AzScVmmVMCheckpoint
 
 ## SYNOPSIS
-Restores to a checkpoint in virtual machine instance.
+Restores to a checkpoint in virtual machine.
 
 ## SYNTAX
 
 ### RestoreExpanded (Default)
 ```
-Restore-AzScVmmVMCheckpoint -MachineId <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzScVmmVMCheckpoint -Name <String> -ResourceGroupName <String> -CheckpointId <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Restore
 ```
-Restore-AzScVmmVMCheckpoint -MachineId <String> -Body <IVirtualMachineRestoreCheckpoint>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzScVmmVMCheckpoint -Name <String> -ResourceGroupName <String>
+ -Body <IVirtualMachineRestoreCheckpoint> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaJsonFilePath
 ```
-Restore-AzScVmmVMCheckpoint -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzScVmmVMCheckpoint -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RestoreViaJsonString
 ```
-Restore-AzScVmmVMCheckpoint -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzScVmmVMCheckpoint -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restores to a checkpoint in virtual machine instance.
+Restores to a checkpoint in virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Restore a VM Checkpoint
 ```powershell
-Restore-AzScVmmVMCheckpoint -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm" -Id "00000000-1111-0000-1111-000000000000"
+Restore-AzScVmmVMCheckpoint -Name "test-vm" -ResourceGroupName "test-rg-01" -CheckpointId "00000000-abcd-0000-abcd-000000000000"
 ```
 
-Restore a VM Checkpoint with given `checkpointID`.
+Restore a VM Checkpoint with given `CheckpointId`.
+To get the list of available checkpoints and their Id, do a get VM operation using `Get-AzScVmmVM`.
+
+### Example 2: Restore a VM Checkpoint
+```powershell
+$CheckpointProperties = '{
+    "id": "00000000-abcd-0000-abcd-000000000000"
+}'
+Restore-AzScVmmVMCheckpoint -Name "test-vm" -ResourceGroupName "test-rg-01" -JsonString $CheckpointProperties
+```
+
+Restore a VM Checkpoint with given `CheckpointId`.
 To get the list of available checkpoints and their Id, do a get VM operation using `Get-AzScVmmVM`.
 
 ## PARAMETERS
@@ -81,6 +96,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -CheckpointId
+ID of the checkpoint to be restored to.
+
+```yaml
+Type: System.String
+Parameter Sets: RestoreExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -89,21 +119,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-ID of the checkpoint to be restored to.
-
-```yaml
-Type: System.String
-Parameter Sets: RestoreExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -142,13 +157,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineId
-The fully qualified Azure Resource manager identifier of the resource.
+### -Name
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: VMName
 
 Required: True
 Position: Named
@@ -183,6 +198,38 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

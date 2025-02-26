@@ -76,7 +76,7 @@ The operation to Create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ### [New-AzScVmmVMCheckpoint](New-AzScVmmVMCheckpoint.md)
-create a checkpoint in virtual machine instance.
+create a checkpoint in virtual machine.
 
 ### [New-AzScVmmVMGuestAgent](New-AzScVmmVMGuestAgent.md)
 Create GuestAgent.
@@ -106,7 +106,7 @@ Deregisters the ScVmm virtual network from Azure.
 The operation to delete a virtual machine instance.
 
 ### [Remove-AzScVmmVMCheckpoint](Remove-AzScVmmVMCheckpoint.md)
-Deletes a checkpoint in virtual machine instance.
+Deletes a checkpoint in virtual machine.
 
 ### [Remove-AzScVmmVMTemplate](Remove-AzScVmmVMTemplate.md)
 Deregisters the ScVmm VM Template from Azure.
@@ -115,7 +115,7 @@ Deregisters the ScVmm VM Template from Azure.
 The operation to restart a virtual machine.
 
 ### [Restore-AzScVmmVMCheckpoint](Restore-AzScVmmVMCheckpoint.md)
-Restores to a checkpoint in virtual machine instance.
+Restores to a checkpoint in virtual machine.
 
 ### [Start-AzScVmmVM](Start-AzScVmmVM.md)
 The operation to start a virtual machine.
