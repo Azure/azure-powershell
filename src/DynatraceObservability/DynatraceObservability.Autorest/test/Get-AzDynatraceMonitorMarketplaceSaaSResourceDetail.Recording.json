@@ -1,0 +1,44 @@
+{
+  "Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/9e28142e-8a8c-4a93-a280-41a2df3e0215/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails?api-version=2023-04-27+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e28142e-8a8c-4a93-a280-41a2df3e0215/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails?api-version=2023-04-27",
+      "Content": "{\r\n  \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "58" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "800" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "27254a54-ec9e-4ddf-8279-893ee7849990" ],
+        "x-ms-correlation-request-id": [ "9bcb1b89-599b-4771-a11d-7ba67339dede" ],
+        "x-ms-client-request-id": [ "729fd15b-ac69-4562-9c64-d85bb1a33360" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "9e796537-0903-4221-aebe-d8cecd9e9787" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "12000" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20250226T090859Z:9bcb1b89-599b-4771-a11d-7ba67339dede" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 089D6CAEF3D34B67884F3BA5C2193CE9 Ref B: MAA201060516051 Ref C: 2025-02-26T09:08:39Z" ],
+        "Date": [ "Wed, 26 Feb 2025 09:08:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "162" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"marketplaceSaaSResourceId\":\"6126184a-8ad2-48c1-d3a2-5ebc1e2154fc\",\"planId\":\"azureportalintegration_privatepreview\",\"marketplaceSubscriptionStatus\":\"Subscribed\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: get Marketplace SaaS resource details
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -TenantId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
 
 ```output
-{{ Add output here }}
+MarketplaceSaaSResourceId            MarketplaceSubscriptionStatus PlanId
+-------------------------            ----------------------------- ------
+yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy Subscribed                    azureportalintegration_privatepreview
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command get Marketplace SaaS resource details

@@ -15,19 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitorMarketp
 }
 
 Describe 'Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail' {
-    It 'GetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpanded' {
+        {Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -TenantId '72f988bf-86f1-41af-91ab-2d7cd011db47'}  | Should -Not -Throw
     }
 }

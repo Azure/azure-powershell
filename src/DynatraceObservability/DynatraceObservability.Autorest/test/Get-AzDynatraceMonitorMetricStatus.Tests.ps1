@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitorMetricS
 }
 
 Describe 'Get-AzDynatraceMonitorMetricStatus' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {Get-AzDynatraceMonitorMetricStatus -MonitorName $env.dynatraceName01 -ResourceGroupName $env.resourceGroup}  | Should -Not -Throw
     }
 }
