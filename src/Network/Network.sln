@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -90,6 +90,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{84115EF3-6499-4C12-AC3A-A09ECF2F8E97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{1203D821-7447-4DB5-B256-626ABA776459}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NetworkSecurityPerimeter", "..\..\generated\Network\NetworkSecurityPerimeter.Autorest\Az.NetworkSecurityPerimeter.csproj", "{437F0A63-50F9-44D0-BCF1-1C442F616736}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -261,6 +263,10 @@ Global
 		{1203D821-7447-4DB5-B256-626ABA776459}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1203D821-7447-4DB5-B256-626ABA776459}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1203D821-7447-4DB5-B256-626ABA776459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{437F0A63-50F9-44D0-BCF1-1C442F616736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{437F0A63-50F9-44D0-BCF1-1C442F616736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{437F0A63-50F9-44D0-BCF1-1C442F616736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{437F0A63-50F9-44D0-BCF1-1C442F616736}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
