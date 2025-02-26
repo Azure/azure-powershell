@@ -252,6 +252,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Powe
 {GetParameterSetToCmdletMapping()}{GetDefaultValuesStatements()}
 {GetProcessCustomAttributesAtRuntime()}
 {Indent}{Indent}$wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+{Indent}{Indent}if ($wrappedCmd -eq $null) {{
+{Indent}{Indent}{Indent}$wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+{Indent}{Indent}}}
 {Indent}{Indent}$scriptCmd = {{& $wrappedCmd @PSBoundParameters}}
 {Indent}{Indent}$steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
 {Indent}{Indent}$steppablePipeline.Begin($PSCmdlet)

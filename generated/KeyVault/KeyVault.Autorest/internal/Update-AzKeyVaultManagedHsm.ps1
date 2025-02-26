@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a managed HSM Pool in the specified subscription.
+update a managed HSM Pool in the specified subscription.
 .Description
-Update a managed HSM Pool in the specified subscription.
+update a managed HSM Pool in the specified subscription.
 .Example
 {{ Add code here }}
 .Example
@@ -342,6 +342,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
