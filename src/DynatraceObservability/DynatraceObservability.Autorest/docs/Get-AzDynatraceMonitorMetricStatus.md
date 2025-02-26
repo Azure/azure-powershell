@@ -18,12 +18,6 @@ Get-AzDynatraceMonitorMetricStatus -MonitorName <String> -ResourceGroupName <Str
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzDynatraceMonitorMetricStatus -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get metric status
 
