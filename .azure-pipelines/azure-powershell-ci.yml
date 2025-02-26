@@ -38,12 +38,37 @@ variables:
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
+schedules:
+- cron: 0 4 * * 0,1,2,3,4,5,6
+  displayName: Daily Archive
+  branches:
+    include:
+    - main
+
 trigger:
   batch: true
   branches:
     include:
     - main
-  
+    - release-*
+    - Az.*
+    - LTS
+    - generation-LTS
+    - stack-dev
+    - preview
+    - AzureRM
+    - AzureRM6.13
+    - AzureRM.*
+    - DeploymentRollouts
+    - Compute-*
+    - test-filtering-branch
+    - azvmremotingpreview
+    - test-build-filter
+    - generation
+    - Azure
+    exclude:
+    - release-network-*
+
 jobs:
 - job: Build
   displayName: Build
@@ -57,15 +82,15 @@ jobs:
     workspaceRepo: true
   - checkout: azure-powershell-devops
     path: "azure-powershell-devops"
-  - task: PowerShell@2
-    displayName: 'Get Github Access Token'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
-  # - template: util/get-github-pat-steps.yml
+  # - task: PowerShell@2
+  #   displayName: 'Get Github Access Token'
+  #   inputs:
+  #     targetType: inline
+  #     pwsh: true
+  #     script: |
+  #       $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
+  #       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+  - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
     displayName: 'Use .NET Core sdk 6.0.x'
     inputs:
