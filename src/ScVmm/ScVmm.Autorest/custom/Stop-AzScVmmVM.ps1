@@ -71,12 +71,8 @@ param(
     ${Body},
 
     [Parameter(ParameterSetName='StopExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("true", "false")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Gets or sets a value indicating whether to request non-graceful VM shutdown.
-    # True value for this flag indicates non-graceful shutdown whereas false indicates otherwise.
-    # Defaults to false.
+    [System.Management.Automation.SwitchParameter]
+    # Whether to request non-graceful VM shutdown.
     ${SkipShutdown},
 
     [Parameter(ParameterSetName='StopViaJsonFilePath', Mandatory)]
@@ -203,6 +199,12 @@ begin {
         # Custom Logic Begin
         $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
         $PSBoundParameters['MachineId'] = $machineObj.Id
+
+        if ($parameterSet -eq 'StopExpanded') {
+            if ($PSBoundParameters.ContainsKey('SkipShutdown')) {
+                $PSBoundParameters['SkipShutdown'] = "true"
+            }
+        }
 
         foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId')) {
             [void]$PSBoundParameters.Remove($key)

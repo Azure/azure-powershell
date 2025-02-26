@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create GuestAgent.
+Implements GuestAgent GET method.
 .Description
-create GuestAgent.
+Implements GuestAgent GET method.
 .Example
 {{ Add code here }}
 .Example
@@ -27,11 +27,11 @@ create GuestAgent.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgent
 .Link
-https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvmguestagent
+https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmguestagent
 #>
-function New-AzScVmmVMGuestAgent {
+function Get-AzScVmmVMGuestAgent {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgent])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Alias('VMName')]
@@ -55,36 +55,6 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.Security.SecureString]
-    # Gets or sets the password to connect with the guest.
-    ${CredentialsPassword},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Gets or sets username to connect with the guest.
-    ${CredentialsUsername},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Gets or sets httpsProxy url.
-    ${HttpProxyConfigHttpsProxy},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -93,12 +63,6 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
@@ -119,12 +83,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
@@ -172,9 +130,8 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.ScVmm.private\New-AzScVmmVMGuestAgent_CreateExpanded';
-            CreateViaJsonFilePath = 'Az.ScVmm.private\New-AzScVmmVMGuestAgent_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.ScVmm.private\New-AzScVmmVMGuestAgent_CreateViaJsonString';
+            Get = 'Az.ScVmm.private\Get-AzScVmmVMGuestAgent_Get';
+            List = 'Az.ScVmm.private\Get-AzScVmmVMGuestAgent_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -190,19 +147,11 @@ begin {
         # Custom Logic Begin
         $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
         $PSBoundParameters['MachineId'] = $machineObj.Id
-        if (($null -eq $machineObj.Identity) -or $machineObj.Identity.Type -ne 'SystemAssigned') {
-            $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -IdentityType 'SystemAssigned'
-        }
-
         foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId')) {
             [void]$PSBoundParameters.Remove($key)
         }
-
-        if ($parameterSet -eq 'CreateExpanded') {
-            $PSBoundParameters['ProvisioningAction'] = 'install'
-        }
         # Custom Logic End
-        
+
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

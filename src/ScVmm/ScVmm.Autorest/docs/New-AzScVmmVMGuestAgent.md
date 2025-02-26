@@ -8,43 +8,104 @@ schema: 2.0.0
 # New-AzScVmmVMGuestAgent
 
 ## SYNOPSIS
-Create GuestAgent.
+create GuestAgent.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzScVmmVMGuestAgent -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>]
- [-ProvisioningAction <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzScVmmVMGuestAgent -Name <String> -ResourceGroupName <String> -CredentialsPassword <SecureString>
+ -CredentialsUsername <String> [-SubscriptionId <String>] [-HttpProxyConfigHttpsProxy <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzScVmmVMGuestAgent -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzScVmmVMGuestAgent -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create GuestAgent.
+create GuestAgent.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable Guest Management
 ```powershell
+$securePassword = ConvertTo-SecureString "*****" -AsPlainText -Force
+New-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01" -CredentialsPassword $securePassword -CredentialsUsername 'testUser'
+```
+
+```output
+CredentialsPassword          :
+CredentialsUsername          : testUser
+CustomResourceName           :
+HttpProxyConfigHttpsProxy    :
+Id                           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/M
+                               icrosoft.HybridCompute/machines/test-vm/providers/Microsoft.ScVmm/virtualMachineIn
+                               stances/default/guestAgents/default
+Name                         : default
+ProvisioningAction           : install
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg-01
+Status                       : Enabled
+SystemDataCreatedAt          : 08-01-2024 10:04:20
+SystemDataCreatedBy          : user@contoso.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 08-01-2024 13:14:34
+SystemDataLastModifiedBy     : 11111111-aaaa-2222-bbbb-333333333333
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.scvmm/virtualmachineinstances/guestagents
+Uuid                         : 
+```
+
+Enables Guest Management capability on the virtual machine.
+
+### Example 2: Enable Guest Management
+```powershell
+$JsonStringInput='{
+    "credentials": {
+      "username": "testUser",
+      "password": "*****"
+    },
+    "provisioningAction": "install"
+}'
+New-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01" -JsonString $JsonStringInput
 {{ Add code here }}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CredentialsPassword          :
+CredentialsUsername          : testUser
+CustomResourceName           :
+HttpProxyConfigHttpsProxy    :
+Id                           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/M
+                               icrosoft.HybridCompute/machines/test-vm/providers/Microsoft.ScVmm/virtualMachineIn
+                               stances/default/guestAgents/default
+Name                         : default
+ProvisioningAction           : install
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg-01
+Status                       : Enabled
+SystemDataCreatedAt          : 08-01-2024 10:04:20
+SystemDataCreatedBy          : user@contoso.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 08-01-2024 13:14:34
+SystemDataLastModifiedBy     : 11111111-aaaa-2222-bbbb-333333333333
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.scvmm/virtualmachineinstances/guestagents
+Uuid                         : 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Enables Guest Management capability on the virtual machine.
 
 ## PARAMETERS
 
@@ -68,10 +129,10 @@ Gets or sets the password to connect with the guest.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,10 +144,10 @@ Gets or sets username to connect with the guest.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,7 +175,7 @@ Gets or sets httpsProxy url.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -124,13 +185,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-The name of the hybrid machine.
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: MachineName
+Aliases: VMName
 
 Required: True
 Position: Named
@@ -144,21 +235,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningAction
-Gets or sets the guest agent provisioning action.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

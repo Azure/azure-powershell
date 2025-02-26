@@ -14,7 +14,7 @@ The operation to power off (stop) a virtual machine.
 
 ### StopExpanded (Default)
 ```
-Stop-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkipShutdown <String>]
+Stop-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkipShutdown]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ This command will Shut down the VM gracefully and bring it to Stopped state.
 
 ### Example 2: Power off the VM
 ```powershell
-Stop-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -SkipShutdown "true"
+Stop-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -SkipShutdown
 ```
 
 This command will Skip shutdown and power-off the VM immediately.
@@ -206,12 +206,10 @@ Accept wildcard characters: False
 ```
 
 ### -SkipShutdown
-Gets or sets a value indicating whether to request non-graceful VM shutdown.
-True value for this flag indicates non-graceful shutdown whereas false indicates otherwise.
-Defaults to false.
+Whether to request non-graceful VM shutdown.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: StopExpanded
 Aliases:
 

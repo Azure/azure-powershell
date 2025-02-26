@@ -386,7 +386,7 @@ directive:
     set:
       subject: VM
   - where:
-      verb: New|Update|Remove|Start|Stop|Restart
+      verb: Get|Start|Stop|Restart
       subject: VM
     hide: true
 
@@ -416,7 +416,7 @@ directive:
       subject: VMGuestAgent
     remove: true
   - where:
-      verb: New
+      verb: Get|New
       subject: VMGuestAgent
     hide: true
   - where:

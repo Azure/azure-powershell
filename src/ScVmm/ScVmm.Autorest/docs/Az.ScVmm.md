@@ -79,7 +79,7 @@ Please note some properties can be set only during virtual machine instance crea
 create a checkpoint in virtual machine.
 
 ### [New-AzScVmmVMGuestAgent](New-AzScVmmVMGuestAgent.md)
-Create GuestAgent.
+create GuestAgent.
 
 ### [New-AzScVmmVMTemplate](New-AzScVmmVMTemplate.md)
 Onboards the ScVmm VM Template as an Azure VM Template resource.

@@ -12,14 +12,9 @@ Retrieves information about a virtual machine instance.
 
 ## SYNTAX
 
-### Get (Default)
 ```
-Get-AzScVmmVM -MachineId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzScVmmVM -MachineId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,8 +116,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineId
-The fully qualified Azure Resource manager identifier of the resource.
+### -Name
+The name of the virtual machine.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: VMName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -132,6 +143,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
