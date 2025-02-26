@@ -38,6 +38,13 @@ variables:
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
+schedules:
+- cron: 0 4 * * 1,2,3,4,5,6,7
+  displayname: Daily Archive
+  branches:
+    include:
+    - main
+
 trigger:
   batch: true
   branches:
