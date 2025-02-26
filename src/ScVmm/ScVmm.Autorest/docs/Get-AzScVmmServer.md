@@ -8,11 +8,11 @@ schema: 2.0.0
 # Get-AzScVmmServer
 
 ## SYNOPSIS
-Implements VMMServer GET method.
+Implements VmmServer GET method.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzScVmmServer [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -28,14 +28,14 @@ Get-AzScVmmServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
 Get-AzScVmmServer -InputObject <IScVmmIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzScVmmServer -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Implements VMMServer GET method.
+Implements VmmServer GET method.
 
 ## EXAMPLES
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMMServer.
+Name of the VmmServer.
 
 ```yaml
 Type: System.String
@@ -158,7 +158,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

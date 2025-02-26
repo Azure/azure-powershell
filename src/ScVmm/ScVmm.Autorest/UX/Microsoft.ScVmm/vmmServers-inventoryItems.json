@@ -47,49 +47,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Remove-AzScVmmInventoryItem",
-      "description": "Deletes an inventoryItem.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmminventoryitem"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]",
-              "-VmmServerName <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Deletes an inventoryItem.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.inventoryItemResourceName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            },
-            {
-              "name": "-VmmServerName",
-              "value": "[Path.vmmServerName]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

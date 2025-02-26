@@ -8,24 +8,24 @@ schema: 2.0.0
 # New-AzScVmmServer
 
 ## SYNOPSIS
-Onboards the SCVMM fabric as an Azure VmmServer resource.
+Onboards the SCVmm fabric as an Azure VmmServer resource.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmServer -Name <String> -ResourceGroupName <String> -Fqdn <String> -Location <String>
- [-SubscriptionId <String>] [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>]
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-Port <Int32>] [-Tag <Hashtable>]
+New-AzScVmmServer -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>] [-ExtendedLocationName <String>]
+ [-ExtendedLocationType <String>] [-Fqdn <String>] [-Port <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzScVmmServer -InputObject <IScVmmIdentity> -Fqdn <String> -Location <String>
- [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>] [-ExtendedLocationName <String>]
- [-ExtendedLocationType <String>] [-Port <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmServer -InputObject <IScVmmIdentity> -Location <String> [-CredentialsPassword <SecureString>]
+ [-CredentialsUsername <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
+ [-Fqdn <String>] [-Port <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -41,7 +41,7 @@ New-AzScVmmServer -Name <String> -ResourceGroupName <String> -JsonString <String
 ```
 
 ## DESCRIPTION
-Onboards the SCVMM fabric as an Azure VmmServer resource.
+Onboards the SCVmm fabric as an Azure VmmServer resource.
 
 ## EXAMPLES
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -CredentialsPassword
-Password to use to connect to VMMServer.
+Password to use to connect to VmmServer.
 
 ```yaml
 Type: System.Security.SecureString
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -CredentialsUsername
-Username to use to connect to VMMServer.
+Username to use to connect to VmmServer.
 
 ```yaml
 Type: System.String
@@ -181,7 +181,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMMServer.
+Name of the VmmServer.
 
 ```yaml
 Type: System.String

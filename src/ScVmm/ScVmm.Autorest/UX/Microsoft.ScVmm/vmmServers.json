@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzScVmmServer",
-      "description": "Implements VMMServer GET method.",
+      "description": "Implements VmmServer GET method.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Implements VMMServer GET method.",
+          "description": "Implements VmmServer GET method.",
           "parameters": [
             {
               "name": "-Name",

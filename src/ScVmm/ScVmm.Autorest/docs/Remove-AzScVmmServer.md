@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzScVmmServer
 
 ## SYNOPSIS
-Removes the SCVMM fabric from Azure.
+Removes the SCVmm fabric from Azure.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzScVmmServer -InputObject <IScVmmIdentity> [-Force <String>] [-DefaultPr
 ```
 
 ## DESCRIPTION
-Removes the SCVMM fabric from Azure.
+Removes the SCVmm fabric from Azure.
 
 ## EXAMPLES
 
@@ -70,8 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the resource to be deleted from azure.
-The corresponding CR would be attempted to be deleted too.
+Forces the resource to be deleted.
 
 ```yaml
 Type: System.String
@@ -101,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMMServer.
+Name of the VmmServer.
 
 ```yaml
 Type: System.String

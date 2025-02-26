@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmmServerName
-Name of the VMMServer.
+Name of the VmmServer.
 
 ```yaml
 Type: System.String

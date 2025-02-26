@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmCloud
 
 ## SYNOPSIS
-Update the Clouds resource.
+update the Clouds resource.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzScVmmCloud -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-Update the Clouds resource.
+update the Clouds resource.
 
 ## EXAMPLES
 

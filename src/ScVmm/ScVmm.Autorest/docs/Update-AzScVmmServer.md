@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmServer
 
 ## SYNOPSIS
-Update the VmmServers resource.
+update the VmmServers resource.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzScVmmServer -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-Update the VmmServers resource.
+update the VmmServers resource.
 
 ## EXAMPLES
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMMServer.
+Name of the VmmServer.
 
 ```yaml
 Type: System.String

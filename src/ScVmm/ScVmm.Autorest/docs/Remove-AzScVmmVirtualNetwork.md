@@ -71,8 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the resource to be deleted from azure.
-The corresponding CR would be attempted to be deleted too.
+Forces the resource to be deleted.
 
 ```yaml
 Type: System.String

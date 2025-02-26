@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String

@@ -12,7 +12,7 @@ Implements Cloud GET method.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzScVmmCloud [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzScVmmCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
 Get-AzScVmmCloud -InputObject <IScVmmIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzScVmmCloud -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -161,7 +161,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

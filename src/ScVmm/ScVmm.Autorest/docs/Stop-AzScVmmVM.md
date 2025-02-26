@@ -8,49 +8,60 @@ schema: 2.0.0
 # Stop-AzScVmmVM
 
 ## SYNOPSIS
-The operation to power off (stop) a virtual machine instance.
+The operation to power off (stop) a virtual machine.
 
 ## SYNTAX
 
 ### StopExpanded (Default)
 ```
-Stop-AzScVmmVM -MachineId <String> [-SkipShutdown <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkipShutdown <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Stop
 ```
-Stop-AzScVmmVM -MachineId <String> -Body <IStopVirtualMachineOptions> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzScVmmVM -Name <String> -ResourceGroupName <String> -Body <IStopVirtualMachineOptions>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### StopViaJsonFilePath
 ```
-Stop-AzScVmmVM -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaJsonString
 ```
-Stop-AzScVmmVM -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to power off (stop) a virtual machine instance.
+The operation to power off (stop) a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Shut down the VM gracefully
 ```powershell
-Stop-AzScVmmVM -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm"
+Stop-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01"
 ```
 
 This command will Shut down the VM gracefully and bring it to Stopped state.
 
 ### Example 2: Power off the VM
 ```powershell
-Stop-AzScVmmVM -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm" -SkipShutdown "true"
+Stop-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -SkipShutdown "true"
+```
+
+This command will Skip shutdown and power-off the VM immediately.
+
+### Example 2: Power off the VM
+```powershell
+$SkipShutdownJson = '{
+    "skipShutdown": "true"
+}'
+Stop-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -JsonString $SkipShutdownJson
 ```
 
 This command will Skip shutdown and power-off the VM immediately.
@@ -133,13 +144,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineId
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+### -Name
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: VMName
 
 Required: True
 Position: Named
@@ -178,6 +189,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkipShutdown
 Gets or sets a value indicating whether to request non-graceful VM shutdown.
 True value for this flag indicates non-graceful shutdown whereas false indicates otherwise.
@@ -191,6 +218,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmAvailabilitySet
 
 ## SYNOPSIS
-Update the AvailabilitySets resource.
+update the AvailabilitySets resource.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -JsonSt
 ```
 
 ## DESCRIPTION
-Update the AvailabilitySets resource.
+update the AvailabilitySets resource.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzScVmmVMCheckpoint
 
 ## SYNOPSIS
-Create a checkpoint in virtual machine instance.
+create a checkpoint in virtual machine instance.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzScVmmVMCheckpoint -MachineId <String> -JsonString <String> [-DefaultProfil
 ```
 
 ## DESCRIPTION
-Create a checkpoint in virtual machine instance.
+create a checkpoint in virtual machine instance.
 
 ## EXAMPLES
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String
