@@ -43,7 +43,23 @@ trigger:
   branches:
     include:
     - main
-  
+    - release-*
+    - Az.*
+    - LTS
+    - generation-LTS
+    - stack-dev
+    - preview
+    - AzureRM
+    - AzureRM6.13
+    - AzureRM.*
+    - DeploymentRollouts
+    - Compute-*
+    - test-filtering-branch
+    - azvmremotingpreview
+    - test-build-filter
+    - generation
+    - Azure
+
 jobs:
 - job: Build
   displayName: Build
