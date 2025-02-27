@@ -39,6 +39,42 @@ update a DataflowProfileResource
 
 ## EXAMPLES
 
+### UpdateExpanded (Default)
+```powershell
+
+```
+
+Set-AzIoTOperationsServiceDataflowProfile -InstanceName \<String\> -Name \<String\> -ResourceGroupName \<String\>
+ -ExtendedLocationName \<String\> [-SubscriptionId \<String\>] [-InstanceCount \<Int32\>] [-LogLevel \<String\>]
+ [-MetricPrometheusPort \<Int32\>] [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [\<CommonParameters\>]
+```
+
+### UpdateViaJsonFilePath
+```powershell
+
+```
+
+Set-AzIoTOperationsServiceDataflowProfile -InstanceName \<String\> -Name \<String\> -ResourceGroupName \<String\>
+ -JsonFilePath \<String\> [-SubscriptionId \<String\>] [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [\<CommonParameters\>]
+```
+
+### UpdateViaJsonString
+```powershell
+
+```
+
+Set-AzIoTOperationsServiceDataflowProfile -InstanceName \<String\> -Name \<String\> -ResourceGroupName \<String\>
+ -JsonString \<String\> [-SubscriptionId \<String\>] [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [\<CommonParameters\>]
+```
+
+## DESCRIPTION
+update a DataflowProfileResource
+
+## EXAMPLES
+
 ### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
@@ -60,6 +96,269 @@ update a DataflowProfileResource
 ```
 
 {{ Add description here }}
+
+## PARAMETERS
+
+### -AsJob
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+```powershell
+
+```
+
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocationName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceCount
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogLevel
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MetricPrometheusPort
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases: DataflowProfileName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IDataflowProfileResource
+```powershell
+
+```
+
+## NOTES
+
+## RELATED LINKS
 
 ## PARAMETERS
 

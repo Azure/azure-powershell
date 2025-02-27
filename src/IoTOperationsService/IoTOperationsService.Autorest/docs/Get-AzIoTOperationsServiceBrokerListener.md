@@ -48,6 +48,57 @@ Get a BrokerListenerResource
 
 ## EXAMPLES
 
+### List (Default)
+```powershell
+
+```
+
+Get-AzIoTOperationsServiceBrokerListener -BrokerName \<String\> -InstanceName \<String\>
+ -ResourceGroupName \<String\> [-SubscriptionId \<String[]\>] [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
+```
+
+### Get
+```powershell
+
+```
+
+Get-AzIoTOperationsServiceBrokerListener -BrokerName \<String\> -InstanceName \<String\> -ListenerName \<String\>
+ -ResourceGroupName \<String\> [-SubscriptionId \<String[]\>] [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
+```
+
+### GetViaIdentity
+```powershell
+
+```
+
+Get-AzIoTOperationsServiceBrokerListener -InputObject \<IIoTOperationsServiceIdentity\>
+ [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
+```
+
+### GetViaIdentityBroker
+```powershell
+
+```
+
+Get-AzIoTOperationsServiceBrokerListener -BrokerInputObject \<IIoTOperationsServiceIdentity\>
+ -ListenerName \<String\> [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
+```
+
+### GetViaIdentityInstance
+```powershell
+
+```
+
+Get-AzIoTOperationsServiceBrokerListener -BrokerName \<String\>
+ -InstanceInputObject \<IIoTOperationsServiceIdentity\> -ListenerName \<String\> [-DefaultProfile \<PSObject\>]
+ [\<CommonParameters\>]
+```
+
+## DESCRIPTION
+Get a BrokerListenerResource
+
+## EXAMPLES
+
 ### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
@@ -69,6 +120,178 @@ Get a BrokerListenerResource
 ```
 
 {{ Add description here }}
+
+## PARAMETERS
+
+### -BrokerInputObject
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+Parameter Sets: GetViaIdentityBroker
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -BrokerName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: Get, GetViaIdentityInstance, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+```powershell
+
+```
+
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InstanceInputObject
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+Parameter Sets: GetViaIdentityInstance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InstanceName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ListenerName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: Get, GetViaIdentityBroker, GetViaIdentityInstance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+```powershell
+
+```
+
+Type: System.String[]
+Parameter Sets: Get, List
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+```powershell
+
+```
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerListenerResource
+```powershell
+
+```
+
+## NOTES
+
+## RELATED LINKS
 
 ## PARAMETERS
 

@@ -1,5 +1,5 @@
 ---
-external help file: Az.IoTOperationsService-help.xml
+external help file:
 Module Name: Az.IoTOperationsService
 online version: https://learn.microsoft.com/powershell/module/az.iotoperationsservice/update-aziotoperationsservicebrokerlistener
 schema: 2.0.0
@@ -16,31 +16,77 @@ update a BrokerListenerResource
 ```
 Update-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <String> -ListenerName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Port <IListenerPort[]>] [-ServiceName <String>]
- [-ServiceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityInstanceExpanded
-```
-Update-AzIoTOperationsServiceBrokerListener -BrokerName <String> -ListenerName <String>
- -InstanceInputObject <IIoTOperationsServiceIdentity> [-Port <IListenerPort[]>] [-ServiceName <String>]
- [-ServiceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServiceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityBrokerExpanded
 ```
-Update-AzIoTOperationsServiceBrokerListener -ListenerName <String>
- -BrokerInputObject <IIoTOperationsServiceIdentity> [-Port <IListenerPort[]>] [-ServiceName <String>]
- [-ServiceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzIoTOperationsServiceBrokerListener -BrokerInputObject <IIoTOperationsServiceIdentity>
+ -ListenerName <String> [-Port <IListenerPort[]>] [-ServiceName <String>] [-ServiceType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzIoTOperationsServiceBrokerListener -InputObject <IIoTOperationsServiceIdentity>
  [-Port <IListenerPort[]>] [-ServiceName <String>] [-ServiceType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityInstanceExpanded
+```
+Update-AzIoTOperationsServiceBrokerListener -BrokerName <String>
+ -InstanceInputObject <IIoTOperationsServiceIdentity> -ListenerName <String> [-Port <IListenerPort[]>]
+ [-ServiceName <String>] [-ServiceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+## DESCRIPTION
+update a BrokerListenerResource
+
+## EXAMPLES
+
+### UpdateExpanded (Default)
+```powershell
+
+```
+
+Update-AzIoTOperationsServiceBrokerListener -BrokerName \<String\> -InstanceName \<String\> -ListenerName \<String\>
+ -ResourceGroupName \<String\> [-SubscriptionId \<String\>] [-Port \<IListenerPort[]\>] [-ServiceName \<String\>]
+ [-ServiceType \<String\>] [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [\<CommonParameters\>]
+```
+
+### UpdateViaIdentityBrokerExpanded
+```powershell
+
+```
+
+Update-AzIoTOperationsServiceBrokerListener -BrokerInputObject \<IIoTOperationsServiceIdentity\>
+ -ListenerName \<String\> [-Port \<IListenerPort[]\>] [-ServiceName \<String\>] [-ServiceType \<String\>]
+ [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [\<CommonParameters\>]
+```
+
+### UpdateViaIdentityExpanded
+```powershell
+
+```
+
+Update-AzIoTOperationsServiceBrokerListener -InputObject \<IIoTOperationsServiceIdentity\>
+ [-Port \<IListenerPort[]\>] [-ServiceName \<String\>] [-ServiceType \<String\>] [-DefaultProfile \<PSObject\>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [\<CommonParameters\>]
+```
+
+### UpdateViaIdentityInstanceExpanded
+```powershell
+
+```
+
+Update-AzIoTOperationsServiceBrokerListener -BrokerName \<String\>
+ -InstanceInputObject \<IIoTOperationsServiceIdentity\> -ListenerName \<String\> [-Port \<IListenerPort[]\>]
+ [-ServiceName \<String\>] [-ServiceType \<String\>] [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [\<CommonParameters\>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +115,290 @@ update a BrokerListenerResource
 ```
 
 {{ Add description here }}
+
+## PARAMETERS
+
+### -AsJob
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BrokerInputObject
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+Parameter Sets: UpdateViaIdentityBrokerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -BrokerName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityInstanceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+```powershell
+
+```
+
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InstanceInputObject
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+Parameter Sets: UpdateViaIdentityInstanceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InstanceName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ListenerName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityBrokerExpanded, UpdateViaIdentityInstanceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Port
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IListenerPort[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceType
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+```powershell
+
+```
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerListenerResource
+```powershell
+
+```
+
+## NOTES
+
+## RELATED LINKS
 
 ## PARAMETERS
 
@@ -183,7 +513,7 @@ Name of Instance broker listener resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityInstanceExpanded, UpdateViaIdentityBrokerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityBrokerExpanded, UpdateViaIdentityInstanceExpanded
 Aliases:
 
 Required: True
@@ -215,21 +545,6 @@ Ports on which this listener accepts client connections.
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IListenerPort[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -345,3 +660,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

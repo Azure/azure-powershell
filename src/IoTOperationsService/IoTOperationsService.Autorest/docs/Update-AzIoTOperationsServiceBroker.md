@@ -46,6 +46,49 @@ update a BrokerResource
 
 ## EXAMPLES
 
+### UpdateExpanded (Default)
+```powershell
+
+```
+
+Update-AzIoTOperationsServiceBroker -InstanceName \<String\> -Name \<String\> -ResourceGroupName \<String\>
+ [-SubscriptionId \<String\>] [-LogLevel \<String\>] [-MetricPrometheusPort \<Int32\>]
+ [-SelfCheckIntervalSecond \<Int32\>] [-SelfCheckMode \<String\>] [-SelfCheckTimeoutSecond \<Int32\>]
+ [-SelfTracingIntervalSecond \<Int32\>] [-SelfTracingMode \<String\>] [-TraceCacheSizeMegabyte \<Int32\>]
+ [-TraceMode \<String\>] [-TraceSpanChannelCapacity \<Int32\>] [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [\<CommonParameters\>]
+```
+
+### UpdateViaIdentityExpanded
+```powershell
+
+```
+
+Update-AzIoTOperationsServiceBroker -InputObject \<IIoTOperationsServiceIdentity\> [-LogLevel \<String\>]
+ [-MetricPrometheusPort \<Int32\>] [-SelfCheckIntervalSecond \<Int32\>] [-SelfCheckMode \<String\>]
+ [-SelfCheckTimeoutSecond \<Int32\>] [-SelfTracingIntervalSecond \<Int32\>] [-SelfTracingMode \<String\>]
+ [-TraceCacheSizeMegabyte \<Int32\>] [-TraceMode \<String\>] [-TraceSpanChannelCapacity \<Int32\>]
+ [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [\<CommonParameters\>]
+```
+
+### UpdateViaIdentityInstanceExpanded
+```powershell
+
+```
+
+Update-AzIoTOperationsServiceBroker -InstanceInputObject \<IIoTOperationsServiceIdentity\> -Name \<String\>
+ [-LogLevel \<String\>] [-MetricPrometheusPort \<Int32\>] [-SelfCheckIntervalSecond \<Int32\>]
+ [-SelfCheckMode \<String\>] [-SelfCheckTimeoutSecond \<Int32\>] [-SelfTracingIntervalSecond \<Int32\>]
+ [-SelfTracingMode \<String\>] [-TraceCacheSizeMegabyte \<Int32\>] [-TraceMode \<String\>]
+ [-TraceSpanChannelCapacity \<Int32\>] [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [\<CommonParameters\>]
+```
+
+## DESCRIPTION
+update a BrokerResource
+
+## EXAMPLES
+
 ### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
@@ -67,6 +110,370 @@ update a BrokerResource
 ```
 
 {{ Add description here }}
+
+## PARAMETERS
+
+### -AsJob
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+```powershell
+
+```
+
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InstanceInputObject
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+Parameter Sets: UpdateViaIdentityInstanceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InstanceName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogLevel
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MetricPrometheusPort
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityInstanceExpanded
+Aliases: BrokerName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelfCheckIntervalSecond
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelfCheckMode
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelfCheckTimeoutSecond
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelfTracingIntervalSecond
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelfTracingMode
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TraceCacheSizeMegabyte
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TraceMode
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TraceSpanChannelCapacity
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IIoTOperationsServiceIdentity
+```powershell
+
+```
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerResource
+```powershell
+
+```
+
+## NOTES
+
+## RELATED LINKS
 
 ## PARAMETERS
 
