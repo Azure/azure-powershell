@@ -1,15 +1,15 @@
 {
-  "Get-AzDynatraceMonitorLinkableEnv+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/listLinkableEnvironments?api-version=2021-09-01+1": {
+  "Get-AzDynatraceMonitorLinkableEnv+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/9e28142e-8a8c-4a93-a280-41a2df3e0215/resourceGroups/dyobrgsyuzip/providers/Dynatrace.Observability/monitors/dyobyu41qb/listLinkableEnvironments?api-version=2023-04-27+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/listLinkableEnvironments?api-version=2021-09-01",
-      "Content": "{\r\n  \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n  \"userPrincipal\": \"v-diya@microsoft.com\",\r\n  \"region\": \"East US\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e28142e-8a8c-4a93-a280-41a2df3e0215/resourceGroups/dyobrgsyuzip/providers/Dynatrace.Observability/monitors/dyobyu41qb/listLinkableEnvironments?api-version=2023-04-27",
+      "Content": "{\r\n  \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n  \"userPrincipal\": \"agarwalshiv@microsoft.com\",\r\n  \"region\": \"eastus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "126" ]
+        "Content-Length": [ "130" ]
       }
     },
     "Response": {
@@ -17,23 +17,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
-        "mise-correlation-id": [ "9e93f7c2-79d1-4183-a2f0-bce1e31bd9ee" ],
+        "mise-correlation-id": [ "cc7d4089-5076-4ced-ba02-096638b36792" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "6ae72a06-e0c7-4f86-a1ec-862f75f17ed0" ],
-        "x-ms-correlation-request-id": [ "cd4f9139-435d-4c18-ba42-c65e581b1e40" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T054924Z:cd4f9139-435d-4c18-ba42-c65e581b1e40" ],
-        "Date": [ "Wed, 24 Aug 2022 05:49:24 GMT" ]
+        "x-ms-request-id": [ "e0bbb0c9-05a8-4f09-8846-c0d7e5caadf7" ],
+        "x-ms-correlation-request-id": [ "0508206a-9607-4d09-ba28-3848af9a4557" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20250226T090838Z:0508206a-9607-4d09-ba28-3848af9a4557" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7F39EF42955F46D18CF1C14204AAF121 Ref B: MAA201060516051 Ref C: 2025-02-26T09:08:36Z" ],
+        "Date": [ "Wed, 26 Feb 2025 09:08:37 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "28" ],
+        "Content-Length": [ "3033" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"environmentId\":\"ytq73686\",\"environmentName\":\"agarwalshiv-test-2\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666218+00:00\"}},{\"environmentId\":\"xfu61326\",\"environmentName\":\"agarwalshiv-dt--2\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666225+00:00\"}},{\"environmentId\":\"yll69426\",\"environmentName\":\"test-resource-03\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666226+00:00\"}},{\"environmentId\":\"sbv76270\",\"environmentName\":\"dt-resr-portal\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666228+00:00\"}},{\"environmentId\":\"fwz21753\",\"environmentName\":\"random-dt\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666229+00:00\"}},{\"environmentId\":\"adb66994\",\"environmentName\":\"dt-powershell-rs1-DoNotDelete\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666232+00:00\"}},{\"environmentId\":\"pnr91385\",\"environmentName\":\"dyob6yn2mg\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666233+00:00\"}},{\"environmentId\":\"cof73417\",\"environmentName\":\"dyob8w2g1u\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666234+00:00\"}},{\"environmentId\":\"afe07544\",\"environmentName\":\"dyobird3vl\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666236+00:00\"}},{\"environmentId\":\"abs74404\",\"environmentName\":\"dyobzlk96o\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666247+00:00\"}},{\"environmentId\":\"gqa63960\",\"environmentName\":\"dyobwmzugr\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666248+00:00\"}},{\"environmentId\":\"dzq93359\",\"environmentName\":\"dyob4hzw1d\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.266625+00:00\"}},{\"environmentId\":\"ygw45738\",\"environmentName\":\"dyobyu41qb\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-02-26T09:08:38.2666251+00:00\"}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }
