@@ -58,7 +58,8 @@ This command updates a confluent organization by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -188,22 +189,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource
+### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20240213.IOrganizationResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IConfluentIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[OrganizationName <String>]`: Organization resource name
-  - `[ResourceGroupName <String>]`: Resource group name
-  - `[SubscriptionId <String>]`: Microsoft Azure subscription id
 
 ## RELATED LINKS
 

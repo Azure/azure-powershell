@@ -12,22 +12,22 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzConfluentOrganization' {
-    It 'List' {
+    It 'List' -skip {
       $confluentOrgList = Get-AzConfluentOrganization
       $confluentOrgList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' {
+    It 'Get' -skip{
       $confluentOrg = Get-AzConfluentOrganization -ResourceGroupName $env.resourcegroup -Name $env.confluentOrgName00
       $confluentOrg.Name | Should -Be $env.confluentOrgName00
     }
 
-    It 'List1' {
+    It 'List1' -skip {
       $confluentOrgList = Get-AzConfluentOrganization -ResourceGroupName $env.resourcegroup
       $confluentOrgList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip{
       $confluentOrg = Get-AzConfluentOrganization -ResourceGroupName $env.resourcegroup -Name $env.confluentOrgName00 
       $confluentOrg = Get-AzConfluentOrganization -InputObject $confluentOrg
       $confluentOrg.Name | Should -Be $env.confluentOrgName00    

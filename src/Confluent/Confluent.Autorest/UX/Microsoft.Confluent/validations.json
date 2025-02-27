@@ -1,0 +1,85 @@
+{
+  "resourceType": "validations",
+  "apiVersion": "2024-02-13",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.confluent"
+  },
+  "commands": [
+    {
+      "name": "Test-AzConfluentValidationOrganizationV2",
+      "description": "Organization Validate proxy resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/validations/{organizationName}/orgvalidateV2",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/test-azconfluentvalidationorganizationv2"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Organization Validate proxy resource",
+          "parameters": [
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzConfluentValidationOrganization",
+      "description": "Organization Validate proxy resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/validations/{organizationName}/orgvalidate",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/test-azconfluentvalidationorganization"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Organization Validate proxy resource",
+          "parameters": [
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
