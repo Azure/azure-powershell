@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Internal code refactoring.
+* Implemented code refactoring, no behavior changes expected.
 
 ## Version 0.2.2
 * Upgraded nuget package to signed package.
