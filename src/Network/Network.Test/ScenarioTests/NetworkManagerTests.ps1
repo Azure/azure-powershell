@@ -1464,12 +1464,12 @@ function Test-NetworkManagerIpamPoolCRUD
 
         # List pools
         $listPools = Get-AzNetworkManagerIpamPool -ResourceGroupName $rgname -NetworkManagerName $networkManagerName
-        Assert-AreEqual 1 @($list).Count
-        Assert-AreEqual $list[0].ResourceGroupName $ipamPool.ResourceGroupName    
-        Assert-AreEqual $list[0].Name $ipamPool.Name    
-        Assert-AreEqual $list[0].Location $ipamPool.Location
-        Assert-AreEqual $list[0].ProvisioningState $ipamPool.ProvisioningState
-        Assert-AreEqual $list[0].Etag $ipamPool.Etag
+        Assert-AreEqual 1 @($listPools).Count
+        Assert-AreEqual $listPools[0].ResourceGroupName $ipamPool.ResourceGroupName    
+        Assert-AreEqual $listPools[0].Name $ipamPool.Name    
+        Assert-AreEqual $listPools[0].Location $ipamPool.Location
+        Assert-AreEqual $listPools[0].ProvisioningState $ipamPool.ProvisioningState
+        Assert-AreEqual $listPools[0].Etag $ipamPool.Etag
 
         # Update access
         $ipamPool.Properties.AddressPrefixes.Add("11.0.0.0/8");
@@ -1478,7 +1478,7 @@ function Test-NetworkManagerIpamPoolCRUD
         Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[1] "11.0.0.0/8";
         
         # Etag should change after update
-        Assert-NotEqual $newIpamPool.Etag $ipamPool.Etag;
+        Assert-True {$newIpamPool.Etag -ne $ipamPool.Etag};
 
         # Get Pool Usage
         $poolUsage = Get-AzNetworkManagerIpamPoolUsage -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName
