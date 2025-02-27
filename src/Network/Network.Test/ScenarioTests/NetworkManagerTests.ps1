@@ -1615,7 +1615,7 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-AreEqual "A different description." $verifierWorkspace.Properties.Description
 
         #Etag should change after update
-        Assert-True {$verifierWorkspace.Etag -ne $oldEtag }
+        Assert-True {$verifierWorkspace.Etag -ne $oldEtag}
 
         # Create analysis intent
         $sourcePortList = @("100")
