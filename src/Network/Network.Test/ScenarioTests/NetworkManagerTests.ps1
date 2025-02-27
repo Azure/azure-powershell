@@ -1595,6 +1595,8 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-AreEqual $verifierWorkspaceName $verifierWorkspace.Name;
         Assert-AreEqual $rglocation $verifierWorkspace.Location;
         Assert-AreEqual $verifierWorkspace.Tags.Count 1;
+        Assert-NotNull $verifierWorkspace.Etag;
+        $oldEtag = $verifierWorkspace.Etag;
 
         # Get verifier workspace list
         $verifierWorkspaceList = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName 
@@ -1606,6 +1608,14 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceId $resourceId
         Assert-NotNull $verifierWorkspace
         Assert-AreEqual $resourceId $verifierWorkspace.Id
+
+        # Set by InputObject
+        $verifierWorkspace.Properties.Description = "A different description."
+        $verifierWorkspace = Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
+        Assert-AreEqual "A different description." $verifierWorkspace.Properties.Description
+
+        #Etag should change after update
+        Assert-NotEqual $verifierWorkspace.Etag $oldEtag
 
         # Create analysis intent
         $sourcePortList = @("100")
