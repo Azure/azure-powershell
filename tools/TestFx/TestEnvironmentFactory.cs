@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
 
 namespace Microsoft.Azure.Commands.TestFx

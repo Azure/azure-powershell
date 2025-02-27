@@ -74,7 +74,9 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
 
         public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
-            return CreateCustomArmClient<TClient>();
+            Debug.Assert(context != null);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            return CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), credentials);
         }
 
         public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
@@ -89,6 +91,15 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
                 {
                     client = _mockContext?.GetServiceClient<TClient>();
                 }
+            }
+
+            if (client == null)
+            {
+                var realClientFactory = new ClientFactory();
+                var newParameters = new object[parameters.Length + 1];
+                Array.Copy(parameters, 0, newParameters, 1, parameters.Length);
+                newParameters[0] = HttpMockServer.CreateInstance();
+                client = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
             }
 
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)

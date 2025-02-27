@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Commands.TestFx.Recorder;
 using System;
@@ -68,16 +65,8 @@ namespace Microsoft.Azure.Test.HttpRecorder
                 Mode = HttpRecorderMode.Playback;
             }
 
-            if (Mode == HttpRecorderMode.Record)
+            if (Mode == HttpRecorderMode.Playback)
             {
-                AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.CurrentUser;
-                ProtectedProfileProvider.InitializeResourceManagerProfile();
-            }
-            else if (Mode == HttpRecorderMode.Playback)
-            {
-                AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
-                ResourceManagerProfileProvider.InitializeResourceManagerProfile();
-
                 var recordDir = Path.Combine(RecordsDirectory, CallerIdentity);
                 var fileName = Path.GetFullPath(Path.Combine(recordDir, testIdentity.Replace(".json", "") + ".json"));
                 if (!FileSystemUtilsObject.DirectoryExists(recordDir) || !FileSystemUtilsObject.FileExists(fileName))
