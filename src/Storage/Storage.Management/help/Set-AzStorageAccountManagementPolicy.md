@@ -15,43 +15,39 @@ Creates or modifies the management policy of an Azure Storage account.
 ### AccountNamePolicyRule (Default)
 ```
 Set-AzStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -Rule <PSManagementPolicyRule[]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Rule <PSManagementPolicyRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountNamePolicyObject
 ```
 Set-AzStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -Policy <PSManagementPolicy> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Policy <PSManagementPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObjectPolicyRule
 ```
 Set-AzStorageAccountManagementPolicy -StorageAccount <PSStorageAccount> -Rule <PSManagementPolicyRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObjectPolicyObject
 ```
 Set-AzStorageAccountManagementPolicy -StorageAccount <PSStorageAccount> -Policy <PSManagementPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountResourceIdPolicyRule
 ```
 Set-AzStorageAccountManagementPolicy [-StorageAccountResourceId] <String> -Rule <PSManagementPolicyRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountResourceIdPolicyObject
 ```
 Set-AzStorageAccountManagementPolicy [-StorageAccountResourceId] <String> -Policy <PSManagementPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -513,4 +509,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[New-AzStorageAccountManagementPolicyRule](./New-AzStorageAccountManagementPolicyRule.md)
 
+[Add-AzStorageAccountManagementPolicyAction](./Add-AzStorageAccountManagementPolicyAction.md)
+
+[New-AzStorageAccountManagementPolicyFilter](./New-AzStorageAccountManagementPolicyFilter.md)
+
+[New-AzStorageAccountManagementPolicyBlobIndexMatchObject](./New-AzStorageAccountManagementPolicyBlobIndexMatchObject.md)
+
+[Get-AzStorageAccountManagementPolicy](./Get-AzStorageAccountManagementPolicy.md)
+
+[Remove-AzStorageAccountManagementPolicy](./Remove-AzStorageAccountManagementPolicy.md)

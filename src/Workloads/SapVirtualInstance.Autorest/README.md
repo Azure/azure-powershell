@@ -27,15 +27,14 @@ For information on how to develop for `Az.SapVirtualInstance`, see [how-to.md](h
 > see https://aka.ms/autorest
 
 ```yaml
-commit: 202321f386ea5b0c103b46902d43b3d3c50e029c
-tag: package-preview-2023-10
-# tag: package-2023-04
+commit: 724933f1dfe3bc7831d74b6f1d0a189790fca5e0
+tag: package-2024-09
 
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/workloads/resource-manager/Microsoft.Workloads/SAPVirtualInstance/readme.md
 
-try-require: 
+try-require:
   - $(repo)/specification/workloads/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
@@ -92,31 +91,37 @@ directive:
 # SapCentralInstance
 - where:
     verb: New
-    subject: ^SapCentralInstance$
+    subject: ^SapCentralServerInstance$
   remove: true
 
 - where:
     verb: Stop
-    subject: ^SapCentralInstance$
+    subject: ^SapCentralServerInstance$
     variant: ^Stop$|^StopViaIdentity$
   remove: true
 
 - where:
     verb: Update
-    subject: ^SapCentralInstance$
+    subject: ^SapCentralServerInstance$
     variant: ^Update$|^UpdateViaIdentity$
   remove: true
 
 - where:
     verb: Remove
-    subject: ^SapCentralInstance$
+    subject: ^SapCentralServerInstance$
   remove: true
 
 - where:
-    subject: SapCentralInstance
+    subject: SapCentralServerInstance
     parameter-name: CentralInstanceName
   set:
     parameter-name: Name
+
+- where:
+    verb: Get|Start|Stop|Update
+    subject: ^SapCentralServerInstance$
+  set:
+    subject: SapCentralInstance
 
 # SapDatabaseInstance
 - where:
@@ -187,29 +192,47 @@ directive:
 # SapAvailabilityZoneDetail
 - where:
     verb: Invoke
-    subject: ^SapAvailabilityZoneDetail$
+    subject: ^InvokeSapVirtualInstanceAvailabilityZoneDetail$
   remove: true
 
 # SapDiskConfiguration
 - where:
     verb: Invoke
-    subject: ^SapDiskConfiguration$
+    subject: ^InvokeSapVirtualInstanceDiskConfiguration$
     variant: ^Sap$|^SapViaIdentity$
   remove: true
+
+- where:
+    verb: Invoke
+    subject:  ^InvokeSapVirtualInstanceDiskConfiguration$
+  set:
+    subject:  SapDiskConfiguration
 
 # SapSizingRecommendation
 - where:
     verb: Invoke
-    subject: ^SapSizingRecommendation$
+    subject: ^InvokeSapVirtualInstanceSizingRecommendation$
     variant: ^Sap$|^SapViaIdentity$
   remove: true
+
+- where:
+    verb: Invoke
+    subject:  ^InvokeSapVirtualInstanceSizingRecommendation$
+  set:
+    subject:  SapSizingRecommendation
 
 # SapSupportedSku
 - where:
     verb: Invoke
-    subject: ^SapSupportedSku$
+    subject: ^InvokeSapVirtualInstanceSapSupportedSku$
     variant: ^Sap$|^SapViaIdentity$
   remove: true
+
+- where:
+    verb: Invoke
+    subject:  ^InvokeSapVirtualInstanceSapSupportedSku$
+  set:
+    subject:  SapSupportedSku
 
 #Aliasing
 - where:
@@ -229,7 +252,7 @@ directive:
     subject:  ^SapVirtualInstance$
   set:
     alias: Remove-AzVIS
-    
+
 - where:
     verb: Update
     subject:  ^SapVirtualInstance$
@@ -241,7 +264,7 @@ directive:
     subject:  ^SapVirtualInstance$
   set:
     alias: Start-AzVIS
-    
+
 - where:
     verb: Stop
     subject:  ^SapVirtualInstance$
@@ -388,44 +411,41 @@ directive:
         - Name
         - ResourceGroupName
         - ProvisioningState
-        - Location        
+        - Location
         - Status
-        - IPAddress        
+        - IPAddress
         - DatabaseSid
 
 - no-inline:  # choose ONE of these models to disable inlining
   - ProviderSpecificProperties
   - SAPConfiguration
   - ErrorInnerError
-- model-cmdlet:
-  - SapLandscapeMonitorSidMapping
-  - SapLandscapeMonitorMetricThresholds
 
 - from: swagger-document
   where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}"].delete.responses
 
   transform: >-
-    return { "200": { "description": "OK" }, "202": { "description": "Accepted", "headers": { "Location": { "description": "The URL of the resource used to check the status of the asynchronous operation.", "type": "string" }, "Retry-After": { "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.", "type": "integer",	"format": "int32" }, "Azure-AsyncOperation": { "description": "The URI to poll for completion status.", "type": "string" } } }, "204": { "description": "No Content" }, "default": { "description": "Error response describing why the operation failed.", "schema": { "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/202321f386ea5b0c103b46902d43b3d3c50e029c/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse" } } }
- 	  
+    return { "200": { "description": "OK" }, "202": { "description": "Accepted", "headers": { "Location": { "description": "The URL of the resource used to check the status of the asynchronous operation.", "type": "string" }, "Retry-After": { "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.", "type": "integer",	"format": "int32" }, "Azure-AsyncOperation": { "description": "The URI to poll for completion status.", "type": "string" } } }, "204": { "description": "No Content" }, "default": { "description": "Error response describing why the operation failed.", "schema": { "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/724933f1dfe3bc7831d74b6f1d0a189790fca5e0/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse" } } }
+
 # Result shoule be in SingleServerRecommendationResult and ThreeTierRecommendationResult
 - from: source-file-csharp
   where: $
-  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property');
+  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20240901.ISapSizingRecommendationResult Property');
 
 # remove System Data in module Monitor, ProviderInstance, SapApplicationServerInstance, SapCentralServerInstance, SapDatabaseInstance, SapLandscapeMonitor, SapVirtualInstance
 - from: SapApplicationServerInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
 - from: SapCentralServerInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
 - from: SapDatabaseInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
 - from: SapLandscapeMonitor.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
 - from: SapVirtualInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
 ```
