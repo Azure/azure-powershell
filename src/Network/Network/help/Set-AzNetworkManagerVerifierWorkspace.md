@@ -42,6 +42,7 @@ Name               : AmeWorkspace
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -82,6 +83,7 @@ Name               : testVerifierWorkspace5
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
