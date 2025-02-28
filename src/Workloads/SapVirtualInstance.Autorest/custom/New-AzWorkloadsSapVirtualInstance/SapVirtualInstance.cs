@@ -29,9 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SapVirtualInstancesCreateViaJsonString(string subscriptionId, string resourceGroupName, string sapVirtualInstanceName, string jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SapVirtualInstancesCreateViaJsonString(string subscriptionId, string resourceGroupName, string sapVirtualInstanceName, string jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01-preview";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

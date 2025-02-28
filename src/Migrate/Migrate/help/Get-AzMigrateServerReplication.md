@@ -15,38 +15,38 @@ Retrieves the details of the replicating server.
 ### ListByName (Default)
 ```
 Get-AzMigrateServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetByMachineName
 ```
 Get-AzMigrateServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetBySRSID
 ```
 Get-AzMigrateServerReplication [-SubscriptionId <String>] -TargetObjectID <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetBySDSID
 ```
 Get-AzMigrateServerReplication [-SubscriptionId <String>] -DiscoveredMachineId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
 Get-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
 Get-AzMigrateServerReplication [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -289,6 +289,21 @@ Parameter Sets: GetByMachineName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

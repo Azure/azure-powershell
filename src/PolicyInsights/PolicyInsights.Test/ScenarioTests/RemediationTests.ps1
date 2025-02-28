@@ -331,7 +331,7 @@ function Remediation-ManagementGroupScope-Crud {
    # Get all remediations in the management group
    $remediations = Get-AzPolicyRemediation -ManagementGroupName $managementGroupId
    Assert-True { $remediations.Count -gt 0 }
-   Validate-Remediation $remediations[1]
+   Validate-Remediation $remediations[0]
 
    # Get a limited number of remediations
    $remediations = Get-AzPolicyRemediation -Top 1

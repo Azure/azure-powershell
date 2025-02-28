@@ -2612,6 +2612,8 @@ function Test-NewAzStorageContext
         Assert-AreEqual $stoname $sto.StorageAccountName;
 
         $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -StorageAccountName $sto.StorageAccountName)[0].Value
+        # Need sanitize the sharedkey in record file, but New-AzStorageContext assume it's based64 string, so update it to a static based64 string.
+        $stokey = "xxxxxxxx"
         $ctxAccountInfo = New-AzStorageContext -StorageAccountName $sto.StorageAccountName -StorageAccountKey $stokey
         Assert-AreEqual $ctxAccountInfo.BlobEndpoint $blobEndpoint
         Assert-AreEqual $ctxAccountInfo.TableEndpoint $tableEndpoint
