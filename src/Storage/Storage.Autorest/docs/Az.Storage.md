@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Storage
-Module Guid: 40d78d44-3b7b-4cc9-9709-15d742ca4b93
+Module Guid: e29ea716-e0d9-4e18-b0ee-d60ff5eae4ad
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storage
 Help Version: 1.0.0.0
 Locale: en-US
@@ -13,6 +13,9 @@ Microsoft Azure PowerShell: Storage cmdlets
 ## Az.Storage Cmdlets
 ### [Get-AzStorageAccountMigration](Get-AzStorageAccountMigration.md)
 Gets the status of the ongoing migration for the specified storage account.
+
+### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
+Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
 
 ### [Get-AzStorageTaskAssignment](Get-AzStorageTaskAssignment.md)
 Get the storage task assignment properties

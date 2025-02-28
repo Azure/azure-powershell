@@ -456,7 +456,7 @@ Filters all assignments that are made to the specified Microsoft Entra applicati
 ```yaml
 Type: System.String
 Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet
-Aliases: SPN
+Aliases: SPN, ApplicationId
 
 Required: True
 Position: Named

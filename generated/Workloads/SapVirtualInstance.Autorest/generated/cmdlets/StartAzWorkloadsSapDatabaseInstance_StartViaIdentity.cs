@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
 
     /// <summary>Starts the database instance of the SAP system.</summary>
     /// <remarks>
-    /// [OpenAPI] StartInstance=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start"
+    /// [OpenAPI] Start=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzWorkloadsSapDatabaseInstance_StartViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Start-AzVISDatabaseInstance")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Description(@"Starts the database instance of the SAP system.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start", ApiVersion = "2024-09-01")]
     public partial class StartAzWorkloadsSapDatabaseInstance_StartViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener
     {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.IStartRequest _body;
+        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest _body;
 
         /// <summary>Start SAP instance(s) request body.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Start SAP instance(s) request body.", ValueFromPipeline = true)]
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         ReadOnly = false,
         Description = @"Start SAP instance(s) request body.",
         SerializedName = @"body",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.IStartRequest) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.IStartRequest Body { get => this._body; set => this._body = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest Body { get => this._body; set => this._body = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -136,24 +136,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'SapDatabaseInstancesStartInstance' operation"))
+                if (ShouldProcess($"Call remote 'SapDatabaseInstancesStart' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.SapDatabaseInstancesStartInstanceViaIdentity(InputObject.Id, Body, onOk, onDefault, this, Pipeline);
+                        await this.Client.SapDatabaseInstancesStartViaIdentity(InputObject.Id, Body, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.DatabaseInstanceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.SapDatabaseInstancesStartInstance(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.SapVirtualInstanceName ?? null, InputObject.DatabaseInstanceName ?? null, Body, onOk, onDefault, this, Pipeline);
+                        await this.Client.SapDatabaseInstancesStart(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.SapVirtualInstanceName ?? null, InputObject.DatabaseInstanceName ?? null, Body, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -436,12 +436,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=Body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -476,12 +476,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult
                 WriteObject((await response));
             }
         }

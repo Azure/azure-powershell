@@ -27,7 +27,7 @@ Gets a Virtual Instance for SAP solutions resource
 Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 
 ### [Invoke-AzWorkloadsSapSizingRecommendation](Invoke-AzWorkloadsSapSizingRecommendation.md)
-Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
+Gets the sizing recommendations.
 
 ### [Invoke-AzWorkloadsSapSupportedSku](Invoke-AzWorkloadsSapSupportedSku.md)
 Get a list of SAP supported SKUs for ASCS, Application and Database tier.
@@ -63,19 +63,14 @@ Stops the database instance of the SAP system.
 Stops the SAP Application, that is the Application server instances and Central Services instance.
 
 ### [Update-AzWorkloadsSapApplicationInstance](Update-AzWorkloadsSapApplicationInstance.md)
-Updates the SAP Application server instance resource.
-This can be used to update tags on the resource.
+Puts the SAP Application Server Instance resource.
 
 ### [Update-AzWorkloadsSapCentralInstance](Update-AzWorkloadsSapCentralInstance.md)
 Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ### [Update-AzWorkloadsSapDatabaseInstance](Update-AzWorkloadsSapDatabaseInstance.md)
-Updates the Database instance resource.
-This can be used to update tags on the resource.
+Updates the Database resource.
 
 ### [Update-AzWorkloadsSapVirtualInstance](Update-AzWorkloadsSapVirtualInstance.md)
 Updates a Virtual Instance for SAP solutions resource
-

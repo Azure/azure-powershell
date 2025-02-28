@@ -2,6 +2,40 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccessPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccessPolicy#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExpiryTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Permission</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExpiryTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Permission</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountImmutabilityPolicyProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountImmutabilityPolicyProperties#Multiple</TypeName>
@@ -29,6 +63,46 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>State</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountLimits</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountLimits#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaxFileShare</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxProvisionedBandwidthMiBPerSec</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxProvisionedIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxProvisionedStorageGiB</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaxFileShare</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxProvisionedBandwidthMiBPerSec</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxProvisionedIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxProvisionedStorageGiB</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -100,6 +174,46 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageElements</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageElements#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FileShareCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisionedBandwidthMiBPerSec</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisionedIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisionedStorageGiB</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FileShareCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisionedBandwidthMiBPerSec</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisionedIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisionedStorageGiB</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryProperties#Multiple</TypeName>
@@ -157,6 +271,34 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SamAccountName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AzureEntityResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AzureEntityResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -478,6 +620,40 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BurstingConstants</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BurstingConstants#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BurstFloorIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BurstIoScalar</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BurstTimeframeSecond</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BurstFloorIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BurstIoScalar</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BurstTimeframeSecond</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.CheckNameAvailabilityResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.CheckNameAvailabilityResult#Multiple</TypeName>
@@ -539,6 +715,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.CorsRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.CorsRule#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaxAgeInSecond</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaxAgeInSecond</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -731,6 +929,68 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StorageAccountResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DeletedShare</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DeletedShare#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DeleteRetentionPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DeleteRetentionPolicy#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllowPermanentDelete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Day</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllowPermanentDelete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Day</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1122,6 +1382,470 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceUsage#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceUsages</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceUsages#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShare</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShare#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareItem</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareItem#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareItems</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareItems#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareLimits</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareLimits#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaxProvisionedBandwidthMiBPerSec</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxProvisionedIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxProvisionedStorageGiB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinProvisionedBandwidthMiBPerSec</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinProvisionedIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinProvisionedStorageGiB</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaxProvisionedBandwidthMiBPerSec</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxProvisionedIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxProvisionedStorageGiB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinProvisionedBandwidthMiBPerSec</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinProvisionedIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinProvisionedStorageGiB</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AccessTier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AccessTierChangeTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AccessTierStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Deleted</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DeletedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnabledProtocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IncludedBurstIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LeaseDuration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LeaseState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LeaseStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxBurstCreditsForIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NextAllowedProvisionedBandwidthDowngradeTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NextAllowedProvisionedIopsDowngradeTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NextAllowedQuotaDowngradeTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisionedBandwidthMibp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisionedIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RemainingRetentionDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RootSquash</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ShareQuota</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ShareUsageByte</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SnapshotTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AccessTier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AccessTierChangeTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AccessTierStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Deleted</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeletedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnabledProtocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IncludedBurstIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LeaseDuration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LeaseState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LeaseStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxBurstCreditsForIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NextAllowedProvisionedBandwidthDowngradeTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NextAllowedProvisionedIopsDowngradeTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NextAllowedQuotaDowngradeTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisionedBandwidthMibp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisionedIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RemainingRetentionDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RootSquash</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ShareQuota</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ShareUsageByte</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SnapshotTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileSharePropertiesFileSharePaidBursting</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileSharePropertiesFileSharePaidBursting#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PaidBurstingEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PaidBurstingMaxBandwidthMibp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PaidBurstingMaxIop</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PaidBurstingEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PaidBurstingMaxBandwidthMibp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PaidBurstingMaxIop</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileSharePropertiesMetadata</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileSharePropertiesMetadata#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareRecommendations</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareRecommendations#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BandwidthScalar</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BaseBandwidthMiBPerSec</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BaseIop</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IoScalar</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BandwidthScalar</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BaseBandwidthMiBPerSec</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BaseIop</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IoScalar</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoReplicationStats</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoReplicationStats#Multiple</TypeName>
@@ -1347,6 +2071,80 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LastKeyRotationTimestamp</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LeaseShareRequest</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LeaseShareRequest#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BreakPeriod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LeaseDuration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LeaseId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProposedLeaseId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BreakPeriod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LeaseDuration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LeaseId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProposedLeaseId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LeaseShareResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LeaseShareResponse#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>LeaseId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LeaseTimeSecond</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>LeaseId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LeaseTimeSecond</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1726,6 +2524,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Multichannel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Multichannel#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkRuleSet</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkRuleSet#Multiple</TypeName>
@@ -1837,6 +2657,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SourceAccount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesMetrics</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesMetrics#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2477,6 +3319,46 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Tier</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbSetting</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbSetting#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AuthenticationMethod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ChannelEncryption</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KerberosTicketEncryption</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AuthenticationMethod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ChannelEncryption</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KerberosTicketEncryption</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3355,6 +4237,12 @@
             <Label>EncryptionScopeName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>FileServiceUsagesName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FileServicesName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3373,7 +4261,11 @@
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+<<<<<<< HEAD
             <Label>StorageTaskAssignmentName</Label>
+=======
+            <Label>ShareName</Label>
+>>>>>>> f7054b5796219b05b298a4566ce14eafb2b9b268
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SubscriptionId</Label>
@@ -3398,6 +4290,12 @@
                 <PropertyName>EncryptionScopeName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>FileServiceUsagesName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FileServicesName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -3416,7 +4314,11 @@
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+<<<<<<< HEAD
                 <PropertyName>StorageTaskAssignmentName</PropertyName>
+=======
+                <PropertyName>ShareName</PropertyName>
+>>>>>>> f7054b5796219b05b298a4566ce14eafb2b9b268
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>

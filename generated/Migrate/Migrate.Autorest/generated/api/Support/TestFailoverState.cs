@@ -10,22 +10,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct TestFailoverState :
         System.IEquatable<TestFailoverState>
     {
+        /// <summary>
+        /// Test failover cleanup has completed/failed. This is a transient state before the state is moved back to None.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState MarkedForDeletion = @"MarkedForDeletion";
 
+        /// <summary>Test failover is not active.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState None = @"None";
 
+        /// <summary>Cleaning up test protected entities is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState TestFailoverCleanupCompleting = @"TestFailoverCleanupCompleting";
 
+        /// <summary>Test failover cleanup has been initiated.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState TestFailoverCleanupInitiated = @"TestFailoverCleanupInitiated";
 
+        /// <summary>Test failover has been completed successfully.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState TestFailoverCompleted = @"TestFailoverCompleted";
 
+        /// <summary>Preparing test protected entities is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState TestFailoverCompleting = @"TestFailoverCompleting";
 
+        /// <summary>Preparing test protected entities failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState TestFailoverCompletionFailed = @"TestFailoverCompletionFailed";
 
+        /// <summary>Test failover initiation failed..</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState TestFailoverFailed = @"TestFailoverFailed";
 
+        /// <summary>Test failover has been initiated.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestFailoverState TestFailoverInitiated = @"TestFailoverInitiated";
 
         /// <summary>the value for an instance of the <see cref="TestFailoverState" /> Enum.</summary>
