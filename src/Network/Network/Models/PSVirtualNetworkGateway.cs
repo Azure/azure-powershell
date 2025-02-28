@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool ActiveActive { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool EnableAdvancedConnectivity { get; set; }
+
         public PSResourceId GatewayDefaultSite { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
