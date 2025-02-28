@@ -4261,11 +4261,10 @@
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-<<<<<<< HEAD
-            <Label>StorageTaskAssignmentName</Label>
-=======
             <Label>ShareName</Label>
->>>>>>> f7054b5796219b05b298a4566ce14eafb2b9b268
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageTaskAssignmentName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SubscriptionId</Label>
@@ -4314,11 +4313,10 @@
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-<<<<<<< HEAD
-                <PropertyName>StorageTaskAssignmentName</PropertyName>
-=======
                 <PropertyName>ShareName</PropertyName>
->>>>>>> f7054b5796219b05b298a4566ce14eafb2b9b268
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageTaskAssignmentName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
