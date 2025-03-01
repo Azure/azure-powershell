@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Updated Get-AzVMSize to redirect usage to Get-AzComputeResourceSku. 
+* Added breaking change message for `Get-AzVMSize`.
 
 ## Version 9.1.0
 * Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVmssDiskEncryptionExtension`
