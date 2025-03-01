@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPN,
             HelpMessage = "The app SPN.")]
         [ValidateNotNullOrEmpty]
-        [Alias("SPN")]
+        [Alias("SPN", "ApplicationId")]
         public string ServicePrincipalName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroup,
@@ -178,6 +178,18 @@ namespace Microsoft.Azure.Commands.Resources
         [ScopeCompleter]
         public string Scope { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Scope,
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.")]
+        public SwitchParameter AtScope { get; set; }
+
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.")]
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SignInName,
@@ -245,8 +257,9 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.DefaultContext.Subscription?.Id?.ToString()
                 },
-                ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
-                IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
+                AtScope = AtScope,
+                ExpandPrincipalGroups = ExpandPrincipalGroups,
+                IncludeClassicAdministrators = IncludeClassicAdministrators,
             };
 
             if (options.Scope == null && options.ResourceIdentifier.Subscription == null)

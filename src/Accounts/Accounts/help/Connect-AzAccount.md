@@ -268,7 +268,7 @@ The certificate file, which is specified by `CertficatePath`, should contains bo
 $SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
-Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword
+Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $SecurePassword
 ```
 
 ```Output
