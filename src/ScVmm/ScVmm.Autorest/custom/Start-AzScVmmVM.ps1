@@ -161,6 +161,10 @@ begin {
 
         # Custom Logic Begin
         $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        if ($null -eq $machineObj) {
+            throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+        }
+        
         $PSBoundParameters['MachineId'] = $machineObj.Id
 
         foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId')) {

@@ -386,7 +386,6 @@ directive:
     set:
       subject: VM
   - where:
-      verb: Get|Start|Stop|Restart
       subject: VM
     hide: true
 

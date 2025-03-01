@@ -13,9 +13,9 @@ The operation to delete a virtual machine instance.
 ## SYNTAX
 
 ```
-Remove-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DeleteFromHost <String>] [-Force <String>] [-DeleteMachine] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DeleteFromHost]
+ [-DeleteMachine] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,10 +79,10 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteFromHost
-Whether to disable the VM from azure and also delete it from VMM.
+Whether to disable the VM from azure and also delete it from Vmm.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteMachine
-
+Deletes the Hybrid Compute Machine resource associated with the virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -109,10 +109,10 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Whether force delete was specified.
+Forces the resource to be deleted.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,12 +124,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the hybrid machine.
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: MachineName
+Aliases: VMName
 
 Required: True
 Position: Named
