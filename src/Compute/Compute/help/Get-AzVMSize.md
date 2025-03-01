@@ -34,7 +34,9 @@ Get-AzVMSize [-ResourceGroupName] <String> [-VMName] <String> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-Deprecated. Use [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) instead. The **Get-AzVMSize** cmdlet gets available virtual machine sizes.
+The **Get-AzVMSize** cmdlet gets available virtual machine sizes.
+
+**Note**: The **List Virtual Machine Size** parameter set will be deprecated in the next major release (14.0.0) as its API: [Virtual Machine Sizes - List](https://learn.microsoft.com/en-us/rest/api/compute/virtual-machine-sizes/list) is deprecated. For listing available VM sizes by subscription or location, please use instead [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku). Other parameter sets: "List Available Sizes for Availability Set" and "List Available Sizes for Virtual Machine" will continue to be supported.
 
 ## EXAMPLES
 
