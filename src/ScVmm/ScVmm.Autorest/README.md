@@ -453,7 +453,6 @@ directive:
     - model-name: NetworkInterface
     - model-name: VirtualDiskUpdate
     - model-name: VirtualDisk
-    - model-name: Checkpoint
 
   - where:
       model-name: VirtualDisk

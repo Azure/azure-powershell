@@ -23,27 +23,27 @@ Create an in-memory object for NetworkInterfaceUpdate.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a NetworkInterfaceUpdate object in memory
 ```powershell
-{{ Add code here }}
+New-AzScVmmNetworkInterfaceUpdateObject -Name 'NIC-Obj-1' -macAddressType 'Dynamic' -ipv4AddressType 'Dynamic'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DisplayName      :
+Ipv4Address      :
+Ipv4AddressType  : Dynamic
+Ipv6Address      :
+Ipv6AddressType  :
+MacAddress       :
+MacAddressType   : Dynamic
+Name             : NIC-Obj-1
+NetworkName      :
+NicId            :
+VirtualNetworkId :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a NetworkInterfaceUpdate object in memory.
+Used internally for NIC patch operations on VM.
 
 ## PARAMETERS
 

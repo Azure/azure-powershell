@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a VirtualDisk Object in memory
 ```powershell
-{{ Add code here }}
+New-AzScVmmVirtualDiskObject -Name 'Disk-Obj-1' -lun 0 -bus 0 -VhdType 'Dynamic' -BusType 'SCSI' -StorageQoSPolicyName 'Qos-1'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Bus                  : 0
+BusType              : SCSI
+CreateDiffDisk       :
+DiskId               :
+DiskSizeGb           :
+DisplayName          :
+Lun                  : 0
+MaxDiskSizeGb        :
+Name                 : Disk-Obj-1
+StorageQoSPolicyId   :
+StorageQoSPolicyName : Qos-1
+TemplateDiskId       :
+VhdFormatType        :
+VhdType              : Dynamic
+VolumeType           :
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a VirtualDisk Object in memory. Used in `New-AzScVmmVM` for Disk value.
 

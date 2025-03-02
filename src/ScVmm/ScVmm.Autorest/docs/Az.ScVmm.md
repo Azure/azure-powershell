@@ -47,9 +47,6 @@ Onboards the ScVmm availability set as an Azure resource.
 ### [New-AzScVmmAvailabilitySetListItemObject](New-AzScVmmAvailabilitySetListItemObject.md)
 Create an in-memory object for AvailabilitySetListItem.
 
-### [New-AzScVmmCheckpointObject](New-AzScVmmCheckpointObject.md)
-Create an in-memory object for Checkpoint.
-
 ### [New-AzScVmmCloud](New-AzScVmmCloud.md)
 Onboards the ScVmm fabric cloud as an Azure cloud resource.
 

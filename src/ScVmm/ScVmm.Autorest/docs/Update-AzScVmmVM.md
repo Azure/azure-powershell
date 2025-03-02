@@ -114,7 +114,7 @@ Type                                       : microsoft.scvmm/virtualmachineinsta
 ```
 
 Updates HardwareProfile properties for Virtual Machine.
-For Disk and NIC related updates on the given Virtual Machine use `Update-AzScVmmVMDisk` and `Update-AzScVmmVMNic` respectively.
+For Disk and NIC related updates on the given Virtual Machine use `Update-AzScVmmVMVirtualDisk` and `Update-AzScVmmVMNetworkInterface` respectively.
 
 ## PARAMETERS
 
