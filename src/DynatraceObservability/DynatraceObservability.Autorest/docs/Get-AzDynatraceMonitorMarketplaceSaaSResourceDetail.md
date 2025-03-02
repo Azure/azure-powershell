@@ -54,7 +54,7 @@ MarketplaceSaaSResourceId            MarketplaceSubscriptionStatus PlanId
 yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy Subscribed                    azureportalintegration_privatepreview
 ```
 
-This command get Marketplace SaaS resource details
+This command gets the Marketplace SaaS resource for a given tenant Id.
 
 ## PARAMETERS
 
