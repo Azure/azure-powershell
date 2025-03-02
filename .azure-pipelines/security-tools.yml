@@ -20,10 +20,10 @@ jobs:
   - checkout: self
     fetchTags: false
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.0.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
@@ -46,7 +46,7 @@ jobs:
         if ("Manual" -eq "$(Build.Reason)") {
           #TODO: change value of $trigger to the account who trigger this run
           $trigger = 'Manual'
-        } elseif ("Schedule" -eq "$(Build.Reason)") { 
+        } elseif ("Schedule" -eq "$(Build.Reason)") {
           #TODO: change value of $trigger to datetime this run was scheduled
           $trigger = 'Schedule'
         } else {
@@ -64,7 +64,7 @@ jobs:
         } else {
           Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
         }
-        
+
         Write-Host "`n##[group]build steps"
         $buildStepsPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'build-steps.ps1'
         & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "Debug" -FilesChangedOutputPath $filesChangedOutputPath -IsSecurityCheck $true -BuildReason $(Build.Reason) -Trigger $trigger
@@ -76,10 +76,10 @@ jobs:
       script: Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser
       pwsh: true
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 8.x for CredScan tools'
+    displayName: 'Use .NET SDK 6.0.x for CredScan tools'
     inputs:
       packageType: sdk
-      version: 8.x
+      version: 6.0.x
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
     inputs:

@@ -2,11 +2,11 @@ parameters:
 - name: dotnet_sdk
   displayName: .NET SDK
   type: string
-  default: 6.0.x
+  default: 8.0.x
 - name: testFramework
   displayName: Test Framework
   type: string
-  default: net6.0
+  default: net8.0
 - name: testPoolName
   displayName: Test Pool Name
   type: string

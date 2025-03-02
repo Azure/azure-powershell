@@ -2,7 +2,7 @@ variables:
   AgentPoolName: pool-windows-2019
   WindowsName: windows
   WindowsImage: windows-2019
-  TestFramework: net6.0
+  TestFramework: net8.0
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
@@ -36,10 +36,10 @@ jobs:
     continueOnError: true
   - checkout: self
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.0.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
@@ -109,10 +109,10 @@ jobs:
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.0.x
   - task: PowerShell@2
     displayName: 'Analyze'
     inputs:
@@ -134,10 +134,10 @@ jobs:
     parameters:
       artifactName: build-${{ variables.TestFramework }}
   - task: UseDotNet@2
-    displayName: 'Use .NET SDK 6 for tests'
+    displayName: 'Use .NET SDK'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.0.x
   - task: PowerShell@2
     displayName: 'Test'
     inputs:
