@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
-Please note some properties can be set only during virtual machine instance creation.
+The operation to create a virtual machine.
+Please note some properties can be set only during virtual machine creation.
 .Description
-The operation to Create a virtual machine instance.
-Please note some properties can be set only during virtual machine instance creation.
+The operation to create a virtual machine.
+Please note some properties can be set only during virtual machine creation.
 .Example
 {{ Add code here }}
 .Example
@@ -36,12 +36,6 @@ To create the parameters described below, construct a hash table containing the 
 AVAILABILITYSET <IAvailabilitySetListItem[]>: Availability Sets in vm.
   [Id <String>]: Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
   [Name <String>]: Gets or sets the name of the availability set.
-
-INFRASTRUCTUREPROFILECHECKPOINT <ICheckpoint[]>: Checkpoints in the vm.
-  [Description <String>]: Gets description of the checkpoint.
-  [Id <String>]: Gets ID of the checkpoint.
-  [Name <String>]: Gets name of the checkpoint.
-  [ParentCheckpointId <String>]: Gets ID of parent of the checkpoint.
 
 NETWORKPROFILENETWORKINTERFACE <INetworkInterface[]>: Gets or sets the list of network interfaces associated with the virtual machine.
   [Ipv4AddressType <String>]: Gets or sets the ipv4 address type.
@@ -68,24 +62,24 @@ STORAGEPROFILEDISK <IVirtualDisk[]>: Gets or sets the list of virtual disks asso
 https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvm
 #>
 function New-AzScVmmVM {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance])]
-  [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-  param(
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Alias('MachineName')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('VMName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
     [System.String]
-    # The name of the hybrid machine.
+    # The name of the virtual machine.
     ${Name},
 
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -93,180 +87,142 @@ function New-AzScVmmVM {
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedInventory', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
-    # The geo-location where the resource lives
+    # Name of the vmmServer resource in which this resource resides.
+    ${VmmServer},
+
+    [Parameter(ParameterSetName='CreateExpandedInventory', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # UUID of the inventory virtual machine resource to enable in Azure.
+    ${InventoryUuid},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # UUID of the cloud resource to use for deploying the vm.
+    ${CloudName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Name of the template resource to use for deploying the vm.
+    ${TemplateName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedInventory')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives.
     ${Location},
 
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("SystemAssigned")]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedInventory')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
-    # The identity type.
-    ${IdentityType},
+    # The custom location name.
+    ${CustomLocationName},
 
-    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS")]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
-    # Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-    ${Kind},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
+    # Sets computer name.
+    ${ComputerName},
+    
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
+    [System.Security.SecureString]
+    # Admin password of the virtual machine.
+    ${AdminPassword},
 
-    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # Generation for the vm.
+    ${Generation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # Gets or sets the number of vCPUs for the vm.
+    ${CpuCount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to enable dynamic memory or not.
+    ${DynamicMemoryEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # Gets or sets the max dynamic memory for the vm.
+    ${DynamicMemoryMaxMb},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # Gets or sets the min dynamic memory for the vm.
+    ${DynamicMemoryMinMb},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to enable processor compatibility mode for live migration of VMs.
+    ${LimitCpuForMigration},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # MemoryMB is the size of a virtual machine's memory, in MB.
+    ${MemoryMb},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Type of checkpoint supported for the vm.
+    ${CheckpointType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]]
     # Availability Sets in vm.
-    # To construct, see NOTES section for AVAILABILITYSET properties and create a hash table.
     ${AvailabilitySet},
 
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # The extended location name.
-    ${ExtendedLocationName},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # The extended location type.
-    ${ExtendedLocationType},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.Int32]
-    # Gets or sets the number of vCPUs for the vm.
-    ${HardwareProfileCpuCount},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("false", "true")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Gets or sets a value indicating whether to enable dynamic memory or not.
-    ${HardwareProfileDynamicMemoryEnabled},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.Int32]
-    # Gets or sets the max dynamic memory for the vm.
-    ${HardwareProfileDynamicMemoryMaxMb},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.Int32]
-    # Gets or sets the min dynamic memory for the vm.
-    ${HardwareProfileDynamicMemoryMinMb},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("false", "true")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
-    ${HardwareProfileLimitCpuForMigration},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.Int32]
-    # MemoryMB is the size of a virtual machine's memory, in MB.
-    ${HardwareProfileMemoryMb},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Gets or sets the bios guid for the vm.
-    ${InfrastructureProfileBiosGuid},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICheckpoint[]]
-    # Checkpoints in the vm.
-    # To construct, see NOTES section for INFRASTRUCTUREPROFILECHECKPOINT properties and create a hash table.
-    ${InfrastructureProfileCheckpoint},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Type of checkpoint supported for the vm.
-    ${InfrastructureProfileCheckpointType},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # ARM Id of the cloud resource to use for deploying the vm.
-    ${InfrastructureProfileCloudId},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.Int32]
-    # Gets or sets the generation for the vm.
-    ${InfrastructureProfileGeneration},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Gets or sets the inventory Item ID for the resource.
-    ${InfrastructureProfileInventoryItemId},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # ARM Id of the template resource to use for deploying the vm.
-    ${InfrastructureProfileTemplateId},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Unique ID of the virtual machine.
-    ${InfrastructureProfileUuid},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # VMName is the name of VM on the SCVMM server.
-    ${InfrastructureProfileVMName},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # ARM Id of the vmmServer resource in which this resource resides.
-    ${InfrastructureProfileVmmServerId},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface[]]
     # Gets or sets the list of network interfaces associated with the virtual machine.
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
-    ${NetworkProfileNetworkInterface},
+    ${NetworkInterface},
 
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.Security.SecureString]
-    # Admin password of the virtual machine.
-    ${OSProfileAdminPassword},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Gets or sets computer name.
-    ${OSProfileComputerName},
-
-    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk[]]
     # Gets or sets the list of virtual disks associated with the virtual machine.
-    # To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
-    ${StorageProfileDisk},
+    ${Disk},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceUpdateTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags
+    ${Tags},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -327,45 +283,279 @@ function New-AzScVmmVM {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
+)
 
-  process {
-    $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
 
-    if ($null -eq $machineObj) {
-      if ($null -eq $tag) {
-        $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -Location $Location -IdentityType $IdentityType -Kind $Kind
-      }
-      else {
-        $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -Location $Location -IdentityType $IdentityType -Kind $Kind -Tag $Tag
-      }
-    }
-    else {
-      if (!($machineObj.Kind.ToLower() -eq $Kind.ToLower())) {
-        throw "A machine already exists with kind: $($machineObj.Kind). Machine kind cannot be updated to: $($Kind)"
-      }
-      
-      if (!($machineObj.Location.ToLower() -eq $Location.ToLower())) {
-        throw "The location of the existing Machine cannot be updated. Either specify the existing location or keep the location unspecified. Existing location: $($machine.Location), Provided location: $($Location)"
-      }
-      
-      if ($null -eq $Tag) {
-        $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -IdentityType $IdentityType
-      }
-      else {
-        $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -IdentityType $IdentityType -Tag $Tag
-      }
-    }
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
 
-    $PSBoundParameters.Add('MachineId', $machineObj.Id)
+        $mapping = @{
+            CreateExpanded = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
+            CreateExpandedInventory = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ScVmm.private\New-AzScVmmVM_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ScVmm.private\New-AzScVmmVM_CreateViaJsonString';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($null -eq $wrappedCmd) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+
+        # Custom Code Begin
+        $MACHINE_KIND_SCVMM = "SCVMM"
+        $CUSTOM_LOCATION_RESOURCE_TYPE = "customLocations"
+
+        #  Pre-Validation of the input parameters
+
+        if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpanded') {
+
+            if ($PSBoundParameters.ContainsKey('CustomLocationName')) {
+                try {
+                    $customLocationObj = Az.ScVmm.internal\Get-AzScVmmCustomLocation -Name $CustomLocationName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    $customLocationId = $customLocationObj.Id
+                }
+                catch {
+                    Write-Host $_
+                    throw "Cannot determine custom location resource ARM ID for CustomLocation $CustomLocationName in Resource Group $ResourceGroupName."
+                }
+            }
+            try {
+                $VmmServerObj = Get-AzScVmmServer -Name $VmmServer -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                $VmmServerId = $VmmServerObj.Id
+                if (-not $PSBoundParameters.ContainsKey('CustomLocationName')) {
+                    $customLocationId = $VmmServerObj.ExtendedLocationName
+                }
+            }
+            catch {
+                Write-Host $_
+                throw "Cannot determine VmmServer resource ARM ID for VmmServer $VmmServer in Resource Group $ResourceGroupName."
+            }
+
+            if ($parameterSet -eq 'CreateExpandedInventory') {
+                try {
+                    $inventoryItemObj = Get-AzScVmmInventoryItem -VmmServerName $VmmServer -Name $InventoryUuid -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    $inventoryItemId = $inventoryItemObj.Id
+                }
+                catch {
+                    Write-Host $_
+                    throw "Cannot determine inventory resource ARM ID for InventoryItem $InventoryUuid in Resource Group $ResourceGroupName."
+                }
+            }
     
-    if ($PSBoundParameters.ContainsKey('InfrastructureProfileUuid') -and $PSBoundParameters.ContainsKey('InfrastructureProfileVmmServerId')) {
-      $Null = $PSBoundParameters.Remove('InfrastructureProfileInventoryItemId')
+            if ($parameterSet -eq 'CreateExpanded') {
+                try {
+                    $cloudObj = Get-AzScVmmCloud -Name $CloudName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    $cloudId = $cloudObj.Id
+                }
+                catch {
+                    Write-Host $_
+                    throw "Cannot determine cloud resource ARM ID for Cloud $CloudName in Resource Group $ResourceGroupName."
+                }
+    
+                try {
+                    $templateObj = Get-AzScVmmVmTemplate -Name $TemplateName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    $templateId = $templateObj.Id
+                }
+                catch {
+                    Write-Host $_
+                    throw "Cannot determine template resource ARM ID for Template $TemplateName in Resource Group $ResourceGroupName."
+                }
+            }
+        }
 
-      $InventoryItemId = $InfrastructureProfileVmmServerId + "/InventoryItems/" + $InfrastructureProfileUuid
+        # Check if Hybrid Comnpute machine resource exists or create a new one
 
-      $PSBoundParameters.Add('InfrastructureProfileInventoryItemId', $InventoryItemId)
+        try {
+            $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+            if ($null -eq $machineObj) {
+                throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+            }
+            if ($null -ne $machineObj.kind -and $machineObj.kind.ToLower() -ne $MACHINE_KIND_SCVMM.ToLower()) {
+                throw "A machine already exists with kind $($Machine.kind). Machine kind cannot be updated to $MACHINE_KIND_SCVMM."
+            }
+            if ($Location -and ($null -ne $machineObj.location -and $machineObj.location -ne $Location)) {
+                throw "The location of the existing Machine cannot be updated. Existing location: $($machineObj.location), Provided location: $Location."
+            }
+            if ($Tags) {
+                $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Tag $Tags
+                if ($null -eq $machineObj) {
+                    throw "Failed to update tags for the existing machine resource."
+                }
+            }
+        }
+        catch {
+            if ($_.Exception.Message -match "ResourceNotFound|not found") {
+                if ($null -eq $Location) {
+                    throw "The parent Machine resource does not exist. Location is required while creating a new machine."
+                }
+                if ($Tags) {
+                    $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Location $Location -Tag $Tags -Kind $MACHINE_KIND_SCVMM
+                } else {
+                    $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Location $Location -Kind $MACHINE_KIND_SCVMM
+                }
+
+                if ($null -eq $machineObj) {
+                    throw "Failed to create the machine resource for the new virtual machine."
+                }
+            }
+            else {
+                Write-Host $_
+                throw $_
+            }
+        }
+
+        # Update PSBoundParameters
+
+        $PSBoundParameters['MachineId'] = $machineObj.Id
+        foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId', 'Tags', 'Location')) {
+            [void]$PSBoundParameters.Remove($key)
+        }
+
+        if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpanded') {
+
+            # ExtendedLocation / CustomLocation
+
+            $PSBoundParameters['ExtendedLocationType'] = $CUSTOM_LOCATION_RESOURCE_TYPE
+            $PSBoundParameters['ExtendedLocationName'] = $customLocationId
+
+            if ($PSBoundParameters.ContainsKey('CustomLocationName')) {
+                [void]$PSBoundParameters.Remove('CustomLocationName')
+            }
+
+            # AvailabilitySet
+
+            if ($PSBoundParameters.ContainsKey('AvailabilitySet')) {
+                $PSBoundParameters['InfrastructureProfileAvailabilitySet'] = $PSBoundParameters['AvailabilitySet']
+                [void]$PSBoundParameters.Remove('AvailabilitySet')
+            }
+
+            # OSProfile
+
+            foreach ($key in @('ComputerName', 'AdminPassword')) {
+                if ($PSBoundParameters.ContainsKey($key)) {
+                    $PSBoundParameters["OSProfile$($key)"] = $PSBoundParameters[$key]
+                    [void]$PSBoundParameters.Remove($key)
+                }
+                
+            }
+
+            # HardwareProfile
+            
+            foreach ($key in @('CpuCount', 'DynamicMemoryMaxMb', 'DynamicMemoryMinMb', 'MemoryMb', 'DynamicMemoryEnabled','LimitCpuForMigration')) {
+                if ($PSBoundParameters.ContainsKey($key)) {
+                    if ($key -eq 'DynamicMemoryEnabled' -or $key -eq 'LimitCpuForMigration') {
+                        $PSBoundParameters["HardwareProfile$($key)"] = "true"
+                    } else {
+                        $PSBoundParameters["HardwareProfile$($key)"] = $PSBoundParameters[$key]
+                    }
+                    [void]$PSBoundParameters.Remove($key)
+                }
+            }
+
+            # NetworkProfile
+
+            if ($PSBoundParameters.ContainsKey('NetworkInterface')) {
+                $PSBoundParameters["NetworkProfileNetworkInterface"] = $PSBoundParameters['NetworkInterface']
+                    [void]$PSBoundParameters.Remove('NetworkInterface')
+            }
+
+            # StorageProfile
+
+            if ($PSBoundParameters.ContainsKey('Disk')) {
+                $PSBoundParameters["StorageProfileDisk"] = $PSBoundParameters['Disk']
+                    [void]$PSBoundParameters.Remove('Disk')
+            }
+
+            # InfrastructureProfile
+
+            if ($parameterSet -eq 'CreateExpandedInventory') {
+                $PSBoundParameters["InfrastructureProfileInventoryItemId"] = $inventoryItemId
+            } else {
+                $PSBoundParameters["InfrastructureProfileCloudId"] = $cloudId
+                $PSBoundParameters["InfrastructureProfileTemplateId"] = $templateId
+                $PSBoundParameters["InfrastructureProfileVmmServerId"] = $VmmServerId
+            }
+            
+            foreach ($key in @('VmmServer', 'InventoryUuid', 'CloudName', 'TemplateName')) {
+                if ($PSBoundParameters.ContainsKey($key)) {
+                    [void]$PSBoundParameters.Remove($key)
+                }
+            }
+            foreach ($key in @('CheckpointType', 'Generation')) {
+                if ($PSBoundParameters.ContainsKey($key)) {
+                    $PSBoundParameters["InfrastructureProfile$($key)"] = $PSBoundParameters[$key]
+                    [void]$PSBoundParameters.Remove($key)
+                }
+            }
+        }
+                
+        # Custom Code End
+
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
     }
-    Az.ScVmm.internal\New-AzScVmmVM @PSBoundParameters
-  }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
 }

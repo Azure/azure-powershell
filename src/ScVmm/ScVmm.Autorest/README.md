@@ -33,6 +33,7 @@ require:
 input-file:
   - $(repo)/specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/scvmm.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json
+  - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/customlocations.json
 
 module-version: 0.3.0
 title: ScVmm
@@ -379,6 +380,20 @@ directive:
     remove: true
   - where:
       subject: Machine
+    hide: true
+
+  # In "Microsoft.ExtendedLocation/stable/2021-08-15/customlocations.json" service team just to use "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}"
+
+  - where:
+      subject: CustomLocationEnabledResourceType|CustomLocationOperation
+    remove: true
+  - where:
+      verb: New|Update|Remove
+      subject: CustomLocation
+    remove: true
+  - where:
+      subject: CustomLocation
+      verb: Get
     hide: true
 
   - where:

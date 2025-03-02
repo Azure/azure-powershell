@@ -8,57 +8,294 @@ schema: 2.0.0
 # New-AzScVmmVM
 
 ## SYNOPSIS
-The operation to Create a virtual machine instance.
-Please note some properties can be set only during virtual machine instance creation.
+The operation to create a virtual machine.
+Please note some properties can be set only during virtual machine creation.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzScVmmVM -Name <String> -ResourceGroupName <String> -IdentityType <String> -Kind <String>
- -Location <String> [-SubscriptionId <String>] [-AvailabilitySet <IAvailabilitySetListItem[]>]
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-HardwareProfileCpuCount <Int32>]
- [-HardwareProfileDynamicMemoryEnabled <String>] [-HardwareProfileDynamicMemoryMaxMb <Int32>]
- [-HardwareProfileDynamicMemoryMinMb <Int32>] [-HardwareProfileLimitCpuForMigration <String>]
- [-HardwareProfileMemoryMb <Int32>] [-InfrastructureProfileBiosGuid <String>]
- [-InfrastructureProfileCheckpoint <ICheckpoint[]>] [-InfrastructureProfileCheckpointType <String>]
- [-InfrastructureProfileCloudId <String>] [-InfrastructureProfileGeneration <Int32>]
- [-InfrastructureProfileInventoryItemId <String>] [-InfrastructureProfileTemplateId <String>]
- [-InfrastructureProfileUuid <String>] [-InfrastructureProfileVmmServerId <String>]
- [-InfrastructureProfileVMName <String>] [-NetworkProfileNetworkInterface <INetworkInterface[]>]
- [-OSProfileAdminPassword <SecureString>] [-OSProfileComputerName <String>]
- [-StorageProfileDisk <IVirtualDisk[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CloudName <String> -TemplateName <String>
+ -VmmServer <String> [-SubscriptionId <String>] [-AdminPassword <SecureString>]
+ [-AvailabilitySet <IAvailabilitySetListItem[]>] [-CheckpointType <String>] [-ComputerName <String>]
+ [-CpuCount <Int32>] [-CustomLocationName <String>] [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled]
+ [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>] [-Generation <Int32>] [-LimitCpuForMigration]
+ [-Location <String>] [-MemoryMb <Int32>] [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpandedInventory
+```
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -InventoryUuid <String> -VmmServer <String>
+ [-SubscriptionId <String>] [-CustomLocationName <String>] [-Location <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to Create a virtual machine instance.
-Please note some properties can be set only during virtual machine instance creation.
+The operation to create a virtual machine.
+Please note some properties can be set only during virtual machine creation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable existing Virtual Machine in Azure
 ```powershell
-{{ Add code here }}
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -InventoryUuid "00000000-1111-0000-0001-000000000000" -Location "<geo-location>"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AvailabilitySet                            : {}
+ExtendedLocationName                       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
+ExtendedLocationType                       : customLocations
+HardwareProfileCpuCount                    : 2
+HardwareProfileDynamicMemoryEnabled        : false
+HardwareProfileDynamicMemoryMaxMb          :
+HardwareProfileDynamicMemoryMinMb          :
+HardwareProfileIsHighlyAvailable           : false
+HardwareProfileLimitCpuForMigration        : false
+HardwareProfileMemoryMb                    : 2048
+Id                                         : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm/providers/Microsoft.ScVmm     
+                                             /virtualMachineInstances/default
+InfrastructureProfileBiosGuid              : 00000000-1111-0000-0001-000000000000
+InfrastructureProfileCheckpoint            : {}
+InfrastructureProfileCheckpointType        : Production
+InfrastructureProfileCloudId               :
+InfrastructureProfileGeneration            : 1
+InfrastructureProfileInventoryItemId       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServers/test-vmm/InventoryItems/00000000-1111-0000-0001-000000000000
+InfrastructureProfileTemplateId            :
+InfrastructureProfileUuid                  : 00000000-1111-0000-0001-000000000000
+InfrastructureProfileVMName                : test-vm
+InfrastructureProfileVmmServerId           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServers/test-vmm
+LastRestoredVMCheckpointDescription        :
+LastRestoredVMCheckpointId                 :
+LastRestoredVMCheckpointName               :
+LastRestoredVMCheckpointParentCheckpointId :
+Name                                       : default
+NetworkProfileNetworkInterface             : {{
+                                               "displayName": "Network Adapter 1",
+                                               "macAddress": "00:00:00:00:00:00",
+                                               "virtualNetworkId": "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/VirtualNetworks/test-vnet",
+                                               "networkName": "00000000-1111-0000-0001-000000000000",
+                                               "ipv4AddressType": "Dynamic",
+                                               "ipv6AddressType": "Dynamic",
+                                               "macAddressType": "Dynamic",
+                                               "nicId": "00000000-1122-0000-0001-000000000000"
+                                             }}
+OSProfileAdminPassword                     :
+OSProfileComputerName                      : ComputerName
+OSProfileOssku                             : Windows Server
+OSProfileOstype                            : Windows
+OSProfileOsversion                         : 10.0.0
+PowerState                                 : Running
+ProvisioningState                          : Succeeded
+ResourceGroupName                          : test-rg-01
+StorageProfileDisk                         : {{
+                                               "displayName": "WindowsServer.vhd",
+                                               "diskId": "00000000-1111-0000-0001-000000000000",
+                                               "diskSizeGB": 8,
+                                               "maxDiskSizeGB": 40,
+                                               "bus": 0,
+                                               "lun": 0,
+                                               "busType": "IDE",
+                                               "vhdType": "Dynamic",
+                                               "volumeType": "BootAndSystem",
+                                               "vhdFormatType": "VHD",
+                                               "createDiffDisk": "false"
+                                             }}
+SystemDataCreatedAt                        : 08-01-2024 15:05:41
+SystemDataCreatedBy                        : user@contoso.com
+SystemDataCreatedByType                    : User
+SystemDataLastModifiedAt                   : 08-01-2024 15:14:34
+SystemDataLastModifiedBy                   : 11111111-aaaa-2222-bbbb-333333333333
+SystemDataLastModifiedByType               : Application
+Type                                       : microsoft.scvmm/virtualmachineinstances
 ```
 
-{{ Add description here }}
+Enable existing SCVMM Virtual Machine in Azure
 
-### Example 2: {{ Add title here }}
+### Example 2: Create new virtual machine
 ```powershell
-{{ Add code here }}
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -Location '<geo-location>' -CloudName 'test-cloud' -TemplateName 'test-template'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AvailabilitySet                            : {}
+ExtendedLocationName                       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
+ExtendedLocationType                       : customLocations
+HardwareProfileCpuCount                    : 2
+HardwareProfileDynamicMemoryEnabled        : false
+HardwareProfileDynamicMemoryMaxMb          :
+HardwareProfileDynamicMemoryMinMb          :
+HardwareProfileIsHighlyAvailable           : false
+HardwareProfileLimitCpuForMigration        : false
+HardwareProfileMemoryMb                    : 2048
+Id                                         : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm/providers/Microsoft.ScVmm     
+                                             /virtualMachineInstances/default
+InfrastructureProfileBiosGuid              : 00000000-1111-0000-0001-000000000000
+InfrastructureProfileCheckpoint            : {}
+InfrastructureProfileCheckpointType        : Production
+InfrastructureProfileCloudId               : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/Clouds/
+                                             test-cloud
+InfrastructureProfileGeneration            : 2
+InfrastructureProfileInventoryItemId       :
+InfrastructureProfileTemplateId            : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/Virtual
+                                             MachineTemplates/test-template
+InfrastructureProfileUuid                  : 00000000-1111-0000-0001-000000000000
+InfrastructureProfileVMName                : test-vm
+InfrastructureProfileVmmServerId           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServ
+                                             ers/test-vmm
+LastRestoredVMCheckpointDescription        :
+LastRestoredVMCheckpointId                 :
+LastRestoredVMCheckpointName               :
+LastRestoredVMCheckpointParentCheckpointId :
+Name                                       : default
+NetworkProfileNetworkInterface             : {{
+                                               "displayName": "Network Adapter 1",
+                                               "macAddress": "00:00:00:00:00:00",
+                                               "virtualNetworkId": "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/VirtualNetworks/test-vnet",
+                                               "networkName": "00000000-1111-0000-0001-000000000000",
+                                               "ipv4AddressType": "Dynamic",
+                                               "ipv6AddressType": "Dynamic",
+                                               "macAddressType": "Dynamic",
+                                               "nicId": "00000000-1122-0000-0001-000000000000"
+                                             }}
+OSProfileAdminPassword                     :
+OSProfileComputerName                      : ComputerName
+OSProfileOssku                             : Windows Server
+OSProfileOstype                            : Windows
+OSProfileOsversion                         : 10.0.0
+PowerState                                 : Running
+ProvisioningState                          : Succeeded
+ResourceGroupName                          : test-rg-01
+StorageProfileDisk                         : {{
+                                               "displayName": "WindowsServer.vhd",
+                                               "diskId": "00000000-1111-0000-0001-000000000000",
+                                               "diskSizeGB": 8,
+                                               "maxDiskSizeGB": 40,
+                                               "bus": 0,
+                                               "lun": 0,
+                                               "busType": "IDE",
+                                               "vhdType": "Dynamic",
+                                               "volumeType": "BootAndSystem",
+                                               "vhdFormatType": "VHD",
+                                               "createDiffDisk": "false"
+                                             }}
+SystemDataCreatedAt                        : 08-01-2024 15:05:41
+SystemDataCreatedBy                        : user@contoso.com
+SystemDataCreatedByType                    : User
+SystemDataLastModifiedAt                   : 08-01-2024 15:14:34
+SystemDataLastModifiedBy                   : 11111111-aaaa-2222-bbbb-333333333333
+SystemDataLastModifiedByType               : Application
+Type                                       : microsoft.scvmm/virtualmachineinstances
 ```
 
-{{ Add description here }}
+Create new virtual machine on on-prem SCVMM
+
+### Example 2: Create new virtual machine
+```powershell
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -Location '<geo-location>' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tags @{"key-1"="value-1234"}
+```
+
+```output
+AvailabilitySet                            : {}
+ExtendedLocationName                       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
+ExtendedLocationType                       : customLocations
+HardwareProfileCpuCount                    : 4
+HardwareProfileDynamicMemoryEnabled        : false
+HardwareProfileDynamicMemoryMaxMb          :
+HardwareProfileDynamicMemoryMinMb          :
+HardwareProfileIsHighlyAvailable           : false
+HardwareProfileLimitCpuForMigration        : false
+HardwareProfileMemoryMb                    : 2048
+Id                                         : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm/providers/Microsoft.ScVmm     
+                                             /virtualMachineInstances/default
+InfrastructureProfileBiosGuid              : 00000000-1111-0000-0001-000000000000
+InfrastructureProfileCheckpoint            : {}
+InfrastructureProfileCheckpointType        : Production
+InfrastructureProfileCloudId               : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/Clouds/
+                                             test-cloud
+InfrastructureProfileGeneration            : 2
+InfrastructureProfileInventoryItemId       :
+InfrastructureProfileTemplateId            : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/Virtual
+                                             MachineTemplates/test-template
+InfrastructureProfileUuid                  : 00000000-1111-0000-0001-000000000000
+InfrastructureProfileVMName                : test-vm
+InfrastructureProfileVmmServerId           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServ
+                                             ers/test-vmm
+LastRestoredVMCheckpointDescription        :
+LastRestoredVMCheckpointId                 :
+LastRestoredVMCheckpointName               :
+LastRestoredVMCheckpointParentCheckpointId :
+Name                                       : default
+NetworkProfileNetworkInterface             : {{
+                                               "displayName": "Network Adapter 1",
+                                               "macAddress": "00:00:00:00:00:00",
+                                               "virtualNetworkId": "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/VirtualNetworks/test-vnet",
+                                               "networkName": "00000000-1111-0000-0001-000000000000",
+                                               "ipv4AddressType": "Dynamic",
+                                               "ipv6AddressType": "Dynamic",
+                                               "macAddressType": "Dynamic",
+                                               "nicId": "00000000-1122-0000-0001-000000000000"
+                                             }}
+OSProfileAdminPassword                     :
+OSProfileComputerName                      : ComputerName
+OSProfileOssku                             : Windows Server
+OSProfileOstype                            : Windows
+OSProfileOsversion                         : 10.0.0
+PowerState                                 : Running
+ProvisioningState                          : Succeeded
+ResourceGroupName                          : test-rg-01
+StorageProfileDisk                         : {{
+                                               "displayName": "WindowsServer.vhd",
+                                               "diskId": "00000000-1111-0000-0001-000000000000",
+                                               "diskSizeGB": 8,
+                                               "maxDiskSizeGB": 40,
+                                               "bus": 0,
+                                               "lun": 0,
+                                               "busType": "IDE",
+                                               "vhdType": "Dynamic",
+                                               "volumeType": "BootAndSystem",
+                                               "vhdFormatType": "VHD",
+                                               "createDiffDisk": "false"
+                                             }}
+SystemDataCreatedAt                        : 08-01-2024 15:05:41
+SystemDataCreatedBy                        : user@contoso.com
+SystemDataCreatedByType                    : User
+SystemDataLastModifiedAt                   : 08-01-2024 15:14:34
+SystemDataLastModifiedBy                   : 11111111-aaaa-2222-bbbb-333333333333
+SystemDataLastModifiedByType               : Application
+Type                                       : microsoft.scvmm/virtualmachineinstances
+```
+
+Create new virtual machine on on-prem SCVMM
 
 ## PARAMETERS
+
+### -AdminPassword
+Admin password of the virtual machine.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -77,11 +314,85 @@ Accept wildcard characters: False
 
 ### -AvailabilitySet
 Availability Sets in vm.
-To construct, see NOTES section for AVAILABILITYSET properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CheckpointType
+Type of checkpoint supported for the vm.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CloudName
+UUID of the cloud resource to use for deploying the vm.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputerName
+Sets computer name.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CpuCount
+Gets or sets the number of vCPUs for the vm.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomLocationName
+The custom location name.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateExpandedInventory
 Aliases:
 
 Required: False
@@ -107,12 +418,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtendedLocationName
-The extended location name.
+### -Disk
+Gets or sets the list of virtual disks associated with the virtual machine.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -122,12 +433,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtendedLocationType
-The extended location type.
+### -DynamicMemoryEnabled
+Whether to enable dynamic memory or not.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -137,42 +448,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HardwareProfileCpuCount
-Gets or sets the number of vCPUs for the vm.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HardwareProfileDynamicMemoryEnabled
-Gets or sets a value indicating whether to enable dynamic memory or not.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HardwareProfileDynamicMemoryMaxMb
+### -DynamicMemoryMaxMb
 Gets or sets the max dynamic memory for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -182,12 +463,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HardwareProfileDynamicMemoryMinMb
+### -DynamicMemoryMinMb
 Gets or sets the min dynamic memory for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -197,27 +478,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HardwareProfileLimitCpuForMigration
-Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HardwareProfileMemoryMb
-MemoryMB is the size of a virtual machine's memory, in MB.
+### -Generation
+Generation for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -227,12 +493,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identity type.
+### -InventoryUuid
+UUID of the inventory virtual machine resource to enable in Azure.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedInventory
 Aliases:
 
 Required: True
@@ -242,166 +508,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InfrastructureProfileBiosGuid
-Gets or sets the bios guid for the vm.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileCheckpoint
-Checkpoints in the vm.
-To construct, see NOTES section for INFRASTRUCTUREPROFILECHECKPOINT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICheckpoint[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileCheckpointType
-Type of checkpoint supported for the vm.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileCloudId
-ARM Id of the cloud resource to use for deploying the vm.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileGeneration
-Gets or sets the generation for the vm.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileInventoryItemId
-Gets or sets the inventory Item ID for the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileTemplateId
-ARM Id of the template resource to use for deploying the vm.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileUuid
-Unique ID of the virtual machine.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileVmmServerId
-ARM Id of the vmmServer resource in which this resource resides.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileVMName
-VMName is the name of VM on the SCVMM server.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LimitCpuForMigration
+Whether to enable processor compatibility mode for live migration of VMs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -409,14 +554,29 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives
+The geo-location where the resource lives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpandedInventory
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MemoryMb
+MemoryMB is the size of a virtual machine's memory, in MB.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -424,12 +584,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the hybrid machine.
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: MachineName
+Aliases: VMName
 
 Required: True
 Position: Named
@@ -438,13 +598,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfileNetworkInterface
+### -NetworkInterface
 Gets or sets the list of network interfaces associated with the virtual machine.
-To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -459,36 +618,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OSProfileAdminPassword
-Admin password of the virtual machine.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OSProfileComputerName
-Gets or sets computer name.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -515,22 +644,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageProfileDisk
-Gets or sets the list of virtual disks associated with the virtual machine.
-To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -547,15 +660,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
+### -Tags
+Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplateName
+Name of the template resource to use for deploying the vm.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmmServer
+Name of the vmmServer resource in which this resource resides.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateExpandedInventory
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

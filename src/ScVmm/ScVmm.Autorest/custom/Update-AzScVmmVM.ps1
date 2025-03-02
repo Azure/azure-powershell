@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Update a virtual machine instance.
+The operation to update a virtual machine (Use separate commands for NIC and Disk update on virtual Machine).
 .Description
-The operation to Update a virtual machine instance.
+The operation to update a virtual machine (Use separate commands for NIC and Disk update on virtual Machine).
 .Example
 {{ Add code here }}
 .Example
@@ -35,189 +35,297 @@ AVAILABILITYSET <IAvailabilitySetListItem[]>: Availability Sets in vm.
   [Id <String>]: Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
   [Name <String>]: Gets or sets the name of the availability set.
 
-NETWORKPROFILENETWORKINTERFACE <INetworkInterfaceUpdate[]>: Gets or sets the list of network interfaces associated with the virtual machine.
-  [Ipv4AddressType <String>]: Gets or sets the ipv4 address type.
-  [Ipv6AddressType <String>]: Gets or sets the ipv6 address type.
-  [MacAddress <String>]: Gets or sets the nic MAC address.
-  [MacAddressType <String>]: Gets or sets the mac address type.
-  [Name <String>]: Gets or sets the name of the network interface.
-  [NicId <String>]: Gets or sets the nic id.
-  [VirtualNetworkId <String>]: Gets or sets the ARM Id of the Microsoft.ScVmm/virtualNetwork resource to connect the nic.
-
-STORAGEPROFILEDISK <IVirtualDiskUpdate[]>: Gets or sets the list of virtual disks associated with the virtual machine.
-  [Bus <Int32?>]: Gets or sets the disk bus.
-  [BusType <String>]: Gets or sets the disk bus type.
-  [DiskId <String>]: Gets or sets the disk id.
-  [DiskSizeGb <Int32?>]: Gets or sets the disk total size.
-  [Lun <Int32?>]: Gets or sets the disk lun.
-  [Name <String>]: Gets or sets the name of the disk.
-  [StorageQoSPolicyId <String>]: The ID of the QoS policy.
-  [StorageQoSPolicyName <String>]: The name of the policy.
-  [VhdType <String>]: Gets or sets the disk vhd type.
 .Link
 https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvm
 #>
 function Update-AzScVmmVM {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-    param(
-        [Parameter(Mandatory)]
-        [Alias('MachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
-        [System.String]
-        # The name of the hybrid machine.
-        ${Name},
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
-        [System.String]
-        # The name of the resource group.
-        # The name is case insensitive.
-        ${ResourceGroupName},
+    [Parameter(Mandatory)]
+    [Alias('VMName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
+    [System.String]
+    # The name of the virtual machine.
+    ${Name},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # The ID of the target subscription.
-        # The value must be an UUID.
-        ${SubscriptionId},
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]]
-        # Availability Sets in vm.
-        ${AvailabilitySet},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [System.Int32]
-        # Gets or sets the number of vCPUs for the vm.
-        ${HardwareProfileCpuCount},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # Gets or sets the number of vCPUs for the vm.
+    ${CpuCount},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("false", "true")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [System.String]
-        # Gets or sets a value indicating whether to enable dynamic memory or not.
-        ${HardwareProfileDynamicMemoryEnabled},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to enable dynamic memory or not.
+    ${DynamicMemoryEnabled},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [System.Int32]
-        # Gets or sets the max dynamic memory for the vm.
-        ${HardwareProfileDynamicMemoryMaxMb},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # Gets or sets the max dynamic memory for the vm.
+    ${DynamicMemoryMaxMb},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [System.Int32]
-        # Gets or sets the min dynamic memory for the vm.
-        ${HardwareProfileDynamicMemoryMinMb},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # Gets or sets the min dynamic memory for the vm.
+    ${DynamicMemoryMinMb},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("false", "true")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [System.String]
-        # Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
-        ${HardwareProfileLimitCpuForMigration},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to enable processor compatibility mode for live migration of VMs.
+    ${LimitCpuForMigration},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [System.Int32]
-        # MemoryMB is the size of a virtual machine's memory, in MB.
-        ${HardwareProfileMemoryMb},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.Int32]
+    # MemoryMB is the size of a virtual machine's memory, in MB.
+    ${MemoryMb},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [System.String]
-        # Type of checkpoint supported for the vm.
-        ${InfrastructureProfileCheckpointType},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Type of checkpoint supported for the vm.
+    ${CheckpointType},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterfaceUpdate[]]
-        # Gets or sets the list of network interfaces associated with the virtual machine.
-        ${NetworkProfileNetworkInterface},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]]
+    # Availability Sets in vm.
+    ${AvailabilitySet},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDiskUpdate[]]
-        # Gets or sets the list of virtual disks associated with the virtual machine.
-        ${StorageProfileDisk},
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceUpdateTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags
+    ${Tags},
 
-        [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Azure')]
-        [System.Management.Automation.PSObject]
-        # The DefaultProfile parameter is not functional.
-        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-        ${DefaultProfile},
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
-        ${Break},
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-        [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
-        ${ProxyCredential},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
-    )
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
 
-    process {
-        $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
 
-        if ($null -eq $machineObj) {
-            throw "The Resource '$($Name)' under resource group '$($ResourceGroupName)' was not found."
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
         }
 
-        $PSBoundParameters.Add('MachineId', $machineObj.Id)
+        $mapping = @{
+            UpdateExpanded = 'Az.ScVmm.private\Update-AzScVmmVM_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ScVmm.private\Update-AzScVmmVM_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ScVmm.private\Update-AzScVmmVM_UpdateViaJsonString';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
 
-        Az.ScVmm.internal\Update-AzScVmmVM @PSBoundParameters
+        # Custom Code Begin
+
+        # Check if Hybrid Comnpute machine resource exists or create a new one
+
+        $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        if ($null -eq $machineObj) {
+            throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+        }
+        if ($Tags) {
+            $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Tag $Tags
+            if ($null -eq $machineObj) {
+                throw "Failed to update tags for the existing machine resource."
+            }
+        }
+
+        # Update PSBoundParameters
+
+        $PSBoundParameters['MachineId'] = $machineObj.Id
+        foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId', 'Tags')) {
+            [void]$PSBoundParameters.Remove($key)
+        }
+
+        if ($parameterSet -eq 'UpdateExpanded') {
+
+            # AvailabilitySet
+
+            if ($PSBoundParameters.ContainsKey('AvailabilitySet')) {
+                $PSBoundParameters['InfrastructureProfileAvailabilitySet'] = $PSBoundParameters['AvailabilitySet']
+                [void]$PSBoundParameters.Remove('AvailabilitySet')
+            }
+
+            # HardwareProfile
+            
+            foreach ($key in @('CpuCount', 'DynamicMemoryMaxMb', 'DynamicMemoryMinMb', 'MemoryMb', 'DynamicMemoryEnabled','LimitCpuForMigration')) {
+                if ($PSBoundParameters.ContainsKey($key)) {
+                    if ($key -eq 'DynamicMemoryEnabled' -or $key -eq 'LimitCpuForMigration') {
+                        $PSBoundParameters["HardwareProfile$($key)"] = "true"
+                    } else {
+                        $PSBoundParameters["HardwareProfile$($key)"] = $PSBoundParameters[$key]
+                    }
+                    [void]$PSBoundParameters.Remove($key)
+                }
+            }
+
+            # InfrastructureProfile
+
+            if ($PSBoundParameters.ContainsKey('CheckpointType')) {
+                $PSBoundParameters["InfrastructureProfileCheckpointType"] = $PSBoundParameters['CheckpointType']
+                [void]$PSBoundParameters.Remove('CheckpointType')
+            }
+        }
+                
+        # Custom Code End
+
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
     }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
 }
