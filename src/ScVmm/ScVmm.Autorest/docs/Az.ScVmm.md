@@ -11,11 +11,11 @@ Locale: en-US
 Microsoft Azure PowerShell: ScVmm cmdlets
 
 ## Az.ScVmm Cmdlets
-### [Add-AzScVmmNetworkInterface](Add-AzScVmmNetworkInterface.md)
-The operation to Create a virtual machine network interface.
-
-### [Add-AzScVmmVirtualDisk](Add-AzScVmmVirtualDisk.md)
+### [Add-AzScVmmVMDisk](Add-AzScVmmVMDisk.md)
 The operation to Create a virtual machine virtual disk.
+
+### [Add-AzScVmmVMNic](Add-AzScVmmVMNic.md)
+The operation to Create a virtual machine network interface.
 
 ### [Get-AzScVmmAvailabilitySet](Get-AzScVmmAvailabilitySet.md)
 Implements AvailabilitySet GET method.
@@ -72,8 +72,8 @@ Create an in-memory object for VirtualDiskUpdate.
 Onboards the ScVmm virtual network as an Azure virtual network resource.
 
 ### [New-AzScVmmVM](New-AzScVmmVM.md)
-The operation to Create a virtual machine instance.
-Please note some properties can be set only during virtual machine instance creation.
+The operation to create a virtual machine.
+Please note some properties can be set only during virtual machine creation.
 
 ### [New-AzScVmmVMCheckpoint](New-AzScVmmVMCheckpoint.md)
 create a checkpoint in virtual machine.
@@ -90,14 +90,8 @@ Deregisters the ScVmm availability set from Azure.
 ### [Remove-AzScVmmCloud](Remove-AzScVmmCloud.md)
 Deregisters the ScVmm fabric cloud from Azure.
 
-### [Remove-AzScVmmNetworkInterface](Remove-AzScVmmNetworkInterface.md)
-The operation to Delete a virtual machine network interface.
-
 ### [Remove-AzScVmmServer](Remove-AzScVmmServer.md)
 Removes the SCVmm fabric from Azure.
-
-### [Remove-AzScVmmVirtualDisk](Remove-AzScVmmVirtualDisk.md)
-The operation to Delete a virtual machine virtual disk.
 
 ### [Remove-AzScVmmVirtualNetwork](Remove-AzScVmmVirtualNetwork.md)
 Deregisters the ScVmm virtual network from Azure.
@@ -107,6 +101,12 @@ The operation to delete a virtual machine instance.
 
 ### [Remove-AzScVmmVMCheckpoint](Remove-AzScVmmVMCheckpoint.md)
 Deletes a checkpoint in virtual machine.
+
+### [Remove-AzScVmmVMDisk](Remove-AzScVmmVMDisk.md)
+The operation to Remove a virtual machine virtual disk.
+
+### [Remove-AzScVmmVMNic](Remove-AzScVmmVMNic.md)
+The operation to Remove a virtual machine network interface.
 
 ### [Remove-AzScVmmVMTemplate](Remove-AzScVmmVMTemplate.md)
 Deregisters the ScVmm VM Template from Azure.
@@ -136,7 +136,13 @@ update the VmmServers resource.
 update the VirtualNetworks resource.
 
 ### [Update-AzScVmmVM](Update-AzScVmmVM.md)
-The operation to Update a virtual machine instance.
+The operation to update a virtual machine (Use separate commands for NIC and Disk update on virtual Machine).
+
+### [Update-AzScVmmVMDisk](Update-AzScVmmVMDisk.md)
+The operation to Update a virtual machine virtual disk.
+
+### [Update-AzScVmmVMNic](Update-AzScVmmVMNic.md)
+The operation to Update a virtual machine network interface.
 
 ### [Update-AzScVmmVMTemplate](Update-AzScVmmVMTemplate.md)
 update the VirtualMachineTemplate resource.
