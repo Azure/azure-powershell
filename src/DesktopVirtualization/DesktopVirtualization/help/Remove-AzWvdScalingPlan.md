@@ -15,14 +15,14 @@ Remove a scaling plan.
 ### Delete (Default)
 ```
 Remove-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +30,12 @@ Remove a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop Scaling Plan by name
+### Example 1: Delete a Azure Virtual Desktop Scaling Plan by name
 ```powershell
 Remove-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
 ```
 
-This command deletes a Windows Virtual Desktop Scaling Plan in a Resource Group.
+This command deletes a Azure Virtual Desktop Scaling Plan in a Resource Group.
 
 ## PARAMETERS
 
@@ -92,6 +92,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

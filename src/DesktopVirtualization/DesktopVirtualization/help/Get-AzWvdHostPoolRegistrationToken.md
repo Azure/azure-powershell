@@ -8,36 +8,36 @@ schema: 2.0.0
 # Get-AzWvdHostPoolRegistrationToken
 
 ## SYNOPSIS
-Operation to list the RegistrationTokens associated with the HostPool
+Operation to list the RegistrationTokens associated with the HostPool.
 
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### Retrieve
 ```
 Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### RetrieveViaIdentity
 ```
 Get-AzWvdHostPoolRegistrationToken -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Operation to list the RegistrationTokens associated with the HostPool
+Operation to list the RegistrationTokens associated with the HostPool.
 
 ## EXAMPLES
 
-### Example 1: Get Windows Virtual Desktop registration token information by HostPoolName
+### Example 1: Get Azure Virtual Desktop registration token information by HostPoolName
 ```powershell
 Get-AzWvdHostPoolRegistrationToken -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
@@ -48,7 +48,7 @@ ExpirationTime       RegistrationTokenOperation Token
 4/1/2020 10:19:33 PM None                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...
 ```
 
-This command gets Windows Virtual Desktop registration token information from a HostPool.
+This command gets Azure Virtual Desktop registration token information from a HostPool.
 
 ## PARAMETERS
 
@@ -95,6 +95,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

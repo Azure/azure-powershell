@@ -16,13 +16,13 @@ Remove a userSession.
 ```
 Remove-AzWvdUserSession -HostPoolName <String> -Id <String> -ResourceGroupName <String>
  -SessionHostName <String> [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentitySessionHost
 ```
 Remove-AzWvdUserSession -Id <String> -SessionHostInputObject <IDesktopVirtualizationIdentity> [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,13 +30,13 @@ Remove-AzWvdUserSession -Id <String> -SessionHostInputObject <IDesktopVirtualiza
 ```
 Remove-AzWvdUserSession -Id <String> -SessionHostName <String>
  -HostPoolInputObject <IDesktopVirtualizationIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzWvdUserSession -InputObject <IDesktopVirtualizationIdentity> [-Force] [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,12 +44,12 @@ Remove a userSession.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop UserSession by name
+### Example 1: Delete a Azure Virtual Desktop UserSession by name
 ```powershell
 Remove-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
 ```
 
-This command deletes a Windows Virtual Desktop UserSession in a Session Host.
+This command deletes a Azure Virtual Desktop UserSession in a Session Host.
 
 ## PARAMETERS
 
@@ -151,6 +151,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

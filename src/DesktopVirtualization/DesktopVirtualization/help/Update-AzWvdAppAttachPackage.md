@@ -15,14 +15,15 @@ update an App Attach Package
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-FailHealthCheckOnStagingFailure <String>] [-HostPoolReference <String[]>]
+ [-CustomData <String>] [-FailHealthCheckOnStagingFailure <String>] [-HostPoolReference <String[]>]
  [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>] [-ImageDisplayName <String>]
  [-ImageIsActive] [-ImageIsPackageTimestamped <String>] [-ImageIsRegularRegistration]
  [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
  [-ImagePackageApplication <IMsixPackageApplications[]>] [-ImagePackageDependency <IMsixPackageDependencies[]>]
  [-ImagePackageFamilyName <String>] [-ImagePackageFullName <String>] [-ImagePackageName <String>]
  [-ImagePackageRelativePath <String>] [-ImagePath <String>] [-ImageVersion <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PackageLookbackUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImageObject
@@ -30,26 +31,26 @@ Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-Subscr
 Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-FailHealthCheckOnStagingFailure <String>] [-HostPoolReference <String[]>] [-ImageDisplayName <String>]
  [-ImageIsActive] [-ImageIsRegularRegistration] [-AppAttachPackage] <AppAttachPackage> [-PassThru]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity>
+Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity> [-CustomData <String>]
  [-FailHealthCheckOnStagingFailure <String>] [-HostPoolReference <String[]>]
  [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>] [-ImageDisplayName <String>]
  [-ImageIsActive] [-ImageIsPackageTimestamped <String>] [-ImageIsRegularRegistration]
@@ -57,7 +58,8 @@ Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity>
  [-ImagePackageApplication <IMsixPackageApplications[]>] [-ImagePackageDependency <IMsixPackageDependencies[]>]
  [-ImagePackageFamilyName <String>] [-ImagePackageFullName <String>] [-ImagePackageName <String>]
  [-ImagePackageRelativePath <String>] [-ImagePath <String>] [-ImageVersion <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PackageLookbackUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,6 +136,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CustomData
+Field that can be populated with custom data and filtered on in list GET calls
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -274,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageLastUpdated
-Date Package was last updated, found in the appxmanifest.xml.
+Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
 
 ```yaml
 Type: System.DateTime
@@ -335,8 +352,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePackageFamilyName
-Package Family Name from appxmanifest.xml.
-Contains Package Name and Publisher name.
+Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -351,7 +367,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePackageFullName
-Package Full Name from appxmanifest.xml.
+Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -396,7 +412,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePath
-VHD/CIM image path on Network Share.
+VHD/CIM/APP-V image path on Network Share.
 
 ```yaml
 Type: System.String
@@ -411,7 +427,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageVersion
-Package version found in the appxmanifest.xml.
+Package Version found in the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -471,7 +487,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the App Attach package
+The name of the App Attach package arm object
 
 ```yaml
 Type: System.String
@@ -485,12 +501,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PackageLookbackUrl
+Lookback url to third party control plane, should be null for first party packages
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ImageObject
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -527,6 +573,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+tags to be updated
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

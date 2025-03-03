@@ -15,26 +15,26 @@ Get a workspace.
 ### List1 (Default)
 ```
 Get-AzWvdWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWvdWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzWvdWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
- [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
+ [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWvdWorkspace -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ Get a workspace.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Workspace by name
+### Example 1: Get a Azure Virtual Desktop Workspace by name
 ```powershell
 Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName -Name WorkspaceName
 ```
@@ -53,9 +53,9 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command gets a Windows Virtual Desktop Workspace in a Resource Group.
+This command gets a Azure Virtual Desktop Workspace in a Resource Group.
 
-### Example 2: List Windows Virtual Desktop Workspaces
+### Example 2: List Azure Virtual Desktop Workspaces
 ```powershell
 Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName
 ```
@@ -67,7 +67,7 @@ eastus     WorkspaceName1 Microsoft.DesktopVirtualization/workspaces
 eastus     WorkspaceName2 Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command lists a Windows Virtual Desktop Workspaces in a Resource Group.
+This command lists a Azure Virtual Desktop Workspaces in a Resource Group.
 
 ## PARAMETERS
 
@@ -154,6 +154,21 @@ Number of items per page.
 Type: System.Int32
 Parameter Sets: List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

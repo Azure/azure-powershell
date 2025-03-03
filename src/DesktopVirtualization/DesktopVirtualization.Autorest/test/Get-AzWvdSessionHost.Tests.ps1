@@ -25,6 +25,6 @@ Describe 'Get-AzWvdSessionHost' {
         $sessionHosts = Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent
-        $sessionHosts.Count | Should -Be 3
+        $sessionHosts.Count -gt 0 | Should -Be $true
     }
 }

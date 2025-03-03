@@ -16,20 +16,20 @@ Remove a SessionHost.
 ```
 Remove-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityHostPool
 ```
 Remove-AzWvdSessionHost -Name <String> -HostPoolInputObject <IDesktopVirtualizationIdentity> [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-Force] [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,12 +37,12 @@ Remove a SessionHost.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop SessionHost by name
+### Example 1: Delete a Azure Virtual Desktop SessionHost by name
 ```powershell
 Remove-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -Name SessionHostName
 ```
 
-This command deletes a Windows Virtual Desktop SessionHost in a Host Pool.
+This command deletes a Azure Virtual Desktop SessionHost in a Host Pool.
 
 ## PARAMETERS
 
@@ -144,6 +144,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

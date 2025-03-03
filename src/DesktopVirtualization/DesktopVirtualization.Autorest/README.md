@@ -44,13 +44,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 0feca76719343b0cb1e6a9d6064c7037827706ca
+commit: 6de4fd441872ef5a6d0cebf177988e8661410e04
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2024-04-08-preview/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -105,3 +105,20 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
+  - where:
+      parameter-name: ProgressSessionHostsInProgress
+    set:
+      parameter-name: SessionHostsInProgress
+  - where:
+      verb: New
+      subject: HostPool
+    set:
+      preview-announcement:
+        preview-message: The IdentityType property is not currently supported and will be enabled in a future update.
+  - where:
+      verb: Update
+      subject: HostPool
+    set:
+      preview-announcement:
+        preview-message: The IdentityType property is not currently supported and will be enabled in a future update.
+```

@@ -15,26 +15,26 @@ Get a host pool.
 ### List1 (Default)
 ```
 Get-AzWvdHostPool [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzWvdHostPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
- [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
+ [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ Get a host pool.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop HostPool by name
+### Example 1: Get a Azure Virtual Desktop HostPool by name
 ```powershell
 Get-AzWvdHostPool -ResourceGroupName ResourceGroupName -Name HostPoolName
 ```
@@ -53,9 +53,9 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command gets a Windows Virtual Desktop HostPool in a Resource Group.
+This command gets a Azure Virtual Desktop HostPool in a Resource Group.
 
-### Example 2: List Windows Virtual Desktop HostPools
+### Example 2: List Azure Virtual Desktop HostPools
 ```powershell
 Get-AzWvdHostPool -ResourceGroupName ResourceGroupName
 ```
@@ -67,7 +67,7 @@ eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools
 eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command lists a Windows Virtual Desktop HostPools in a Resource Group.
+This command lists a Azure Virtual Desktop HostPools in a Resource Group.
 
 ## PARAMETERS
 
@@ -154,6 +154,21 @@ Number of items per page.
 Type: System.Int32
 Parameter Sets: List1, List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

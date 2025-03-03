@@ -13,15 +13,11 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzWvdSessionHost' {
     It 'Delete' {
-        Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroupPersistent `
-                            -HostPoolName $env.HostPoolPersistent `
-                            -Name $env.SessionHostNameRemove
-
         Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent `
-                            -Name $env.SessionHostNameRemove
+                            -Name $env.SessionHostNameRemove `
+                            -Force
 
         try {
             Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `

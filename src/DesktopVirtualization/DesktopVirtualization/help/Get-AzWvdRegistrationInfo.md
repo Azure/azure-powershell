@@ -8,17 +8,17 @@ schema: 2.0.0
 # Get-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 
 ## SYNTAX
 
 ```
 Get-AzWvdRegistrationInfo -ResourceGroupName <String> -HostPoolName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 
 ## EXAMPLES
 
@@ -74,6 +74,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

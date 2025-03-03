@@ -45,7 +45,7 @@ update a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Scaling Plan by name
+### Example 1: Update a Azure Virtual Desktop Scaling Plan by name
 ```powershell
 Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -109,7 +109,7 @@ Location      Name         Type
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans
 ```
 
-This command updates a Windows Virtual Desktop Scaling Plan in a Resource Group.
+This command updates a Azure Virtual Desktop Scaling Plan in a Resource Group.
 
 ## PARAMETERS
 

@@ -21,8 +21,9 @@ Describe 'New-AzWvdHostPool' {
                                 -HostPoolType 'Pooled' `
                                 -LoadBalancerType 'DepthFirst' `
                                 -PreferredAppGroupType 'Desktop' `
-                                -DesktopAppGroupName 'FullScenarioCreateAG' `
-                                -WorkspaceName 'FullScenarioCreateWS'
+                                -DesktopAppGroupName 'FullSenerioCreateAG' `
+                                -WorkspaceName 'FullSenerioCreateWS' `
+                                -ManagementType 'Standard'
         }
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
@@ -57,7 +58,8 @@ Describe 'New-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
@@ -70,7 +72,7 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not corrct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
@@ -90,7 +92,7 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not corrct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'

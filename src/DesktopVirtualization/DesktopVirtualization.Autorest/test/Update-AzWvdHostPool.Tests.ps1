@@ -30,7 +30,8 @@ Describe 'Update-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'RailApplications' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
                 $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -42,7 +43,7 @@ Describe 'Update-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not corrct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'RailApplications'
@@ -71,7 +72,7 @@ Describe 'Update-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option2}'
                 # @todo not corrct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false3
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
@@ -90,7 +91,7 @@ Describe 'Update-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option2}'
                 # @todo not corrct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'

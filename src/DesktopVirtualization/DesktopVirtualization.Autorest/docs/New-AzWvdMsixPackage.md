@@ -366,7 +366,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Package version found in the appxmanifest.xml.
+Package Version found in the appxmanifest.xml.
 
 ```yaml
 Type: System.String

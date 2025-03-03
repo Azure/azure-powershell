@@ -15,9 +15,9 @@
 
 <#	
 .Synopsis	
-Get the Windows virtual desktop registration info.	
+Get the Azure Virtual Desktop registration info.	
 .Description	
-Get the Windows virtual desktop registration info.	
+Get the Azure Virtual Desktop registration info.	
 #>	
 function Get-AzWvdRegistrationInfo {	
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.RegistrationInfo')]	

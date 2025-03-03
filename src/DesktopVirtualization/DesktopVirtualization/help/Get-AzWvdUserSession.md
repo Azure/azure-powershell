@@ -16,40 +16,40 @@ Get a userSession.
 ```
 Get-AzWvdUserSession -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzWvdUserSession -HostPoolName <String> -ResourceGroupName <String> -SessionHostName <String>
  [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWvdUserSession -HostPoolName <String> -Id <String> -ResourceGroupName <String> -SessionHostName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentitySessionHost
 ```
 Get-AzWvdUserSession -Id <String> -SessionHostInputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityHostPool
 ```
 Get-AzWvdUserSession -Id <String> -SessionHostName <String>
  -HostPoolInputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWvdUserSession -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ Get a userSession.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop UserSession by name
+### Example 1: Get a Azure Virtual Desktop UserSession by name
 ```powershell
 Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
 ```
@@ -68,9 +68,9 @@ Name                           Type
 HostPoolName/SessionHostName/2 Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions
 ```
 
-This command gets a Windows Virtual Desktop UserSession in a Session Host.
+This command gets a Azure Virtual Desktop UserSession in a Session Host.
 
-### Example 2: List Windows Virtual Desktop UserSessions
+### Example 2: List Azure Virtual Desktop UserSessions
 ```powershell
 Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName
 ```
@@ -82,9 +82,9 @@ HostPoolName/SessionHostName/2 Microsoft.DesktopVirtualization/hostpools/session
 HostPoolName/SessionHostName/3 Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions
 ```
 
-This command lists a Windows Virtual Desktop UserSessions in a Session Host.
+This command lists a Azure Virtual Desktop UserSessions in a Session Host.
 
-### Example 3: List Windows Virtual Desktop UserSessions in host pool
+### Example 3: List Azure Virtual Desktop UserSessions in host pool
 ```powershell
 Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
@@ -96,7 +96,7 @@ HostPoolName/SessionHostName/2 Microsoft.DesktopVirtualization/hostpools/session
 HostPoolName/SessionHostName/3 Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions
 ```
 
-This command lists a Windows Virtual Desktop UserSessions in a Session Host in a host pool.
+This command lists a Azure Virtual Desktop UserSessions in a Session Host in a host pool.
 
 ## PARAMETERS
 
@@ -229,6 +229,21 @@ Number of items per page.
 Type: System.Int32
 Parameter Sets: List, List1
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

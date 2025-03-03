@@ -1,8 +1,8 @@
 {
-  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/userSess-sh-0/userSessions/3/sendMessage?api-version=2024-04-03+1": {
+  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/userSess-sh-0/userSessions/3/sendMessage?api-version=2024-04-08-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/userSess-sh-0/userSessions/3/sendMessage?api-version=2024-04-03",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/userSess-sh-0/userSessions/3/sendMessage?api-version=2024-04-08-preview",
       "Content": "{\r\n  \"messageTitle\": \"title\",\r\n  \"messageBody\": \"apple\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -22,19 +22,19 @@
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy91c2VyU2Vzcy1zaC0wL3VzZXJTZXNzaW9ucy8z" ],
-        "x-ms-lamport-ts": [ "177777606" ],
-        "x-ms-correlation-id": [ "50efb26f-52d1-494e-ae70-201768b3e3db" ],
-        "x-ms-request-id": [ "415d59b6-9962-4931-8596-4639e4875c0e" ],
+        "x-ms-lamport-ts": [ "182498207" ],
+        "x-ms-correlation-id": [ "8e0c2151-8096-4ad3-814f-50c767057269" ],
+        "x-ms-request-id": [ "9ac02606-edaa-46ec-b984-8598c85190e1" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "394" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "5994" ],
-        "x-ms-correlation-request-id": [ "38150680-cbf3-4930-8f8d-4897fe4633b4" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240909T192335Z:38150680-cbf3-4930-8f8d-4897fe4633b4" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "8dbb48b6-fa9f-4cea-8eb6-d705abba777e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241016T210253Z:8dbb48b6-fa9f-4cea-8eb6-d705abba777e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0C71891292C24338BED99379280EBE4B Ref B: CO1EDGE2518 Ref C: 2024-09-09T19:23:33Z" ],
-        "Date": [ "Mon, 09 Sep 2024 19:23:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BA01A9B6A90A442ABE0A20AC77213336 Ref B: MNZ221060619049 Ref C: 2024-10-16T21:02:50Z" ],
+        "Date": [ "Wed, 16 Oct 2024 21:02:53 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 .Description
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 #>
 function Unregister-AzWvdApplicationGroup {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace')]

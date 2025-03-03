@@ -18,6 +18,11 @@ Describe 'Import-AzWvdAppAttachPackageInfo' {
                 -SubscriptionId $env.SubscriptionId `
                 -Path $env.MSIXImagePath
 
+            if( $package.Count -gt 0)
+            {
+                $package = $package[0]
+            }
+
             $package.ImagePackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
             $package.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
             $package.ImagePackageName | Should -Be 'Mozilla.MozillaFirefox'

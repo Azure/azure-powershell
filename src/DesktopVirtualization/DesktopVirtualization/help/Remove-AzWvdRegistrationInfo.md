@@ -8,17 +8,17 @@ schema: 2.0.0
 # Remove-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 
 ## SYNTAX
 
 ```
 Remove-AzWvdRegistrationInfo -ResourceGroupName <String> -HostPoolName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 
 ## EXAMPLES
 
@@ -55,6 +55,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

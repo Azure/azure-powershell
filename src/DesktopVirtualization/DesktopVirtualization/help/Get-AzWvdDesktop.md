@@ -16,26 +16,26 @@ Get a desktop.
 ```
 Get-AzWvdDesktop -ApplicationGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityApplicationGroup
 ```
 Get-AzWvdDesktop -Name <String> -ApplicationGroupInputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ Get a desktop.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Desktop by name
+### Example 1: Get a Azure Virtual Desktop Desktop by name
 ```powershell
 Get-AzWvdDesktop -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName -Name DesktopName
 ```
@@ -54,9 +54,9 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command gets a Windows Virtual Desktop Desktop in an application Group.
+This command gets a Azure Virtual Desktop Desktop in an application Group.
 
-### Example 2: List Windows Virtual Desktop Desktops
+### Example 2: List Azure Virtual Desktop Desktops
 ```powershell
 Get-AzWvdDesktop -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName
 ```
@@ -67,7 +67,7 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command lists Windows Virtual Desktop Desktops in an application Group.
+This command lists Azure Virtual Desktop Desktops in an application Group.
 
 ## PARAMETERS
 
@@ -184,6 +184,21 @@ Number of items per page.
 Type: System.Int32
 Parameter Sets: List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

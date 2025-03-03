@@ -15,33 +15,33 @@ Get a scaling plan.
 ### List1 (Default)
 ```
 Get-AzWvdScalingPlan [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] -HostPoolName <String>
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
- [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
+ [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +49,7 @@ Get a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Scaling Plan by name
+### Example 1: Get a Azure Virtual Desktop Scaling Plan by name
 ```powershell
 Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
 ```
@@ -60,9 +60,9 @@ Location      Name             Type
 westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
 ```
 
-This command gets a Windows Virtual Desktop Scaling Plan in a Resource Group.
+This command gets a Azure Virtual Desktop Scaling Plan in a Resource Group.
 
-### Example 2: List Windows Virtual Desktop Scaling Plans
+### Example 2: List Azure Virtual Desktop Scaling Plans
 ```powershell
 Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName
 ```
@@ -74,7 +74,7 @@ westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
 westcentralus scalingPlan2     Microsoft.DesktopVirtualization/scalingplans
 ```
 
-This command lists all the Windows Virtual Desktop Scaling Plans in a Resource Group.
+This command lists all the Azure Virtual Desktop Scaling Plans in a Resource Group.
 
 ## PARAMETERS
 
@@ -176,6 +176,21 @@ Number of items per page.
 Type: System.Int32
 Parameter Sets: List1, List2, List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

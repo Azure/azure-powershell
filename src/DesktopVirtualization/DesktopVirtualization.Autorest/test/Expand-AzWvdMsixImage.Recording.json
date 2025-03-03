@@ -1,8 +1,8 @@
 {
-  "Expand-AzWvdMsixImage+[NoContext]+Expand+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-04-03+1": {
+  "Expand-AzWvdMsixImage+[NoContext]+Expand+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-04-08-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-04-03",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-04-08-preview",
       "Content": "{\r\n  \"uri\": \"C:\\\\AppAttach\\\\Firefox20110.0.1.vhdx\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,24 +18,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=f0cf6515b964ed71a3330b30673731d75ad3321adfb3448f8fe843b9868e0497;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=f0cf6515b964ed71a3330b30673731d75ad3321adfb3448f8fe843b9868e0497;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "399" ],
+        "Set-Cookie": [ "ARRAffinity=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JSZW1vdGVBcHBIUA==" ],
-        "x-ms-lamport-ts": [ "177776949" ],
-        "x-ms-correlation-id": [ "26b8020c-99bb-46d5-ba52-1016d8c16a40" ],
-        "x-ms-request-id": [ "9002aa31-0486-4199-9d70-b186d5689bbf" ],
+        "x-ms-lamport-ts": [ "182496979" ],
+        "x-ms-correlation-id": [ "4d55b917-7026-43fb-9fc4-465204a27ce3" ],
+        "x-ms-request-id": [ "5ebbce71-802c-4d99-951a-933562a3136a" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "5999" ],
-        "x-ms-correlation-request-id": [ "34a76949-52cd-49b4-b728-715118826566" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240909T192002Z:34a76949-52cd-49b4-b728-715118826566" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "22191cb8-e0cb-40bc-ab87-aacc02a1d88d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241016T204905Z:22191cb8-e0cb-40bc-ab87-aacc02a1d88d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C6FA8E962BB8455AAAE26D224E090F47 Ref B: CO1EDGE2518 Ref C: 2024-09-09T19:20:02Z" ],
-        "Date": [ "Mon, 09 Sep 2024 19:20:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3F5D35F61A994037B33AB8BDAC79AAB7 Ref B: MNZ221060619049 Ref C: 2024-10-16T20:49:03Z" ],
+        "Date": [ "Wed, 16 Oct 2024 20:49:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "62431" ],

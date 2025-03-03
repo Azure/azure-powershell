@@ -1,0 +1,54 @@
+{
+  "Get-AzWvdSessionHostManagementsUpdateStatus+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2024-04-08-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2024-04-08-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "157" ],
+        "x-ms-client-request-id": [ "42f5f9bd-105e-47fc-8d46-375ad0cb9968" ],
+        "CommandName": [ "Get-AzWvdSessionHostManagementsUpdateStatus" ],
+        "FullCommandName": [ "Get-AzWvdSessionHostManagementsUpdateStatus_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.4.5", "Az.DesktopVirtualization/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQvc2Vzc2lvbkhvc3RVcGRhdGVTdGF0dXNlcy9kZWZhdWx0" ],
+        "x-ms-lamport-ts": [ "182497471" ],
+        "x-ms-correlation-id": [ "8d198731-bf06-41b5-a56f-68a046d596a9" ],
+        "x-ms-request-id": [ "42f5f9bd-105e-47fc-8d46-375ad0cb9968" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "4c83839f-3897-42fb-847e-0db927c20856" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241016T205458Z:4c83839f-3897-42fb-847e-0db927c20856" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E0DE6D7E97094CF59DF37A617FBFA537 Ref B: MNZ221060619049 Ref C: 2024-10-16T20:54:57Z" ],
+        "Date": [ "Wed, 16 Oct 2024 20:54:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1294" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostUpdateStatuses/default\",\"status\":\"Failed\",\"startTime\":\"2024-10-15T21:36:07Z\",\"endTime\":\"2024-10-15T21:36:18Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MigrationMayExceedCapacityLimit_1024\\\",\\\"faultText\\\":\\\"It was detected that resources created during the update process may cause subscription limits to be exceeded for the following resources:  \u0027[{\\\\\\\"name\\\\\\\":{\\\\\\\"value\\\\\\\":\\\\\\\"cores\\\\\\\",\\\\\\\"localizedValue\\\\\\\":\\\\\\\"Total Regional vCPUs\\\\\\\"},\\\\\\\"limit\\\\\\\":50,\\\\\\\"projectedUsedCapacity\\\\\\\":51}]\u0027.  Please delete some resources of this type before creating a new one\\\",\\\"faultContext\\\":\\\"ComputeCapacityRule\\\",\\\"faultType\\\":0}]\"},\"correlationId\":\"ebc605ee-5903-480d-b824-c6b7f02d8761\",\"progress\":{\"totalSessionHosts\":0,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-10-15T21:36:07.3870289Z\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":1,\"logOffMessage\":\"Updating HostpoolUpdate is great!\"}}}}",
+      "isContentBase64": false
+    }
+  }
+}
