@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.IO.Abstractions;
 using AzDev.Models.Inventory;
 
@@ -19,8 +20,9 @@ namespace AzDev.Services
 {
     internal class DefaultCodebaseProvider : ICodebaseProvider
     {
-        private IContextProvider _contextProvider;
-        private IFileSystem _fs;
+        private ILogger _logger;
+        private readonly IContextProvider _contextProvider;
+        private readonly IFileSystem _fs;
         private Codebase _codebase;
 
         public DefaultCodebaseProvider(IContextProvider contextProvider)
@@ -28,18 +30,29 @@ namespace AzDev.Services
 
         public DefaultCodebaseProvider(IContextProvider contextProvider, IFileSystem fs)
         {
-            _contextProvider = contextProvider;
+            _contextProvider = contextProvider ?? throw new ArgumentNullException(nameof(contextProvider));
             _fs = fs;
+        }
+
+        public void SetLogger(ILogger logger)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public Codebase GetCodebase()
         {
+            _logger.Verbose("Loading codebase information");
+
             if (_codebase == null)
             {
                 var path = _contextProvider.LoadContext().AzurePowerShellRepositoryRoot;
+                _logger.Verbose($"Codebase path: {path}");
                 var src = _fs.Path.Combine(path, FileOrDirNames.Src);
                 _codebase = _codebase ?? Codebase.FromFileSystem(_fs, src);
             }
+
+            _logger.Verbose("Codebase loaded successfully");
+
             return _codebase;
         }
     }

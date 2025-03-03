@@ -41,7 +41,7 @@ namespace AzDev.Models.Inventory
             {
                 Name = fs.Path.GetFileName(path),
                 Projects = fs.Directory.GetDirectories(path)
-                    .Where(dir => !Conventions.IsExcludedProjectDirectory(fs, dir, out _))
+                    .Where(dir => !Conventions.IsExcludedProjectDirectory(fs, dir, out _)) // todo: log exclusion reason
                     .Select(dir => Project.FromFileSystem(fs, dir))
                     .ToList()
             };
