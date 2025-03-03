@@ -2203,6 +2203,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
+                else
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = null;
+                }
             }
             // Only used for SecurityType == TrustedLaunch
             if (this.IsParameterBound(c => c.EnableVtpm))

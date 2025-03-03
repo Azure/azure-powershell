@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated `New-AzVM`, `New-AzVmss`, `Update-AzVM`, and `Update-AzVmss` to pass `Standard` as an input of `-SecurityType` parameter.
 
 ## Version 9.1.0
 * Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVmssDiskEncryptionExtension`
