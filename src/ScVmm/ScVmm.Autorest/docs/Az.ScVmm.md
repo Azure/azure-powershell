@@ -35,6 +35,9 @@ Implements VirtualNetwork GET method.
 ### [Get-AzScVmmVM](Get-AzScVmmVM.md)
 Retrieves information about a virtual machine instance.
 
+### [Get-AzScVmmVMExtension](Get-AzScVmmVMExtension.md)
+The operation to get the extension on a virtual machine.
+
 ### [Get-AzScVmmVMGuestAgent](Get-AzScVmmVMGuestAgent.md)
 Implements GuestAgent GET method.
 
@@ -75,6 +78,9 @@ Please note some properties can be set only during virtual machine creation.
 ### [New-AzScVmmVMCheckpoint](New-AzScVmmVMCheckpoint.md)
 create a checkpoint in virtual machine.
 
+### [New-AzScVmmVMExtension](New-AzScVmmVMExtension.md)
+The operation to create the extension on a virtual machine where Guest Management is enabled.
+
 ### [New-AzScVmmVMGuestAgent](New-AzScVmmVMGuestAgent.md)
 create GuestAgent.
 
@@ -101,6 +107,9 @@ Deletes a checkpoint in virtual machine.
 
 ### [Remove-AzScVmmVMDisk](Remove-AzScVmmVMDisk.md)
 The operation to Remove a virtual machine virtual disk.
+
+### [Remove-AzScVmmVMExtension](Remove-AzScVmmVMExtension.md)
+The operation to remove the extension on a virtual machine.
 
 ### [Remove-AzScVmmVMNic](Remove-AzScVmmVMNic.md)
 The operation to Remove a virtual machine network interface.
@@ -137,6 +146,9 @@ The operation to update a virtual machine (Use separate commands for NIC and Dis
 
 ### [Update-AzScVmmVMDisk](Update-AzScVmmVMDisk.md)
 The operation to Update a virtual machine virtual disk.
+
+### [Update-AzScVmmVMExtension](Update-AzScVmmVMExtension.md)
+The operation to update the extension.
 
 ### [Update-AzScVmmVMNic](Update-AzScVmmVMNic.md)
 The operation to Update a virtual machine network interface.

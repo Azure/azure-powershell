@@ -33,7 +33,6 @@ require:
 input-file:
   - $(repo)/specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/scvmm.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json
-  - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/customlocations.json
 
 module-version: 0.3.0
 title: ScVmm
@@ -374,26 +373,22 @@ directive:
       verb: Set
     remove: true
 
-  # In "Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json" service team just to use "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", so remvoe ohter subjects.
+  # In "Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json" service team just to use "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}" and "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}", so remvoe ohter subjects.
   - where:
-      subject: MachinePatch|AssessMachinePatch|Gateway|License|LicenseProfile|MachineExtension|MachineRunCommand|AgentVersion|ExtensionMetadata|HybridIdentityMetadata|NetworkProfile|Setting|Extension
+      subject: MachinePatch|AssessMachinePatch|Gateway|License|LicenseProfile|MachineRunCommand|AgentVersion|ExtensionMetadata|HybridIdentityMetadata|NetworkProfile|Setting
     remove: true
   - where:
       subject: Machine
     hide: true
-
-  # In "Microsoft.ExtendedLocation/stable/2021-08-15/customlocations.json" service team just to use "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}"
-
   - where:
-      subject: CustomLocationEnabledResourceType|CustomLocationOperation
-    remove: true
+      subject: MachineExtension
+    set:
+      subject: VMExtension
   - where:
-      verb: New|Update|Remove
-      subject: CustomLocation
-    remove: true
+      subject: VMExtension
+    hide: true
   - where:
-      subject: CustomLocation
-      verb: Get
+      subject: Extension
     hide: true
 
   - where:
@@ -523,6 +518,15 @@ directive:
           - ProvisioningState
   - where:
       model-name: VmmServer
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - ProvisioningState
+  - where:
+      model-name: MachineExtension
     set:
       format-table:
         properties:

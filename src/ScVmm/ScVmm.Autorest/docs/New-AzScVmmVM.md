@@ -18,9 +18,9 @@ Please note some properties can be set only during virtual machine creation.
 New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CloudName <String> -TemplateName <String>
  -VmmServer <String> [-SubscriptionId <String>] [-AdminPassword <SecureString>]
  [-AvailabilitySet <IAvailabilitySetListItem[]>] [-CheckpointType <String>] [-ComputerName <String>]
- [-CpuCount <Int32>] [-CustomLocationName <String>] [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled]
- [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>] [-Generation <Int32>] [-LimitCpuForMigration]
- [-Location <String>] [-MemoryMb <Int32>] [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>]
+ [-CpuCount <Int32>] [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>]
+ [-DynamicMemoryMinMb <Int32>] [-Generation <Int32>] [-LimitCpuForMigration] [-Location <String>]
+ [-MemoryMb <Int32>] [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,8 +38,8 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CloudId <String> -Cust
 ### CreateExpandedInventory
 ```
 New-AzScVmmVM -Name <String> -ResourceGroupName <String> -InventoryUuid <String> -VmmServer <String>
- [-SubscriptionId <String>] [-CustomLocationName <String>] [-Location <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedInventoryARMId
@@ -319,21 +319,6 @@ Parameter Sets: CreateExpandedARMId, CreateExpandedInventoryARMId
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomLocationName
-The custom location name.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedInventory
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

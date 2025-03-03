@@ -150,13 +150,6 @@ param(
     ${TemplateId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedInventory')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # The custom location name.
-    ${CustomLocationName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
@@ -382,21 +375,10 @@ begin {
 
         if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpanded') {
 
-            if ($PSBoundParameters.ContainsKey('CustomLocationName')) {
-                try {
-                    $customLocationObj = Az.ScVmm.internal\Get-AzScVmmCustomLocation -Name $CustomLocationName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-                    $customLocationId = $customLocationObj.Id
-                }
-                catch {
-                    throw "Failed to determine custom location resource ARM ID for CustomLocation $CustomLocationName in Resource Group $ResourceGroupName."
-                }
-            }
             try {
                 $VmmServerObj = Get-AzScVmmServer -Name $VmmServer -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
                 $VmmServerId = $VmmServerObj.Id
-                if (-not $PSBoundParameters.ContainsKey('CustomLocationName')) {
-                    $customLocationId = $VmmServerObj.ExtendedLocationName
-                }
+                $customLocationId = $VmmServerObj.ExtendedLocationName
             }
             catch {
                 throw "Failed to determine VmmServer resource ARM ID for VmmServer $VmmServer in Resource Group $ResourceGroupName."
@@ -507,10 +489,6 @@ begin {
 
             $PSBoundParameters['ExtendedLocationType'] = $CUSTOM_LOCATION_RESOURCE_TYPE
             $PSBoundParameters['ExtendedLocationName'] = $customLocationId
-
-            if ($PSBoundParameters.ContainsKey('CustomLocationName')) {
-                [void]$PSBoundParameters.Remove('CustomLocationName')
-            }
 
             # AvailabilitySet
 
