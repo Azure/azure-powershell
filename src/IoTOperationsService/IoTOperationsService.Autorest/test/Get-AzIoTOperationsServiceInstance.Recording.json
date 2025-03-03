@@ -1,0 +1,92 @@
+{
+  "Get-AzIoTOperationsServiceInstance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "23bb25f4-8109-45e0-a7a9-5d862aecf2f4" ],
+        "CommandName": [ "Get-AzIoTOperationsServiceInstance" ],
+        "FullCommandName": [ "Get-AzIoTOperationsServiceInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8901fdd2-0000-0200-0000-67bd2b1d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a6229daa-bae5-4fce-9df5-0b8e8596292c" ],
+        "x-ms-correlation-request-id": [ "5dfdd674-7dda-49e2-8560-4feba49d0949" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250225T234607Z:5dfdd674-7dda-49e2-8560-4feba49d0949" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 38B72E6100DE4E889EABFEF8A2E209B7 Ref B: CO6AA3150217017 Ref C: 2025-02-25T23:46:07Z" ],
+        "Date": [ "Tue, 25 Feb 2025 23:46:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1066" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143\",\"name\":\"aio-116116143\",\"type\":\"microsoft.iotoperations/instances\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-02-25T02:28:22.5486647Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-02-25T02:29:49.5133741Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"description\":\"An AIO instance.\",\"schemaRegistryRef\":{\"resourceId\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-dd5644c861\"},\"version\":\"1.0.15\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzIoTOperationsServiceInstance+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "a3c1937f-6587-4dd2-acf1-ea54308d71f7" ],
+        "CommandName": [ "Get-AzIoTOperationsServiceInstance" ],
+        "FullCommandName": [ "Get-AzIoTOperationsServiceInstance_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "b5cf075c-4fbf-4044-8aba-e7260083618d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "292dacfc-fba7-400e-b165-1c4003d7d3db" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "292dacfc-fba7-400e-b165-1c4003d7d3db" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250225T234608Z:292dacfc-fba7-400e-b165-1c4003d7d3db" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B7C4165E191A453B83CDEEE06981AF46 Ref B: CO6AA3150217017 Ref C: 2025-02-25T23:46:07Z" ],
+        "Date": [ "Tue, 25 Feb 2025 23:46:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1078" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.IoTOperations/instances/aio-116116143\",\"name\":\"aio-116116143\",\"type\":\"microsoft.iotoperations/instances\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-02-25T02:28:22.5486647Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-02-25T02:29:49.5133741Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"description\":\"An AIO instance.\",\"schemaRegistryRef\":{\"resourceId\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-dd5644c861\"},\"version\":\"1.0.15\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}
