@@ -48,7 +48,7 @@ namespace AzDev.Services
                 var path = _contextProvider.LoadContext().AzurePowerShellRepositoryRoot;
                 _logger.Verbose($"Codebase path: {path}");
                 var src = _fs.Path.Combine(path, FileOrDirNames.Src);
-                _codebase = _codebase ?? Codebase.FromFileSystem(_fs, src);
+                _codebase = _codebase ?? Codebase.FromFileSystem(_fs, _logger, src);
             }
 
             _logger.Verbose("Codebase loaded successfully");
