@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzScVmmServer'))
 }
 
 Describe 'Get-AzScVmmServer' {
-    It 'List1' -skip {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
@@ -23,7 +23,7 @@ Describe 'Get-AzScVmmServer' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List' -skip {
+    It 'List1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

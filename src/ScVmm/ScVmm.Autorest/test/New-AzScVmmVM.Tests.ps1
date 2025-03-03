@@ -19,6 +19,18 @@ Describe 'New-AzScVmmVM' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'CreateExpandedInventory' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateExpandedARMId' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateExpandedInventoryARMId' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
