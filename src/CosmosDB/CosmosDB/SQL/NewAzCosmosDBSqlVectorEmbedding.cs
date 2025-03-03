@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DistanceFunction { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.VectorEmbeddingDimensionHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.VectorEmbeddingDimensionsHelpMessage)]
         [ValidateNotNullOrEmpty]
         public int Dimensions { get; set; }
 
