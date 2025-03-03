@@ -25,6 +25,14 @@
 ## Version 5.4.0
 * Added top level arm object for app attach packages
 
+## Version 5.3.0
+* Updated preview cmdlets for HostPoolUpdate feature to be compliant with OKW security requirements.
+* Removed the get-SessionHostManagementOperationStatus endpoint and replaced it with Get-SessionHostManagementUpdateStatus.
+* Removed the get-SessionHostConfigurationOperationStatus endpoint.
+* Added a new custom MSI Identity definition and HostPool reference to it.
+* Added `PackageOwnerName`, `PackageLookbackURL`, and `CustomData` to Appattach Object to support 3rd party applications.
+* Added `MultiplePersistent` enum value to HostPool property loadBalancerType.
+
 ## Version 4.3.2
 * Preannounced the breaking changes for Az.DesktopVirtualization 6.0.0
 
