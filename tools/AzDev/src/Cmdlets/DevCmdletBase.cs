@@ -73,7 +73,6 @@ namespace AzDev.Cmdlets
 
         public void OnImport()
         {
-
             var contextProvider = new DefaultContextProvider(Constants.DevContextFilePath);
             var codebaseProvider = new DefaultCodebaseProvider(contextProvider);
 
