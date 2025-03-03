@@ -87,6 +87,12 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives.
+    ${Location},
+
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateExpandedInventory', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
@@ -112,12 +118,36 @@ param(
     # Name of the template resource to use for deploying the vm.
     ${TemplateName},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedInventory')]
+    [Parameter(ParameterSetName='CreateExpandedARMId', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedInventoryARMId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
-    # The geo-location where the resource lives.
-    ${Location},
+    # ARM Id of the custom location.
+    ${CustomLocationId},
+
+    [Parameter(ParameterSetName='CreateExpandedARMId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # ARM Id of the vmmServer resource in which this resource resides.
+    ${VmmServerId},
+
+    [Parameter(ParameterSetName='CreateExpandedInventoryARMId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # ARM Id of the inventory virtual machine resource to enable in Azure.
+    ${InventoryId},
+
+    [Parameter(ParameterSetName='CreateExpandedARMId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # ARM Id of the cloud resource to use for deploying the vm.
+    ${CloudId},
+
+    [Parameter(ParameterSetName='CreateExpandedARMId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # ARM Id of the template resource to use for deploying the vm.
+    ${TemplateId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateExpandedInventory')]
@@ -127,64 +157,75 @@ param(
     ${CustomLocationName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # Sets computer name.
     ${ComputerName},
     
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Security.SecureString]
     # Admin password of the virtual machine.
     ${AdminPassword},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Generation for the vm.
     ${Generation},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Gets or sets the number of vCPUs for the vm.
     ${CpuCount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [System.Management.Automation.SwitchParameter]
     # Whether to enable dynamic memory or not.
     ${DynamicMemoryEnabled},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Gets or sets the max dynamic memory for the vm.
     ${DynamicMemoryMaxMb},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Gets or sets the min dynamic memory for the vm.
     ${DynamicMemoryMinMb},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [System.Management.Automation.SwitchParameter]
     # Whether to enable processor compatibility mode for live migration of VMs.
     ${LimitCpuForMigration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # MemoryMB is the size of a virtual machine's memory, in MB.
     ${MemoryMb},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # Type of checkpoint supported for the vm.
     ${CheckpointType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]]
@@ -192,6 +233,7 @@ param(
     ${AvailabilitySet},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface[]]
@@ -199,6 +241,7 @@ param(
     ${NetworkInterface},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk[]]
@@ -206,6 +249,8 @@ param(
     ${Disk},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedInventoryARMId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceUpdateTags]))]
     [System.Collections.Hashtable]
@@ -313,6 +358,8 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
             CreateExpandedInventory = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
+            CreateExpandedARMId = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
+            CreateExpandedInventoryARMId = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
             CreateViaJsonFilePath = 'Az.ScVmm.private\New-AzScVmmVM_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.ScVmm.private\New-AzScVmmVM_CreateViaJsonString';
         }
@@ -341,8 +388,7 @@ begin {
                     $customLocationId = $customLocationObj.Id
                 }
                 catch {
-                    Write-Host $_
-                    throw "Cannot determine custom location resource ARM ID for CustomLocation $CustomLocationName in Resource Group $ResourceGroupName."
+                    throw "Failed to determine custom location resource ARM ID for CustomLocation $CustomLocationName in Resource Group $ResourceGroupName."
                 }
             }
             try {
@@ -353,8 +399,7 @@ begin {
                 }
             }
             catch {
-                Write-Host $_
-                throw "Cannot determine VmmServer resource ARM ID for VmmServer $VmmServer in Resource Group $ResourceGroupName."
+                throw "Failed to determine VmmServer resource ARM ID for VmmServer $VmmServer in Resource Group $ResourceGroupName."
             }
 
             if ($parameterSet -eq 'CreateExpandedInventory') {
@@ -363,8 +408,7 @@ begin {
                     $inventoryItemId = $inventoryItemObj.Id
                 }
                 catch {
-                    Write-Host $_
-                    throw "Cannot determine inventory resource ARM ID for InventoryItem $InventoryUuid in Resource Group $ResourceGroupName."
+                    throw "Failed to determine inventory resource ARM ID for InventoryItem $InventoryUuid in Resource Group $ResourceGroupName."
                 }
             }
     
@@ -374,8 +418,7 @@ begin {
                     $cloudId = $cloudObj.Id
                 }
                 catch {
-                    Write-Host $_
-                    throw "Cannot determine cloud resource ARM ID for Cloud $CloudName in Resource Group $ResourceGroupName."
+                    throw "Failed to determine cloud resource ARM ID for Cloud $CloudName in Resource Group $ResourceGroupName."
                 }
     
                 try {
@@ -383,8 +426,30 @@ begin {
                     $templateId = $templateObj.Id
                 }
                 catch {
-                    Write-Host $_
-                    throw "Cannot determine template resource ARM ID for Template $TemplateName in Resource Group $ResourceGroupName."
+                    throw "Failed to determine template resource ARM ID for Template $TemplateName in Resource Group $ResourceGroupName."
+                }
+            }
+        } elseif ($parameterSet -eq 'CreateExpandedARMId' -or $parameterSet -eq 'CreateExpandedInventoryARMId') {
+            if ($PSBoundParameters.ContainsKey('CustomLocationId')) {
+                $customLocationId = $CustomLocationId
+            }
+            if ($PSBoundParameters.ContainsKey('VmmServerId')) {
+                $VmmServerId = $VmmServerId
+
+            }
+            if ($PSBoundParameters.ContainsKey('InventoryId')) {
+                $inventoryItemId = $InventoryId
+            }
+            if ($PSBoundParameters.ContainsKey('CloudId')) {
+                $cloudId = $CloudId
+            }
+            if ($PSBoundParameters.ContainsKey('TemplateId')) {
+                $templateId = $TemplateId
+            }
+
+            foreach ($key in @('CustomLocationId', 'VmmServerId', 'InventoryId', 'CloudId', 'TemplateId')) {
+                if ($PSBoundParameters.ContainsKey($key)) {
+                    [void]$PSBoundParameters.Remove($key)
                 }
             }
         }
@@ -425,7 +490,6 @@ begin {
                 }
             }
             else {
-                Write-Host $_
                 throw $_
             }
         }
@@ -437,7 +501,7 @@ begin {
             [void]$PSBoundParameters.Remove($key)
         }
 
-        if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpanded') {
+        if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpanded' -or $parameterSet -eq 'CreateExpandedARMId' -or $parameterSet -eq 'CreateExpandedInventoryARMId') {
 
             # ExtendedLocation / CustomLocation
 
@@ -462,7 +526,6 @@ begin {
                     $PSBoundParameters["OSProfile$($key)"] = $PSBoundParameters[$key]
                     [void]$PSBoundParameters.Remove($key)
                 }
-                
             }
 
             # HardwareProfile
@@ -494,7 +557,7 @@ begin {
 
             # InfrastructureProfile
 
-            if ($parameterSet -eq 'CreateExpandedInventory') {
+            if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpandedInventoryARMId') {
                 $PSBoundParameters["InfrastructureProfileInventoryItemId"] = $inventoryItemId
             } else {
                 $PSBoundParameters["InfrastructureProfileCloudId"] = $cloudId

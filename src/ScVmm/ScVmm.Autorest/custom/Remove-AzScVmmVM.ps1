@@ -221,7 +221,6 @@ begin {
         }
 
         if ($asyncMode) {
-            Write-Host "0A"
             if ($machineToBeDeleted) {
                 Write-Host "-NoWait/-AsJob are not supported with -DeleteMachine. Executing synchronously."
                 $scriptCmd = {
