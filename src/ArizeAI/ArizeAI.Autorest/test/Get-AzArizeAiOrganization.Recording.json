@@ -1,0 +1,47 @@
+{
+  "Get-AzArizeAiOrganization+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qumulo2_eastus/providers/ArizeAi.ObservabilityEval/organizations?api-version=2024-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qumulo2_eastus/providers/ArizeAi.ObservabilityEval/organizations?api-version=2024-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "34788583-b16b-4b85-8841-85edbc34db33" ],
+        "CommandName": [ "Get-AzArizeAiOrganization" ],
+        "FullCommandName": [ "Get-AzArizeAiOrganization_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.ArizeAi/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "5030453e-f0a1-4016-987c-e03acd76222f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "f70c2b2e-a514-4b8d-a182-b3baf757e1d7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "f70c2b2e-a514-4b8d-a182-b3baf757e1d7" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250303T025901Z:f70c2b2e-a514-4b8d-a182-b3baf757e1d7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 90E6195565AC431895083EA739542787 Ref B: MAA201060513037 Ref C: 2025-03-03T02:58:59Z" ],
+        "Date": [ "Mon, 03 Mar 2025 02:59:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2010" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qumulo2_eastus/providers/ArizeAi.ObservabilityEval/organizations/test-cli-instance-4\",\"name\":\"test-cli-instance-4\",\"type\":\"arizeai.observabilityeval/organizations\",\"location\":\"eastus\",\"tags\":{\"TestName1\":\"TestValue1\"},\"systemData\":{\"createdBy\":\"aggarwalsw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-02T13:54:01.1817307Z\",\"lastModifiedBy\":\"aggarwalsw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-03T02:39:23.2671724Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"fc35d936-3b89-41f8-8110-a24b56826c37\",\"subscriptionStatus\":\"PendingFulfillmentStart\",\"offerDetails\":{\"publisherId\":\"arizeai1657829589668\",\"offerId\":\"arize-liftr-0\",\"planId\":\"liftr-test-0\",\"planName\":\"Liftr Test 0\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"provisioningState\":\"Succeeded\",\"user\":{\"firstName\":\"\",\"lastName\":\"\",\"emailAddress\":\"aggarwalsw@microsoft.com\",\"upn\":\"aggarwalsw@microsoft.com\"}}},{\"id\":\"/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qumulo2_eastus/providers/ArizeAi.ObservabilityEval/organizations/test-cli-instance-5\",\"name\":\"test-cli-instance-5\",\"type\":\"arizeai.observabilityeval/organizations\",\"location\":\"East US\",\"tags\":{\"testName\":\"TestValue\"},\"systemData\":{\"createdBy\":\"aggarwalsw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-02T15:08:40.258814Z\",\"lastModifiedBy\":\"aggarwalsw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-02T15:08:40.258814Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"4ae301a9-d510-40c6-d914-d4508c85c460\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"arizeai1657829589668\",\"offerId\":\"arize-liftr-0\",\"planId\":\"liftr-test-0\",\"planName\":\"Liftr Test 0\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"provisioningState\":\"Succeeded\",\"user\":{\"firstName\":\"\",\"lastName\":\"\",\"emailAddress\":\"aggarwalsw@microsoft.com\",\"upn\":\"aggarwalsw@microsoft.com\"}}}]}",
+      "isContentBase64": false
+    }
+  }
+}
