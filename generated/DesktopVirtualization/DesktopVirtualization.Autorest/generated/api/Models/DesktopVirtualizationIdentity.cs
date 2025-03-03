@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="AppAttachPackageName" /> property.</summary>
         private string _appAttachPackageName;
 
-        /// <summary>The name of the App Attach package</summary>
+        /// <summary>The name of the App Attach package arm object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string AppAttachPackageName { get => this._appAttachPackageName; set => this._appAttachPackageName = value; }
 
@@ -128,14 +128,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface IDesktopVirtualizationIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
-        /// <summary>The name of the App Attach package</summary>
+        /// <summary>The name of the App Attach package arm object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the App Attach package",
+        Description = @"The name of the App Attach package arm object",
         SerializedName = @"appAttachPackageName",
         PossibleTypes = new [] { typeof(string) })]
         string AppAttachPackageName { get; set; }
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     internal partial interface IDesktopVirtualizationIdentityInternal
 
     {
-        /// <summary>The name of the App Attach package</summary>
+        /// <summary>The name of the App Attach package arm object</summary>
         string AppAttachPackageName { get; set; }
         /// <summary>The name of the application group</summary>
         string ApplicationGroupName { get; set; }

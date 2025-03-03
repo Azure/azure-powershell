@@ -81,9 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.TrackedResource(json);
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity.FromJson(__jsonIdentity) : _identity;}
-            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetSku.FromJson(__jsonSku) : _sku;}
-            {_plan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("plan"), out var __jsonPlan) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetPlan.FromJson(__jsonPlan) : _plan;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Sku.FromJson(__jsonSku) : _sku;}
+            {_plan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("plan"), out var __jsonPlan) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Plan.FromJson(__jsonPlan) : _plan;}
             {_managedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("managedBy"), out var __jsonManagedBy) ? (string)__jsonManagedBy : (string)_managedBy;}
             {_kind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("kind"), out var __jsonKind) ? (string)__jsonKind : (string)_kind;}
             {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)_etag;}

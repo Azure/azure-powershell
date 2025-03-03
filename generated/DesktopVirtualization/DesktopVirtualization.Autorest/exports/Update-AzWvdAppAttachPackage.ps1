@@ -67,6 +67,7 @@ To create the parameters described below, construct a hash table containing the 
 
 APPATTACHPACKAGE <AppAttachPackage>: 
   Location <String>: The geo-location where the resource lives
+  [CustomData <String>]: Field that can be populated with custom data and filtered on in list GET calls
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
   [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
@@ -75,7 +76,7 @@ APPATTACHPACKAGE <AppAttachPackage>:
   [ImageIsActive <Boolean?>]: Make this version of the package the active one across the hostpool. 
   [ImageIsPackageTimestamped <String>]: Is package timestamped so it can ignore the certificate expiry date
   [ImageIsRegularRegistration <Boolean?>]: Specifies how to register Package in feed.
-  [ImageLastUpdated <DateTime?>]: Date Package was last updated, found in the appxmanifest.xml. 
+  [ImageLastUpdated <DateTime?>]: Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml. 
   [ImagePackageAlias <String>]: Alias of App Attach Package. Assigned at import time
   [ImagePackageApplication <List<IMsixPackageApplications>>]: List of package applications. 
     [AppId <String>]: Package Application Id, found in appxmanifest.xml.
@@ -86,16 +87,18 @@ APPATTACHPACKAGE <AppAttachPackage>:
     [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
     [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
   [ImagePackageDependency <List<IMsixPackageDependencies>>]: List of package dependencies. 
-    [DependencyName <String>]: Name of package dependency.
+    [DependencyName <String>]: Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
     [MinVersion <String>]: Dependency version required.
     [Publisher <String>]: Name of dependency publisher.
-  [ImagePackageFamilyName <String>]: Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
-  [ImagePackageFullName <String>]: Package Full Name from appxmanifest.xml. 
+  [ImagePackageFamilyName <String>]: Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml. 
+  [ImagePackageFullName <String>]: Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml. 
   [ImagePackageName <String>]: Package Name from appxmanifest.xml. 
   [ImagePackageRelativePath <String>]: Relative Path to the package inside the image. 
-  [ImagePath <String>]: VHD/CIM image path on Network Share.
-  [ImageVersion <String>]: Package version found in the appxmanifest.xml. 
-  [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
+  [ImagePath <String>]: VHD/CIM/APP-V image path on Network Share.
+  [ImageVersion <String>]: Package Version found in the appxmanifest.xml. 
+  [KeyVaultUrl <String>]: URL of keyvault location to store certificate
+  [PackageLookbackUrl <String>]: Lookback url to third party control plane, is null for native app attach packages
+  [PackageOwnerName <String>]: Specific name of package owner, is "AppAttach" for native app attach packages
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 
@@ -109,12 +112,12 @@ IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applicatio
   [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
 
 IMAGEPACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
-  [DependencyName <String>]: Name of package dependency.
+  [DependencyName <String>]: Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
   [MinVersion <String>]: Dependency version required.
   [Publisher <String>]: Name of dependency publisher.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [AppAttachPackageName <String>]: The name of the App Attach package
+  [AppAttachPackageName <String>]: The name of the App Attach package arm object
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
@@ -143,7 +146,7 @@ param(
     [Alias('AppAttachPackageName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
-    # The name of the App Attach package
+    # The name of the App Attach package arm object
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -172,6 +175,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Field that can be populated with custom data and filtered on in list GET calls
+    ${CustomData},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -244,7 +254,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.DateTime]
-    # Date Package was last updated, found in the appxmanifest.xml.
+    # Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
     ${ImageLastUpdated},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -275,15 +285,14 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Package Family Name from appxmanifest.xml.
-    # Contains Package Name and Publisher name.
+    # Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
     ${ImagePackageFamilyName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Package Full Name from appxmanifest.xml.
+    # Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
     ${ImagePackageFullName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -304,14 +313,14 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # VHD/CIM image path on Network Share.
+    # VHD/CIM/APP-V image path on Network Share.
     ${ImagePath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Package version found in the appxmanifest.xml.
+    # Package Version found in the appxmanifest.xml.
     ${ImageVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -319,8 +328,23 @@ param(
     [Parameter(ParameterSetName='ImageObject', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # URL path to certificate name located in keyVault
+    # URL of keyvault location to store certificate
     ${KeyVaultUrl},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Lookback url to third party control plane, should be null for first party packages
+    ${PackageLookbackUrl},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags]))]
+    [System.Collections.Hashtable]
+    # tags to be updated
+    ${Tag},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
@@ -442,6 +466,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

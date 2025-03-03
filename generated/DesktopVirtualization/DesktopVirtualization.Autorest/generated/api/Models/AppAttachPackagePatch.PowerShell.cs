@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Schema for updatable App Attach Package properties.</summary>
+    /// <summary>Schema for patchable App Attach Package properties.</summary>
     [System.ComponentModel.TypeConverter(typeof(AppAttachPackagePatchTypeConverter))]
     public partial class AppAttachPackagePatch
     {
@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTagsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -135,6 +139,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("FailHealthCheckOnStagingFailure"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).FailHealthCheckOnStagingFailure = (string) content.GetValueForProperty("FailHealthCheckOnStagingFailure",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).FailHealthCheckOnStagingFailure, global::System.Convert.ToString);
+            }
+            if (content.Contains("PackageLookbackUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).PackageLookbackUrl = (string) content.GetValueForProperty("PackageLookbackUrl",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).PackageLookbackUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).CustomData = (string) content.GetValueForProperty("CustomData",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).CustomData, global::System.Convert.ToString);
             }
             if (content.Contains("ImagePackageAlias"))
             {
@@ -221,6 +233,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTagsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -276,6 +292,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("FailHealthCheckOnStagingFailure"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).FailHealthCheckOnStagingFailure = (string) content.GetValueForProperty("FailHealthCheckOnStagingFailure",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).FailHealthCheckOnStagingFailure, global::System.Convert.ToString);
+            }
+            if (content.Contains("PackageLookbackUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).PackageLookbackUrl = (string) content.GetValueForProperty("PackageLookbackUrl",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).PackageLookbackUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).CustomData = (string) content.GetValueForProperty("CustomData",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal)this).CustomData, global::System.Convert.ToString);
             }
             if (content.Contains("ImagePackageAlias"))
             {
@@ -394,7 +418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Schema for updatable App Attach Package properties.
+    /// Schema for patchable App Attach Package properties.
     [System.ComponentModel.TypeConverter(typeof(AppAttachPackagePatchTypeConverter))]
     public partial interface IAppAttachPackagePatch
 

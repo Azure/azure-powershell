@@ -61,7 +61,7 @@ PACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications.
   [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
 
 PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
-  [DependencyName <String>]: Name of package dependency.
+  [DependencyName <String>]: Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
   [MinVersion <String>]: Dependency version required.
   [Publisher <String>]: Name of dependency publisher.
 .Link
@@ -177,7 +177,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Package version found in the appxmanifest.xml.
+    # Package Version found in the appxmanifest.xml.
     ${Version},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -288,6 +288,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

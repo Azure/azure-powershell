@@ -133,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__resource).Type; }
 
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackagePropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackagePropertiesInternal)Property).Version = value ?? null; }
 
@@ -272,14 +272,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"packageRelativePath",
         PossibleTypes = new [] { typeof(string) })]
         string PackageRelativePath { get; set; }
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package version found in the appxmanifest.xml. ",
+        Description = @"Package Version found in the appxmanifest.xml. ",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         string Version { get; set; }
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string PackageRelativePath { get; set; }
         /// <summary>Detailed properties for MSIX Package</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageProperties Property { get; set; }
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         string Version { get; set; }
 
     }
