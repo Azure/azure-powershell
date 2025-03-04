@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Operation to list the RegistrationTokens associated with the HostPool</summary>
+    /// <summary>Operation to list the RegistrationTokens associated with the HostPool.</summary>
     /// <remarks>
     /// [OpenAPI] ListRegistrationTokens=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/listRegistrationTokens"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWvdHostPoolRegistrationToken_List", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Operation to list the RegistrationTokens associated with the HostPool")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Operation to list the RegistrationTokens associated with the HostPool.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/listRegistrationTokens", ApiVersion = "2024-04-03")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/listRegistrationTokens", ApiVersion = "2024-04-08-preview")]
     public partial class GetAzWvdHostPoolRegistrationToken_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext

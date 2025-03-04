@@ -173,6 +173,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).UpdateErrorMessage = (string) content.GetValueForProperty("UpdateErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).UpdateErrorMessage, global::System.Convert.ToString);
             }
+            if (content.Contains("LastSessionHostUpdateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).LastSessionHostUpdateTime = (global::System.DateTime?) content.GetValueForProperty("LastSessionHostUpdateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).LastSessionHostUpdateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SessionHostConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).SessionHostConfiguration = (string) content.GetValueForProperty("SessionHostConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).SessionHostConfiguration, global::System.Convert.ToString);
+            }
             if (content.Contains("SessionHostHealthCheckResult"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).SessionHostHealthCheckResult = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostHealthCheckReport>) content.GetValueForProperty("SessionHostHealthCheckResult",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).SessionHostHealthCheckResult, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostHealthCheckReport>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostHealthCheckReportTypeConverter.ConvertFrom));
@@ -257,6 +265,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("UpdateErrorMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).UpdateErrorMessage = (string) content.GetValueForProperty("UpdateErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).UpdateErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastSessionHostUpdateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).LastSessionHostUpdateTime = (global::System.DateTime?) content.GetValueForProperty("LastSessionHostUpdateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).LastSessionHostUpdateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SessionHostConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).SessionHostConfiguration = (string) content.GetValueForProperty("SessionHostConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)this).SessionHostConfiguration, global::System.Convert.ToString);
             }
             if (content.Contains("SessionHostHealthCheckResult"))
             {

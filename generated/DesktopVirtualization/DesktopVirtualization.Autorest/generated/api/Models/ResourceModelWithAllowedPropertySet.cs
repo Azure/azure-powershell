@@ -41,22 +41,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__trackedResource).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity _identity;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity _identity;
 
+        /// <summary>Managed service identity (system assigned and/or user assigned identities)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity()); set => this._identity = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity()); set => this._identity = value; }
 
-        /// <summary>The principal ID of resource identity. The value must be an UUID.</summary>
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)Identity).PrincipalId; }
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
 
-        /// <summary>The tenant ID of resource. The value must be an UUID.</summary>
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)Identity).TenantId; }
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
 
-        /// <summary>The identity type.</summary>
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)Identity).Type = value ?? null; }
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Kind" /> property.</summary>
         private string _kind;
@@ -99,29 +114,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.Etag { get => this._etag; set { {_etag = value;} } }
 
         /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity()); set { {_identity = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
 
         /// <summary>Internal Acessors for Plan</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetPlan Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.Plan { get => (this._plan = this._plan ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetPlan()); set { {_plan = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.Plan { get => (this._plan = this._plan ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Plan()); set { {_plan = value;} } }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetSku Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetSku()); set { {_sku = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__trackedResource).Name; }
 
         /// <summary>Backing field for <see cref="Plan" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetPlan _plan;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan _plan;
 
+        /// <summary>Plan for the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetPlan Plan { get => (this._plan = this._plan ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetPlan()); set => this._plan = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan Plan { get => (this._plan = this._plan ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Plan()); set => this._plan = value; }
 
         /// <summary>A user defined name of the 3rd Party Artifact that is being procured.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -149,10 +165,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public string PlanVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlanInternal)Plan).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlanInternal)Plan).Version = value ?? null; }
 
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetSku _sku;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku _sku;
 
+        /// <summary>The resource model definition representing SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetSku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetSku()); set => this._sku = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Sku()); set => this._sku = value; }
 
         /// <summary>
         /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
@@ -264,40 +281,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
         string Etag { get;  }
-        /// <summary>The principal ID of resource identity. The value must be an UUID.</summary>
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The principal ID of resource identity. The value must be an UUID.",
+        Description = @"The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
         SerializedName = @"principalId",
         PossibleTypes = new [] { typeof(string) })]
         string IdentityPrincipalId { get;  }
-        /// <summary>The tenant ID of resource. The value must be an UUID.</summary>
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The tenant ID of resource. The value must be an UUID.",
+        Description = @"The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
         string IdentityTenantId { get;  }
-        /// <summary>The identity type.</summary>
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The identity type.",
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SystemAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>
         /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are
         /// a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value.
@@ -467,15 +505,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// 14.27) header fields.
         /// </summary>
         string Etag { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity Identity { get; set; }
-        /// <summary>The principal ID of resource identity. The value must be an UUID.</summary>
+        /// <summary>Managed service identity (system assigned and/or user assigned identities)</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Identity { get; set; }
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
         string IdentityPrincipalId { get; set; }
-        /// <summary>The tenant ID of resource. The value must be an UUID.</summary>
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
         string IdentityTenantId { get; set; }
-        /// <summary>The identity type.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SystemAssigned")]
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>
         /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are
         /// a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value.
@@ -487,8 +537,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// since it is managed by another resource.
         /// </summary>
         string ManagedBy { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetPlan Plan { get; set; }
+        /// <summary>Plan for the resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan Plan { get; set; }
         /// <summary>A user defined name of the 3rd Party Artifact that is being procured.</summary>
         string PlanName { get; set; }
         /// <summary>
@@ -504,8 +554,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string PlanPublisher { get; set; }
         /// <summary>The version of the desired product/artifact.</summary>
         string PlanVersion { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetSku Sku { get; set; }
+        /// <summary>The resource model definition representing SKU</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku Sku { get; set; }
         /// <summary>
         /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
         /// resource this may be omitted.

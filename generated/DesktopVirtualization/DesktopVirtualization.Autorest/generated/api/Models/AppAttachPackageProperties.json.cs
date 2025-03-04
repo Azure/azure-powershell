@@ -70,6 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {_hostPoolReference = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonArray>("hostPoolReferences"), out var __jsonHostPoolReferences) ? If( __jsonHostPoolReferences as Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _hostPoolReference;}
             {_keyVaultUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("keyVaultURL"), out var __jsonKeyVaultUrl) ? (string)__jsonKeyVaultUrl : (string)_keyVaultUrl;}
             {_failHealthCheckOnStagingFailure = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("failHealthCheckOnStagingFailure"), out var __jsonFailHealthCheckOnStagingFailure) ? (string)__jsonFailHealthCheckOnStagingFailure : (string)_failHealthCheckOnStagingFailure;}
+            {_packageOwnerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("packageOwnerName"), out var __jsonPackageOwnerName) ? (string)__jsonPackageOwnerName : (string)_packageOwnerName;}
+            {_packageLookbackUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("packageLookbackUrl"), out var __jsonPackageLookbackUrl) ? (string)__jsonPackageLookbackUrl : (string)_packageLookbackUrl;}
+            {_customData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("customData"), out var __jsonCustomData) ? (string)__jsonCustomData : (string)_customData;}
             AfterFromJson(json);
         }
 
@@ -120,6 +123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             AddIf( null != (((object)this._keyVaultUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._keyVaultUrl.ToString()) : null, "keyVaultURL" ,container.Add );
             AddIf( null != (((object)this._failHealthCheckOnStagingFailure)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._failHealthCheckOnStagingFailure.ToString()) : null, "failHealthCheckOnStagingFailure" ,container.Add );
+            AddIf( null != (((object)this._packageOwnerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._packageOwnerName.ToString()) : null, "packageOwnerName" ,container.Add );
+            AddIf( null != (((object)this._packageLookbackUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._packageLookbackUrl.ToString()) : null, "packageLookbackUrl" ,container.Add );
+            AddIf( null != (((object)this._customData)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._customData.ToString()) : null, "customData" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

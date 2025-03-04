@@ -181,6 +181,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("ManagedPrivateUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).ManagedPrivateUdp = (string) content.GetValueForProperty("ManagedPrivateUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).ManagedPrivateUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("DirectUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).DirectUdp = (string) content.GetValueForProperty("DirectUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).DirectUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).PublicUdp = (string) content.GetValueForProperty("PublicUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).PublicUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelayUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).RelayUdp = (string) content.GetValueForProperty("RelayUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).RelayUdp, global::System.Convert.ToString);
+            }
             if (content.Contains("RegistrationInfoExpirationTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).RegistrationInfoExpirationTime = (global::System.DateTime?) content.GetValueForProperty("RegistrationInfoExpirationTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).RegistrationInfoExpirationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
@@ -293,6 +309,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagedPrivateUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).ManagedPrivateUdp = (string) content.GetValueForProperty("ManagedPrivateUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).ManagedPrivateUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("DirectUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).DirectUdp = (string) content.GetValueForProperty("DirectUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).DirectUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).PublicUdp = (string) content.GetValueForProperty("PublicUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).PublicUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelayUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).RelayUdp = (string) content.GetValueForProperty("RelayUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)this).RelayUdp, global::System.Convert.ToString);
             }
             if (content.Contains("RegistrationInfoExpirationTime"))
             {

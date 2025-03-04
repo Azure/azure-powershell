@@ -16,7 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="DependencyName" /> property.</summary>
         private string _dependencyName;
 
-        /// <summary>Name of package dependency.</summary>
+        /// <summary>
+        /// Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages
+        /// this is the locations of the user and deployment config files
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string DependencyName { get => this._dependencyName; set => this._dependencyName = value; }
 
@@ -44,14 +47,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface IMsixPackageDependencies :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
-        /// <summary>Name of package dependency.</summary>
+        /// <summary>
+        /// Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages
+        /// this is the locations of the user and deployment config files
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of package dependency.",
+        Description = @"Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files",
         SerializedName = @"dependencyName",
         PossibleTypes = new [] { typeof(string) })]
         string DependencyName { get; set; }
@@ -83,7 +89,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     internal partial interface IMsixPackageDependenciesInternal
 
     {
-        /// <summary>Name of package dependency.</summary>
+        /// <summary>
+        /// Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages
+        /// this is the locations of the user and deployment config files
+        /// </summary>
         string DependencyName { get; set; }
         /// <summary>Dependency version required.</summary>
         string MinVersion { get; set; }
