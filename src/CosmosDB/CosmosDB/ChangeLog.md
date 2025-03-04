@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 1.18.0
+* Added support for VectorEmbeddings
+* Added Per Region Per Partition Autoscale GA APIs
+
 ## Version 1.17.0
 * Added support for Cosmos DB Table role definition and role assignment related cmdlets.
 
