@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Schema for updatable App Attach Package properties.</summary>
+    /// <summary>Schema for patchable App Attach Package properties.</summary>
     public partial class AppAttachPackagePatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatch,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchInternal,
@@ -18,6 +18,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// />
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Resource();
+
+        /// <summary>Field that can be populated with custom data and filtered on in list GET calls</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string CustomData { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).CustomData; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).CustomData = value ?? null; }
 
         /// <summary>
         /// Parameter indicating how the health check should behave if this package fails staging
@@ -59,7 +63,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public bool? ImageIsRegularRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImageIsRegularRegistration; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImageIsRegularRegistration = value ?? default(bool); }
 
-        /// <summary>Date Package was last updated, found in the appxmanifest.xml.</summary>
+        /// <summary>
+        /// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public global::System.DateTime? ImageLastUpdated { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImageLastUpdated; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImageLastUpdated = value ?? default(global::System.DateTime); }
 
@@ -76,12 +82,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies> ImagePackageDependency { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePackageDependency; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePackageDependency = value ?? null /* arrayOf */; }
 
         /// <summary>
-        /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+        /// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ImagePackageFamilyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePackageFamilyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePackageFamilyName = value ?? null; }
 
-        /// <summary>Package Full Name from appxmanifest.xml.</summary>
+        /// <summary>
+        /// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ImagePackageFullName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePackageFullName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePackageFullName = value ?? null; }
 
@@ -93,15 +101,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ImagePackageRelativePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePackageRelativePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePackageRelativePath = value ?? null; }
 
-        /// <summary>VHD/CIM image path on Network Share.</summary>
+        /// <summary>VHD/CIM/APP-V image path on Network Share.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ImagePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImagePath = value ?? null; }
 
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).ImageVersion = value ?? null; }
 
-        /// <summary>URL path to certificate name located in keyVault</summary>
+        /// <summary>URL of keyvault location to store certificate</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string KeyVaultUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).KeyVaultUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).KeyVaultUrl = value ?? null; }
 
@@ -126,6 +134,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__resource).Name; }
+
+        /// <summary>
+        /// Lookback url to third party control plane, should be null for first party packages
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string PackageLookbackUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).PackageLookbackUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal)Property).PackageLookbackUrl = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchProperties _property;
@@ -164,6 +178,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inherited)]
         public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__resource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__resource).SystemDataLastModifiedByType = value ?? null; }
 
+        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags _tag;
+
+        /// <summary>tags to be updated</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTags()); set => this._tag = value; }
+
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
@@ -188,11 +209,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
-    /// Schema for updatable App Attach Package properties.
+    /// Schema for patchable App Attach Package properties.
     public partial interface IAppAttachPackagePatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResource
     {
+        /// <summary>Field that can be populated with custom data and filtered on in list GET calls</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Field that can be populated with custom data and filtered on in list GET calls",
+        SerializedName = @"customData",
+        PossibleTypes = new [] { typeof(string) })]
+        string CustomData { get; set; }
         /// <summary>
         /// Parameter indicating how the health check should behave if this package fails staging
         /// </summary>
@@ -285,14 +317,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"isRegularRegistration",
         PossibleTypes = new [] { typeof(bool) })]
         bool? ImageIsRegularRegistration { get; set; }
-        /// <summary>Date Package was last updated, found in the appxmanifest.xml.</summary>
+        /// <summary>
+        /// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Date Package was last updated, found in the appxmanifest.xml. ",
+        Description = @"Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml. ",
         SerializedName = @"lastUpdated",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? ImageLastUpdated { get; set; }
@@ -330,7 +364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies> ImagePackageDependency { get; set; }
         /// <summary>
-        /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+        /// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -338,18 +372,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. ",
+        Description = @"Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml. ",
         SerializedName = @"packageFamilyName",
         PossibleTypes = new [] { typeof(string) })]
         string ImagePackageFamilyName { get; set; }
-        /// <summary>Package Full Name from appxmanifest.xml.</summary>
+        /// <summary>
+        /// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package Full Name from appxmanifest.xml. ",
+        Description = @"Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml. ",
         SerializedName = @"packageFullName",
         PossibleTypes = new [] { typeof(string) })]
         string ImagePackageFullName { get; set; }
@@ -375,45 +411,71 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"packageRelativePath",
         PossibleTypes = new [] { typeof(string) })]
         string ImagePackageRelativePath { get; set; }
-        /// <summary>VHD/CIM image path on Network Share.</summary>
+        /// <summary>VHD/CIM/APP-V image path on Network Share.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"VHD/CIM image path on Network Share.",
+        Description = @"VHD/CIM/APP-V image path on Network Share.",
         SerializedName = @"imagePath",
         PossibleTypes = new [] { typeof(string) })]
         string ImagePath { get; set; }
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package version found in the appxmanifest.xml. ",
+        Description = @"Package Version found in the appxmanifest.xml. ",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         string ImageVersion { get; set; }
-        /// <summary>URL path to certificate name located in keyVault</summary>
+        /// <summary>URL of keyvault location to store certificate</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL path to certificate name located in keyVault",
+        Description = @"URL of keyvault location to store certificate",
         SerializedName = @"keyVaultURL",
         PossibleTypes = new [] { typeof(string) })]
         string KeyVaultUrl { get; set; }
+        /// <summary>
+        /// Lookback url to third party control plane, should be null for first party packages
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Lookback url to third party control plane, should be null for first party packages",
+        SerializedName = @"packageLookbackUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        string PackageLookbackUrl { get; set; }
+        /// <summary>tags to be updated</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"tags to be updated",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags Tag { get; set; }
 
     }
-    /// Schema for updatable App Attach Package properties.
+    /// Schema for patchable App Attach Package properties.
     internal partial interface IAppAttachPackagePatchInternal :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal
     {
+        /// <summary>Field that can be populated with custom data and filtered on in list GET calls</summary>
+        string CustomData { get; set; }
         /// <summary>
         /// Parameter indicating how the health check should behave if this package fails staging
         /// </summary>
@@ -436,7 +498,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ImageIsPackageTimestamped { get; set; }
         /// <summary>Specifies how to register Package in feed.</summary>
         bool? ImageIsRegularRegistration { get; set; }
-        /// <summary>Date Package was last updated, found in the appxmanifest.xml.</summary>
+        /// <summary>
+        /// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+        /// </summary>
         global::System.DateTime? ImageLastUpdated { get; set; }
         /// <summary>Alias of App Attach Package. Assigned at import time</summary>
         string ImagePackageAlias { get; set; }
@@ -445,23 +509,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>List of package dependencies.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies> ImagePackageDependency { get; set; }
         /// <summary>
-        /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+        /// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
         /// </summary>
         string ImagePackageFamilyName { get; set; }
-        /// <summary>Package Full Name from appxmanifest.xml.</summary>
+        /// <summary>
+        /// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+        /// </summary>
         string ImagePackageFullName { get; set; }
         /// <summary>Package Name from appxmanifest.xml.</summary>
         string ImagePackageName { get; set; }
         /// <summary>Relative Path to the package inside the image.</summary>
         string ImagePackageRelativePath { get; set; }
-        /// <summary>VHD/CIM image path on Network Share.</summary>
+        /// <summary>VHD/CIM/APP-V image path on Network Share.</summary>
         string ImagePath { get; set; }
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         string ImageVersion { get; set; }
-        /// <summary>URL path to certificate name located in keyVault</summary>
+        /// <summary>URL of keyvault location to store certificate</summary>
         string KeyVaultUrl { get; set; }
+        /// <summary>
+        /// Lookback url to third party control plane, should be null for first party packages
+        /// </summary>
+        string PackageLookbackUrl { get; set; }
         /// <summary>Detailed properties for App Attach Package</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchProperties Property { get; set; }
+        /// <summary>tags to be updated</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags Tag { get; set; }
 
     }
 }

@@ -95,6 +95,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {_preferredAppGroupType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("preferredAppGroupType"), out var __jsonPreferredAppGroupType) ? (string)__jsonPreferredAppGroupType : (string)_preferredAppGroupType;}
             {_startVMOnConnect = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonBoolean>("startVMOnConnect"), out var __jsonStartVMOnConnect) ? (bool?)__jsonStartVMOnConnect : _startVMOnConnect;}
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
+            {_managedPrivateUdp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("managedPrivateUDP"), out var __jsonManagedPrivateUdp) ? (string)__jsonManagedPrivateUdp : (string)_managedPrivateUdp;}
+            {_directUdp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("directUDP"), out var __jsonDirectUdp) ? (string)__jsonDirectUdp : (string)_directUdp;}
+            {_publicUdp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("publicUDP"), out var __jsonPublicUdp) ? (string)__jsonPublicUdp : (string)_publicUdp;}
+            {_relayUdp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("relayUDP"), out var __jsonRelayUdp) ? (string)__jsonRelayUdp : (string)_relayUdp;}
             AfterFromJson(json);
         }
 
@@ -135,6 +139,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             AddIf( null != (((object)this._preferredAppGroupType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._preferredAppGroupType.ToString()) : null, "preferredAppGroupType" ,container.Add );
             AddIf( null != this._startVMOnConnect ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonBoolean((bool)this._startVMOnConnect) : null, "startVMOnConnect" ,container.Add );
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            AddIf( null != (((object)this._managedPrivateUdp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._managedPrivateUdp.ToString()) : null, "managedPrivateUDP" ,container.Add );
+            AddIf( null != (((object)this._directUdp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._directUdp.ToString()) : null, "directUDP" ,container.Add );
+            AddIf( null != (((object)this._publicUdp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._publicUdp.ToString()) : null, "publicUDP" ,container.Add );
+            AddIf( null != (((object)this._relayUdp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._relayUdp.ToString()) : null, "relayUDP" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

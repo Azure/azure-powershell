@@ -48,12 +48,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public global::System.DateTime? LastHeartBeat { get => this._lastHeartBeat; set => this._lastHeartBeat = value; }
 
+        /// <summary>Backing field for <see cref="LastSessionHostUpdateTime" /> property.</summary>
+        private global::System.DateTime? _lastSessionHostUpdateTime;
+
+        /// <summary>The last time update was completed.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public global::System.DateTime? LastSessionHostUpdateTime { get => this._lastSessionHostUpdateTime; }
+
         /// <summary>Backing field for <see cref="LastUpdateTime" /> property.</summary>
         private global::System.DateTime? _lastUpdateTime;
 
         /// <summary>The timestamp of the last update.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public global::System.DateTime? LastUpdateTime { get => this._lastUpdateTime; }
+
+        /// <summary>Internal Acessors for LastSessionHostUpdateTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal.LastSessionHostUpdateTime { get => this._lastSessionHostUpdateTime; set { {_lastSessionHostUpdateTime = value;} } }
 
         /// <summary>Internal Acessors for LastUpdateTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal.LastUpdateTime { get => this._lastUpdateTime; set { {_lastUpdateTime = value;} } }
@@ -63,6 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>Internal Acessors for ResourceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal.ResourceId { get => this._resourceId; set { {_resourceId = value;} } }
+
+        /// <summary>Internal Acessors for SessionHostConfiguration</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal.SessionHostConfiguration { get => this._sessionHostConfiguration; set { {_sessionHostConfiguration = value;} } }
 
         /// <summary>Internal Acessors for SessionHostHealthCheckResult</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostHealthCheckReport> Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal.SessionHostHealthCheckResult { get => this._sessionHostHealthCheckResult; set { {_sessionHostHealthCheckResult = value;} } }
@@ -100,6 +113,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Number of sessions on SessionHost.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public int? Session { get => this._session; set => this._session = value; }
+
+        /// <summary>Backing field for <see cref="SessionHostConfiguration" /> property.</summary>
+        private string _sessionHostConfiguration;
+
+        /// <summary>
+        /// SessionHostConfiguration version reference at the time the update is initiated, in the format of date time. Example: 2024-04-26T04:56:45Z
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string SessionHostConfiguration { get => this._sessionHostConfiguration; }
 
         /// <summary>Backing field for <see cref="SessionHostHealthCheckResult" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostHealthCheckReport> _sessionHostHealthCheckResult;
@@ -215,6 +237,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"lastHeartBeat",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastHeartBeat { get; set; }
+        /// <summary>The last time update was completed.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The last time update was completed.",
+        SerializedName = @"lastSessionHostUpdateTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? LastSessionHostUpdateTime { get;  }
         /// <summary>The timestamp of the last update.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -270,6 +303,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"sessions",
         PossibleTypes = new [] { typeof(int) })]
         int? Session { get; set; }
+        /// <summary>
+        /// SessionHostConfiguration version reference at the time the update is initiated, in the format of date time. Example: 2024-04-26T04:56:45Z
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"SessionHostConfiguration version reference at the time the update is initiated, in the format of date time. Example: 2024-04-26T04:56:45Z",
+        SerializedName = @"sessionHostConfiguration",
+        PossibleTypes = new [] { typeof(string) })]
+        string SessionHostConfiguration { get;  }
         /// <summary>List of SessionHostHealthCheckReports</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -365,6 +411,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string FriendlyName { get; set; }
         /// <summary>Last heart beat from SessionHost.</summary>
         global::System.DateTime? LastHeartBeat { get; set; }
+        /// <summary>The last time update was completed.</summary>
+        global::System.DateTime? LastSessionHostUpdateTime { get; set; }
         /// <summary>The timestamp of the last update.</summary>
         global::System.DateTime? LastUpdateTime { get; set; }
         /// <summary>The version of the OS on the session host.</summary>
@@ -375,6 +423,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ResourceId { get; set; }
         /// <summary>Number of sessions on SessionHost.</summary>
         int? Session { get; set; }
+        /// <summary>
+        /// SessionHostConfiguration version reference at the time the update is initiated, in the format of date time. Example: 2024-04-26T04:56:45Z
+        /// </summary>
+        string SessionHostConfiguration { get; set; }
         /// <summary>List of SessionHostHealthCheckReports</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostHealthCheckReport> SessionHostHealthCheckResult { get; set; }
         /// <summary>Status for a SessionHost.</summary>

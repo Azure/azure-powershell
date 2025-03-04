@@ -88,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Version" /> property.</summary>
         private string _version;
 
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Version { get => this._version; set => this._version = value; }
 
@@ -214,14 +214,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"packageRelativePath",
         PossibleTypes = new [] { typeof(string) })]
         string PackageRelativePath { get; set; }
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package version found in the appxmanifest.xml. ",
+        Description = @"Package Version found in the appxmanifest.xml. ",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         string Version { get; set; }
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string PackageName { get; set; }
         /// <summary>Relative Path to the package inside the image.</summary>
         string PackageRelativePath { get; set; }
-        /// <summary>Package version found in the appxmanifest.xml.</summary>
+        /// <summary>Package Version found in the appxmanifest.xml.</summary>
         string Version { get; set; }
 
     }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 .Description
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 .Example
 Remove-AzWvdRegistrationInfo -resourceGroupName rgName -hostpoolName hpName
 
@@ -139,6 +139,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

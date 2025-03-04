@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"List App Attach packages in subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/appAttachPackages", ApiVersion = "2024-04-03")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/appAttachPackages", ApiVersion = "2024-04-08-preview")]
     public partial class GetAzWvdAppAttachPackage_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
@@ -83,13 +83,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         private string _filter;
 
         /// <summary>
-        /// OData filter expression. Valid properties for filtering are package name, host pool, and resource group.
+        /// OData filter expression. Valid properties for filtering are package name, resource group, host pool, package owner name,
+        /// and custom data.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "OData filter expression. Valid properties for filtering are package name, host pool, and resource group.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "OData filter expression. Valid properties for filtering are package name, resource group, host pool, package owner name, and custom data.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"OData filter expression. Valid properties for filtering are package name, host pool, and resource group.",
+        Description = @"OData filter expression. Valid properties for filtering are package name, resource group, host pool, package owner name, and custom data.",
         SerializedName = @"$filter",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Query)]

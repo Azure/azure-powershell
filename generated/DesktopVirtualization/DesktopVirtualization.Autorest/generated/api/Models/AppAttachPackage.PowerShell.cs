@@ -148,6 +148,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).FailHealthCheckOnStagingFailure = (string) content.GetValueForProperty("FailHealthCheckOnStagingFailure",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).FailHealthCheckOnStagingFailure, global::System.Convert.ToString);
             }
+            if (content.Contains("PackageOwnerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).PackageOwnerName = (string) content.GetValueForProperty("PackageOwnerName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).PackageOwnerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PackageLookbackUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).PackageLookbackUrl = (string) content.GetValueForProperty("PackageLookbackUrl",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).PackageLookbackUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).CustomData = (string) content.GetValueForProperty("CustomData",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).CustomData, global::System.Convert.ToString);
+            }
             if (content.Contains("ImagePackageAlias"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).ImagePackageAlias = (string) content.GetValueForProperty("ImagePackageAlias",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).ImagePackageAlias, global::System.Convert.ToString);
@@ -300,6 +312,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("FailHealthCheckOnStagingFailure"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).FailHealthCheckOnStagingFailure = (string) content.GetValueForProperty("FailHealthCheckOnStagingFailure",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).FailHealthCheckOnStagingFailure, global::System.Convert.ToString);
+            }
+            if (content.Contains("PackageOwnerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).PackageOwnerName = (string) content.GetValueForProperty("PackageOwnerName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).PackageOwnerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PackageLookbackUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).PackageLookbackUrl = (string) content.GetValueForProperty("PackageLookbackUrl",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).PackageLookbackUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).CustomData = (string) content.GetValueForProperty("CustomData",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).CustomData, global::System.Convert.ToString);
             }
             if (content.Contains("ImagePackageAlias"))
             {
