@@ -354,6 +354,7 @@ function Test-AzureVMEnhancedPolicyAsDefault
 		$owner = "sgholap"
 		$AzureVMPolicyName = "AzureVMPolicy"
 		$AzureFilesPolicyName = "AzureFilesPolicy"
+		# Subscription used for this test is sriramsa-IaaSVmBackup Canary Subscription(f2edfd5d-5496-4683-b94f-b3588c579009)
 
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
