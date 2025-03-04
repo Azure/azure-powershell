@@ -2,6 +2,200 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveDirectoryInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveDirectoryInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DomainName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OuPath</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DomainName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OuPath</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveSessionHostConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveSessionHostConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveSessionHostConfigurationList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveSessionHostConfigurationList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveSessionHostConfigurationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveSessionHostConfigurationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CustomConfigurationScriptUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMLocation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMNamePrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMResourceGroup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMSizeId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CustomConfigurationScriptUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMLocation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMNamePrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMResourceGroup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMSizeId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveSessionHostConfigurationPropertiesVMTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveSessionHostConfigurationPropertiesVMTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AgentUpdatePatchProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AgentUpdatePatchProperties#Multiple</TypeName>
@@ -315,20 +509,54 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CustomData</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>FailHealthCheckOnStagingFailure</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>KeyVaultUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PackageLookbackUrl</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CustomData</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>FailHealthCheckOnStagingFailure</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>KeyVaultUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PackageLookbackUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -343,10 +571,19 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CustomData</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>FailHealthCheckOnStagingFailure</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>KeyVaultUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PackageLookbackUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PackageOwnerName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -356,10 +593,19 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CustomData</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>FailHealthCheckOnStagingFailure</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>KeyVaultUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PackageLookbackUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PackageOwnerName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -1026,6 +1272,84 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AzureActiveDirectoryInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AzureActiveDirectoryInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MdmProviderGuid</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MdmProviderGuid</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.BootDiagnosticsInfoPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.BootDiagnosticsInfoPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.BootDiagnosticsInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.BootDiagnosticsInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CloudErrorProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CloudErrorProperties#Multiple</TypeName>
@@ -1047,6 +1371,50 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1329,6 +1697,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>WorkspaceName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DomainInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DomainInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>JoinType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>JoinType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1803,10 +2193,16 @@
             <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DirectUdp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>FriendlyName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LoadBalancerType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ManagedPrivateUdp</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxSessionLimit</Label>
@@ -1819,6 +2215,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PublicNetworkAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicUdp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RelayUdp</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Ring</Label>
@@ -1855,10 +2257,16 @@
                 <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DirectUdp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>FriendlyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LoadBalancerType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ManagedPrivateUdp</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MaxSessionLimit</PropertyName>
@@ -1871,6 +2279,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PublicNetworkAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicUdp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RelayUdp</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Ring</PropertyName>
@@ -1940,6 +2354,9 @@
             <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DirectUdp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>FriendlyName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1947,6 +2364,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LoadBalancerType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ManagedPrivateUdp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ManagementType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxSessionLimit</Label>
@@ -1962,6 +2385,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PublicNetworkAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicUdp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RelayUdp</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Ring</Label>
@@ -2001,6 +2430,9 @@
                 <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DirectUdp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>FriendlyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2008,6 +2440,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LoadBalancerType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ManagedPrivateUdp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ManagementType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MaxSessionLimit</PropertyName>
@@ -2023,6 +2461,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PublicNetworkAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicUdp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RelayUdp</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Ring</PropertyName>
@@ -2054,27 +2498,191 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Identity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateConfigurationPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Identity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateConfigurationPatchProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>PrincipalId</Label>
+            <Label>DeleteOriginalVM</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>TenantId</Label>
+            <Label>LogOffDelayMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogOffMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxVmsRemoved</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
+                <PropertyName>DeleteOriginalVM</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
+                <PropertyName>LogOffDelayMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogOffMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxVmsRemoved</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateConfigurationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateConfigurationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeleteOriginalVM</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogOffDelayMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogOffMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxVmsRemoved</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeleteOriginalVM</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogOffDelayMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogOffMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxVmsRemoved</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateControlParameter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateControlParameter#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CancelMessage</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CancelMessage</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateFault</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolUpdateFault#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FaultCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FaultContext</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FaultText</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FaultType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FaultCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FaultContext</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FaultText</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FaultType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ImageInfoPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ImageInfoPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ImageType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ImageType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ImageInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ImageInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ImageType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ImageType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2103,6 +2711,62 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Path</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.KeyVaultCredentialsPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.KeyVaultCredentialsPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PasswordKeyVaultSecretUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UsernameKeyVaultSecretUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PasswordKeyVaultSecretUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UsernameKeyVaultSecretUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.KeyVaultCredentialsProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.KeyVaultCredentialsProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PasswordKeyVaultSecretUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UsernameKeyVaultSecretUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PasswordKeyVaultSecretUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UsernameKeyVaultSecretUri</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2193,6 +2857,114 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Hour</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExactVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Offer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sku</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExactVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Offer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Sku</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExactVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Offer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sku</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExactVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Offer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Sku</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2555,6 +3327,62 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.NetworkInfoPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.NetworkInfoPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SecurityGroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubnetId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SecurityGroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubnetId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.NetworkInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.NetworkInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SecurityGroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubnetId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SecurityGroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubnetId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3207,126 +4035,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ManagedBy</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TenantId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetPlan</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetPlan#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Product</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PromotionCode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Publisher</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Product</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PromotionCode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Publisher</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetSku</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetSku#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Capacity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Family</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Size</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Tier</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Capacity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Family</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Size</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Tier</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -4308,6 +5016,62 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SecurityInfoPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SecurityInfoPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SecureBootEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VTpmEnabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SecureBootEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VTpmEnabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SecurityInfoProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SecurityInfoProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SecureBootEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VTpmEnabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SecureBootEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VTpmEnabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SendMessage</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SendMessage#Multiple</TypeName>
@@ -4400,6 +5164,326 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AzureAsyncOperation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AzureAsyncOperation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PercentComplete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatusList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatusList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CustomConfigurationScriptUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMLocation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMNamePrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMResourceGroup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMSizeId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CustomConfigurationScriptUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMLocation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMNamePrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMResourceGroup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMSizeId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPatchPropertiesVMTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPatchPropertiesVMTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CustomConfigurationScriptUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMLocation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMNamePrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMResourceGroup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMSizeId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CustomConfigurationScriptUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMLocation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMNamePrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMResourceGroup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMSizeId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPropertiesVMTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPropertiesVMTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostHealthCheckFailureDetails</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostHealthCheckFailureDetails#Multiple</TypeName>
@@ -4477,6 +5561,262 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagement</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagement#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementOperationProgress</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementOperationProgress#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExecutionStartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SessionHostsCompleted</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SessionHostsInProgress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SessionHostsRollbackFailed</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalSessionHost</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExecutionStartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SessionHostsCompleted</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SessionHostsInProgress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SessionHostsRollbackFailed</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TotalSessionHost</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementPatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ScheduledDateTimeZone</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ScheduledDateTimeZone</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ScheduledDateTimeZone</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ScheduledDateTimeZone</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementUpdateStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementUpdateStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PercentComplete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementUpdateStatusProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementUpdateStatusProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CorrelationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScheduledDateTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CorrelationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScheduledDateTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -4598,6 +5938,9 @@
             <Label>LastHeartBeat</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>LastSessionHostUpdateTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>LastUpdateTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -4611,6 +5954,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Session</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SessionHostConfiguration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Status</Label>
@@ -4650,6 +5996,9 @@
                 <PropertyName>LastHeartBeat</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>LastSessionHostUpdateTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LastUpdateTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -4663,6 +6012,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Session</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SessionHostConfiguration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Status</PropertyName>
@@ -5019,6 +6371,62 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.UpdateSessionHostsRequestBody</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.UpdateSessionHostsRequestBody#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ScheduledDateTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScheduledDateTimeZone</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ScheduledDateTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScheduledDateTimeZone</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.UserAssignedIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.UserAssignedIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

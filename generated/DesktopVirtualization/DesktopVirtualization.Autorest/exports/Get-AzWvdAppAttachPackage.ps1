@@ -23,6 +23,10 @@ Get an app attach package.
 Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId -ResourceGroupName resourceGroupName -Name packageName1
 .Example
 Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId -ResourceGroupName resourceGroupName
+.Example
+Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId
+.Example
+Get-AzWvdAppAttachPackage
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -34,7 +38,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [AppAttachPackageName <String>]: The name of the App Attach package
+  [AppAttachPackageName <String>]: The name of the App Attach package arm object
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
@@ -60,7 +64,7 @@ param(
     [Alias('AppAttachPackageName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
-    # The name of the App Attach package
+    # The name of the App Attach package arm object
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -92,7 +96,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
     [System.String]
     # OData filter expression.
-    # Valid properties for filtering are package name and host pool.
+    # Valid properties for filtering are package name, host pool, package owner name, and custom data.
     ${Filter},
 
     [Parameter()]
@@ -191,6 +195,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
