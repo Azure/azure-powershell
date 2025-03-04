@@ -1,0 +1,45 @@
+{
+  "Get-AzWeightsAndBiasesInstance+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qumulo2_eastus/providers/Microsoft.WeightsAndBiases/instances?api-version=2024-09-18-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qumulo2_eastus/providers/Microsoft.WeightsAndBiases/instances?api-version=2024-09-18-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "db35bc33-b44d-4fde-8d22-5f0999c6d5b8" ],
+        "CommandName": [ "Get-AzWeightsAndBiasesInstance" ],
+        "FullCommandName": [ "Get-AzWeightsAndBiasesInstance_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.WeightsAndBiases/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "bd14a036-2d94-4540-9be1-8e81e8327813" ],
+        "x-ms-correlation-request-id": [ "bd14a036-2d94-4540-9be1-8e81e8327813" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250304T022508Z:bd14a036-2d94-4540-9be1-8e81e8327813" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B61B3074FBF443D19B1C3384CC736917 Ref B: MAA201060515023 Ref C: 2025-03-04T02:25:07Z" ],
+        "Date": [ "Tue, 04 Mar 2025 02:25:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}
