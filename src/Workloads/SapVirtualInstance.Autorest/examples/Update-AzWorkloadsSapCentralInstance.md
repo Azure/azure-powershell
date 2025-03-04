@@ -23,4 +23,3 @@ cs0  db0-vis-rg        Healthy db0vm                         Succeeded         R
 ```
 
 This cmdlet adds new tag name, value pairs to the existing Central services instance resource cs0. Here Central services instance Azure resource ID is used as the input parameter.
-

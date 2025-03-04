@@ -29,21 +29,21 @@ Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if 
 ```
 Get-AzRoleAssignment [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
  [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
 Get-AzRoleAssignment -ObjectId <String> [-RoleDefinitionName <String>] [-ExpandPrincipalGroups]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupWithObjectIdParameterSet
 ```
 Get-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceWithObjectIdParameterSet
@@ -51,28 +51,28 @@ Get-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> [-RoleDefini
 Get-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ScopeWithObjectIdParameterSet
 ```
-Get-AzRoleAssignment -ObjectId <String> [-RoleDefinitionName <String>] -Scope <String>
+Get-AzRoleAssignment -ObjectId <String> [-RoleDefinitionName <String>] -Scope <String> [-AtScope]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
-Get-AzRoleAssignment [-ObjectId <String>] -RoleDefinitionId <Guid> [-Scope <String>]
+Get-AzRoleAssignment [-ObjectId <String>] -RoleDefinitionId <Guid> [-Scope <String>] [-AtScope]
  [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSignInNameParameterSet
 ```
 Get-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceWithSignInNameParameterSet
@@ -80,28 +80,28 @@ Get-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> [-RoleDefi
 Get-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ScopeWithSignInNameParameterSet
 ```
-Get-AzRoleAssignment -SignInName <String> [-RoleDefinitionName <String>] -Scope <String>
+Get-AzRoleAssignment -SignInName <String> [-RoleDefinitionName <String>] -Scope <String> [-AtScope]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### SignInNameParameterSet
 ```
 Get-AzRoleAssignment -SignInName <String> [-RoleDefinitionName <String>] [-ExpandPrincipalGroups]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSPNParameterSet
 ```
 Get-AzRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceWithSPNParameterSet
@@ -109,28 +109,28 @@ Get-AzRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> 
 Get-AzRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ScopeWithSPNParameterSet
 ```
-Get-AzRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String>] -Scope <String>
+Get-AzRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String>] -Scope <String> [-AtScope]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
 Get-AzRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupParameterSet
 ```
 Get-AzRoleAssignment -ResourceGroupName <String> [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
  [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceParameterSet
@@ -138,14 +138,14 @@ Get-AzRoleAssignment -ResourceGroupName <String> [-RoleDefinitionName <String>] 
 Get-AzRoleAssignment -ResourceGroupName <String> -ResourceName <String> -ResourceType <String>
  [-ParentResource <String>] [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
  [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ScopeParameterSet
 ```
-Get-AzRoleAssignment [-RoleDefinitionName <String>] -Scope <String> [-IncludeClassicAdministrators]
+Get-AzRoleAssignment [-RoleDefinitionName <String>] -Scope <String> [-AtScope] [-IncludeClassicAdministrators]
  [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,7 +203,30 @@ Get-AzRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83
 
 Gets role assignments at the 'site1' website scope.
 
+### Example 5
+```powershell
+$ApplicationObject = Get-AzADServicePrincipal -DisplayName 'ApplicationDisplayName'
+Get-AzRoleAssignment -ServicePrincipalName $ApplicationObject.AppId
+```
+
+Gets role assignments for the specified Service Principal using Get-AzAdServicePrincipal.
+
 ## PARAMETERS
+
+### -AtScope
+If specified, lists role assignments for only the specified scope, not including the role assignments at subscopes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ScopeWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet, ScopeParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -292,21 +315,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -433,7 +441,7 @@ Filters all assignments that are made to the specified Microsoft Entra applicati
 ```yaml
 Type: System.String
 Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet
-Aliases: SPN
+Aliases: SPN, ApplicationId
 
 Required: True
 Position: Named

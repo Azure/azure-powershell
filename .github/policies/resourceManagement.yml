@@ -2152,6 +2152,7 @@ configuration:
             mentionees:
             - dkershaw10
             - baywet
+            - SteveMutungi254
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -4257,6 +4258,24 @@ configuration:
             mentionees:
             - JialinXin
             - vicancy
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Workloads
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Workloads
+        then:
+        - mentionUsers:
+            mentionees:
+            - jaskisin
+            - ajaygit158
+            - praveennet
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       description: Triage issues to the service team

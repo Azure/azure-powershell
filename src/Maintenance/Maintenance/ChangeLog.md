@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.5.1
+* Migrated SDK generation from autorest csharp to autorest powershell.
+
 ## Version 1.5.0
 * Upgraded nuget package to signed package.
 * Added list of allowed classifications in description for Maintenance Configuration

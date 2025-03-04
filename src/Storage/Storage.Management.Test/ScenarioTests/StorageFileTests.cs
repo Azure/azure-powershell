@@ -66,5 +66,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureStorageShareNFS");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageFilePV2()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageFilePV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageFilePaidBursting()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageFilePaidBursting");
+        }
     }
 }
