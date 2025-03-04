@@ -16,7 +16,7 @@ Please note some properties can be set only during virtual machine creation.
 ### CreateExpanded (Default)
 ```
 New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CloudName <String> -TemplateName <String>
- -VmmServer <String> [-SubscriptionId <String>] [-AdminPassword <SecureString>]
+ -VmmServerName <String> [-SubscriptionId <String>] [-AdminPassword <SecureString>]
  [-AvailabilitySet <IAvailabilitySetListItem[]>] [-CheckpointType <String>] [-ComputerName <String>]
  [-CpuCount <Int32>] [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>]
  [-DynamicMemoryMinMb <Int32>] [-Generation <Int32>] [-LimitCpuForMigration] [-Location <String>]
@@ -37,7 +37,7 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CloudId <String> -Cust
 
 ### CreateExpandedInventory
 ```
-New-AzScVmmVM -Name <String> -ResourceGroupName <String> -InventoryUuid <String> -VmmServer <String>
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -InventoryUuid <String> -VmmServerName <String>
  [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -67,11 +67,22 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonString <String> [-
 The operation to create a virtual machine.
 Please note some properties can be set only during virtual machine creation.
 
+To enable existing SCVMM virtual machine in Azure execute the command with `CreateExpandedInventory` or `CreateExpandedInventoryARMId` Parameter Set.
+To create a new virtual machine execute the command with `CreateExpanded` or `CreateExpandedARMId` Parameter Set.
+
+To enable resource in the same Resource Group as VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpanded` or `CreateExpandedInventory` Parameter Set.
+To enable resource in a different Resource Group than the one where VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpandedARMId` or `CreateExpandedInventoryARMId` Parameter Set.
+
+`InventoryUuid` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName \<\> -ResourceGroupName \<\>` (check Name(UUID format) for required InventoryItemName and InventoryType).
+`InventoryItemId` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName \<\> -ResourceGroupName \<\> -Name \<uuid\>` (check for Id property in the response).
+`VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).
+
 ## EXAMPLES
 
 ### Example 1: Enable existing Virtual Machine in Azure
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -InventoryUuid "00000000-1111-0000-0001-000000000000" -Location "eastus"
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -InventoryUuid "00000000-1111-0000-0001-000000000000" -Location "eastus"
 ```
 
 ```output
@@ -146,7 +157,7 @@ Enable existing SCVMM Virtual Machine in Azure
 
 ### Example 2: Create new virtual machine using VM Template
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template'
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template'
 ```
 
 ```output
@@ -157,7 +168,7 @@ Create new virtual machine on on-prem SCVMM
 
 ### Example 3: Create new virtual machine using VM Template and customizing few properties
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tags @{"key-1"="value-1234"}
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tags @{"key-1"="value-1234"}
 ```
 
 ```output
@@ -643,12 +654,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VmmServer
-Name of the vmmServer resource in which this resource resides.
+### -VmmServerId
+ARM Id of the vmmServer resource in which this resource resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedInventory
+Parameter Sets: CreateExpandedARMId
 Aliases:
 
 Required: True
@@ -658,12 +669,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VmmServerId
-ARM Id of the vmmServer resource in which this resource resides.
+### -VmmServerName
+Name of the vmmServer resource in which this resource resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedARMId
+Parameter Sets: CreateExpanded, CreateExpandedInventory
 Aliases:
 
 Required: True

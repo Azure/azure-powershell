@@ -1,6 +1,6 @@
 ### Example 1: Enable existing Virtual Machine in Azure
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -InventoryUuid "00000000-1111-0000-0001-000000000000" -Location "eastus"
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -InventoryUuid "00000000-1111-0000-0001-000000000000" -Location "eastus"
 ```
 
 ```output
@@ -75,7 +75,7 @@ Enable existing SCVMM Virtual Machine in Azure
 
 ### Example 2: Create new virtual machine using VM Template
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template'
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template'
 ```
 
 ```output
@@ -87,7 +87,7 @@ Create new virtual machine on on-prem SCVMM
 
 ### Example 3: Create new virtual machine using VM Template and customizing few properties
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServer "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tags @{"key-1"="value-1234"}
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tags @{"key-1"="value-1234"}
 ```
 
 ```output

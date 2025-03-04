@@ -1,6 +1,6 @@
 ### Example 1: Create Availability Set resource
 ```powershell
-New-AzScVmmAvailabilitySet -Name "test-avset" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Location "eastus" -ExtendedLocationType "customLocation" -ExtendedLocationName "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourcegroups/test-rg-01/providers/microsoft.extendedlocation/customlocations/test-cl" -VmmServerId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/VMMServers/test-vmmserver-01"
+New-AzScVmmAvailabilitySet -Name "test-avset" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -AvailabilitySetName "test-av-01" -Location "eastus" -VmmServerName "test-vmmserver-01"
 ```
 
 ```output
@@ -25,3 +25,9 @@ VmmServerId                  : /subscriptions/00000000-abcd-0000-abcd-0000000000
 ```
 
 This command creates a Availability Set resource named `test-avset` in the resource group named `test-rg-01`.
+
+To enable resource in the same Resource Group as VMM Sever resource resides execute the command with `-VmmServerName`.
+
+To enable resource in a different Resource Group than the one where VMM Server resource resides execute the command with `-VmmServerId` and `-CustomLocationId` in place of `-VmmServerName`.
+`VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).

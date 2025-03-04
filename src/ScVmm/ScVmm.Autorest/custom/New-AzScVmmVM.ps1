@@ -21,10 +21,23 @@ Please note some properties can be set only during virtual machine creation.
 .Description
 The operation to create a virtual machine.
 Please note some properties can be set only during virtual machine creation.
+
+To enable existing SCVMM virtual machine in Azure execute the command with `CreateExpandedInventory` or `CreateExpandedInventoryARMId` Parameter Set.
+To create a new virtual machine execute the command with `CreateExpanded` or `CreateExpandedARMId` Parameter Set.
+
+To enable resource in the same Resource Group as VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpanded` or `CreateExpandedInventory` Parameter Set.
+To enable resource in a different Resource Group than the one where VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpandedARMId` or `CreateExpandedInventoryARMId` Parameter Set.
+
+`InventoryUuid` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName <> -ResourceGroupName <>` (check Name(UUID format) for required InventoryItemName and InventoryType).
+`InventoryItemId` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName <> -ResourceGroupName <> -Name <uuid>` (check for Id property in the response).
+`VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).
+
 .Example
-{{ Add code here }}
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -InventoryUuid "00000000-1111-0000-0001-000000000000" -Location "eastus"
 .Example
-{{ Add code here }}
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template'
+
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance
@@ -98,7 +111,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # Name of the vmmServer resource in which this resource resides.
-    ${VmmServer},
+    ${VmmServerName},
 
     [Parameter(ParameterSetName='CreateExpandedInventory', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
@@ -369,24 +382,24 @@ begin {
 
         # Custom Code Begin
         $MACHINE_KIND_SCVMM = "SCVMM"
-        $CUSTOM_LOCATION_RESOURCE_TYPE = "customLocations"
+        $CUSTOM_LOCATION_RESOURCE_TYPE = "customLocation"
 
         #  Pre-Validation of the input parameters
 
         if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpanded') {
 
             try {
-                $VmmServerObj = Get-AzScVmmServer -Name $VmmServer -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                $VmmServerObj = Get-AzScVmmServer -Name $VmmServerName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
                 $VmmServerId = $VmmServerObj.Id
                 $customLocationId = $VmmServerObj.ExtendedLocationName
             }
             catch {
-                throw "Failed to determine VmmServer resource ARM ID for VmmServer $VmmServer in Resource Group $ResourceGroupName."
+                throw "Failed to determine VMM Server resource ARM ID for VmmServerName $VmmServerName in Resource Group $ResourceGroupName."
             }
 
             if ($parameterSet -eq 'CreateExpandedInventory') {
                 try {
-                    $inventoryItemObj = Get-AzScVmmInventoryItem -VmmServerName $VmmServer -Name $InventoryUuid -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    $inventoryItemObj = Get-AzScVmmInventoryItem -VmmServerName $VmmServerName -Name $InventoryUuid -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
                     $inventoryItemId = $inventoryItemObj.Id
                 }
                 catch {
@@ -417,7 +430,6 @@ begin {
             }
             if ($PSBoundParameters.ContainsKey('VmmServerId')) {
                 $VmmServerId = $VmmServerId
-
             }
             if ($PSBoundParameters.ContainsKey('InventoryId')) {
                 $inventoryItemId = $InventoryId
@@ -543,7 +555,7 @@ begin {
                 $PSBoundParameters["InfrastructureProfileVmmServerId"] = $VmmServerId
             }
             
-            foreach ($key in @('VmmServer', 'InventoryUuid', 'CloudName', 'TemplateName')) {
+            foreach ($key in @('VmmServerName', 'InventoryUuid', 'CloudName', 'TemplateName')) {
                 if ($PSBoundParameters.ContainsKey($key)) {
                     [void]$PSBoundParameters.Remove($key)
                 }

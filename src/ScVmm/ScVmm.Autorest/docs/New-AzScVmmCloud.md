@@ -15,17 +15,9 @@ Onboards the ScVmm fabric cloud as an Azure cloud resource.
 ### CreateExpanded (Default)
 ```
 New-AzScVmmCloud -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Tag <Hashtable>] [-Uuid <String>] [-VmmServerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzScVmmCloud -InputObject <IScVmmIdentity> -Location <String> [-ExtendedLocationName <String>]
- [-ExtendedLocationType <String>] [-InventoryItemId <String>] [-Tag <Hashtable>] [-Uuid <String>]
- [-VmmServerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CustomLocationId <String>] [-InventoryItemId <String>] [-InventoryUuid <String>] [-Tag <Hashtable>]
+ [-VmmServerId <String>] [-VmmServerName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -43,11 +35,20 @@ New-AzScVmmCloud -Name <String> -ResourceGroupName <String> -JsonString <String>
 ## DESCRIPTION
 Onboards the ScVmm fabric cloud as an Azure cloud resource.
 
+`InventoryUuid` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName \<\> -ResourceGroupName \<\>` (check Name(UUID format) for required InventoryItemName and InventoryType).
+`InventoryItemId` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName \<\> -ResourceGroupName \<\> -Name \<uuid\>` (check for Id property in the response).
+
+To enable resource in the same Resource Group as VMM Sever resource resides execute the command with `-VmmServerName`.
+
+To enable resource in a different Resource Group than the one where VMM Server resource resides execute the command with `-VmmServerId` and `-CustomLocationId` in place of `-VmmServerName`.
+`VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).
+
 ## EXAMPLES
 
 ### Example 1: Create SCVMM Cloud resource
 ```powershell
-New-AzScVmmCloud -Name "test-cloud" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Location "eastus" -ExtendedLocationType "customLocation" -ExtendedLocationName "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourcegroups/test-rg-01/providers/microsoft.extendedlocation/customlocations/test-cl" -InventoryItemId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/VMMServers/test-vmmserver-01/InventoryItems/00000000-1111-0000-0002-000000000000"
+New-AzScVmmCloud -Name "test-cloud" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Location "eastus" -VmmServerName "test-vmmserver-01" -Uuid "00000000-1111-0000-0002-000000000000"
 ```
 
 ```output
@@ -79,6 +80,15 @@ VmmServerId                  : /subscriptions/00000000-abcd-0000-abcd-0000000000
 
 This command creates a Cloud named `test-cloud` in the resource group named `test-rg-01`.
 
+`InventoryUuid` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName \<\> -ResourceGroupName \<\>` (check Name(UUID format) for required InventoryItemName and InventoryType).
+`InventoryItemId` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName \<\> -ResourceGroupName \<\> -Name \<uuid\>` (check for Id property in the response).
+
+To enable resource in the same Resource Group as VMM Sever resource resides execute the command with `-VmmServerName`.
+
+To enable resource in a different Resource Group than the one where VMM Server resource resides execute the command with `-VmmServerId` and `-CustomLocationId` in place of `-VmmServerName`.
+`VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).
+
 ## PARAMETERS
 
 ### -AsJob
@@ -87,6 +97,21 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomLocationId
+The ARM Id of the custom location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -112,57 +137,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtendedLocationName
-The extended location name.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtendedLocationType
-The extended location type.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InventoryItemId
-Gets or sets the inventory Item ID for the resource.
+ARM Id of the inventory Item for the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InventoryUuid
+Unique ID of the cloud.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -207,7 +202,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -222,7 +217,7 @@ Name of the Cloud.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: CloudResourceName
 
 Required: True
@@ -253,7 +248,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -269,7 +264,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -284,22 +279,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Uuid
-Unique ID of the cloud.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -314,7 +294,22 @@ ARM Id of the vmmServer resource in which this resource resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmmServerName
+Name of the vmmServer resource in which this resource resides.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -359,8 +354,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity
 
 ## OUTPUTS
 

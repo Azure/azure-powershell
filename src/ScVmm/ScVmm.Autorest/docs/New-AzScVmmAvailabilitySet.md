@@ -14,17 +14,10 @@ Onboards the ScVmm availability set as an Azure resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AvailabilitySetName <String>] [-ExtendedLocationName <String>]
- [-ExtendedLocationType <String>] [-Tag <Hashtable>] [-VmmServerId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzScVmmAvailabilitySet -InputObject <IScVmmIdentity> -Location <String> [-AvailabilitySetName <String>]
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-Tag <Hashtable>] [-VmmServerId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -AvailabilitySetName <String>
+ -Location <String> [-SubscriptionId <String>] [-CustomLocationId <String>] [-Tag <Hashtable>]
+ [-VmmServerId <String>] [-VmmServerName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -44,11 +37,17 @@ New-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -JsonStrin
 ## DESCRIPTION
 Onboards the ScVmm availability set as an Azure resource.
 
+To enable resource in the same Resource Group as VMM Sever resource resides execute the command with `-VmmServerName`.
+
+To enable resource in a different Resource Group than the one where VMM Server resource resides execute the command with `-VmmServerId` and `-CustomLocationId` in place of `-VmmServerName`.
+`VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).
+
 ## EXAMPLES
 
 ### Example 1: Create Availability Set resource
 ```powershell
-New-AzScVmmAvailabilitySet -Name "test-avset" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Location "eastus" -ExtendedLocationType "customLocation" -ExtendedLocationName "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourcegroups/test-rg-01/providers/microsoft.extendedlocation/customlocations/test-cl" -VmmServerId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/VMMServers/test-vmmserver-01"
+New-AzScVmmAvailabilitySet -Name "test-avset" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -AvailabilitySetName "test-av-01" -Location "eastus" -VmmServerName "test-vmmserver-01"
 ```
 
 ```output
@@ -74,6 +73,12 @@ VmmServerId                  : /subscriptions/00000000-abcd-0000-abcd-0000000000
 
 This command creates a Availability Set resource named `test-avset` in the resource group named `test-rg-01`.
 
+To enable resource in the same Resource Group as VMM Sever resource resides execute the command with `-VmmServerName`.
+
+To enable resource in a different Resource Group than the one where VMM Server resource resides execute the command with `-VmmServerId` and `-CustomLocationId` in place of `-VmmServerName`.
+`VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).
+
 ## PARAMETERS
 
 ### -AsJob
@@ -96,7 +101,22 @@ Name of the availability set.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomLocationId
+The ARM Id of the custom location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -119,51 +139,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtendedLocationName
-The extended location name.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtendedLocationType
-The extended location type.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -202,7 +177,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -217,7 +192,7 @@ Name of the AvailabilitySet.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: AvailabilitySetResourceName
 
 Required: True
@@ -248,7 +223,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -264,7 +239,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -279,7 +254,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -294,7 +269,22 @@ ARM Id of the vmmServer resource in which this resource resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmmServerName
+Name of the vmmServer resource in which this resource resides.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -339,8 +329,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity
 
 ## OUTPUTS
 

@@ -431,6 +431,10 @@ directive:
   - where:
       subject: VMCheckpoint
     hide: true
+  - where:
+      verb: New
+      subject: VMTemplate|Server|Cloud|VirtualNetwork|AvailabilitySet
+    hide: true
 
   - where:
       parameter-name: ResourceName
