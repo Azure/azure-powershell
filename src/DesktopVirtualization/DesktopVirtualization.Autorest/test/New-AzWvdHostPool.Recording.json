@@ -1,5 +1,5 @@
 {
-  "New-AzWvdHostPool+[NoContext]+FullSenerioCreate+$PUT+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2024-04-08-preview+1": {
+  "New-AzWvdHostPool+[NoContext]+FullScenarioCreate+$PUT+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2024-04-08-preview+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2024-04-08-preview",
@@ -46,7 +46,7 @@
       "isContentBase64": false
     }
   },
-  "New-AzWvdHostPool+[NoContext]+FullSenerioCreate+$PUT+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/FullSenerioCreateAG?api-version=2024-04-08-preview+2": {
+  "New-AzWvdHostPool+[NoContext]+FullScenarioCreate+$PUT+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/FullSenerioCreateAG?api-version=2024-04-08-preview+2": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/FullSenerioCreateAG?api-version=2024-04-08-preview",
@@ -93,7 +93,7 @@
       "isContentBase64": false
     }
   },
-  "New-AzWvdHostPool+[NoContext]+FullSenerioCreate+$PUT+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/workspaces/FullSenerioCreateWS?api-version=2024-04-08-preview+3": {
+  "New-AzWvdHostPool+[NoContext]+FullScenarioCreate+$PUT+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/workspaces/FullSenerioCreateWS?api-version=2024-04-08-preview+3": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/workspaces/FullSenerioCreateWS?api-version=2024-04-08-preview",
@@ -140,7 +140,7 @@
       "isContentBase64": false
     }
   },
-  "New-AzWvdHostPool+[NoContext]+FullSenerioCreate+$DELETE+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/FullSenerioCreateAG?api-version=2024-04-08-preview+4": {
+  "New-AzWvdHostPool+[NoContext]+FullScenarioCreate+$DELETE+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/FullSenerioCreateAG?api-version=2024-04-08-preview+4": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/FullSenerioCreateAG?api-version=2024-04-08-preview",
@@ -192,7 +192,7 @@
       "isContentBase64": false
     }
   },
-  "New-AzWvdHostPool+[NoContext]+FullSenerioCreate+$DELETE+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2024-04-08-preview+5": {
+  "New-AzWvdHostPool+[NoContext]+FullScenarioCreate+$DELETE+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2024-04-08-preview+5": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2024-04-08-preview",
@@ -244,7 +244,7 @@
       "isContentBase64": false
     }
   },
-  "New-AzWvdHostPool+[NoContext]+FullSenerioCreate+$DELETE+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/workspaces/FullSenerioCreateWS?api-version=2024-04-08-preview+6": {
+  "New-AzWvdHostPool+[NoContext]+FullScenarioCreate+$DELETE+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/workspaces/FullSenerioCreateWS?api-version=2024-04-08-preview+6": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/workspaces/FullSenerioCreateWS?api-version=2024-04-08-preview",

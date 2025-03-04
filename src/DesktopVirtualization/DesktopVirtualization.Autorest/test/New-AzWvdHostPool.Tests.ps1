@@ -28,7 +28,7 @@ Describe 'New-AzWvdHostPool' {
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'FullScenarioCreateAG'
+                                -Name 'FullSenerioCreateAG'
 
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -36,7 +36,7 @@ Describe 'New-AzWvdHostPool' {
 
             $workspace = Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'FullScenarioCreateWS'
+                                -Name 'FullSenerioCreateWS'
         }
     }
 
