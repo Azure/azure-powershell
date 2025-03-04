@@ -6864,7 +6864,7 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
 
         Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
 
-        # Update SecurityType to Standard
+        # Update SecurityType to Standard. Errors - Changing property 'securityProfile.securityType' is not allowed.
         #Update-AzVm -ResourceGroupName $rgname -VM $res -SecurityType "Standard"
         #$updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
 
@@ -6925,6 +6925,8 @@ function Test-VirtualMachineSecurityTypeStandard
         New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
         # Verify security value
         $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+
+        # VM Gets created with SecurityType: Standard but response has securityProfile null  
         Assert-Null $vm1.SecurityProfile;
         #Assert-AreEqual $vm1.SecurityProfile.SecurityType "Standard";
 
