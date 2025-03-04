@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="logStorageAccountId">The LogStorageAccountId.
         /// </param>
 
-        /// <param name="diskType">The DiskType.
-        /// Possible values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        /// <param name="diskType">The disk type.
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;,
+        /// &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;</param>
 
         /// <param name="diskEncryptionSetId">The DiskEncryptionSet ARM ID.
         /// </param>
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string LogStorageAccountId {get; set; }
 
         /// <summary>
-        /// Gets or sets the DiskType. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;
+        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskType")]
         public string DiskType {get; set; }
