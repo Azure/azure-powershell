@@ -236,6 +236,7 @@ function Test-LoadBalancerCRUD-EnableConnectionTracking
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $lbruleName2 = Get-ResourceName
+    $lbruleName3 = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
@@ -313,8 +314,14 @@ function Test-LoadBalancerCRUD-EnableConnectionTracking
 
         # Test Add Command
         $expectedLb | Add-AzLoadBalancerRuleConfig -Name $lbruleName2 -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 81 -BackendPort 81 -IdleTimeoutInMinutes 15 -EnableFloatingIP -EnableTcpReset -LoadDistribution SourceIP -DisableOutboundSNAT -EnableConnectionTracking
+        $expectedLb | Set-AzLoadBalancer
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
         Assert-AreEqual true $expectedLb.LoadBalancingRules[1].EnableConnectionTracking
+
+        $expectedLb | Add-AzLoadBalancerRuleConfig -Name $lbruleName3 -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 82 -BackendPort 82 -IdleTimeoutInMinutes 15 -EnableFloatingIP -EnableTcpReset -LoadDistribution SourceIP -DisableOutboundSNAT
+        $expectedLb | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual false $expectedLb.LoadBalancingRules[2].EnableConnectionTracking
 
         # Delete
         $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
