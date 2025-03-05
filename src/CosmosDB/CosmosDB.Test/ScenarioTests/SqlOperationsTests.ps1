@@ -303,7 +303,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
   $locations += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
 
   Try{
-      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
       $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
 
       # create a new database

@@ -234,14 +234,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             break;
                         case "Sql":
                             {
-                                List<Capability> capabilitiesList = new List<Capability>();
-
-                                foreach (string capability in Capabilities)
+                                if (Capabilities != null && Capabilities.Length > 0)
                                 {
-                                    capabilitiesList.Add(new Capability { Name = capability });
+                                    List<Capability> capabilitiesList = new List<Capability>();
+
+                                    foreach (string capability in Capabilities)
+                                    {
+                                        capabilitiesList.Add(new Capability { Name = capability });
+                                    }
+
+                                    databaseAccountCreateUpdateParameters.Capabilities = capabilitiesList;
                                 }
 
-                                databaseAccountCreateUpdateParameters.Capabilities = capabilitiesList;
                                 break;
                             }
                     }
