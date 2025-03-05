@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.2
 * Added support for CI policy signing for OS versions older than Nickel.
 
 ## Version 0.2.1
