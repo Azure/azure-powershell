@@ -1,8 +1,8 @@
 {
-  "Update-AzWvdSessionHostManagement+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default?api-version=2024-04-08-preview+1": {
+  "Update-AzWvdSessionHostManagement+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default?api-version=2024-11-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default?api-version=2024-04-08-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default?api-version=2024-11-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"update\": {\r\n      \"logOffMessage\": \"Updating HostpoolUpdate is great!\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,24 +18,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=f08099ddc6d1b5b480ee26565f489b862c28fda9abd95391f75b0cea107d6318;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=f08099ddc6d1b5b480ee26565f489b862c28fda9abd95391f75b0cea107d6318;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "182498576" ],
-        "x-ms-correlation-id": [ "5889d799-cd53-4593-bc45-e64939dd1f78" ],
-        "x-ms-request-id": [ "ec7249ed-b632-4be4-b51c-04de06d520cb" ],
+        "x-ms-lamport-ts": [ "196804204" ],
+        "x-ms-correlation-id": [ "cde25298-55e3-48b6-a3a7-96fd8ff8fe3c" ],
+        "x-ms-request-id": [ "660ec1f6-2ddf-461c-9c68-8b2263535aec" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "fe9c202c-dc46-46ef-8bea-94a6214bbf44" ],
-        "x-ms-routing-request-id": [ "EASTUS:20241016T210747Z:fe9c202c-dc46-46ef-8bea-94a6214bbf44" ],
+        "x-ms-correlation-request-id": [ "2a9cb048-13c2-4201-8cd2-f507969bb682" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250304T081952Z:2a9cb048-13c2-4201-8cd2-f507969bb682" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4D00E13CF4CD46CE87D1A42E0B3998DC Ref B: MNZ221060619049 Ref C: 2024-10-16T21:07:43Z" ],
-        "Date": [ "Wed, 16 Oct 2024 21:07:46 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7DC6A34BBD774052A5CD9F96D77F546D Ref B: MAA201060514045 Ref C: 2025-03-04T08:19:46Z" ],
+        "Date": [ "Tue, 04 Mar 2025 08:19:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "455" ],

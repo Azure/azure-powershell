@@ -1,8 +1,8 @@
 {
-  "Expand-AzWvdMsixImage+[NoContext]+Expand+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-04-08-preview+1": {
+  "Expand-AzWvdMsixImage+[NoContext]+Expand+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-11-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-04-08-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/expandMsixImage?api-version=2024-11-01-preview",
       "Content": "{\r\n  \"uri\": \"C:\\\\AppAttach\\\\Firefox20110.0.1.vhdx\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,24 +18,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JSZW1vdGVBcHBIUA==" ],
-        "x-ms-lamport-ts": [ "182496979" ],
-        "x-ms-correlation-id": [ "4d55b917-7026-43fb-9fc4-465204a27ce3" ],
-        "x-ms-request-id": [ "5ebbce71-802c-4d99-951a-933562a3136a" ],
+        "x-ms-lamport-ts": [ "196800759" ],
+        "x-ms-correlation-id": [ "8859eef0-5de0-4ed2-9b5e-897917cdce4e" ],
+        "x-ms-request-id": [ "4fcea2a7-e43e-494a-8439-c7d40a4943bc" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "22191cb8-e0cb-40bc-ab87-aacc02a1d88d" ],
-        "x-ms-routing-request-id": [ "EASTUS:20241016T204905Z:22191cb8-e0cb-40bc-ab87-aacc02a1d88d" ],
+        "x-ms-correlation-request-id": [ "4ba51f91-42bd-42f1-8ac2-15fab3ab7900" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250304T075530Z:4ba51f91-42bd-42f1-8ac2-15fab3ab7900" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3F5D35F61A994037B33AB8BDAC79AAB7 Ref B: MNZ221060619049 Ref C: 2024-10-16T20:49:03Z" ],
-        "Date": [ "Wed, 16 Oct 2024 20:49:05 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F574D915022D4A0B86C7F055B8479A79 Ref B: MAA201060514045 Ref C: 2025-03-04T07:55:29Z" ],
+        "Date": [ "Tue, 04 Mar 2025 07:55:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "62431" ],

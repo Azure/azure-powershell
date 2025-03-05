@@ -59,6 +59,10 @@ Describe 'Get-AzWvdAppAttachPackage' {
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId  
 
+            # rawIcon and rawPng fields are cleared when list by resource group
+            $apps[0].rawIcon = $null
+            $apps[0].rawPng = $null
+
             $package = $packages | Where-Object { $_.Name -eq 'TestPackageRG' }    
             $package.ImagePackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
             $package.ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
@@ -134,7 +138,11 @@ Describe 'Get-AzWvdAppAttachPackage' {
 
             $packages = Get-AzWvdAppAttachPackage `
                 -SubscriptionId $env.SubscriptionId  
-            
+
+            # rawIcon and rawPng fields are cleared when list by resource group
+            $apps[0].rawIcon = $null
+            $apps[0].rawPng = $null
+
             $package = $packages | Where-Object { $_.Name -eq 'TestPackageSub' }    
             $package.ImagePackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
             $package.ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
