@@ -41,7 +41,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"cloudId\":\"elastic-mfvsw9:d2VzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkNjliOTY4MjdjNjI1NDhmNDkyZGJjOTk3YzU4MzQwNzAkYzQ2ZDdmZmJjNDY4NGE1Nzg4OTg4MDA5OTE1ODdmNTg=\",\"ingestionKey\":\"TGlmdHJfRWxhc3RpYzpLSUxZTE8zNzI4R0NIWUpLUE0=\"}",
+      "Content": "{\"cloudId\":\"elastic-mfvsw9:d2VzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkNjliOTY4MjdjNjI1NDhmNDkyZGJjOTk3YzU4MzQwNzAkYzQ2ZDdmZmJjNDY4NGE1Nzg4OTg4MDA5OTE1ODdmNTg=\",\"ingestionKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=\"}",
       "isContentBase64": false
     }
   },
@@ -132,7 +132,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"cloudId\":\"elastic-mfvsw9:d2VzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkNjliOTY4MjdjNjI1NDhmNDkyZGJjOTk3YzU4MzQwNzAkYzQ2ZDdmZmJjNDY4NGE1Nzg4OTg4MDA5OTE1ODdmNTg=\",\"ingestionKey\":\"TGlmdHJfRWxhc3RpYzpLSUxZTE8zNzI4R0NIWUpLUE0=\"}",
+      "Content": "{\"cloudId\":\"elastic-mfvsw9:d2VzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkNjliOTY4MjdjNjI1NDhmNDkyZGJjOTk3YzU4MzQwNzAkYzQ2ZDdmZmJjNDY4NGE1Nzg4OTg4MDA5OTE1ODdmNTg=\",\"ingestionKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
       "isContentBase64": false
     }
   }

@@ -61,7 +61,7 @@ The list of endpoint dependencies.
 To construct, see NOTES section for ENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IEndpointDependency[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IEndpointDependency[]
 Parameter Sets: (All)
 Aliases:
 
@@ -79,20 +79,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.EgressEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EgressEndpoint
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ENDPOINT <IEndpointDependency[]>`: The list of endpoint dependencies.
-  - `DomainName <String>`: The domain name of the dependency.
-  - `[Port <Int64?>]`: The port of this endpoint.
 
 ## RELATED LINKS
 

@@ -271,7 +271,7 @@ The unique list of permitted users.
 To construct, see NOTES section for USERLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IKeySetUser[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[]
 Parameter Sets: (All)
 Aliases:
 
@@ -320,21 +320,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBmcKeySet
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`USERLIST <IKeySetUser[]>`: The unique list of permitted users.
-  - `AzureUserName <String>`: The user name that will be used for access.
-  - `SshPublicKeyData <String>`: The SSH public key data.
-  - `[Description <String>]`: The free-form description for this user.
 
 ## RELATED LINKS
 

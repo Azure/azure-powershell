@@ -22,14 +22,22 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
  [-AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration <IBareMetalMachineConfigurationData[]>]
  [-AggregatorOrSingleRackDefinitionRackLocation <String>]
  [-AggregatorOrSingleRackDefinitionStorageApplianceConfiguration <IStorageApplianceConfigurationData[]>]
- [-AnalyticsWorkspaceId <String>] [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
- [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
- [-ClusterServicePrincipalTenantId <String>]
+ [-AnalyticsWorkspaceId <String>] [-AssociatedIdentityType <ManagedServiceIdentitySelectorType>]
+ [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
+ [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
+ [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
+ [-CommandOutputSettingContainerUrl <String>]
  [-ComputeDeploymentThresholdGrouping <ValidationThresholdGrouping>]
  [-ComputeDeploymentThresholdType <ValidationThresholdType>] [-ComputeDeploymentThresholdValue <Int64>]
- [-ComputeRackDefinition <IRackDefinition[]>] [-ManagedResourceGroupConfigurationLocation <String>]
- [-ManagedResourceGroupConfigurationName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ComputeRackDefinition <IRackDefinition[]>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroupConfigurationLocation <String>]
+ [-ManagedResourceGroupConfigurationName <String>]
+ [-RuntimeProtectionConfigurationEnforcementLevel <RuntimeProtectionEnforcementLevel>]
+ [-SecretArchiveKeyVaultId <String>] [-SecretArchiveUseKeyVault <ClusterSecretArchiveEnabled>]
+ [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
+ [-UpdateStrategyThresholdType <ValidationThresholdType>] [-UpdateStrategyThresholdValue <Int64>]
+ [-UpdateStrategyType <ClusterUpdateStrategyType>] [-UpdateStrategyWaitTimeMinute <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +53,7 @@ $computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for
 $tagHash = @{
     tag = "tag"
 }
-$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$securePassword = ConvertTo-SecureString "password" -asplaintext -force
 
 New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone avilabilityzone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticsWorkspaceId anlyticsWorkSpaceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -Tag $tagHash
 ```
@@ -81,7 +89,7 @@ The unordered list of bare metal machine configuration.
 To construct, see NOTES section for AGGREGATORORSINGLERACKDEFINITIONBAREMETALMACHINECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IBareMetalMachineConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +166,7 @@ The list of storage appliance configuration data for this rack.
 To construct, see NOTES section for AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IStorageApplianceConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStorageApplianceConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -189,6 +197,37 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssociatedIdentityType
+The type of managed identity that is being selected.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssociatedIdentityUserAssignedIdentityResourceId
+The user assigned managed identity resource ID to use.
+Mutually exclusive with a system assigned identity type.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -304,6 +343,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommandOutputSettingContainerUrl
+The URL of the storage account container that is to be used by the specified identities.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ComputeDeploymentThresholdGrouping
 Selection of how the type evaluation is applied to the cluster calculation.
 
@@ -354,7 +408,7 @@ The list of rack definitions for the compute racks in a multi-rackcluster, or an
 To construct, see NOTES section for COMPUTERACKDEFINITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IRackDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IRackDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -405,6 +459,38 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -519,6 +605,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RuntimeProtectionConfigurationEnforcementLevel
+The mode of operation for runtime protection.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RuntimeProtectionEnforcementLevel
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretArchiveKeyVaultId
+The resource ID of the key vault to archive the secrets of the cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretArchiveUseKeyVault
+The indicator if the specified key vault should be used to archive the secrets of the cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterSecretArchiveEnabled
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -540,6 +671,82 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateStrategyMaxUnavailable
+The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment.
+Defaults to the whole increment size.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateStrategyThresholdType
+Selection of how the threshold should be evaluated.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateStrategyThresholdValue
+The numeric threshold value.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateStrategyType
+The mode of operation for runtime protection.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterUpdateStrategyType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateStrategyWaitTimeMinute
+The time to wait between the increments of update defined by the strategy.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -588,55 +795,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICluster
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AGGREGATORORSINGLERACKDEFINITIONBAREMETALMACHINECONFIGURATION <IBareMetalMachineConfigurationData[]>`: The unordered list of bare metal machine configuration.
-  - `BmcCredentialsPassword <SecureString>`: The password of the administrator of the device used during initialization.
-  - `BmcCredentialsUsername <String>`: The username of the administrator of the device used during initialization.
-  - `BmcMacAddress <String>`: The MAC address of the BMC for this machine.
-  - `BootMacAddress <String>`: The MAC address associated with the PXE NIC card.
-  - `RackSlot <Int64>`: The slot the physical machine is in the rack based on the BOM configuration.
-  - `SerialNumber <String>`: The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
-  - `[MachineDetail <String>]`: The free-form additional information about the machine, e.g. an asset tag.
-  - `[MachineName <String>]`: The user-provided name for the bare metal machine created from this specification.         If not provided, the machine name will be generated programmatically.
-
-`AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION <IStorageApplianceConfigurationData[]>`: The list of storage appliance configuration data for this rack.
-  - `AdminCredentialsPassword <SecureString>`: The password of the administrator of the device used during initialization.
-  - `AdminCredentialsUsername <String>`: The username of the administrator of the device used during initialization.
-  - `RackSlot <Int64>`: The slot that storage appliance is in the rack based on the BOM configuration.
-  - `SerialNumber <String>`: The serial number of the appliance.
-  - `[StorageApplianceName <String>]`: The user-provided name for the storage appliance that will be created from this specification.
-
-`COMPUTERACKDEFINITION <IRackDefinition[]>`: The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
-  - `NetworkRackId <String>`: The resource ID of the network rack that matches this rack definition.
-  - `RackSerialNumber <String>`: The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
-  - `RackSkuId <String>`: The resource ID of the sku for the rack being added.
-  - `[AvailabilityZone <String>]`: The zone name used for this rack when created. Availability zones are used for workload placement.
-  - `[BareMetalMachineConfigurationData <IBareMetalMachineConfigurationData[]>]`: The unordered list of bare metal machine configuration.
-    - `BmcCredentialsPassword <SecureString>`: The password of the administrator of the device used during initialization.
-    - `BmcCredentialsUsername <String>`: The username of the administrator of the device used during initialization.
-    - `BmcMacAddress <String>`: The MAC address of the BMC for this machine.
-    - `BootMacAddress <String>`: The MAC address associated with the PXE NIC card.
-    - `RackSlot <Int64>`: The slot the physical machine is in the rack based on the BOM configuration.
-    - `SerialNumber <String>`: The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
-    - `[MachineDetail <String>]`: The free-form additional information about the machine, e.g. an asset tag.
-    - `[MachineName <String>]`: The user-provided name for the bare metal machine created from this specification.         If not provided, the machine name will be generated programmatically.
-  - `[RackLocation <String>]`: The free-form description of the rack's location.
-  - `[StorageApplianceConfigurationData <IStorageApplianceConfigurationData[]>]`: The list of storage appliance configuration data for this rack.
-    - `AdminCredentialsPassword <SecureString>`: The password of the administrator of the device used during initialization.
-    - `AdminCredentialsUsername <String>`: The username of the administrator of the device used during initialization.
-    - `RackSlot <Int64>`: The slot that storage appliance is in the rack based on the BOM configuration.
-    - `SerialNumber <String>`: The serial number of the appliance.
-    - `[StorageApplianceName <String>]`: The user-provided name for the storage appliance that will be created from this specification.
 
 ## RELATED LINKS
 

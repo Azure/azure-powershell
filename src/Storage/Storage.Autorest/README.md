@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Storage service.
 
 ---
-## Status
-[![Az.Storage](https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage "Az.Storage")](https://www.powershellgallery.com/packages/Az.Storage/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,17 +44,18 @@ nested-object-to-string: true
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document
+    where: $.paths.["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration"].post.operationId    
+    transform: return "StartAccountMigration"
   - remove-operation: StorageAccounts_Update
   - where:
       subject: ^StorageAccountCustomerInitiatedMigration$
     set:
       subject: StorageAccountMigration
   - where:
-      verb: Invoke
-      subject: ^CustomerStorageAccountInitiatedMigration$
-    set:
       verb: Start
       subject: AccountMigration
+    hide: true
   - where:
       variant: ^Customer$|^CustomerViaIdentity$
     remove: true

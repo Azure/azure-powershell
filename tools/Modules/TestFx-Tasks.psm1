@@ -29,7 +29,7 @@ function Set-TestFxEnvironment {
 
         [Parameter(Mandatory, ParameterSetName = "UserAccount")]
         [ValidateNotNullOrEmpty()]
-        [guid] $UserId,
+        [string] $UserId,
 
         [Parameter(Mandatory, ParameterSetName = "NewServicePrincipal")]
         [ValidateNotNullOrEmpty()]
@@ -113,10 +113,10 @@ function Set-TestFxEnvironment {
     }
 
     $testFxEnvProps = [PSCustomObject]@{
-        Environment            = $TargetEnvironment
-        SubscriptionId         = $SubscriptionId
-        TenantId               = $TenantId
-        HttpRecorderMode       = $RecorderMode
+        Environment      = $TargetEnvironment
+        SubscriptionId   = $SubscriptionId
+        TenantId         = $TenantId
+        HttpRecorderMode = $RecorderMode
     }
 
     switch ($PSCmdlet.ParameterSetName) {

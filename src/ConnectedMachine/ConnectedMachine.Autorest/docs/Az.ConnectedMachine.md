@@ -20,11 +20,17 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 ### [Get-AzConnectedLicense](Get-AzConnectedLicense.md)
 Retrieves information about the view of a license.
 
+### [Get-AzConnectedLicenseProfile](Get-AzConnectedLicenseProfile.md)
+Retrieves information about the view of a license profile.
+
 ### [Get-AzConnectedMachine](Get-AzConnectedMachine.md)
 Retrieves information about the model view or the instance view of a hybrid machine.
 
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
+
+### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
+The operation to get a run command.
 
 ### [Get-AzConnectedNetworkSecurityPerimeterConfiguration](Get-AzConnectedNetworkSecurityPerimeterConfiguration.md)
 Gets the network security perimeter configuration for a private link scope.
@@ -47,8 +53,17 @@ The operation to create or update a license.
 ### [New-AzConnectedLicenseDetail](New-AzConnectedLicenseDetail.md)
 Create an in-memory object for LicenseDetails.
 
+### [New-AzConnectedLicenseProfile](New-AzConnectedLicenseProfile.md)
+The operation to create or update a license profile.
+
+### [New-AzConnectedLicenseProfileFeature](New-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeature.
+
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
+
+### [New-AzConnectedMachineRunCommand](New-AzConnectedMachineRunCommand.md)
+The operation to create or update a run command.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
 Create (or updates) a Azure Arc PrivateLinkScope.
@@ -57,11 +72,17 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ### [Remove-AzConnectedLicense](Remove-AzConnectedLicense.md)
 The operation to delete a license.
 
+### [Remove-AzConnectedLicenseProfile](Remove-AzConnectedLicenseProfile.md)
+The operation to delete a license profile.
+
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)
 The operation to delete a hybrid machine.
 
 ### [Remove-AzConnectedMachineExtension](Remove-AzConnectedMachineExtension.md)
 The operation to delete the extension.
+
+### [Remove-AzConnectedMachineRunCommand](Remove-AzConnectedMachineRunCommand.md)
+The operation to delete a run command.
 
 ### [Remove-AzConnectedPrivateLinkScope](Remove-AzConnectedPrivateLinkScope.md)
 Deletes a Azure Arc PrivateLinkScope.
@@ -79,11 +100,20 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
 
+### [Update-AzConnectedLicenseProfile](Update-AzConnectedLicenseProfile.md)
+The operation to update a license profile.
+
+### [Update-AzConnectedLicenseProfileFeature](Update-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeatureUpdate.
+
 ### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
 The operation to update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
-The operation to update the extension.
+The operation to create or update the extension.
+
+### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
+The operation to create or update a run command.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
 Update an existing PrivateLinkScope's tags.
