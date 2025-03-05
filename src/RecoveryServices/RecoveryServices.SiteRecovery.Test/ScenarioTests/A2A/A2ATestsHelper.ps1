@@ -419,12 +419,6 @@ function createRecoveryResourceGroup{
 	return $ResourceGroup.ResourceId
 }
 
-function createDataDiskInAvailabilityZone{
-    param([string] $location, [string] $sku)
-    $diskRGName = getAzureVmName
-    $diskName = getAzureVmName
-}
-
 ##
 
 <#
