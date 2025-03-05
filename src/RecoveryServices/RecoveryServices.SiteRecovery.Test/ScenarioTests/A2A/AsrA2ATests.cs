@@ -40,7 +40,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2ADiskReplicationConfiguration");
         }
 
-        [Fact(Skip = "to be re-recorded in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2AManagedDiskReplicationConfig()
         {
@@ -49,6 +49,27 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
                 "Test-NewA2AManagedDiskReplicationConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewA2AManagedDiskReplicationConfigForPv2()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-NewA2AManagedDiskReplicationConfigurationForPv2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewA2AManagedDiskReplicationConfigForUltraDisk()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-NewA2AManagedDiskReplicationConfigurationForUltraDisk");
+        }
+
 
         [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
