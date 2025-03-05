@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 * Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
     - `Get-AzNetworkVirtualAppliance`
 * Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
