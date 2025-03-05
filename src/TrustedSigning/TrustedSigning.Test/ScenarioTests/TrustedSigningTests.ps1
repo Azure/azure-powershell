@@ -21,12 +21,12 @@ function Test-CodeSigningEku {
     $accountName = "acs-test-account"
     $profileName = "acs-test-account-ci"
     $endPointUrl = "https://scus.codesigning.azure.net/"
-    $expectedEku = "1.3.6.1.4.1.311.97.1.3.1.29433.35007.34545.16815.37291.11644.53265.56135,1.3.6.1.4.1.311.97.1.4.1.29433.35007.34545.16815.37291.11644.53265.56135"
+    $expectedEku = "1.3.6.1.4.1.311.97.1.3.1.29433.35007.34545.16815.37291.11644.53265.56135","1.3.6.1.4.1.311.97.1.4.1.29433.35007.34545.16815.37291.11644.53265.56135"
 
     try {
         # Test Get CodeSigning Eku
         $eku = Get-AzTrustedSigningCustomerEku -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl
-        Assert-AreEqual $eku $expectedEku
+        Assert-AreEqualArray $eku $expectedEku
     }
 
     finally {
@@ -42,7 +42,7 @@ function Test-GetCodeSigningRootCert {
     $accountName = "acs-test-account"
     $profileName = "acs-test-account-ci"
     $endPointUrl = "https://scus.codesigning.azure.net/"
-    $destination = "C:\temp"
+    $destination = "C:\temp\root"
 
     try {
         # Test Get CodeSigning Root Cert
@@ -63,7 +63,7 @@ function Test-GetCodeSigningCertChain {
     $accountName = "acs-test-account"
     $profileName = "acs-test-account-ci"
     $endPointUrl = "https://scus.codesigning.azure.net/"
-    $destination = "C:\temp"
+    $destination = "C:\temp\chain.der"
 
     try {
         # Test Get CodeSigning Certificate Chain
