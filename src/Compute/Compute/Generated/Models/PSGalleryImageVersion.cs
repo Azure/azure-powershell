@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string ProvisioningState { get; set; }
         public GalleryImageVersionStorageProfile StorageProfile { get; set; }
         public ReplicationStatus ReplicationStatus { get; set; }
+        public GalleryImageVersionSafetyProfile SafetyProfile { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
