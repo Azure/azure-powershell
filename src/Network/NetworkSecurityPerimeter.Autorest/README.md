@@ -34,7 +34,7 @@ require:
 commit: main
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/karthik-gumpu/azure-rest-api-specs/blob/1157b624230057f092736cfcc3374cca5b33a999/specification/network/resource-manager/Microsoft.Network/preview/2023-08-01-preview/networkSecurityPerimeter.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/686bd5e4d397c24daf8cb55b978735bd564ff949/specification/network/resource-manager/Microsoft.Network/stable/2024-07-01/networkSecurityPerimeter.json
   #- E:\Code\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2023-08-01-preview/networkSecurityPerimeter.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
