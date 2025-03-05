@@ -131,6 +131,3 @@ update a new Front Door with a Front Door name under the specified subscription 
 ### [Update-AzFrontDoorRulesEngine](Update-AzFrontDoorRulesEngine.md)
 update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
-### [Update-AzFrontDoorWafPolicy](Update-AzFrontDoorWafPolicy.md)
-update policy with specified rule set name within a resource group.
-
