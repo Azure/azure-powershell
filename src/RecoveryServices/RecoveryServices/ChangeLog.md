@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added logs to enable better debugging for Modify protection with MSSQL workload.
+* Added support for PremiumV2_LRS and UltraSSD_LRS target disk types for Azure to Azure replication.
 
 ## Version 7.5.1
 * Updated Restore-AzRecoveryServicesBackupItem to support 0 as a TargetZoneNumber to restore to NoZone.
