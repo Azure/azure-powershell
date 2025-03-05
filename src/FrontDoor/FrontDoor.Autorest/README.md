@@ -245,10 +245,14 @@ directive:
 
   # Update Rules Engine alias
   - where:
+      verb: Set
+      subject: RulesEngine
+    hide: true
+  - where:
       verb: Update
       subject: RulesEngine
     set:
-      alias: Set-AzFrontDoorRulesEngine
+      verb: Set
 
   # Breaking change avoid rename
   # New-AzFrontDoorHeaderActionObject

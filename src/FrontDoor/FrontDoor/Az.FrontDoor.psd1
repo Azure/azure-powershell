@@ -103,7 +103,7 @@ FunctionsToExport = 'Disable-AzFrontDoorCustomDomainHttps',
                'New-AzFrontDoorWafRuleGroupOverrideObject', 'Remove-AzFrontDoor', 
                'Remove-AzFrontDoorContent', 'Remove-AzFrontDoorRulesEngine', 
                'Remove-AzFrontDoorWafPolicy', 'Set-AzFrontDoor', 
-               'Update-AzFrontDoorRulesEngine'
+               'Set-AzFrontDoorRulesEngine'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
