@@ -1,135 +1,72 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/update-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
-# Update-AzFrontDoorWafPolicy
+# Update-AzFrontDoorRulesEngine
 
 ## SYNOPSIS
-Update WAF policy
+update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzFrontDoorWafPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
- [-Mode <String>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
- [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzFrontDoorRulesEngine -FrontDoorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Rule <IRulesEngineRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### UpdateViaIdentityFrontDoorExpanded
 ```
-Update-AzFrontDoorWafPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledState>] [-Mode <String>]
- [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
- [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzFrontDoorRulesEngine -Name <String> -FrontDoorInputObject <IFrontDoorIdentity>
+ [-Rule <IRulesEngineRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### UpdateViaIdentityExpanded
 ```
-Update-AzFrontDoorWafPolicy -ResourceId <String> [-EnabledState <PSEnabledState>] [-Mode <String>]
- [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
- [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzFrontDoorRulesEngine -InputObject <IFrontDoorIdentity> [-Rule <IRulesEngineRule[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzFrontDoorWafPolicy** cmdlet updates an existing WAF policy. If input parameters are not provided, old parameters from the existing WAF policy will be used.
+update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
+{{ Add code here }}
 ```
 
 ```output
-Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
-----         ---------- ------------------ ----------------------------- -----------
-{policyName} Prevention            Enabled                           403 https://www.bing.com/
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update an existing WAF policy custom status code.
+{{ Add description here }}
 
-### Example 2
+### Example 2: {{ Add title here }}
 ```powershell
-Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
+{{ Add code here }}
 ```
 
 ```output
-Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
-----         ---------- ------------------ ----------------------------- -----------
-{policyName} Detection            Enabled                           403 https://www.bing.com/
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update an existing WAF policy mode.
-
-### Example 3
-```powershell
-Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
-```
-
-```output
-Name          PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
-----          ---------- ------------------ ----------------------------- -----------
-{policyName}  Detection           Disabled                           403 https://www.bing.com/
-```
-
-Update an existing WAF policy enabled state and mode.
-
-### Example 4
-```powershell
-Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Mode Detection -EnabledState Disabled
-```
-
-Update all WAF policies in $resourceGroupName
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -CustomBlockResponseBody
-Custom Response Body
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomBlockResponseStatusCode
-Custom Response Status Code
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Customrule
-Custom rules inside the policy
-
-```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -141,12 +78,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -155,29 +93,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnabledState
-Whether the policy is in enabled state or disabled state.
-Possible values include: 'Disabled', 'Enabled'
+### -FrontDoorInputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
-Parameter Sets: (All)
-Aliases:
-Accepted values: Enabled, Disabled
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The FireWallPolicy object to update.
-
-```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy
-Parameter Sets: ByObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: UpdateViaIdentityFrontDoorExpanded
 Aliases:
 
 Required: True
@@ -187,73 +108,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JavascriptChallengeExpirationInMinutes
-setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogScrubbingSetting
-Defines rules that scrub sensitive fields in the Web Application Firewall.
-
-```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedRule
-Managed rules inside the policy
-
-```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Mode
-Describes if it is in detection mode  or prevention mode at policy level.
-Possible values include:'Prevention', 'Detection'
+### -FrontDoorName
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the FireWallPolicy to update.
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -263,11 +123,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RedirectUrl
-Redirect URL
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Rules Engine which is unique within the Front Door.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFrontDoorExpanded
+Aliases: RulesEngineName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -278,13 +168,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestBodyCheck
-Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
+Aliases: proga
 
 Required: False
 Position: Named
@@ -294,11 +184,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group to which the FireWallPolicy belongs.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -308,18 +198,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Id of the FireWallPolicy to update
+### -Rule
+A list of rules that define a particular Rules Engine Configuration.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -359,19 +265,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine
 
 ## NOTES
 
-## RELATED LINKS
+ALIASES
 
-[New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
-[Get-AzFrontDoorWafPolicy](./Get-AzFrontDoorWafPolicy.md)
-[New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
-[New-AzFrontDoorWafCustomRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
+Set-AzFrontDoorRulesEngine
+
+## RELATED LINKS

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorrulesengine
 schema: 2.0.0
@@ -8,124 +8,61 @@ schema: 2.0.0
 # Remove-AzFrontDoorRulesEngine
 
 ## SYNOPSIS
-Remove Rules Engine from Front Door
+Deletes an existing Rules Engine Configuration with the specified parameters.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### Delete (Default)
 ```
-Remove-AzFrontDoorRulesEngine -ResourceGroupName <String> -FrontDoorName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Remove-AzFrontDoorRulesEngine -InputObject <PSRulesEngine> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFrontDoorRulesEngine -FrontDoorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### DeleteViaIdentityFrontDoor
 ```
-Remove-AzFrontDoorRulesEngine -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFrontDoorRulesEngine -Name <String> -FrontDoorInputObject <IFrontDoorIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzFrontDoorRulesEngine -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove Rules Engine from Front Door
+Deletes an existing Rules Engine Configuration with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name $rulesEngine.Name -PassThru
+{{ Add code here }}
 ```
 
 ```output
-True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Remove rules engine configuration.
+{{ Add description here }}
 
-### Example 2
+### Example 2: {{ Add title here }}
 ```powershell
-Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistentRulesEngine
+{{ Add code here }}
 ```
 
 ```output
-Remove-AzFrontDoorRulesEngine : Rules Engine with name 'nonexistentRulesEngine' in Front Door 'frontDoorName' in the resource group 'resourceGroupName' does not exist.
-At line:1 char:1
-+ Remove-AzFrontDoorRulesEngine -ResourceGroupName resourceGroupName -Fro ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+ CategoryInfo          : CloseError: (:) [Remove-AzFrontDoorRulesEngine], PSArgumentException
-+ FullyQualifiedErrorId : Microsoft.Azure.Commands.FrontDoor.Cmdlets.RemoveFrontDoorRulesEngine
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Expected outcome when removing a nonexistent rules engine configuration.
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FrontDoorName
-Front Door name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The Rules Engine object to update.
-
-```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Rules engine name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Return object (if specified).
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -139,12 +76,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group name that the Front Door will be created in.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontDoorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: DeleteViaIdentityFrontDoor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -FrontDoorName
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -154,18 +122,109 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Id of the RulesEngine to update
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Rules Engine which is unique within the Front Door.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityFrontDoor
+Aliases: RulesEngineName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Resource group within the Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -185,7 +244,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -204,9 +264,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
 
 ## OUTPUTS
 
