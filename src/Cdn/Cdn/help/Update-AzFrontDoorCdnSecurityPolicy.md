@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnSecurityPolicy
 
 ## SYNOPSIS
-Updates an existing security policy within a profile.
+patch an existing security policy within a profile.
 
 ## SYNTAX
 
@@ -16,18 +16,46 @@ Updates an existing security policy within a profile.
 ```
 Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Parameter <ISecurityPolicyPropertiesParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PatchViaJsonString
+```
+Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PatchViaJsonFilePath
+```
+Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PatchViaIdentityProfileExpanded
+```
+Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileInputObject <ICdnIdentity>
+ [-Parameter <ISecurityPolicyPropertiesParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PatchViaIdentityProfile
+```
+Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileInputObject <ICdnIdentity>
+ -SecurityPolicyUpdateProperty <ISecurityPolicyUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnSecurityPolicy -InputObject <ICdnIdentity>
  [-Parameter <ISecurityPolicyPropertiesParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing security policy within a profile.
+patch an existing security policy within a profile.
 
 ## EXAMPLES
 
@@ -101,7 +129,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -115,12 +142,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Patch operation
+
+```yaml
+Type: System.String
+Parameter Sets: PatchViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Patch operation
+
+```yaml
+Type: System.String
+Parameter Sets: PatchViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the security policy under the profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded
+Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath, PatchViaIdentityProfileExpanded, PatchViaIdentityProfile
 Aliases: SecurityPolicyName
 
 Required: True
@@ -149,8 +206,8 @@ Accept wildcard characters: False
 object which contains security policy parameters
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyPropertiesParameters
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParameters
+Parameter Sets: PatchExpanded, PatchViaIdentityProfileExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -160,15 +217,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: PatchViaIdentityProfileExpanded, PatchViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded
+Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -180,7 +267,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded
+Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath
 Aliases:
 
 Required: True
@@ -190,12 +277,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecurityPolicyUpdateProperty
+The JSON object containing security policy update parameters.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyUpdateParameters
+Parameter Sets: PatchViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded
+Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath
 Aliases:
 
 Required: False
@@ -243,9 +345,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyUpdateParameters
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy
 
 ## NOTES
 

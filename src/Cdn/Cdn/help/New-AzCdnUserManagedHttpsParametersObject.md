@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUserManagedHttpsParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnusermanagedhttpsparametersobject
 schema: 2.0.0
 ---
 
@@ -15,9 +15,9 @@ Create an in-memory object for UserManagedHttpsParameters.
 ```
 New-AzCdnUserManagedHttpsParametersObject -CertificateSourceParameterResourceGroupName <String>
  -CertificateSourceParameterSecretName <String> -CertificateSourceParameterSubscriptionId <String>
- -CertificateSourceParameterVaultName <String> -CertificateSource <CertificateSource>
- -ProtocolType <ProtocolType> [-CertificateSourceParameterSecretVersion <String>]
- [-MinimumTlsVersion <MinimumTlsVersion>] [<CommonParameters>]
+ -CertificateSourceParameterTypeName <String> -CertificateSourceParameterVaultName <String>
+ -ProtocolType <String> [-CertificateSourceParameterSecretVersion <String>] [-MinimumTlsVersion <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,35 +25,20 @@ Create an in-memory object for UserManagedHttpsParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for UserManagedHttpsParameters
+### Example 1: Create an in-memory object for UrlRedirectAction
 ```powershell
-New-AzCdnUserManagedHttpsParametersObject -CertificateSource certSource -CertificateSourceParameterResourceGroupName rgName -CertificateSourceParameterSecretName secretName -CertificateSourceParameterSubscriptionId subId -CertificateSourceParameterVaultName kvName -ProtocolType typeTest
+New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
 ```
 
 ```output
-CertificateSource MinimumTlsVersion ProtocolType
------------------ ----------------- ------------
-certSource                          typeTest
+Name
+----
+rule01
 ```
 
-Create an in-memory object for UserManagedHttpsParameters
+Create an in-memory object for UrlRedirectAction
 
 ## PARAMETERS
-
-### -CertificateSource
-Defines the source of the SSL certificate.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -CertificateSourceParameterResourceGroupName
 Resource group of the user's Key Vault containing the SSL certificate.
@@ -115,6 +100,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CertificateSourceParameterTypeName
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CertificateSourceParameterVaultName
 The name of the user's Key Vault containing the SSL certificate.
 
@@ -134,9 +133,24 @@ Accept wildcard characters: False
 TLS protocol version that will be used for Https.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -149,7 +163,7 @@ Accept wildcard characters: False
 Defines the TLS extension protocol that is used for secure delivery.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UserManagedHttpsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserManagedHttpsParameters
 
 ## NOTES
 

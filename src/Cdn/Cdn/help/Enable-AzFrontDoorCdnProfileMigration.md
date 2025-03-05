@@ -15,7 +15,7 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 ```
 Enable-AzFrontDoorCdnProfileMigration -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,19 +23,19 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 
 ## EXAMPLES
 
-### Example 1: Commit the migrated Azure Front Door(Standard/Premium) profile.
+### Example 1: Enable an AzureCDN custom domain under the AzureCDN endpoint
 ```powershell
-Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
+$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType TLS12
+Enable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 -CustomDomainHttpsParameter $customDomainHttpsParameter
 ```
 
-Commit the migrated Azure Front Door(Standard/Premium) profile.
-
-### Example 2: Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscrition
-```powershell
-Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
+```output
+Name            ResourceGroupName
+----            -----------------
+customdomain001 testps-rg-da16jm
 ```
 
-Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscrition
+Enable an AzureCDN custom domain under the AzureCDN endpoint
 
 ## PARAMETERS
 
@@ -108,6 +108,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

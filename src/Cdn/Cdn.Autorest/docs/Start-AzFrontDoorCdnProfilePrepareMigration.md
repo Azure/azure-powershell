@@ -15,10 +15,18 @@ The change need to be committed after this.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
- -ProfileName <String> -SkuName <SkuName> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ -ProfileName <String> [-SubscriptionId <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### MigrateExpanded
+```
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
+ -ProfileName <String> [-SubscriptionId <String>]
  [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -172,8 +180,8 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -190,7 +198,7 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -202,11 +210,10 @@ Accept wildcard characters: False
 
 ### -MigrationWebApplicationFirewallMapping
 Waf mapping for the migrated profile
-To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationWebApplicationFirewallMapping[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: False
@@ -265,11 +272,11 @@ Accept wildcard characters: False
 Name of the pricing tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -329,7 +336,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 
 ## NOTES
 

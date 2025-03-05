@@ -21,12 +21,13 @@ Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheKeyQueryStringAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulecachekeyquerystringactionobject
 #>
 function New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheKeyQueryStringAction')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,17 +35,17 @@ function New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject {
         [string]
         $ParameterQueryParameter,
         [Parameter(Mandatory, HelpMessage="Caching behavior for the requests.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringBehavior]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Include", "IncludeAll", "Exclude", "ExcludeAll")]
+        [string]
         $ParameterQueryStringBehavior,
-        [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
-        $Name
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
+        [string]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheKeyQueryStringAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterQueryParameter')) {
             $Object.ParameterQueryParameter = $ParameterQueryParameter
@@ -52,8 +53,8 @@ function New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject {
         if ($PSBoundParameters.ContainsKey('ParameterQueryStringBehavior')) {
             $Object.ParameterQueryStringBehavior = $ParameterQueryStringBehavior
         }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         return $Object
     }

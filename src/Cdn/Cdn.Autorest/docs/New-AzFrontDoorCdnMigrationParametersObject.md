@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnmigrationparametersobject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for MigrationParameters.
 
 ```
 New-AzFrontDoorCdnMigrationParametersObject -ProfileName <String> [-ClassicResourceReferenceId <String>]
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-SkuName <SkuName>]
+ [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-SkuName <String>]
  [<CommonParameters>]
 ```
 
@@ -23,18 +23,27 @@ Create an in-memory object for MigrationParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for MigrationParameters
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnMigrationParametersObject -ProfileName test
+{{ Add code here }}
 ```
 
 ```output
-ProfileName
------------
-test
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for MigrationParameters
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -55,10 +64,9 @@ Accept wildcard characters: False
 
 ### -MigrationWebApplicationFirewallMapping
 Waf mapping for the migrated profile.
-To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationWebApplicationFirewallMapping[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +96,7 @@ Accept wildcard characters: False
 Name of the pricing tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationParameters
 
 ## NOTES
 

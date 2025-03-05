@@ -15,14 +15,38 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 
 ### CheckExpanded (Default)
 ```
-Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzCdnNameAvailability -Name <String> -Type <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonString1
+```
+Test-AzCdnNameAvailability [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath1
+```
+Test-AzCdnNameAvailability [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckExpanded1
 ```
-Test-AzCdnNameAvailability [-SubscriptionId <String>] -Name <String> -Type <ResourceType>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzCdnNameAvailability [-SubscriptionId <String>] -Name <String> -Type <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzCdnNameAvailability -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzCdnNameAvailability -JsonString <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,15 +86,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath1, CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString1, CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckExpanded1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -82,7 +151,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded1
+Parameter Sets: CheckViaJsonString1, CheckViaJsonFilePath1, CheckExpanded1
 Aliases:
 
 Required: False
@@ -96,8 +165,8 @@ Accept wildcard characters: False
 The type of the resource whose name is to be validated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CheckExpanded, CheckExpanded1
 Aliases:
 
 Required: True
@@ -145,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput
 
 ## NOTES
 

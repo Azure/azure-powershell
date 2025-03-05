@@ -21,30 +21,31 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 Create an in-memory object for DeliveryRuleCacheExpirationAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheExpirationAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheExpirationActionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulecacheexpirationactionobject
 #>
 function New-AzCdnDeliveryRuleCacheExpirationActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheExpirationAction')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="Caching behavior for the requests.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CacheBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CacheBehavior]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("BypassCache", "Override", "SetIfMissing")]
+        [string]
         $ParameterCacheBehavior,
         [Parameter(HelpMessage="The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss.")]
         [string]
         $ParameterCacheDuration,
-        [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
-        $Name
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
+        [string]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheExpirationAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterCacheBehavior')) {
             $Object.ParameterCacheBehavior = $ParameterCacheBehavior
@@ -52,8 +53,8 @@ function New-AzCdnDeliveryRuleCacheExpirationActionObject {
         if ($PSBoundParameters.ContainsKey('ParameterCacheDuration')) {
             $Object.ParameterCacheDuration = $ParameterCacheDuration
         }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         return $Object
     }
