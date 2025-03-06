@@ -37,8 +37,6 @@ title: Quantum
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
-export-properties-for-dict: false
-
 directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Check$|^CheckViaIdentity$
