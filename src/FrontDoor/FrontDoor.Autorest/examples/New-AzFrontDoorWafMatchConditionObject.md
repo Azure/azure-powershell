@@ -1,22 +1,23 @@
-### Example 1: {{ Add title here }}
+### Example 1
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
+------------- ---------------- ---------- --------   --------------- ---------
+RequestHeader Contains         {Windows}  User-Agent           False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "WINDOWS" -Transform Uppercase
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
+------------- ---------------- ---------- --------   --------------- ---------
+RequestHeader Contains         {WINDOWS}  User-Agent           False {Uppercase}
 ```
 
-{{ Add description here }}
-
+Create a MatchCondition object
