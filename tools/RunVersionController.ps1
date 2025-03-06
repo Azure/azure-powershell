@@ -393,7 +393,6 @@ function Update-AzSyntaxChangelog
     }
     $regex = '####\s+(Az\.\w+)\s+(?![\d\.])'
     $matches = Select-String -Pattern $regex -InputObject $changelog -AllMatches
-    
     foreach ($match in $matches.Matches) {
         $moduleName = $match.Groups[1].Value
         $moduleMetadata = Get-ModuleMetadata -Module $moduleName -RootPath $rootPath
@@ -401,12 +400,10 @@ function Update-AzSyntaxChangelog
         $replacement = "#### $moduleName $newVersion `r`n"
         $changelog = $changelog -replace [regex]::Escape($match.Value), $replacement
     }
-    
     $currentContent = Get-Content -Path $targetFile -Raw
     $newContent = $changeLog + "`r`n" + $currentContent
     Set-Content -Path $targetFile -Value $newContent
     Remove-Item -Path $syntaxChangeLog
-    
     Write-Host "SyntaxChangeLog Revising Completed."
 }
 
