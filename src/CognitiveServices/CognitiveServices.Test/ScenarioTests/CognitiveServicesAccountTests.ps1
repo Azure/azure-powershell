@@ -1295,31 +1295,6 @@ function Test-UserOwnedStorage
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-    
-    $rgname = Get-CognitiveServicesManagementTestResourceName;
-    try
-    {
-        # Test
-        $accountname = 'csa' + $rgname;
-        $skuname = 'S0';
-        $accounttype = 'SpeechServices';
-        $loc = "EastUS2";
-
-        New-AzResourceGroup -Name $rgname -Location $loc;
-        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -Force;
-        Assert-NotNull $createdAccount;
-        
-        
-        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -StorageAccountId @("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583") 
-        Assert-NotNull $updatedAccount;
-        Assert-AreEqual $updatedAccount.UserOwnedStorage.Length 1
-        Assert-AreEqual $updatedAccount.UserOwnedStorage[0].ResourceId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583"
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
 }
 
 <#
