@@ -367,6 +367,9 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="ProtectionConatinerMappingNotFound" xml:space="preserve">
     <value>Protection Container Mapping "{0}" is not associated with Protection Container "{1}"</value>
   </data>
+  <data name="ProtectionClusterNotFound" xml:space="preserve">
+    <value>Protection Cluster "{0}" is not associated with Protection Container "{1}"</value>
+  </data>
   <data name="ProtectableItemNotFound" xml:space="preserve">
     <value>Protectectable Item"{0}" is not associated with Protection Container "{1}"</value>
   </data>

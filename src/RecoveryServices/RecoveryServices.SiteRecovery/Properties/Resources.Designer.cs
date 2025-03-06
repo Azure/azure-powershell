@@ -657,6 +657,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Protection Cluster &quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
+        /// </summary>
+        internal static string ProtectionClusterNotFound {
+            get {
+                return ResourceManager.GetString("ProtectionClusterNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Protection Container Mapping &quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
         /// </summary>
         internal static string ProtectionConatinerMappingNotFound {
