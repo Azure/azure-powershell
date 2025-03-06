@@ -765,7 +765,7 @@ function Test-StorageBlobORS
 		$rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime $minCreationTime -PrefixMatch a,abc,dd #-Tag t1,t2,t3 
 
         # set policy to dest account
-        $destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetrics $true 
+        $destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetric $true 
         $policyID = $destPolicy.PolicyId
 		Assert-AreEqual $sto1.Id $destPolicy.SourceAccount
 		Assert-AreEqual $sto2.Id $destPolicy.DestinationAccount
@@ -816,7 +816,7 @@ function Test-StorageBlobORS
 		Assert-AreEqual $false $sto2.AllowCrossTenantReplication
 
 		# Set policy with source account resourceID
-		Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetrics $false	
+		Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetric $false	
 		$destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2
 		$policyID = $destPolicy.PolicyId
 		Assert-AreEqual $sto1.Id $destPolicy.SourceAccount

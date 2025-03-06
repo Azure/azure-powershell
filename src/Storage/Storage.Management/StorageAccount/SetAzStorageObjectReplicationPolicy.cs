@@ -134,18 +134,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Indicates whether object replication metrics feature is enabled for the policy.",
             ParameterSetName = AccountObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public bool EnableMetrics
+        public bool EnableMetric
         {
             get
             {
-                return enableMetrics.Value;
+                return enableMetric.Value;
             }
             set
             {
-                enableMetrics = value;
+                enableMetric = value;
             }
         }
-        private bool? enableMetrics = null;
+        private bool? enableMetric = null;
 
         [Parameter(
             Mandatory = true,
@@ -204,11 +204,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         DestinationAccount = this.DestinationAccount,
                         Rules = PSObjectReplicationPolicyRule.ParseObjectReplicationPolicyRules(this.Rule)
                     };
-                    if (this.enableMetrics != null)
+                    if (this.enableMetric != null)
                     {
                         policyToSet.Metrics = new ObjectReplicationPolicyPropertiesMetrics()
                         {
-                            Enabled = this.enableMetrics
+                            Enabled = this.enableMetric
                         };
                     }
                 }

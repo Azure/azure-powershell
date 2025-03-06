@@ -15,7 +15,7 @@ Creates or updates the specified object replication policy in a Storage account.
 ### AccountName (Default)
 ```
 Set-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-PolicyId <String>] -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetrics <Boolean>]
+ [-PolicyId <String>] -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetric <Boolean>]
  -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Set-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAcco
 ### AccountObject
 ```
 Set-AzStorageObjectReplicationPolicy -StorageAccount <PSStorageAccount> [-PolicyId <String>]
- -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetrics <Boolean>]
+ -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetric <Boolean>]
  -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -51,7 +51,7 @@ $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -Destinat
 
 $srcAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mysourceaccount"
 
-Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId default -SourceAccount $srcAccount.Id  -Rule $rule1,$rule2 -EnableMetrics $true
+Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId default -SourceAccount $srcAccount.Id  -Rule $rule1,$rule2 -EnableMetric $true
 
 ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Rules                                     
 ----------------- ------------------ --------                             ----------- -------------   ------------------ -----   
@@ -102,7 +102,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableMetrics
+### -EnableMetric
 Indicates whether object replication metrics feature is enabled for the policy.
 
 ```yaml
