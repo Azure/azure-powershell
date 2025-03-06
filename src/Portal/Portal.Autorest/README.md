@@ -54,11 +54,6 @@ module-version: 0.1.0
 title: Portal
 subject-prefix: $(service-name)
 
-# resourcegroup-append: false
-# identity-correction-for-post: false
-# export-properties-for-dict: false
-# nested-object-to-string: false
-
 directive:
   - where: 
       verb: Set
