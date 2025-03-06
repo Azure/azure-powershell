@@ -26,16 +26,10 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="linkedInfo">Linked integration runtime type from data factory
         /// </param>
-
-        /// <param name="selfContainedInteractiveAuthoringEnabled">An alternative option to ensure interactive authoring function when your
-        /// self-hosted integration runtime is unable to establish a connection with
-        /// Azure Relay.
-        /// Possible values include: &#39;true&#39;, &#39;false&#39;</param>
-        public SelfHostedIntegrationRuntimeTypeProperties(LinkedIntegrationRuntimeType linkedInfo = default(LinkedIntegrationRuntimeType), bool? selfContainedInteractiveAuthoringEnabled = default(bool?))
+        public SelfHostedIntegrationRuntimeTypeProperties(LinkedIntegrationRuntimeType linkedInfo = default(LinkedIntegrationRuntimeType))
 
         {
             this.LinkedInfo = linkedInfo;
-            this.SelfContainedInteractiveAuthoringEnabled = selfContainedInteractiveAuthoringEnabled;
             CustomInit();
         }
 
@@ -50,13 +44,5 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "linkedInfo")]
         public LinkedIntegrationRuntimeType LinkedInfo {get; set; }
-
-        /// <summary>
-        /// Gets or sets an alternative option to ensure interactive authoring function
-        /// when your self-hosted integration runtime is unable to establish a
-        /// connection with Azure Relay. Possible values include: &#39;true&#39;, &#39;false&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "selfContainedInteractiveAuthoringEnabled")]
-        public bool? SelfContainedInteractiveAuthoringEnabled {get; set; }
     }
 }
