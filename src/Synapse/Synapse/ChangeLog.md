@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.2
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.21.
 
 ## Version 3.1.1

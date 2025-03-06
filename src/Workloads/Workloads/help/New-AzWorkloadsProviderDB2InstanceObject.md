@@ -15,7 +15,7 @@ Create an in-memory object for DB2ProviderInstanceProperties.
 ```
 New-AzWorkloadsProviderDB2InstanceObject [-Name <String>] [-Password <String>] [-PasswordUri <String>]
  [-Port <String>] [-Username <String>] [-Hostname <String>] [-SapSid <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SslPreference <SslPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,21 +105,6 @@ Gets or sets the db2 database sql port.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -15,7 +15,7 @@ Creates a new disk mapping
 ```
 New-AzMigrateLocalDiskMappingObject -DiskID <String> -IsOSDisk <String> -IsDynamic <String> -Size <Int64>
  -Format <String> [-PhysicalSectorSize <Int64>] [-TargetStoragePathId <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,21 +108,6 @@ Specifies the disk physical sector size in bytes.
 Type: System.Int64
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

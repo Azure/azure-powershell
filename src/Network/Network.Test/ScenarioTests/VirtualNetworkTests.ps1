@@ -34,7 +34,7 @@ function Test-VirtualNetworkCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
         $job = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -AsJob
         $job | Wait-Job
         $actual = $job | Receive-Job
@@ -136,7 +136,7 @@ function Test-subnetCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
@@ -439,7 +439,7 @@ function Test-subnetDelegationCRUD
         $delegation = New-AzDelegation -Name "sqlDelegation" -ServiceName "Microsoft.Sql/managedInstances"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -delegation $delegation
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -delegation $delegation -DefaultOutboundAccess $false
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
@@ -528,7 +528,7 @@ function Test-subnetNetworkSecurityGroupCRUD {
         $networkSecurityGroup = New-AzNetworkSecurityGroup -Name $networkSecurityGroupName -ResourceGroupName $rgname -Location $location
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.1.0/24 -NetworkSecurityGroup $networkSecurityGroup
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.1.0/24 -NetworkSecurityGroup $networkSecurityGroup -DefaultOutboundAccess $false
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
@@ -628,7 +628,7 @@ function Test-subnetRouteTableCRUD {
         $routeTable = New-AzRouteTable -Name $routeTableName -ResourceGroupName $rgname -Location $location
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.1.0/24 -RouteTable $routeTable
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.1.0/24 -RouteTable $routeTable -DefaultOutboundAccess $false
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
@@ -726,7 +726,7 @@ function Test-multiPrefixSubnetCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/28,10.0.2.0/28
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/28,10.0.2.0/28 -DefaultOutboundAccess $false
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
@@ -818,7 +818,7 @@ function Test-VirtualNetworkCRUDWithDDoSProtection
 
         # Create the Virtual Network
 
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
         $actual = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
         $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 
@@ -890,7 +890,7 @@ function Test-VirtualNetworkPeeringCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network1
-        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24
+        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
 
 
@@ -901,7 +901,7 @@ function Test-VirtualNetworkPeeringCRUD
         Assert-AreEqual $vnet1.Subnets[0].Name $subnet1.Name
 
         # Create the Virtual Network2
-        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24
+        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24 -DefaultOutboundAccess $false
         $vnet2 = New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
 
         Assert-AreEqual $vnet2.ResourceGroupName $rgname    
@@ -1040,7 +1040,7 @@ function Test-MultiTenantVNetPCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network1
-        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24
+        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet2
                 
         Assert-AreEqual $vnet1.ResourceGroupName $rgname    
@@ -1127,6 +1127,163 @@ function Test-MultiTenantVNetPCRUD
 		# Delete VNet2 in the remote tenant
         # $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnet2Name -PassThru -Force
         # Assert-AreEqual true $delete
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests on CRUD for virtualNetworkpeering.
+#>
+function Test-SubnetPeeringCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $peerName = Get-ResourceName
+    $vnet1Name = Get-ResourceName
+    $vnet2Name = Get-ResourceName
+    $subnet1Name = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location =  "eastus2euap"   
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the Virtual Network1
+        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24  -DefaultOutboundAccess $false
+        $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
+
+
+        Assert-AreEqual $vnet1.ResourceGroupName $rgname    
+        Assert-AreEqual $vnet1.Name $vnet1Name    
+        Assert-AreEqual $vnet1.Location $rglocation
+        Assert-AreEqual "Succeeded" $vnet1.ProvisioningState        
+        Assert-AreEqual $vnet1.Subnets[0].Name $subnet1.Name
+
+        # Create the Virtual Network2
+        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24  -DefaultOutboundAccess $false
+        $vnet2 = New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
+
+        Assert-AreEqual $vnet2.ResourceGroupName $rgname    
+        Assert-AreEqual $vnet2.Name $vnet2Name    
+        Assert-AreEqual $vnet2.Location $rglocation
+        Assert-AreEqual "Succeeded" $vnet2.ProvisioningState 
+
+        # Add Peering to vnet1
+        $job = $vnet1 | Add-AzVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id  -PeerCompleteVnets $false -LocalSubnetNames $subnet1Name -RemoteSubnetNames $subnet2Name -AllowForwardedTraffic -AsJob 
+        $job | Wait-Job
+        $peer = $job | Receive-Job
+        
+        Assert-AreEqual $peer.ResourceGroupName $rgname    
+        Assert-AreEqual $peer.Name $peerName    
+        Assert-AreEqual $peer.VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $peer.ProvisioningState 
+        Assert-AreEqual $peer.RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $peer.AllowVirtualNetworkAccess True
+        Assert-AreEqual $peer.AllowForwardedTraffic True
+        Assert-AreEqual $peer.PeerCompleteVnets $false
+ 	Assert-AreEqual $peer.LocalSubnetNames $subnet1Name
+  	Assert-AreEqual $peer.RemoteSubnetNames $subnet2Name
+        Assert-Null $peer.RemoteGateways
+        Assert-Null $peer.$peer.RemoteVirtualNetworkAddressSpace
+        
+        # Get peer
+        $getPeer = Get-AzVirtualNetworkPeering -name $peerName -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname
+        
+        Assert-AreEqual $getPeer.ResourceGroupName $rgname    
+        Assert-AreEqual $getPeer.Name $peerName    
+        Assert-AreEqual $getPeer.VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $getPeer.ProvisioningState 
+        Assert-AreEqual $getPeer.RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $getPeer.AllowVirtualNetworkAccess True
+        Assert-AreEqual $getPeer.AllowForwardedTraffic True
+        Assert-AreEqual $peer.AllowGatewayTransit $false
+        Assert-AreEqual $peer.UseRemoteGateways $false	
+        Assert-AreEqual $getPeer.PeerCompleteVnets $false
+ 	Assert-AreEqual $getPeer.LocalSubnetNames $subnet1Name
+  	Assert-AreEqual $getPeer.RemoteSubnetNames $subnet2Name
+        Assert-Null $getPeer.RemoteGateways
+        Assert-Null $getPeer.$peer.RemoteVirtualNetworkAddressSpace
+        
+        # List Peer
+        $listPeer = Get-AzVirtualNetworkPeering -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname
+        
+        Assert-AreEqual 1 @($listPeer).Count
+        Assert-AreEqual $listPeer[0].ResourceGroupName $rgname    
+        Assert-AreEqual $listPeer[0].Name $peerName    
+        Assert-AreEqual $listPeer[0].VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $listPeer[0].ProvisioningState 
+        Assert-AreEqual $listPeer[0].RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $listPeer[0].AllowVirtualNetworkAccess True
+        Assert-AreEqual $listPeer[0].AllowForwardedTraffic True
+        Assert-AreEqual $listPeer[0].AllowGatewayTransit $false
+        Assert-AreEqual $listPeer[0].UseRemoteGateways $false
+    Assert-AreEqual $listPeer[0].PeerCompleteVnets $false
+ 	Assert-AreEqual $listPeer[0].LocalSubnetNames $subnet1Name
+  	Assert-AreEqual $listPeer[0].RemoteSubnetNames $subnet2Name
+        Assert-Null $listPeer[0].RemoteGateways
+        Assert-Null $listPeer[0].$peer.RemoteVirtualNetworkAddressSpace
+
+        # List Peer
+        $listPeer = Get-AzVirtualNetworkPeering -Name "*" -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname
+        
+        Assert-AreEqual 1 @($listPeer).Count
+        Assert-AreEqual $listPeer[0].ResourceGroupName $rgname    
+        Assert-AreEqual $listPeer[0].Name $peerName    
+        Assert-AreEqual $listPeer[0].VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $listPeer[0].ProvisioningState 
+        Assert-AreEqual $listPeer[0].RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $listPeer[0].AllowVirtualNetworkAccess True
+        Assert-AreEqual $listPeer[0].AllowForwardedTraffic True
+        Assert-AreEqual $listPeer[0].AllowGatewayTransit $false
+        Assert-AreEqual $listPeer[0].UseRemoteGateways $false
+    Assert-AreEqual $listPeer[0].PeerCompleteVnets $false
+ 	Assert-AreEqual $listPeer[0].LocalSubnetNames $subnet1Name
+  	Assert-AreEqual $listPeer[0].RemoteSubnetNames $subnet2Name
+        Assert-Null $listPeer[0].RemoteGateways
+        Assert-Null $listPeer[0].$peer.RemoteVirtualNetworkAddressSpace
+        
+        # Set Peer
+        $getPeer.AllowForwardedTraffic = $false
+        
+        $job = $getPeer | Set-AzVirtualNetworkPeering -AsJob
+        $job | Wait-Job
+        $setPeer = $job | Receive-Job
+        
+        Assert-AreEqual $setPeer.ResourceGroupName $rgname    
+        Assert-AreEqual $setPeer.Name $peerName    
+        Assert-AreEqual $setPeer.VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $setPeer.ProvisioningState 
+        Assert-AreEqual $setPeer.RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $setPeer.AllowVirtualNetworkAccess True
+        Assert-AreEqual $setPeer.AllowForwardedTraffic $false
+        Assert-AreEqual $setPeer.AllowGatewayTransit $false
+        Assert-AreEqual $setPeer.UseRemoteGateways $false
+      Assert-AreEqual $setPeer.PeerCompleteVnets $false
+ 	Assert-AreEqual $setPeer.LocalSubnetNames $subnet1Name
+  	Assert-AreEqual $setPeer.RemoteSubnetNames $subnet2Name
+        Assert-Null $setPeer.RemoteGateways
+        Assert-Null $setPeer.$peer.RemoteVirtualNetworkAddressSpace
+        
+        # Delete Peer
+        $job = Remove-AzVirtualNetworkPeering -name $peerName -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname -Force -PassThru -AsJob
+        $job | Wait-Job
+        $delete = $job | Receive-Job
+        Assert-AreEqual true $delete
+
+        # Delete VirtualNetwork
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnet1Name -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnet2Name -PassThru -Force
+        Assert-AreEqual true $delete
     }
     finally
     {
@@ -1627,7 +1784,7 @@ function Test-SyncVirtualNetworkPeeringCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network1
-        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.1.1.0/24
+        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.1.1.0/24 -DefaultOutboundAccess $false
         $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet1
 
 
@@ -1638,7 +1795,7 @@ function Test-SyncVirtualNetworkPeeringCRUD
         Assert-AreEqual $vnet1.Subnets[0].Name $subnet1.Name
 
         # Create the Virtual Network2
-        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.2.1.0/24
+        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.2.1.0/24 -DefaultOutboundAccess $false
         $vnet2 = New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -Subnet $subnet2
 
         Assert-AreEqual $vnet2.ResourceGroupName $rgname    
@@ -1688,7 +1845,7 @@ function Test-SyncVirtualNetworkPeeringCRUD
 
         # Call Sync on VNet2
         $syncVnet2 = Sync-AzVirtualNetworkPeering -Name $peerName2 -VirtualNetworkName $vnet2Name -ResourceGroupName $rgname
-        
+
         # Get and Check Peering Sync Levels of Vnet1 and Vnet2 after updating address space of Vnet1 and syncing them
         $peer1 = Get-AzVirtualNetworkPeering -VirtualNetworkName $vnet1Name -Name $peerName -ResourceGroupName $rgname
         $peer2 = Get-AzVirtualNetworkPeering -VirtualNetworkName $vnet2Name -Name $peerName2 -ResourceGroupName $rgname
@@ -1727,6 +1884,114 @@ function Test-SyncVirtualNetworkPeeringCRUD
 
 <#
 .SYNOPSIS
+Tests on CRUD for Sync on VirtualNetworkpeering.
+#>
+function Test-SyncSubnetPeeringCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName 
+    $peerName = Get-ResourceName
+    $peerName2 = Get-ResourceName
+    $vnet1Name = Get-ResourceName
+    $vnet2Name = Get-ResourceName
+    $subnet0Name = Get-ResourceName
+    $subnet1Name = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = "eastus2euap"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the Virtual Network1
+	    $subnet0 = New-AzVirtualNetworkSubnetConfig -Name $subnet0Name -AddressPrefix 10.1.0.0/24 -DefaultOutboundAccess $false
+        $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.1.1.0/24 -DefaultOutboundAccess $false
+        $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet0,$subnet1
+
+
+        Assert-AreEqual $vnet1.ResourceGroupName $rgname    
+        Assert-AreEqual $vnet1.Name $vnet1Name    
+        Assert-AreEqual $vnet1.Location $rglocation
+        Assert-AreEqual "Succeeded" $vnet1.ProvisioningState        
+        Assert-AreEqual $vnet1.Subnets[0].Name $subnet0.Name
+
+        # Create the Virtual Network2
+        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.2.1.0/24 -DefaultOutboundAccess  $false
+        $vnet2 = New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -Subnet $subnet2
+
+        Assert-AreEqual $vnet2.ResourceGroupName $rgname    
+        Assert-AreEqual $vnet2.Name $vnet2Name    
+        Assert-AreEqual $vnet2.Location $rglocation
+        Assert-AreEqual "Succeeded" $vnet2.ProvisioningState 
+
+        # Add Peering to vnet1
+        $job = $vnet1 | Add-AzVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id -PeerCompleteVnets $false -LocalSubnetNames $subnet1Name -RemoteSubnetNames $subnet2Name -AllowForwardedTraffic -AsJob
+        $job | Wait-Job
+        $peer1 = $job | Receive-Job
+        
+        # Add Peering to VNet2
+        $job = $vnet2 | Add-AzVirtualNetworkPeering -name $peerName2 -RemoteVirtualNetworkId $vnet1.Id -PeerCompleteVnets $false -LocalSubnetNames $subnet2Name -RemoteSubnetNames $subnet1Name -AllowForwardedTraffic -AsJob
+        $job | Wait-Job
+        $peer2 = $job | Receive-Job
+
+        Assert-AreEqual $peer1.ResourceGroupName $rgname    
+        Assert-AreEqual $peer1.Name $peerName    
+        Assert-AreEqual $peer1.VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $peer1.ProvisioningState 
+        Assert-AreEqual $peer1.RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $peer1.AllowVirtualNetworkAccess True
+        Assert-AreEqual $peer1.AllowForwardedTraffic True
+		Assert-AreEqual $peer1.PeerCompleteVnets $false
+		Assert-AreEqual $peer1.LocalSubnetNames $subnet1Name
+		Assert-AreEqual $peer1.RemoteSubnetNames $subnet2Name
+
+        Assert-AreEqual $peer2.ResourceGroupName $rgname    
+        Assert-AreEqual $peer2.Name $peerName2    
+        Assert-AreEqual $peer2.VirtualNetworkName $vnet2Name
+        Assert-AreEqual "Succeeded" $peer2.ProvisioningState 
+        Assert-AreEqual $peer2.RemoteVirtualNetwork.Id $vnet1.Id
+        Assert-AreEqual $peer2.AllowVirtualNetworkAccess True
+        Assert-AreEqual $peer2.AllowForwardedTraffic True
+		Assert-AreEqual $peer2.PeerCompleteVnets $false
+		Assert-AreEqual $peer2.LocalSubnetNames $subnet2Name
+		Assert-AreEqual $peer2.RemoteSubnetNames $subnet1Name
+        
+
+        # Update peer1
+        $peer1.LocalSubnetNames = $peer1.LocalSubnetNames + $subnet0Name
+	    $job = $peer1 | Set-AzVirtualNetworkPeering -AsJob
+        $job | Wait-Job
+        $setPeer = $job | Receive-Job
+
+        # Call Sync on Vnet1 
+        $syncVnet1 = Sync-AzVirtualNetworkPeering -VirtualNetworkName $vnet1Name -Name $peerName -ResourceGroupName $rgname
+
+        # Update peer2
+        $peer2.RemoteSubnetNames = $peer2.RemoteSubnetNames + $subnet0Name
+	    $job = $peer2 | Set-AzVirtualNetworkPeering -AsJob
+        $job | Wait-Job
+        $setPeer2 = $job | Receive-Job
+
+        # Call Sync on VNet2
+        $syncVnet2 = Sync-AzVirtualNetworkPeering  -VirtualNetworkName $vnet2Name -Name $peerName2 -ResourceGroupName $rgname
+
+        $peer2 = Get-AzVirtualNetworkPeering -VirtualNetworkName $vnet2Name -Name $peerName2 -ResourceGroupName $rgname
+
+        Assert-AreEqual $peer2.PeeringSyncLevel "FullyInSync" 
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests whether virtual network put to an edge zone is successful.
 #>
 function Test-VirtualNetworkInEdgeZone
@@ -1745,7 +2010,7 @@ function Test-VirtualNetworkInEdgeZone
         # Create the resource group
         New-AzResourceGroup -Name $ResourceGroup -Location $LocationName -Force;
 
-		$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+		$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix -DefaultOutboundAccess $false;
         New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet;
 
 		$Vnet = Get-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup
@@ -1782,7 +2047,7 @@ function Test-VirtualNetworkEdgeZone
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EdgeZone "MicrosoftRRDCLab1"
         $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 

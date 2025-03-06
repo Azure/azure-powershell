@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.19.1
 * Added more support for Oracle connection properties.
 * Added more support for Teradata connection properties.
 * Added more support for AzurePostgreSql connection properties.

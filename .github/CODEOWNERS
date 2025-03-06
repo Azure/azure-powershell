@@ -4,5 +4,9 @@
 /src/PolicyInsights/  @pilor
 /src/Batch/ @wiboris @dpwatrous
 
+# Make sure Device Registry team gets notified of any DeviceRegistry PRs:
+# PRLabel: %Device Registry
+/src/DeviceRegistry/ @marcodalessandro @rohankhandelwal @riteshrao @davidemontanari
+
 # Make sure changes to .github folder go through our team's double check
 /.github/        @isra-fel

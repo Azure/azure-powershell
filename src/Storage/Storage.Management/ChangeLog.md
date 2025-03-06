@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 8.2.0
 * Supported new SkuName when create/update Storage account for Files Provisioned v2 account type:  "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS"
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

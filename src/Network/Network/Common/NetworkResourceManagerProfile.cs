@@ -390,6 +390,47 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.RemoteAddressSpace)
                     );
 
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.PeerCompleteVnets,
+                        opt => opt.MapFrom(src => src.PeerCompleteVnets)
+                    );
+
+                // MMM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+               .ForMember(
+                   dest => dest.PeerCompleteVnets,
+                   opt => opt.MapFrom(src => src.PeerCompleteVnets)
+               );
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.LocalSubnetNames,
+                        opt => opt.MapFrom(src => src.LocalSubnetNames)
+                    );
+
+                // MMM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+               .ForMember(
+                   dest => dest.LocalSubnetNames,
+                   opt => opt.MapFrom(src => src.LocalSubnetNames)
+               );
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.RemoteSubnetNames,
+                        opt => opt.MapFrom(src => src.RemoteSubnetNames)
+                    );
+
+                // MMM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+               .ForMember(
+                   dest => dest.RemoteSubnetNames,
+                   opt => opt.MapFrom(src => src.RemoteSubnetNames)
+               );
                 /*
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()

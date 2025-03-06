@@ -18,13 +18,13 @@ Invoke-AzWorkloadsSapSizingRecommendation -Location <String> [-SubscriptionId <S
  -DatabaseType <SapDatabaseType> -DbMemory <Int64> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -Sap <Int64> -SapProduct <SapProductType>
  [-DbScaleMethod <SapDatabaseScaleMethod>] [-HighAvailabilityType <SapHighAvailabilityType>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Invoke
 ```
 Invoke-AzWorkloadsSapSizingRecommendation -Location <String> [-SubscriptionId <String>]
- -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,13 +34,13 @@ Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdent
  -DatabaseType <SapDatabaseType> -DbMemory <Int64> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -Sap <Int64> -SapProduct <SapProductType>
  [-DbScaleMethod <SapDatabaseScaleMethod>] [-HighAvailabilityType <SapHighAvailabilityType>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentity
 ```
 Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdentity>
- -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -227,21 +227,6 @@ Parameter Sets: InvokeExpanded, Invoke
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
-                .WithManagementClients(mockContext =>
+                .WithManagementClients(context =>
                     {
                         AdlsClientFactory.IsTest = true;
-                        var creds = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(AzureEnvironmentConstants.AzureDataLakeStoreFileSystemEndpointSuffix);
-                        AdlsClientFactory.CustomDelegatingHAndler = mockContext.AddHandlers(creds, new AdlMockDelegatingHandler());
+                        var creds = context.GetClientCredentials(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
+                        AdlsClientFactory.CustomDelegatingHAndler = context.AddHandlers(creds, new AdlMockDelegatingHandler());
                         AdlsClientFactory.MockCredentials = creds;
                         return new object();
                     }

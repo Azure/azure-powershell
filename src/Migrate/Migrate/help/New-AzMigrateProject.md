@@ -14,7 +14,7 @@ Creates a new Migrate project.
 
 ```
 New-AzMigrateProject -Name <String> -ResourceGroupName <String> -Location <String> [-ETag <String>]
- [-Property <IMigrateProjectProperties>] [-SubscriptionId <String>] [-ProgressAction <ActionPreference>]
+ [-Property <IMigrateProjectProperties>] [-SubscriptionId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,21 +77,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

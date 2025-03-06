@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.2
 * Fixed GitHub issue #12417 "Get-AzSqlElasticPoolDatabase doesn't enumerate output."
     - fixed the output to enumerate the results.
 

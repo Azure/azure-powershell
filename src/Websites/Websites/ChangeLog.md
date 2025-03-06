@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.3.1
 * Migrated Websites.Helper generation from autorest csharp to autorest powershell.
 
 ## Version 3.3.0
