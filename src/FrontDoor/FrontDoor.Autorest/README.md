@@ -128,12 +128,12 @@ directive:
       cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject
     - model-name: WebApplicationFirewallScrubbingRules
       cmdlet-name: New-AzFrontDoorWafLogScrubbingRuleObject
-    - model-name: ForwardingConfiguration
-      cmdlet-name: New-AzFrontDoorForwardingConfigurationObject
-    - model-name: RedirectConfiguration
-      cmdlet-name: New-AzFrontDoorRedirectConfigurationObject
-    - model-name: CacheConfiguration
-      cmdlet-name: New-AzFrontDoorCacheConfigurationObject
+    # - model-name: ForwardingConfiguration
+    #   cmdlet-name: New-AzFrontDoorForwardingConfigurationObject
+    # - model-name: RedirectConfiguration
+    #   cmdlet-name: New-AzFrontDoorRedirectConfigurationObject
+    # - model-name: CacheConfiguration
+    #   cmdlet-name: New-AzFrontDoorCacheConfigurationObject
     # - model-name: RouteConfiguration
     #   cmdlet-name: New-AzFrontDoorRouteConfigurationObject
     - model-name: PolicySettings

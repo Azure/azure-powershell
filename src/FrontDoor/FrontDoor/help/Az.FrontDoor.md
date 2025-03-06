@@ -44,12 +44,6 @@ Create an in-memory object for BackendPool.
 ### [New-AzFrontDoorBackendPoolsSettingObject](New-AzFrontDoorBackendPoolsSettingObject.md)
 Create an in-memory object for BackendPoolsSettings.
 
-### [New-AzFrontDoorCacheConfigurationObject](New-AzFrontDoorCacheConfigurationObject.md)
-Create an in-memory object for CacheConfiguration.
-
-### [New-AzFrontDoorForwardingConfigurationObject](New-AzFrontDoorForwardingConfigurationObject.md)
-Create an in-memory object for ForwardingConfiguration.
-
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
 Create an in-memory object for FrontendEndpoint.
 
@@ -64,9 +58,6 @@ Create an in-memory object for LoadBalancingSettingsModel.
 
 ### [New-AzFrontDoorPolicySettingsObject](New-AzFrontDoorPolicySettingsObject.md)
 Create an in-memory object for PolicySettings.
-
-### [New-AzFrontDoorRedirectConfigurationObject](New-AzFrontDoorRedirectConfigurationObject.md)
-Create an in-memory object for RedirectConfiguration.
 
 ### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
 Create an in-memory object for RoutingRule.
