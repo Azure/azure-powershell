@@ -11,7 +11,7 @@ steps:
 - task: NodeTool@0
   displayName: Install autorest
   inputs:
-    versionSpec: '14.17.1'
+    versionSpec: '18.20.7'
     command: custom
     verbose: false
     customCommand: install autorest@latest
@@ -21,7 +21,13 @@ steps:
     targetType: inline
     script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
     pwsh: true
-
+- task: NodeTool@0
+  displayName: Install tsp client
+  inputs:
+    versionSpec: '18.20.7'
+    command: custom
+    verbose: false
+    customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x   
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk 6.0.x'
   inputs:
