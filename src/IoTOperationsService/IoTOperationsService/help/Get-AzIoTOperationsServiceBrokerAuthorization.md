@@ -51,27 +51,16 @@ Get a BrokerAuthorizationResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Lists Broker Authorizations
 ```powershell
-{{ Add code here }}
+Get-AzIoTOperationsServiceBrokerAuthorization -BrokerName "default" -InstanceName "aio-3lrx4" -ResourceGroupName "aio-validation-117026523"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+name
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists broker authorizations
 
 ## PARAMETERS
 

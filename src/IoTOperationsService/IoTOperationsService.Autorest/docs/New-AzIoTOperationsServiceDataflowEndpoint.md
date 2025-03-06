@@ -59,6 +59,7 @@ New-AzIoTOperationsServiceDataflowEndpoint -InstanceName <String> -Name <String>
 create a DataflowEndpointResource
 
 ## EXAMPLES
+
 ### Example 1: Create a dataflow endpoint
 ```powershell
 New-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143"  -ExtendedLocationName "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"   -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
@@ -116,7 +117,6 @@ Type                                                                            
 ```
 
 Creates a dataflow endpoint
-
 
 ## PARAMETERS
 

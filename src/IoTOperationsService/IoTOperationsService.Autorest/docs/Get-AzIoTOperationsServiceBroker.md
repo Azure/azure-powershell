@@ -97,8 +97,6 @@ Type                           : microsoft.iotoperations/instances/brokers
 
 This command gets a list of brokers
 
-
-
 ## PARAMETERS
 
 ### -DefaultProfile

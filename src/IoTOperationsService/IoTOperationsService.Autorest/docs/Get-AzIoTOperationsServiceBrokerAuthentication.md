@@ -79,7 +79,6 @@ Type                         : microsoft.iotoperations/instances/brokers/authent
 
 This command gets a list of broker authentications
 
-
 ## PARAMETERS
 
 ### -AuthenticationName

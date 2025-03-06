@@ -39,12 +39,16 @@ create a DataflowResource
 
 ## EXAMPLES
 
-### Example 1: Deletes a Dataflow Profiles
+### Example 1: Create a dataflow
 ```powershell
-Remove-AzIoTOperationsServiceDataflow -InstanceName "my-instance" -Name "my-dataflow" -ProfileName "my-profile" -ResourceGroupName "my-rg"
+New-AzIoTOperationsServiceDataflow -InstanceName  "aio-instance-name"  -Name "dataflow-name"   -ProfileName "dataflowprofile-name"  -ResourceGroupName "aio-validation-116116143"  -ExtendedLocationName "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143" -Operation @(@{ operationType = "Source" })
 ```
 
-Deletes a dataflow profiles
+```output
+sample output
+```
+
+Creates a dataflow
 
 ## PARAMETERS
 

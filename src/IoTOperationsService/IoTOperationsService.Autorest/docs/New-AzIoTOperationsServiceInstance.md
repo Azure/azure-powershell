@@ -38,6 +38,7 @@ New-AzIoTOperationsServiceInstance -Name <String> -ResourceGroupName <String> -J
 create a InstanceResource
 
 ## EXAMPLES
+
 ### Example 1: Create an instance
 ```powershell
 New-AzIoTOperationsServiceInstance -Name "aio-instance-name" -ResourceGroupName "aio-validation-116116143" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.ExtendedLocation/customLocations/location-116116143"  -Location "eastus2" -Description test -SchemaRegistryRefResourceId  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-116116143/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-dd5644c861" 
@@ -75,7 +76,6 @@ Version                      : 1.0.15
 ```
 
 Creates an instance
-
 
 ## PARAMETERS
 
