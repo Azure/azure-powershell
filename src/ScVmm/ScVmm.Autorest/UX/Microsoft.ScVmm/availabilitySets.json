@@ -1,0 +1,47 @@
+{
+  "resourceType": "availabilitySets",
+  "apiVersion": "2024-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.scvmm"
+  },
+  "commands": [
+    {
+      "name": "Get-AzScVmmAvailabilitySet",
+      "description": "Implements AvailabilitySet GET method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmavailabilityset"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements AvailabilitySet GET method.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.availabilitySetResourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
