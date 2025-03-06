@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Absolute path that the artifact should be deployed to.")]
         public string TargetPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "AAD identity used for pull based deployments. 'system' will use the app's system assigned identy. An user assigned identity can be used by providing the client ID. Only available for Windows WebApps. Support for Linux WebApps coming soon.")]
+        [Parameter(Mandatory = false, HelpMessage = "AAD identity used for pull based deployments. 'system' will use the app's system assigned identity. An user assigned identity can be used by providing the client ID. Only available for Windows WebApps. Support for Linux WebApps coming soon.")]
         public string PullIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Disables any language-specific defaults")]
