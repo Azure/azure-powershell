@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorHeaderActionObject -HeaderName headername -HeaderActionType Append
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+HeaderName HeaderActionType Value
+---------- ---------------- -----
+headername           Append
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create HeaderActionObject
