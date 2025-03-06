@@ -104,106 +104,104 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string OutputFormat { get; set; } = ExportTemplateOutputFormat.Json;
 
 
-/// <summary>
-/// Executes the cmdlet.
-/// </summary>
-/// <summary>
-/// Executes the cmdlet.
-/// </summary>
-protected override void OnProcessRecord()
-{
-    base.OnProcessRecord();
-    string contents;
-
-    if (ShouldProcess(ResourceGroupName, VerbsData.Export))
-    {
-        var resourceGroupId = this.GetResourceGroupId();
-
-        if (! this.IsParameterBound(c => c.ApiVersion))
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
+        protected override void OnProcessRecord()
         {
-            var parameters = new ExportTemplateRequest
+            base.OnProcessRecord();
+            string contents;
+
+            if (ShouldProcess(ResourceGroupName, VerbsData.Export))
             {
-                Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
-                Options = this.GetExportOptions(),
-                OutputFormat = this.OutputFormat
-            };
+                var resourceGroupId = this.GetResourceGroupId();
 
-            var exportedTemplate = NewResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
-
-            var template = exportedTemplate.Template;
-            contents = template.ToString();
-
-            var error = exportedTemplate.Error;
-
-            if(error != null)
-            {
-                WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
-                foreach (var detail in error.Details)
+                if (! this.IsParameterBound(c => c.ApiVersion))
                 {
-                    WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
-                }
-            }
-        }
-        else
-        {
-            var parameters = new ExportTemplateParameters
-            {
-                Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
-                Options = this.GetExportOptions(),
-                OutputFormat = this.OutputFormat
-            };
-            var apiVersion = this.ApiVersion;
-            var operationResult = this.GetResourcesClient()
-               .InvokeActionOnResource<JObject>(
-                   resourceId: resourceGroupId,
-                   action: Constants.ExportTemplate,
-                   parameters: parameters.ToJToken(),
-                   apiVersion: apiVersion,
-                   cancellationToken: this.CancellationToken.Value)
-               .Result;
-
-            var managementUri = this.GetResourcesClient()
-                .GetResourceManagementRequestUri(
-                    resourceId: resourceGroupId,
-                    apiVersion: apiVersion,
-                    action: Constants.ExportTemplate);
-
-            var activity = string.Format("POST {0}", managementUri.PathAndQuery);
-            var resultString = this.GetLongRunningOperationTracker(activityName: activity,
-                isResourceCreateOrUpdate: false)
-                .WaitOnOperation(operationResult: operationResult);
-
-            var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
-            contents = template.ToString();
-
-            if (JObject.Parse(resultString)["error"] != null)
-            {
-                if (JObject.Parse(resultString)["error"].TryConvertTo(out ExtendedErrorInfo error))
-                {
-                    WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
-                    foreach (var detail in error.Details)
+                    var parameters = new ExportTemplateRequest
                     {
-                        WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
+                        Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
+                        Options = this.GetExportOptions(),
+                        OutputFormat = this.OutputFormat
+                    };
+
+                    var exportedTemplate = NewResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
+
+                    var template = exportedTemplate.Template;
+                    contents = template.ToString();
+
+                    var error = exportedTemplate.Error;
+
+                    if(error != null)
+                    {
+                        WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
+                        foreach (var detail in error.Details)
+                        {
+                            WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
+                        }
                     }
                 }
+                else
+                {
+                    var parameters = new ExportTemplateParameters
+                    {
+                        Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
+                        Options = this.GetExportOptions(),
+                        OutputFormat = this.OutputFormat
+                    };
+                    var apiVersion = this.ApiVersion;
+                    var operationResult = this.GetResourcesClient()
+                       .InvokeActionOnResource<JObject>(
+                           resourceId: resourceGroupId,
+                           action: Constants.ExportTemplate,
+                           parameters: parameters.ToJToken(),
+                           apiVersion: apiVersion,
+                           cancellationToken: this.CancellationToken.Value)
+                       .Result;
+
+                    var managementUri = this.GetResourcesClient()
+                        .GetResourceManagementRequestUri(
+                            resourceId: resourceGroupId,
+                            apiVersion: apiVersion,
+                            action: Constants.ExportTemplate);
+
+                    var activity = string.Format("POST {0}", managementUri.PathAndQuery);
+                    var resultString = this.GetLongRunningOperationTracker(activityName: activity,
+                        isResourceCreateOrUpdate: false)
+                        .WaitOnOperation(operationResult: operationResult);
+
+                    var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
+                    contents = template.ToString();
+
+                    if (JObject.Parse(resultString)["error"] != null)
+                    {
+                        if (JObject.Parse(resultString)["error"].TryConvertTo(out ExtendedErrorInfo error))
+                        {
+                            WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
+                            foreach (var detail in error.Details)
+                            {
+                                WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
+                            }
+                        }
+                    }
+                }
+
+                string path = FileUtility.SaveTemplateFile(
+                    templateName: this.ResourceGroupName,
+                    contents: contents,
+                    outputPath:
+                        string.IsNullOrEmpty(this.Path)
+                            ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName)
+                            : this.TryResolvePath(this.Path),
+                    overwrite: Force.IsPresent,
+                    shouldContinue: ShouldContinue);
+
+                WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
             }
         }
-
-        string path = FileUtility.SaveTemplateFile(
-            templateName: this.ResourceGroupName,
-            contents: contents,
-            outputPath:
-                string.IsNullOrEmpty(this.Path)
-                    ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName)
-                    : this.TryResolvePath(this.Path),
-            overwrite: Force.IsPresent,
-            shouldContinue: ShouldContinue);
-
-        WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
-    }
-}
-
-
 
         /// <summary>
         /// Gets the export template options
