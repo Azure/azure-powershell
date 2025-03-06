@@ -103,10 +103,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateSet(ExportTemplateOutputFormat.Json, ExportTemplateOutputFormat.Bicep, IgnoreCase = true)]
         public string OutputFormat { get; set; } = ExportTemplateOutputFormat.Json;
 
-
-        /// <summary>
-        /// Executes the cmdlet.
-        /// </summary>
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
