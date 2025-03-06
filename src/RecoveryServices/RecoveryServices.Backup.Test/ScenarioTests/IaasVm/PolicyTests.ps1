@@ -348,7 +348,7 @@ function Test-AzureVMPolicy
 function Test-AzureVMEnhancedPolicyAsDefault
 { 
 	try
-    {
+    	{
 		$resourceGroupName = "sgholapCZRTesting"
 		$vaultName = "sgholapZRSTestingVault"
 		$owner = "sgholap"
@@ -383,7 +383,7 @@ function Test-AzureVMEnhancedPolicyAsDefault
 		Assert-AreEqual $azureFilesPolicy.Name $AzureFilesPolicyName
 		# Default policy type for AzureFiles should be Standard
 		Assert-AreNotEqual $azureFilesPolicy.PolicySubType "Enhanced"
-    }
+	}
 	finally
 	{
 		# Cleanup		
