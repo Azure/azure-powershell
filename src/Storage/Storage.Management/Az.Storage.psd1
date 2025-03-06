@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '8.1.0'
+ModuleVersion = '8.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -74,10 +74,10 @@ RequiredAssemblies = 'Azure.Data.Tables.dll', 'Azure.Storage.Blobs.dll',
                'System.IO.Hashing.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Storage.Autorest/Az.Storage.format.ps1xml', 
@@ -235,7 +235,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Storage', 'StorageAccount'
+        Tags = 'Azure','ResourceManager','ARM','Storage','StorageAccount'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -247,18 +247,20 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgraded nuget package to signed package.
-* Added warning message for account migration cmdlet.
-    - ''Start-AzStorageAccountMigration''
-* Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
-    - ''New-AzStorageContext''
-* Upgraded Azure.Storage.Blobs to 12.23.0
-* Upgraded Azure.Storage.Files.Shares to 12.21.0
-* Upgraded Azure.Storage.Files.DataLake to 12.21.0
-* Upgraded Azure.Storage.Queues to 12.21.0
-* Supported ClientName property when listing file handles 
-    - ''Get-AzStorageFileHandle''
-* Upgraded Azure.Core to 1.44.1.'
+        ReleaseNotes = '* Supported new SkuName when create/update Storage account for Files Provisioned v2 account type:  ''StandardV2_LRS'', ''StandardV2_GRS'', ''StandardV2_ZRS'', ''StandardV2_GZRS'', ''PremiumV2_LRS'', ''PremiumV2_ZRS''
+    - ''New-AzStorageAccount''
+    - ''Set-AzStorageAccount''
+* Supported Get File Service Usage on Files Provisioned v2 account type.
+    - ''Get-AzStorageFileServiceUsage''
+* Supported create/update file share on new parameters on Files Provisioned v2 account type with new parameter: ''-ProvisionedBandwidthMibps'', ''-ProvisionedIops''''
+    - ''New-AzRmStorageShare''
+    - ''Update-AzRmStorageShare''
+* Supported create/update/Get file share on new parameters on Files Provisioned v1 account type with new parameter: ''-PaidBurstingEnabled'', ''-PaidBurstingMaxBandwidthMibps'', ''-PaidBurstingMaxIops''
+    - ''New-AzRmStorageShare''
+    - ''Update-AzRmStorageShare''
+    - ''Get-AzStorageFileServiceUsage''
+* Supported get file share new properties for Files Provisioned v1/v2 account type
+    - ''Get-AzStorageFileServiceUsage'''
 
         # Prerelease string of this module
         Prerelease = 'preview'
@@ -271,7 +273,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
