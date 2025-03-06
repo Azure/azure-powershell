@@ -1,0 +1,47 @@
+{
+  "resourceType": "virtualNetworks",
+  "apiVersion": "2024-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.scvmm"
+  },
+  "commands": [
+    {
+      "name": "Get-AzScVmmVirtualNetwork",
+      "description": "Implements VirtualNetwork GET method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvirtualnetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements VirtualNetwork GET method.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

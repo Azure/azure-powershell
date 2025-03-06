@@ -1,0 +1,95 @@
+{
+  "resourceType": "vmmServers/inventoryItems",
+  "apiVersion": "2024-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.scvmm"
+  },
+  "commands": [
+    {
+      "name": "Get-AzScVmmInventoryItem",
+      "description": "Shows an inventory item.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmminventoryitem"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VmmServerName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Shows an inventory item.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.inventoryItemResourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VmmServerName",
+              "value": "[Path.vmmServerName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzScVmmInventoryItem",
+      "description": "Deletes an inventoryItem.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmminventoryitem"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String>]",
+              "-VmmServerName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an inventoryItem.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.inventoryItemResourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VmmServerName",
+              "value": "[Path.vmmServerName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
