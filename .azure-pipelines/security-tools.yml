@@ -27,7 +27,7 @@ jobs:
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
-      versionSpec: '14.17.1'
+      versionSpec: '18.20.7'
       command: custom
       verbose: false
       customCommand: install autorest@latest
