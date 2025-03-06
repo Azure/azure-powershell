@@ -109,13 +109,18 @@ jobs:
       targetType: inline
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
-  - task: NodeTool@0
+  - task: Npm@1
     displayName: Install tsp client
     inputs:
-      versionSpec: '18.20.7'
       command: custom
-      verbose: false
       customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
+  - task: PowerShell@2
+    displayName: 'Build'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        ls C:\hostedtoolcache\windows\node\18.20.7\x64 -Depth 5
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
