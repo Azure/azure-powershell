@@ -88,7 +88,11 @@ function Invoke-SubModuleGeneration {
     Set-Location -Path $GenerateDirectory
     $tspLocationPath = Join-Path $GenerateDirectory "tsp-location.yaml"
     if (Test-Path $tspLocationPath) {
-        tsp-client update >> $GenerateLog
+        if ($IsInvokedByPipeline) {
+            npx tsp-client update >> $GenerateLog
+        } else {
+            tsp-client update >> $GenerateLog
+        }
     } else {
         if ($IsInvokedByPipeline) {
             npx autorest --max-memory-size=8192 >> $GenerateLog
