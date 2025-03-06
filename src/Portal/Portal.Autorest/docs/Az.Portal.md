@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Portal
-Module Guid: abd8c13e-6209-4e5a-a276-61e7a80845f9
+Module Guid: 0d19ca5d-46f3-4805-bde3-e14ee0aab1b8
 Download Help Link: https://learn.microsoft.com/powershell/module/az.portal
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: Portal Dashboard cmdlets
 Gets the Dashboard.
 
 ### [New-AzPortalDashboard](New-AzPortalDashboard.md)
-Creates or updates a Dashboard.
+create a Dashboard.
 
 ### [Remove-AzPortalDashboard](Remove-AzPortalDashboard.md)
 Deletes the Dashboard.
@@ -24,5 +24,5 @@ Deletes the Dashboard.
 Creates or updates a Dashboard.
 
 ### [Update-AzPortalDashboard](Update-AzPortalDashboard.md)
-Updates an existing Dashboard.
+update an existing Dashboard.
 
