@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Dataflows
 ```powershell
-{{ Add code here }}
+Get-AzIoTOperationsServiceDataflow -InstanceName "aio-3lrx4" -ProfileName "default" -ResourceGroupName "aio-validation-117026523"
+
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name   
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+List a dataflow
 

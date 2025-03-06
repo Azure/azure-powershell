@@ -41,27 +41,27 @@ Get a DataflowEndpointResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List DataflowEndpoints
 ```powershell
-{{ Add code here }}
+Get-AzIoTOperationsServiceDataflowEndpoint -InstanceName  "aio-3lrx4" -ResourceGroupName "aio-validation-117026523"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                     SystemDataCreatedAt SystemDataCreatedBy                  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLast
+                                                                                                                                   ModifiedBy
+----                     ------------------- -------------------                  ----------------------- ------------------------ --------------
+default                  3/5/2025 5:07:34 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:29:55 PM      319f651f-7ddb…
+mqtt-dest                3/5/2025 5:17:17 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:29:55 PM      319f651f-7ddb…
+mqtt-source-scale        3/5/2025 5:17:17 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:29:55 PM      319f651f-7ddb…
+mqtt-source              3/5/2025 5:17:17 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:29:55 PM      319f651f-7ddb…
+kafka-target             3/5/2025 5:18:06 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:29:55 PM      319f651f-7ddb…
+eventgrid                3/5/2025 5:18:47 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:29:55 PM      319f651f-7ddb…
+adx-dest                 3/5/2025 5:28:10 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:29:55 PM      319f651f-7ddb…
+quickstart-mqtt-endpoint 3/5/2025 5:30:07 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:30:11 PM      319f651f-7ddb…
+quickstart-eh-endpoint   3/5/2025 5:30:41 PM 739f5293-922a-4616-b106-3662530ef99f Application             3/5/2025 5:30:46 PM      319f651f-7ddb…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets a list of dataflow endpoints
 
 ## PARAMETERS
 
