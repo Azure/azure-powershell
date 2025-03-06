@@ -14,7 +14,7 @@ Create an in-memory object for Provider.
 
 ```
 New-AzQuantumProviderObject [-ApplicationName <String>] [-Id <String>] [-InstanceUri <String>]
- [-ProvisioningState <Status>] [-ResourceUsageId <String>] [-Sku <String>]
+ [-ProvisioningState <String>] [-ResourceUsageId <String>] [-Sku <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -83,11 +83,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProvisioningState
 Provisioning status field.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.Status
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.Provider
+### Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Provider
 
 ## NOTES
 

@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quantum", "Quantum\Quantum.csproj", "{CB35E890-94BD-4E62-BB3D-B925D904D0D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Quantum", "..\..\generated\Quantum\Quantum.Autorest\Az.Quantum.csproj", "{40D6733E-C014-4415-9D22-BDD67F42ACF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Quantum", "..\..\generated\Quantum\Quantum.Autorest\Az.Quantum.csproj", "{B92C442A-A720-4B80-B31A-4E87B146CD67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{CB35E890-94BD-4E62-BB3D-B925D904D0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB35E890-94BD-4E62-BB3D-B925D904D0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB35E890-94BD-4E62-BB3D-B925D904D0D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40D6733E-C014-4415-9D22-BDD67F42ACF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40D6733E-C014-4415-9D22-BDD67F42ACF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40D6733E-C014-4415-9D22-BDD67F42ACF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40D6733E-C014-4415-9D22-BDD67F42ACF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92C442A-A720-4B80-B31A-4E87B146CD67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92C442A-A720-4B80-B31A-4E87B146CD67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92C442A-A720-4B80-B31A-4E87B146CD67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92C442A-A720-4B80-B31A-4E87B146CD67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9248EAFA-DA1E-429A-89BE-69F2452F3ACC} = {951BFB89-FE36-4537-8B50-784025037832}

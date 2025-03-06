@@ -8,19 +8,34 @@ schema: 2.0.0
 # New-AzQuantumWorkspace
 
 ## SYNOPSIS
-Creates or updates a workspace resource.
+create a workspace resource.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzQuantumWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-IdentityType <ResourceIdentityType>] [-Provider <IProvider[]>] [-StorageAccount <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-EnableSystemAssignedIdentity] [-Provider <IProvider[]>] [-StorageAccount <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzQuantumWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzQuantumWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a workspace resource.
+create a workspace resource.
 
 ## EXAMPLES
 
@@ -71,15 +86,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identity type.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.ResourceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,7 +136,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -131,13 +176,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Provider
-List of Providers selected for this Workspace
-To construct, see NOTES section for PROVIDER properties and create a hash table.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IProvider[]
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Provider
+List of Providers selected for this Workspace
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProvider[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -167,7 +226,7 @@ ARM Resource Id of the storage account associated with this workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -197,7 +256,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -245,7 +304,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IQuantumWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspace
 
 ## NOTES
 
