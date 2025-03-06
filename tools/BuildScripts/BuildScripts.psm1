@@ -89,7 +89,9 @@ function Invoke-SubModuleGeneration {
     $tspLocationPath = Join-Path $GenerateDirectory "tsp-location.yaml"
     if (Test-Path $tspLocationPath) {
         if ($IsInvokedByPipeline) {
-            & tsp-client update >> $GenerateLog
+            #& tsp-client update >> $GenerateLog
+            Write-Warning $env:Path
+            exit 1
         } else {
             tsp-client update >> $GenerateLog
         }
