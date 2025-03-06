@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
     /// <summary>
     /// Integration runtime resource type.
     /// </summary>
+    [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class IntegrationRuntimeResource : SubResource
     {
         /// <summary>
@@ -38,13 +39,18 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="etag">Resource Etag.
         /// </param>
 
-        /// <param name="properties">Integration runtime properties.
+        /// <param name="additionalProperties">Azure Synapse nested object which serves as a compute resource for
+        /// activities.
         /// </param>
-        public IntegrationRuntimeResource(IntegrationRuntime properties, string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
+
+        /// <param name="description">Integration runtime description.
+        /// </param>
+        public IntegrationRuntimeResource(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string))
 
         : base(id, name, type, etag)
         {
-            this.Properties = properties;
+            this.AdditionalProperties = additionalProperties;
+            this.Description = description;
             CustomInit();
         }
 
@@ -55,23 +61,16 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
 
         /// <summary>
-        /// Gets or sets integration runtime properties.
+        /// Gets or sets azure Synapse nested object which serves as a compute resource
+        /// for activities.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public IntegrationRuntime Properties {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (this.Properties == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Properties");
-            }
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
 
-        }
+        /// <summary>
+        /// Gets or sets integration runtime description.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
+        public string Description {get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
     /// <summary>
     /// Integration runtime status response.
     /// </summary>
+    [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class IntegrationRuntimeStatusResponse
     {
         /// <summary>
@@ -27,13 +28,23 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="name">The integration runtime name.
         /// </param>
 
-        /// <param name="properties">Integration runtime properties.
+        /// <param name="additionalProperties">Integration runtime status.
         /// </param>
-        public IntegrationRuntimeStatusResponse(IntegrationRuntimeStatus properties, string name = default(string))
+
+        /// <param name="dataFactoryName">The workspace name which the integration runtime belong to.
+        /// </param>
+
+        /// <param name="state">The state of integration runtime.
+        /// Possible values include: &#39;Initial&#39;, &#39;Stopped&#39;, &#39;Started&#39;, &#39;Starting&#39;,
+        /// &#39;Stopping&#39;, &#39;NeedRegistration&#39;, &#39;Online&#39;, &#39;Limited&#39;, &#39;Offline&#39;,
+        /// &#39;AccessDenied&#39;</param>
+        public IntegrationRuntimeStatusResponse(string name = default(string), System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string dataFactoryName = default(string), string state = default(string))
 
         {
             this.Name = name;
-            this.Properties = properties;
+            this.AdditionalProperties = additionalProperties;
+            this.DataFactoryName = dataFactoryName;
+            this.State = state;
             CustomInit();
         }
 
@@ -50,24 +61,21 @@ namespace Microsoft.Azure.Management.Synapse.Models
         public string Name {get; private set; }
 
         /// <summary>
-        /// Gets or sets integration runtime properties.
+        /// Gets or sets integration runtime status.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public IntegrationRuntimeStatus Properties {get; set; }
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
+
         /// <summary>
-        /// Validate the object.
+        /// Gets the workspace name which the integration runtime belong to.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (this.Properties == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Properties");
-            }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dataFactoryName")]
+        public string DataFactoryName {get; private set; }
 
-
-        }
+        /// <summary>
+        /// Gets the state of integration runtime. Possible values include: &#39;Initial&#39;, &#39;Stopped&#39;, &#39;Started&#39;, &#39;Starting&#39;, &#39;Stopping&#39;, &#39;NeedRegistration&#39;, &#39;Online&#39;, &#39;Limited&#39;, &#39;Offline&#39;, &#39;AccessDenied&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.state")]
+        public string State {get; private set; }
     }
 }
