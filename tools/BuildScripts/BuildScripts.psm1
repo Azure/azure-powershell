@@ -89,7 +89,7 @@ function Invoke-SubModuleGeneration {
     $tspLocationPath = Join-Path $GenerateDirectory "tsp-location.yaml"
     if (Test-Path $tspLocationPath) {
         if ($IsInvokedByPipeline) {
-            npx tsp-client update >> $GenerateLog
+            npx @azure-tools/typespec-client-generator-cli tsp-client update >> $GenerateLog
         } else {
             tsp-client update >> $GenerateLog
         }

@@ -115,7 +115,7 @@ jobs:
       versionSpec: '18.20.7'
       command: custom
       verbose: false
-      customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x   
+      customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
