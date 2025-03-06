@@ -136,8 +136,8 @@ directive:
     #   cmdlet-name: New-AzFrontDoorCacheConfigurationObject
     # - model-name: RouteConfiguration
     #   cmdlet-name: New-AzFrontDoorRouteConfigurationObject
-    - model-name: PolicySettings
-      cmdlet-name: New-AzFrontDoorPolicySettingsObject
+    # - model-name: PolicySettings
+    #   cmdlet-name: New-AzFrontDoorPolicySettingsObject
 
   # Rename
   - where: 

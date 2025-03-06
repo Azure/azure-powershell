@@ -56,9 +56,6 @@ Create an in-memory object for HealthProbeSettingsModel.
 ### [New-AzFrontDoorLoadBalancingSettingObject](New-AzFrontDoorLoadBalancingSettingObject.md)
 Create an in-memory object for LoadBalancingSettingsModel.
 
-### [New-AzFrontDoorPolicySettingsObject](New-AzFrontDoorPolicySettingsObject.md)
-Create an in-memory object for PolicySettings.
-
 ### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
 Create an in-memory object for RoutingRule.
 
