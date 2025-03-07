@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRouteConfigurationOver
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulerouteconfigurationoverrideactionobject
 #>
 function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRouteConfigurationOverrideAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

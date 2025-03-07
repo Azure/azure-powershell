@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecretcustomercertificateparametersobject
 #>
 function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdb.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
