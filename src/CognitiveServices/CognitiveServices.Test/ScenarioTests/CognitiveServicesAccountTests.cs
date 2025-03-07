@@ -15,7 +15,6 @@
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -25,8 +24,6 @@ namespace CognitiveServices.Test.ScenarioTests
     {
         public CognitiveServicesAccountTests(ITestOutputHelper output) : base(output)
         {
-            Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", "SubscriptionId=f9b96b36-1f5e-4021-8959-51527e26e6d3;Environment=Prod;ServicePrincipal=50841d5f-166a-406c-8472-6800c9698b43;UserId=f159782b-672c-4aef-b9fd-1bd38acc7ab3;TenantId=72f988bf-86f1-41af-91ab-2d7cd011db47");
-            Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
         }
 
         [Fact]
