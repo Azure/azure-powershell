@@ -104,7 +104,7 @@ update a DataflowEndpointResource
 
 ### Example 1: Update a dataflow endpoint
 ```powershell
-Update-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143" location-116116143"  -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
+Update-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143"  -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
 ```
 
 ```output

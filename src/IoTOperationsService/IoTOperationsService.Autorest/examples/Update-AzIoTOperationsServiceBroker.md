@@ -54,4 +54,3 @@ Type                           : microsoft.iotoperations/instances/brokers
 ```
 
 Update a Broker
-
