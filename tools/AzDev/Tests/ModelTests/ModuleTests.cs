@@ -1,5 +1,6 @@
 using System.IO.Abstractions.TestingHelpers;
 using AzDev.Models.Inventory;
+using AzDev.Services;
 
 namespace AzDev.Tests;
 

@@ -20,7 +20,7 @@ namespace AzDev.Services
 {
     internal class DefaultCodebaseProvider : ICodebaseProvider
     {
-        private ILogger _logger;
+        private ILogger _logger = new NoopLogger();
         private readonly IContextProvider _contextProvider;
         private readonly IFileSystem _fs;
         private Codebase _codebase;
