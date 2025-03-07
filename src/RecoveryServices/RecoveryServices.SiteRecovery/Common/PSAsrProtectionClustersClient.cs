@@ -225,5 +225,153 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
+
+        /// <summary>
+        ///     Starts Cluster Unplanned Failover.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
+        /// <param name="input">Input for Cluster Unplanned failover.</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryClusterUnplannedFailover(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectionClusterName,
+            ClusterUnplannedFailoverInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionClusters.BeginUnplannedFailoverWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectionClusterName,
+                    input.Properties,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Starts Cluster Test Failover.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
+        /// <param name="input">Input for Cluster Test failover.</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryClusterTestFailover(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectionClusterName,
+            ClusterTestFailoverInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionClusters.BeginTestFailoverWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectionClusterName,
+                    input.Properties,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Starts Cluster Test Failover Cleanup.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
+        /// <param name="input">Input for Cluster Test failover cleanup.</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryClusterTestFailoverCleanup(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectionClusterName,
+            ClusterTestFailoverCleanupInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionClusters.BeginTestFailoverCleanupWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectionClusterName,
+                    input.Properties,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Start Cluster Apply Recovery Point.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
+        /// <param name="input">Input for Cluster Apply recovery point.</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryApplyClusterRecoveryPoint(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectionClusterName,
+            ApplyClusterRecoveryPointInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionClusters.BeginApplyRecoveryPointWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectionClusterName,
+                    input.Properties,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Starts Cluster Commit Failover.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryClusterCommitFailover(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectionClusterName)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionClusters.BeginFailoverCommitWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectionClusterName,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
     }
 }

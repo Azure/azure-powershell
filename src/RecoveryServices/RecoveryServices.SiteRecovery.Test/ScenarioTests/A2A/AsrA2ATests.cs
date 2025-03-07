@@ -217,5 +217,45 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
                 "Test-CRGReplication");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AClutserTestFailoverAndFailoverCleanupJob()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ClusterTestFailoverAndFailoverCleanupJob");
+        }
+
+        [Fact(Skip = "To be re-recorded")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AClutserUnplannedFailoverJob()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ClusterUnplannedFailoverJob");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AApplyClusterRecoveryPoint()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ApplyClusterRecoveryPoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AClusterCommitFailoverJob()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ClusterCommitFailoverJob");
+        }
     }
 }
