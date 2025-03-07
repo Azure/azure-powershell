@@ -3,6 +3,9 @@
 This directory contains the PowerShell module for the Confluent service.
 
 ---
+## Status
+[![Az.Confluent](https://img.shields.io/powershellgallery/v/Az.Confluent.svg?style=flat-square&label=Az.Confluent "Az.Confluent")](https://www.powershellgallery.com/packages/Az.Confluent/)
+
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -14,7 +17,7 @@ This directory contains the PowerShell module for the Confluent service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -44,14 +47,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: a71245db9eb5b27e3d95f266422c65be4df8789e
+commit: b770b86265d5dc3a26b16c5d30a736e6bbba04de
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json
+  - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2024-07-01/confluent.json
 
-module-version: 0.2.0
+module-version: 0.3.0
 title: Confluent
 subject-prefix: $(service-name)
 
