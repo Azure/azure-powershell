@@ -8,11 +8,11 @@ schema: 2.0.0
 # Update-AzCdnOrigin
 
 ## SYNOPSIS
-Updates an existing origin within an endpoint.
+update an existing origin within an endpoint.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
+### UpdateExpanded (Default)
 ```
 Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Enabled] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
@@ -21,7 +21,23 @@ Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -
  [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded1
+### UpdateViaIdentityEndpoint
+```
+Update-AzCdnOrigin -EndpointInputObject <ICdnIdentity> -Name <String>
+ -OriginUpdateProperty <IOriginUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityEndpointExpanded
+```
+Update-AzCdnOrigin -EndpointInputObject <ICdnIdentity> -Name <String> [-Enabled] [-HostName <String>]
+ [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
+ [-PrivateLinkAlias <String>] [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>]
+ [-PrivateLinkResourceId <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
 ```
 Update-AzCdnOrigin -InputObject <ICdnIdentity> [-Enabled] [-HostName <String>] [-HttpPort <Int32>]
  [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkAlias <String>]
@@ -29,8 +45,38 @@ Update-AzCdnOrigin -InputObject <ICdnIdentity> [-Enabled] [-HostName <String>] [
  [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityProfile
+```
+Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
+ -OriginUpdateProperty <IOriginUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityProfileExpanded
+```
+Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity> [-Enabled]
+ [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>]
+ [-Priority <Int32>] [-PrivateLinkAlias <String>] [-PrivateLinkApprovalMessage <String>]
+ [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>] [-Weight <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates an existing origin within an endpoint.
+update an existing origin within an endpoint.
 
 ## EXAMPLES
 
@@ -111,7 +157,7 @@ Origin is enabled for load balancing or not
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -121,12 +167,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EndpointInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: UpdateViaIdentityEndpoint, UpdateViaIdentityEndpointExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProfile, UpdateViaIdentityProfileExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -142,7 +203,7 @@ Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be un
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -158,7 +219,7 @@ Must be between 1 and 65535.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -174,7 +235,7 @@ Must be between 1 and 65535.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -186,11 +247,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: UpdateViaIdentityExpanded1
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -200,12 +260,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the origin which is unique within the endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpoint, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityProfile, UpdateViaIdentityProfileExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: OriginName
 
 Required: True
@@ -238,7 +328,7 @@ This overrides the host header defined at Endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -248,13 +338,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OriginUpdateProperty
+Origin properties needed for origin update.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginUpdateParameters
+Parameter Sets: UpdateViaIdentityEndpoint, UpdateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Priority
 Priority of origin in given origin group for load balancing.
 Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -270,7 +375,7 @@ Populating this optional field indicates that this origin is 'Private'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -285,7 +390,7 @@ A custom message to be included in the approval request to connect to the Privat
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -301,7 +406,7 @@ Required only if 'privateLinkResourceId' is populated
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -317,7 +422,7 @@ Populating this optional field indicates that this backend is 'Private'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -327,12 +432,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: UpdateViaIdentityProfile, UpdateViaIdentityProfileExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -347,7 +467,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -362,7 +482,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -378,7 +498,7 @@ Must be between 1 and 1000
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -426,9 +546,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginUpdateParameters
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin
 
 ## NOTES
 

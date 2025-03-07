@@ -10,6 +10,3 @@ RemoteAddress
 ```
 
 Create an in-memory object for AzureCDN DeliveryRuleRemoteAddressCondition
-
-
-

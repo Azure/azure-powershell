@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlSigningActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnurlsigningactionobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for UrlSigningAction.
 ## SYNTAX
 
 ```
-New-AzCdnUrlSigningActionObject -Name <DeliveryRuleAction> [-ParameterAlgorithm <Algorithm>]
- [-ParameterNameOverride <IUrlSigningParamIdentifier[]>]
+New-AzCdnUrlSigningActionObject -ParameterTypeName <String> [-ParameterAlgorithm <String>]
+ [-ParameterNameOverride <IUrlSigningParamIdentifier[]>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -38,26 +38,11 @@ Create an in-memory object for UrlSigningAction
 
 ## PARAMETERS
 
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ParameterAlgorithm
 Algorithm to use for URL signing.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Algorithm
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,12 +56,40 @@ Accept wildcard characters: False
 ### -ParameterNameOverride
 Defines which query string parameters in the url to be considered for expires, key id etc.
 .
-To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUrlSigningParamIdentifier[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterTypeName
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -92,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction
 
 ## NOTES
 
