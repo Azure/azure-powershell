@@ -1,0 +1,44 @@
+{
+  "Update-AzWeightsAndBiasesInstance+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qumulo2_eastus/providers/Microsoft.WeightsAndBiases/instances/test-cli-instance-1?api-version=2024-09-18-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qumulo2_eastus/providers/Microsoft.WeightsAndBiases/instances/test-cli-instance-1?api-version=2024-09-18-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "9dc47831-6784-487a-87ee-9ff3ec1ab861" ],
+        "CommandName": [ "Update-AzWeightsAndBiasesInstance" ],
+        "FullCommandName": [ "Update-AzWeightsAndBiasesInstance_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.WeightsAndBiases/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "c21b3490-c2e5-4c72-8011-6dd2a68e56a3" ],
+        "x-ms-correlation-request-id": [ "c21b3490-c2e5-4c72-8011-6dd2a68e56a3" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250304T023132Z:c21b3490-c2e5-4c72-8011-6dd2a68e56a3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E43CCCE0809B4313B170F1E3DB8EE5AF Ref B: MAA201060515023 Ref C: 2025-03-04T02:31:32Z" ],
+        "Date": [ "Tue, 04 Mar 2025 02:31:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.WeightsAndBiases/instances/test-cli-instance-1\u0027 under resource group \u0027QM_clitest_qumulo2_eastus\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}
